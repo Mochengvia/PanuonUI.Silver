@@ -35,6 +35,31 @@ namespace Panuon.UI.Silver.Browser
         #endregion
 
         #region Event
+        private void BtnNormal_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            ButtonHelper.SetIsWaiting(Btn1, false);
+            ButtonHelper.SetIsWaiting(Btn2, false);
+            ButtonHelper.SetIsWaiting(Btn3, false);
+            ButtonHelper.SetIsWaiting(Btn4, false);
+
+            switch (button.Name)
+            {
+                case "Btn1":
+                    ButtonHelper.SetIsWaiting(Btn1, true);
+                    break;
+                case "Btn2":
+                    ButtonHelper.SetIsWaiting(Btn2, true);
+                    break;
+                case "Btn3":
+                    ButtonHelper.SetIsWaiting(Btn3, true);
+                    break;
+                case "Btn4":
+                    ButtonHelper.SetIsWaiting(Btn4, true);
+                    break;
+            }
+        }
+
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
             ProgressBarHelper.SetAnimateTo(Pgb1, Pgb1.Value + 10);
@@ -56,8 +81,8 @@ namespace Panuon.UI.Silver.Browser
         {
             Carousel.Index++;
         }
-        #endregion
 
+        #endregion
 
     }
 }

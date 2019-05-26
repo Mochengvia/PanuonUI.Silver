@@ -81,7 +81,7 @@
                                     </Grid.ColumnDefinitions>
                                     <local:Loading x:Name="Loading"
                                                    Margin="0,0,5,0"
-                                                   StrokeCover="{TemplateBinding Foreground}"
+                                                   Stroke="{TemplateBinding Foreground}"
                                                    Width="20"
                                                    Height="20"/>
                                     <ContentPresenter Grid.Column="1"
@@ -155,7 +155,7 @@
                                     <MultiDataTrigger.Conditions>
                                         <Condition Binding="{Binding Path=(local:ButtonHelper.IsWaiting), RelativeSource={RelativeSource Self}}"
                                                    Value="False" />
-                                        <Condition Binding="{Binding IsEnabled}"
+                                        <Condition Binding="{Binding IsEnabled,RelativeSource={RelativeSource Self}}"
                                                    Value="False" />
                                     </MultiDataTrigger.Conditions>
                                     <Setter Property="Opacity"
@@ -175,9 +175,9 @@
                 <Setter Property="BorderThickness"
                         Value="1" />
                 <Setter Property="Foreground"
-                        Value="#3E3E3E" />
+                        Value="#888888" />
                 <Setter Property="local:ButtonHelper.HoverBrush"
-                        Value="#1E1E1E" />
+                        Value="#3E3E3E" />
                 <Setter Property="local:ButtonHelper.ClickCoverBrush"
                         Value="#22FFFFFF" />
                 <Setter Property="Template">
@@ -230,7 +230,7 @@
                                     </Grid.ColumnDefinitions>
                                     <local:Loading x:Name="Loading"
                                                    Margin="0,0,5,0"
-                                                   StrokeCover="{TemplateBinding Foreground}"
+                                                   Stroke="{TemplateBinding Foreground}"
                                                    Width="20"
                                                    Height="20" />
                                     <ContentPresenter Grid.Column="1"
@@ -316,7 +316,7 @@
                                     <MultiDataTrigger.Conditions>
                                         <Condition Binding="{Binding Path=(local:ButtonHelper.IsWaiting), RelativeSource={RelativeSource Self}}"
                                                    Value="False" />
-                                        <Condition Binding="{Binding IsEnabled}"
+                                        <Condition Binding="{Binding IsEnabled,RelativeSource={RelativeSource Self}}"
                                                    Value="False" />
                                     </MultiDataTrigger.Conditions>
                                     <Setter Property="Opacity"
@@ -336,7 +336,7 @@
                 <Setter Property="BorderThickness"
                         Value="1" />
                 <Setter Property="Foreground"
-                        Value="#AAAAAA" />
+                        Value="#888888" />
                 <Setter Property="local:ButtonHelper.HoverBrush"
                         Value="#3E3E3E" />
                 <Setter Property="local:ButtonHelper.ClickCoverBrush"
@@ -436,7 +436,7 @@
                                     </Grid.ColumnDefinitions>
                                     <local:Loading x:Name="Loading"
                                                    Margin="0,0,5,0"
-                                                   StrokeCover="{TemplateBinding Foreground}"
+                                                   Stroke="{TemplateBinding Foreground}"
                                                    Width="20"
                                                    Height="20" />
                                     <ContentPresenter Grid.Column="1"
@@ -539,7 +539,7 @@
                                     <MultiDataTrigger.Conditions>
                                         <Condition Binding="{Binding Path=(local:ButtonHelper.IsWaiting), RelativeSource={RelativeSource Self}}"
                                                    Value="False" />
-                                        <Condition Binding="{Binding IsEnabled}"
+                                        <Condition Binding="{Binding IsEnabled,RelativeSource={RelativeSource Self}}"
                                                    Value="False" />
                                     </MultiDataTrigger.Conditions>
                                     <Setter Property="Opacity"
@@ -559,9 +559,9 @@
                 <Setter Property="BorderThickness"
                         Value="0" />
                 <Setter Property="Foreground"
-                        Value="#AAAAAA" />
+                        Value="#888888" />
                 <Setter Property="local:ButtonHelper.HoverBrush"
-                        Value="#1E1E1E" />
+                        Value="#3E3E3E" />
                 <Setter Property="local:ButtonHelper.ClickCoverBrush"
                         Value="#22FFFFFF" />
                 <Setter Property="Template">
@@ -572,36 +572,39 @@
                                 <Grid VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                       Margin="{TemplateBinding Padding}">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-                                    <Label x:Name="LblIcon"
-                                           Content="{Binding Path=(local:ButtonHelper.Icon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
-                                           Foreground="{TemplateBinding Foreground}"
-                                           FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
-                                           VerticalAlignment="Center" />
                                     <Grid x:Name="GrdContent">
-                                        <ContentPresenter x:Name="Content"
-                                                          Grid.Column="1"
-                                                          ContentSource="Content"
-                                                          VerticalAlignment="Center" />
-                                        <ContentControl x:Name="ContentHover"
-                                                        Grid.Column="1"
-                                                        Content="{TemplateBinding Content}"
-                                                        VerticalAlignment="Center"
-                                                        Foreground="{Binding Path=(local:ButtonHelper.HoverBrush),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
-                                                        FontFamily="{TemplateBinding FontFamily}"
-                                                        FontSize="{TemplateBinding FontSize}"
-                                                        Opacity="0" />
-                                        <ContentControl x:Name="ContentClick"
-                                                        Grid.Column="1"
-                                                        Content="{TemplateBinding Content}"
-                                                        VerticalAlignment="Center"
-                                                        Foreground="{Binding Path=(local:ButtonHelper.ClickCoverBrush),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
-                                                        FontFamily="{TemplateBinding FontFamily}"
-                                                        FontSize="{TemplateBinding FontSize}"
-                                                        Visibility="Hidden" />
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label x:Name="LblIcon"
+                                               Content="{Binding Path=(local:ButtonHelper.Icon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
+                                               Foreground="{TemplateBinding Foreground}"
+                                               FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
+                                               VerticalAlignment="Center" />
+                                        <Grid Grid.Column="1">
+                                            <ContentPresenter x:Name="Content"
+                                                              Grid.Column="1"
+                                                              ContentSource="Content"
+                                                              VerticalAlignment="Center" />
+                                            <ContentControl x:Name="ContentHover"
+                                                            Grid.Column="1"
+                                                            Content="{TemplateBinding Content}"
+                                                            VerticalAlignment="Center"
+                                                            Foreground="{Binding Path=(local:ButtonHelper.HoverBrush),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
+                                                            FontFamily="{TemplateBinding FontFamily}"
+                                                            FontSize="{TemplateBinding FontSize}"
+                                                            Opacity="0" />
+                                            <ContentControl x:Name="ContentClick"
+                                                            Grid.Column="1"
+                                                            Content="{TemplateBinding Content}"
+                                                            VerticalAlignment="Center"
+                                                            Foreground="{Binding Path=(local:ButtonHelper.ClickCoverBrush),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
+                                                            FontFamily="{TemplateBinding FontFamily}"
+                                                            FontSize="{TemplateBinding FontSize}"
+                                                            Visibility="Hidden" />
+                                        </Grid>
+
                                     </Grid>
                                     <Grid x:Name="GrdWaiting"
                                           Visibility="Collapsed"
@@ -613,7 +616,7 @@
                                         </Grid.ColumnDefinitions>
                                         <local:Loading x:Name="Loading"
                                                        Margin="0,0,5,0"
-                                                       StrokeCover="{TemplateBinding Foreground}"
+                                                       Stroke="{TemplateBinding Foreground}"
                                                        Width="20"
                                                        Height="20" />
                                         <ContentPresenter Grid.Column="1"
@@ -694,7 +697,7 @@
                                     <MultiDataTrigger.Conditions>
                                         <Condition Binding="{Binding Path=(local:ButtonHelper.IsWaiting), RelativeSource={RelativeSource Self}}"
                                                    Value="False" />
-                                        <Condition Binding="{Binding IsEnabled}"
+                                        <Condition Binding="{Binding IsEnabled,RelativeSource={RelativeSource Self}}"
                                                    Value="False" />
                                     </MultiDataTrigger.Conditions>
                                     <Setter Property="Opacity"
@@ -705,11 +708,6 @@
                     </Setter.Value>
                 </Setter>
             </DataTrigger>
-            <Trigger Property="IsEnabled"
-                     Value="False">
-                <Setter Property="Opacity"
-                        Value="0.4" />
-            </Trigger>
         </Style.Triggers>
     </Style>
 </ResourceDictionary>

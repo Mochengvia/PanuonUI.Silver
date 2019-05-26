@@ -40,10 +40,13 @@
                         <StackPanel>
                             <Button Background="#49A9C0"
                                     pu:ButtonHelper.HoverBrush="#5ECFEA"
+                                    pu:ButtonHelper.IsWaiting="True"
                                     Height="30"
                                     Width="150"
+                                    Content=" Standard" 
                                     FontFamily="{StaticResource IconFont}"
-                                    Content=" Standard" />
+                                    x:Name="Btn1"
+                                    Click="BtnNormal_Click" />
                             <Button pu:ButtonHelper.ButtonStyle="Hollow"
                                     Foreground="#49A9C0"
                                     BorderBrush="#49A9C0"
@@ -51,8 +54,10 @@
                                     Height="30"
                                     Width="150"
                                     Margin="0,5,0,0"
+                                    Content=" Hollow"
                                     FontFamily="{StaticResource IconFont}"
-                                    Content=" Hollow" />
+                                    x:Name="Btn2"
+                                    Click="BtnNormal_Click" />
                             <Button pu:ButtonHelper.ButtonStyle="Outline"
                                     Foreground="#49A9C0"
                                     BorderBrush="#49A9C0"
@@ -60,16 +65,20 @@
                                     Height="30"
                                     Width="150"
                                     Margin="0,5,0,0"
+                                    Content=" Outline"
                                     FontFamily="{StaticResource IconFont}"
-                                    Content=" Outline" />
+                                    x:Name="Btn3"
+                                    Click="BtnNormal_Click" />
                             <Button pu:ButtonHelper.ButtonStyle="Link"
                                     Foreground="#49A9C0"
                                     pu:ButtonHelper.HoverBrush="#5ECFEA"
                                     Height="30"
                                     Width="150"
                                     Margin="0,5,0,0"
+                                    Content=" Link"
                                     FontFamily="{StaticResource IconFont}"
-                                    Content=" Link" />
+                                    x:Name="Btn4"
+                                    Click="BtnNormal_Click"/>
                         </StackPanel>
                     </GroupBox>
                     <GroupBox Padding="15"
