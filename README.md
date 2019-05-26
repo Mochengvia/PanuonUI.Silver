@@ -6,7 +6,7 @@ This is a developing program.
 # Donate
 Panuon.UI.Silver is a open source library.Your support will motivate me to continue Panuon.UI.Silver development.  
 
-Zhifubao :
+Zhifubao (Huabei supports):
 
 ![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Global/zhifubao.jpg)
 
