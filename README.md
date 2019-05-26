@@ -3,10 +3,23 @@ Panuon.UI optimized version. A beautiful wpf ui library using templates &amp; at
 
 This is a developing program.
 
+## Donate
+Panuon.UI.Silver is a open source library.Your support will motivate me to continue Panuon.UI.Silver development.  
+
+Zhifubao :
+
+![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Global/zhifubao.jpg)
+
+Paypal:  
+paypal.me/Zeoun  
+
+
 ## Overview
 Blue theme (colors can be changed):
 
 ![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/overview.jpg)
+
+![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/overview_2.jpg)
 
 
 ### Work with helper :
