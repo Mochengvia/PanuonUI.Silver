@@ -1,3 +1,5 @@
+<a href="https://996.icu" target='_blank'><img src="https://img.shields.io/badge/link-996.icu-red.svg"></a>
+
 # Panuon.UI.Silver
 Panuon.UI optimized version. A beautiful wpf ui library using templates &amp; attached properties.
 
