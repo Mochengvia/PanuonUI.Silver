@@ -1,0 +1,156 @@
+﻿using System;
+using System.Windows;
+using System.Windows.Media;
+
+namespace Panuon.UI.Silver
+{
+    public class PasswordBoxHelper
+    {
+        #region PasswordBoxStyle
+        public static PasswordBoxStyle GetPasswordBoxStyle(DependencyObject obj)
+        {
+            return (PasswordBoxStyle)obj.GetValue(PasswordBoxStyleProperty);
+        }
+
+        public static void SetPasswordBoxStyle(DependencyObject obj, PasswordBoxStyle value)
+        {
+            obj.SetValue(PasswordBoxStyleProperty, value);
+        }
+
+        public static readonly DependencyProperty PasswordBoxStyleProperty =
+            DependencyProperty.RegisterAttached("PasswordBoxStyle", typeof(PasswordBoxStyle), typeof(PasswordBoxHelper), new PropertyMetadata(PasswordBoxStyle.Standard));
+        #endregion
+
+        #region FocusedBorderBrush
+        public static Brush GetFocusedBorderBrush(DependencyObject obj)
+        {
+            return (Brush)obj.GetValue(FocusedBorderBrushProperty);
+        }
+
+        public static void SetFocusedBorderBrush(DependencyObject obj, Brush value)
+        {
+            obj.SetValue(FocusedBorderBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty FocusedBorderBrushProperty =
+            DependencyProperty.RegisterAttached("FocusedBorderBrush", typeof(Brush), typeof(PasswordBoxHelper));
+        #endregion
+
+        #region FocusedShadowColor
+        public static Color GetFocusedShadowColor(DependencyObject obj)
+        {
+            return (Color)obj.GetValue(FocusedShadowColorProperty);
+        }
+
+        public static void SetFocusedShadowColor(DependencyObject obj, Color value)
+        {
+            obj.SetValue(FocusedShadowColorProperty, value);
+        }
+
+        public static readonly DependencyProperty FocusedShadowColorProperty =
+            DependencyProperty.RegisterAttached("FocusedShadowColor", typeof(Color), typeof(PasswordBoxHelper));
+
+        #endregion
+
+        #region CornerRadius
+        public static CornerRadius GetCornerRadius(DependencyObject obj)
+        {
+            return (CornerRadius)obj.GetValue(CornerRadiusProperty);
+        }
+
+        public static void SetCornerRadius(DependencyObject obj, CornerRadius value)
+        {
+            obj.SetValue(CornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty CornerRadiusProperty =
+            DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(PasswordBoxHelper));
+        #endregion
+
+        #region Icon
+        public static object GetIcon(DependencyObject obj)
+        {
+            return (object)obj.GetValue(IconProperty);
+        }
+
+        public static void SetIcon(DependencyObject obj, object value)
+        {
+            obj.SetValue(IconProperty, value);
+        }
+
+        public static readonly DependencyProperty IconProperty =
+            DependencyProperty.RegisterAttached("Icon", typeof(object), typeof(PasswordBoxHelper));
+        #endregion
+
+        #region Watermark
+        public static string GetWatermark(DependencyObject obj)
+        {
+            return (string)obj.GetValue(WatermarkProperty);
+        }
+
+        public static void SetWatermark(DependencyObject obj, string value)
+        {
+            obj.SetValue(WatermarkProperty, value);
+        }
+
+        public static readonly DependencyProperty WatermarkProperty =
+            DependencyProperty.RegisterAttached("Watermark", typeof(string), typeof(PasswordBoxHelper));
+
+
+        #endregion
+
+        #region Password
+        public static string GetPassword(DependencyObject obj)
+        {
+            return (string)obj.GetValue(PasswordProperty);
+        }
+
+        public static void SetPassword(DependencyObject obj, string value)
+        {
+            obj.SetValue(PasswordProperty, value);
+        }
+
+        public static readonly DependencyProperty PasswordProperty =
+            DependencyProperty.RegisterAttached("Password", typeof(string), typeof(PasswordBoxHelper), new PropertyMetadata(OnPasswordChanged));
+
+        private static void OnPasswordChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var passwordBox = d as System.Windows.Controls.PasswordBox;
+            var password = e.NewValue as string;
+
+            if(password != passwordBox.Password)
+            {
+                passwordBox.Password = password;
+            }
+
+        }
+        #endregion
+
+        #region (Internal) PasswordHook (Default is true)
+        internal static bool GetPasswordHook(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(PasswordHookProperty);
+        }
+
+        internal static void SetPasswordHook(DependencyObject obj, bool value)
+        {
+            obj.SetValue(PasswordHookProperty, value);
+        }
+
+        internal static readonly DependencyProperty PasswordHookProperty =
+            DependencyProperty.RegisterAttached("PasswordHook", typeof(bool), typeof(PasswordBoxHelper), new PropertyMetadata(OnPasswordHookChanged));
+
+        private static void OnPasswordHookChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var passwordBox = d as System.Windows.Controls.PasswordBox;
+            passwordBox.PasswordChanged += new RoutedEventHandler(PasswordBox_PasswordChanged);
+        }
+
+        private static void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            var passwordBox = sender as System.Windows.Controls.PasswordBox;
+            SetPassword(passwordBox, passwordBox.Password);
+        }
+        #endregion
+    }
+}

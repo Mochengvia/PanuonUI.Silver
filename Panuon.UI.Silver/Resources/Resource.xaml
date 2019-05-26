@@ -1,0 +1,16 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:windows="clr-namespace:System.Windows;assembly=PresentationCore"
+                    xmlns:windows2="clr-namespace:System.Windows;assembly=PresentationFramework">
+
+    <!--===========Default===========-->
+    <FontFamily x:Key="Default_FontFamily">MS YaHei UI</FontFamily>
+    <sys:Double x:Key="Default_FontSize">14</sys:Double>
+    <sys:Boolean x:Key="Default_SnapsToDevicePixels">False</sys:Boolean>
+    <!--===========Button===========-->
+    <windows:Duration x:Key="Button_ShadeDuration">0:0:0.3</windows:Duration>
+    <windows2:CornerRadius x:Key="Button_CornerRadius">0</windows2:CornerRadius>
+    <sys:String x:Key="Button_WaitingContent">Please wait...</sys:String>
+</ResourceDictionary>
