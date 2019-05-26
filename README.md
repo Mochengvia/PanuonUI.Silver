@@ -4,6 +4,9 @@ Panuon.UI optimized version. A beautiful wpf ui library using templates &amp; at
 This is a developing program.
 
 ## Overview
+Blue theme (colors can be changed):
+
+![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/overview.jpg)
 
 
 ### Work with helper :
