@@ -22,8 +22,6 @@
                 Value="30" />
         <Setter Property="local:TreeViewHelper.SelectedBrush"
                 Value="#888888" />
-        <Setter Property="Padding"
-                Value="4" />
         <Setter Property="BorderBrush"
                 Value="Transparent" />
         <Setter Property="BorderThickness"
@@ -32,6 +30,8 @@
                 Value="Top" />
         <Setter Property="HorizontalContentAlignment"
                 Value="Stretch" />
+        <Setter Property="local:TreeViewHelper.TreeViewStyle"
+                Value="Standard" />
         <Setter Property="VirtualizingStackPanel.IsVirtualizing"
                 Value="True" />
         <Setter Property="VirtualizingStackPanel.VirtualizationMode"
@@ -47,7 +47,6 @@
                                       VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}"
                                       HorizontalScrollBarVisibility="{Binding Path=(ScrollViewer.HorizontalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}"
                                       CanContentScroll="True"
-                                      Margin="{TemplateBinding Padding}"
                                       Style="{StaticResource MiniScrollViewer}">
                             <ItemsPresenter />
                         </ScrollViewer>
@@ -56,6 +55,26 @@
             </Setter.Value>
         </Setter>
         <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=(local:TreeViewHelper.TreeViewStyle),RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                         Value="Classic">
+                <Setter Property="Padding"
+                        Value="10,0,0,0" />
+                <Setter Property="local:TreeViewHelper.ExpandedBrush"
+                        Value="#F1F1F1" />
+                <Setter Property="local:TreeViewHelper.SelectedBrush"
+                        Value="#DDDDDD" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=(local:TreeViewHelper.TreeViewStyle),RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                         Value="Modern">
+                <Setter Property="BorderBrush"
+                        Value="#3E3E3E" />
+                <Setter Property="Padding"
+                        Value="10,0,0,0" />
+                <Setter Property="local:TreeViewHelper.ExpandedBrush"
+                        Value="#F1F1F1" />
+                <Setter Property="local:TreeViewHelper.SelectedBrush"
+                        Value="#DDDDDD" />
+            </DataTrigger>
             <Trigger Property="IsEnabled"
                      Value="False">
                 <Setter Property="Opacity"
@@ -85,118 +104,323 @@
                 Value="Hand" />
         <Setter Property="Foreground"
                 Value="{Binding Foreground,RelativeSource={RelativeSource AncestorType=TreeView}}" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type TreeViewItem}">
-                    <Border BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            Background="{TemplateBinding Background}">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="{Binding Path=(local:TreeViewHelper.ItemHeight),RelativeSource={RelativeSource AncestorType=TreeView},Mode=OneWay,Converter={StaticResource GridLengthConverter}}" />
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <ToggleButton x:Name="Toggle"
-                                          Width="12"
-                                          Margin="0,0,3,0"
-                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                          HorizontalAlignment="Left"
-                                          Foreground="{TemplateBinding Foreground}"
-                                          IsChecked="{TemplateBinding IsExpanded}">
-                                <ToggleButton.Template>
-                                    <ControlTemplate TargetType="ToggleButton">
-                                        <Border>
-                                            <ContentPresenter VerticalAlignment="Center"
-                                                              HorizontalAlignment="Center" />
-                                        </Border>
-                                    </ControlTemplate>
-                                </ToggleButton.Template>
-                                <ToggleButton.Content>
-                                    <Grid x:Name="arrow"
-                                          VerticalAlignment="Center"
-                                          HorizontalAlignment="Left"
-                                          Width="{TemplateBinding Height}"
-                                          Height="{TemplateBinding Height}">
-                                        <Path x:Name="arrow1"
-                                              VerticalAlignment="Center"
-                                              HorizontalAlignment="Left"
-                                              Data="M 4,3 L10,7.5 L 4,12 Z"
-                                              Width="15"
-                                              Height="15"
-                                              Stroke="{x:Null}"
-                                              Fill="{TemplateBinding Foreground}"
-                                              RenderTransformOrigin="0.5,0.5">
-                                        </Path>
-                                        <Path x:Name="arrow2"
-                                              Opacity="0"
-                                              VerticalAlignment="Center"
-                                              HorizontalAlignment="Left"
-                                              Data="M 4,3 L10,7.5 L 4,12 Z"
-                                              Width="15"
-                                              Height="15"
-                                              Stroke="{x:Null}"
-                                              Fill="{TemplateBinding Foreground }"
-                                              RenderTransformOrigin="0.5,0.5">
-                                            <Path.RenderTransform>
-                                                <RotateTransform Angle="45"></RotateTransform>
-                                            </Path.RenderTransform>
-                                        </Path>
-                                    </Grid>
-                                </ToggleButton.Content>
-                            </ToggleButton>
-                            <ContentPresenter x:Name="PART_Header"
-                                              Grid.Column="1"
-                                              ContentSource="Header"
-                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
-                            <ItemsPresenter x:Name="ItemsHost"
-                                            Grid.Row="1"
-                                            Grid.Column="1"
-                                            Visibility="Collapsed" />
-                        </Grid>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsExpanded"
-                                 Value="False">
-                            <Setter TargetName="ItemsHost"
-                                    Property="Visibility"
-                                    Value="Collapsed" />
-                        </Trigger>
-                        <Trigger Property="IsExpanded"
-                                 Value="True">
-                            <Setter TargetName="ItemsHost"
-                                    Property="Visibility"
-                                    Value="Visible" />
-                        </Trigger>
-                        <Trigger Property="IsExpanded"
-                                 Value="True">
-                            <Setter TargetName="arrow1"
-                                    Property="Opacity"
-                                    Value="0" />
-                            <Setter TargetName="arrow2"
-                                    Property="Opacity"
-                                    Value="1" />
-                        </Trigger>
-                        <Trigger Property="HasItems"
-                                 Value="False">
-                            <Setter TargetName="Toggle"
-                                    Property="Visibility"
-                                    Value="Hidden" />
-                        </Trigger>
-                        <Trigger Property="IsSelected"
-                                 Value="True">
-                            <Setter Property="Foreground"
-                                    Value="{Binding Path=(local:TreeViewHelper.SelectedBrush),RelativeSource={RelativeSource  AncestorType=TreeView},Mode=OneWay}" />
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
+        <Setter Property="Padding"
+                Value="{Binding Padding,RelativeSource={RelativeSource AncestorType=TreeView}}" />
         <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=(local:TreeViewHelper.TreeViewStyle),RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}"
+                         Value="Standard">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TreeViewItem}">
+                            <Border BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    Background="{TemplateBinding Background}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="{Binding Path=(local:TreeViewHelper.ItemHeight),RelativeSource={RelativeSource AncestorType=TreeView},Mode=OneWay,Converter={StaticResource GridLengthConverter}}" />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <ToggleButton x:Name="Toggle"
+                                                  Width="12"
+                                                  Margin="0,0,3,0"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                  HorizontalAlignment="Left"
+                                                  Foreground="{TemplateBinding Foreground}"
+                                                  IsChecked="{TemplateBinding IsExpanded}">
+                                        <ToggleButton.Template>
+                                            <ControlTemplate TargetType="ToggleButton">
+                                                <Border>
+                                                    <ContentPresenter VerticalAlignment="Center"
+                                                                      HorizontalAlignment="Center" />
+                                                </Border>
+                                            </ControlTemplate>
+                                        </ToggleButton.Template>
+                                        <ToggleButton.Content>
+                                            <Grid x:Name="arrow"
+                                                  VerticalAlignment="Center"
+                                                  HorizontalAlignment="Left"
+                                                  Width="{TemplateBinding Height}"
+                                                  Height="{TemplateBinding Height}">
+                                                <Path x:Name="arrow1"
+                                                      VerticalAlignment="Center"
+                                                      HorizontalAlignment="Left"
+                                                      Data="M 4,3 L10,7.5 L 4,12 Z"
+                                                      Width="15"
+                                                      Height="15"
+                                                      Stroke="{x:Null}"
+                                                      Fill="{TemplateBinding Foreground}"
+                                                      RenderTransformOrigin="0.5,0.5">
+                                                </Path>
+                                                <Path x:Name="arrow2"
+                                                      Opacity="0"
+                                                      VerticalAlignment="Center"
+                                                      HorizontalAlignment="Left"
+                                                      Data="M 4,3 L10,7.5 L 4,12 Z"
+                                                      Width="15"
+                                                      Height="15"
+                                                      Stroke="{x:Null}"
+                                                      Fill="{TemplateBinding Foreground }"
+                                                      RenderTransformOrigin="0.5,0.5">
+                                                    <Path.RenderTransform>
+                                                        <RotateTransform Angle="45"></RotateTransform>
+                                                    </Path.RenderTransform>
+                                                </Path>
+                                            </Grid>
+                                        </ToggleButton.Content>
+                                    </ToggleButton>
+                                    <ContentPresenter x:Name="PART_Header"
+                                                      Grid.Column="1"
+                                                      Margin="{TemplateBinding Padding}"
+                                                      ContentSource="Header"
+                                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                    <ItemsPresenter x:Name="ItemsHost"
+                                                    Grid.Row="1"
+                                                    Grid.Column="1"
+                                                    Visibility="Collapsed" />
+                                </Grid>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsExpanded"
+                                         Value="False">
+                                    <Setter TargetName="ItemsHost"
+                                            Property="Visibility"
+                                            Value="Collapsed" />
+                                </Trigger>
+                                <Trigger Property="IsExpanded"
+                                         Value="True">
+                                    <Setter TargetName="ItemsHost"
+                                            Property="Visibility"
+                                            Value="Visible" />
+                                </Trigger>
+                                <Trigger Property="IsExpanded"
+                                         Value="True">
+                                    <Setter TargetName="arrow1"
+                                            Property="Opacity"
+                                            Value="0" />
+                                    <Setter TargetName="arrow2"
+                                            Property="Opacity"
+                                            Value="1" />
+                                </Trigger>
+                                <Trigger Property="HasItems"
+                                         Value="False">
+                                    <Setter TargetName="Toggle"
+                                            Property="Visibility"
+                                            Value="Hidden" />
+                                </Trigger>
+                                <Trigger Property="IsSelected"
+                                         Value="True">
+                                    <Setter Property="Foreground"
+                                            Value="{Binding Path=(local:TreeViewHelper.SelectedBrush),RelativeSource={RelativeSource  AncestorType=TreeView},Mode=OneWay}" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=(local:TreeViewHelper.TreeViewStyle),RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}"
+                         Value="Classic">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TreeViewItem}">
+                            <Grid>
+                                <Border x:Name="BdrMain"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        Background="{TemplateBinding Background}">
+                                </Border>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="{Binding Path=(local:TreeViewHelper.ItemHeight),RelativeSource={RelativeSource AncestorType=TreeView},Mode=OneWay,Converter={StaticResource GridLengthConverter}}" />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <ContentPresenter x:Name="PART_Header"
+                                                      Margin="{TemplateBinding Padding}"
+                                                      ContentSource="Header"
+                                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                    <ToggleButton x:Name="Toggle"
+                                                  Width="12"
+                                                  Margin="0,0,10,0"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                  HorizontalAlignment="Right"
+                                                  Foreground="{TemplateBinding Foreground}"
+                                                  IsChecked="{TemplateBinding IsExpanded}">
+                                        <ToggleButton.Template>
+                                            <ControlTemplate TargetType="ToggleButton">
+                                                <Border>
+                                                    <ContentPresenter VerticalAlignment="Center"
+                                                                      HorizontalAlignment="Center" />
+                                                </Border>
+                                            </ControlTemplate>
+                                        </ToggleButton.Template>
+                                        <ToggleButton.Content>
+                                            <Grid x:Name="arrow"
+                                                  VerticalAlignment="Center"
+                                                  HorizontalAlignment="Right"
+                                                  Width="{TemplateBinding Height}"
+                                                  Height="{TemplateBinding Height}">
+                                                <Path x:Name="arrow1"
+                                                      Opacity="1"
+                                                      VerticalAlignment="Center"
+                                                      Grid.Column="1"
+                                                      HorizontalAlignment="Center"
+                                                      Data="M5,4 H14 L9.5,10 Z"
+                                                      Width="15"
+                                                      Height="15"
+                                                      Fill="{TemplateBinding Foreground}" />
+                                                <Path x:Name="arrow2"
+                                                      Opacity="0"
+                                                      VerticalAlignment="Center"
+                                                      Grid.Column="1"
+                                                      HorizontalAlignment="Center"
+                                                      Data="M5,10 H14 L9.5,4.5 Z"
+                                                      Width="15"
+                                                      Height="15"
+                                                      Fill="{TemplateBinding Foreground}" />
+                                            </Grid>
+                                        </ToggleButton.Content>
+                                    </ToggleButton>
+                                    <ItemsPresenter x:Name="ItemsHost"
+                                                    Grid.Row="1"
+                                                    Visibility="Collapsed" />
+                                </Grid>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsExpanded"
+                                         Value="False">
+                                    <Setter TargetName="ItemsHost"
+                                            Property="Visibility"
+                                            Value="Collapsed" />
+                                </Trigger>
+                                <Trigger Property="IsExpanded"
+                                         Value="True">
+                                    <Setter TargetName="ItemsHost"
+                                            Property="Visibility"
+                                            Value="Visible" />
+                                </Trigger>
+                                <Trigger Property="IsExpanded"
+                                         Value="True">
+                                    <Setter TargetName="arrow1"
+                                            Property="Opacity"
+                                            Value="0" />
+                                    <Setter TargetName="arrow2"
+                                            Property="Opacity"
+                                            Value="1" />
+                                </Trigger>
+                                <Trigger Property="HasItems"
+                                         Value="False">
+                                    <Setter TargetName="Toggle"
+                                            Property="Visibility"
+                                            Value="Hidden" />
+                                </Trigger>
+                                <Trigger Property="IsSelected"
+                                         Value="True">
+                                    <Setter TargetName="BdrMain"
+                                            Property="Background"
+                                            Value="{Binding Path=(local:TreeViewHelper.SelectedBrush),RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+                                </Trigger>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}"
+                                                   Value="False" />
+                                        <Condition Binding="{Binding IsExpanded, RelativeSource={RelativeSource Self}}"
+                                                   Value="True" />
+                                        <Condition Binding="{Binding Path=(local:TreeViewHelper.ExpandedBrush),RelativeSource={RelativeSource AncestorType=TreeView},Converter={StaticResource IsNotNullConverter}}"
+                                                   Value="True" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter TargetName="BdrMain"
+                                            Property="Background"
+                                            Value="{Binding Path=(local:TreeViewHelper.ExpandedBrush),RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+                                </MultiDataTrigger>
+
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=(local:TreeViewHelper.TreeViewStyle),RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}"
+                         Value="Modern">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TreeViewItem}">
+                            <Grid>
+                                <Border x:Name="BdrMain"
+                                        BorderThickness="0"
+                                        Background="{TemplateBinding Background}">
+                                </Border>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="{Binding Path=(local:TreeViewHelper.ItemHeight),RelativeSource={RelativeSource AncestorType=TreeView},Mode=OneWay,Converter={StaticResource GridLengthConverter}}" />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Rectangle x:Name="Rect"
+                                               Fill="#E0E0E0" />
+                                    <ContentPresenter x:Name="PART_Header"
+                                                      Grid.Column="1"
+                                                      Margin="{TemplateBinding Padding}"
+                                                      ContentSource="Header"
+                                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                    <ItemsPresenter x:Name="ItemsHost"
+                                                    Grid.Row="1"
+                                                    Grid.ColumnSpan="2"
+                                                    Visibility="Collapsed" />
+                                </Grid>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsExpanded"
+                                         Value="False">
+                                    <Setter TargetName="ItemsHost"
+                                            Property="Visibility"
+                                            Value="Collapsed" />
+                                </Trigger>
+                                <Trigger Property="IsExpanded"
+                                         Value="True">
+                                    <Setter TargetName="ItemsHost"
+                                            Property="Visibility"
+                                            Value="Visible" />
+                                </Trigger>
+                                <Trigger Property="IsSelected"
+                                         Value="True">
+                                    <Setter TargetName="Rect"
+                                            Property="Fill"
+                                            Value="{Binding BorderBrush, RelativeSource={RelativeSource AncestorType=TreeView}}" />
+                                    <Setter TargetName="BdrMain"
+                                            Property="Background"
+                                            Value="{Binding Path=(local:TreeViewHelper.SelectedBrush),RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+                                </Trigger>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}"
+                                                   Value="False" />
+                                        <Condition Binding="{Binding IsExpanded, RelativeSource={RelativeSource Self}}"
+                                                   Value="True" />
+                                        <Condition Binding="{Binding Path=(local:TreeViewHelper.ExpandedBrush),RelativeSource={RelativeSource AncestorType=TreeView},Converter={StaticResource IsNotNullConverter}}"
+                                                   Value="True" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter TargetName="BdrMain"
+                                            Property="Background"
+                                            Value="{Binding Path=(local:TreeViewHelper.ExpandedBrush),RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+                                </MultiDataTrigger>
+
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+
+            </DataTrigger>
+
             <Trigger Property="IsEnabled"
                      Value="False">
                 <Setter Property="Opacity"

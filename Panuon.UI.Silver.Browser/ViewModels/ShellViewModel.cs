@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Windows;
 
 namespace Panuon.UI.Silver.Browser.ViewModels
 {
@@ -16,57 +17,57 @@ namespace Panuon.UI.Silver.Browser.ViewModels
                 new SourceItemModel(){ Content = "Item 1",
                     Items = new ObservableCollection<SourceItemModel>()
                     {
-                        new SourceItemModel(){ Content = "Item 1", },
-                        new SourceItemModel(){ Content = "Item 2", },
-                        new SourceItemModel(){ Content = "Item 3", },
+                        new SourceItemModel(){ Content = "Child 1", Padding = new Thickness(20,0,0,0) },
+                        new SourceItemModel(){ Content = "Child 2", Padding = new Thickness(20,0,0,0) },
+                        new SourceItemModel(){ Content = "Child 3", Padding = new Thickness(20,0,0,0) },
                     }
                 },
                 new SourceItemModel(){ Content = "Item 2",
                     Items = new ObservableCollection<SourceItemModel>()
                     {
-                        new SourceItemModel(){ Content = "Item 1", },
-                        new SourceItemModel(){ Content = "Item 2", },
-                        new SourceItemModel(){ Content = "Item 3", },
+                        new SourceItemModel(){ Content = "Child 1", Padding = new Thickness(20,0,0,0) },
+                        new SourceItemModel(){ Content = "Child 2", Padding = new Thickness(20,0,0,0) },
+                        new SourceItemModel(){ Content = "Child 3", Padding = new Thickness(20,0,0,0) },
                     }
                 },
                 new SourceItemModel(){ Content = "Item 3",
                     Items = new ObservableCollection<SourceItemModel>()
                     {
-                        new SourceItemModel(){ Content = "Item 1", },
-                        new SourceItemModel(){ Content = "Item 2", },
-                        new SourceItemModel(){ Content = "Item 3", },
+                        new SourceItemModel(){ Content = "Child 1", Padding = new Thickness(20,0,0,0) },
+                        new SourceItemModel(){ Content = "Child 2", Padding = new Thickness(20,0,0,0) },
+                        new SourceItemModel(){ Content = "Child 3", Padding = new Thickness(20,0,0,0) },
                     }
                 },
                 new SourceItemModel(){ Content = "Item 4",
                     Items = new ObservableCollection<SourceItemModel>()
                     {
-                        new SourceItemModel(){ Content = "Item 1", },
-                        new SourceItemModel(){ Content = "Item 2", },
-                        new SourceItemModel(){ Content = "Item 3", },
+                        new SourceItemModel(){ Content = "Child 1", Padding = new Thickness(20,0,0,0) },
+                        new SourceItemModel(){ Content = "Child 2", Padding = new Thickness(20,0,0,0) },
+                        new SourceItemModel(){ Content = "Child 3", Padding = new Thickness(20,0,0,0) },
                     }
                 },
                 new SourceItemModel(){ Content = "Item 5",
                     Items = new ObservableCollection<SourceItemModel>()
                     {
-                        new SourceItemModel(){ Content = "Item 1", },
-                        new SourceItemModel(){ Content = "Item 2", },
-                        new SourceItemModel(){ Content = "Item 3", },
+                        new SourceItemModel(){ Content = "Child 1", Padding = new Thickness(20,0,0,0) },
+                        new SourceItemModel(){ Content = "Child 2", Padding = new Thickness(20,0,0,0) },
+                        new SourceItemModel(){ Content = "Child 3", Padding = new Thickness(20,0,0,0) },
                     }
                 },
                 new SourceItemModel(){ Content = "Item 6",
                     Items = new ObservableCollection<SourceItemModel>()
                     {
-                        new SourceItemModel(){ Content = "Item 1", },
-                        new SourceItemModel(){ Content = "Item 2", },
-                        new SourceItemModel(){ Content = "Item 3", },
+                        new SourceItemModel(){ Content = "Child 1", Padding = new Thickness(20,0,0,0) },
+                        new SourceItemModel(){ Content = "Child 2", Padding = new Thickness(20,0,0,0) },
+                        new SourceItemModel(){ Content = "Child 3", Padding = new Thickness(20,0,0,0) },
                     }
                 },
                 new SourceItemModel(){ Content = "Item 7",
                     Items = new ObservableCollection<SourceItemModel>()
                     {
-                        new SourceItemModel(){ Content = "Item 1", },
-                        new SourceItemModel(){ Content = "Item 2", },
-                        new SourceItemModel(){ Content = "Item 3", },
+                        new SourceItemModel(){ Content = "Child 1", Padding = new Thickness(20,0,0,0) },
+                        new SourceItemModel(){ Content = "Child 2", Padding = new Thickness(20,0,0,0) },
+                        new SourceItemModel(){ Content = "Child 3", Padding = new Thickness(20,0,0,0) },
                     }
                 },
             };
@@ -120,10 +121,21 @@ namespace Panuon.UI.Silver.Browser.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        public SourceItemModel()
+        {
+            Padding = new Thickness(10, 0, 0, 0);
+        }
 
         public string Content { get; set; }
 
         public bool IsSelected { get; set; }
+
+        public Thickness Padding
+        {
+            get { return _padding; }
+            set { _padding = value; NotifyPropertyChanged("Padding"); }
+        }
+        private Thickness _padding;
 
         public ObservableCollection<SourceItemModel> Items
         {

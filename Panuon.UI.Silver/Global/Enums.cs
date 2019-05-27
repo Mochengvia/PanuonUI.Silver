@@ -34,7 +34,8 @@ namespace Panuon.UI.Silver
     public enum TreeViewStyle
     {
         Standard,
-        Block,
+        Classic,
+        Modern
     }
 
     public enum SelectMode
@@ -49,6 +50,11 @@ namespace Panuon.UI.Silver
         SingleClick
     }
 
+    public enum ExpandBehaviour
+    {
+        Any,
+        OnlyOne,
+    }
     #endregion
 
     #region TextBox

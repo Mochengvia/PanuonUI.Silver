@@ -8,20 +8,20 @@ namespace Panuon.UI.Silver
 {
     public class TreeViewHelper
     {
-        //#region TreeViewStyle
-        //public static TreeViewStyle GetTreeViewStyle(DependencyObject obj)
-        //{
-        //    return (TreeViewStyle)obj.GetValue(TreeViewStyleProperty);
-        //}
+        #region TreeViewStyle
+        public static TreeViewStyle GetTreeViewStyle(DependencyObject obj)
+        {
+            return (TreeViewStyle)obj.GetValue(TreeViewStyleProperty);
+        }
 
-        //public static void SetTreeViewStyle(DependencyObject obj, TreeViewStyle value)
-        //{
-        //    obj.SetValue(TreeViewStyleProperty, value);
-        //}
+        public static void SetTreeViewStyle(DependencyObject obj, TreeViewStyle value)
+        {
+            obj.SetValue(TreeViewStyleProperty, value);
+        }
 
-        //public static readonly DependencyProperty TreeViewStyleProperty =
-        //    DependencyProperty.RegisterAttached("TreeViewStyle", typeof(TreeViewStyle), typeof(TreeViewHelper));
-        //#endregion
+        public static readonly DependencyProperty TreeViewStyleProperty =
+            DependencyProperty.RegisterAttached("TreeViewStyle", typeof(TreeViewStyle), typeof(TreeViewHelper));
+        #endregion
 
         #region SelectMode
         public static SelectMode GetSelectMode(DependencyObject obj)
@@ -143,6 +143,7 @@ namespace Panuon.UI.Silver
             var treeView = sender as TreeView;
             if (e.OriginalSource is TreeViewItem)
             {
+
                 var treeViewItem = e.OriginalSource as TreeViewItem;
                 if (treeViewItem.HasItems)
                 {
@@ -152,6 +153,71 @@ namespace Panuon.UI.Silver
         }
 
 
+        #endregion
+
+        #region ExpandBehaviour
+        public static ExpandBehaviour GetExpandBehaviour(DependencyObject obj)
+        {
+            return (ExpandBehaviour)obj.GetValue(ExpandBehaviourProperty);
+        }
+
+        public static void SetExpandBehaviour(DependencyObject obj, ExpandBehaviour value)
+        {
+            obj.SetValue(ExpandBehaviourProperty, value);
+        }
+
+        public static readonly DependencyProperty ExpandBehaviourProperty =
+            DependencyProperty.RegisterAttached("ExpandBehaviour", typeof(ExpandBehaviour), typeof(TreeViewHelper), new PropertyMetadata(OnExpandBehaviourChanged));
+
+        private static void OnExpandBehaviourChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var treeView = d as TreeView;
+
+            treeView.RemoveHandler(TreeViewItem.ExpandedEvent, new RoutedEventHandler(OnExpandBehaviourItemSelected));
+
+            if ((ExpandBehaviour)e.NewValue == ExpandBehaviour.OnlyOne)
+            {
+                treeView.AddHandler(TreeViewItem.ExpandedEvent, new RoutedEventHandler(OnExpandBehaviourItemSelected));
+            }
+        }
+
+        private static void OnExpandBehaviourItemSelected(object sender, RoutedEventArgs e)
+        {
+            var treeView = sender as TreeView;
+            if (e.OriginalSource is TreeViewItem)
+            {
+                var treeViewItem = e.OriginalSource as TreeViewItem;
+
+                if (treeViewItem.HasItems)
+                {
+                    var lastTreeViewItem = GetLastExpandedItem(treeView);
+                    if (lastTreeViewItem != null)
+                    {
+                        if (lastTreeViewItem == treeViewItem)
+                            return;
+                        lastTreeViewItem.IsExpanded = false;
+                    }
+
+                    SetLastExpandedItem(treeView, treeViewItem);
+                }
+            }
+        }
+
+        #endregion
+
+        #region HoverBrush
+        public static Brush GetExpandedBrush(DependencyObject obj)
+        {
+            return (Brush)obj.GetValue(ExpandedBrushProperty);
+        }
+
+        public static void SetExpandedBrush(DependencyObject obj, Brush value)
+        {
+            obj.SetValue(ExpandedBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty ExpandedBrushProperty =
+            DependencyProperty.RegisterAttached("ExpandedBrush", typeof(Brush), typeof(TreeViewHelper));
         #endregion
 
         #region SelectedBrush
@@ -197,6 +263,21 @@ namespace Panuon.UI.Silver
 
         internal static readonly DependencyProperty LastSelecteedItemProperty =
             DependencyProperty.RegisterAttached("LastSelecteedItem", typeof(TreeViewItem), typeof(TreeViewHelper));
+        #endregion
+
+        #region (Internal) LastExpandedItem
+        internal static TreeViewItem GetLastExpandedItem(DependencyObject obj)
+        {
+            return (TreeViewItem)obj.GetValue(LastExpandedItemProperty);
+        }
+
+        internal static void SetLastExpandedItem(DependencyObject obj, TreeViewItem value)
+        {
+            obj.SetValue(LastExpandedItemProperty, value);
+        }
+
+        internal static readonly DependencyProperty LastExpandedItemProperty =
+            DependencyProperty.RegisterAttached("LastExpandedItem", typeof(TreeViewItem), typeof(TreeViewHelper));
         #endregion
 
     }

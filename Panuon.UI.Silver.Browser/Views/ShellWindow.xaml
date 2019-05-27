@@ -40,13 +40,12 @@
                         <StackPanel>
                             <Button Background="#49A9C0"
                                     pu:ButtonHelper.HoverBrush="#5ECFEA"
-                                    pu:ButtonHelper.IsWaiting="True"
                                     Height="30"
                                     Width="150"
-                                    Content=" Standard" 
                                     FontFamily="{StaticResource IconFont}"
-                                    x:Name="Btn1"
-                                    Click="BtnNormal_Click" />
+                                    Content=" Standard"
+                                    Click="BtnNormal_Click"
+                                    x:Name="Btn1" />
                             <Button pu:ButtonHelper.ButtonStyle="Hollow"
                                     Foreground="#49A9C0"
                                     BorderBrush="#49A9C0"
@@ -54,10 +53,10 @@
                                     Height="30"
                                     Width="150"
                                     Margin="0,5,0,0"
-                                    Content=" Hollow"
                                     FontFamily="{StaticResource IconFont}"
-                                    x:Name="Btn2"
-                                    Click="BtnNormal_Click" />
+                                    Content=" Hollow"
+                                    Click="BtnNormal_Click"
+                                    x:Name="Btn2" />
                             <Button pu:ButtonHelper.ButtonStyle="Outline"
                                     Foreground="#49A9C0"
                                     BorderBrush="#49A9C0"
@@ -65,20 +64,20 @@
                                     Height="30"
                                     Width="150"
                                     Margin="0,5,0,0"
-                                    Content=" Outline"
                                     FontFamily="{StaticResource IconFont}"
-                                    x:Name="Btn3"
-                                    Click="BtnNormal_Click" />
+                                    Content=" Outline"
+                                    Click="BtnNormal_Click"
+                                    x:Name="Btn3" />
                             <Button pu:ButtonHelper.ButtonStyle="Link"
                                     Foreground="#49A9C0"
                                     pu:ButtonHelper.HoverBrush="#5ECFEA"
                                     Height="30"
                                     Width="150"
                                     Margin="0,5,0,0"
-                                    Content=" Link"
                                     FontFamily="{StaticResource IconFont}"
-                                    x:Name="Btn4"
-                                    Click="BtnNormal_Click"/>
+                                    Content=" Link"
+                                    Click="BtnNormal_Click"
+                                    x:Name="Btn4"/>
                         </StackPanel>
                     </GroupBox>
                     <GroupBox Padding="15"
@@ -368,21 +367,65 @@
                     </GroupBox>
                     <GroupBox Padding="15"
                               Margin="20,0,0,0">
-                        <TreeView pu:TreeViewHelper.SelectedBrush="#49A9C0"
-                                  pu:TreeViewHelper.ExpandMode="SingleClick"
-                                  pu:TreeViewHelper.SelectMode="ChildOnly"
-                                  Width="150"
-                                  Height="300"
-                                  ItemsSource="{Binding SourceItems}">
-                            <TreeView.ItemTemplate>
-                                <HierarchicalDataTemplate ItemsSource="{Binding Items}">
-                                    <TextBlock Text="{Binding Content}" />
-                                </HierarchicalDataTemplate>
-                            </TreeView.ItemTemplate>
-                        </TreeView>
+                        <StackPanel Orientation="Horizontal">
+                            <TreeView pu:TreeViewHelper.SelectedBrush="#49A9C0"
+                                      pu:TreeViewHelper.ExpandMode="SingleClick"
+                                      pu:TreeViewHelper.SelectMode="ChildOnly"
+                                      Width="150"
+                                      Height="300"
+                                      ItemsSource="{Binding SourceItems}">
+                                <TreeView.ItemTemplate>
+                                    <HierarchicalDataTemplate ItemsSource="{Binding Items}">
+                                        <TextBlock Text="{Binding Content}" />
+                                    </HierarchicalDataTemplate>
+                                </TreeView.ItemTemplate>
+                            </TreeView>
+                            <TreeView pu:TreeViewHelper.TreeViewStyle="Classic"
+                                      pu:TreeViewHelper.ExpandedBrush="#2249A9C0"
+                                      pu:TreeViewHelper.SelectedBrush="#4449A9C0"
+                                      pu:TreeViewHelper.ExpandMode="SingleClick"
+                                      pu:TreeViewHelper.SelectMode="ChildOnly"
+                                      Width="150"
+                                      Height="300"
+                                      Margin="10,0,0,0"
+                                      ItemsSource="{Binding SourceItems}">
+                                <TreeView.ItemContainerStyle>
+                                    <Style TargetType="TreeViewItem"
+                                           BasedOn="{StaticResource {x:Type TreeViewItem}}">
+                                        <Setter Property="Padding"
+                                                Value="{Binding Padding}" />
+                                    </Style>
+                                </TreeView.ItemContainerStyle>
+                                <TreeView.ItemTemplate>
+                                    <HierarchicalDataTemplate ItemsSource="{Binding Items}">
+                                        <TextBlock Text="{Binding Content}" />
+                                    </HierarchicalDataTemplate>
+                                </TreeView.ItemTemplate>
+                            </TreeView>
+                            <TreeView pu:TreeViewHelper.TreeViewStyle="Modern"
+                                      pu:TreeViewHelper.ExpandedBrush="#2249A9C0"
+                                      pu:TreeViewHelper.SelectedBrush="#4449A9C0"
+                                      BorderBrush="#49A9C0"
+                                      pu:TreeViewHelper.ExpandBehaviour="OnlyOne"
+                                      pu:TreeViewHelper.ExpandMode="SingleClick"
+                                      pu:TreeViewHelper.SelectMode="ChildOnly"
+                                      Width="150"
+                                      Height="300"
+                                      Margin="10,0,0,0"
+                                      ItemsSource="{Binding SourceItems}">
+                                <TreeView.ItemTemplate>
+                                    <HierarchicalDataTemplate ItemsSource="{Binding Items}">
+                                        <TextBlock Text="{Binding Content}" />
+                                    </HierarchicalDataTemplate>
+                                </TreeView.ItemTemplate>
+                            </TreeView>
+
+                        </StackPanel>
                     </GroupBox>
-                    <GroupBox Padding="15"
-                              Margin="20,0,0,0">
+
+                </WrapPanel>
+                <WrapPanel Margin="0,20,0,0">
+                    <GroupBox Padding="15">
                         <DataGrid Width="300"
                                   Height="300"
                                   ItemsSource="{Binding DataGridItems}">
