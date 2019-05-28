@@ -8,9 +8,9 @@ using System.Windows;
 
 namespace Panuon.UI.Silver.Browser.ViewModels
 {
-    public class ShellViewModel : INotifyPropertyChanged
+    public class MainViewModel : INotifyPropertyChanged
     {
-        public ShellViewModel()
+        public MainViewModel()
         {
             SourceItems = new ObservableCollection<SourceItemModel>()
             {

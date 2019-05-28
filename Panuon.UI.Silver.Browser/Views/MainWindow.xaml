@@ -381,8 +381,8 @@
                                 </TreeView.ItemTemplate>
                             </TreeView>
                             <TreeView pu:TreeViewHelper.TreeViewStyle="Classic"
-                                      pu:TreeViewHelper.ExpandedBrush="#2249A9C0"
-                                      pu:TreeViewHelper.SelectedBrush="#4449A9C0"
+                                      pu:TreeViewHelper.ExpandedBrush="#1149A9C0"
+                                      pu:TreeViewHelper.SelectedBrush="#3349A9C0"
                                       pu:TreeViewHelper.ExpandMode="SingleClick"
                                       pu:TreeViewHelper.SelectMode="ChildOnly"
                                       Width="150"
@@ -403,12 +403,11 @@
                                 </TreeView.ItemTemplate>
                             </TreeView>
                             <TreeView pu:TreeViewHelper.TreeViewStyle="Modern"
-                                      pu:TreeViewHelper.ExpandedBrush="#2249A9C0"
-                                      pu:TreeViewHelper.SelectedBrush="#4449A9C0"
+                                      pu:TreeViewHelper.ExpandedBrush="#1149A9C0"
+                                      pu:TreeViewHelper.SelectedBrush="#3349A9C0"
                                       BorderBrush="#49A9C0"
                                       pu:TreeViewHelper.ExpandBehaviour="OnlyOne"
                                       pu:TreeViewHelper.ExpandMode="SingleClick"
-                                      pu:TreeViewHelper.SelectMode="ChildOnly"
                                       Width="150"
                                       Height="300"
                                       Margin="10,0,0,0"

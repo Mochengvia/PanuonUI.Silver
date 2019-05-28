@@ -374,7 +374,8 @@
                                                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                                     <ItemsPresenter x:Name="ItemsHost"
                                                     Grid.Row="1"
-                                                    Grid.ColumnSpan="2"
+                                                    Grid.Column="1"
+                                                    Margin="-3,0,0,0"
                                                     Visibility="Collapsed" />
                                 </Grid>
                             </Grid>

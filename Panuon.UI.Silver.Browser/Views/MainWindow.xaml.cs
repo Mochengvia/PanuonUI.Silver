@@ -26,12 +26,12 @@ namespace Panuon.UI.Silver.Browser
         public MainWindow()
         {
             InitializeComponent();
-            ViewModel = new ShellViewModel();
+            ViewModel = new MainViewModel();
             DataContext = ViewModel;
         }
 
         #region Property
-        public ShellViewModel ViewModel { get; set; }
+        public MainViewModel ViewModel { get; set; }
         #endregion
 
         #region Event
