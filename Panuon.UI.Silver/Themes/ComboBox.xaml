@@ -68,7 +68,7 @@
                             <Label x:Name="LblIcon"
                                    Padding="10,0,2,0"
                                    VerticalContentAlignment="Center"
-                                   Content="{Binding Path=(local:ComboBoxHelper.Icon),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
+                                   Content="{Binding Path=(local:ComboBoxHelper.Icon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                                    Foreground="{TemplateBinding Foreground}"
                                    FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"></Label>
                             <ContentPresenter x:Name="ContentSite"
@@ -118,8 +118,7 @@
                                                           Data="M5,4 H14 L9.5,10 Z"
                                                           Width="15"
                                                           Height="15"
-                                                          Fill="{TemplateBinding Foreground}"
-                                                          RenderTransformOrigin="0.5,0.5" />
+                                                          Fill="{TemplateBinding Foreground}" />
                                                     <Path x:Name="arrow2"
                                                           Opacity="0"
                                                           VerticalAlignment="Center"
@@ -128,8 +127,7 @@
                                                           Data="M5,10 H14 L9.5,4.5 Z"
                                                           Width="15"
                                                           Height="15"
-                                                          Fill="{TemplateBinding Foreground}"
-                                                          RenderTransformOrigin="0.5,0.5" />
+                                                          Fill="{TemplateBinding Foreground}" />
                                                 </Grid>
                                                 <ControlTemplate.Triggers>
                                                     <Trigger Property="IsChecked"

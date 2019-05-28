@@ -64,7 +64,7 @@
                                    Visibility="Collapsed"
                                    Padding="10,0,7,0"
                                    VerticalContentAlignment="Center"
-                                   Content="{Binding Path=(local:TextBoxHelper.Icon),RelativeSource={RelativeSource AncestorType=TextBox}, Mode=OneWay}"
+                                   Content="{Binding Path=(local:TextBoxHelper.Icon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=TextBox}, Mode=OneWay}"
                                    Foreground="{TemplateBinding Foreground}"
                                    FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"></Label>
                             <Grid Grid.Column="1">
