@@ -1,0 +1,65 @@
+﻿<Window x:Class="Panuon.UI.Silver.MsgBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Panuon.UI.Silver"
+        mc:Ignorable="d"
+        Title="MsgBox"
+        MinHeight="220"
+        MinWidth="350"
+        local:WindowHelper.Applying="True"
+        x:ClassModifier="internal"
+        x:Name="msgBox"
+        ResizeMode="NoResize"
+        SizeToContent="WidthAndHeight"
+        Closing="MsgBox_Closing"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="45" />
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="TxtContent"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   FontSize="16"
+                   Margin="20,0"
+                   TextWrapping="Wrap"/>
+        <Grid Grid.Row="1"
+              x:Name="GrdMessage"
+              Visibility="Collapsed">
+            <Button x:Name="BtnOK"
+                    VerticalAlignment="Top"
+                    Height="35"
+                    Margin="40,0"
+                    Content="OK"
+                    Click="BtnYes_Click"/>
+        </Grid>
+        <Grid Grid.Row="1"
+              x:Name="GrdConfirm"
+              Visibility="Collapsed">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="BtnYes"
+                    VerticalAlignment="Top"
+                    Height="35"
+                    Margin="30,0,10,0"
+                    Content="Yes" 
+                    Click="BtnYes_Click"/>
+            <Button x:Name="BtnNo"
+                    Foreground="DimGray"
+                    local:ButtonHelper.HoverBrush="#DDDDDD"
+                    BorderThickness="0"
+                    Background="#EEEEEE"
+                    Grid.Column="1"
+                    VerticalAlignment="Top"
+                    Height="35"
+                    Margin="10,0,30,0"
+                    Content="No" 
+                    Click="BtnNo_Click"/>
+        </Grid>
+    </Grid>
+</Window>

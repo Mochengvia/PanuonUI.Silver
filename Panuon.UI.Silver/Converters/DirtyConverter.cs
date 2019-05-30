@@ -20,4 +20,19 @@ namespace Panuon.UI.Silver.Converters
     }
 
     #endregion
+
+    #region Add 5
+    internal class Add5Converter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return (double)value + 5;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return DependencyProperty.UnsetValue;
+        }
+    }
+    #endregion
 }

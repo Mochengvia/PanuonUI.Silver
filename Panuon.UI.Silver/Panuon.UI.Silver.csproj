@@ -58,6 +58,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\Internal\MsgBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Resources\Resource.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -122,12 +126,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Themes\Window.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\Calendar.xaml.cs">
       <DependentUpon>Calendar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Carousel.cs" />
+    <Compile Include="Controls\Internal\MsgBox.xaml.cs">
+      <DependentUpon>MsgBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\MultiSelector.cs" />
     <Compile Include="Converters\BrushOrColorConverter.cs" />
     <Compile Include="Converters\CheckBoxOrRadioButtonConverter.cs" />
@@ -140,6 +151,7 @@
     <Compile Include="Converters\WidthAndHeightConverter.cs" />
     <Compile Include="Helpers\Control\GroupBoxHelper.cs" />
     <Compile Include="Helpers\Control\ProgressBarHelper.cs" />
+    <Compile Include="Helpers\Control\WindowHelper.cs" />
     <Compile Include="Utils\DelegateCommand.cs" />
     <Compile Include="Global\Enums.cs" />
     <Compile Include="Controls\Loading.cs" />

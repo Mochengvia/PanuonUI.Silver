@@ -91,7 +91,7 @@ namespace Panuon.UI.Silver.Browser.ViewModels
         public ObservableCollection<SourceItemModel> SourceItems
         {
             get { return _sourceItems; }
-            set { _sourceItems = value; NotifyPropertyChanged("MultiSelectorItems"); }
+            set { _sourceItems = value; NotifyPropertyChanged("SourceItems"); }
         }
         private ObservableCollection<SourceItemModel> _sourceItems;
 
@@ -101,8 +101,6 @@ namespace Panuon.UI.Silver.Browser.ViewModels
             set { _dataGridItems = value; NotifyPropertyChanged("DataGridItems"); }
         }
         private ObservableCollection<DataGridItemModel> _dataGridItems;
-
-
 
         public event PropertyChangedEventHandler PropertyChanged;
 

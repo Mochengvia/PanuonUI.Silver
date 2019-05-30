@@ -5,6 +5,16 @@ using System.Text;
 
 namespace Panuon.UI.Silver
 {
+    #region WindowAnimation
+    public enum WindowAnimation
+    {
+        None,
+        Fade,
+        Gradual,
+        Scale,
+    }
+    #endregion
+
     #region Button
     public enum ButtonStyle
     {

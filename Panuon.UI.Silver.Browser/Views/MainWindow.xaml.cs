@@ -15,6 +15,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Panuon.UI.Silver;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace Panuon.UI.Silver.Browser
 {
@@ -60,16 +62,23 @@ namespace Panuon.UI.Silver.Browser
             }
         }
 
+        private double _value = 60;
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            ProgressBarHelper.SetAnimateTo(Pgb1, Pgb1.Value + 10);
-            ProgressBarHelper.SetAnimateTo(Pgb2, Pgb2.Value + 10);
+            _value += 20;
+            _value = _value > 100 ? 100 : _value;
+
+            ProgressBarHelper.SetAnimateTo(Pgb1, _value);
+            ProgressBarHelper.SetAnimateTo(Pgb2, _value);
         }
 
         private void BtnMinus_Click(object sender, RoutedEventArgs e)
         {
-            ProgressBarHelper.SetAnimateTo(Pgb1, Pgb1.Value - 10);
-            ProgressBarHelper.SetAnimateTo(Pgb2, Pgb2.Value - 10);
+            _value -= 20;
+            _value = _value < 0 ? 0 : _value;
+
+            ProgressBarHelper.SetAnimateTo(Pgb1, _value);
+            ProgressBarHelper.SetAnimateTo(Pgb2, _value);
         }
 
         private void BtnLeft_Click(object sender, RoutedEventArgs e)
@@ -82,7 +91,35 @@ namespace Panuon.UI.Silver.Browser
             Carousel.Index++;
         }
 
-        #endregion
+        private void BtnHelp_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
+
+        private void BtnShowPopup_Click(object sender, RoutedEventArgs e)
+        {
+            WindowHelper.ShowPopup(this, "This is a popup message");
+        }
+
+        private void BtnShowMessage_Click(object sender, RoutedEventArgs e)
+        {
+            WindowHelper.ShowMessage("Hi !", "Tips", this);
+        }
+
+        private void BtnShowConfirm_Click(object sender, RoutedEventArgs e)
+        {
+            var result = WindowHelper.ShowConfirm("Are you sure ?", "Tips", this);
+        }
+
+        private void BtnShowAwait_Click(object sender, RoutedEventArgs e)
+        {
+            WindowHelper.ShowWaiting(this, "Processing , please wait ...", () =>
+            {
+                WindowHelper.ShowPopup(this, "Task canceled !");
+                WindowHelper.CloseWaiting(this);
+            });
+        }
+
+        #endregion
     }
 }
