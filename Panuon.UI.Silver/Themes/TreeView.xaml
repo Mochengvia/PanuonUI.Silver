@@ -138,15 +138,15 @@
                                     </Grid.ColumnDefinitions>
                                     <ToggleButton x:Name="Toggle"
                                                   Width="12"
-                                                  IsHitTestVisible="False"
                                                   Margin="0,0,3,0"
                                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                                   HorizontalAlignment="Left"
                                                   Foreground="{TemplateBinding Foreground}"
-                                                  IsChecked="{TemplateBinding IsExpanded}">
+                                                  ClickMode="Press"
+                                                  IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}">
                                         <ToggleButton.Template>
                                             <ControlTemplate TargetType="ToggleButton">
-                                                <Border>
+                                                <Border Background="Transparent">
                                                     <ContentPresenter VerticalAlignment="Center"
                                                                       HorizontalAlignment="Center" />
                                                 </Border>
@@ -263,7 +263,8 @@
                                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                                   HorizontalAlignment="Right"
                                                   Foreground="{TemplateBinding Foreground}"
-                                                  IsChecked="{TemplateBinding IsExpanded}">
+                                                  ClickMode="Press"
+                                                  IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}">
                                         <ToggleButton.Template>
                                             <ControlTemplate TargetType="ToggleButton">
                                                 <Border>
@@ -465,13 +466,13 @@
                                                    Visibility="Visible"
                                                    Margin="-7,0,0,0" />
                                         <ToggleButton x:Name="Toggle"
-                                                      IsHitTestVisible="False"
                                                       Grid.Column="1"
                                                       Width="13"
                                                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                                       HorizontalAlignment="Right"
                                                       Foreground="{TemplateBinding Foreground}"
-                                                      IsChecked="{TemplateBinding IsExpanded}">
+                                                      ClickMode="Press"
+                                                      IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}">
                                             <ToggleButton.Template>
                                                 <ControlTemplate TargetType="ToggleButton">
                                                     <Border>
