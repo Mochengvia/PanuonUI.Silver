@@ -55,7 +55,8 @@ namespace Panuon.UI.Silver
     {
         Standard,
         Classic,
-        Modern
+        Modern,
+        Chain
     }
 
     public enum SelectMode

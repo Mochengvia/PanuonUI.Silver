@@ -412,7 +412,7 @@
                 <WrapPanel Margin="0,20,0,0">
                     <GroupBox Padding="15"
                               Width="350"
-                              Height="200">
+                              Height="240">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition />
@@ -438,23 +438,14 @@
                             </TabControl>
                         </Grid>
                     </GroupBox>
-
-                </WrapPanel>
-
-                <WrapPanel Margin="0,20,0,0">
-                    <GroupBox Padding="15">
-                        <pu:Calendar ThemeBrush="#49A9C0"
-                                     Width="300"
-                                     Height="300" />
-                    </GroupBox>
                     <GroupBox Padding="15"
                               Margin="20,0,0,0">
                         <StackPanel Orientation="Horizontal">
                             <TreeView pu:TreeViewHelper.SelectedBrush="#49A9C0"
                                       pu:TreeViewHelper.ExpandMode="SingleClick"
                                       pu:TreeViewHelper.SelectMode="ChildOnly"
-                                      Width="150"
-                                      Height="300"
+                                      Width="130"
+                                      Height="200"
                                       ItemsSource="{Binding SourceItems}">
                                 <TreeView.ItemTemplate>
                                     <HierarchicalDataTemplate ItemsSource="{Binding Items}">
@@ -467,8 +458,8 @@
                                       pu:TreeViewHelper.SelectedBrush="#3349A9C0"
                                       pu:TreeViewHelper.ExpandMode="SingleClick"
                                       pu:TreeViewHelper.SelectMode="ChildOnly"
-                                      Width="150"
-                                      Height="300"
+                                      Width="130"
+                                      Height="200"
                                       Margin="10,0,0,0"
                                       ItemsSource="{Binding SourceItems}">
                                 <TreeView.ItemContainerStyle>
@@ -490,8 +481,23 @@
                                       BorderBrush="#49A9C0"
                                       pu:TreeViewHelper.ExpandBehaviour="OnlyOne"
                                       pu:TreeViewHelper.ExpandMode="SingleClick"
-                                      Width="150"
-                                      Height="300"
+                                      Width="130"
+                                      Height="200"
+                                      Margin="10,0,0,0"
+                                      ItemsSource="{Binding SourceItems}">
+                                <TreeView.ItemTemplate>
+                                    <HierarchicalDataTemplate ItemsSource="{Binding Items}">
+                                        <TextBlock Text="{Binding Content}" />
+                                    </HierarchicalDataTemplate>
+                                </TreeView.ItemTemplate>
+                            </TreeView>
+                            <TreeView pu:TreeViewHelper.TreeViewStyle="Chain"
+                                      pu:TreeViewHelper.SelectedBrush="#49A9C0"
+                                      BorderBrush="#49A9C0"
+                                      pu:TreeViewHelper.SelectMode="ChildOnly"
+                                      pu:TreeViewHelper.ExpandMode="SingleClick"
+                                      Width="130"
+                                      Height="200"
                                       Margin="10,0,0,0"
                                       ItemsSource="{Binding SourceItems}">
                                 <TreeView.ItemTemplate>
@@ -502,6 +508,15 @@
                             </TreeView>
 
                         </StackPanel>
+                    </GroupBox>
+
+                </WrapPanel>
+
+                <WrapPanel Margin="0,20,0,0">
+                    <GroupBox Padding="15">
+                        <pu:Calendar ThemeBrush="#49A9C0"
+                                     Width="300"
+                                     Height="300" />
                     </GroupBox>
 
                 </WrapPanel>

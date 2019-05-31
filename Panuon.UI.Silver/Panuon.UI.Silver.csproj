@@ -157,6 +157,7 @@
     <Compile Include="Converters\ProgressBarConverter.cs" />
     <Compile Include="Converters\TabControlConverter.cs" />
     <Compile Include="Converters\ThicknessConverter.cs" />
+    <Compile Include="Converters\TreeViewConverter.cs" />
     <Compile Include="Converters\WidthAndHeightConverter.cs" />
     <Compile Include="Helpers\Control\GroupBoxHelper.cs" />
     <Compile Include="Helpers\Control\ProgressBarHelper.cs" />
