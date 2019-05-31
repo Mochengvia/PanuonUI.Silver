@@ -410,6 +410,38 @@
 
                 </WrapPanel>
                 <WrapPanel Margin="0,20,0,0">
+                    <GroupBox Padding="15"
+                              Width="350"
+                              Height="200">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <TabControl pu:TabControlHelper.SelectedForeground="#49A9C0">
+                                <TabItem Header="Item1"
+                                         Content="1" />
+                                <TabItem Header="Item2"
+                                         Content="2" />
+                                <TabItem Header="Item3"
+                                         Content="3" />
+                            </TabControl>
+                            <TabControl pu:TabControlHelper.TabControlStyle="Classic"
+                                        pu:TabControlHelper.SelectedForeground="#49A9C0"
+                                        Grid.Row="1">
+                                <TabItem Header="Item1"
+                                         Content="1" />
+                                <TabItem Header="Item2"
+                                         Content="2" />
+                                <TabItem Header="Item3"
+                                         Content="3" />
+                            </TabControl>
+                        </Grid>
+                    </GroupBox>
+
+                </WrapPanel>
+
+                <WrapPanel Margin="0,20,0,0">
                     <GroupBox Padding="15">
                         <pu:Calendar ThemeBrush="#49A9C0"
                                      Width="300"

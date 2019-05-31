@@ -12,7 +12,7 @@
     <converter:SwitchToggleMarginConverter x:Key="SwitchToggleMarginConverter" />
     <converter:Minus2Converter x:Key="Minus2Converter" />
 
-    
+
     <Style TargetType="{x:Type RadioButton}">
         <Setter Property="FontFamily"
                 Value="{StaticResource Default_FontFamily}" />
@@ -61,15 +61,14 @@
                                           Width="{Binding Path=(local:RadioButtonHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
                                           Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}">
                                         <Ellipse x:Name="Ellipse"
-                                                   Fill="{TemplateBinding Background}"
-                                                   Stroke="{TemplateBinding BorderBrush}"
-                                                   StrokeThickness="{TemplateBinding BorderThickness, Converter={StaticResource ThicknessToDoubleConverter}}"
-                                                   />
+                                                 Fill="{TemplateBinding Background}"
+                                                 Stroke="{TemplateBinding BorderBrush}"
+                                                 StrokeThickness="{TemplateBinding BorderThickness, Converter={StaticResource ThicknessToDoubleConverter}}" />
                                         <Ellipse x:Name="EllipseInner"
-                                              Width="{Binding Path=(local:RadioButtonHelper.BoxWidth),Converter={StaticResource HalfConverter},RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                                              Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),Converter={StaticResource HalfConverter},RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                                              Fill="{Binding Path=(local:RadioButtonHelper.GlyphBrush),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                                              StrokeThickness="0">
+                                                 Width="{Binding Path=(local:RadioButtonHelper.BoxWidth),Converter={StaticResource HalfConverter},RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                                                 Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),Converter={StaticResource HalfConverter},RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                                                 Fill="{Binding Path=(local:RadioButtonHelper.GlyphBrush),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                                                 StrokeThickness="0">
                                         </Ellipse>
                                     </Grid>
                                     <ContentPresenter x:Name="Presenter"
@@ -322,6 +321,17 @@
                                                 Foreground="{TemplateBinding Foreground}" />
                             </Grid>
                             <ControlTemplate.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
+                                                   Value="True" />
+                                        <Condition Binding="{Binding Path=(local:CheckBoxHelper.CheckedContent),Converter={StaticResource IsNotNullConverter}, RelativeSource={RelativeSource Self}}"
+                                                   Value="True" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter TargetName="Content"
+                                            Property="Content"
+                                            Value="{Binding Path=(local:CheckBoxHelper.CheckedContent), RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}" />
+                                </MultiDataTrigger>
                                 <MultiDataTrigger>
                                     <MultiDataTrigger.Conditions>
                                         <Condition Binding="{Binding IsMouseOver,RelativeSource={RelativeSource Self}}"

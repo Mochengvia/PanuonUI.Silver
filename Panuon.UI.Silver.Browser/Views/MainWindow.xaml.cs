@@ -121,5 +121,10 @@ namespace Panuon.UI.Silver.Browser
         }
 
         #endregion
+
+        private void TabItem_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

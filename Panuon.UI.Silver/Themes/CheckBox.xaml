@@ -10,7 +10,7 @@
     <converter:CheckBoxGlyphPathConverter x:Key="CheckBoxGlyphPathConverter" />
     <converter:SwitchToggleMarginConverter x:Key="SwitchToggleMarginConverter" />
     <converter:Minus2Converter x:Key="Minus2Converter" />
-    
+
     <Style TargetType="{x:Type CheckBox}">
         <Setter Property="FontFamily"
                 Value="{StaticResource Default_FontFamily}" />
@@ -216,7 +216,6 @@
                                             Property="Content"
                                             Value="{Binding Path=(local:CheckBoxHelper.CheckedContent), RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}" />
                                 </MultiDataTrigger>
-
                                 <Trigger Property="IsChecked"
                                          Value="True">
                                     <Trigger.EnterActions>
@@ -330,6 +329,17 @@
                                                 Foreground="{TemplateBinding Foreground}" />
                             </Grid>
                             <ControlTemplate.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
+                                                   Value="True" />
+                                        <Condition Binding="{Binding Path=(local:CheckBoxHelper.CheckedContent),Converter={StaticResource IsNotNullConverter}, RelativeSource={RelativeSource Self}}"
+                                                   Value="True" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter TargetName="Content"
+                                            Property="Content"
+                                            Value="{Binding Path=(local:CheckBoxHelper.CheckedContent), RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}" />
+                                </MultiDataTrigger>
                                 <MultiDataTrigger>
                                     <MultiDataTrigger.Conditions>
                                         <Condition Binding="{Binding IsMouseOver,RelativeSource={RelativeSource Self}}"

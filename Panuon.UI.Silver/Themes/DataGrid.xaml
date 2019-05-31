@@ -34,6 +34,8 @@
                 Value="Auto"></Setter>
         <Setter Property="Foreground"
                 Value="#666666"></Setter>
+        <Setter Property="AlternationCount"
+                Value="2" />
         <Style.Resources>
             <Style TargetType="ScrollBar"
                    BasedOn="{StaticResource {x:Type ScrollBar}}">
@@ -56,8 +58,7 @@
         <Setter Property="VerticalContentAlignment"
                 Value="Center" />
         <Setter Property="Height"
-                Value="35">
-        </Setter>
+                Value="35" />
         <Setter Property="Padding"
                 Value="10,0,0,0"></Setter>
         <Setter Property="Background"
@@ -72,10 +73,35 @@
                                 BorderThickness="0,0,1,1"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 Background="{TemplateBinding Background}">
-                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                              Margin="{TemplateBinding Padding}"
-                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            <StackPanel Orientation="Horizontal">
+                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  Margin="{TemplateBinding Padding}"
+                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                <Grid Width="15"
+                                      Height="15"
+                                      Margin="3,0,0,0"
+                                      x:Name="GrdSort">
+                                    <Path x:Name="arrow1"
+                                          Opacity="1"
+                                          VerticalAlignment="Center"
+                                          Grid.Column="1"
+                                          HorizontalAlignment="Center"
+                                          Data="M5,4 H14 L9.5,10 Z"
+                                          Width="15"
+                                          Height="15"
+                                          Fill="{TemplateBinding Foreground}" />
+                                    <Path x:Name="arrow2"
+                                          Opacity="0"
+                                          VerticalAlignment="Center"
+                                          Grid.Column="1"
+                                          HorizontalAlignment="Center"
+                                          Data="M5,10 H14 L9.5,4.5 Z"
+                                          Width="15"
+                                          Height="15"
+                                          Fill="{TemplateBinding Foreground}" />
+                                </Grid>
+                            </StackPanel>
                         </Border>
                         <Thumb x:Name="PART_LeftHeaderGripper"
                                HorizontalAlignment="Left"
@@ -83,8 +109,7 @@
                                Cursor="SizeWE">
                             <Thumb.Template>
                                 <ControlTemplate TargetType="Thumb">
-                                    <Border Background="Transparent"
-                                            Width="8"
+                                    <Border Width="8"
                                             Padding="{TemplateBinding Padding}" />
                                 </ControlTemplate>
                             </Thumb.Template>
@@ -102,6 +127,43 @@
                             </Thumb.Template>
                         </Thumb>
                     </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="SortDirection"
+                                 Value="{x:Null}">
+                            <Setter TargetName="GrdSort"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
+                        </Trigger>
+                        <Trigger Property="SortDirection"
+                                 Value="Descending">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="arrow1"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0"
+                                                         Duration="0:0:0.2"></DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="arrow2"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1"
+                                                         Duration="0:0:0.2"></DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="arrow1"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         Duration="0:0:0.2"></DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="arrow2"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         Duration="0:0:0.2"></DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -158,15 +220,15 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="DataGridRow">
-                    <Grid>
+                    <Grid Background="{TemplateBinding Background}">
                         <Border x:Name="bdrHover"
-                                Background="#22EEEEEE"
+                                Background="#22DDDDDD"
                                 BorderBrush="Transparent"
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 Opacity="0">
                         </Border>
                         <Border x:Name="bdrSelected"
-                                Background="#66EEEEEE"
+                                Background="#44DDDDDD"
                                 BorderBrush="Transparent"
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 Opacity="0">
@@ -233,21 +295,6 @@
             </Setter.Value>
         </Setter>
         <Style.Triggers>
-            <DataTrigger Binding="{Binding Visibility}"
-                         Value="Collapsed">
-                <Setter Property="Visibility"
-                        Value="Collapsed" />
-            </DataTrigger>
-            <DataTrigger Binding="{Binding Visibility}"
-                         Value="Hidden">
-                <Setter Property="Visibility"
-                        Value="Hidden" />
-            </DataTrigger>
-            <DataTrigger Binding="{Binding Visibility}"
-                         Value="Visible">
-                <Setter Property="Visibility"
-                        Value="Visible" />
-            </DataTrigger>
         </Style.Triggers>
     </Style>
 

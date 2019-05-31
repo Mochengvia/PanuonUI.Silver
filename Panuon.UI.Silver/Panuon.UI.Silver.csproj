@@ -98,9 +98,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Themes\RepeatButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Themes\Slider.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\TabControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Themes\TreeView.xaml">
       <SubType>Designer</SubType>
@@ -147,11 +155,15 @@
     <Compile Include="Converters\MultiSelectorConverter.cs" />
     <Compile Include="Converters\ObjectConvert.cs" />
     <Compile Include="Converters\ProgressBarConverter.cs" />
+    <Compile Include="Converters\TabControlConverter.cs" />
     <Compile Include="Converters\ThicknessConverter.cs" />
     <Compile Include="Converters\WidthAndHeightConverter.cs" />
     <Compile Include="Helpers\Control\GroupBoxHelper.cs" />
     <Compile Include="Helpers\Control\ProgressBarHelper.cs" />
+    <Compile Include="Helpers\Control\RepeatButtonHelper.cs" />
     <Compile Include="Helpers\Control\WindowHelper.cs" />
+    <Compile Include="Helpers\Internal\ScrollViewerHelper.cs" />
+    <Compile Include="Helpers\TabControlHelper.cs" />
     <Compile Include="Utils\DelegateCommand.cs" />
     <Compile Include="Global\Enums.cs" />
     <Compile Include="Controls\Loading.cs" />
@@ -193,7 +205,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Global\Interfaces\" />
-    <Folder Include="Helpers\Internal\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -211,8 +211,8 @@
                                     local:ButtonHelper.ClickStyle="Sink"
                                     BorderThickness="0"
                                     Command="{Binding Path=(local:WindowHelper.CancelCommand),RelativeSource={RelativeSource AncestorType=Window}}"
-                                    CommandParameter="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}}" >
-                            <Button.Content>
+                                    CommandParameter="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}}">
+                                <Button.Content>
                                     <TextBlock Text="{Binding Path=(local:WindowHelper.CancelText),RelativeSource={RelativeSource AncestorType=Window}}"
                                                Foreground="#EEEEEE"
                                                TextDecorations="Underline" />

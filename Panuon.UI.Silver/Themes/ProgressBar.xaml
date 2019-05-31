@@ -103,10 +103,12 @@
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type ProgressBar}">
                             <Grid x:Name="GrdMain">
-                                <Ellipse x:Name="Ellipse_Track" Stroke="{TemplateBinding BorderBrush}"
+                                <Ellipse x:Name="Ellipse_Track"
+                                         Stroke="{TemplateBinding BorderBrush}"
                                          Fill="{TemplateBinding Background}"
-                                         StrokeThickness="{TemplateBinding BorderThickness,Converter={StaticResource ThicknessToDoubleConverter}}"/>
-                                <Path x:Name="Path_Indicator" Stroke="{TemplateBinding Foreground}"
+                                         StrokeThickness="{TemplateBinding BorderThickness,Converter={StaticResource ThicknessToDoubleConverter}}" />
+                                <Path x:Name="Path_Indicator"
+                                      Stroke="{TemplateBinding Foreground}"
                                       StrokeThickness="{TemplateBinding BorderThickness,Converter={StaticResource ThicknessToDoubleConverter}}"
                                       StrokeStartLineCap="Round"
                                       StrokeEndLineCap="Round">
@@ -166,7 +168,7 @@
                                                                  Storyboard.TargetProperty="Angle"
                                                                  To="360"
                                                                  RepeatBehavior="Forever"
-                                                                 Duration="0:0:2"/>
+                                                                 Duration="0:0:2" />
                                             </Storyboard>
                                         </BeginStoryboard>
                                     </Trigger.EnterActions>

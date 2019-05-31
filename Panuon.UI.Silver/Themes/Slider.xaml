@@ -67,8 +67,7 @@
                                         </RepeatButton>
                                     </Track.DecreaseRepeatButton>
                                     <Track.Thumb>
-                                        <Thumb 
-                                               Foreground="{TemplateBinding Foreground}"
+                                        <Thumb Foreground="{TemplateBinding Foreground}"
                                                Background="Transparent">
                                             <Thumb.Template>
                                                 <ControlTemplate TargetType="{x:Type Thumb}">
@@ -205,8 +204,7 @@
                                         </RepeatButton>
                                     </Track.DecreaseRepeatButton>
                                     <Track.Thumb>
-                                        <Thumb 
-                                               Foreground="{TemplateBinding Foreground}">
+                                        <Thumb Foreground="{TemplateBinding Foreground}">
                                             <Thumb.Template>
                                                 <ControlTemplate TargetType="{x:Type Thumb}">
                                                     <Grid Background="Transparent">

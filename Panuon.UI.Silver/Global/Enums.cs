@@ -31,6 +31,16 @@ namespace Panuon.UI.Silver
     }
     #endregion
 
+    #region RepeatButton
+    public enum RepeatButtonStyle
+    {
+        Standard,
+        Hollow,
+        Outline,
+        Link,
+    }
+    #endregion
+
     #region Loading
     public enum LoadingStyle
     {
@@ -148,6 +158,14 @@ namespace Panuon.UI.Silver
         DateOnly,
         YearMonth,
         Year,
+    }
+    #endregion
+
+    #region TabControlStyle
+    public enum TabControlStyle
+    {
+        Standard,
+        Classic,
     }
     #endregion
 }
