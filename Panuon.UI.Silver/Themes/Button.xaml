@@ -80,7 +80,6 @@
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <local:Loading x:Name="Loading"
-                                                   Margin="0,0,5,0"
                                                    Stroke="{TemplateBinding Foreground}"
                                                    Width="20"
                                                    Height="20" />
@@ -229,7 +228,6 @@
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <local:Loading x:Name="Loading"
-                                                   Margin="0,0,5,0"
                                                    Stroke="{TemplateBinding Foreground}"
                                                    Width="20"
                                                    Height="20" />
@@ -435,7 +433,6 @@
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <local:Loading x:Name="Loading"
-                                                   Margin="0,0,5,0"
                                                    Stroke="{TemplateBinding Foreground}"
                                                    Width="20"
                                                    Height="20" />
@@ -608,7 +605,6 @@
                                             <ColumnDefinition Width="Auto" />
                                         </Grid.ColumnDefinitions>
                                         <local:Loading x:Name="Loading"
-                                                       Margin="0,0,5,0"
                                                        Stroke="{TemplateBinding Foreground}"
                                                        Width="20"
                                                        Height="20" />
