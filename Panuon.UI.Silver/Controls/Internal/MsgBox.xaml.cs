@@ -22,24 +22,33 @@ namespace Panuon.UI.Silver
     {
         delegate void CancelDelegate(Action action);
 
+        internal static IDictionary<Window, MsgBox> InstanceDictionarty { get; set; }
+
         #region Identity
         private Action _cancelAction;
-        private string _cancelContent;
+
+        private MsgType _msgType;
         #endregion
 
         public enum MsgType
         {
             Message,
             Confirm,
+            Await,
         }
 
-        public MsgBox(string content, string title, MsgType msgTyle = MsgType.Message, string cancelContent = null, Action cancelAction = null)
+        public MsgBox(string content, string title, MsgType msgTyle = MsgType.Message, Window owner = null, bool autoCoverMask = false, Action cancelAction = null)
         {
             InitializeComponent();
+            _msgType = msgTyle;
             Title = title;
-            TxtContent.Text = content;
-            _cancelAction = cancelAction;
-            _cancelContent = cancelContent;
+            if (owner != null)
+            {
+                if (autoCoverMask)
+                    WindowHelper.SetOpenCoverMask(owner, true);
+                msgBox.Owner = owner;
+                msgBox.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            }
 
             var culture = Thread.CurrentThread.CurrentCulture;
 
@@ -49,15 +58,34 @@ namespace Panuon.UI.Silver
                     BtnOK.Content = "好";
                     BtnYes.Content = "是";
                     BtnNo.Content = "否";
+                    BtnCancel.Content = "取消";
                     break;
             }
+
             switch (msgTyle)
             {
                 case MsgType.Message:
+                    TxtContent.Text = content;
                     GrdMessage.Visibility = Visibility.Visible;
                     break;
                 case MsgType.Confirm:
+                    TxtContent.Text = content;
                     GrdConfirm.Visibility = Visibility.Visible;
+                    break;
+                case MsgType.Await:
+                    if (InstanceDictionarty == null)
+                        InstanceDictionarty = new Dictionary<Window, MsgBox>();
+                    InstanceDictionarty.Add(owner, this);
+                    WindowHelper.SetDisableCloseButton(this, true);
+                    _cancelAction = cancelAction;
+                    TxtCancelContent.Text = content;
+                    StkCancel.Visibility = Visibility.Visible;
+                    GrdCancel.Visibility = Visibility.Visible;
+                    Loading.IsRunning = true;
+                    if (cancelAction == null)
+                    {
+                        BtnCancel.IsEnabled = false;
+                    }
                     break;
             }
         }
@@ -75,12 +103,20 @@ namespace Panuon.UI.Silver
 
         private void MsgBox_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-
+            if (_msgType == MsgType.Await)
+            {
+                if (_cancelAction != null)
+                    _cancelAction.Invoke();
+                if (Owner != null)
+                    WindowHelper.SetOpenCoverMask(Owner, false);
+                if (InstanceDictionarty.ContainsKey(Owner))
+                    InstanceDictionarty.Remove(Owner);
+            }
         }
 
-        private void ExecuteAction(Action action)
+        private void BtnCancel_Click(object sender, RoutedEventArgs e)
         {
-            action.Invoke();
+            Close();
         }
     }
 }

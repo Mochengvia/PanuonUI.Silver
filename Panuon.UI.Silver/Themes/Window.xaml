@@ -187,38 +187,6 @@
                               Visibility="Collapsed"
                               Background="#AA000000"
                               Opacity="0" />
-                        <StackPanel x:Name="StkWaiting"
-                                    Visibility="Collapsed"
-                                    VerticalAlignment="Center"
-                                    HorizontalAlignment="Center">
-                            <local:Loading x:Name="Loading"
-                                           Stroke="White"
-                                           Width="50"
-                                           Height="50" />
-                            <TextBlock Text="{Binding Path=(local:WindowHelper.WaitingText),RelativeSource={RelativeSource AncestorType=Window}}"
-                                       VerticalAlignment="Center"
-                                       Foreground="White"
-                                       FontSize="20"
-                                       TextWrapping="Wrap"
-                                       Margin="50,10,50,0" />
-                            <Button x:Name="BtnCancel"
-                                    Margin="0,20,0,0"
-                                    Cursor="Hand"
-                                    Background="Transparent"
-                                    FontSize="14"
-                                    local:ButtonHelper.ClickCoverBrush="Transparent"
-                                    local:ButtonHelper.HoverBrush="Transparent"
-                                    local:ButtonHelper.ClickStyle="Sink"
-                                    BorderThickness="0"
-                                    Command="{Binding Path=(local:WindowHelper.CancelCommand),RelativeSource={RelativeSource AncestorType=Window}}"
-                                    CommandParameter="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}}">
-                                <Button.Content>
-                                    <TextBlock Text="{Binding Path=(local:WindowHelper.CancelText),RelativeSource={RelativeSource AncestorType=Window}}"
-                                               Foreground="#EEEEEE"
-                                               TextDecorations="Underline" />
-                                </Button.Content>
-                            </Button>
-                        </StackPanel>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="ResizeMode"
@@ -239,6 +207,13 @@
                                     Property="Visibility"
                                     Value="Collapsed" />
                         </Trigger>
+                        <DataTrigger Binding="{Binding Path=(local:WindowHelper.DisableCloseButton),RelativeSource={RelativeSource Self}}"
+                                     Value="True">
+                            <Setter TargetName="BtnClose"
+                                    Property="IsEnabled"
+                                    Value="False" />
+                        </DataTrigger>
+
                         <DataTrigger Binding="{Binding Path=(local:WindowHelper.OpenCoverMask),RelativeSource={RelativeSource Self}}"
                                      Value="True">
                             <Setter TargetName="GrdCoverMask"
@@ -272,21 +247,6 @@
                                 </BeginStoryboard>
                             </DataTrigger.ExitActions>
 
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Path=(local:WindowHelper.IsWaiting),RelativeSource={RelativeSource Self}}"
-                                     Value="True">
-                            <Setter TargetName="StkWaiting"
-                                    Property="Visibility"
-                                    Value="Visible" />
-                            <Setter TargetName="Loading"
-                                    Property="IsRunning"
-                                    Value="True" />
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Path=(local:WindowHelper.CancelText),Converter={StaticResource IsNullOrEmptyConverter},RelativeSource={RelativeSource Self}}"
-                                     Value="True">
-                            <Setter TargetName="BtnCancel"
-                                    Property="Visibility"
-                                    Value="Visible" />
                         </DataTrigger>
                         <DataTrigger Binding="{Binding Path=(local:WindowHelper.WindowAnimation),RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                      Value="Scale">

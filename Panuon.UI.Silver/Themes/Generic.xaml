@@ -6,17 +6,19 @@
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/CheckBox.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <converter:MultiSelectorContentConverter x:Key="MultiSelectorContentConverter"/>
+    <converter:MultiSelectorContentConverter x:Key="MultiSelectorContentConverter" />
     <converter:MultiSelectorIsCheckedConverter x:Key="MultiSelectorIsCheckedConverter" />
 
     <Style TargetType="{x:Type local:Loading}">
         <Setter Property="SnapsToDevicePixels"
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
-        <Setter Property="StrokeCover"
-                Value="#3E3E3E" />
+
+
         <Style.Triggers>
             <Trigger Property="LoadingStyle"
                      Value="Classic">
+                <Setter Property="Stroke"
+                        Value="#3E3E3E" />
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type local:Loading}">
@@ -353,6 +355,8 @@
                      Value="Ring">
                 <Setter Property="Stroke"
                         Value="#33AAAAAA" />
+                <Setter Property="StrokeCover"
+                        Value="#3E3E3E" />
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type local:Loading}">
@@ -422,6 +426,8 @@
             </Trigger>
             <Trigger Property="LoadingStyle"
                      Value="Wave">
+                <Setter Property="Stroke"
+                        Value="#3E3E3E" />
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type local:Loading}">
@@ -540,7 +546,7 @@
                                                                  Duration="0:0:0" />
                                                 <DoubleAnimation Storyboard.TargetName="Scale4"
                                                                  Storyboard.TargetProperty="ScaleY"
-                                                                 Duration="0:0:0"/>
+                                                                 Duration="0:0:0" />
                                                 <DoubleAnimation Storyboard.TargetName="Scale5"
                                                                  Storyboard.TargetProperty="ScaleY"
                                                                  Duration="0:0:0" />
@@ -614,14 +620,8 @@
                 Value="Center" />
         <Setter Property="Padding"
                 Value="5,0,0,0"></Setter>
-        <Setter Property="local:ComboBoxHelper.ShadowColor"
+        <Setter Property="ShadowColor"
                 Value="#888888" />
-        <Setter Property="local:ComboBoxHelper.ItemHeight"
-                Value="30" />
-        <Setter Property="local:ComboBoxHelper.HoverBrush"
-                Value="#EEEEEE" />
-        <Setter Property="local:ComboBoxHelper.SelectedBrush"
-                Value="#DDDDDD" />
         <Setter Property="CheckBoxStyle">
             <Setter.Value>
                 <Style TargetType="{x:Type CheckBox}"
@@ -801,7 +801,7 @@
                                                         </CheckBox.Content>
                                                         <CheckBox.IsChecked>
                                                             <MultiBinding Converter="{StaticResource MultiSelectorIsCheckedConverter}"
-                                                                           Mode="OneTime">
+                                                                          Mode="OneTime">
                                                                 <Binding Path="." />
                                                                 <Binding Path="SelectedMemberPath"
                                                                          RelativeSource="{RelativeSource AncestorType=local:MultiSelector}"
@@ -844,4 +844,5 @@
             </Setter.Value>
         </Setter>
     </Style>
+
 </ResourceDictionary>

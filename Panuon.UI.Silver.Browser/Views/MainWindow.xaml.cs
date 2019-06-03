@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 using Panuon.UI.Silver;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Windows.Threading;
 
 namespace Panuon.UI.Silver.Browser
 {
@@ -111,20 +112,23 @@ namespace Panuon.UI.Silver.Browser
             var result = WindowHelper.ShowConfirm("Are you sure ?", "Tips", this);
         }
 
-        private void BtnShowAwait_Click(object sender, RoutedEventArgs e)
+        private void BtnShowWaiting_Click(object sender, RoutedEventArgs e)
         {
-            WindowHelper.ShowWaiting(this, "Processing , please wait ...", () =>
+            //close after 2 seconds
+            var timer = new DispatcherTimer() { Interval = TimeSpan.FromSeconds(2) };
+            timer.Tick += delegate
+            {
+                WindowHelper.CloseWaiting();
+            };
+            timer.Start();
+
+            //show waiting
+            WindowHelper.ShowWaiting(this, "please wait ...", "Processing", () =>
             {
                 WindowHelper.ShowPopup(this, "Task canceled !");
-                WindowHelper.CloseWaiting(this);
             });
         }
 
         #endregion
-
-        private void TabItem_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

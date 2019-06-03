@@ -17,7 +17,7 @@
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="*" />
             <RowDefinition Height="45" />
         </Grid.RowDefinitions>
         <TextBlock x:Name="TxtContent"
@@ -25,7 +25,23 @@
                    HorizontalAlignment="Center"
                    FontSize="16"
                    Margin="20,0"
-                   TextWrapping="Wrap"/>
+                   TextWrapping="Wrap" />
+        <StackPanel x:Name="StkCancel"
+                    Visibility="Collapsed"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+            <local:Loading x:Name="Loading"
+                           VerticalAlignment="Center"
+                           Width="25"
+                           Height="25" />
+            <TextBlock x:Name="TxtCancelContent"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontSize="16"
+                       Margin="7,0"
+                       TextWrapping="Wrap" />
+        </StackPanel>
         <Grid Grid.Row="1"
               x:Name="GrdMessage"
               Visibility="Collapsed">
@@ -34,7 +50,7 @@
                     Height="35"
                     Margin="40,0"
                     Content="OK"
-                    Click="BtnYes_Click"/>
+                    Click="BtnYes_Click" />
         </Grid>
         <Grid Grid.Row="1"
               x:Name="GrdConfirm"
@@ -47,8 +63,8 @@
                     VerticalAlignment="Top"
                     Height="35"
                     Margin="30,0,10,0"
-                    Content="Yes" 
-                    Click="BtnYes_Click"/>
+                    Content="Yes"
+                    Click="BtnYes_Click" />
             <Button x:Name="BtnNo"
                     Foreground="DimGray"
                     local:ButtonHelper.HoverBrush="#DDDDDD"
@@ -58,8 +74,18 @@
                     VerticalAlignment="Top"
                     Height="35"
                     Margin="10,0,30,0"
-                    Content="No" 
-                    Click="BtnNo_Click"/>
+                    Content="No"
+                    Click="BtnNo_Click" />
+        </Grid>
+        <Grid Grid.Row="1"
+              x:Name="GrdCancel"
+              Visibility="Collapsed">
+            <Button x:Name="BtnCancel"
+                    VerticalAlignment="Top"
+                    Height="35"
+                    Margin="40,0"
+                    Content="Cancel"
+                    Click="BtnCancel_Click" />
         </Grid>
     </Grid>
 </Window>

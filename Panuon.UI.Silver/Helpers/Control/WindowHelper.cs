@@ -157,6 +157,21 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("ExtendNavControl", typeof(UIElement), typeof(WindowHelper));
         #endregion
 
+        #region DisableCloseButton
+        public static bool GetDisableCloseButton(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(DisableCloseButtonProperty);
+        }
+
+        public static void SetDisableCloseButton(DependencyObject obj, bool value)
+        {
+            obj.SetValue(DisableCloseButtonProperty, value);
+        }
+
+        public static readonly DependencyProperty DisableCloseButtonProperty =
+            DependencyProperty.RegisterAttached("DisableCloseButton", typeof(bool), typeof(WindowHelper));
+        #endregion
+
         #region (Internal) WindowHook
         internal static bool GetWindowHook(DependencyObject obj)
         {
@@ -221,18 +236,6 @@ namespace Panuon.UI.Silver
         internal static readonly DependencyProperty CloseCommandProperty =
             DependencyProperty.RegisterAttached("CloseCommand", typeof(ICommand), typeof(WindowHelper), new PropertyMetadata(new CloseCommand()));
 
-        internal static ICommand GetCancelCommand(DependencyObject obj)
-        {
-            return (ICommand)obj.GetValue(CancelCommandProperty);
-        }
-
-        internal static void SetCancelCommand(DependencyObject obj, ICommand value)
-        {
-            obj.SetValue(CancelCommandProperty, value);
-        }
-
-        internal static readonly DependencyProperty CancelCommandProperty =
-            DependencyProperty.RegisterAttached("CancelCommand", typeof(ICommand), typeof(WindowHelper), new PropertyMetadata(new CancelCommand()));
         #endregion
 
         #region(Internal) DialogResult
@@ -248,66 +251,6 @@ namespace Panuon.UI.Silver
 
         internal static readonly DependencyProperty DialogResultProperty =
             DependencyProperty.RegisterAttached("DialogResult", typeof(bool?), typeof(WindowHelper));
-        #endregion
-
-        #region (Internal) WaitingText
-        internal static string GetWaitingText(DependencyObject obj)
-        {
-            return (string)obj.GetValue(WaitingTextProperty);
-        }
-
-        internal static void SetWaitingText(DependencyObject obj, string value)
-        {
-            obj.SetValue(WaitingTextProperty, value);
-        }
-
-        internal static readonly DependencyProperty WaitingTextProperty =
-            DependencyProperty.RegisterAttached("WaitingText", typeof(string), typeof(WindowHelper));
-        #endregion
-
-        #region (Internal) IsWaiting
-        internal static bool GetIsWaiting(DependencyObject obj)
-        {
-            return (bool)obj.GetValue(IsWaitingProperty);
-        }
-
-        internal static void SetIsWaiting(DependencyObject obj, bool value)
-        {
-            obj.SetValue(IsWaitingProperty, value);
-        }
-
-        internal static readonly DependencyProperty IsWaitingProperty =
-            DependencyProperty.RegisterAttached("IsWaiting", typeof(bool), typeof(WindowHelper));
-        #endregion
-
-        #region (Internal) CancelText
-        internal static string GetCancelText(DependencyObject obj)
-        {
-            return (string)obj.GetValue(CancelTextProperty);
-        }
-
-        internal static void SetCancelText(DependencyObject obj, string value)
-        {
-            obj.SetValue(CancelTextProperty, value);
-        }
-
-        internal static readonly DependencyProperty CancelTextProperty =
-            DependencyProperty.RegisterAttached("CancelText", typeof(string), typeof(WindowHelper));
-        #endregion
-
-        #region (Intenal) CancelAction
-        internal static Action GetCancelAction(DependencyObject obj)
-        {
-            return (Action)obj.GetValue(CancelActionProperty);
-        }
-
-        internal static void SetCancelAction(DependencyObject obj, Action value)
-        {
-            obj.SetValue(CancelActionProperty, value);
-        }
-
-        internal static readonly DependencyProperty CancelActionProperty =
-            DependencyProperty.RegisterAttached("CancelAction", typeof(Action), typeof(WindowHelper));
         #endregion
 
         #region APIs
@@ -354,14 +297,8 @@ namespace Panuon.UI.Silver
 
         public static void ShowMessage(string content, string title = "Tips", Window owner = null, bool showInTaskbar = true, bool autoCoverMask = true)
         {
-            var msgBox = new MsgBox(content, title);
-            if (owner != null)
-            {
-                if(autoCoverMask)
-                    SetOpenCoverMask(owner, true);
-                msgBox.Owner = owner;
-                msgBox.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            }
+            var msgBox = new MsgBox(content, title, MsgBox.MsgType.Message, owner, autoCoverMask);
+
             msgBox.ShowDialog();
             if (owner != null && autoCoverMask)
             {
@@ -371,7 +308,7 @@ namespace Panuon.UI.Silver
 
         public static bool ShowConfirm(string content, string title = "Tips", Window owner = null, bool showInTaskbar = true, bool autoCoverMask = true)
         {
-            var msgBox = new MsgBox(content, title, MsgBox.MsgType.Confirm);
+            var msgBox = new MsgBox(content, title, MsgBox.MsgType.Confirm, owner, autoCoverMask);
             if (owner != null)
             {
                 if (autoCoverMask)
@@ -387,24 +324,47 @@ namespace Panuon.UI.Silver
             return result;
         }
 
-        public static void ShowWaiting(Window window, string content, Action cancelCallback = null)
+        /// <summary>
+        /// Popup a waiting box. Each window can handle one waiting box.
+        /// </summary>
+        /// <param name="owner">Owner window.Each window can handle one waiting box.</param>
+        /// <param name="content">Content.</param>
+        /// <param name="title">Title.</param>
+        /// <param name="cancelCallback">Action when user click cancel button. Cancel button will be disabled if its value is null.</param>
+        /// <param name="showInTaskbar">Show in task bar.</param>
+        /// <param name="autoCoverMask">Open cover mask of the owner window when waiting box popuped, and hide it when waiting box closed.</param>
+        public static void ShowWaiting(Window owner, string content, string title = "Processing", Action cancelCallback = null, bool showInTaskbar = false, bool autoCoverMask = true)
         {
-            if (GetApplying(window) == false)
-                throw new Exception("Property 'pu:WindowHelper.Applying=\"True\"' does not existed in target window .");
+            SetOpenCoverMask(owner, true);
+            var msgBox = new MsgBox(content, title, MsgBox.MsgType.Await, owner, autoCoverMask, cancelCallback);
+            msgBox.ShowDialog();
 
-            SetOpenCoverMask(window, true);
-            SetWaitingText(window, content);
-            SetIsWaiting(window, true);
-            SetCancelText(window, cancelCallback == null ? null : Thread.CurrentThread.CurrentCulture.IetfLanguageTag == "zh-CN" ? "取消" : "Cancel");
-            SetCancelAction(window, cancelCallback);
         }
 
-        public static void CloseWaiting(Window window)
+        /// <summary>
+        /// Close waiting box. If you don't specialfy the owner window, all of the opened waiting box will be closed.
+        /// </summary>
+        /// <param name="owner">Close waiting box of specialfy window.</param>
+        public static void CloseWaiting(Window owner = null)
         {
-            SetOpenCoverMask(window, false);
-            SetWaitingText(window, "");
-            SetIsWaiting(window, false);
+            if (MsgBox.InstanceDictionarty != null)
+            {
+                if (owner == null)
+                {
+                    var keys = new List<Window>(MsgBox.InstanceDictionarty.Keys);
+                    for (int i = 0; i < MsgBox.InstanceDictionarty.Count - 1; i++)
+                    {
+                        MsgBox.InstanceDictionarty[keys[i]].Close();
+                    }
+                }
+                else
+                {
+                    if (MsgBox.InstanceDictionarty.ContainsKey(owner))
+                        MsgBox.InstanceDictionarty[owner].Close();
+                }
+            }
         }
+
         #endregion
 
         #region Function
@@ -642,7 +602,7 @@ namespace Panuon.UI.Silver
 
             var window = sender as Window;
 
-                SetDialogResult(window, window.DialogResult);
+            SetDialogResult(window, window.DialogResult);
 
             window.Closing -= Window_Closing;
 
@@ -762,26 +722,4 @@ namespace Panuon.UI.Silver
             (parameter as Window).WindowState = WindowState.Minimized;
         }
     }
-    internal class CancelCommand : ICommand
-    {
-        event EventHandler ICommand.CanExecuteChanged
-        {
-            add { CommandManager.RequerySuggested += value; }
-            remove { CommandManager.RequerySuggested -= value; }
-        }
-
-        public bool CanExecute(object parameter)
-        {
-            return true;
-        }
-
-        public void Execute(object parameter)
-        {
-            var window = (parameter as Window);
-            var action = WindowHelper.GetCancelAction(window);
-            if (action != null)
-                action.Invoke();
-        }
-    }
-
 }
