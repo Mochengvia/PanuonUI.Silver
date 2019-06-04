@@ -42,6 +42,10 @@
                 Value="True" />
         <Setter Property="VirtualizingStackPanel.VirtualizationMode"
                 Value="Recycling" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility"
+                Value="Auto" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility"
+                Value="Disabled" />
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>
@@ -219,8 +223,8 @@
                                              Text="{Binding Path=(local:ComboBoxHelper.SearchText),RelativeSource={RelativeSource AncestorType=ComboBox},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                              Margin="1,5,1,0" />
                                     <ScrollViewer Grid.Row="1"
-                                                  VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}"
-                                                  HorizontalScrollBarVisibility="{Binding Path=(ScrollViewer.HorizontalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}"
+                                                  VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
+                                                  HorizontalScrollBarVisibility="{Binding Path=(ScrollViewer.HorizontalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                                                   CanContentScroll="True"
                                                   Style="{DynamicResource MiniScrollViewer}"
                                                   Margin="1,5,1,15"
