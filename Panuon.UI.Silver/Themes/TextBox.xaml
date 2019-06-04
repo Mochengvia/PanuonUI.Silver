@@ -21,9 +21,9 @@
         <Setter Property="HorizontalContentAlignment"
                 Value="Left"></Setter>
         <Setter Property="VerticalScrollBarVisibility"
-                Value="Auto" />
+                Value="Disabled" />
         <Setter Property="HorizontalScrollBarVisibility"
-                Value="Auto" />
+                Value="Hidden" />
         <Setter Property="Padding"
                 Value="5,0,0,0"></Setter>
         <Setter Property="FontFamily"
@@ -74,7 +74,9 @@
                                               VerticalAlignment="Stretch"
                                               VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                                               local:ScrollViewerHelper.ScrollViewerHook="True"
-                                              HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}">
+                                              HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalScrollBarVisibility="{TemplateBinding VerticalScrollBarVisibility}"
+                                              HorizontalScrollBarVisibility="{TemplateBinding HorizontalScrollBarVisibility}">
                                 </ScrollViewer>
                                 <TextBlock  x:Name="tbWatermark"
                                             Padding="2,0,0,0"
@@ -148,6 +150,18 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <Trigger Property="TextWrapping"
+                     Value="Wrap">
+                <Setter Property="VerticalScrollBarVisibility"
+                        Value="Auto" />
+            </Trigger>
+            <Trigger Property="AcceptsReturn"
+                     Value="True">
+                <Setter Property="VerticalScrollBarVisibility"
+                        Value="Auto" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
 
