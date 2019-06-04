@@ -57,7 +57,8 @@
                                     </Grid.ColumnDefinitions>
                                     <Grid x:Name="Grid"
                                           Width="{Binding Path=(local:CheckBoxHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
-                                          Height="{Binding Path=(local:CheckBoxHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}">
+                                          Height="{Binding Path=(local:CheckBoxHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
+                                          Opacity="0.8">
                                         <Rectangle x:Name="Rect"
                                                    Fill="{TemplateBinding Background}"
                                                    Stroke="{TemplateBinding BorderBrush}"
@@ -101,6 +102,12 @@
                                             Property="Content"
                                             Value="{Binding Path=(local:CheckBoxHelper.CheckedContent), RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}" />
                                 </MultiDataTrigger>
+                                <Trigger Property="IsMouseOver"
+                                         Value="True">
+                                    <Setter TargetName="Grid"
+                                            Property="Opacity"
+                                            Value="1" />
+                                </Trigger>
                                 <Trigger Property="IsChecked"
                                          Value="True">
                                     <Setter TargetName="Rect"
@@ -382,6 +389,11 @@
                     </Setter.Value>
                 </Setter>
             </DataTrigger>
+            <Trigger  Property="IsEnabled"
+                      Value="False">
+                <Setter Property="Opacity"
+                        Value="0.4"></Setter>
+            </Trigger>
         </Style.Triggers>
     </Style>
 </ResourceDictionary>

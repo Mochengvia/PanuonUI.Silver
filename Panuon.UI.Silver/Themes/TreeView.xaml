@@ -22,7 +22,7 @@
         <Setter Property="SnapsToDevicePixels"
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="local:TreeViewHelper.ItemHeight"
-                Value="30" />
+                Value="40" />
         <Setter Property="local:TreeViewHelper.SelectedBrush"
                 Value="#888888" />
         <Setter Property="BorderBrush"

@@ -6,21 +6,6 @@ namespace Panuon.UI.Silver
 {
     public class PasswordBoxHelper
     {
-        #region PasswordBoxStyle
-        public static PasswordBoxStyle GetPasswordBoxStyle(DependencyObject obj)
-        {
-            return (PasswordBoxStyle)obj.GetValue(PasswordBoxStyleProperty);
-        }
-
-        public static void SetPasswordBoxStyle(DependencyObject obj, PasswordBoxStyle value)
-        {
-            obj.SetValue(PasswordBoxStyleProperty, value);
-        }
-
-        public static readonly DependencyProperty PasswordBoxStyleProperty =
-            DependencyProperty.RegisterAttached("PasswordBoxStyle", typeof(PasswordBoxStyle), typeof(PasswordBoxHelper), new PropertyMetadata(PasswordBoxStyle.Standard));
-        #endregion
-
         #region FocusedBorderBrush
         public static Brush GetFocusedBorderBrush(DependencyObject obj)
         {
@@ -118,7 +103,7 @@ namespace Panuon.UI.Silver
             var passwordBox = d as System.Windows.Controls.PasswordBox;
             var password = e.NewValue as string;
 
-            if(password != passwordBox.Password)
+            if (password != passwordBox.Password)
             {
                 passwordBox.Password = password;
             }

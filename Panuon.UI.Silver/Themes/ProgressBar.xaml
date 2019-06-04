@@ -187,6 +187,11 @@
                     </Setter.Value>
                 </Setter>
             </DataTrigger>
+            <Trigger  Property="IsEnabled"
+                      Value="False">
+                <Setter Property="Opacity"
+                        Value="0.4"></Setter>
+            </Trigger>
         </Style.Triggers>
     </Style>
 

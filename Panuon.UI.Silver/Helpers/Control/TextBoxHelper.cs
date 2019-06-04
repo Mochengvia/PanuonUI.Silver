@@ -5,21 +5,6 @@ namespace Panuon.UI.Silver
 {
     public class TextBoxHelper
     {
-        #region TextBoxStyle
-        public static TextBoxStyle GetTextBoxStyle(DependencyObject obj)
-        {
-            return (TextBoxStyle)obj.GetValue(TextBoxStyleProperty);
-        }
-
-        public static void SetTextBoxStyle(DependencyObject obj, TextBoxStyle value)
-        {
-            obj.SetValue(TextBoxStyleProperty, value);
-        }
-
-        public static readonly DependencyProperty TextBoxStyleProperty =
-            DependencyProperty.RegisterAttached("TextBoxStyle", typeof(TextBoxStyle), typeof(TextBoxHelper), new PropertyMetadata(TextBoxStyle.Standard));
-        #endregion
-
         #region FocusedBorderBrush
         public static Brush GetFocusedBorderBrush(DependencyObject obj)
         {
