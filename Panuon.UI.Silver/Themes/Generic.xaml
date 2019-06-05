@@ -469,7 +469,7 @@
                                 <Rectangle Grid.Column="3"
                                            Margin="1,0"
                                            RenderTransformOrigin="0.5,0.5"
-                                           Fill="{Binding StrokeCover,RelativeSource={RelativeSource AncestorType=local:Loading}}">
+                                           Fill="{TemplateBinding Stroke}">
                                     <Rectangle.RenderTransform>
                                         <ScaleTransform x:Name="Scale4"
                                                         ScaleY="1" />
@@ -478,13 +478,12 @@
                                 <Rectangle Grid.Column="4"
                                            Margin="1,0"
                                            RenderTransformOrigin="0.5,0.5"
-                                           Fill="{Binding StrokeCover,RelativeSource={RelativeSource AncestorType=local:Loading}}">
+                                           Fill="{TemplateBinding Stroke}">
                                     <Rectangle.RenderTransform>
                                         <ScaleTransform x:Name="Scale5"
                                                         ScaleY="1" />
                                     </Rectangle.RenderTransform>
                                 </Rectangle>
-
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsRunning"
