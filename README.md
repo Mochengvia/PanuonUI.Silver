@@ -7,6 +7,11 @@ Panuon.UI的优化版本。一个漂亮的、使用样式与附加属性的WPF U
 This is a developing program.  
 这是一个正在开发的项目。
 
+
+# Examples 示例
+
+![](https://github.com/Ruris/Panuon.Documents/blob/master/Resources/Panuon.UI.Silver/example_1.png?raw=true)
+
 # Donate  捐赠
 Panuon.UI.Silver is an open source library.Your support will motivate me to continue Panuon.UI.Silver development.    
 Panuon.UI.Silver是一个完全开源的控件库。您的支持是项目得以发展的根本保证。
@@ -19,18 +24,17 @@ Zhifubao:
 Paypal:  
 paypal.me/Zeoun  
 
+# Overview 概览
 
-# Overview  总览
-Blue theme (colors can be changed):  
-蓝色主题（颜色都是可以修改的）：
+## Where is the document ? （文档在哪里？）
+After downloading this repository, you can find document in our example program. Launch "Panuon.UI.Silver.Browser" project , and you will find it .  
+文档位于示例程序中。当您下载该仓库后，只需启动"Panuon.UI.Silver.Browser"项目，即可看到文档。
 
-![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/overview.jpg)
+![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/step1.png)
 
-Pink theme :  
-粉色主题：
+![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/step2.png)
 
-![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/overview_2.jpg)
-
+![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/step3.png)
 
 ### Work with helper （需要使用Helper的控件）:
 Button / CheckBox / RadioButton / TextBox / PasswordBox / ComboBox / Expander / GroupBox / Expander
@@ -86,54 +90,3 @@ FontFamily="{StaticResource IconFont}"
 ```
 Copy icon from http://www.fontawesome.com.cn/cheatsheet  
 从如上链接中拷贝图标。
-
-# Document 文档
-[Button](#Button-按钮)
-[CheckBox](#CheckBox)
-[RadioButton](#RadioButton)
-[TextBox](#TextBox)
-[PasswordBox](#PasswordBox)
-
-
-## Button 按钮
-ButtonHelper   
-Namespace 命名空间: Panuon.UI.Silver  
-Example 示例: 
-```
-<Button pu:ButtonHelper.ButtonStyle="Outline"
-        pu:ButtonHelper.ClickStyle="Sink"
-        Height="30"
-        Width="120"/>  
-```
-Tips : For "Icon" property, You can set any control, fontawesome icon or image uri source to its value .Like this :  
-提示：对于Icon属性，你可以对其赋值以任何控件、FontAwesome字体或图片URI资源。就像这样：
-```
-pu:ButtonHelper.Icon=""
-
-pu:ButtonHelper.Icon="&#xf058;"
-
-<pu:ButtonHelper.Icon>
-    <Image Source="/Namespace;component/Resources/icon.jpg" Height="20" Width="20" />
-</pu:ButtonHelper.Icon>
-
-pu:ButtonHelper.Icon="/Namespace;component/Resources/icon.jpg"
-
-```
-
-Property Name | Property Type | Default Value | Description  
--|-|-|-
-ButtonStyle | Enum(ButtonStyle) | Standard[/Outline/Hollow/Link] | gets or sets base button style . 获取或设置按钮样式。|
-ClickStyle | Enum(ClickStyle) | None[/Sink] | gets or sets click effect of the button . 获取或设置按钮的点击效果。|
-Icon | Object | Null | gets or sets icon of the button, which placed before the content . 获取或设置按钮的Icon，它将被放置在Content之前。| 
-CornerRadius | CornerRadius | (0,0,0,0) | gets or sets border corner radius of the button . 获取或设置按钮的边框圆角。|
-HoverBrush | Brush | #3E3E3E | gets or sets background("Standard" style ,background and borderbrush in "Hollow" Style, foreground and borderbrush in "Outline" style, foreground in "Link" style) of the button when mouse enter . 获取或设置当鼠标进入时，按钮的背景色（在Standard样式下。Hollow样式下将改变背景色与边框，Outline样式下将改变前景色与边框，Link样式下将改变前景色）|
-ClickCoverBrush | Brush | #22FFFFFF | gets or sets cover mask of the button when mouse clicked . 获取或设置当鼠标点击时，按钮的遮罩层。|
-IsWaiting | Boolean | False | gets or sets whether the button is in waiting mode .Button will be disabled when IsWaiting="True". 获取或设置按钮是否处于等待状态。进入等待模式时，该按钮会被禁用。|
-WaitingContent | Object | "Please wait..." | gets or sets content of the button when IsWaiting="True". 获取或设置当按钮进入等待状态时，显示的内容。|
-
-## CheckBox
-## RadioButton
-## TextBox
-## PasswordBox
-
-
