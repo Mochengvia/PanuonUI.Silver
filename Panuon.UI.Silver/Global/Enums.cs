@@ -163,4 +163,31 @@ namespace Panuon.UI.Silver
         Square,
     }
     #endregion
+
+    #region NeonLabel
+    public enum NeonLabelType
+    {
+        /// <summary>
+        /// Fade out current background, and fade in next background.
+        /// </summary>
+        FadeBackground,
+        /// <summary>
+        /// Fade out current foreground, and fade in next foreground.
+        /// </summary>
+        FadeForeground,
+        /// <summary>
+        /// Fade out current content, and fade in next content.
+        /// </summary>
+        FadeNext,
+        /// <summary>
+        /// Slide out current content , and slide in next content.
+        /// </summary>
+        SlideNext,
+        /// <summary>
+        /// Scroll to end
+        /// </summary>
+        ScrollToEnd,
+    }
+    #endregion
+
 }

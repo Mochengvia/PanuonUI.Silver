@@ -66,6 +66,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\NeonLabel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Controls\TagPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -163,6 +167,9 @@
     <Compile Include="Controls\Internal\ResizeThumb.cs" />
     <Compile Include="Controls\MultiSelector.cs" />
     <Compile Include="Controls\Internal\ResizeContainer.cs" />
+    <Compile Include="Controls\NeonLabel.xaml.cs">
+      <DependentUpon>NeonLabel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\TagPanel.xaml.cs">
       <DependentUpon>TagPanel.xaml</DependentUpon>
     </Compile>

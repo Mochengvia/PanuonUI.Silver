@@ -67,6 +67,7 @@ namespace Panuon.UI.Silver.Browser.Views
             ViewModel.MenuItems.Add(new Models.TreeViewItemModel(GetString("Calendar"), typeof(CalendarView)));
             ViewModel.MenuItems.Add(new Models.TreeViewItemModel(GetString("TagPanel"), typeof(TagPanelView)));
             ViewModel.MenuItems.Add(new Models.TreeViewItemModel(GetString("Loading"), typeof(LoadingView)));
+            ViewModel.MenuItems.Add(new Models.TreeViewItemModel(GetString("NeonLabel"), typeof(NeonLabelView)));
             ViewModel.MenuItems.Add(new Models.TreeViewItemModel(GetString("ImageCuter"), typeof(ImageCuterView)));
         }
 
