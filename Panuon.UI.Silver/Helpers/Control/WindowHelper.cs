@@ -352,7 +352,7 @@ namespace Panuon.UI.Silver
                 if (owner == null)
                 {
                     var keys = new List<Window>(MsgBox.InstanceDictionarty.Keys);
-                    for (int i = 0; i < MsgBox.InstanceDictionarty.Count - 1; i++)
+                    for (int i = 0; i < MsgBox.InstanceDictionarty.Count; i++)
                     {
                         MsgBox.InstanceDictionarty[keys[i]].Close();
                     }

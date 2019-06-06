@@ -143,7 +143,7 @@ namespace Panuon.UI.Silver
             var treeView = sender as TreeView;
             if (e.OriginalSource is TreeViewItem)
             {
-
+                
                 var treeViewItem = e.OriginalSource as TreeViewItem;
                 if (treeViewItem.HasItems)
                 {
@@ -187,7 +187,7 @@ namespace Panuon.UI.Silver
             if (e.OriginalSource is TreeViewItem)
             {
                 var treeViewItem = e.OriginalSource as TreeViewItem;
-
+               
                 if (treeViewItem.HasItems)
                 {
                     var lastTreeViewItem = GetLastExpandedItem(treeView);
@@ -248,6 +248,21 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty ItemHeightProperty =
             DependencyProperty.RegisterAttached("ItemHeight", typeof(double), typeof(TreeViewHelper));
+        #endregion
+
+        #region ItemIcon
+        public static object GetItemIcon(DependencyObject obj)
+        {
+            return (object)obj.GetValue(ItemIconProperty);
+        }
+
+        public static void SetItemIcon(DependencyObject obj, object value)
+        {
+            obj.SetValue(ItemIconProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemIconProperty =
+            DependencyProperty.RegisterAttached("ItemIcon", typeof(object), typeof(TreeViewHelper));
         #endregion
 
         #region (Internal) LastSelectedItem

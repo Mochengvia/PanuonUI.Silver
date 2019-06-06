@@ -103,7 +103,7 @@ namespace Panuon.UI.Silver
             var passwordBox = d as System.Windows.Controls.PasswordBox;
             var password = e.NewValue as string;
 
-            if (password != passwordBox.Password)
+            if(password != passwordBox.Password)
             {
                 passwordBox.Password = password;
             }

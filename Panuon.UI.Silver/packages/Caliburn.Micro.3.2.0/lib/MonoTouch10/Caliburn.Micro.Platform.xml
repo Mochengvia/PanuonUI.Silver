@@ -1,0 +1,284 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Caliburn.Micro.Platform</name>
+    </assembly>
+    <members>
+        <member name="T:Caliburn.Micro.CaliburnApplicationDelegate">
+            <summary>
+            Encapsulates the app and its available services.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.CaliburnApplicationDelegate.#ctor">
+            <summary>
+            Creates an instance of <see cref="T:Caliburn.Micro.CaliburnApplicationDelegate"/>.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.CaliburnApplicationDelegate.#ctor(System.IntPtr)">
+            <summary>
+            Creates an instance of <see cref="T:Caliburn.Micro.CaliburnApplicationDelegate"/>.
+            </summary>
+            <param name="handle">/// The handle for this class</param>
+        </member>
+        <member name="M:Caliburn.Micro.CaliburnApplicationDelegate.#ctor(Foundation.NSObjectFlag)">
+            <summary>
+            Creates an instance of <see cref="T:Caliburn.Micro.CaliburnApplicationDelegate"/>.
+            </summary>
+            <param name="t">>Unused sentinel value, pass NSObjectFlag.Empty</param>
+        </member>
+        <member name="M:Caliburn.Micro.CaliburnApplicationDelegate.StartDesignTime">
+            <summary>
+            Called by the bootstrapper's constructor at design time to start the framework.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.CaliburnApplicationDelegate.StartRuntime">
+            <summary>
+            Called by the bootstrapper's constructor at runtime to start the framework.
+            </summary>B
+        </member>
+        <member name="M:Caliburn.Micro.CaliburnApplicationDelegate.Initialize">
+            <summary>
+            Start the framework.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.CaliburnApplicationDelegate.Configure">
+            <summary>
+            Override to configure the framework and setup your IoC container.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.CaliburnApplicationDelegate.SelectAssemblies">
+            <summary>
+            Override to tell the framework where to find assemblies to inspect for views, etc.
+            </summary>
+            <returns>A list of assemblies to inspect.</returns>
+        </member>
+        <member name="M:Caliburn.Micro.CaliburnApplicationDelegate.GetInstance(System.Type,System.String)">
+            <summary>
+            Override this to provide an IoC specific implementation.
+            </summary>
+            <param name="service">The service to locate.</param>
+            <param name="key">The key to locate.</param>
+            <returns>The located service.</returns>
+        </member>
+        <member name="M:Caliburn.Micro.CaliburnApplicationDelegate.GetAllInstances(System.Type)">
+            <summary>
+            Override this to provide an IoC specific implementation
+            </summary>
+            <param name="service">The service to locate.</param>
+            <returns>The located services.</returns>
+        </member>
+        <member name="M:Caliburn.Micro.CaliburnApplicationDelegate.BuildUp(System.Object)">
+            <summary>
+            Override this to provide an IoC specific implementation.
+            </summary>
+            <param name="instance">The instance to perform injection on.</param>
+        </member>
+        <member name="T:Caliburn.Micro.IOSPlatformProvider">
+            <summary>
+            A <see cref="T:Caliburn.Micro.IPlatformProvider"/> implementation for the Xamarin iOS platfrom.
+            </summary>
+        </member>
+        <member name="P:Caliburn.Micro.IOSPlatformProvider.InDesignMode">
+            <summary>
+              Indicates whether or not the framework is in design-time mode.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.IOSPlatformProvider.BeginOnUIThread(System.Action)">
+            <summary>
+              Executes the action on the UI thread asynchronously.
+            </summary>
+            <param name="action">The action to execute.</param>
+        </member>
+        <member name="M:Caliburn.Micro.IOSPlatformProvider.OnUIThreadAsync(System.Action)">
+            <summary>
+              Executes the action on the UI thread asynchronously.
+            </summary>
+            <param name = "action">The action to execute.</param>
+        </member>
+        <member name="M:Caliburn.Micro.IOSPlatformProvider.OnUIThread(System.Action)">
+            <summary>
+              Executes the action on the UI thread.
+            </summary>
+            <param name = "action">The action to execute.</param>
+        </member>
+        <member name="M:Caliburn.Micro.IOSPlatformProvider.GetFirstNonGeneratedView(System.Object)">
+            <summary>
+            Used to retrieve the root, non-framework-created view.
+            </summary>
+            <param name="view">The view to search.</param>
+            <returns>The root element that was not created by the framework.</returns>
+            <remarks>In certain instances the services create UI elements.
+            For example, if you ask the window manager to show a UserControl as a dialog, it creates a window to host the UserControl in.
+            The WindowManager marks that element as a framework-created element so that it can determine what it created vs. what was intended by the developer.
+            Calling GetFirstNonGeneratedView allows the framework to discover what the original element was. 
+            </remarks>
+        </member>
+        <member name="M:Caliburn.Micro.IOSPlatformProvider.ExecuteOnFirstLoad(System.Object,System.Action{System.Object})">
+            <summary>
+            Executes the handler the fist time the view is loaded.
+            </summary>
+            <param name="view">The view.</param>
+            <param name="handler">The handler.</param>
+        </member>
+        <member name="M:Caliburn.Micro.IOSPlatformProvider.ExecuteOnLayoutUpdated(System.Object,System.Action{System.Object})">
+            <summary>
+            Executes the handler the next time the view's LayoutUpdated event fires.
+            </summary>
+            <param name="view">The view.</param>
+            <param name="handler">The handler.</param>
+        </member>
+        <member name="M:Caliburn.Micro.IOSPlatformProvider.GetViewCloseAction(System.Object,System.Collections.Generic.ICollection{System.Object},System.Nullable{System.Boolean})">
+            <summary>
+            Get the close action for the specified view model.
+            </summary>
+            <param name="viewModel">The view model to close.</param>
+            <param name="views">The associated views.</param>
+            <param name="dialogResult">The dialog result.</param>
+            <returns>An <see cref="T:System.Action"/> to close the view model.</returns>
+        </member>
+        <member name="T:Caliburn.Micro.IUIViewController">
+            <summary>
+            An interface to allow the IOSPlatformProvider provide view lifecycle events
+            </summary>
+        </member>
+        <member name="P:Caliburn.Micro.IUIViewController.IsViewLoaded">
+            <summary>
+            Returns if the current view is already loaded
+            </summary>
+        </member>
+        <member name="E:Caliburn.Micro.IUIViewController.ViewLoaded">
+            <summary>
+            Invoked when the view is loaded
+            </summary>
+        </member>
+        <member name="E:Caliburn.Micro.IUIViewController.ViewAppeared">
+            <summary>
+            Invoked the view appears
+            </summary>
+        </member>
+        <member name="T:Caliburn.Micro.ViewModelLocator">
+            <summary>
+              A strategy for determining which view model to use for a given view.
+            </summary>
+        </member>
+        <member name="F:Caliburn.Micro.ViewModelLocator.NameTransformer">
+            <summary>
+             Used to transform names.
+            </summary>
+        </member>
+        <member name="F:Caliburn.Micro.ViewModelLocator.InterfaceCaptureGroupName">
+            <summary>
+            The name of the capture group used as a marker for rules that return interface types
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.ViewModelLocator.ConfigureTypeMappings(Caliburn.Micro.TypeMappingConfiguration)">
+            <summary>
+            Specifies how type mappings are created, including default type mappings. Calling this method will
+            clear all existing name transformation rules and create new default type mappings according to the
+            configuration.
+            </summary>
+            <param name="config">An instance of TypeMappingConfiguration that provides the settings for configuration</param>
+        </member>
+        <member name="M:Caliburn.Micro.ViewModelLocator.AddDefaultTypeMapping(System.String)">
+            <summary>
+            Adds a default type mapping using the standard namespace mapping convention
+            </summary>
+            <param name="viewSuffix">Suffix for type name. Should  be "View" or synonym of "View". (Optional)</param>
+        </member>
+        <member name="M:Caliburn.Micro.ViewModelLocator.AddTypeMapping(System.String,System.String,System.String[],System.String)">
+            <summary>
+            Adds a standard type mapping based on namespace RegEx replace and filter patterns
+            </summary>
+            <param name="nsSourceReplaceRegEx">RegEx replace pattern for source namespace</param>
+            <param name="nsSourceFilterRegEx">RegEx filter pattern for source namespace</param>
+            <param name="nsTargetsRegEx">Array of RegEx replace values for target namespaces</param>
+            <param name="viewSuffix">Suffix for type name. Should  be "View" or synonym of "View". (Optional)</param>
+        </member>
+        <member name="M:Caliburn.Micro.ViewModelLocator.AddTypeMapping(System.String,System.String,System.String,System.String)">
+            <summary>
+            Adds a standard type mapping based on namespace RegEx replace and filter patterns
+            </summary>
+            <param name="nsSourceReplaceRegEx">RegEx replace pattern for source namespace</param>
+            <param name="nsSourceFilterRegEx">RegEx filter pattern for source namespace</param>
+            <param name="nsTargetRegEx">RegEx replace value for target namespace</param>
+            <param name="viewSuffix">Suffix for type name. Should  be "View" or synonym of "View". (Optional)</param>
+        </member>
+        <member name="M:Caliburn.Micro.ViewModelLocator.AddNamespaceMapping(System.String,System.String[],System.String)">
+            <summary>
+            Adds a standard type mapping based on simple namespace mapping
+            </summary>
+            <param name="nsSource">Namespace of source type</param>
+            <param name="nsTargets">Namespaces of target type as an array</param>
+            <param name="viewSuffix">Suffix for type name. Should  be "View" or synonym of "View". (Optional)</param>
+        </member>
+        <member name="M:Caliburn.Micro.ViewModelLocator.AddNamespaceMapping(System.String,System.String,System.String)">
+            <summary>
+            Adds a standard type mapping based on simple namespace mapping
+            </summary>
+            <param name="nsSource">Namespace of source type</param>
+            <param name="nsTarget">Namespace of target type</param>
+            <param name="viewSuffix">Suffix for type name. Should  be "View" or synonym of "View". (Optional)</param>
+        </member>
+        <member name="M:Caliburn.Micro.ViewModelLocator.AddSubNamespaceMapping(System.String,System.String[],System.String)">
+            <summary>
+            Adds a standard type mapping by substituting one subnamespace for another
+            </summary>
+            <param name="nsSource">Subnamespace of source type</param>
+            <param name="nsTargets">Subnamespaces of target type as an array</param>
+            <param name="viewSuffix">Suffix for type name. Should  be "View" or synonym of "View". (Optional)</param>
+        </member>
+        <member name="M:Caliburn.Micro.ViewModelLocator.AddSubNamespaceMapping(System.String,System.String,System.String)">
+            <summary>
+            Adds a standard type mapping by substituting one subnamespace for another
+            </summary>
+            <param name="nsSource">Subnamespace of source type</param>
+            <param name="nsTarget">Subnamespace of target type</param>
+            <param name="viewSuffix">Suffix for type name. Should  be "View" or synonym of "View". (Optional)</param>
+        </member>
+        <member name="M:Caliburn.Micro.ViewModelLocator.MakeInterface(System.String)">
+            <summary>
+              Makes a type name into an interface name.
+            </summary>
+            <param name = "typeName">The part.</param>
+            <returns></returns>
+        </member>
+        <member name="F:Caliburn.Micro.ViewModelLocator.TransformName">
+            <summary>
+            Transforms a View type name into all of its possible ViewModel type names. Accepts a flag
+            to include or exclude interface types.
+            </summary>
+            <returns>Enumeration of transformed names</returns>
+            <remarks>Arguments:
+            typeName = The name of the View type being resolved to its companion ViewModel.
+            includeInterfaces = Flag to indicate if interface types are included
+            </remarks>
+        </member>
+        <member name="F:Caliburn.Micro.ViewModelLocator.LocateTypeForViewType">
+            <summary>
+              Determines the view model type based on the specified view type.
+            </summary>
+            <returns>The view model type.</returns>
+            <remarks>
+              Pass the view type and receive a view model type. Pass true for the second parameter to search for interfaces.
+            </remarks>
+        </member>
+        <member name="F:Caliburn.Micro.ViewModelLocator.LocateForViewType">
+            <summary>
+              Locates the view model for the specified view type.
+            </summary>
+            <returns>The view model.</returns>
+            <remarks>
+              Pass the view type as a parameter and receive a view model instance.
+            </remarks>
+        </member>
+        <member name="F:Caliburn.Micro.ViewModelLocator.LocateForView">
+            <summary>
+              Locates the view model for the specified view instance.
+            </summary>
+            <returns>The view model.</returns>
+            <remarks>
+              Pass the view instance as a parameters and receive a view model instance.
+            </remarks>
+        </member>
+    </members>
+</doc>

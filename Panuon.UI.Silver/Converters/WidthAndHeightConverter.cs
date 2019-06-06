@@ -19,5 +19,4 @@ namespace Panuon.UI.Silver.Converters
             return new object[] { DependencyProperty.UnsetValue, DependencyProperty.UnsetValue };
         }
     }
-
 }

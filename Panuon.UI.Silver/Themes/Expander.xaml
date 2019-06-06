@@ -5,7 +5,7 @@
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Resource.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converter.xaml" />
     </ResourceDictionary.MergedDictionaries>
-
+    
     <Style TargetType="{x:Type Expander}">
         <Setter Property="FontSize"
                 Value="{StaticResource Default_FontSize}" />

@@ -10,6 +10,11 @@
 
     <converter:ProgressBarCornerRadiusConverter x:Key="ProgressBarCornerRadiusConverter" />
     <converter:RingProgressBarConverter x:Key="RingProgressBarConverter" />
+    <converter:ProgressBarPercentConverter x:Key="ProgressBarPercentConverter" />
+    <converter:ProgressBarOffset1Converter x:Key="ProgressBarOffset1Converter" />
+    <converter:ProgressBarOffset2Converter x:Key="ProgressBarOffset2Converter" />
+
+
     <Style TargetType="{x:Type ProgressBar}">
         <Setter Property="FontFamily"
                 Value="{StaticResource Default_FontFamily}" />
@@ -74,9 +79,93 @@
                                         BorderBrush="{TemplateBinding BorderBrush}"
                                         CornerRadius="{Binding Path=(local:ProgressBarHelper.CornerRadius),Converter={StaticResource DoubleToCornerRadiusConverter},RelativeSource={RelativeSource AncestorType=ProgressBar},Mode=OneWay}"
                                         Background="Transparent" />
+                                <TextBlock x:Name="TxtPercent"
+                                           FontSize="{TemplateBinding FontSize}"
+                                           FontFamily="{TemplateBinding FontFamily}"
+                                           FontWeight="{TemplateBinding FontWeight}"
+                                           Foreground="{TemplateBinding Foreground}"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"
+                                           Visibility="Collapsed">
+                                    <TextBlock.Text>
+                                        <MultiBinding Converter="{StaticResource ProgressBarPercentConverter}">
+                                            <Binding Path="Minimum"
+                                                     RelativeSource="{RelativeSource AncestorType=ProgressBar}"></Binding>
+                                            <Binding Path="Maximum"
+                                                     RelativeSource="{RelativeSource AncestorType=ProgressBar}"></Binding>
+                                            <Binding Path="Value"
+                                                     RelativeSource="{RelativeSource AncestorType=ProgressBar}"></Binding>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                                <TextBlock x:Name="TxtPercentWhite"
+                                           FontSize="{TemplateBinding FontSize}"
+                                           FontFamily="{TemplateBinding FontFamily}"
+                                           FontWeight="{TemplateBinding FontWeight}"
+                                           Foreground="White"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"
+                                           Visibility="Collapsed">
+                                    <TextBlock.OpacityMask>
+                                        <LinearGradientBrush StartPoint="0,0"
+                                                             EndPoint="1,0">
+                                            <GradientStop Color="White">
+                                                <GradientStop.Offset>
+                                                    <MultiBinding Converter="{StaticResource ProgressBarOffset1Converter}">
+                                                        <Binding Path="Minimum"
+                                                                 RelativeSource="{RelativeSource AncestorType=ProgressBar}"></Binding>
+                                                        <Binding Path="Maximum"
+                                                                 RelativeSource="{RelativeSource AncestorType=ProgressBar}"></Binding>
+                                                        <Binding Path="Value"
+                                                                 RelativeSource="{RelativeSource AncestorType=ProgressBar}"></Binding>
+                                                        <Binding Path="ActualWidth"
+                                                                 RelativeSource="{RelativeSource AncestorType=ProgressBar}"></Binding>
+                                                        <Binding Path="ActualWidth"
+                                                                 ElementName="TxtPercentWhite" />
+                                                    </MultiBinding>
+                                                </GradientStop.Offset>
+                                            </GradientStop>
+                                            <GradientStop Color="Transparent">
+                                                <GradientStop.Offset>
+                                                    <MultiBinding Converter="{StaticResource ProgressBarOffset2Converter}">
+                                                        <Binding Path="Minimum"
+                                                                 RelativeSource="{RelativeSource AncestorType=ProgressBar}"></Binding>
+                                                        <Binding Path="Maximum"
+                                                                 RelativeSource="{RelativeSource AncestorType=ProgressBar}"></Binding>
+                                                        <Binding Path="Value"
+                                                                 RelativeSource="{RelativeSource AncestorType=ProgressBar}"></Binding>
+                                                        <Binding Path="ActualWidth"
+                                                                 RelativeSource="{RelativeSource AncestorType=ProgressBar}"></Binding>
+                                                        <Binding Path="ActualWidth"
+                                                                 ElementName="TxtPercentWhite" />
+                                                    </MultiBinding>
+                                                </GradientStop.Offset>
+                                            </GradientStop>
+                                        </LinearGradientBrush>
+                                    </TextBlock.OpacityMask>
+                                    <TextBlock.Text>
+                                        <MultiBinding Converter="{StaticResource ProgressBarPercentConverter}">
+                                            <Binding Path="Minimum"
+                                                     RelativeSource="{RelativeSource AncestorType=ProgressBar}"></Binding>
+                                            <Binding Path="Maximum"
+                                                     RelativeSource="{RelativeSource AncestorType=ProgressBar}"></Binding>
+                                            <Binding Path="Value"
+                                                     RelativeSource="{RelativeSource AncestorType=ProgressBar}"></Binding>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
 
                             </Grid>
                             <ControlTemplate.Triggers>
+                                <DataTrigger Binding="{Binding Path=(local:ProgressBarHelper.IsPercentVisible),RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                                             Value="True">
+                                    <Setter TargetName="TxtPercent"
+                                            Property="Visibility"
+                                            Value="Visible" />
+                                    <Setter TargetName="TxtPercentWhite"
+                                            Property="Visibility"
+                                            Value="Visible" />
+                                </DataTrigger>
                                 <Trigger Property="IsIndeterminate"
                                          Value="True">
                                     <Setter TargetName="PART_Indicator"
@@ -151,8 +240,33 @@
                                         </MultiBinding>
                                     </Path.Data>
                                 </Path>
+                                <TextBlock x:Name="TxtPercent"
+                                           FontSize="{TemplateBinding FontSize}"
+                                           FontFamily="{TemplateBinding FontFamily}"
+                                           FontWeight="{TemplateBinding FontWeight}"
+                                           Foreground="{TemplateBinding Foreground}"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"
+                                           Visibility="Collapsed">
+                                    <TextBlock.Text>
+                                        <MultiBinding Converter="{StaticResource ProgressBarPercentConverter}">
+                                            <Binding Path="Minimum"
+                                                     RelativeSource="{RelativeSource AncestorType=ProgressBar}"></Binding>
+                                            <Binding Path="Maximum"
+                                                     RelativeSource="{RelativeSource AncestorType=ProgressBar}"></Binding>
+                                            <Binding Path="Value"
+                                                     RelativeSource="{RelativeSource AncestorType=ProgressBar}"></Binding>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
                             </Grid>
                             <ControlTemplate.Triggers>
+                                <DataTrigger Binding="{Binding Path=(local:ProgressBarHelper.IsPercentVisible),RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                                             Value="True">
+                                    <Setter TargetName="TxtPercent"
+                                            Property="Visibility"
+                                            Value="Visible" />
+                                </DataTrigger>
                                 <Trigger Property="IsIndeterminate"
                                          Value="True">
                                     <Setter TargetName="Path_Indicator"

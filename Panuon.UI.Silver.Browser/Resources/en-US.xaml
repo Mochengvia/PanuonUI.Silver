@@ -1,0 +1,44 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver.Browser.Resources"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <sys:String x:Key="Introduction">Introduction</sys:String>
+    <sys:String x:Key="Window">Window</sys:String>
+    <sys:String x:Key="Button">Button</sys:String>
+    <sys:String x:Key="CheckBox">CheckBox</sys:String>
+    <sys:String x:Key="RadioButton">RadioButton</sys:String>
+    <sys:String x:Key="TextBox">TextBox</sys:String>
+    <sys:String x:Key="PasswordBox">PasswordBox</sys:String>
+    <sys:String x:Key="ProgressBar">ProgressBar</sys:String>
+    <sys:String x:Key="Loading">Loading</sys:String>
+    <sys:String x:Key="ImageCuter">ImageCuter</sys:String>
+    <sys:String x:Key="ComboBox">ComboBox</sys:String>
+    <sys:String x:Key="Treeview">Treeview</sys:String>
+    <sys:String x:Key="TabControl">TabControl</sys:String>
+    <sys:String x:Key="TagPanel">TagPanel</sys:String>
+    <sys:String x:Key="Calendar">Calendar</sys:String>
+    <sys:String x:Key="PropertyName">PropertyName</sys:String>
+    <sys:String x:Key="PropertyType">PropertyType</sys:String>
+    <sys:String x:Key="DefaultValue">DefaultValue</sys:String>
+    <sys:String x:Key="Description">Description</sys:String>
+
+    <sys:String x:Key="SourceCodeLocation">Source code location : </sys:String>
+
+    <sys:String x:Key="Document">Document</sys:String>
+    <sys:String x:Key="ViewDocument">View Document</sys:String>
+    <sys:String x:Key="ViewExamples">View Examples</sys:String>
+
+    <sys:String x:Key="Language">Language</sys:String>
+    <sys:String x:Key="QuickStart">How to use</sys:String>
+
+    <sys:String x:Key="PROP_ButtonStyle">Gets or sets base style of button.</sys:String>
+    <sys:String x:Key="PROP_ClickStyle">Gets or sets button style when mouse clicked.</sys:String>
+    <sys:String x:Key="PROP_HoverBrush">Gets or sets button background when mouse enter.</sys:String>
+    <sys:String x:Key="PROP_ClickCoverBrush">Gets or sets button cover when mouse clicked.</sys:String>
+    <sys:String x:Key="PROP_CornerRadius">Gets or sets corner radius of button.</sys:String>
+    <sys:String x:Key="PROP_IsWaiting">Gets or sets whether the button is in waiting mode.Button will be disabled when waiting.</sys:String>
+    <sys:String x:Key="PROP_WaitingContent">gets or sets content of the button when waiting.</sys:String>
+    <sys:String x:Key="PROP_Icon">gets or sets icon of the button. Icon property can be set with any control, fontawesome icon or image uri source (will convert to image automatically) to its value.</sys:String>
+
+</ResourceDictionary>

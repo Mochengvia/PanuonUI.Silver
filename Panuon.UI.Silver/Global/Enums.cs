@@ -56,7 +56,7 @@ namespace Panuon.UI.Silver
         Standard,
         Classic,
         Modern,
-        Chain
+        Chain,
     }
 
     public enum SelectMode
@@ -75,20 +75,6 @@ namespace Panuon.UI.Silver
     {
         Any,
         OnlyOne,
-    }
-    #endregion
-
-    #region TextBox
-    public enum TextBoxStyle
-    {
-        Standard,
-    }
-    #endregion
-
-    #region Password
-    public enum PasswordBoxStyle
-    {
-        Standard,
     }
     #endregion
 
@@ -167,6 +153,14 @@ namespace Panuon.UI.Silver
     {
         Standard,
         Classic,
+    }
+    #endregion
+
+    #region ImageCuter
+    public enum ImageType
+    {
+        Rectangle,
+        Square,
     }
     #endregion
 }

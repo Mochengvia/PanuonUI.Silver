@@ -185,12 +185,26 @@
                                             </Grid>
                                         </ToggleButton.Content>
                                     </ToggleButton>
-                                    <ContentPresenter x:Name="PART_Header"
-                                                      Grid.Column="1"
-                                                      Margin="{TemplateBinding Padding}"
-                                                      ContentSource="Header"
-                                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                    <Grid x:Name="GrdContent"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          Grid.Column="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label x:Name="LblIcon"
+                                               Content="{Binding Path=(local:TreeViewHelper.ItemIcon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
+                                               Foreground="{TemplateBinding Foreground}"
+                                               FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
+                                               VerticalAlignment="Center"
+                                               Margin="5,0,0,0" />
+                                        <ContentPresenter x:Name="PART_Header"
+                                                          Grid.Column="1"
+                                                          ContentSource="Header"
+                                                          Margin="{TemplateBinding Padding}"
+                                                          VerticalAlignment="Center" />
+                                    </Grid>
                                     <ItemsPresenter x:Name="ItemsHost"
                                                     Grid.Row="1"
                                                     Grid.Column="1"
@@ -198,6 +212,12 @@
                                 </Grid>
                             </Border>
                             <ControlTemplate.Triggers>
+                                <DataTrigger Binding="{Binding Path=(local:TreeViewHelper.ItemIcon), RelativeSource={RelativeSource Self}}"
+                                             Value="{x:Null}">
+                                    <Setter TargetName="LblIcon"
+                                            Property="Visibility"
+                                            Value="Collapsed" />
+                                </DataTrigger>
                                 <Trigger Property="IsExpanded"
                                          Value="False">
                                     <Setter TargetName="ItemsHost"
@@ -252,11 +272,25 @@
                                         <RowDefinition Height="{Binding Path=(local:TreeViewHelper.ItemHeight),RelativeSource={RelativeSource AncestorType=TreeView},Mode=OneWay,Converter={StaticResource GridLengthConverter}}" />
                                         <RowDefinition />
                                     </Grid.RowDefinitions>
-                                    <ContentPresenter x:Name="PART_Header"
-                                                      Margin="{TemplateBinding Padding}"
-                                                      ContentSource="Header"
-                                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                    <Grid x:Name="GrdContent"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label x:Name="LblIcon"
+                                               Content="{Binding Path=(local:TreeViewHelper.ItemIcon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
+                                               Foreground="{TemplateBinding Foreground}"
+                                               FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
+                                               VerticalAlignment="Center"
+                                               Margin="5,0,0,0"/>
+                                        <ContentPresenter x:Name="PART_Header"
+                                                          Grid.Column="1"
+                                                          Margin="{TemplateBinding Padding}"
+                                                          ContentSource="Header"
+                                                          VerticalAlignment="Center" />
+                                    </Grid>
                                     <ToggleButton x:Name="Toggle"
                                                   Width="12"
                                                   Margin="0,0,10,0"
@@ -306,6 +340,12 @@
                                 </Grid>
                             </Grid>
                             <ControlTemplate.Triggers>
+                                <DataTrigger Binding="{Binding Path=(local:TreeViewHelper.ItemIcon), RelativeSource={RelativeSource Self}}"
+                                             Value="{x:Null}">
+                                    <Setter TargetName="LblIcon"
+                                            Property="Visibility"
+                                            Value="Collapsed" />
+                                </DataTrigger>
                                 <Trigger Property="IsExpanded"
                                          Value="False">
                                     <Setter TargetName="ItemsHost"
@@ -380,12 +420,26 @@
                                     </Grid.ColumnDefinitions>
                                     <Rectangle x:Name="Rect"
                                                Fill="#E0E0E0" />
-                                    <ContentPresenter x:Name="PART_Header"
-                                                      Grid.Column="1"
-                                                      Margin="{TemplateBinding Padding}"
-                                                      ContentSource="Header"
-                                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                    <Grid x:Name="GrdContent"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          Grid.Column="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label x:Name="LblIcon"
+                                               Content="{Binding Path=(local:TreeViewHelper.ItemIcon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
+                                               Foreground="{TemplateBinding Foreground}"
+                                               FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
+                                               VerticalAlignment="Center"
+                                               Margin="5,0,0,0" />
+                                        <ContentPresenter x:Name="PART_Header"
+                                                          Grid.Column="1"
+                                                          ContentSource="Header"
+                                                          Margin="{TemplateBinding Padding}"
+                                                          VerticalAlignment="Center" />
+                                    </Grid>
                                     <ItemsPresenter x:Name="ItemsHost"
                                                     Grid.Row="1"
                                                     Grid.Column="1"
@@ -394,6 +448,12 @@
                                 </Grid>
                             </Grid>
                             <ControlTemplate.Triggers>
+                                <DataTrigger Binding="{Binding Path=(local:TreeViewHelper.ItemIcon), RelativeSource={RelativeSource Self}}"
+                                             Value="{x:Null}">
+                                    <Setter TargetName="LblIcon"
+                                            Property="Visibility"
+                                            Value="Collapsed" />
+                                </DataTrigger>
                                 <Trigger Property="IsExpanded"
                                          Value="False">
                                     <Setter TargetName="ItemsHost"
@@ -464,7 +524,7 @@
                                                    StrokeDashArray="2"
                                                    VerticalAlignment="Center"
                                                    Visibility="Visible"
-                                                   Margin="-7,0,0,0" />
+                                                   Margin="-7,0,0,0"/>
                                         <ToggleButton x:Name="Toggle"
                                                       Grid.Column="1"
                                                       Width="13"
@@ -500,12 +560,27 @@
                                             </ToggleButton.Content>
                                         </ToggleButton>
                                     </Grid>
-                                    <ContentPresenter x:Name="PART_Header"
-                                                      Grid.Column="1"
-                                                      Margin="{TemplateBinding Padding}"
-                                                      ContentSource="Header"
-                                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                    <Grid x:Name="GrdContent"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          
+                                          Grid.Column="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label x:Name="LblIcon"
+                                               Content="{Binding Path=(local:TreeViewHelper.ItemIcon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
+                                               Foreground="{TemplateBinding Foreground}"
+                                               FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
+                                               VerticalAlignment="Center"
+                                               Margin="5,0,0,0" />
+                                        <ContentPresenter x:Name="PART_Header"
+                                                          Grid.Column="1"
+                                                          ContentSource="Header"
+                                                          VerticalAlignment="Center"
+                                                          Margin="{TemplateBinding Padding}" />
+                                    </Grid>
                                     <Rectangle x:Name="BorderVerticalChain"
                                                RenderOptions.EdgeMode="Aliased"
                                                Grid.Row="1"
@@ -514,7 +589,7 @@
                                                StrokeDashArray="3"
                                                HorizontalAlignment="Center"
                                                Visibility="Collapsed"
-                                               Margin="{Binding Path=(local:TreeViewHelper.ItemHeight),RelativeSource={RelativeSource AncestorType=TreeView},Mode=OneWay,Converter={StaticResource TreeViewVerticalChainConverter}}" />
+                                               Margin="{Binding Path=(local:TreeViewHelper.ItemHeight),RelativeSource={RelativeSource AncestorType=TreeView},Mode=OneWay,Converter={StaticResource TreeViewVerticalChainConverter}}"/>
                                     <ItemsPresenter x:Name="ItemsHost"
                                                     Grid.Row="1"
                                                     Grid.Column="1"
@@ -522,6 +597,12 @@
                                 </Grid>
                             </Border>
                             <ControlTemplate.Triggers>
+                                <DataTrigger Binding="{Binding Path=(local:TreeViewHelper.ItemIcon), RelativeSource={RelativeSource Self}}"
+                                             Value="{x:Null}">
+                                    <Setter TargetName="LblIcon"
+                                            Property="Visibility"
+                                            Value="Collapsed" />
+                                </DataTrigger>
                                 <Trigger Property="IsExpanded"
                                          Value="True">
                                     <Setter TargetName="ItemsHost"
@@ -545,7 +626,8 @@
                                 </Trigger>
                                 <Trigger Property="IsSelected"
                                          Value="True">
-                                    <Setter Property="Foreground"
+                                    <Setter
+                                            Property="Foreground"
                                             Value="{Binding Path=(local:TreeViewHelper.SelectedBrush),RelativeSource={RelativeSource  AncestorType=TreeView},Mode=OneWay}" />
                                 </Trigger>
                             </ControlTemplate.Triggers>

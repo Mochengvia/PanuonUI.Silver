@@ -122,7 +122,7 @@
                                                           Data="M5,4 H14 L9.5,10 Z"
                                                           Width="15"
                                                           Height="15"
-                                                          Fill="{TemplateBinding Foreground}" />
+                                                          Fill="{TemplateBinding Foreground}"/>
                                                     <Path x:Name="arrow2"
                                                           Opacity="0"
                                                           VerticalAlignment="Center"
@@ -198,7 +198,7 @@
                                         Background="{TemplateBinding Background}"
                                         BorderBrush="{TemplateBinding BorderBrush}"
                                         BorderThickness="{TemplateBinding BorderThickness}"
-                                        CornerRadius="{Binding Path=(local:ComboBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}">
+                                        CornerRadius="2">
                                     <Border.Effect>
                                         <DropShadowEffect ShadowDepth="0"
                                                           BlurRadius="10"
@@ -229,7 +229,7 @@
                                                   Style="{DynamicResource MiniScrollViewer}"
                                                   Margin="1,5,1,15"
                                                   MaxHeight="{TemplateBinding MaxDropDownHeight}">
-                                        <ItemsPresenter />
+                                            <ItemsPresenter />
                                     </ScrollViewer>
                                 </Grid>
                             </Grid>
@@ -279,6 +279,13 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <Trigger  Property="IsEnabled"
+                      Value="False">
+                <Setter Property="Opacity"
+                        Value="0.4"></Setter>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
     <Style TargetType="{x:Type ComboBoxItem}">
@@ -336,5 +343,12 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <Trigger  Property="IsEnabled"
+                      Value="False">
+                <Setter Property="Opacity"
+                        Value="0.4"></Setter>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 </ResourceDictionary>

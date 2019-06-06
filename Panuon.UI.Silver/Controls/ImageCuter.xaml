@@ -1,0 +1,89 @@
+﻿<UserControl x:Class="Panuon.UI.Silver.ImageCuter"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Panuon.UI.Silver"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             x:Name="imagecuter">
+    <Grid Width="Auto"
+          Height="Auto">
+        <Image VerticalAlignment="Stretch"
+               HorizontalAlignment="Stretch"
+               SizeChanged="Img_SizeChanged"
+               Source="{Binding ImageSource,ElementName=imagecuter}"
+               Stretch="Uniform" />
+        <Canvas x:Name="CvaMain">
+            <local:ResizeContainer x:Name="ResizeContainer"
+                                   Visibility="Hidden"
+                                   MinHeight="{Binding ImageMinHeight,ElementName=imagecuter}"
+                                   MinWidth="{Binding ImageMinWidth,ElementName=imagecuter}"
+                                   MaxHeight="{Binding ImageMaxHeight,ElementName=imagecuter}"
+                                   MaxWidth="{Binding ImageMaxWidth,ElementName=imagecuter}"
+                                   LimitInParent="True"
+                                   Canvas.Top="0"
+                                   Canvas.Left="0">
+                <Grid>
+                    <Grid Background="#77DDDDDD">
+                        <Grid>
+                            <Rectangle StrokeThickness="1"
+                                       Stroke="#33AAAAAA"
+                                       StrokeDashArray="2,1"></Rectangle>
+                            <Border Height="10"
+                                    Width="10"
+                                    VerticalAlignment="Top"
+                                    HorizontalAlignment="Left"
+                                    BorderThickness="2,2,0,0"
+                                    BorderBrush="#FFFFFF"></Border>
+                            <Border Height="10"
+                                    Width="10"
+                                    VerticalAlignment="Top"
+                                    HorizontalAlignment="Right"
+                                    BorderThickness="0,2,2,0"
+                                    BorderBrush="#FFFFFF"></Border>
+                            <Border Height="10"
+                                    Width="10"
+                                    VerticalAlignment="Bottom"
+                                    HorizontalAlignment="Left"
+                                    BorderThickness="2,0,0,2"
+                                    BorderBrush="#FFFFFF"></Border>
+                            <Border Height="10"
+                                    Width="10"
+                                    VerticalAlignment="Bottom"
+                                    HorizontalAlignment="Right"
+                                    BorderThickness="0,0,2,2"
+                                    BorderBrush="#FFFFFF"></Border>
+                        </Grid>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Rectangle StrokeThickness="0,1"
+                                       Grid.Row="1"
+                                       Stroke="#FFFFFF"
+                                       StrokeDashArray="2,1"></Rectangle>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Rectangle StrokeThickness="0,1"
+                                       Grid.Column="1"
+                                       Stroke="#FFFFFF"
+                                       StrokeDashArray="2,1"></Rectangle>
+                        </Grid>
+                    </Grid>
+                    <local:DragableThumb DragTarget="{Binding Path=.,ElementName=ResizeContainer}"
+                                         LimitInParent="True" />
+                </Grid>
+            </local:ResizeContainer>
+
+        </Canvas>
+    </Grid>
+</UserControl>

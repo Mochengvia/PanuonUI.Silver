@@ -372,6 +372,8 @@ namespace Panuon.UI.Silver
         private void InitDayPanel(int year, int month)
         {
             var count = GrdDay.Children.Count;
+
+            var group = Guid.NewGuid().ToString();
             for (int i = 0; i < 42 - count; i++)
             {
                 var border = new Border();
@@ -380,7 +382,7 @@ namespace Panuon.UI.Silver
 
                 var radioButton = new RadioButton()
                 {
-                    GroupName = "CALENDAR_DAY",
+                    GroupName = group,
                 };
                 RadioButtonHelper.SetRadioButtonStyle(radioButton, RadioButtonStyle.Button);
                 RadioButtonHelper.SetCornerRadius(radioButton, 0);
@@ -414,6 +416,7 @@ namespace Panuon.UI.Silver
         private void InitMonthPanel(int year)
         {
             var count = GrdMonth.Children.Count;
+            var group = Guid.NewGuid().ToString();
             for (int i = 0; i < 12 - count; i++)
             {
                 var border = new Border();
@@ -422,7 +425,7 @@ namespace Panuon.UI.Silver
 
                 var radioButton = new RadioButton()
                 {
-                    GroupName = "CALENDAR_MONTH",
+                    GroupName = group,
                     MaxHeight = 35,
                 };
                 RadioButtonHelper.SetRadioButtonStyle(radioButton, RadioButtonStyle.Button);
@@ -457,6 +460,7 @@ namespace Panuon.UI.Silver
         private void InitYearPanel(int year)
         {
             var count = GrdYear.Children.Count;
+            var group = Guid.NewGuid().ToString();
             for (int i = 0; i < 15 - count; i++)
             {
                 var border = new Border();
@@ -465,7 +469,7 @@ namespace Panuon.UI.Silver
 
                 var radioButton = new RadioButton()
                 {
-                    GroupName = "CALENDAR_YEAR",
+                    GroupName = group,
                     MaxHeight = 35,
                 };
                 RadioButtonHelper.SetRadioButtonStyle(radioButton, RadioButtonStyle.Button);

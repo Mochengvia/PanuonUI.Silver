@@ -574,11 +574,9 @@
                                                VerticalAlignment="Center" />
                                         <Grid Grid.Column="1">
                                             <ContentPresenter x:Name="Content"
-                                                              Grid.Column="1"
                                                               ContentSource="Content"
                                                               VerticalAlignment="Center" />
                                             <ContentControl x:Name="ContentHover"
-                                                            Grid.Column="1"
                                                             Content="{TemplateBinding Content}"
                                                             VerticalAlignment="Center"
                                                             Foreground="{Binding Path=(local:ButtonHelper.HoverBrush),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
@@ -586,7 +584,6 @@
                                                             FontSize="{TemplateBinding FontSize}"
                                                             Opacity="0" />
                                             <ContentControl x:Name="ContentClick"
-                                                            Grid.Column="1"
                                                             Content="{TemplateBinding Content}"
                                                             VerticalAlignment="Center"
                                                             Foreground="{Binding Path=(local:ButtonHelper.ClickCoverBrush),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"

@@ -13,6 +13,7 @@
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -23,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,6 +34,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -53,18 +56,70 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Views\MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Construction\PropertyChangedBase.cs" />
+    <Compile Include="Models\ComboBoxItemModel.cs" />
+    <Compile Include="Models\MultiSelectorItemModel.cs" />
+    <Compile Include="Models\PropertyModel.cs" />
+    <Compile Include="Models\TabItemModel.cs" />
+    <Compile Include="Models\TagItemModel.cs" />
+    <Compile Include="Models\TreeViewItemModel.cs" />
+    <Compile Include="Utils\LanguageInfo.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\SIMViewModel.cs" />
+    <Compile Include="Views\Examples\HomeExampleWindow.xaml.cs">
+      <DependentUpon>HomeExampleWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\Partial\CalendarView.xaml.cs">
+      <DependentUpon>CalendarView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Partial\TabControlView.xaml.cs">
+      <DependentUpon>TabControlView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Partial\TreeviewView.xaml.cs">
+      <DependentUpon>TreeviewView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Partial\TagPanelView.xaml.cs">
+      <DependentUpon>TagPanelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Partial\LoadingView.xaml.cs">
+      <DependentUpon>LoadingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Partial\RadioButtonView.xaml.cs">
+      <DependentUpon>RadioButtonView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Partial\CheckBoxView.xaml.cs">
+      <DependentUpon>CheckBoxView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Partial\PasswordBoxView.xaml.cs">
+      <DependentUpon>PasswordBoxView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Partial\ProgressBarView.xaml.cs">
+      <DependentUpon>ProgressBarView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Partial\ComboBoxView.xaml.cs">
+      <DependentUpon>ComboBoxView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Partial\TextBoxView.xaml.cs">
+      <DependentUpon>TextBoxView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Partial\ButtonView.xaml.cs">
+      <DependentUpon>ButtonView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Partial\ImageCuterView.xaml.cs">
+      <DependentUpon>ImageCuterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Partial\IntroductionView.xaml.cs">
+      <DependentUpon>IntroductionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Partial\WindowView.xaml.cs">
+      <DependentUpon>WindowView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -85,10 +140,93 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Resources\en-US.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\zh-CN.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Examples\HomeExampleWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Partial\CalendarView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Partial\TabControlView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Partial\TreeviewView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Partial\TagPanelView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Partial\LoadingView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Partial\RadioButtonView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Partial\CheckBoxView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Partial\PasswordBoxView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Partial\ProgressBarView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Partial\ComboBoxView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Partial\TextBoxView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Partial\ButtonView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Partial\ImageCuterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Partial\IntroductionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Partial\WindowView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Panuon.UI.Silver\Panuon.UI.Silver.csproj">
@@ -96,6 +234,19 @@
       <Name>Panuon.UI.Silver</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Images\cuter_test.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icon\dashboard.png" />
+    <Resource Include="Resources\Icon\home.png" />
+    <Resource Include="Resources\Icon\branch.png" />
+    <Resource Include="Resources\Icon\history.png" />
+    <Resource Include="Resources\Icon\config.png" />
+    <Resource Include="Resources\Icon\lab.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\head.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

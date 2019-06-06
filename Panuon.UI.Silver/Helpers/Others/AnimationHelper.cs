@@ -331,7 +331,6 @@ namespace Panuon.UI.Silver
         private static void OnGradualInChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var element = d as FrameworkElement;
-
             var collection = new GradientStopCollection();
 
             var stop1 = new GradientStop() { Offset = 0, Color = Colors.White };
@@ -351,7 +350,7 @@ namespace Panuon.UI.Silver
 
             if (element.IsLoaded)
             {
-                var duration = GetDurationSeconds(element);
+               var duration = GetDurationSeconds(element);
                 var beginSeconds = GetBeginTimeSeconds(element);
                 stop2.BeginAnimation(GradientStop.OffsetProperty, GetDoubleAnimation(1, TimeSpan.FromSeconds(duration), TimeSpan.FromSeconds(beginSeconds)));
                 stop2.BeginAnimation(GradientStop.ColorProperty, GetColorAnimation(Colors.White, TimeSpan.FromSeconds(duration / 0.5), TimeSpan.FromSeconds(duration * 0.75)));

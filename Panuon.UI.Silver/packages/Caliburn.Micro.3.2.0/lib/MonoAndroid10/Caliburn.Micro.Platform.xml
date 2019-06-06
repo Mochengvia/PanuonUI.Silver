@@ -1,0 +1,360 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Caliburn.Micro.Platform</name>
+    </assembly>
+    <members>
+        <member name="T:Caliburn.Micro.ActivityEventArgs">
+            <summary>
+            Arguments for activity events
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.ActivityEventArgs.#ctor(Android.App.Activity)">
+            <summary>
+            Creates a new ActivityEventArgs.
+            </summary>
+            <param name="activity">The activity this event corresponds to.</param>
+        </member>
+        <member name="P:Caliburn.Micro.ActivityEventArgs.Activity">
+            <summary>
+            The activity this event corresponds to.
+            </summary>
+        </member>
+        <member name="T:Caliburn.Micro.ActivityLifecycleCallbackHandler">
+            <summary>
+            Handles callbacks for the activity lifecycle and exposes them as events
+            </summary>
+        </member>
+        <member name="E:Caliburn.Micro.ActivityLifecycleCallbackHandler.ActivityCreated">
+            <summary>
+            Invoked when an activity is created
+            </summary>
+        </member>
+        <member name="E:Caliburn.Micro.ActivityLifecycleCallbackHandler.ActivityDestoryed">
+            <summary>
+            Invoked when an acitivty is destroyed
+            </summary>
+        </member>
+        <member name="E:Caliburn.Micro.ActivityLifecycleCallbackHandler.ActivityPaused">
+            <summary>
+            Invoked when an acitivty is paused
+            </summary>
+        </member>
+        <member name="E:Caliburn.Micro.ActivityLifecycleCallbackHandler.ActivityResumed">
+            <summary>
+            Invoked when an acitivty is resumed
+            </summary>
+        </member>
+        <member name="E:Caliburn.Micro.ActivityLifecycleCallbackHandler.ActivitySaveInstanceState">
+            <summary>
+            Invoked when an acitities instance state is saved
+            </summary>
+        </member>
+        <member name="E:Caliburn.Micro.ActivityLifecycleCallbackHandler.ActivityStarted">
+            <summary>
+            Invoked when an activity is started
+            </summary>
+        </member>
+        <member name="E:Caliburn.Micro.ActivityLifecycleCallbackHandler.ActivityStopped">
+            <summary>
+            Invoked when an activity is stopped
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.ActivityLifecycleCallbackHandler.OnActivityCreated(Android.App.Activity,Android.OS.Bundle)">
+            <summary>
+            Invokes the ActivityCreated event
+            </summary>
+            <param name="activity">The activity</param>
+            <param name="savedInstanceState">The saved instance state</param>
+        </member>
+        <member name="M:Caliburn.Micro.ActivityLifecycleCallbackHandler.OnActivityDestroyed(Android.App.Activity)">
+            <summary>
+            Invokes the ActivityDestroyed event
+            </summary>
+            <param name="activity">The activity</param>
+        </member>
+        <member name="M:Caliburn.Micro.ActivityLifecycleCallbackHandler.OnActivityPaused(Android.App.Activity)">
+            <summary>
+            Invokes the ActivityPaused event
+            </summary>
+            <param name="activity">The activity</param>
+        </member>
+        <member name="M:Caliburn.Micro.ActivityLifecycleCallbackHandler.OnActivityResumed(Android.App.Activity)">
+            <summary>
+            Invokes the ActivityResumed event
+            </summary>
+            <param name="activity">The activity</param>
+        </member>
+        <member name="M:Caliburn.Micro.ActivityLifecycleCallbackHandler.OnActivitySaveInstanceState(Android.App.Activity,Android.OS.Bundle)">
+            <summary>
+            Invokes the ActivitySaveInstanceState event
+            </summary>
+            <param name="activity">The activity</param>
+            <param name="outState">The output state</param>
+        </member>
+        <member name="M:Caliburn.Micro.ActivityLifecycleCallbackHandler.OnActivityStarted(Android.App.Activity)">
+            <summary>
+            Invokes the ActivityStarted event
+            </summary>
+            <param name="activity">The activity</param>
+        </member>
+        <member name="M:Caliburn.Micro.ActivityLifecycleCallbackHandler.OnActivityStopped(Android.App.Activity)">
+            <summary>
+            Invokes the ActivityStopped event
+            </summary>
+            <param name="activity">The activity</param>
+        </member>
+        <member name="T:Caliburn.Micro.AndroidPlatformProvider">
+            <summary>
+            A <see cref="T:Caliburn.Micro.IPlatformProvider"/> implementation for the Xamarin Android platfrom.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.AndroidPlatformProvider.#ctor(Android.App.Application)">
+            <summary>
+            Creates an instance of <see cref="T:Caliburn.Micro.AndroidPlatformProvider"/>.
+            </summary>
+            <param name="application">The Android Application</param>
+        </member>
+        <member name="P:Caliburn.Micro.AndroidPlatformProvider.InDesignMode">
+            <summary>
+              Indicates whether or not the framework is in design-time mode.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.AndroidPlatformProvider.BeginOnUIThread(System.Action)">
+            <summary>
+              Executes the action on the UI thread asynchronously.
+            </summary>
+            <param name="action">The action to execute.</param>
+        </member>
+        <member name="M:Caliburn.Micro.AndroidPlatformProvider.OnUIThreadAsync(System.Action)">
+            <summary>
+              Executes the action on the UI thread asynchronously.
+            </summary>
+            <param name = "action">The action to execute.</param>
+        </member>
+        <member name="M:Caliburn.Micro.AndroidPlatformProvider.OnUIThread(System.Action)">
+            <summary>
+              Executes the action on the UI thread.
+            </summary>
+            <param name = "action">The action to execute.</param>
+        </member>
+        <member name="M:Caliburn.Micro.AndroidPlatformProvider.GetFirstNonGeneratedView(System.Object)">
+            <summary>
+            Used to retrieve the root, non-framework-created view.
+            </summary>
+            <param name="view">The view to search.</param>
+            <returns>The root element that was not created by the framework.</returns>
+            <remarks>In certain instances the services create UI elements.
+            For example, if you ask the window manager to show a UserControl as a dialog, it creates a window to host the UserControl in.
+            The WindowManager marks that element as a framework-created element so that it can determine what it created vs. what was intended by the developer.
+            Calling GetFirstNonGeneratedView allows the framework to discover what the original element was. 
+            </remarks>
+        </member>
+        <member name="M:Caliburn.Micro.AndroidPlatformProvider.ExecuteOnFirstLoad(System.Object,System.Action{System.Object})">
+            <summary>
+            Executes the handler the fist time the view is loaded.
+            </summary>
+            <param name="view">The view.</param>
+            <param name="handler">The handler.</param>
+        </member>
+        <member name="M:Caliburn.Micro.AndroidPlatformProvider.ExecuteOnLayoutUpdated(System.Object,System.Action{System.Object})">
+            <summary>
+            Executes the handler the next time the view's LayoutUpdated event fires.
+            </summary>
+            <param name="view">The view.</param>
+            <param name="handler">The handler.</param>
+        </member>
+        <member name="M:Caliburn.Micro.AndroidPlatformProvider.GetViewCloseAction(System.Object,System.Collections.Generic.ICollection{System.Object},System.Nullable{System.Boolean})">
+            <summary>
+            Get the close action for the specified view model.
+            </summary>
+            <param name="viewModel">The view model to close.</param>
+            <param name="views">The associated views.</param>
+            <param name="dialogResult">The dialog result.</param>
+            <returns>An <see cref="T:System.Action"/> to close the view model.</returns>
+        </member>
+        <member name="T:Caliburn.Micro.CaliburnApplication">
+            <summary>
+            Encapsulates the app and its available services.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.CaliburnApplication.#ctor(System.IntPtr,Android.Runtime.JniHandleOwnership)">
+            <summary>
+            Creates an instance of <see cref="T:Caliburn.Micro.CaliburnApplication"/>.
+            </summary>
+            <param name="javaReference">A <see cref="T:System.IntPtr"/> which contains the <c>java.lang.Class</c> JNI value corresponding to this type.</param>
+            <param name="transfer">How to handle ownership</param>
+        </member>
+        <member name="M:Caliburn.Micro.CaliburnApplication.StartDesignTime">
+            <summary>
+            Called by the bootstrapper's constructor at design time to start the framework.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.CaliburnApplication.StartRuntime">
+            <summary>
+            Called by the bootstrapper's constructor at runtime to start the framework.
+            </summary>B
+        </member>
+        <member name="M:Caliburn.Micro.CaliburnApplication.Initialize">
+            <summary>
+            Start the framework.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.CaliburnApplication.Configure">
+            <summary>
+            Override to configure the framework and setup your IoC container.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.CaliburnApplication.SelectAssemblies">
+            <summary>
+            Override to tell the framework where to find assemblies to inspect for views, etc.
+            </summary>
+            <returns>A list of assemblies to inspect.</returns>
+        </member>
+        <member name="M:Caliburn.Micro.CaliburnApplication.GetInstance(System.Type,System.String)">
+            <summary>
+            Override this to provide an IoC specific implementation.
+            </summary>
+            <param name="service">The service to locate.</param>
+            <param name="key">The key to locate.</param>
+            <returns>The located service.</returns>
+        </member>
+        <member name="M:Caliburn.Micro.CaliburnApplication.GetAllInstances(System.Type)">
+            <summary>
+            Override this to provide an IoC specific implementation
+            </summary>
+            <param name="service">The service to locate.</param>
+            <returns>The located services.</returns>
+        </member>
+        <member name="M:Caliburn.Micro.CaliburnApplication.BuildUp(System.Object)">
+            <summary>
+            Override this to provide an IoC specific implementation.
+            </summary>
+            <param name="instance">The instance to perform injection on.</param>
+        </member>
+        <member name="T:Caliburn.Micro.ViewModelLocator">
+            <summary>
+              A strategy for determining which view model to use for a given view.
+            </summary>
+        </member>
+        <member name="F:Caliburn.Micro.ViewModelLocator.NameTransformer">
+            <summary>
+             Used to transform names.
+            </summary>
+        </member>
+        <member name="F:Caliburn.Micro.ViewModelLocator.InterfaceCaptureGroupName">
+            <summary>
+            The name of the capture group used as a marker for rules that return interface types
+            </summary>
+        </member>
+        <member name="M:Caliburn.Micro.ViewModelLocator.ConfigureTypeMappings(Caliburn.Micro.TypeMappingConfiguration)">
+            <summary>
+            Specifies how type mappings are created, including default type mappings. Calling this method will
+            clear all existing name transformation rules and create new default type mappings according to the
+            configuration.
+            </summary>
+            <param name="config">An instance of TypeMappingConfiguration that provides the settings for configuration</param>
+        </member>
+        <member name="M:Caliburn.Micro.ViewModelLocator.AddDefaultTypeMapping(System.String)">
+            <summary>
+            Adds a default type mapping using the standard namespace mapping convention
+            </summary>
+            <param name="viewSuffix">Suffix for type name. Should  be "View" or synonym of "View". (Optional)</param>
+        </member>
+        <member name="M:Caliburn.Micro.ViewModelLocator.AddTypeMapping(System.String,System.String,System.String[],System.String)">
+            <summary>
+            Adds a standard type mapping based on namespace RegEx replace and filter patterns
+            </summary>
+            <param name="nsSourceReplaceRegEx">RegEx replace pattern for source namespace</param>
+            <param name="nsSourceFilterRegEx">RegEx filter pattern for source namespace</param>
+            <param name="nsTargetsRegEx">Array of RegEx replace values for target namespaces</param>
+            <param name="viewSuffix">Suffix for type name. Should  be "View" or synonym of "View". (Optional)</param>
+        </member>
+        <member name="M:Caliburn.Micro.ViewModelLocator.AddTypeMapping(System.String,System.String,System.String,System.String)">
+            <summary>
+            Adds a standard type mapping based on namespace RegEx replace and filter patterns
+            </summary>
+            <param name="nsSourceReplaceRegEx">RegEx replace pattern for source namespace</param>
+            <param name="nsSourceFilterRegEx">RegEx filter pattern for source namespace</param>
+            <param name="nsTargetRegEx">RegEx replace value for target namespace</param>
+            <param name="viewSuffix">Suffix for type name. Should  be "View" or synonym of "View". (Optional)</param>
+        </member>
+        <member name="M:Caliburn.Micro.ViewModelLocator.AddNamespaceMapping(System.String,System.String[],System.String)">
+            <summary>
+            Adds a standard type mapping based on simple namespace mapping
+            </summary>
+            <param name="nsSource">Namespace of source type</param>
+            <param name="nsTargets">Namespaces of target type as an array</param>
+            <param name="viewSuffix">Suffix for type name. Should  be "View" or synonym of "View". (Optional)</param>
+        </member>
+        <member name="M:Caliburn.Micro.ViewModelLocator.AddNamespaceMapping(System.String,System.String,System.String)">
+            <summary>
+            Adds a standard type mapping based on simple namespace mapping
+            </summary>
+            <param name="nsSource">Namespace of source type</param>
+            <param name="nsTarget">Namespace of target type</param>
+            <param name="viewSuffix">Suffix for type name. Should  be "View" or synonym of "View". (Optional)</param>
+        </member>
+        <member name="M:Caliburn.Micro.ViewModelLocator.AddSubNamespaceMapping(System.String,System.String[],System.String)">
+            <summary>
+            Adds a standard type mapping by substituting one subnamespace for another
+            </summary>
+            <param name="nsSource">Subnamespace of source type</param>
+            <param name="nsTargets">Subnamespaces of target type as an array</param>
+            <param name="viewSuffix">Suffix for type name. Should  be "View" or synonym of "View". (Optional)</param>
+        </member>
+        <member name="M:Caliburn.Micro.ViewModelLocator.AddSubNamespaceMapping(System.String,System.String,System.String)">
+            <summary>
+            Adds a standard type mapping by substituting one subnamespace for another
+            </summary>
+            <param name="nsSource">Subnamespace of source type</param>
+            <param name="nsTarget">Subnamespace of target type</param>
+            <param name="viewSuffix">Suffix for type name. Should  be "View" or synonym of "View". (Optional)</param>
+        </member>
+        <member name="M:Caliburn.Micro.ViewModelLocator.MakeInterface(System.String)">
+            <summary>
+              Makes a type name into an interface name.
+            </summary>
+            <param name = "typeName">The part.</param>
+            <returns></returns>
+        </member>
+        <member name="F:Caliburn.Micro.ViewModelLocator.TransformName">
+            <summary>
+            Transforms a View type name into all of its possible ViewModel type names. Accepts a flag
+            to include or exclude interface types.
+            </summary>
+            <returns>Enumeration of transformed names</returns>
+            <remarks>Arguments:
+            typeName = The name of the View type being resolved to its companion ViewModel.
+            includeInterfaces = Flag to indicate if interface types are included
+            </remarks>
+        </member>
+        <member name="F:Caliburn.Micro.ViewModelLocator.LocateTypeForViewType">
+            <summary>
+              Determines the view model type based on the specified view type.
+            </summary>
+            <returns>The view model type.</returns>
+            <remarks>
+              Pass the view type and receive a view model type. Pass true for the second parameter to search for interfaces.
+            </remarks>
+        </member>
+        <member name="F:Caliburn.Micro.ViewModelLocator.LocateForViewType">
+            <summary>
+              Locates the view model for the specified view type.
+            </summary>
+            <returns>The view model.</returns>
+            <remarks>
+              Pass the view type as a parameter and receive a view model instance.
+            </remarks>
+        </member>
+        <member name="F:Caliburn.Micro.ViewModelLocator.LocateForView">
+            <summary>
+              Locates the view model for the specified view instance.
+            </summary>
+            <returns>The view model.</returns>
+            <remarks>
+              Pass the view instance as a parameters and receive a view model instance.
+            </remarks>
+        </member>
+    </members>
+</doc>

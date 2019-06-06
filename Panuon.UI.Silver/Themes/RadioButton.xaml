@@ -12,7 +12,7 @@
     <converter:SwitchToggleMarginConverter x:Key="SwitchToggleMarginConverter" />
     <converter:Minus2Converter x:Key="Minus2Converter" />
 
-
+    
     <Style TargetType="{x:Type RadioButton}">
         <Setter Property="FontFamily"
                 Value="{StaticResource Default_FontFamily}" />
@@ -61,14 +61,21 @@
                                           Width="{Binding Path=(local:RadioButtonHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
                                           Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}">
                                         <Ellipse x:Name="Ellipse"
-                                                 Fill="{TemplateBinding Background}"
-                                                 Stroke="{TemplateBinding BorderBrush}"
-                                                 StrokeThickness="{TemplateBinding BorderThickness, Converter={StaticResource ThicknessToDoubleConverter}}" />
+                                                   Fill="{TemplateBinding Background}"
+                                                   Stroke="{TemplateBinding BorderBrush}"
+                                                   StrokeThickness="{TemplateBinding BorderThickness, Converter={StaticResource ThicknessToDoubleConverter}}"
+                                                   />
                                         <Ellipse x:Name="EllipseInner"
-                                                 Width="{Binding Path=(local:RadioButtonHelper.BoxWidth),Converter={StaticResource HalfConverter},RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                                                 Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),Converter={StaticResource HalfConverter},RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                                                 Fill="{Binding Path=(local:RadioButtonHelper.GlyphBrush),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                                                 StrokeThickness="0">
+                                              Width="{Binding Path=(local:RadioButtonHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                                              Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                                              Fill="{Binding Path=(local:RadioButtonHelper.GlyphBrush),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                                              StrokeThickness="0"
+                                                 RenderTransformOrigin="0.5,0.5">
+                                            <Ellipse.RenderTransform>
+                                                <ScaleTransform x:Name="Scale"
+                                                                ScaleX="0.4"
+                                                                ScaleY="0.4"/>
+                                            </Ellipse.RenderTransform>
                                         </Ellipse>
                                     </Grid>
                                     <ContentPresenter x:Name="Presenter"
@@ -77,7 +84,6 @@
                                                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                                       Margin="{TemplateBinding Padding}" />
-
                                 </Grid>
                             </Grid>
                             <ControlTemplate.Triggers>
@@ -100,6 +106,48 @@
                                     <Setter TargetName="EllipseInner"
                                             Property="Fill"
                                             Value="{Binding Path=(local:RadioButtonHelper.CheckedGlyphBrush),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}" />
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetName="Scale"
+                                                                 Storyboard.TargetProperty="ScaleX"
+                                                                 To="0.5"
+                                                                 Duration="0:0:0.5">
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <BackEase EasingMode="EaseOut"></BackEase>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+                                                <DoubleAnimation Storyboard.TargetName="Scale"
+                                                                 Storyboard.TargetProperty="ScaleY"
+                                                                 To="0.5"
+                                                                 Duration="0:0:0.5">
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <BackEase EasingMode="EaseOut"></BackEase>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetName="Scale"
+                                                                 Storyboard.TargetProperty="ScaleX"
+                                                                 Duration="0:0:0.5">
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <BackEase EasingMode="EaseOut"></BackEase>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+                                                <DoubleAnimation Storyboard.TargetName="Scale"
+                                                                 Storyboard.TargetProperty="ScaleY"
+                                                                 Duration="0:0:0.5">
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <BackEase EasingMode="EaseOut"></BackEase>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -374,6 +422,11 @@
                     </Setter.Value>
                 </Setter>
             </DataTrigger>
+            <Trigger  Property="IsEnabled"
+                      Value="False">
+                <Setter Property="Opacity"
+                        Value="0.4"></Setter>
+            </Trigger>
         </Style.Triggers>
     </Style>
 </ResourceDictionary>

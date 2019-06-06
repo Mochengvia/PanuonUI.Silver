@@ -1,10 +1,10 @@
 ﻿using Panuon.UI.Silver.Browser.ViewModels;
+using Panuon.UI.Silver.Browser.Views.Partial;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -12,14 +12,9 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Panuon.UI.Silver;
-using System.Threading.Tasks;
-using System.Threading;
-using System.Windows.Threading;
 
-namespace Panuon.UI.Silver.Browser
+namespace Panuon.UI.Silver.Browser.Views
 {
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
@@ -29,106 +24,81 @@ namespace Panuon.UI.Silver.Browser
         public MainWindow()
         {
             InitializeComponent();
+            LanguageInfo.Current = Thread.CurrentThread.CurrentCulture.IetfLanguageTag;
+            Instance = this;
             ViewModel = new MainViewModel();
             DataContext = ViewModel;
+
+            InitMenuItems();
         }
 
         #region Property
+        public static MainWindow Instance { get; set; }
+
         public MainViewModel ViewModel { get; set; }
         #endregion
 
         #region Event
-        private void BtnNormal_Click(object sender, RoutedEventArgs e)
+        private void BtnHelp_Click(object sender, RoutedEventArgs e)
         {
-            var button = sender as Button;
-            ButtonHelper.SetIsWaiting(Btn1, false);
-            ButtonHelper.SetIsWaiting(Btn2, false);
-            ButtonHelper.SetIsWaiting(Btn3, false);
-            ButtonHelper.SetIsWaiting(Btn4, false);
+            System.Diagnostics.Process.Start("https://github.com/Ruris/PanuonUI.Silver");
+        }
 
-            switch (button.Name)
+        private void TvMenu_SelectionChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            ActiveContent(TvMenu.SelectedValue as Type);
+        }
+        #endregion
+
+        #region Function
+        private void InitMenuItems()
+        {
+            ViewModel.MenuItems.Add(new Models.TreeViewItemModel(GetString("Introduction"), typeof(IntroductionView), true));
+            ViewModel.MenuItems.Add(new Models.TreeViewItemModel(GetString("Window"), typeof(WindowView)));
+            ViewModel.MenuItems.Add(new Models.TreeViewItemModel(GetString("Button"), typeof(ButtonView)));
+            ViewModel.MenuItems.Add(new Models.TreeViewItemModel(GetString("CheckBox"), typeof(CheckBoxView)));
+            ViewModel.MenuItems.Add(new Models.TreeViewItemModel(GetString("RadioButton"), typeof(RadioButtonView)));
+            ViewModel.MenuItems.Add(new Models.TreeViewItemModel(GetString("TextBox"), typeof(TextBoxView)));
+            ViewModel.MenuItems.Add(new Models.TreeViewItemModel(GetString("PasswordBox"), typeof(PasswordBoxView)));
+            ViewModel.MenuItems.Add(new Models.TreeViewItemModel(GetString("ComboBox"), typeof(ComboBoxView)));
+            ViewModel.MenuItems.Add(new Models.TreeViewItemModel(GetString("Treeview"), typeof(TreeviewView)));
+            ViewModel.MenuItems.Add(new Models.TreeViewItemModel(GetString("TabControl"), typeof(TabControlView)));
+            ViewModel.MenuItems.Add(new Models.TreeViewItemModel(GetString("ProgressBar"), typeof(ProgressBarView)));
+            ViewModel.MenuItems.Add(new Models.TreeViewItemModel(GetString("Calendar"), typeof(CalendarView)));
+            ViewModel.MenuItems.Add(new Models.TreeViewItemModel(GetString("TagPanel"), typeof(TagPanelView)));
+            ViewModel.MenuItems.Add(new Models.TreeViewItemModel(GetString("Loading"), typeof(LoadingView)));
+            ViewModel.MenuItems.Add(new Models.TreeViewItemModel(GetString("ImageCuter"), typeof(ImageCuterView)));
+        }
+
+        public void ResetMenuItemNames()
+        {
+            foreach(var menuItem in ViewModel.MenuItems)
             {
-                case "Btn1":
-                    ButtonHelper.SetIsWaiting(Btn1, true);
-                    break;
-                case "Btn2":
-                    ButtonHelper.SetIsWaiting(Btn2, true);
-                    break;
-                case "Btn3":
-                    ButtonHelper.SetIsWaiting(Btn3, true);
-                    break;
-                case "Btn4":
-                    ButtonHelper.SetIsWaiting(Btn4, true);
-                    break;
+                var type = menuItem.Value as Type;
+                if (type == null)
+                    continue;
+
+                menuItem.Header = GetString(type.Name.Remove(type.Name.Length - 4, 4));
             }
         }
 
-        private double _value = 60;
-        private void BtnAdd_Click(object sender, RoutedEventArgs e)
+        private void ActiveContent(Type menuValue)
         {
-            _value += 20;
-            _value = _value > 100 ? 100 : _value;
+            UIElement element = null;
 
-            ProgressBarHelper.SetAnimateTo(Pgb1, _value);
-            ProgressBarHelper.SetAnimateTo(Pgb2, _value);
+            if (menuValue != null)
+                element = Activator.CreateInstance(menuValue) as UIElement;    
+            
+            ContentControl.Content = element;
         }
 
-        private void BtnMinus_Click(object sender, RoutedEventArgs e)
+
+        public static string GetString(string resourceKey)
         {
-            _value -= 20;
-            _value = _value < 0 ? 0 : _value;
-
-            ProgressBarHelper.SetAnimateTo(Pgb1, _value);
-            ProgressBarHelper.SetAnimateTo(Pgb2, _value);
+            return Instance.FindResource(resourceKey) as string;
         }
-
-        private void BtnLeft_Click(object sender, RoutedEventArgs e)
-        {
-            Carousel.Index--;
-        }
-
-        private void BtnRight_Click(object sender, RoutedEventArgs e)
-        {
-            Carousel.Index++;
-        }
-
-        private void BtnHelp_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void BtnShowPopup_Click(object sender, RoutedEventArgs e)
-        {
-            WindowHelper.ShowPopup(this, "This is a popup message");
-        }
-
-        private void BtnShowMessage_Click(object sender, RoutedEventArgs e)
-        {
-            WindowHelper.ShowMessage("Hi !", "Tips", this);
-        }
-
-        private void BtnShowConfirm_Click(object sender, RoutedEventArgs e)
-        {
-            var result = WindowHelper.ShowConfirm("Are you sure ?", "Tips", this);
-        }
-
-        private void BtnShowWaiting_Click(object sender, RoutedEventArgs e)
-        {
-            //close after 2 seconds
-            var timer = new DispatcherTimer() { Interval = TimeSpan.FromSeconds(2) };
-            timer.Tick += delegate
-            {
-                WindowHelper.CloseWaiting();
-            };
-            timer.Start();
-
-            //show waiting
-            WindowHelper.ShowWaiting(this, "please wait ...", "Processing", () =>
-            {
-                WindowHelper.ShowPopup(this, "Task canceled !");
-            });
-        }
-
         #endregion
+
+        
     }
 }

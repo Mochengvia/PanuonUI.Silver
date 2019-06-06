@@ -20,4 +20,10 @@
     <converter:DoubleToCornerRadiusConverter x:Key="DoubleToCornerRadiusConverter" />
     <converter:CornerRadiusToDoubleConverter x:Key="CornerRadiusToDoubleConverter" />
     <converter:WidthAndHeightToSizeConverter x:Key="WidthAndHeightToSizeConverter" />
+
+    <converter:ObjectMemberPathConverter x:Key="ObjectMemberPathConverter" />
+    <converter:BooleanMemberPathConverter x:Key="BooleanMemberPathConverter" />
+
+    <converter:TagPanelBackgroundConverter x:Key="TagPanelBackgroundConverter" />
+    
 </ResourceDictionary>

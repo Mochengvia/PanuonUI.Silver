@@ -22,6 +22,16 @@ namespace Panuon.UI.Silver
         {
             Children = new ObservableCollection<UIElement>();
             Loaded += Carousel_Loaded;
+            SizeChanged += Carousel_SizeChanged;
+        }
+
+        private void Carousel_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            foreach (FrameworkElement child in Children)
+            {
+                child.Width = ActualWidth;
+                child.Height = ActualHeight;
+            }
         }
 
         public override void OnApplyTemplate()

@@ -85,5 +85,20 @@ namespace Panuon.UI.Silver
 
 
         #endregion
+
+        #region IsPercentVisible
+        public static bool GetIsPercentVisible(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(IsPercentVisibleProperty);
+        }
+
+        public static void SetIsPercentVisible(DependencyObject obj, bool value)
+        {
+            obj.SetValue(IsPercentVisibleProperty, value);
+        }
+
+        public static readonly DependencyProperty IsPercentVisibleProperty =
+            DependencyProperty.RegisterAttached("IsPercentVisible", typeof(bool), typeof(ProgressBarHelper));
+        #endregion
     }
 }

@@ -23,14 +23,10 @@
                 Value="10,5" />
         <Setter Property="local:GroupBoxHelper.ShadowColor"
                 Value="#AAAAAA" />
-        <Setter Property="Effect">
-            <Setter.Value>
-                <DropShadowEffect ShadowDepth="0"
-                                  BlurRadius="30"
-                                  Color="{Binding Path=(local:GroupBoxHelper.ShadowColor),RelativeSource={RelativeSource AncestorType=GroupBox}, Mode=OneWay}"
-                                  Opacity="0.5" />
-            </Setter.Value>
-        </Setter>
+        <Setter Property="BorderBrush"
+                Value="LightGray" />
+        <Setter Property="BorderThickness"
+                Value="1" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type GroupBox}">
