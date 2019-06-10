@@ -25,5 +25,6 @@
     <converter:BooleanMemberPathConverter x:Key="BooleanMemberPathConverter" />
 
     <converter:TagPanelBackgroundConverter x:Key="TagPanelBackgroundConverter" />
-    
+    <converter:TagPanelRemovableConverter x:Key="TagPanelRemovableConverter" />
+
 </ResourceDictionary>

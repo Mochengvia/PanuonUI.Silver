@@ -31,8 +31,7 @@ namespace Panuon.UI.Silver.Browser.Models
             get { return _canDelete; }
             set { _canDelete = value; NotifyPropertyChanged("CanDelete"); }
         }
-        private bool _canDelete;
-
+        private bool _canDelete = true;
 
         public Brush Background
         {

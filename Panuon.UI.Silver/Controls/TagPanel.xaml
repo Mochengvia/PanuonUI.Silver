@@ -43,7 +43,7 @@
                                 </Rectangle.Fill>
                             </Rectangle>
                             <StackPanel Orientation="Horizontal"
-                                        Margin="15,0,10,0">
+                                        Margin="15,0">
                                 <ContentControl VerticalAlignment="Center">
                                     <ContentControl.Content>
                                         <MultiBinding Converter="{StaticResource ObjectMemberPathConverter}">
@@ -56,11 +56,20 @@
                                 </ContentControl>
                                 <TextBlock x:Name="Txt"
                                            Text="×"
-                                           FontSize="16"
+                                           FontSize="18"
                                            VerticalAlignment="Center"
-                                           Margin="5,0,0,0" 
+                                           Margin="5,0,0,0"
                                            MouseLeftButtonDown="TxtRemove_MouseLeftButtonDown"
-                                           Tag="{Binding}"/>
+                                           Tag="{Binding}">
+                                    <TextBlock.Visibility>
+                                        <MultiBinding Converter="{StaticResource TagPanelRemovableConverter}">
+                                            <Binding Path="." />
+                                            <Binding Path="RemovableMemberPath"
+                                                     ElementName="tagPanel"
+                                                     Mode="OneWay" />
+                                        </MultiBinding>
+                                    </TextBlock.Visibility>
+                                </TextBlock>
                             </StackPanel>
                         </Grid>
                         <DataTemplate.Triggers>

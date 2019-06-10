@@ -27,4 +27,27 @@ namespace Panuon.UI.Silver.Converters
             return new object[] { DependencyProperty.UnsetValue, DependencyProperty.UnsetValue };
         }
     }
+
+    internal class TagPanelRemovableConverter : IMultiValueConverter
+    {
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        {
+            var item = values[0];
+            var displayMemberPath = values[1] as string;
+            if (item == null || displayMemberPath.IsNullOrEmpty())
+                return null;
+
+            var propertyInfo = item.GetType().GetProperty(displayMemberPath);
+            if (propertyInfo == null)
+                return null;
+            var result = propertyInfo.GetValue(item, null) as bool? ?? false;
+
+            return result ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        {
+            return new object[] { DependencyProperty.UnsetValue, DependencyProperty.UnsetValue };
+        }
+    }
 }
