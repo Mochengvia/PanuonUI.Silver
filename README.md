@@ -8,6 +8,9 @@ Panuon.UI的优化版本。一个漂亮的、使用样式与附加属性的WPF U
 This is a developing program.  
 这是一个正在开发的项目。
 
+Email : zeoun@qq.com  
+QQ Group : 718778191  
+Zhihu : @末城via
 
 # Examples 示例
 
