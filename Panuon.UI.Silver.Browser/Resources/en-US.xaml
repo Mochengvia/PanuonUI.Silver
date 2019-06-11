@@ -20,6 +20,7 @@
     <sys:String x:Key="Calendar">Calendar</sys:String>
     <sys:String x:Key="NeonLabel">NeonLabel</sys:String>
     <sys:String x:Key="DateTimePicker">DateTimePicker</sys:String>
+    <sys:String x:Key="DropDown">DropDown</sys:String>
     <sys:String x:Key="PropertyName">PropertyName</sys:String>
     <sys:String x:Key="PropertyType">PropertyType</sys:String>
     <sys:String x:Key="DefaultValue">DefaultValue</sys:String>

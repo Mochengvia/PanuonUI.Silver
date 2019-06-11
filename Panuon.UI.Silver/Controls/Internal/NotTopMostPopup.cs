@@ -43,41 +43,51 @@ namespace Panuon.UI.Silver
         {
             var element = Tag as FrameworkElement;
 
-            if(Placement == PlacementMode.Bottom)
+            if (Placement == PlacementMode.Bottom)
             {
                 var position = Mouse.GetPosition(this);
-                if (position.X < 0 || position.Y < 0 || position.X > (Child as FrameworkElement).ActualWidth || position.Y > (Child as FrameworkElement).ActualHeight)
+                if (position.X < 0 || position.Y < 0 || position.X > (Child as FrameworkElement).ActualWidth)
                 {
                     IsOpen = false;
+                    return;
                 }
                 else if (element != null)
                 {
-                    if (element.ActualWidth != 0 && position.X > element.ActualWidth && (position.Y > (Child as FrameworkElement).ActualHeight || position.Y < element.ActualHeight))
+                    if (element.ActualWidth != 0 && position.Y > (Child as FrameworkElement).ActualHeight + element.ActualHeight)
                     {
                         IsOpen = false;
+                        return;
+                    }
+                    if (element.ActualWidth != 0 && position.X > element.ActualWidth && (position.Y > (Child as FrameworkElement).ActualHeight + element.ActualHeight || position.Y < element.ActualHeight))
+                    {
+                        IsOpen = false;
+                        return;
                     }
                 }
             }
-            else if(Placement == PlacementMode.Left)
+            else if (Placement == PlacementMode.Left)
             {
                 var position = Mouse.GetPosition(this);
                 if (position.X > element.ActualWidth || position.Y > (Child as FrameworkElement).ActualHeight + element.ActualHeight)
                 {
                     IsOpen = false;
+                    return;
                 }
                 else if (element != null)
                 {
-                    if(position.X < -(Child as FrameworkElement).ActualWidth + element.ActualWidth || position.Y < 0 )
+                    if (position.X < -(Child as FrameworkElement).ActualWidth + element.ActualWidth || position.Y < 0)
                     {
                         IsOpen = false;
+                        return;
                     }
                     if (position.X > element.ActualWidth && (position.Y > (Child as FrameworkElement).ActualHeight || position.Y < element.ActualHeight))
                     {
                         IsOpen = false;
+                        return;
                     }
                 }
             }
-            
+
         }
 
         #region P/Invoke imports & definitions
