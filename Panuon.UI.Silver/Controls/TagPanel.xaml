@@ -17,7 +17,8 @@
     </UserControl.Resources>
     <Grid>
         <StackPanel>
-            <ItemsControl ItemsSource="{Binding ItemsSource,ElementName=tagPanel}">
+            <ItemsControl x:Name="ItemsControl"
+                          ItemsSource="{Binding ItemsSource,ElementName=tagPanel}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel />
@@ -42,7 +43,8 @@
                                     </MultiBinding>
                                 </Rectangle.Fill>
                             </Rectangle>
-                            <StackPanel Orientation="Horizontal"
+                            <StackPanel x:Name="StkMain"
+                                        Orientation="Horizontal"
                                         Margin="15,0">
                                 <ContentControl VerticalAlignment="Center">
                                     <ContentControl.Content>
@@ -56,9 +58,9 @@
                                 </ContentControl>
                                 <TextBlock x:Name="Txt"
                                            Text="×"
-                                           FontSize="18"
+                                           FontSize="16"
                                            VerticalAlignment="Center"
-                                           Margin="5,0,0,0"
+                                           Margin="5,0,-5,0"
                                            MouseLeftButtonDown="TxtRemove_MouseLeftButtonDown"
                                            Tag="{Binding}">
                                     <TextBlock.Visibility>

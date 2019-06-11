@@ -194,7 +194,7 @@
                                         Background="{Binding Path=(local:ButtonHelper.HoverBrush),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
                                         CornerRadius="{Binding Path=(local:ButtonHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
                                         Opacity="0" />
-                                <Border x:Name="BdrClickCover"
+                                <Border x:Name="BdrClick"
                                         BorderBrush="Transparent"
                                         BorderThickness="0"
                                         Background="{Binding Path=(local:ButtonHelper.ClickCoverBrush),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
@@ -217,6 +217,14 @@
                                                       x:Name="Content"
                                                       ContentSource="Content"
                                                       VerticalAlignment="Center" />
+                                    <ContentControl Grid.Column="1"
+                                                    x:Name="ContentHover"
+                                                    Foreground="#FFFFFF"
+                                                    Content="{TemplateBinding Content}"
+                                                    FontSize="{TemplateBinding FontSize}"
+                                                    FontFamily="{TemplateBinding FontFamily}"
+                                                    VerticalAlignment="Center" 
+                                                    Opacity="0"/>
                                 </Grid>
                                 <Grid x:Name="GrdWaiting"
                                       Visibility="Collapsed"
@@ -247,13 +255,14 @@
                                                                  Storyboard.TargetProperty="Opacity"
                                                                  To="1"
                                                                  Duration="{StaticResource Button_ShadeDuration}" />
-                                                <DoubleAnimation Storyboard.TargetName="BdrBack"
+                                                <DoubleAnimation Storyboard.TargetName="Content"
                                                                  Storyboard.TargetProperty="Opacity"
                                                                  To="0"
                                                                  Duration="{StaticResource Button_ShadeDuration}" />
-                                                <ColorAnimation Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)"
-                                                                To="#FFFFFF"
-                                                                Duration="{StaticResource Button_ShadeDuration}" />
+                                                <DoubleAnimation Storyboard.TargetName="ContentHover"
+                                                                 Storyboard.TargetProperty="Opacity"
+                                                                 To="1"
+                                                                 Duration="{StaticResource Button_ShadeDuration}" />
                                             </Storyboard>
                                         </BeginStoryboard>
                                     </Trigger.EnterActions>
@@ -263,11 +272,12 @@
                                                 <DoubleAnimation Storyboard.TargetName="BdrHover"
                                                                  Storyboard.TargetProperty="Opacity"
                                                                  Duration="{StaticResource Button_ShadeDuration}" />
-                                                <DoubleAnimation Storyboard.TargetName="BdrBack"
+                                                <DoubleAnimation Storyboard.TargetName="Content"
                                                                  Storyboard.TargetProperty="Opacity"
                                                                  Duration="{StaticResource Button_ShadeDuration}" />
-                                                <ColorAnimation Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)"
-                                                                Duration="{StaticResource Button_ShadeDuration}" />
+                                                <DoubleAnimation Storyboard.TargetName="ContentHover"
+                                                                 Storyboard.TargetProperty="Opacity"
+                                                                 Duration="{StaticResource Button_ShadeDuration}" />
                                             </Storyboard>
                                         </BeginStoryboard>
 
@@ -275,7 +285,7 @@
                                 </Trigger>
                                 <Trigger Property="IsPressed"
                                          Value="True">
-                                    <Setter TargetName="BdrClickCover"
+                                    <Setter TargetName="BdrClick"
                                             Property="Visibility"
                                             Value="Visible" />
                                 </Trigger>

@@ -1,7 +1,9 @@
 ﻿using System.Collections;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Markup;
 using System.Windows.Media;
 
 namespace Panuon.UI.Silver
@@ -9,13 +11,22 @@ namespace Panuon.UI.Silver
     /// <summary>
     /// TagPanel.xaml 的交互逻辑
     /// </summary>
+    [ContentProperty(nameof(Items))]
     public partial class TagPanel : UserControl
     {
-      
+
         public TagPanel()
         {
             InitializeComponent();
             Foreground = new SolidColorBrush(Colors.White);
+
+            Items.CollectionChanged += Items_CollectionChanged;
+        }
+
+        private void Items_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            if(ItemsSource != Items)
+                ItemsSource = Items;
         }
 
         #region RoutedEvent
@@ -64,7 +75,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty DisplayMemberPathProperty =
-            DependencyProperty.Register("DisplayMemberPath", typeof(string), typeof(TagPanel));
+            DependencyProperty.Register("DisplayMemberPath", typeof(string), typeof(TagPanel), new PropertyMetadata("Content"));
 
 
         public string RemovableMemberPath
@@ -74,7 +85,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty RemovableMemberPathProperty =
-            DependencyProperty.Register("RemovableMemberPath", typeof(string), typeof(TagPanel));
+            DependencyProperty.Register("RemovableMemberPath", typeof(string), typeof(TagPanel), new PropertyMetadata("Removable"));
 
         public double ItemHeight
         {
@@ -103,28 +114,18 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty ItemBackgroundMemberPathProperty =
-            DependencyProperty.Register("ItemBackgroundMemberPath", typeof(string), typeof(TagPanel));
-        #endregion
+            DependencyProperty.Register("ItemBackgroundMemberPath", typeof(string), typeof(TagPanel), new PropertyMetadata("Background"));
 
-        #region Internal Property
-        internal ICommand AddCommand
+        public ObservableCollection<TagItemModel> Items
         {
-            get { return (ICommand)GetValue(AddCommandProperty); }
-            set { SetValue(AddCommandProperty, value); }
+            get { return (ObservableCollection<TagItemModel>)GetValue(ItemsProperty); }
+            private set { SetValue(ItemsProperty, value); }
         }
 
-        internal static readonly DependencyProperty AddCommandProperty =
-            DependencyProperty.Register("AddCommand", typeof(ICommand), typeof(TagPanel), new PropertyMetadata());
+        public static readonly DependencyProperty ItemsProperty =
+            DependencyProperty.Register("Items", typeof(ObservableCollection<TagItemModel>), typeof(TagPanel), new PropertyMetadata(new ObservableCollection<TagItemModel>()));
 
 
-        internal ICommand RemoveCommand
-        {
-            get { return (ICommand)GetValue(RemoveCommandProperty); }
-            set { SetValue(RemoveCommandProperty, value); }
-        }
-
-        internal static readonly DependencyProperty RemoveCommandProperty =
-            DependencyProperty.Register("RemoveCommand", typeof(ICommand), typeof(TagPanel), new PropertyMetadata());
         #endregion
 
         private void TxtRemove_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
