@@ -191,7 +191,7 @@
                                           Grid.Column="1">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
                                         <Label x:Name="LblIcon"
                                                Content="{Binding Path=(local:TreeViewHelper.ItemIcon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
@@ -277,7 +277,7 @@
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
                                         <Label x:Name="LblIcon"
                                                Content="{Binding Path=(local:TreeViewHelper.ItemIcon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
@@ -426,7 +426,7 @@
                                           Grid.Column="1">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
                                         <Label x:Name="LblIcon"
                                                Content="{Binding Path=(local:TreeViewHelper.ItemIcon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
@@ -563,11 +563,10 @@
                                     <Grid x:Name="GrdContent"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                          
                                           Grid.Column="1">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
                                         <Label x:Name="LblIcon"
                                                Content="{Binding Path=(local:TreeViewHelper.ItemIcon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"

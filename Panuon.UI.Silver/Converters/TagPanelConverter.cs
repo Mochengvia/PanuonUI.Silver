@@ -19,7 +19,20 @@ namespace Panuon.UI.Silver.Converters
             if (propertyInfo == null)
                 return values[2];
 
-            return propertyInfo.GetValue(item, null);
+            var result = propertyInfo.GetValue(item, null);
+            if(result is Brush)
+            {
+                return result;
+            }
+            if(result is Color)
+            {
+                return new SolidColorBrush((Color)result);
+            }
+            if(result is string)
+            {
+                return new SolidColorBrush((Color)ColorConverter.ConvertFromString(result as string));
+            }
+            return result;
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)

@@ -15,6 +15,28 @@ namespace Panuon.UI.Silver.Browser.Models
             Content = content;
             Background = background;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="background">HEX Color, like #3E3E3E</param>
+        public TagItemModel(string content, string background = null)
+        {
+            Content = content;
+            Background = background;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="background">Color background</param>
+        public TagItemModel(string content, Color background)
+        {
+            Content = content;
+            Background = background;
+        }
         #endregion
 
         #region Property
@@ -33,12 +55,13 @@ namespace Panuon.UI.Silver.Browser.Models
         }
         private bool _canDelete = true;
 
-        public Brush Background
+
+        public object Background
         {
             get { return _background; }
             set { _background = value; NotifyPropertyChanged("Background"); }
         }
-        private Brush _background;
+        private object _background;
         #endregion
     }
 }

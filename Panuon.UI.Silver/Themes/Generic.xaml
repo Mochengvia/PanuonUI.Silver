@@ -7,7 +7,8 @@
     </ResourceDictionary.MergedDictionaries>
 
     <converter:MultiSelectorIsCheckedConverter x:Key="MultiSelectorIsCheckedConverter" />
-
+    <converter:DropDownBorderPathConverter x:Key="DropDownBorderPathConverter" />
+    
     <Style TargetType="{x:Type local:Loading}">
         <Setter Property="SnapsToDevicePixels"
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
@@ -618,6 +619,7 @@
                 Value="5,0,0,0"></Setter>
         <Setter Property="ShadowColor"
                 Value="#888888" />
+     
         <Setter Property="CheckBoxStyle">
             <Setter.Value>
                 <Style TargetType="{x:Type CheckBox}"
@@ -662,7 +664,7 @@
                         </Grid>
                         <ToggleButton x:Name="ToggleButton"
                                       Focusable="false"
-                                      IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                      IsChecked="{Binding Path=IsOpen, Mode=TwoWay, ElementName=Popup}"
                                       ClickMode="Press"
                                       Foreground="{TemplateBinding Foreground}"
                                       Background="Transparent"
@@ -739,14 +741,12 @@
                                 </Style>
                             </ToggleButton.Style>
                         </ToggleButton>
-                        <local:NotTopMostPopup IsOpen="{Binding IsDropDownOpen,RelativeSource={RelativeSource AncestorType=Control}}"
-                               Placement="Bottom"
-                               x:Name="Popup"
-                               Focusable="False"
-                               AllowsTransparency="True"
-                               StaysOpen="True"
-                               
-                               PopupAnimation="Slide">
+                        <local:NotTopMostPopup Placement="Bottom"
+                                               x:Name="Popup"
+                                               Focusable="False"
+                                               Tag="{Binding ElementName=ToggleButton}"
+                                               AllowsTransparency="True"
+                                               PopupAnimation="Slide">
                             <Grid MaxHeight="180"
                                   MinWidth="{TemplateBinding ActualWidth}"
                                   x:Name="DropDown">
@@ -842,6 +842,428 @@
         </Setter>
     </Style>
 
+    <Style TargetType="{x:Type local:DateTimePicker}">
+        <Setter Property="FontFamily"
+                Value="{StaticResource Default_FontFamily}" />
+        <Setter Property="SnapsToDevicePixels"
+                Value="{StaticResource Default_SnapsToDevicePixels}" />
+        <Setter Property="FontSize"
+                Value="{StaticResource Default_FontSize}" />
+        <Setter Property="FocusVisualStyle"
+                Value="{x:Null}" />
+        <Setter Property="Foreground"
+                Value="#3E3E3E"></Setter>
+        <Setter Property="Background"
+                Value="White"></Setter>
+        <Setter Property="BorderBrush"
+                Value="LightGray"></Setter>
+        <Setter Property="BorderThickness"
+                Value="1"></Setter>
+        <Setter Property="Padding"
+                Value="5,0,0,0"></Setter>
+        <Setter Property="ShadowColor"
+                Value="#888888" />
+        <Setter Property="CornerRadius"
+                Value="2" />
+        <Setter Property="Icon"
+                Value="&#xf073;" />
+        <Setter Property="ThemeBrush"
+                Value="#3E3E3E" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:DateTimePicker}">
+                    <Grid>
+                        <Border x:Name="Border"
+                                Background="{TemplateBinding Background}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                CornerRadius="{TemplateBinding CornerRadius}">
+                        </Border>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label x:Name="LblIcon"
+                                   Padding="10,0,2,0"
+                                   VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                   Content="{Binding Icon,RelativeSource={RelativeSource AncestorType=local:DateTimePicker},Converter={StaticResource IconConverter}}"
+                                   Foreground="{TemplateBinding Foreground}"
+                                   FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"></Label>
+                            <ContentPresenter x:Name="ContentSite"
+                                              Grid.Column="1"
+                                              Margin="{TemplateBinding Padding}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              ContentSource="Text"
+                                              IsHitTestVisible="False" />
+                        </Grid>
+                        <ToggleButton x:Name="ToggleButton"
+                                      Focusable="false"
+                                      IsChecked="{Binding Path=IsOpen, Mode=TwoWay, ElementName=Popup}"
+                                      ClickMode="Press"
+                                      Foreground="{TemplateBinding Foreground}"
+                                      Background="Transparent"
+                                      BorderBrush="Transparent"
+                                      BorderThickness="0">
+                            <ToggleButton.Style>
+                                <Style TargetType="ToggleButton">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="ToggleButton">
+                                                <Grid Background="Transparent">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="30" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Path x:Name="arrow1"
+                                                          Opacity="1"
+                                                          VerticalAlignment="Center"
+                                                          Grid.Column="1"
+                                                          HorizontalAlignment="Center"
+                                                          Data="M5,4 H14 L9.5,10 Z"
+                                                          Width="15"
+                                                          Height="15"
+                                                          Fill="{TemplateBinding Foreground}"
+                                                          RenderTransformOrigin="0.5,0.5" />
+                                                    <Path x:Name="arrow2"
+                                                          Opacity="0"
+                                                          VerticalAlignment="Center"
+                                                          Grid.Column="1"
+                                                          HorizontalAlignment="Center"
+                                                          Data="M5,10 H14 L9.5,4.5 Z"
+                                                          Width="15"
+                                                          Height="15"
+                                                          Fill="{TemplateBinding Foreground}"
+                                                          RenderTransformOrigin="0.5,0.5" />
+                                                </Grid>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsChecked"
+                                                             Value="True">
+                                                        <Trigger.EnterActions>
+                                                            <BeginStoryboard>
+                                                                <Storyboard>
+                                                                    <DoubleAnimation Storyboard.TargetName="arrow1"
+                                                                                     Storyboard.TargetProperty="Opacity"
+                                                                                     To="0"
+                                                                                     Duration="0:0:0.2"></DoubleAnimation>
+                                                                    <DoubleAnimation Storyboard.TargetName="arrow2"
+                                                                                     Storyboard.TargetProperty="Opacity"
+                                                                                     To="1"
+                                                                                     Duration="0:0:0.2"></DoubleAnimation>
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </Trigger.EnterActions>
+                                                        <Trigger.ExitActions>
+                                                            <BeginStoryboard>
+                                                                <Storyboard>
+                                                                    <DoubleAnimation Storyboard.TargetName="arrow1"
+                                                                                     Storyboard.TargetProperty="Opacity"
+                                                                                     To="1"
+                                                                                     Duration="0:0:0.2"></DoubleAnimation>
+                                                                    <DoubleAnimation Storyboard.TargetName="arrow2"
+                                                                                     Storyboard.TargetProperty="Opacity"
+                                                                                     To="0"
+                                                                                     Duration="0:0:0.2"></DoubleAnimation>
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </Trigger.ExitActions>
+                                                    </Trigger>
+
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </ToggleButton.Style>
+                        </ToggleButton>
+                        <local:NotTopMostPopup Placement="Bottom"
+                                               x:Name="Popup"
+                                               Focusable="False"
+                                               Tag="{Binding ElementName=ToggleButton}"
+                                               AllowsTransparency="True"
+                                               PopupAnimation="Slide"
+                                               >
+                            <Grid x:Name="DropDown">
+                                <Border x:Name="DropDownBorder"
+                                        Margin="0,0,0,10"
+                                        Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="{Binding CornerRadius,RelativeSource={RelativeSource AncestorType=local:DateTimePicker}}">
+                                    <Border.Effect>
+                                        <DropShadowEffect ShadowDepth="0"
+                                                          BlurRadius="10"
+                                                          Opacity="1"
+                                                          Color="{Binding ShadowColor,RelativeSource={RelativeSource AncestorType=local:DateTimePicker}}"></DropShadowEffect>
+                                    </Border.Effect>
+                                </Border>
+                                <Grid Margin="1,1,1,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <local:Calendar x:Name="Calendar"
+                                                    ThemeBrush="{Binding ThemeBrush,RelativeSource={RelativeSource AncestorType=local:DateTimePicker},Mode=OneWay}"
+                                                    MaxDate="{Binding ThemeBrush,RelativeSource={RelativeSource AncestorType=local:DateTimePicker},Mode=OneWay}"
+                                                    MinDate="{Binding ThemeBrush,RelativeSource={RelativeSource AncestorType=local:DateTimePicker},Mode=OneWay}"
+                                                    SelectedDate="{Binding SelectedDateTime,RelativeSource={RelativeSource AncestorType=local:DateTimePicker},Mode=TwoWay}"
+                                                    Width="300"
+                                                    Height="300" />
+                                    <Border HorizontalAlignment="Right"
+                                            BorderThickness="0,0,1,0"
+                                            BorderBrush="LightGray"
+                                            Margin="0,10"/>
+                                    <local:Clock x:Name="Clock"
+                                                 ThemeBrush="{Binding ThemeBrush,RelativeSource={RelativeSource AncestorType=local:DateTimePicker},Mode=OneWay}"
+                                                 SelectedTime="{Binding SelectedDateTime,RelativeSource={RelativeSource AncestorType=local:DateTimePicker},Mode=TwoWay}"
+                                                 Grid.Column="1"
+                                                 Width="300"
+                                                 Height="300" />
+                                </Grid>
+                            </Grid>
+                        </local:NotTopMostPopup>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="DateTimePickerMode"
+                                 Value="Date">
+                            <Setter TargetName="Clock"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
+                        </Trigger>
+                        <Trigger Property="DateTimePickerMode"
+                                 Value="Time">
+                            <Setter TargetName="Calendar"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver"
+                                 Value="True">
+                            <Setter Property="Opacity"
+                                    Value="1"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver"
+                                 Value="False">
+                            <Setter Property="Opacity"
+                                    Value="0.9"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsFocused"
+                                 Value="True">
+                            <Setter Property="Opacity"
+                                    Value="1"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="DateTimePickerMode"
+                     Value="Time">
+                <Setter Property="Icon"
+                        Value="&#xf017;" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+    <Style TargetType="{x:Type local:DropDown}">
+        <Setter Property="FontFamily"
+                Value="{StaticResource Default_FontFamily}" />
+        <Setter Property="SnapsToDevicePixels"
+                Value="{StaticResource Default_SnapsToDevicePixels}" />
+        <Setter Property="FontSize"
+                Value="{StaticResource Default_FontSize}" />
+        <Setter Property="FocusVisualStyle"
+                Value="{x:Null}" />
+        <Setter Property="Foreground"
+                Value="#3E3E3E"></Setter>
+        <Setter Property="Background"
+                Value="White"></Setter>
+        <Setter Property="BorderBrush"
+                Value="Transparent"></Setter>
+        <Setter Property="BorderThickness"
+                Value="1"></Setter>
+        <Setter Property="Padding"
+                Value="5,0,0,0"></Setter>
+        <Setter Property="ShadowColor"
+                Value="#DDDDDD" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="CornerRadius"
+                Value="3" />
+        <Setter Property="DropDownPlacement"
+                Value="LeftBottom" />
+        <Style.Triggers>
+            <Trigger Property="DropDownPlacement"
+                     Value="LeftBottom">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type local:DropDown}">
+                            <Grid>
+                                <Grid>
+                                    <ContentPresenter x:Name="Content"
+                                                      ContentSource="Content"
+                                                      IsHitTestVisible="False" />
+                                </Grid>
+                                <ToggleButton x:Name="ToggleButton"
+                                              Focusable="false"
+                                              IsChecked="{Binding IsOpen,RelativeSource={RelativeSource AncestorType=local:DropDown},Mode=TwoWay}"
+                                              ClickMode="Press"
+                                              Foreground="{TemplateBinding Foreground}"
+                                              Background="Transparent"
+                                              BorderBrush="Transparent"
+                                              BorderThickness="0">
+                                    <ToggleButton.Style>
+                                        <Style TargetType="ToggleButton">
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="ToggleButton">
+                                                        <Grid Background="Transparent" />
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </ToggleButton.Style>
+                                </ToggleButton>
+                                <local:NotTopMostPopup Placement="Left"
+                                                       IsOpen="{Binding IsOpen,RelativeSource={RelativeSource AncestorType=local:DropDown},Mode=TwoWay}"
+                                                       x:Name="Popup"
+                                                       PlacementTarget="{Binding ElementName=ToggleButton}"
+                                                       HorizontalOffset="{Binding ActualWidth, ElementName=ToggleButton}"
+                                                       VerticalOffset="{Binding ActualHeight, ElementName=ToggleButton}"
+                                                       Focusable="False"
+                                                       Tag="{Binding ElementName=ToggleButton}"
+                                                       AllowsTransparency="True"
+                                                       PopupAnimation="Slide">
+                                    <Grid x:Name="DropDown"
+                                          Margin="1,1,1,10">
+                                        <Path x:Name="Path"
+                                              Fill="{TemplateBinding Background}"
+                                              Stroke="{TemplateBinding BorderBrush}"
+                                              StrokeThickness="{TemplateBinding BorderThickness}">
+                                            <Path.Data>
+                                                <MultiBinding Converter="{StaticResource DropDownBorderPathConverter}">
+                                                    <Binding Path="ActualWidth"
+                                                             ElementName="Path" />
+                                                    <Binding Path="ActualHeight"
+                                                             ElementName="Path" />
+                                                    <Binding Path="ActualWidth"
+                                                             ElementName="Content" />
+                                                    <Binding Path="ActualHeight"
+                                                             ElementName="Content" />
+                                                    <Binding Path="DropDownPlacement"
+                                                             RelativeSource="{RelativeSource AncestorType=local:DropDown}" />
+                                                    <Binding Path="CornerRadius"
+                                                             RelativeSource="{RelativeSource AncestorType=local:DropDown}" />
+                                                </MultiBinding>
+                                            </Path.Data>
+                                            <Path.Effect>
+                                                <DropShadowEffect ShadowDepth="0"
+                                                                  BlurRadius="8"
+                                                                  Opacity="1"
+                                                                  Color="{Binding ShadowColor,RelativeSource={RelativeSource AncestorType=local:DropDown}}"></DropShadowEffect>
+                                            </Path.Effect>
+                                        </Path>
+                                        <Grid Margin="0,7,0,0">
+                                            <ContentPresenter x:Name="Child"
+                                                              ContentSource="Child"/>
+                                        </Grid>
+                                    </Grid>
+                                </local:NotTopMostPopup>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+
+            </Trigger>
+            <Trigger Property="DropDownPlacement"
+                     Value="RightBottom">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type local:DropDown}">
+                            <Grid>
+                                <Grid>
+                                    <ContentPresenter x:Name="Content"
+                                                      ContentSource="Content"
+                                                      IsHitTestVisible="False" />
+                                </Grid>
+                                <ToggleButton x:Name="ToggleButton"
+                                              Focusable="false"
+                                              IsChecked="{Binding Path=IsOpen, Mode=TwoWay, ElementName=Popup}"
+                                              ClickMode="Press"
+                                              Foreground="{TemplateBinding Foreground}"
+                                              Background="Transparent"
+                                              BorderBrush="Transparent"
+                                              BorderThickness="0">
+                                    <ToggleButton.Style>
+                                        <Style TargetType="ToggleButton">
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="ToggleButton">
+                                                        <Grid Background="Transparent" />
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </ToggleButton.Style>
+                                </ToggleButton>
+                                <local:NotTopMostPopup Placement="Bottom"
+                                                       x:Name="Popup"
+                                                       PlacementTarget="{Binding ElementName=ToggleButton}"
+                                                       Focusable="False"
+                                                       Tag="{Binding ElementName=ToggleButton}"
+                                                       AllowsTransparency="True"
+                                                       PopupAnimation="Slide">
+                                    <Grid x:Name="DropDown"
+                                          Margin="1,1,1,10">
+                                        <Path x:Name="Path"
+                                              Fill="{TemplateBinding Background}"
+                                              Stroke="{TemplateBinding BorderBrush}"
+                                              StrokeThickness="{TemplateBinding BorderThickness}">
+                                            <Path.Data>
+                                                <MultiBinding Converter="{StaticResource DropDownBorderPathConverter}">
+                                                    <Binding Path="ActualWidth"
+                                                             ElementName="Path" />
+                                                    <Binding Path="ActualHeight"
+                                                             ElementName="Path" />
+                                                    <Binding Path="ActualWidth"
+                                                             ElementName="Content" />
+                                                    <Binding Path="ActualHeight"
+                                                             ElementName="Content" />
+                                                    <Binding Path="DropDownPlacement"
+                                                             RelativeSource="{RelativeSource AncestorType=local:DropDown}" />
+                                                    <Binding Path="CornerRadius"
+                                                             RelativeSource="{RelativeSource AncestorType=local:DropDown}" />
+                                                </MultiBinding>
+                                            </Path.Data>
+                                            <Path.Effect>
+                                                <DropShadowEffect ShadowDepth="0"
+                                                                  BlurRadius="5"
+                                                                  Opacity="1"
+                                                                  Color="{Binding ShadowColor,RelativeSource={RelativeSource AncestorType=local:DropDown}}"></DropShadowEffect>
+                                            </Path.Effect>
+                                        </Path>
+                                        <Grid>
+                                            <ContentPresenter x:Name="Child"
+                                                              ContentSource="Child"
+                                                              IsHitTestVisible="False" />
+                                        </Grid>
+                                    </Grid>
+                                </local:NotTopMostPopup>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+
+            </Trigger>
+
+        </Style.Triggers>
+    </Style>
 
     <Style TargetType="{x:Type local:ResizeContainer}">
         <Setter Property="Template">

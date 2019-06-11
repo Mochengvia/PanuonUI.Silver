@@ -26,8 +26,8 @@
    
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition MinWidth="200"
-                              Width="200"/>
+            <ColumnDefinition MinWidth="250"
+                              Width="250"/>
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <TreeView x:Name="TvMenu" 
@@ -55,7 +55,9 @@
                       VerticalAlignment="Stretch"/>
         <ContentControl x:Name="ContentControl"
                         Grid.Column="1"
-                        Margin="20,0"/>
+                        Margin="20,0">
+            
+        </ContentControl>
 
     </Grid>
 </Window>

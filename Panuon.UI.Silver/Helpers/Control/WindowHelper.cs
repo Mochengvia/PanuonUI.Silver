@@ -337,7 +337,7 @@ namespace Panuon.UI.Silver
         {
             SetOpenCoverMask(owner, true);
             var msgBox = new MsgBox(content, title, MsgBox.MsgType.Await, owner, autoCoverMask, cancelCallback);
-            msgBox.ShowDialog();
+            msgBox.Show();
 
         }
 

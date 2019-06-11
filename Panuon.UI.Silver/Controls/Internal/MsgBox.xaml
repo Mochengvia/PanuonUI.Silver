@@ -8,13 +8,21 @@
         Title="MsgBox"
         MinHeight="220"
         MinWidth="350"
-        local:WindowHelper.Applying="True"
+        Style="{DynamicResource PanuonWindow}"
         x:ClassModifier="internal"
         x:Name="msgBox"
         ResizeMode="NoResize"
         SizeToContent="WidthAndHeight"
         Closing="MsgBox_Closing"
         WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Window.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Button.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>

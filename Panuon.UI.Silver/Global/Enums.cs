@@ -141,10 +141,8 @@ namespace Panuon.UI.Silver
     public enum DateTimePickerMode
     {
         DateTime,
-        TimeOnly,
-        DateOnly,
-        YearMonth,
-        Year,
+        Date,
+        Time,
     }
     #endregion
 
@@ -190,4 +188,12 @@ namespace Panuon.UI.Silver
     }
     #endregion
 
+    #region DropDown
+    public enum DropDownPlacement
+    {
+        Bottom,
+        RightBottom,
+        LeftBottom
+    }
+    #endregion
 }

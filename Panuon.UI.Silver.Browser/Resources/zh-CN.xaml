@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Panuon.UI.Silver.Browser.Resources"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
-
+    
     <sys:String x:Key="Introduction">概述</sys:String>
     <sys:String x:Key="Window">Window 窗体</sys:String>
     <sys:String x:Key="Button">Button 按钮</sys:String>
@@ -19,13 +19,15 @@
     <sys:String x:Key="TagPanel">TagPanel 标签板</sys:String>
     <sys:String x:Key="Calendar">Calendar 日历</sys:String>
     <sys:String x:Key="NeonLabel">NeonLabel 霓虹标签</sys:String>
+    <sys:String x:Key="DateTimePicker">DateTimePicker 日期时间选择器</sys:String>
+    <sys:String x:Key="DropDown">DropDown 下拉菜单</sys:String>
     <sys:String x:Key="PropertyName">属性名称</sys:String>
     <sys:String x:Key="PropertyType">属性类型</sys:String>
     <sys:String x:Key="DefaultValue">默认值</sys:String>
     <sys:String x:Key="Description">描述</sys:String>
-
+    
     <sys:String x:Key="SourceCodeLocation">本页代码位于</sys:String>
-
+    
     <sys:String x:Key="Document">文档</sys:String>
     <sys:String x:Key="ViewDocument">查看文档</sys:String>
     <sys:String x:Key="ViewExamples">查看示例</sys:String>

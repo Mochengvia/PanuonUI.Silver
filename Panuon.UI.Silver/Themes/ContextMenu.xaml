@@ -1,0 +1,165 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Resource.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/ScrollViewer.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type ContextMenu}">
+        <Setter Property="FontFamily"
+                Value="{StaticResource Default_FontFamily}" />
+        <Setter Property="SnapsToDevicePixels"
+                Value="{StaticResource Default_SnapsToDevicePixels}" />
+        <Setter Property="FontSize"
+                Value="{StaticResource Default_FontSize}" />
+        <Setter Property="FocusVisualStyle"
+                Value="{x:Null}" />
+        <Setter Property="Width"
+                Value="200" />
+        <Setter Property="Background"
+                Value="White" />
+        <Setter Property="BorderThickness"
+                Value="1" />
+        <Setter Property="BorderBrush"
+                Value="LightGray" />
+        <Setter Property="local:ContextMenuHelper.HoverBrush"
+                Value="#EEEEEE" />
+        <Setter Property="local:ContextMenuHelper.ShadowColor"
+                Value="#DDDDDD" />
+        <Setter Property="local:ContextMenuHelper.ItemHeight"
+                Value="35" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ContextMenu}">
+                    <Grid  Margin="3">
+                        <Border x:Name="Border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="0"
+                                                  BlurRadius="3"
+                                                  Opacity="1"
+                                                  Color="{Binding Path=(local:ContextMenuHelper.ShadowColor),RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+                            </Border.Effect>
+
+                        </Border>
+                        <ScrollViewer Style="{StaticResource MiniScrollViewer}"
+                                      CanContentScroll="True">
+                            <StackPanel IsItemsHost="True"
+                                        KeyboardNavigation.DirectionalNavigation="Cycle" />
+                        </ScrollViewer>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Resources>
+            <Style TargetType="{x:Type MenuItem}">
+                <Setter Property="FontFamily"
+                        Value="{StaticResource Default_FontFamily}" />
+                <Setter Property="SnapsToDevicePixels"
+                        Value="{StaticResource Default_SnapsToDevicePixels}" />
+                <Setter Property="FontSize"
+                        Value="{StaticResource Default_FontSize}" />
+                <Setter Property="FocusVisualStyle"
+                        Value="{x:Null}" />
+                <Setter Property="Height"
+                        Value="{Binding Path=(local:ContextMenuHelper.ItemHeight),RelativeSource={RelativeSource AncestorType=ContextMenu},Mode=OneWay}" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type MenuItem}">
+                            <Grid>
+                                <Border BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        Background="{TemplateBinding Background}" />
+                                <Border x:Name="BdrHover"
+                                        BorderBrush="Transparent"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        Background="{Binding Path=(local:ContextMenuHelper.HoverBrush),RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}"
+                                        Opacity="0" />
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="{Binding Height,Converter={StaticResource GridLengthConverter},RelativeSource={RelativeSource AncestorType=MenuItem}}" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label x:Name="LblIcon"
+                                           Content="{Binding Path=(local:ContextMenuHelper.ItemIcon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}"
+                                           Foreground="{TemplateBinding Foreground}"
+                                           FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
+                                           VerticalAlignment="Center" 
+                                           HorizontalAlignment="Center"/>
+                                    <ContentPresenter ContentSource="Header"
+                                                      Grid.Column="1"
+                                                      VerticalAlignment="Center" />
+                                    <Path x:Name="Path"
+                                          Grid.Column="1"
+                                          Width="5"
+                                          Height="10"
+                                          Data="M0,0 L5,5 L0,10"
+                                          Margin="0,0,10,0"
+                                          RenderTransformOrigin="0.5,0.5"
+                                          HorizontalAlignment="Right"
+                                          Stroke="{TemplateBinding Foreground}"
+                                          Visibility="Collapsed">
+                                    </Path>
+                                </Grid>
+                                <Popup x:Name="Popup"
+                                       Placement="Right"
+                                       IsOpen="{TemplateBinding IsSubmenuOpen}"
+                                       AllowsTransparency="True"
+                                       Focusable="False"
+                                       PopupAnimation="Fade">
+                                    <Border x:Name="SubmenuBorder"
+                                            SnapsToDevicePixels="True"
+                                            BorderThickness="{Binding BorderThickness,RelativeSource={RelativeSource AncestorType=ContextMenu}}"
+                                            BorderBrush="{Binding BorderBrush,RelativeSource={RelativeSource AncestorType=ContextMenu}}"
+                                            Background="{Binding Background,RelativeSource={RelativeSource AncestorType=ContextMenu}}"
+                                            Width="{Binding Width,RelativeSource={RelativeSource AncestorType=ContextMenu}}">
+                                        <ScrollViewer CanContentScroll="True"
+                                                      Style="{StaticResource MiniScrollViewer}">
+                                            <StackPanel IsItemsHost="True"
+                                                        KeyboardNavigation.DirectionalNavigation="Cycle" />
+                                        </ScrollViewer>
+                                    </Border>
+                                </Popup>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver"
+                                         Value="True">
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetName="BdrHover"
+                                                                 Storyboard.TargetProperty="Opacity"
+                                                                 To="1"
+                                                                 Duration="0:0:0.3" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetName="BdrHover"
+                                                                 Storyboard.TargetProperty="Opacity"
+                                                                 Duration="0:0:0.3" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
+                                </Trigger>
+                                <Trigger Property="HasItems"
+                                         Value="True">
+                                    <Setter TargetName="Path"
+                                            Property="Visibility"
+                                            Value="Visible" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Style.Resources>
+    </Style>
+</ResourceDictionary>

@@ -24,6 +24,13 @@
                     <ComboBoxItem Content="Chinese"/>
                 </ComboBox>
             </Grid>
+            <!--<TextBlock FontSize="20"
+                       Text="{DynamicResource QuickStart}"
+                       Margin="0,10,0,0"/>-->
+            <!--<pu:DateTimePicker Height="30"
+                               Width="200"/>-->
+            
+
         </StackPanel>
     </Grid>
 </UserControl>

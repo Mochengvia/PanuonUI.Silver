@@ -5,7 +5,8 @@ using System.Text;
 
 namespace Panuon.UI.Silver.Browser.Models
 {
-    class MultiSelectorItemModel
+    public class MultiSelectorItemModel
     {
+
     }
 }

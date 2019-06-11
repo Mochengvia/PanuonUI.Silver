@@ -269,78 +269,80 @@
             </ObjectAnimationUsingKeyFrames>
         </Storyboard>
     </UserControl.Resources>
-    <Canvas x:Name="canvas"
-            ClipToBounds="True">
-        <Grid Width="{Binding ActualWidth, ElementName=canvas}"
-              Height="{Binding ActualHeight, ElementName=canvas}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <Grid x:Name="GrdDayTitle"
-                  Height="40">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="40" />
-                    <ColumnDefinition Width="40" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="40" />
-                    <ColumnDefinition Width="40" />
-                </Grid.ColumnDefinitions>
-                <Button x:Name="BtnDecYear"
-                        local:ButtonHelper.ButtonStyle="Link"
-                        Foreground="{Binding Foreground,ElementName=calendar}"
-                        local:ButtonHelper.HoverBrush="{Binding ThemeBrush,ElementName=calendar}"
-                        Content=""
-                        FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
-                        FontSize="20"
-                        Click="BtnDecYear_Click">
-                </Button>
-                <Button x:Name="BtnDecMonth"
-                        Grid.Column="1"
-                        Foreground="{Binding Foreground,ElementName=calendar}"
-                        local:ButtonHelper.ButtonStyle="Link"
-                        local:ButtonHelper.HoverBrush="{Binding ThemeBrush,ElementName=calendar}"
-                        Content=""
-                        FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
-                        FontSize="20"
-                        Click="BtnDecMonth_Click">
-                </Button>
-                <Button x:Name="BtnMonthYear"
-                        Content=""
-                        Padding="10,0"
-                        HorizontalAlignment="Center"
-                        Grid.Column="2"
-                        FontSize="16"
-                        Foreground="{Binding Foreground,ElementName=calendar}"
-                        local:ButtonHelper.ButtonStyle="Link"
-                        local:ButtonHelper.HoverBrush="{Binding ThemeBrush,ElementName=calendar}"
-                        FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
-                        Click="BtnMonthYear_Click">
-                </Button>
-                <Button x:Name="BtnIncMonth"
-                        Grid.Column="3"
-                        Foreground="{Binding Foreground,ElementName=calendar}"
-                        local:ButtonHelper.ButtonStyle="Link"
-                        local:ButtonHelper.HoverBrush="{Binding ThemeBrush,ElementName=calendar}"
-                        Content=""
-                        FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
-                        FontSize="20"
-                        Click="BtnIncMonth_Click">
-                </Button>
-                <Button x:Name="BtnIncYear"
-                        Grid.Column="4"
-                        Foreground="{Binding Foreground,ElementName=calendar}"
-                        local:ButtonHelper.ButtonStyle="Link"
-                        local:ButtonHelper.HoverBrush="{Binding ThemeBrush,ElementName=calendar}"
-                        Content=""
-                        FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
-                        FontSize="20"
-                        Click="BtnIncYear_Click">
-                </Button>
-            </Grid>
-            <Grid Grid.Row="1"
-                  x:Name="GrdDayGroup"
-                  RenderTransformOrigin="0.5,0.5">
+
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid x:Name="GrdDayTitle"
+              Height="40">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40" />
+                <ColumnDefinition Width="40" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="40" />
+                <ColumnDefinition Width="40" />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="BtnDecYear"
+                    local:ButtonHelper.ButtonStyle="Link"
+                    Foreground="{Binding Foreground,ElementName=calendar}"
+                    local:ButtonHelper.HoverBrush="{Binding ThemeBrush,ElementName=calendar}"
+                    Content=""
+                    FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
+                    FontSize="20"
+                    Click="BtnDecYear_Click">
+            </Button>
+            <Button x:Name="BtnDecMonth"
+                    Grid.Column="1"
+                    Foreground="{Binding Foreground,ElementName=calendar}"
+                    local:ButtonHelper.ButtonStyle="Link"
+                    local:ButtonHelper.HoverBrush="{Binding ThemeBrush,ElementName=calendar}"
+                    Content=""
+                    FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
+                    FontSize="20"
+                    Click="BtnDecMonth_Click">
+            </Button>
+            <Button x:Name="BtnMonthYear"
+                    Content=""
+                    Padding="10,0"
+                    HorizontalAlignment="Center"
+                    Grid.Column="2"
+                    FontSize="16"
+                    Foreground="{Binding Foreground,ElementName=calendar}"
+                    local:ButtonHelper.ButtonStyle="Link"
+                    local:ButtonHelper.HoverBrush="{Binding ThemeBrush,ElementName=calendar}"
+                    FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
+                    Click="BtnMonthYear_Click">
+            </Button>
+            <Button x:Name="BtnIncMonth"
+                    Grid.Column="3"
+                    Foreground="{Binding Foreground,ElementName=calendar}"
+                    local:ButtonHelper.ButtonStyle="Link"
+                    local:ButtonHelper.HoverBrush="{Binding ThemeBrush,ElementName=calendar}"
+                    Content=""
+                    FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
+                    FontSize="20"
+                    Click="BtnIncMonth_Click">
+            </Button>
+            <Button x:Name="BtnIncYear"
+                    Grid.Column="4"
+                    Foreground="{Binding Foreground,ElementName=calendar}"
+                    local:ButtonHelper.ButtonStyle="Link"
+                    local:ButtonHelper.HoverBrush="{Binding ThemeBrush,ElementName=calendar}"
+                    Content=""
+                    FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
+                    FontSize="20"
+                    Click="BtnIncYear_Click">
+            </Button>
+        </Grid>
+        <Canvas x:Name="CvaMain"
+                ClipToBounds="True"
+                Grid.Row="1">
+            <Grid x:Name="GrdDayGroup"
+                  RenderTransformOrigin="0.5,0.5"
+                  Width="{Binding ActualWidth, ElementName=CvaMain}"
+                  Height="{Binding ActualHeight, ElementName=CvaMain}">
                 <Grid.RenderTransform>
                     <ScaleTransform x:Name="ScaleDayGroup" />
                 </Grid.RenderTransform>
@@ -382,9 +384,10 @@
                 </Grid>
             </Grid>
             <Grid x:Name="GrdMonth"
-                  Grid.Row="1"
                   Visibility="Collapsed"
-                  RenderTransformOrigin="0.5,0.5">
+                  RenderTransformOrigin="0.5,0.5"
+                  Width="{Binding ActualWidth, ElementName=CvaMain}"
+                  Height="{Binding ActualHeight, ElementName=CvaMain}">
                 <Grid.RenderTransform>
                     <ScaleTransform x:Name="ScaleMonth"
                                     ScaleX="1.5"
@@ -403,9 +406,10 @@
                 </Grid.ColumnDefinitions>
             </Grid>
             <Grid x:Name="GrdYear"
-                  Grid.Row="1"
                   Visibility="Collapsed"
-                  RenderTransformOrigin="0.5,0.5">
+                  RenderTransformOrigin="0.5,0.5"
+                  Width="{Binding ActualWidth, ElementName=CvaMain}"
+                  Height="{Binding ActualHeight, ElementName=CvaMain}">
                 <Grid.RenderTransform>
                     <ScaleTransform x:Name="ScaleYear" />
                 </Grid.RenderTransform>
@@ -422,8 +426,8 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
             </Grid>
+        </Canvas>
 
-        </Grid>
+    </Grid>
 
-    </Canvas>
 </UserControl>

@@ -76,14 +76,20 @@
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Partial\DropDownMenuView.xaml.cs">
+      <DependentUpon>DropDownMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Partial\DateTimePickerView.xaml.cs">
+      <DependentUpon>DateTimePickerView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Partial\CalendarView.xaml.cs">
       <DependentUpon>CalendarView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Partial\NeonLabelView.xaml.cs">
-      <DependentUpon>NeonLabelView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Partial\TabControlView.xaml.cs">
       <DependentUpon>TabControlView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Partial\NeonLabelView.xaml.cs">
+      <DependentUpon>NeonLabelView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Partial\TreeviewView.xaml.cs">
       <DependentUpon>TreeviewView.xaml</DependentUpon>
@@ -170,15 +176,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Partial\DropDownMenuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Partial\DateTimePickerView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Partial\CalendarView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Partial\NeonLabelView.xaml">
+    <Page Include="Views\Partial\TabControlView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Partial\TabControlView.xaml">
+    <Page Include="Views\Partial\NeonLabelView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

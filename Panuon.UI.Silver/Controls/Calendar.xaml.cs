@@ -20,6 +20,8 @@ namespace Panuon.UI.Silver
     public partial class Calendar : UserControl
     {
         #region Identity
+        private bool isLoaded = false;
+
         enum DayMonthYear
         {
             Day,
@@ -234,6 +236,11 @@ namespace Panuon.UI.Silver
         #region Event
         private void Calendar_Loaded(object sender, RoutedEventArgs e)
         {
+            if (isLoaded)
+                return;
+
+            isLoaded = true;
+
             InitWeekTitle();
 
             if (CalendarMode == CalendarMode.Date)
