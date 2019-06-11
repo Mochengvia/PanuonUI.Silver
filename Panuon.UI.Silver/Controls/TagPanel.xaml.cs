@@ -11,7 +11,6 @@ namespace Panuon.UI.Silver
     /// <summary>
     /// TagPanel.xaml 的交互逻辑
     /// </summary>
-    [ContentProperty(nameof(Items))]
     public partial class TagPanel : UserControl
     {
 
@@ -20,13 +19,6 @@ namespace Panuon.UI.Silver
             InitializeComponent();
             Foreground = new SolidColorBrush(Colors.White);
 
-            Items.CollectionChanged += Items_CollectionChanged;
-        }
-
-        private void Items_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        {
-            if(ItemsSource != Items)
-                ItemsSource = Items;
         }
 
         #region RoutedEvent
@@ -115,16 +107,6 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty ItemBackgroundMemberPathProperty =
             DependencyProperty.Register("ItemBackgroundMemberPath", typeof(string), typeof(TagPanel), new PropertyMetadata("Background"));
-
-        public ObservableCollection<TagItemModel> Items
-        {
-            get { return (ObservableCollection<TagItemModel>)GetValue(ItemsProperty); }
-            private set { SetValue(ItemsProperty, value); }
-        }
-
-        public static readonly DependencyProperty ItemsProperty =
-            DependencyProperty.Register("Items", typeof(ObservableCollection<TagItemModel>), typeof(TagPanel), new PropertyMetadata(new ObservableCollection<TagItemModel>()));
-
 
         #endregion
 
