@@ -113,7 +113,7 @@ DataGrid / ScrollViewer (MiniScrollViewer)
 
 ### DropDown
 
-![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/dropdown.jpg)
+![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/dropdowns.jpg)
 
 ### ImageCuter
 
