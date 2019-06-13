@@ -82,23 +82,37 @@ After downloading this repository, you can find document in our example program.
 
 ![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/step1.png)
 
-![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/step2.png)
-
-![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/step3.png)
-
 ### Work with helper （需要使用Helper的控件）:
 Button / CheckBox / RadioButton / TextBox / PasswordBox / ComboBox / Expander / GroupBox / Expander
 
 ### Dependent custom controls （独立自定义控件）:
 Calendar / Carousel / Loading / MultiSelector / ImageCuter / TagPanel / NeonLabel / Clock / DateTimePicker
 
-#### Button   
+### Styles only （仅样式）:
+DataGrid / ScrollViewer (MiniScrollViewer)
+
+### Button   
 
 ![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/button.jpg)
 
-#### CheckBox  
+### CheckBox  
 
 ![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/checkbox.jpg)
 
-### Styles only （仅使用样式）:
-DataGrid / ScrollViewer (MiniScrollViewer)
+
+### RadioButton  
+
+![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/radiobutton.jpg)
+
+
+### Loading 
+
+![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/loading.jpg)
+
+### DropDown
+
+![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/dropdown.jpg)
+
+### ImageCuter
+
+![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/imagecuter.jpg)
