@@ -17,20 +17,27 @@
         <Setter Property="FocusVisualStyle"
                 Value="{x:Null}" />
         <Setter Property="Background"
-                Value="Transparent" />
+                Value="LightGray" />
         <Setter Property="Foreground"
                 Value="#3E3E3E" />
         <Setter Property="TickPlacement"
                 Value="None" />
         <Setter Property="local:SliderHelper.IsTickValueVisible"
                 Value="True" />
-        <Setter Property="local:SliderHelper.TrackBrush"
-                Value="LightGray" />
         <Setter Property="local:SliderHelper.ThemeBrush"
                 Value="#3E3E3E" />
+        <Setter Property="local:SliderHelper.TrackThickness"
+                Value="3" />
+        <Setter Property="local:SliderHelper.ThumbSize"
+                Value="18" />
         <Style.Triggers>
-            <DataTrigger Binding="{Binding Path=(local:SliderHelper.SliderStyle),RelativeSource={RelativeSource Self}, Mode=OneWay}"
-                         Value="Standard">
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=(local:SliderHelper.SliderStyle),RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="Standard" />
+                    <Condition Binding="{Binding Orientation,RelativeSource={RelativeSource Self}}"
+                               Value="Horizontal" />
+                </MultiDataTrigger.Conditions>
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type Slider}">
@@ -48,8 +55,12 @@
                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                           Placement="Top"
                                           Height="5" />
+                                <Border Height="{Binding Path=(local:SliderHelper.TrackThickness),RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}"
+                                        Grid.Row="1"
+                                        Background="{TemplateBinding Background}"
+                                        Margin="{TemplateBinding Padding}"/>
                                 <Track x:Name="PART_Track"
-                                       Grid.Row="1"
+                                       Grid.Row="1"                                    
                                        Margin="0,0,0,0"
                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                                     <Track.DecreaseRepeatButton>
@@ -59,7 +70,7 @@
                                                 <ControlTemplate TargetType="{x:Type RepeatButton}">
                                                     <Grid Background="Transparent">
                                                         <Rectangle Fill="{TemplateBinding Background}"
-                                                                   Height="3"
+                                                                   Height="{Binding Path=(local:SliderHelper.TrackThickness),RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}"
                                                                    VerticalAlignment="Center" />
                                                     </Grid>
                                                 </ControlTemplate>
@@ -67,8 +78,7 @@
                                         </RepeatButton>
                                     </Track.DecreaseRepeatButton>
                                     <Track.Thumb>
-                                        <Thumb 
-                                               Foreground="{TemplateBinding Foreground}"
+                                        <Thumb Foreground="{TemplateBinding Foreground}"
                                                Background="Transparent">
                                             <Thumb.Template>
                                                 <ControlTemplate TargetType="{x:Type Thumb}">
@@ -102,12 +112,12 @@
                                     </Track.Thumb>
                                     <Track.IncreaseRepeatButton>
                                         <RepeatButton Command="Slider.IncreaseLarge"
-                                                      Background="{Binding Path=(local:SliderHelper.TrackBrush),RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}">
+                                                      Background="Transparent">
                                             <RepeatButton.Template>
                                                 <ControlTemplate TargetType="{x:Type RepeatButton}">
                                                     <Grid Background="Transparent">
                                                         <Rectangle Fill="{TemplateBinding Background}"
-                                                                   Height="3"
+                                                                   Height="{Binding Path=(local:SliderHelper.TrackThickness),RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}"
                                                                    VerticalAlignment="Center" />
                                                     </Grid>
                                                 </ControlTemplate>
@@ -166,9 +176,162 @@
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
-            </DataTrigger>
-            <DataTrigger Binding="{Binding Path=(local:SliderHelper.SliderStyle),RelativeSource={RelativeSource Self}, Mode=OneWay}"
-                         Value="Classic">
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=(local:SliderHelper.SliderStyle),RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="Standard" />
+                    <Condition Binding="{Binding Orientation,RelativeSource={RelativeSource Self}}"
+                               Value="Vertical" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Slider}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto"
+                                                      MinWidth="{TemplateBinding MinWidth}" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TickBar  x:Name="LeftTick"
+                                          Margin="0,0,0,0"
+                                          Fill="{TemplateBinding Foreground}"
+                                          HorizontalAlignment="Left"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                          Placement="Top"
+                                          Width="5" />
+                                <Border Width="3"
+                                        Grid.Column="1"
+                                        Background="{TemplateBinding Background}"
+                                        Margin="{TemplateBinding Padding}" />
+                                <Track x:Name="PART_Track"
+                                       Grid.Column="1"
+                                       Margin="0,0,0,0"
+                                       Orientation="Vertical"
+                                       SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                                    <Track.DecreaseRepeatButton>
+                                        <RepeatButton Command="Slider.DecreaseLarge"
+                                                      Background="{Binding Path=(local:SliderHelper.ThemeBrush),RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}">
+                                            <RepeatButton.Template>
+                                                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                                                    <Grid Background="Transparent">
+                                                        <Rectangle Fill="{TemplateBinding Background}"
+                                                                   Width="3"
+                                                                   HorizontalAlignment="Center" />
+                                                    </Grid>
+                                                </ControlTemplate>
+                                            </RepeatButton.Template>
+                                        </RepeatButton>
+                                    </Track.DecreaseRepeatButton>
+                                    <Track.Thumb>
+                                        <Thumb Foreground="{TemplateBinding Foreground}"
+                                               Background="Transparent">
+                                            <Thumb.Template>
+                                                <ControlTemplate TargetType="{x:Type Thumb}">
+                                                    <Grid Background="Transparent">
+                                                        <Ellipse Width="20"
+                                                                 Height="20"
+                                                                 VerticalAlignment="Center"
+                                                                 Stroke="{Binding Path=(local:SliderHelper.ThemeBrush),RelativeSource={RelativeSource  AncestorType=Slider},Mode=OneWay}"
+                                                                 StrokeThickness="3"
+                                                                 Fill="White" />
+                                                        <TextBlock x:Name="TxtValue"
+                                                                   HorizontalAlignment="Right"
+                                                                   VerticalAlignment="Center"
+                                                                   Margin="0,0,-20,0"
+                                                                   Foreground="{TemplateBinding Foreground}"
+                                                                   Text="{Binding Value,RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay,StringFormat=N1}" />
+
+                                                    </Grid>
+                                                    <ControlTemplate.Triggers>
+                                                        <DataTrigger Binding="{Binding Path=(local:SliderHelper.IsTickValueVisible), RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}"
+                                                                     Value="False">
+                                                            <Setter TargetName="TxtValue"
+                                                                    Property="Visibility"
+                                                                    Value="Collapsed" />
+                                                        </DataTrigger>
+                                                    </ControlTemplate.Triggers>
+                                                </ControlTemplate>
+                                            </Thumb.Template>
+                                        </Thumb>
+                                    </Track.Thumb>
+                                    <Track.IncreaseRepeatButton>
+                                        <RepeatButton Command="Slider.IncreaseLarge"
+                                                      Background="Transparent">
+                                            <RepeatButton.Template>
+                                                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                                                    <Grid Background="Transparent">
+                                                        <Rectangle Fill="{TemplateBinding Background}"
+                                                                   Width="3"
+                                                                   HorizontalAlignment="Center" />
+                                                    </Grid>
+                                                </ControlTemplate>
+                                            </RepeatButton.Template>
+                                        </RepeatButton>
+                                    </Track.IncreaseRepeatButton>
+                                </Track>
+                                <TickBar  x:Name="RightTick"
+                                          Grid.Column="2"
+                                          Margin="1,0,0,0"
+                                          Fill="{TemplateBinding Foreground}"
+                                          HorizontalAlignment="Left"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                          Placement="Bottom"
+                                          Width="5" />
+                            </Grid>
+                            <ControlTemplate.Triggers>
+
+                                <Trigger Property="TickPlacement"
+                                         Value="None">
+                                    <Setter TargetName="LeftTick"
+                                            Property="Visibility"
+                                            Value="Collapsed" />
+                                    <Setter TargetName="RightTick"
+                                            Property="Visibility"
+                                            Value="Collapsed" />
+                                </Trigger>
+                                <Trigger Property="TickPlacement"
+                                         Value="TopLeft">
+                                    <Setter TargetName="LeftTick"
+                                            Property="Visibility"
+                                            Value="Visible" />
+                                    <Setter TargetName="RightTick"
+                                            Property="Visibility"
+                                            Value="Collapsed" />
+                                </Trigger>
+                                <Trigger Property="TickPlacement"
+                                         Value="BottomRight">
+                                    <Setter TargetName="LeftTick"
+                                            Property="Visibility"
+                                            Value="Collapsed" />
+                                    <Setter TargetName="RightTick"
+                                            Property="Visibility"
+                                            Value="Visible" />
+                                </Trigger>
+                                <Trigger Property="TickPlacement"
+                                         Value="Both">
+                                    <Setter TargetName="LeftTick"
+                                            Property="Visibility"
+                                            Value="Visible" />
+                                    <Setter TargetName="RightTick"
+                                            Property="Visibility"
+                                            Value="Visible" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=(local:SliderHelper.SliderStyle),RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="Classic" />
+                    <Condition Binding="{Binding Orientation,RelativeSource={RelativeSource Self}}"
+                               Value="Horizontal" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="local:SliderHelper.TrackThickness"
+                        Value="2" />
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type Slider}">
@@ -186,6 +349,10 @@
                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                           Placement="Top"
                                           Height="5" />
+                                <Border Height="{Binding Path=(local:SliderHelper.TrackThickness),RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}"
+                                        Grid.Row="1"
+                                        Background="{TemplateBinding Background}"
+                                        Margin="{TemplateBinding Padding}" />
                                 <Track x:Name="PART_Track"
                                        Grid.Row="1"
                                        Margin="0,0,0,0"
@@ -197,7 +364,7 @@
                                                 <ControlTemplate TargetType="{x:Type RepeatButton}">
                                                     <Grid Background="Transparent">
                                                         <Rectangle Fill="{TemplateBinding Background}"
-                                                                   Height="2"
+                                                                   Height="{Binding Path=(local:SliderHelper.TrackThickness),RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}"
                                                                    VerticalAlignment="Center" />
                                                     </Grid>
                                                 </ControlTemplate>
@@ -205,13 +372,12 @@
                                         </RepeatButton>
                                     </Track.DecreaseRepeatButton>
                                     <Track.Thumb>
-                                        <Thumb 
-                                               Foreground="{TemplateBinding Foreground}">
+                                        <Thumb Foreground="{TemplateBinding Foreground}">
                                             <Thumb.Template>
                                                 <ControlTemplate TargetType="{x:Type Thumb}">
                                                     <Grid Background="Transparent">
-                                                        <Ellipse Width="18"
-                                                                 Height="18"
+                                                        <Ellipse Width="{Binding Path=(local:SliderHelper.ThumbSize),RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}"
+                                                                 Height="{Binding Path=(local:SliderHelper.ThumbSize),RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}"
                                                                  VerticalAlignment="Center"
                                                                  Fill="White">
                                                             <Ellipse.Effect>
@@ -243,12 +409,12 @@
                                     </Track.Thumb>
                                     <Track.IncreaseRepeatButton>
                                         <RepeatButton Command="Slider.IncreaseLarge"
-                                                      Background="{Binding Path=(local:SliderHelper.TrackBrush),RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}">
+                                                      Background="{TemplateBinding Background}">
                                             <RepeatButton.Template>
                                                 <ControlTemplate TargetType="{x:Type RepeatButton}">
                                                     <Grid Background="Transparent">
                                                         <Rectangle Fill="{TemplateBinding Background}"
-                                                                   Height="2"
+                                                                   Height="{Binding Path=(local:SliderHelper.TrackThickness),RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}"
                                                                    VerticalAlignment="Center" />
                                                     </Grid>
                                                 </ControlTemplate>
@@ -306,7 +472,161 @@
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
-            </DataTrigger>
+
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=(local:SliderHelper.SliderStyle),RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="Classic" />
+                    <Condition Binding="{Binding Orientation,RelativeSource={RelativeSource Self}}"
+                               Value="Vertical" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="local:SliderHelper.TrackThickness"
+                        Value="2" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Slider}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto"
+                                                      MinWidth="{TemplateBinding MinWidth}" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TickBar  x:Name="LeftTick"
+                                          Margin="0,0,0,0"
+                                          Fill="{TemplateBinding Foreground}"
+                                          HorizontalAlignment="Left"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                          Placement="Top"
+                                          Width="5" />
+                                <Border Width="{Binding Path=(local:SliderHelper.TrackThickness),RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}"
+                                        Grid.Column="1"
+                                        Background="{TemplateBinding Background}"
+                                        Margin="{TemplateBinding Padding}" />
+                                <Track x:Name="PART_Track"
+                                       Grid.Column="1"
+                                       Orientation="Vertical"
+                                       Margin="0,0,0,0"
+                                       SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                                    <Track.DecreaseRepeatButton>
+                                        <RepeatButton Command="Slider.DecreaseLarge"
+                                                      Background="{Binding Path=(local:SliderHelper.ThemeBrush),RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}">
+                                            <RepeatButton.Template>
+                                                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                                                    <Grid Background="Transparent">
+                                                        <Rectangle Fill="{TemplateBinding Background}"
+                                                                   Width="{Binding Path=(local:SliderHelper.TrackThickness),RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}"
+                                                                   HorizontalAlignment="Center" />
+                                                    </Grid>
+                                                </ControlTemplate>
+                                            </RepeatButton.Template>
+                                        </RepeatButton>
+                                    </Track.DecreaseRepeatButton>
+                                    <Track.Thumb>
+                                        <Thumb Foreground="{TemplateBinding Foreground}">
+                                            <Thumb.Template>
+                                                <ControlTemplate TargetType="{x:Type Thumb}">
+                                                    <Grid Background="Transparent">
+                                                        <Ellipse Width="{Binding Path=(local:SliderHelper.ThumbSize),RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}"
+                                                                 Height="{Binding Path=(local:SliderHelper.ThumbSize),RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}"
+                                                                 VerticalAlignment="Center"
+                                                                 Fill="White">
+                                                            <Ellipse.Effect>
+                                                                <DropShadowEffect ShadowDepth="0"
+                                                                                  BlurRadius="5"
+                                                                                  Color="LightGray" />
+                                                            </Ellipse.Effect>
+                                                        </Ellipse>
+                                                        <TextBlock x:Name="TxtValue"
+                                                                 
+                                                                   VerticalAlignment="Bottom"
+                                                                   HorizontalAlignment="Center"
+                                                                   Margin="0,0,0,-20"
+                                                                   Foreground="{TemplateBinding Foreground}"
+                                                                   Text="{Binding Value,RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay,StringFormat=N1}" />
+
+                                                    </Grid>
+                                                    <ControlTemplate.Triggers>
+                                                        <DataTrigger Binding="{Binding Path=(local:SliderHelper.IsTickValueVisible), RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}"
+                                                                     Value="False">
+                                                            <Setter TargetName="TxtValue"
+                                                                    Property="Visibility"
+                                                                    Value="Collapsed" />
+                                                        </DataTrigger>
+                                                    </ControlTemplate.Triggers>
+                                                </ControlTemplate>
+                                            </Thumb.Template>
+                                        </Thumb>
+                                    </Track.Thumb>
+                                    <Track.IncreaseRepeatButton>
+                                        <RepeatButton Command="Slider.IncreaseLarge"
+                                                      Background="Transparent">
+                                            <RepeatButton.Template>
+                                                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                                                    <Grid Background="Transparent">
+                                                        <Rectangle Fill="{TemplateBinding Background}"
+                                                                   Width="{Binding Path=(local:SliderHelper.TrackThickness),RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}"
+                                                                   HorizontalAlignment="Center" />
+                                                    </Grid>
+                                                </ControlTemplate>
+                                            </RepeatButton.Template>
+                                        </RepeatButton>
+                                    </Track.IncreaseRepeatButton>
+                                </Track>
+                                <TickBar  x:Name="RightTick"
+                                          Grid.Column="2"
+                                          Margin="0,1,0,0"
+                                          Fill="{TemplateBinding Foreground}"
+                                          HorizontalAlignment="Left"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                          Placement="Bottom"
+                                          Width="5" />
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="TickPlacement"
+                                         Value="None">
+                                    <Setter TargetName="LeftTick"
+                                            Property="Visibility"
+                                            Value="Collapsed" />
+                                    <Setter TargetName="RightTick"
+                                            Property="Visibility"
+                                            Value="Collapsed" />
+                                </Trigger>
+                                <Trigger Property="TickPlacement"
+                                         Value="TopLeft">
+                                    <Setter TargetName="LeftTick"
+                                            Property="Visibility"
+                                            Value="Visible" />
+                                    <Setter TargetName="RightTick"
+                                            Property="Visibility"
+                                            Value="Collapsed" />
+                                </Trigger>
+                                <Trigger Property="TickPlacement"
+                                         Value="BottomRight">
+                                    <Setter TargetName="LeftTick"
+                                            Property="Visibility"
+                                            Value="Collapsed" />
+                                    <Setter TargetName="RightTick"
+                                            Property="Visibility"
+                                            Value="Visible" />
+                                </Trigger>
+                                <Trigger Property="TickPlacement"
+                                         Value="Both">
+                                    <Setter TargetName="LeftTick"
+                                            Property="Visibility"
+                                            Value="Visible" />
+                                    <Setter TargetName="RightTick"
+                                            Property="Visibility"
+                                            Value="Visible" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+
+            </MultiDataTrigger>
+
         </Style.Triggers>
     </Style>
 </ResourceDictionary>

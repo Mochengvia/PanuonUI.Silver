@@ -50,6 +50,7 @@ namespace Panuon.UI.Silver
                     targetTop = parentCanvas.ActualHeight - height;
             }
 
+
             Canvas.SetLeft(element, targetLeft);
             Canvas.SetTop(element, targetTop);
 

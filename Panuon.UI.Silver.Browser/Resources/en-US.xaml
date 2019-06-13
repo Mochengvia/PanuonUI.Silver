@@ -4,6 +4,9 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <sys:String x:Key="Introduction">Introduction</sys:String>
+    <sys:String x:Key="StylesWithHelper">Style and attached property</sys:String>
+    <sys:String x:Key="Control">Controls</sys:String>
+    
     <sys:String x:Key="Window">Window</sys:String>
     <sys:String x:Key="Button">Button</sys:String>
     <sys:String x:Key="CheckBox">CheckBox</sys:String>
@@ -21,6 +24,7 @@
     <sys:String x:Key="NeonLabel">NeonLabel</sys:String>
     <sys:String x:Key="DateTimePicker">DateTimePicker</sys:String>
     <sys:String x:Key="DropDown">DropDown</sys:String>
+    <sys:String x:Key="ColorSelector">ColorSelector</sys:String>
     <sys:String x:Key="PropertyName">PropertyName</sys:String>
     <sys:String x:Key="PropertyType">PropertyType</sys:String>
     <sys:String x:Key="DefaultValue">DefaultValue</sys:String>

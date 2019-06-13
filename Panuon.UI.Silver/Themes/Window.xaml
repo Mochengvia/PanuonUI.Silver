@@ -35,6 +35,8 @@
                 Value="35" />
         <Setter Property="local:WindowHelper.NavbarBackground"
                 Value="Transparent" />
+        <Setter Property="local:WindowHelper.NavbarForeground"
+                Value="#3E3E3E" />
         <Setter Property="local:WindowHelper.WindowHook"
                 Value="True" />
         <Setter Property="local:WindowHelper.WindowAnimation"
@@ -73,9 +75,13 @@
                                                Padding="10,0,7,0"
                                                VerticalAlignment="Center"
                                                Content="{Binding Path=(local:WindowHelper.Icon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}"
-                                               Foreground="{TemplateBinding Foreground}"
+                                               Foreground="{Binding Path=(local:WindowHelper.NavbarForeground),RelativeSource={RelativeSource AncestorType=Window},Mode=OneWay}"
                                                FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"></Label>
-                                        <ContentPresenter ContentSource="Title"
+                                        <ContentControl Content="{TemplateBinding Title}"
+                                                        Foreground="{Binding Path=(local:WindowHelper.NavbarForeground),RelativeSource={RelativeSource AncestorType=Window},Mode=OneWay}"
+                                                        FontFamily="{TemplateBinding FontFamily}"
+                                                        FontWeight="{TemplateBinding FontWeight}"
+                                                        FontSize="{TemplateBinding FontSize}"
                                                           VerticalAlignment="Center"
                                                           HorizontalAlignment="Left" />
                                     </StackPanel>
@@ -89,7 +95,7 @@
                                                 local:ButtonHelper.HoverBrush="#99999999"
                                                 Width="{Binding Path=(local:WindowHelper.NavbarHeight),Converter={StaticResource Add5Converter},RelativeSource={RelativeSource AncestorType=Window}}"
                                                 BorderThickness="0"
-                                                Foreground="DimGray"
+                                                Foreground="{Binding Path=(local:WindowHelper.NavbarForeground),RelativeSource={RelativeSource AncestorType=Window},Mode=OneWay}"
                                                 FontSize="20"
                                                 Content="-"
                                                 Command="{Binding Path=(local:WindowHelper.MinCommand),RelativeSource={RelativeSource AncestorType=Window}}"
@@ -99,7 +105,7 @@
                                                 local:ButtonHelper.HoverBrush="#99999999"
                                                 Width="{Binding Path=(local:WindowHelper.NavbarHeight),Converter={StaticResource Add5Converter},RelativeSource={RelativeSource AncestorType=Window}}"
                                                 BorderThickness="0"
-                                                Foreground="DimGray"
+                                                Foreground="{Binding Path=(local:WindowHelper.NavbarForeground),RelativeSource={RelativeSource AncestorType=Window},Mode=OneWay}"
                                                 FontSize="20"
                                                 Content="□"
                                                 Command="{Binding Path=(local:WindowHelper.MaxCommand),RelativeSource={RelativeSource AncestorType=Window}}"
@@ -110,7 +116,7 @@
                                                 Width="{Binding Path=(local:WindowHelper.NavbarHeight),Converter={StaticResource Add5Converter},RelativeSource={RelativeSource AncestorType=Window}}"
                                                 BorderThickness="0"
                                                 FontSize="20"
-                                                Foreground="DimGray"
+                                                Foreground="{Binding Path=(local:WindowHelper.NavbarForeground),RelativeSource={RelativeSource AncestorType=Window},Mode=OneWay}"
                                                 Content="×"
                                                 Command="{Binding Path=(local:WindowHelper.CloseCommand),RelativeSource={RelativeSource AncestorType=Window}}"
                                                 CommandParameter="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}}" />

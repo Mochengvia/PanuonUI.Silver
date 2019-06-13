@@ -42,5 +42,6 @@ namespace Panuon.UI.Silver.Browser.Views.Partial
         {
             Carousel.Index--;
         }
+
     }
 }

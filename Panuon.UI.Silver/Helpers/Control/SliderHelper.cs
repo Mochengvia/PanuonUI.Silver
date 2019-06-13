@@ -35,19 +35,38 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("ThemeBrush", typeof(Brush), typeof(SliderHelper));
         #endregion
 
-        #region TrackBrush
-        public static Brush GetTrackBrush(DependencyObject obj)
+        #region TrackThickness
+        public static double GetTrackThickness(DependencyObject obj)
         {
-            return (Brush)obj.GetValue(TrackBrushProperty);
+            return (double)obj.GetValue(TrackThicknessProperty);
         }
 
-        public static void SetTrackBrush(DependencyObject obj, Brush value)
+        public static void SetTrackThickness(DependencyObject obj, double value)
         {
-            obj.SetValue(TrackBrushProperty, value);
+            obj.SetValue(TrackThicknessProperty, value);
         }
 
-        public static readonly DependencyProperty TrackBrushProperty =
-            DependencyProperty.RegisterAttached("TrackBrush", typeof(Brush), typeof(SliderHelper));
+        public static readonly DependencyProperty TrackThicknessProperty =
+            DependencyProperty.RegisterAttached("TrackThickness", typeof(double), typeof(SliderHelper));
+
+
+        #endregion
+
+        #region ThumbSize
+        public static double GetThumbSize(DependencyObject obj)
+        {
+            return (double)obj.GetValue(ThumbSizeProperty);
+        }
+
+        public static void SetThumbSize(DependencyObject obj, double value)
+        {
+            obj.SetValue(ThumbSizeProperty, value);
+        }
+
+        public static readonly DependencyProperty ThumbSizeProperty =
+            DependencyProperty.RegisterAttached("ThumbSize", typeof(double), typeof(SliderHelper));
+
+
         #endregion
 
         #region IsTickValueVisible

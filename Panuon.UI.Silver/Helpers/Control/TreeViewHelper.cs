@@ -1,13 +1,23 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.ComponentModel;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
+using System.Linq;
 
 namespace Panuon.UI.Silver
 {
     public class TreeViewHelper
     {
+        static TreeViewHelper()
+        {
+            EventManager.RegisterClassHandler(typeof(TreeView), TreeView.SelectedItemChangedEvent, new RoutedEventHandler(TreeView_SelectedItemChanged));
+            EventManager.RegisterClassHandler(typeof(TreeView), TreeViewItem.SelectedEvent, new RoutedEventHandler(TreeViewItem_Selected));
+        }
+
         #region TreeViewStyle
         public static TreeViewStyle GetTreeViewStyle(DependencyObject obj)
         {
@@ -35,81 +45,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty SelectModeProperty =
-            DependencyProperty.RegisterAttached("SelectMode", typeof(SelectMode), typeof(TreeViewHelper), new PropertyMetadata(SelectMode.Any, OnSelectModeChanged));
-
-        private static void OnSelectModeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var treeView = d as TreeView;
-
-            treeView.SelectedItemChanged -= TreeView_SelectedItemChanged;
-            treeView.RemoveHandler(TreeViewItem.SelectedEvent, new RoutedEventHandler(OnSelectModeItemSelected));
-
-            if ((SelectMode)e.NewValue == SelectMode.ChildOnly)
-            {
-                treeView.SelectedItemChanged += TreeView_SelectedItemChanged;
-                treeView.AddHandler(TreeViewItem.SelectedEvent, new RoutedEventHandler(OnSelectModeItemSelected));
-            }
-        }
-
-        private static void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
-        {
-            var treeView = sender as TreeView;
-
-            if (e.NewValue is TreeViewItem)
-            {
-                if (((TreeViewItem)e.NewValue).HasItems)
-                    e.Handled = true;
-            }
-            else
-            {
-                var sourceData = e.NewValue;
-                if (!(treeView.ItemTemplate is HierarchicalDataTemplate))
-                    return;
-                var itemsPath = ((Binding)((HierarchicalDataTemplate)treeView.ItemTemplate)?.ItemsSource)?.Path?.Path;
-                if (string.IsNullOrEmpty(itemsPath))
-                    return;
-
-                var propertyInfo = sourceData.GetType().GetProperty(itemsPath);
-                if (propertyInfo == null)
-                    return;
-
-                var children = propertyInfo.GetValue(sourceData, null) as ICollection;
-                if (children == null)
-                    return;
-
-                if (children != null && children.Count != 0)
-                    e.Handled = true;
-            }
-
-        }
-
-        private static void OnSelectModeItemSelected(object sender, RoutedEventArgs e)
-        {
-            var treeView = sender as TreeView;
-            if (e.OriginalSource is TreeViewItem)
-            {
-                var treeViewItem = e.OriginalSource as TreeViewItem;
-
-                var oldItem = GetLastSelectedItem(treeView);
-                if (treeViewItem.HasItems)
-                {
-                    treeViewItem.IsSelected = false;
-
-                    if (oldItem != null && !oldItem.IsSelected)
-                    {
-                        SetLastSelecteedItem(treeView, null);
-                        oldItem.IsSelected = true;
-                    }
-                }
-                else
-                {
-                    if (oldItem != null)
-                        oldItem.IsSelected = false;
-                    SetLastSelecteedItem(treeView, treeViewItem);
-                }
-            }
-        }
-
+            DependencyProperty.RegisterAttached("SelectMode", typeof(SelectMode), typeof(TreeViewHelper), new PropertyMetadata(SelectMode.Any));
         #endregion
 
         #region ExpandMode
@@ -143,7 +79,7 @@ namespace Panuon.UI.Silver
             var treeView = sender as TreeView;
             if (e.OriginalSource is TreeViewItem)
             {
-                
+
                 var treeViewItem = e.OriginalSource as TreeViewItem;
                 if (treeViewItem.HasItems)
                 {
@@ -187,7 +123,7 @@ namespace Panuon.UI.Silver
             if (e.OriginalSource is TreeViewItem)
             {
                 var treeViewItem = e.OriginalSource as TreeViewItem;
-               
+
                 if (treeViewItem.HasItems)
                 {
                     var lastTreeViewItem = GetLastExpandedItem(treeView);
@@ -293,6 +229,80 @@ namespace Panuon.UI.Silver
 
         internal static readonly DependencyProperty LastExpandedItemProperty =
             DependencyProperty.RegisterAttached("LastExpandedItem", typeof(TreeViewItem), typeof(TreeViewHelper));
+        #endregion
+
+        #region (Internal) TreeViewHook
+        private static void TreeView_SelectedItemChanged(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var treeView = sender as TreeView;
+                if (GetSelectMode(treeView) != SelectMode.ChildOnly)
+                    return;
+
+                var sourceData = treeView.SelectedItem;
+                if (sourceData is TreeViewItem)
+                {
+                    if (((TreeViewItem)sourceData).HasItems)
+                        e.Handled = true;
+                }
+                else
+                {
+                    if (!(treeView.ItemTemplate is HierarchicalDataTemplate))
+                        return;
+                    var itemsPath = ((Binding)((HierarchicalDataTemplate)treeView.ItemTemplate)?.ItemsSource)?.Path?.Path;
+                    if (string.IsNullOrEmpty(itemsPath))
+                        return;
+
+                    var propertyInfo = sourceData.GetType().GetProperty(itemsPath);
+                    if (propertyInfo == null)
+                        return;
+
+                    var children = propertyInfo.GetValue(sourceData, null) as ICollection;
+                    if (children == null)
+                        return;
+
+                    if (children != null && children.Count != 0)
+                        e.Handled = true;
+                }
+            }
+            catch { }
+        }
+
+        private static void TreeViewItem_Selected(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var treeView = sender as TreeView;
+                if (GetSelectMode(treeView) != SelectMode.ChildOnly)
+                    return;
+
+                if (e.OriginalSource is TreeViewItem)
+                {
+                    var treeViewItem = e.OriginalSource as TreeViewItem;
+
+                    var oldItem = GetLastSelectedItem(treeView);
+                    if (treeViewItem.HasItems)
+                    {
+                        treeViewItem.IsSelected = false;
+
+                        if (oldItem != null && !oldItem.IsSelected)
+                        {
+                            SetLastSelecteedItem(treeView, null);
+                            oldItem.IsSelected = true;
+                        }
+                    }
+                    else
+                    {
+                        if (oldItem != null)
+                            oldItem.IsSelected = false;
+                        SetLastSelecteedItem(treeView, treeViewItem);
+                    }
+                }
+            }
+            catch { }
+        }
+
         #endregion
 
     }

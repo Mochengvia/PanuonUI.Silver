@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -46,6 +47,7 @@ namespace Panuon.UI.Silver.Browser.Views.Partial
             MainWindow.Instance.ResetMenuItemNames();
 
             LanguageInfo.Current = Ieft;
+            Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(Ieft);
         }
     }
 }

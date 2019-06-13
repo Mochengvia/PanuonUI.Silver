@@ -521,7 +521,7 @@
                                                    RenderOptions.EdgeMode="Aliased"
                                                    StrokeThickness="1"
                                                    Stroke="Gray"
-                                                   StrokeDashArray="2"
+                                                   StrokeDashArray="3,2"
                                                    VerticalAlignment="Center"
                                                    Visibility="Visible"
                                                    Margin="-7,0,0,0"/>
@@ -585,7 +585,7 @@
                                                Grid.Row="1"
                                                StrokeThickness="1"
                                                Stroke="Gray"
-                                               StrokeDashArray="3"
+                                               StrokeDashArray="3,2"
                                                HorizontalAlignment="Center"
                                                Visibility="Collapsed"
                                                Margin="{Binding Path=(local:TreeViewHelper.ItemHeight),RelativeSource={RelativeSource AncestorType=TreeView},Mode=OneWay,Converter={StaticResource TreeViewVerticalChainConverter}}"/>

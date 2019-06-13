@@ -26,23 +26,25 @@
    
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition MinWidth="250"
-                              Width="250"/>
+            <ColumnDefinition MinWidth="265"
+                              Width="0.3*"/>
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <TreeView x:Name="TvMenu" 
                   pu:TreeViewHelper.SelectedBrush="#49A9C0"
                   pu:TreeViewHelper.ExpandMode="SingleClick"
                   pu:TreeViewHelper.SelectMode="ChildOnly"
-                  pu:TreeViewHelper.ExpandBehaviour="OnlyOne"
                   ItemsSource="{Binding MenuItems}"
                   SelectedValuePath="Value"
-                  SelectedItemChanged="TvMenu_SelectionChanged">
+                  SelectedItemChanged="TvMenu_SelectionChanged"
+                  Margin="5,0,0,0">
             <TreeView.ItemContainerStyle>
                 <Style TargetType="TreeViewItem"
                        BasedOn="{StaticResource {x:Type TreeViewItem}}">
                     <Setter Property="IsSelected"
                             Value="{Binding IsSelected}" />
+                    <Setter Property="IsExpanded"
+                            Value="{Binding IsExpanded}" />
                 </Style>
             </TreeView.ItemContainerStyle>
             <TreeView.ItemTemplate>

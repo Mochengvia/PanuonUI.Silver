@@ -127,6 +127,21 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("NavbarBackground", typeof(Brush), typeof(WindowHelper));
         #endregion
 
+        #region NavbarForeground
+        public static Brush GetNavbarForeground(DependencyObject obj)
+        {
+            return (Brush)obj.GetValue(NavbarForegroundProperty);
+        }
+
+        public static void SetNavbarForeground(DependencyObject obj, Brush value)
+        {
+            obj.SetValue(NavbarForegroundProperty, value);
+        }
+
+        public static readonly DependencyProperty NavbarForegroundProperty =
+            DependencyProperty.RegisterAttached("NavbarForeground", typeof(Brush), typeof(WindowHelper));
+        #endregion
+
         #region NavbarHeight
         public static double GetNavbarHeight(DependencyObject obj)
         {

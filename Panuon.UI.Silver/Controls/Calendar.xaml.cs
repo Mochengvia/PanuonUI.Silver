@@ -459,7 +459,7 @@ namespace Panuon.UI.Silver
                 radioButton.IsChecked = isUnlimit ? (SelectedDate.Year == currentDate.Year && SelectedDate.Month == currentDate.Month) : false;
                 radioButton.Opacity = isUnlimit ? 1 : 0.2;
                 radioButton.IsEnabled = isUnlimit;
-                radioButton.Content = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i + 1);
+                radioButton.Content = CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedMonthName(i + 1);
                 radioButton.Tag = currentDate;
             }
         }

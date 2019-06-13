@@ -65,7 +65,6 @@
     <Compile Include="Models\MultiSelectorItemModel.cs" />
     <Compile Include="Models\PropertyModel.cs" />
     <Compile Include="Models\TabItemModel.cs" />
-    <Compile Include="Models\TagItemModel.cs" />
     <Compile Include="Models\TreeViewItemModel.cs" />
     <Compile Include="Utils\LanguageInfo.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />

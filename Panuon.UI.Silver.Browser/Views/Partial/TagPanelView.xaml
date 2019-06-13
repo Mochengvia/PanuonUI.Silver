@@ -9,7 +9,7 @@
              d:DesignHeight="450"
              d:DesignWidth="800">
     <pu:Carousel x:Name="Carousel">
-        <Grid>
+        <Grid pu:AnimationHelper.SlideInFromRight="True" pu:AnimationHelper.FadeIn="True">
             <StackPanel pu:LayoutHelper.ColumnDefinition="*">
                 <TextBlock FontSize="20">
                 <Run Text="{DynamicResource SourceCodeLocation}"></Run>

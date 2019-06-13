@@ -62,10 +62,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\CodeEditor.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Controls\ImageCuter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -175,9 +171,6 @@
     <Compile Include="Controls\Clock.xaml.cs">
       <DependentUpon>Clock.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\CodeEditor.xaml.cs">
-      <DependentUpon>CodeEditor.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\DateTimePicker.cs" />
     <Compile Include="Controls\DropDownMenu.cs" />
     <Compile Include="Controls\Internal\DragableThumb.cs" />
@@ -211,6 +204,7 @@
     <Compile Include="Converters\ThicknessConverter.cs" />
     <Compile Include="Converters\TreeViewConverter.cs" />
     <Compile Include="Converters\WidthAndHeightConverter.cs" />
+    <Compile Include="Global\Models\TagItemModel.cs" />
     <Compile Include="Helpers\Control\ContextMenuHelper.cs" />
     <Compile Include="Helpers\Control\GroupBoxHelper.cs" />
     <Compile Include="Helpers\Control\ProgressBarHelper.cs" />

@@ -126,6 +126,7 @@ namespace Panuon.UI.Silver
     {
         Standard,
         Classic,
+        
     }
     #endregion
 

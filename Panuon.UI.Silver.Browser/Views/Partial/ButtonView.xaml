@@ -9,11 +9,12 @@
              d:DesignHeight="450"
              d:DesignWidth="800">
     <pu:Carousel x:Name="Carousel">
-        <Grid>
+        <Grid pu:AnimationHelper.SlideInFromRight="True" 
+              pu:AnimationHelper.FadeIn="True">
             <StackPanel pu:LayoutHelper.ColumnDefinition="*">
                 <TextBlock FontSize="20">
-                <Run Text="{DynamicResource SourceCodeLocation}"></Run>
-                <Run>Views/Partial/ButtonView.xaml</Run>
+                    <Run Text="{DynamicResource SourceCodeLocation}"></Run>
+                    <Run>Views/Partial/ButtonView.xaml</Run>
                 </TextBlock>
                 <Button pu:ButtonHelper.ButtonStyle="Link"
                         pu:ButtonHelper.HoverBrush="#1D8595"

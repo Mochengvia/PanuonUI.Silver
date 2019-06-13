@@ -4,6 +4,9 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     
     <sys:String x:Key="Introduction">概述</sys:String>
+    <sys:String x:Key="StylesWithHelper">样式与附加属性</sys:String>
+    <sys:String x:Key="Control">控件</sys:String>
+
     <sys:String x:Key="Window">Window 窗体</sys:String>
     <sys:String x:Key="Button">Button 按钮</sys:String>
     <sys:String x:Key="CheckBox">CheckBox 复选框</sys:String>
@@ -21,6 +24,8 @@
     <sys:String x:Key="NeonLabel">NeonLabel 霓虹标签</sys:String>
     <sys:String x:Key="DateTimePicker">DateTimePicker 日期时间选择器</sys:String>
     <sys:String x:Key="DropDown">DropDown 下拉菜单</sys:String>
+    <sys:String x:Key="ColorSelector">ColorSelector 颜色选择器</sys:String>
+    
     <sys:String x:Key="PropertyName">属性名称</sys:String>
     <sys:String x:Key="PropertyType">属性类型</sys:String>
     <sys:String x:Key="DefaultValue">默认值</sys:String>
@@ -35,7 +40,6 @@
     <sys:String x:Key="Language">语言：</sys:String>
     <sys:String x:Key="QuickStart">开始使用</sys:String>
 
-
     <sys:String x:Key="PROP_ButtonStyle">获取或设置按钮的基础样式。</sys:String>
     <sys:String x:Key="PROP_ClickStyle">获取或设置鼠标按下时按钮的样式。</sys:String>
     <sys:String x:Key="PROP_HoverBrush">获取或设置鼠标悬浮时按钮的叠加背景色。</sys:String>
@@ -44,5 +48,4 @@
     <sys:String x:Key="PROP_IsWaiting">获取或设置鼠标是否进入等待状态。该状态下的按钮会被禁用并显示加载控件，但透明度不变。</sys:String>
     <sys:String x:Key="PROP_WaitingContent">获取或设置按钮进入等待状态时的Content。</sys:String>
     <sys:String x:Key="PROP_Icon">获取或设置鼠标的图标。可以是任意控件、FontAwesome字体或图片Uri字符串（它将被自动转换成图片）。</sys:String>
-
 </ResourceDictionary>
