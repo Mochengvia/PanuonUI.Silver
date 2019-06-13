@@ -53,10 +53,12 @@ using Panuon.UI.Silver;
 4. Try it:  
 开始使用：
 ```
-(xaml)
+(in xaml)
 <Button x:Name="BtnTest" pu:ButtonHelper.ButtonStyle="Outline" />
 
-(c#)
+Or 
+
+(in c#)
 ButtonHelper.SetButtonStyle(BtnTest, ButtonStyle.Outline);
 ```
 
