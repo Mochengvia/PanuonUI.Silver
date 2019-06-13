@@ -14,7 +14,7 @@ Zhihu : @末城via
 
 # Examples 示例
 
-![](https://github.com/Ruris/Panuon.Documents/blob/master/Resources/Panuon.UI.Silver/example_1.png?raw=true)
+![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/example_1.png)
 
 # Donate  捐赠
 Panuon.UI.Silver is an open source library.Your support will motivate me to continue Panuon.UI.Silver development.    
@@ -27,27 +27,6 @@ Zhifubao:
 
 Paypal:  
 paypal.me/Zeoun  
-
-# Overview 概览
-
-## Where is the document ? （文档在哪里？）
-After downloading this repository, you can find document in our example program. Launch "Panuon.UI.Silver.Browser" project , and you will find it .  
-文档位于示例程序中。当您下载该仓库后，只需启动"Panuon.UI.Silver.Browser"项目，即可看到文档。
-
-![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/step1.png)
-
-![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/step2.png)
-
-![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/step3.png)
-
-### Work with helper （需要使用Helper的控件）:
-Button / CheckBox / RadioButton / TextBox / PasswordBox / ComboBox / Expander / GroupBox / Expander
-
-### Dependent custom controls （独立自定义控件）:
-Calendar / Carousel / Loading / MultiSelector / ImageCuter / TagPanel / NeonLabel
-
-### Styles only （仅使用样式）:
-DataGrid / ScrollViewer (MiniScrollViewer)
 
 # Quick Start 开始使用
 
@@ -94,3 +73,32 @@ FontFamily="{StaticResource IconFont}"
 ```
 Copy icon from http://www.fontawesome.com.cn/cheatsheet  
 从如上链接中拷贝图标。
+
+# Overview 概览
+
+## Where is the document ? （文档在哪里？）
+After downloading this repository, you can find document in our example program. Launch "Panuon.UI.Silver.Browser" project , and you will find it .  
+文档位于示例程序中。当您下载该仓库后，只需启动"Panuon.UI.Silver.Browser"项目，即可看到文档。
+
+![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/step1.png)
+
+![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/step2.png)
+
+![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/step3.png)
+
+### Work with helper （需要使用Helper的控件）:
+Button / CheckBox / RadioButton / TextBox / PasswordBox / ComboBox / Expander / GroupBox / Expander
+
+### Dependent custom controls （独立自定义控件）:
+Calendar / Carousel / Loading / MultiSelector / ImageCuter / TagPanel / NeonLabel / Clock / DateTimePicker
+
+#### Button   
+
+![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/button.jpg)
+
+#### CheckBox  
+
+![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/checkbox.jpg)
+
+### Styles only （仅使用样式）:
+DataGrid / ScrollViewer (MiniScrollViewer)
