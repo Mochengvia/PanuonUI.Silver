@@ -109,9 +109,13 @@ DataGrid / ScrollViewer (MiniScrollViewer)
 
 ![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/progressbar.jpg)
 
+### Calendar 
+
+![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/calendar.gif)
+
 ### Loading 
 
-![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/loading.jpg)
+![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/loading.gif)
 
 ### DropDown
 
