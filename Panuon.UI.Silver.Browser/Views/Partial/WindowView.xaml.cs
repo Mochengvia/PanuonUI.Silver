@@ -43,5 +43,12 @@ namespace Panuon.UI.Silver.Browser.Views.Partial
             Carousel.Index--;
         }
 
+        private void BtnCURDExample_Click(object sender, RoutedEventArgs e)
+        {
+            WindowHelper.SetOpenCoverMask(MainWindow.Instance, true);
+            var window = new CURDExampleWindow();
+            window.ShowDialog();
+            WindowHelper.SetOpenCoverMask(MainWindow.Instance, false);
+        }
     }
 }

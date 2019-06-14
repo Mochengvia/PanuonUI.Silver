@@ -25,6 +25,7 @@
     <sys:String x:Key="NeonLabel">NeonLabel</sys:String>
     <sys:String x:Key="DateTimePicker">DateTimePicker</sys:String>
     <sys:String x:Key="DropDown">DropDown</sys:String>
+    <sys:String x:Key="Timeline">Timeline</sys:String>
     <sys:String x:Key="ColorSelector">ColorSelector</sys:String>
     <sys:String x:Key="PropertyName">PropertyName</sys:String>
     <sys:String x:Key="PropertyType">PropertyType</sys:String>
@@ -42,11 +43,11 @@
 
     <sys:String x:Key="PROP_ButtonStyle">Gets or sets base style of button.</sys:String>
     <sys:String x:Key="PROP_ClickStyle">Gets or sets button style when mouse clicked.</sys:String>
-    <sys:String x:Key="PROP_HoverBrush">Gets or sets button background when mouse enter.</sys:String>
-    <sys:String x:Key="PROP_ClickCoverBrush">Gets or sets button cover when mouse clicked.</sys:String>
-    <sys:String x:Key="PROP_CornerRadius">Gets or sets corner radius of button.</sys:String>
+    <sys:String x:Key="PROP_HoverBrush">Gets or sets background(superimposed) when mouse enter.</sys:String>
+    <sys:String x:Key="PROP_ClickCoverBrush">Gets or sets cover brush when mouse clicked.</sys:String>
+    <sys:String x:Key="PROP_CornerRadius">Gets or sets border corner radius.</sys:String>
     <sys:String x:Key="PROP_IsWaiting">Gets or sets whether the button is in waiting mode.Button will be disabled when waiting.</sys:String>
     <sys:String x:Key="PROP_WaitingContent">gets or sets content of the button when waiting.</sys:String>
-    <sys:String x:Key="PROP_Icon">gets or sets icon of the button. Icon property can be set with any control, fontawesome icon or image uri source (will convert to image automatically) to its value.</sys:String>
+    <sys:String x:Key="PROP_Icon">gets or sets icon . Icon property can be set with any control, fontawesome icon or image uri source (will convert to image automatically) to its value.</sys:String>
 
 </ResourceDictionary>

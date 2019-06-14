@@ -47,6 +47,12 @@ namespace Panuon.UI.Silver.Browser.ViewModels
         }
         private ObservableCollection<TagItemModel> _tagItems;
 
+        public ObservableCollection<TimelineItemModel> TimelineItems
+        {
+            get { return _timelineItems; }
+            set { _timelineItems = value; NotifyPropertyChanged("TimelineItems"); }
+        }
+        private ObservableCollection<TimelineItemModel> _timelineItems;
 
         public ObservableCollection<PropertyModel> Properties
         {

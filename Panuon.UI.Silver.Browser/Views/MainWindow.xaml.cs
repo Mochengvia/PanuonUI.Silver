@@ -73,13 +73,14 @@ namespace Panuon.UI.Silver.Browser.Views
                     new TreeViewItemModel(GetString("ProgressBar"), typeof(ProgressBarView)),
                 }
             });
-            ViewModel.MenuItems.Add(new Models.TreeViewItemModel(GetString("Control"), "Control")
+            ViewModel.MenuItems.Add(new TreeViewItemModel(GetString("Control"), "Control")
             {
                 IsExpanded = true,
                 Items = new System.Collections.ObjectModel.ObservableCollection<Models.TreeViewItemModel>()
                 {
                     new TreeViewItemModel(GetString("Calendar"), typeof(CalendarView)),
                     new TreeViewItemModel(GetString("DateTimePicker"), typeof(DateTimePickerView)),
+                    new TreeViewItemModel(GetString("Timeline"), typeof(TimelineView)),
                     new TreeViewItemModel(GetString("TagPanel"), typeof(TagPanelView)),
                     new TreeViewItemModel(GetString("Loading"), typeof(LoadingView)),
                     new TreeViewItemModel(GetString("DropDown"), typeof(DropDownView)),

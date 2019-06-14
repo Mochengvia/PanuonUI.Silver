@@ -1,18 +1,19 @@
-﻿<UserControl x:Class="Panuon.UI.Silver.Browser.Views.Partial.WindowView"
+﻿<UserControl x:Class="Panuon.UI.Silver.Browser.Views.Partial.TimelineView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Panuon.UI.Silver.Browser.Views.Partial"
              xmlns:pu="clr-namespace:Panuon.UI.Silver;assembly=Panuon.UI.Silver"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
     <pu:Carousel x:Name="Carousel">
         <Grid pu:AnimationHelper.SlideInFromRight="True" pu:AnimationHelper.FadeIn="True">
             <StackPanel pu:LayoutHelper.ColumnDefinition="*">
                 <TextBlock FontSize="20">
                 <Run Text="{DynamicResource SourceCodeLocation}"></Run>
-                <Run>Views/Partial/ButtonView.xaml</Run>
+                <Run>Views/Partial/TimelineView.xaml</Run>
                 </TextBlock>
                 <Button pu:ButtonHelper.ButtonStyle="Link"
                         pu:ButtonHelper.HoverBrush="#1D8595"
@@ -22,29 +23,16 @@
                         Foreground="#1D6F95"
                         Cursor="Hand"
                         Click="BtnDocument_Click" />
-                <GroupBox Header="{DynamicResource Button}">
-                    <StackPanel Orientation="Horizontal">
-                        <StackPanel>
-                            <Button Background="{StaticResource LightBlue}"
-                                    pu:ButtonHelper.HoverBrush="{StaticResource LightBlue2}"
-                                    pu:ButtonHelper.CornerRadius="2"
-                                    Height="30"
-                                    Width="150"
-                                    FontFamily="{DynamicResource FontAwesome}"
-                                    Margin="0,10,0,0"
-                                    Content="View Config Example"
-                                    Click="BtnConfigExample_Click" />
-                            <Button Background="{StaticResource LightBlue}"
-                                    pu:ButtonHelper.HoverBrush="{StaticResource LightBlue2}"
-                                    pu:ButtonHelper.CornerRadius="2"
-                                    Height="30"
-                                    Width="150"
-                                    FontFamily="{DynamicResource FontAwesome}"
-                                    Margin="0,10,0,0"
-                                    Content="View CURD Example"
-                                    Click="BtnCURDExample_Click" />
-                        </StackPanel>
-                    </StackPanel>
+                <GroupBox Header="{DynamicResource Timeline}">
+                    <Grid>
+                        <pu:Timeline ItemsSource="{Binding TimelineItems}"
+                                     ThemeBrush="{DynamicResource LightBlue}"
+                                     HeaderForeground="Black"
+                                     Width="500"
+                                     Height="200"
+                                     HeaderMemberPath="Header"
+                                     ContentMemberPath="Content"/>
+                    </Grid>
                 </GroupBox>
             </StackPanel>
             <Button  pu:LayoutHelper.ColumnDefinition="50"
@@ -95,5 +83,4 @@
             </StackPanel>
         </Grid>
     </pu:Carousel>
-
 </UserControl>

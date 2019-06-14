@@ -190,6 +190,7 @@
     <Compile Include="Controls\TagPanel.xaml.cs">
       <DependentUpon>TagPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Timeline.cs" />
     <Compile Include="Converters\BrushOrColorConverter.cs" />
     <Compile Include="Converters\CheckBoxOrRadioButtonConverter.cs" />
     <Compile Include="Converters\CornerRadiusConverter.cs" />

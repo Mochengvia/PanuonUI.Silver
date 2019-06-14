@@ -25,6 +25,7 @@
     <sys:String x:Key="NeonLabel">NeonLabel 霓虹标签</sys:String>
     <sys:String x:Key="DateTimePicker">DateTimePicker 日期时间选择器</sys:String>
     <sys:String x:Key="DropDown">DropDown 下拉菜单</sys:String>
+    <sys:String x:Key="Timeline">Timeline 时间线</sys:String>
     <sys:String x:Key="ColorSelector">ColorSelector 颜色选择器</sys:String>
     
     <sys:String x:Key="PropertyName">属性名称</sys:String>
@@ -45,8 +46,10 @@
     <sys:String x:Key="PROP_ClickStyle">获取或设置鼠标按下时按钮的样式。</sys:String>
     <sys:String x:Key="PROP_HoverBrush">获取或设置鼠标悬浮时按钮的叠加背景色。</sys:String>
     <sys:String x:Key="PROP_ClickCoverBrush">获取或设置鼠标按下时按钮的叠加背景色。</sys:String>
-    <sys:String x:Key="PROP_CornerRadius">获取或设置鼠标按下时按钮的叠加背景色。</sys:String>
+    <sys:String x:Key="PROP_CornerRadius">获取或设置边框的圆角大小。</sys:String>
     <sys:String x:Key="PROP_IsWaiting">获取或设置鼠标是否进入等待状态。该状态下的按钮会被禁用并显示加载控件，但透明度不变。</sys:String>
     <sys:String x:Key="PROP_WaitingContent">获取或设置按钮进入等待状态时的Content。</sys:String>
-    <sys:String x:Key="PROP_Icon">获取或设置鼠标的图标。可以是任意控件、FontAwesome字体或图片Uri字符串（它将被自动转换成图片）。</sys:String>
+    <sys:String x:Key="PROP_Icon">获取或设置图标。可以是任意控件、FontAwesome字体或图片Uri字符串（它将被自动转换成图片）。</sys:String>
+
+
 </ResourceDictionary>

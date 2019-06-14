@@ -3,17 +3,16 @@ using System.Windows.Media;
 
 namespace Panuon.UI.Silver.Browser.Models
 {
-    public class TimelineItemModel : PropertyChangedBase
+    public class TabItemModel : PropertyChangedBase
     {
         #region Constructor
-        public TimelineItemModel()
+        public TabItemModel()
         {
         }
 
-        public TimelineItemModel(string header,string content)
+        public TabItemModel(string header)
         {
             Header = header;
-            Content = content;
         }
         #endregion
 
@@ -24,13 +23,6 @@ namespace Panuon.UI.Silver.Browser.Models
             set { _header = value; NotifyPropertyChanged("Header"); }
         }
         private string _header;
-
-        public string Content
-        {
-            get { return _content; }
-            set { _content = value; NotifyPropertyChanged("Content"); }
-        }
-        private string _content;
         #endregion
     }
 }

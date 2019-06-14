@@ -64,16 +64,26 @@
     <Compile Include="Models\ComboBoxItemModel.cs" />
     <Compile Include="Models\MultiSelectorItemModel.cs" />
     <Compile Include="Models\PropertyModel.cs" />
+    <Compile Include="Models\TimelineItemModel.cs" />
     <Compile Include="Models\TabItemModel.cs" />
     <Compile Include="Models\TreeViewItemModel.cs" />
     <Compile Include="Utils\LanguageInfo.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\SIMViewModel.cs" />
+    <Compile Include="Views\Examples\CURDExampleWindow.xaml.cs">
+      <DependentUpon>CURDExampleWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Examples\HomeExampleWindow.xaml.cs">
       <DependentUpon>HomeExampleWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Partial\TimelineView.xaml.cs">
+      <DependentUpon>TimelineView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Partial\SliderView.xaml.cs">
+      <DependentUpon>SliderView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Partial\DropDownMenuView.xaml.cs">
       <DependentUpon>DropDownMenuView.xaml</DependentUpon>
@@ -83,9 +93,6 @@
     </Compile>
     <Compile Include="Views\Partial\CalendarView.xaml.cs">
       <DependentUpon>CalendarView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Partial\SliderView.xaml.cs">
-      <DependentUpon>SliderView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Partial\TabControlView.xaml.cs">
       <DependentUpon>TabControlView.xaml</DependentUpon>
@@ -170,6 +177,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Examples\CURDExampleWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Examples\HomeExampleWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -177,6 +188,14 @@
     <Page Include="Views\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Partial\TimelineView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Partial\SliderView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Partial\DropDownMenuView.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -187,10 +206,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Partial\CalendarView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Partial\SliderView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

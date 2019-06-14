@@ -31,63 +31,15 @@ namespace Panuon.UI.Silver
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
-            PreviewMouseDown += NotTopMostPopup_PreviewMouseDown;
             _window.PreviewMouseDown -= Window_PreviewMouseDown;
         }
 
-        private void NotTopMostPopup_PreviewMouseDown(object sender, MouseButtonEventArgs e)
-        {
-        }
 
         private void Window_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             var element = Tag as FrameworkElement;
-
-            if (Placement == PlacementMode.Bottom)
-            {
-                var position = Mouse.GetPosition(this);
-                if (position.X < 0 || position.Y < 0 || position.X > (Child as FrameworkElement).ActualWidth)
-                {
-                    IsOpen = false;
-                    return;
-                }
-                else if (element != null)
-                {
-                    if (element.ActualWidth != 0 && position.Y > (Child as FrameworkElement).ActualHeight + element.ActualHeight)
-                    {
-                        IsOpen = false;
-                        return;
-                    }
-                    if (element.ActualWidth != 0 && position.X > element.ActualWidth && (position.Y > (Child as FrameworkElement).ActualHeight + element.ActualHeight || position.Y < element.ActualHeight))
-                    {
-                        IsOpen = false;
-                        return;
-                    }
-                }
-            }
-            else if (Placement == PlacementMode.Left)
-            {
-                var position = Mouse.GetPosition(this);
-                if (position.X > element.ActualWidth || position.Y > (Child as FrameworkElement).ActualHeight + element.ActualHeight)
-                {
-                    IsOpen = false;
-                    return;
-                }
-                else if (element != null)
-                {
-                    if (position.X < -(Child as FrameworkElement).ActualWidth + element.ActualWidth || position.Y < 0)
-                    {
-                        IsOpen = false;
-                        return;
-                    }
-                    if (position.X > element.ActualWidth && (position.Y > (Child as FrameworkElement).ActualHeight || position.Y < element.ActualHeight))
-                    {
-                        IsOpen = false;
-                        return;
-                    }
-                }
-            }
-
+            if (!IsMouseOver && !element.IsMouseOver)
+                IsOpen = false;
         }
 
         #region P/Invoke imports & definitions
