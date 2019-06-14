@@ -19,6 +19,7 @@
     <sys:String x:Key="ComboBox">ComboBox</sys:String>
     <sys:String x:Key="Treeview">Treeview</sys:String>
     <sys:String x:Key="TabControl">TabControl</sys:String>
+    <sys:String x:Key="Slider">Slider</sys:String>
     <sys:String x:Key="TagPanel">TagPanel</sys:String>
     <sys:String x:Key="Calendar">Calendar</sys:String>
     <sys:String x:Key="NeonLabel">NeonLabel</sys:String>

@@ -19,6 +19,7 @@
     <sys:String x:Key="ComboBox">ComboBox 下拉框</sys:String>
     <sys:String x:Key="Treeview">Treeview 树视图</sys:String>
     <sys:String x:Key="TabControl">TabControl 选项卡</sys:String>
+    <sys:String x:Key="Slider">Slider 滑块</sys:String>
     <sys:String x:Key="TagPanel">TagPanel 标签板</sys:String>
     <sys:String x:Key="Calendar">Calendar 日历</sys:String>
     <sys:String x:Key="NeonLabel">NeonLabel 霓虹标签</sys:String>

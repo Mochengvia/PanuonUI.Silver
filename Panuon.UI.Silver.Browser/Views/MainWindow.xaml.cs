@@ -69,6 +69,7 @@ namespace Panuon.UI.Silver.Browser.Views
                     new TreeViewItemModel(GetString("ComboBox"), typeof(ComboBoxView)),
                     new TreeViewItemModel(GetString("Treeview"), typeof(TreeviewView)),
                     new TreeViewItemModel(GetString("TabControl"), typeof(TabControlView)),
+                    new TreeViewItemModel(GetString("Slider"), typeof(SliderView)),
                     new TreeViewItemModel(GetString("ProgressBar"), typeof(ProgressBarView)),
                 }
             });

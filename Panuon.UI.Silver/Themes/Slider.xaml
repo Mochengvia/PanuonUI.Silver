@@ -22,6 +22,8 @@
                 Value="#3E3E3E" />
         <Setter Property="TickPlacement"
                 Value="None" />
+        <Setter Property="FontSize"
+                Value="12" />
         <Setter Property="local:SliderHelper.IsTickValueVisible"
                 Value="True" />
         <Setter Property="local:SliderHelper.ThemeBrush"
@@ -58,9 +60,9 @@
                                 <Border Height="{Binding Path=(local:SliderHelper.TrackThickness),RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}"
                                         Grid.Row="1"
                                         Background="{TemplateBinding Background}"
-                                        Margin="{TemplateBinding Padding}"/>
+                                        Margin="{TemplateBinding Padding}" />
                                 <Track x:Name="PART_Track"
-                                       Grid.Row="1"                                    
+                                       Grid.Row="1"
                                        Margin="0,0,0,0"
                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                                     <Track.DecreaseRepeatButton>
@@ -82,9 +84,11 @@
                                                Background="Transparent">
                                             <Thumb.Template>
                                                 <ControlTemplate TargetType="{x:Type Thumb}">
-                                                    <Grid Background="Transparent">
-                                                        <Ellipse Width="20"
-                                                                 Height="20"
+                                                    <Canvas Background="Transparent"
+                                                            Width="{Binding Path=(local:SliderHelper.ThumbSize),RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}"
+                                                            Height="{Binding Path=(local:SliderHelper.ThumbSize),RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}">
+                                                        <Ellipse Width="{Binding Path=(local:SliderHelper.ThumbSize),RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}"
+                                                                 Height="{Binding Path=(local:SliderHelper.ThumbSize),RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}"
                                                                  VerticalAlignment="Center"
                                                                  Stroke="{Binding Path=(local:SliderHelper.ThemeBrush),RelativeSource={RelativeSource  AncestorType=Slider},Mode=OneWay}"
                                                                  StrokeThickness="3"
@@ -93,11 +97,11 @@
                                                                    Grid.Row="1"
                                                                    VerticalAlignment="Bottom"
                                                                    HorizontalAlignment="Center"
-                                                                   Margin="0,0,0,-20"
+                                                                   Canvas.Top="{Binding Path=(local:SliderHelper.ThumbSize),RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}"
                                                                    Foreground="{TemplateBinding Foreground}"
                                                                    Text="{Binding Value,RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay,StringFormat=N1}" />
 
-                                                    </Grid>
+                                                    </Canvas>
                                                     <ControlTemplate.Triggers>
                                                         <DataTrigger Binding="{Binding Path=(local:SliderHelper.IsTickValueVisible), RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}"
                                                                      Value="False">
@@ -229,9 +233,11 @@
                                                Background="Transparent">
                                             <Thumb.Template>
                                                 <ControlTemplate TargetType="{x:Type Thumb}">
-                                                    <Grid Background="Transparent">
-                                                        <Ellipse Width="20"
-                                                                 Height="20"
+                                                    <Canvas Background="Transparent"
+                                                            Width="{Binding Path=(local:SliderHelper.ThumbSize),RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}"
+                                                            Height="{Binding Path=(local:SliderHelper.ThumbSize),RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}">
+                                                        <Ellipse Width="{Binding Path=(local:SliderHelper.ThumbSize),RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}"
+                                                                 Height="{Binding Path=(local:SliderHelper.ThumbSize),RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}"
                                                                  VerticalAlignment="Center"
                                                                  Stroke="{Binding Path=(local:SliderHelper.ThemeBrush),RelativeSource={RelativeSource  AncestorType=Slider},Mode=OneWay}"
                                                                  StrokeThickness="3"
@@ -239,11 +245,11 @@
                                                         <TextBlock x:Name="TxtValue"
                                                                    HorizontalAlignment="Right"
                                                                    VerticalAlignment="Center"
-                                                                   Margin="0,0,-20,0"
+                                                                   Canvas.Left="{Binding Path=(local:SliderHelper.ThumbSize),RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}"
                                                                    Foreground="{TemplateBinding Foreground}"
                                                                    Text="{Binding Value,RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay,StringFormat=N1}" />
 
-                                                    </Grid>
+                                                    </Canvas>
                                                     <ControlTemplate.Triggers>
                                                         <DataTrigger Binding="{Binding Path=(local:SliderHelper.IsTickValueVisible), RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}"
                                                                      Value="False">
@@ -375,7 +381,9 @@
                                         <Thumb Foreground="{TemplateBinding Foreground}">
                                             <Thumb.Template>
                                                 <ControlTemplate TargetType="{x:Type Thumb}">
-                                                    <Grid Background="Transparent">
+                                                    <Canvas Background="Transparent"
+                                                            Width="{Binding Path=(local:SliderHelper.ThumbSize),RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}"
+                                                            Height="{Binding Path=(local:SliderHelper.ThumbSize),RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}">
                                                         <Ellipse Width="{Binding Path=(local:SliderHelper.ThumbSize),RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}"
                                                                  Height="{Binding Path=(local:SliderHelper.ThumbSize),RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}"
                                                                  VerticalAlignment="Center"
@@ -390,11 +398,11 @@
                                                                    Grid.Row="1"
                                                                    VerticalAlignment="Bottom"
                                                                    HorizontalAlignment="Center"
-                                                                   Margin="0,0,0,-20"
+                                                                   Canvas.Top="{Binding Path=(local:SliderHelper.ThumbSize),RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}"
                                                                    Foreground="{TemplateBinding Foreground}"
                                                                    Text="{Binding Value,RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay,StringFormat=N1}" />
 
-                                                    </Grid>
+                                                    </Canvas>
                                                     <ControlTemplate.Triggers>
                                                         <DataTrigger Binding="{Binding Path=(local:SliderHelper.IsTickValueVisible), RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}"
                                                                      Value="False">
@@ -527,7 +535,9 @@
                                         <Thumb Foreground="{TemplateBinding Foreground}">
                                             <Thumb.Template>
                                                 <ControlTemplate TargetType="{x:Type Thumb}">
-                                                    <Grid Background="Transparent">
+                                                    <Canvas Background="Transparent"
+                                                            Width="{Binding Path=(local:SliderHelper.ThumbSize),RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}"
+                                                            Height="{Binding Path=(local:SliderHelper.ThumbSize),RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}">
                                                         <Ellipse Width="{Binding Path=(local:SliderHelper.ThumbSize),RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}"
                                                                  Height="{Binding Path=(local:SliderHelper.ThumbSize),RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}"
                                                                  VerticalAlignment="Center"
@@ -539,14 +549,13 @@
                                                             </Ellipse.Effect>
                                                         </Ellipse>
                                                         <TextBlock x:Name="TxtValue"
-                                                                 
                                                                    VerticalAlignment="Bottom"
                                                                    HorizontalAlignment="Center"
-                                                                   Margin="0,0,0,-20"
+                                                                   Canvas.Left="{Binding Path=(local:SliderHelper.ThumbSize),RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}"
                                                                    Foreground="{TemplateBinding Foreground}"
                                                                    Text="{Binding Value,RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay,StringFormat=N1}" />
 
-                                                    </Grid>
+                                                    </Canvas>
                                                     <ControlTemplate.Triggers>
                                                         <DataTrigger Binding="{Binding Path=(local:SliderHelper.IsTickValueVisible), RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}"
                                                                      Value="False">
@@ -626,7 +635,11 @@
                 </Setter>
 
             </MultiDataTrigger>
-
+            <Trigger Property="IsEnabled"
+                     Value="False">
+                <Setter Property="Opacity"
+                        Value="0.3" />
+            </Trigger>
         </Style.Triggers>
     </Style>
 </ResourceDictionary>
