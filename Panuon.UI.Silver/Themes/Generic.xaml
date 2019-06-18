@@ -1436,11 +1436,11 @@
                                         </Ellipse>
                                         <TextBlock x:Name="TxtHeader"
                                                    Grid.Column="1"
-                                                        VerticalAlignment="Center"
+                                                   VerticalAlignment="Center"
                                                    Foreground="{Binding HeaderForeground,RelativeSource={RelativeSource AncestorType=local:Timeline}}"
-                                                        FontSize="{Binding FontSize,Converter={StaticResource Add5Converter},RelativeSource={RelativeSource AncestorType=local:Timeline}}"
-                                                        FontFamily="{Binding FontFamily,RelativeSource={RelativeSource AncestorType=local:Timeline}}"
-                                                        Margin="0,-2,0,0">
+                                                   FontSize="{Binding FontSize,Converter={StaticResource Add5Converter},RelativeSource={RelativeSource AncestorType=local:Timeline}}"
+                                                   FontFamily="{Binding FontFamily,RelativeSource={RelativeSource AncestorType=local:Timeline}}"
+                                                   Margin="0,-2,0,0">
                                             <TextBlock.Text>
                                                 <MultiBinding Converter="{StaticResource ObjectMemberPathConverter}">
                                                     <Binding Path="." />
@@ -1475,6 +1475,43 @@
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
                     </ScrollViewer>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type local:Countdown}">
+        <Setter Property="FontFamily"
+                Value="{StaticResource Default_FontFamily}" />
+        <Setter Property="SnapsToDevicePixels"
+                Value="{StaticResource Default_SnapsToDevicePixels}" />
+        <Setter Property="FontSize"
+                Value="{StaticResource Default_FontSize}" />
+        <Setter Property="FocusVisualStyle"
+                Value="{x:Null}" />
+        <Setter Property="Second"
+                Value="5" />
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="Foreground"
+                Value="#3E3E3E" />
+        <Setter Property="Template"> 
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:Countdown}">
+                    <Border VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                            HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}">
+                        <TextBlock Text="{Binding Second,RelativeSource={RelativeSource AncestorType=local:Countdown}}"
+                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                   Foreground="{TemplateBinding Foreground}"
+                                   FontSize="{TemplateBinding FontSize}"
+                                   FontWeight="{TemplateBinding FontWeight}"
+                                   FontFamily="{TemplateBinding FontFamily}" />
+                    </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
