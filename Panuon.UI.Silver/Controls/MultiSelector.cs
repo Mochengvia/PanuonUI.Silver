@@ -32,8 +32,8 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Routed Event
-        public static readonly RoutedEvent SelectionChangedEvent = EventManager.RegisterRoutedEvent("SelectionChanged", RoutingStrategy.Bubble, typeof(RoutedPropertyChangedEventHandler<MultiSelector>), typeof(MultiSelector));
-        public event RoutedPropertyChangedEventHandler<MultiSelector> SelectionChanged
+        public static readonly RoutedEvent SelectionChangedEvent = EventManager.RegisterRoutedEvent("SelectionChanged", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(MultiSelector));
+        public event RoutedEventHandler SelectionChanged
         {
             add { AddHandler(SelectionChangedEvent, value); }
             remove { RemoveHandler(SelectionChangedEvent, value); }
@@ -41,7 +41,7 @@ namespace Panuon.UI.Silver
 
         void RaiseSelectionChanged()
         {
-            var arg = new RoutedPropertyChangedEventArgs<MultiSelector>(this, this, SelectionChangedEvent);
+            var arg = new RoutedEventArgs(SelectionChangedEvent);
             RaiseEvent(arg);
         }
         #endregion

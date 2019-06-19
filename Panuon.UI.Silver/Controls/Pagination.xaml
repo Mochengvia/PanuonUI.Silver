@@ -1,0 +1,108 @@
+﻿<ContentControl x:Class="Panuon.UI.Silver.Pagination"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                xmlns:local="clr-namespace:Panuon.UI.Silver"
+                mc:Ignorable="d"
+                d:DesignHeight="30"
+                d:DesignWidth="200"
+                Height="30"
+                HorizontalAlignment="Left"
+                Background="#888888"
+                Foreground="#FFFFFF"
+                x:Name="pagination">
+    <ContentControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converter.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <RepeatButton x:Name="BtnPrevious"
+                      FontSize="18"
+                      local:RepeatButtonHelper.HoverBrush="{Binding ThemeBrush,ElementName=pagination}"
+                      local:RepeatButtonHelper.CornerRadius="{Binding CornerRadius,ElementName=pagination}"
+                      Width="{Binding ActualHeight,ElementName=pagination}"
+                      Content="&#xf104;"
+                      Foreground="{Binding Foreground,ElementName=pagination}"
+                      FontFamily="{DynamicResource FontAwesome}"
+                      Background="{Binding Background,ElementName=pagination}"
+                      BorderThickness="{Binding BorderThickness,ElementName=pagination}"
+                      BorderBrush="{Binding BorderBrush,ElementName=pagination}"
+                      Click="BtnPrevious_Click" />
+        <ItemsControl Grid.Column="1"
+                      ItemsSource="{Binding IndexItems,ElementName=pagination}"
+                      Margin="5,0,0,0">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid x:Name="GrdMain"
+                          Width="30"
+                          Height="30"
+                          Margin="0,0,5,0">
+                        <Border x:Name="BdrDot"
+                                Visibility="Collapsed"
+                                BorderThickness="0">
+                            <TextBlock Text="..."
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Bottom"
+                                       Margin="0,0,0,3"
+                                       Foreground="{Binding ThemeBrush,ElementName=pagination}" />
+                        </Border>
+                        <RadioButton x:Name="RdbIndex"
+                                     local:RadioButtonHelper.CornerRadius="{Binding CornerRadius,ElementName=pagination,Converter={StaticResource CornerRadiusToDoubleConverter}}"
+                                     local:RadioButtonHelper.RadioButtonStyle="Button"
+                                     local:RadioButtonHelper.CheckedBackground="{Binding ThemeBrush,ElementName=pagination}"
+                                     Content="{Binding Index}"
+                                     Tag="{Binding Index}"
+                                     IsChecked="{Binding IsChecked}"
+                                     GroupName="{Binding GroupId,ElementName=pagination}"
+                                     Click="RdbIndex_Click"
+                                     Width="30"
+                                     Height="30"
+                                     Foreground="{Binding Foreground,ElementName=pagination}"
+                                     Background="{Binding Background,ElementName=pagination}"
+                                     BorderThickness="{Binding BorderThickness,ElementName=pagination}"
+                                     BorderBrush="{Binding BorderBrush,ElementName=pagination}" />
+                    </Grid>
+                    <DataTemplate.Triggers>
+                        <DataTrigger Binding="{Binding IsIndex}"
+                                     Value="False">
+                            <Setter TargetName="BdrDot"
+                                    Property="Visibility"
+                                    Value="Visible" />
+                            <Setter TargetName="RdbIndex"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
+                        </DataTrigger>
+                    </DataTemplate.Triggers>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+
+        </ItemsControl>
+        <RepeatButton x:Name="BtnNext"
+                      Grid.Column="2"
+                      FontSize="18"
+                      local:RepeatButtonHelper.HoverBrush="{Binding ThemeBrush,ElementName=pagination}"
+                      local:RepeatButtonHelper.CornerRadius="{Binding CornerRadius,ElementName=pagination}"
+                      Width="{Binding ActualHeight,ElementName=pagination}"
+                      Content="&#xf105;"
+                      Foreground="{Binding Foreground,ElementName=pagination}"
+                      FontFamily="{DynamicResource FontAwesome}"
+                      Background="{Binding Background,ElementName=pagination}"
+                      BorderThickness="{Binding BorderThickness,ElementName=pagination}"
+                      BorderBrush="{Binding BorderBrush,ElementName=pagination}"
+                      Click="BtnNext_Click" />
+    </Grid>
+</ContentControl>

@@ -33,6 +33,7 @@ namespace Panuon.UI.Silver.Browser.Views.Partial
                     new TimelineItemModel("Para2","They attacked him in various ways; with barefaced questions, ingenious suppositions, and distant surmises; but he eluded the skill of them all; and they were at last obliged to accept the second-hand intelligence of their neighbour Lady Lucas. "),
                     new TimelineItemModel("Para3","Her report was highly favourable. Sir William had been delighted with him. He was quite young, wonderfully handsome, extremely agreeable, and, to crown the whole, he meant to be at the next assembly with a large party. Nothing could be more delightful! "),
                     new TimelineItemModel("Para4","To be fond of dancing was a certain step towards falling in love; and very lively hopes of Mr. Bingley's heart were entertained."),
+                    new TimelineItemModel("End",null),
                 },
                 Properties = new ObservableCollection<PropertyModel>()
                 {

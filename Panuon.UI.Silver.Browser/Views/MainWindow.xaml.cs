@@ -78,6 +78,7 @@ namespace Panuon.UI.Silver.Browser.Views
                 IsExpanded = true,
                 Items = new System.Collections.ObjectModel.ObservableCollection<Models.TreeViewItemModel>()
                 {
+                    new TreeViewItemModel(GetString("Pagination"), typeof(PaginationView)),
                     new TreeViewItemModel(GetString("Calendar"), typeof(CalendarView)),
                     new TreeViewItemModel(GetString("DateTimePicker"), typeof(DateTimePickerView)),
                     new TreeViewItemModel(GetString("Timeline"), typeof(TimelineView)),

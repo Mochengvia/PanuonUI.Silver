@@ -1455,7 +1455,8 @@
                                                 Margin="0,2"
                                                 BorderBrush="LightGray"
                                                 BorderThickness="0,0,1,0" />
-                                        <TextBlock Grid.Column="1"
+                                        <TextBlock x:Name="TxtContent"
+                                                   Grid.Column="1"
                                                    Grid.Row="1"
                                                    FontSize="{Binding FontSize,RelativeSource={RelativeSource AncestorType=local:Timeline}}"
                                                    FontFamily="{Binding FontFamily,RelativeSource={RelativeSource AncestorType=local:Timeline}}"
@@ -1471,6 +1472,21 @@
                                             </TextBlock.Text>
                                         </TextBlock>
                                     </Grid>
+                                    <DataTemplate.Triggers>
+                                        <DataTrigger Value="{x:Null}">
+                                            <DataTrigger.Binding>
+                                                <MultiBinding Converter="{StaticResource ObjectMemberPathConverter}">
+                                                    <Binding Path="." />
+                                                    <Binding Path="ContentMemberPath"
+                                                             RelativeSource="{RelativeSource AncestorType=local:Timeline}"
+                                                             Mode="OneWay" />
+                                                </MultiBinding>
+                                            </DataTrigger.Binding>
+                                            <Setter TargetName="TxtContent"
+                                                    Property="Visibility"
+                                                    Value="Collapsed" />
+                                        </DataTrigger>
+                                    </DataTemplate.Triggers>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>

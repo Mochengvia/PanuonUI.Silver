@@ -80,7 +80,6 @@
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <local:Loading x:Name="Loading"
-                                                   Margin="0,0,5,0"
                                                    Stroke="{TemplateBinding Foreground}"
                                                    Width="20"
                                                    Height="20" />
@@ -191,13 +190,13 @@
                                         CornerRadius="{Binding Path=(local:RepeatButtonHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}" />
                                 <Border x:Name="BdrHover"
                                         BorderBrush="Transparent"
-                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        BorderThickness="0"
                                         Background="{Binding Path=(local:RepeatButtonHelper.HoverBrush),RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
                                         CornerRadius="{Binding Path=(local:RepeatButtonHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
                                         Opacity="0" />
-                                <Border x:Name="BdrClickCover"
+                                <Border x:Name="BdrClick"
                                         BorderBrush="Transparent"
-                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        BorderThickness="0"
                                         Background="{Binding Path=(local:RepeatButtonHelper.ClickCoverBrush),RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
                                         CornerRadius="{Binding Path=(local:RepeatButtonHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
                                         Visibility="Hidden" />
@@ -218,6 +217,14 @@
                                                       x:Name="Content"
                                                       ContentSource="Content"
                                                       VerticalAlignment="Center" />
+                                    <ContentControl Grid.Column="1"
+                                                    x:Name="ContentHover"
+                                                    Foreground="#FFFFFF"
+                                                    Content="{TemplateBinding Content}"
+                                                    FontSize="{TemplateBinding FontSize}"
+                                                    FontFamily="{TemplateBinding FontFamily}"
+                                                    VerticalAlignment="Center" 
+                                                    Opacity="0"/>
                                 </Grid>
                                 <Grid x:Name="GrdWaiting"
                                       Visibility="Collapsed"
@@ -229,7 +236,6 @@
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <local:Loading x:Name="Loading"
-                                                   Margin="0,0,5,0"
                                                    Stroke="{TemplateBinding Foreground}"
                                                    Width="20"
                                                    Height="20" />
@@ -249,13 +255,14 @@
                                                                  Storyboard.TargetProperty="Opacity"
                                                                  To="1"
                                                                  Duration="{StaticResource Button_ShadeDuration}" />
-                                                <DoubleAnimation Storyboard.TargetName="BdrBack"
+                                                <DoubleAnimation Storyboard.TargetName="Content"
                                                                  Storyboard.TargetProperty="Opacity"
                                                                  To="0"
                                                                  Duration="{StaticResource Button_ShadeDuration}" />
-                                                <ColorAnimation Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)"
-                                                                To="#FFFFFF"
-                                                                Duration="{StaticResource Button_ShadeDuration}" />
+                                                <DoubleAnimation Storyboard.TargetName="ContentHover"
+                                                                 Storyboard.TargetProperty="Opacity"
+                                                                 To="1"
+                                                                 Duration="{StaticResource Button_ShadeDuration}" />
                                             </Storyboard>
                                         </BeginStoryboard>
                                     </Trigger.EnterActions>
@@ -265,11 +272,12 @@
                                                 <DoubleAnimation Storyboard.TargetName="BdrHover"
                                                                  Storyboard.TargetProperty="Opacity"
                                                                  Duration="{StaticResource Button_ShadeDuration}" />
-                                                <DoubleAnimation Storyboard.TargetName="BdrBack"
+                                                <DoubleAnimation Storyboard.TargetName="Content"
                                                                  Storyboard.TargetProperty="Opacity"
                                                                  Duration="{StaticResource Button_ShadeDuration}" />
-                                                <ColorAnimation Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)"
-                                                                Duration="{StaticResource Button_ShadeDuration}" />
+                                                <DoubleAnimation Storyboard.TargetName="ContentHover"
+                                                                 Storyboard.TargetProperty="Opacity"
+                                                                 Duration="{StaticResource Button_ShadeDuration}" />
                                             </Storyboard>
                                         </BeginStoryboard>
 
@@ -277,7 +285,7 @@
                                 </Trigger>
                                 <Trigger Property="IsPressed"
                                          Value="True">
-                                    <Setter TargetName="BdrClickCover"
+                                    <Setter TargetName="BdrClick"
                                             Property="Visibility"
                                             Value="Visible" />
                                 </Trigger>
@@ -435,7 +443,6 @@
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <local:Loading x:Name="Loading"
-                                                   Margin="0,0,5,0"
                                                    Stroke="{TemplateBinding Foreground}"
                                                    Width="20"
                                                    Height="20" />
@@ -455,10 +462,6 @@
                                                                  Storyboard.TargetProperty="Opacity"
                                                                  To="1"
                                                                  Duration="{StaticResource Button_ShadeDuration}" />
-                                                <DoubleAnimation Storyboard.TargetName="BdrBack"
-                                                                 Storyboard.TargetProperty="Opacity"
-                                                                 To="0"
-                                                                 Duration="{StaticResource Button_ShadeDuration}" />
                                                 <DoubleAnimation Storyboard.TargetName="GrdContentHover"
                                                                  Storyboard.TargetProperty="Opacity"
                                                                  To="1"
@@ -470,9 +473,6 @@
                                         <BeginStoryboard>
                                             <Storyboard>
                                                 <DoubleAnimation Storyboard.TargetName="BdrHover"
-                                                                 Storyboard.TargetProperty="Opacity"
-                                                                 Duration="{StaticResource Button_ShadeDuration}" />
-                                                <DoubleAnimation Storyboard.TargetName="BdrBack"
                                                                  Storyboard.TargetProperty="Opacity"
                                                                  Duration="{StaticResource Button_ShadeDuration}" />
                                                 <DoubleAnimation Storyboard.TargetName="GrdContentHover"
@@ -584,11 +584,9 @@
                                                VerticalAlignment="Center" />
                                         <Grid Grid.Column="1">
                                             <ContentPresenter x:Name="Content"
-                                                              Grid.Column="1"
                                                               ContentSource="Content"
                                                               VerticalAlignment="Center" />
                                             <ContentControl x:Name="ContentHover"
-                                                            Grid.Column="1"
                                                             Content="{TemplateBinding Content}"
                                                             VerticalAlignment="Center"
                                                             Foreground="{Binding Path=(local:RepeatButtonHelper.HoverBrush),RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
@@ -596,7 +594,6 @@
                                                             FontSize="{TemplateBinding FontSize}"
                                                             Opacity="0" />
                                             <ContentControl x:Name="ContentClick"
-                                                            Grid.Column="1"
                                                             Content="{TemplateBinding Content}"
                                                             VerticalAlignment="Center"
                                                             Foreground="{Binding Path=(local:RepeatButtonHelper.ClickCoverBrush),RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
@@ -615,7 +612,6 @@
                                             <ColumnDefinition Width="Auto" />
                                         </Grid.ColumnDefinitions>
                                         <local:Loading x:Name="Loading"
-                                                       Margin="0,0,5,0"
                                                        Stroke="{TemplateBinding Foreground}"
                                                        Width="20"
                                                        Height="20" />
@@ -632,10 +628,6 @@
                                     <Trigger.EnterActions>
                                         <BeginStoryboard>
                                             <Storyboard>
-                                                <DoubleAnimation Storyboard.TargetName="Content"
-                                                                 Storyboard.TargetProperty="Opacity"
-                                                                 To="0"
-                                                                 Duration="{StaticResource Button_ShadeDuration}" />
                                                 <DoubleAnimation Storyboard.TargetName="ContentHover"
                                                                  Storyboard.TargetProperty="Opacity"
                                                                  To="1"
@@ -646,9 +638,6 @@
                                     <Trigger.ExitActions>
                                         <BeginStoryboard>
                                             <Storyboard>
-                                                <DoubleAnimation Storyboard.TargetName="Content"
-                                                                 Storyboard.TargetProperty="Opacity"
-                                                                 Duration="{StaticResource Button_ShadeDuration}" />
                                                 <DoubleAnimation Storyboard.TargetName="ContentHover"
                                                                  Storyboard.TargetProperty="Opacity"
                                                                  Duration="{StaticResource Button_ShadeDuration}" />

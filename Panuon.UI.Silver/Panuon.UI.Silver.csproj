@@ -75,6 +75,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\Pagination.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\TagPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -83,6 +87,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Themes\RepeatButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Themes\ContextMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -90,10 +98,6 @@
     <Page Include="Themes\Menu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\RepeatButton.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Themes\Button.xaml">
       <SubType>Designer</SubType>
@@ -188,6 +192,9 @@
     <Compile Include="Controls\Internal\ResizeContainer.cs" />
     <Compile Include="Controls\NeonLabel.xaml.cs">
       <DependentUpon>NeonLabel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Pagination.xaml.cs">
+      <DependentUpon>Pagination.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\TagPanel.xaml.cs">
       <DependentUpon>TagPanel.xaml</DependentUpon>

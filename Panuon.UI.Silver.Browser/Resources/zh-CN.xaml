@@ -27,7 +27,8 @@
     <sys:String x:Key="DropDown">DropDown 下拉菜单</sys:String>
     <sys:String x:Key="Timeline">Timeline 时间线</sys:String>
     <sys:String x:Key="ColorSelector">ColorSelector 颜色选择器</sys:String>
-    
+    <sys:String x:Key="Pagination">Pagination 分页</sys:String>
+
     <sys:String x:Key="PropertyName">属性名称</sys:String>
     <sys:String x:Key="PropertyType">属性类型</sys:String>
     <sys:String x:Key="DefaultValue">默认值</sys:String>

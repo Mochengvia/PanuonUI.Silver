@@ -9,6 +9,7 @@
     <FontFamily x:Key="Default_FontFamily">Microsoft YaHei UI</FontFamily>
     <sys:Double x:Key="Default_FontSize">14</sys:Double>
     <sys:Boolean x:Key="Default_SnapsToDevicePixels">False</sys:Boolean>
+    <FontFamily x:Key="FontAwesome">/Panuon.UI.Silver;component/Resources/#fontawesome</FontFamily>
     <!--===========Button===========-->
     <windows:Duration x:Key="Button_ShadeDuration">0:0:0.3</windows:Duration>
     <windows2:CornerRadius x:Key="Button_CornerRadius">0</windows2:CornerRadius>

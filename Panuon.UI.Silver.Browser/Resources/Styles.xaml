@@ -2,7 +2,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Panuon.UI.Silver.Browser.Resources">
 
-    <FontFamily x:Key="FontAwesome">/Panuon.UI.Silver;component/Resources/#fontawesome</FontFamily>
 
     <SolidColorBrush x:Key="LightBlue_Tran">#442FC6D8</SolidColorBrush>
     <SolidColorBrush x:Key="LightBlue_Tran2">#662FC6D8</SolidColorBrush>
