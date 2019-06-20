@@ -137,7 +137,7 @@
                 <Setter Property="local:CheckBoxHelper.CheckedGlyphBrush"
                         Value="#FFFFFF" />
                 <Setter Property="local:CheckBoxHelper.BoxHeight"
-                        Value="20" />
+                        Value="22" />
                 <Setter Property="local:CheckBoxHelper.BoxWidth"
                         Value="30" />
                 <Setter Property="Template">

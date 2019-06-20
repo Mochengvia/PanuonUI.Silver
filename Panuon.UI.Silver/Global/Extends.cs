@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Media;
 
 namespace Panuon.UI.Silver
 {
@@ -36,6 +37,18 @@ namespace Panuon.UI.Silver
                 return TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1)).AddMilliseconds((long)timeStamp);
             else
                 return TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1)).AddSeconds((long)timeStamp);
+        }
+        #endregion
+
+        #region Color
+        public static SolidColorBrush ToSolidColorBrush(this Color color)
+        {
+            return new SolidColorBrush(color);
+        }
+
+        public static Color ToColor(this string color)
+        {
+            return (Color)ColorConverter.ConvertFromString(color);
         }
         #endregion
     }

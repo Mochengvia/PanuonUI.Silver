@@ -169,7 +169,7 @@
                 <Setter Property="local:RadioButtonHelper.CheckedGlyphBrush"
                         Value="#FFFFFF" />
                 <Setter Property="local:RadioButtonHelper.BoxHeight"
-                        Value="20" />
+                        Value="22" />
                 <Setter Property="local:RadioButtonHelper.BoxWidth"
                         Value="30" />
                 <Setter Property="Template">
