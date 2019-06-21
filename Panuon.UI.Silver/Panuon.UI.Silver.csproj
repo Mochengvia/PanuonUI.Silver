@@ -178,7 +178,7 @@
     </Compile>
     <Compile Include="Controls\Countdown.cs" />
     <Compile Include="Controls\DateTimePicker.cs" />
-    <Compile Include="Controls\DropDownMenu.cs" />
+    <Compile Include="Controls\DropDown.cs" />
     <Compile Include="Controls\Internal\DragableThumb.cs" />
     <Compile Include="Controls\ImageCuter.xaml.cs">
       <DependentUpon>ImageCuter.xaml</DependentUpon>

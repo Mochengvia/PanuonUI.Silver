@@ -12,10 +12,14 @@ namespace Panuon.UI.Silver.Converters
         {
             if (value == null)
                 return null;
-            var scb = (SolidColorBrush)value;
-            if (scb == null)
+            if (value is SolidColorBrush)
+                return (value as SolidColorBrush).Color;
+            else if (value is LinearGradientBrush)
+                return (value as LinearGradientBrush).GradientStops[0].Color;
+            else if (value is RadialGradientBrush)
+                return (value as RadialGradientBrush).GradientStops[0].Color;
+            else
                 return Colors.Transparent;
-            return scb.Color;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
