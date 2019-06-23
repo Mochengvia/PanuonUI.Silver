@@ -28,53 +28,6 @@ Zhifubao:
 Paypal:  
 paypal.me/Zeoun  
 
-# Quick Start 开始使用
-
-1. Add "Panuon.UI.Silver.dll" to your project references.  
-将"Panuon.UI.Silver.dll"添加到你项目的引用中。
-
-2. Append resource dictionary below to &lt;MergedDictionaries&gt; node in "App.xaml" , &lt;Window.Resources&gt; , or other resource nodes.  
-将如下资源字典添加到App.xaml，&lt;Window.Resource&gt;或者其他资源节点下的&lt;MergedDictionaries&gt;中。
-```
-<ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Control.xaml" />
-```              
-
-3. Add reference in c#/xaml code  
-在代码中添加引用。
-
-```
-(xaml)
-xmlns:pu="clr-namespace:Panuon.UI.Silver;assembly=Panuon.UI.Silver"
-
-(c#)
-using Panuon.UI.Silver;
-```
-
-4. Try it:  
-开始使用：
-```
-(in xaml)
-<Button x:Name="BtnTest" pu:ButtonHelper.ButtonStyle="Outline" />
-
-Or 
-
-(in c#)
-ButtonHelper.SetButtonStyle(BtnTest, ButtonStyle.Outline);
-```
-
-5. PanuonUI.Silver integrated with FontAwesome.Use it in your programs:  
-PanuonUI.Silver内部集成了FontAwesome字体文件。你可以在你的项目中使用它：
-```
-(element property)
-FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
-
-(resource)
-<FontFamily x:Key="IconFont">/Panuon.UI.Silver;component/Resources/#fontawesome</FontFamily>
-...
-FontFamily="{StaticResource IconFont}"
-```
-Copy icon from http://www.fontawesome.com.cn/cheatsheet  
-从如上链接中拷贝图标。
 
 # Overview 概览
 
