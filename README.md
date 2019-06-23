@@ -12,6 +12,11 @@ Email : zeoun@qq.com
 QQ Group : 718778191  
 Zhihu : @末城via
 
+# Document 文档
+
+Chinese document(English document is still being written, you can translate it by google or other translator):  
+中文文档：  
+https://github.com/Panuon/Panuon.Documents/blob/master/Documents/PanuonUI.Silver/zh-cn.md
 # Examples 示例
 
 ![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/example_1.png)
@@ -31,9 +36,9 @@ paypal.me/Zeoun
 
 # Overview 概览
 
-## Where is the document ? （文档在哪里？）
-After downloading this repository, you can find document in our example program. Launch "Panuon.UI.Silver.Browser" project , and you will find it .  
-文档位于示例程序中。当您下载该仓库后，只需启动"Panuon.UI.Silver.Browser"项目，即可看到文档。
+## Where is the exmaple ? （示例在哪？）
+After downloading this repository, launch "Panuon.UI.Silver.Browser" project , and you will find it .  
+当您下载该仓库后，只需启动"Panuon.UI.Silver.Browser"项目，即可看到示例。
 
 ![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/step1.png)
 
