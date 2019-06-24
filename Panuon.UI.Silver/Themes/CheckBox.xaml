@@ -48,9 +48,18 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type CheckBox}">
-                            <Grid Background="Transparent">
-                                <Grid VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="{Binding Path=(local:CheckBoxHelper.HeaderWidth),RelativeSource={RelativeSource AncestorType=CheckBox}, Converter={StaticResource GridLengthConverter}}"/>
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <ContentControl x:Name="ContentHeader"
+                                                VerticalAlignment="Center"
+                                                Content="{Binding Path=(local:CheckBoxHelper.Header),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}" />
+                                <Grid Grid.Column="1"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      Background="Transparent">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="*" />
@@ -139,12 +148,20 @@
                 <Setter Property="local:CheckBoxHelper.BoxHeight"
                         Value="22" />
                 <Setter Property="local:CheckBoxHelper.BoxWidth"
-                        Value="30" />
+                        Value="34" />
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type CheckBox}">
-                            <Grid Background="Transparent">
-                                <Grid VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="{Binding Path=(local:CheckBoxHelper.HeaderWidth),RelativeSource={RelativeSource AncestorType=CheckBox}, Converter={StaticResource GridLengthConverter}}" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <ContentControl x:Name="ContentHeader"
+                                                VerticalAlignment="Center"
+                                                Content="{Binding Path=(local:CheckBoxHelper.Header),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}" />
+                                <Grid Grid.Column="1"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto" />
@@ -308,32 +325,42 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type CheckBox}">
-                            <Grid x:Name="GrdMain">
-                                <Border x:Name="BdrBack"
-                                        BorderBrush="{TemplateBinding BorderBrush}"
-                                        BorderThickness="{TemplateBinding BorderThickness}"
-                                        Background="{TemplateBinding Background}"
-                                        CornerRadius="{Binding Path=(local:CheckBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}" />
-                                <Border x:Name="BdrHover"
-                                        BorderBrush="Transparent"
-                                        BorderThickness="{TemplateBinding BorderThickness}"
-                                        Background="{Binding Path=(local:CheckBoxHelper.CheckedBackground),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
-                                        CornerRadius="{Binding Path=(local:CheckBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
-                                        Opacity="0" />
-                                <Border x:Name="BdrChecked"
-                                        BorderBrush="{TemplateBinding BorderBrush}"
-                                        BorderThickness="{TemplateBinding BorderThickness}"
-                                        Background="{Binding Path=(local:CheckBoxHelper.CheckedBackground),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
-                                        CornerRadius="{Binding Path=(local:CheckBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
-                                        Visibility="Collapsed" />
-                                <ContentControl x:Name="Content"
-                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                Margin="{TemplateBinding Padding}"
-                                                Content="{TemplateBinding Content}"
-                                                FontFamily="{TemplateBinding FontFamily}"
-                                                FontSize="{TemplateBinding FontSize}"
-                                                Foreground="{TemplateBinding Foreground}" />
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="{Binding Path=(local:CheckBoxHelper.HeaderWidth),RelativeSource={RelativeSource AncestorType=CheckBox}, Converter={StaticResource GridLengthConverter}}" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <ContentControl x:Name="ContentHeader"
+                                                VerticalAlignment="Center"
+                                                Content="{Binding Path=(local:CheckBoxHelper.Header),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}" />
+                                <Grid x:Name="GrdMain"
+                                      Grid.Column="1">
+                                    <Border x:Name="BdrBack"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                            Background="{TemplateBinding Background}"
+                                            CornerRadius="{Binding Path=(local:CheckBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}" />
+                                    <Border x:Name="BdrHover"
+                                            BorderBrush="Transparent"
+                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                            Background="{Binding Path=(local:CheckBoxHelper.CheckedBackground),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
+                                            CornerRadius="{Binding Path=(local:CheckBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
+                                            Opacity="0" />
+                                    <Border x:Name="BdrChecked"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                            Background="{Binding Path=(local:CheckBoxHelper.CheckedBackground),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
+                                            CornerRadius="{Binding Path=(local:CheckBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
+                                            Visibility="Collapsed" />
+                                    <ContentControl x:Name="Content"
+                                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                    Margin="{TemplateBinding Padding}"
+                                                    Content="{TemplateBinding Content}"
+                                                    FontFamily="{TemplateBinding FontFamily}"
+                                                    FontSize="{TemplateBinding FontSize}"
+                                                    Foreground="{TemplateBinding Foreground}" />
+                                </Grid>
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <MultiDataTrigger>

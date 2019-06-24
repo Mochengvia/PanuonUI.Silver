@@ -50,40 +50,49 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type RadioButton}">
-                            <Grid Background="Transparent">
-                                <Grid VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <Grid x:Name="Grid"
-                                          Width="{Binding Path=(local:RadioButtonHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                                          Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}">
-                                        <Ellipse x:Name="Ellipse"
-                                                   Fill="{TemplateBinding Background}"
-                                                   Stroke="{TemplateBinding BorderBrush}"
-                                                   StrokeThickness="{TemplateBinding BorderThickness, Converter={StaticResource ThicknessToDoubleConverter}}"
-                                                   />
-                                        <Ellipse x:Name="EllipseInner"
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="{Binding Path=(local:RadioButtonHelper.HeaderWidth),RelativeSource={RelativeSource AncestorType=RadioButton}, Converter={StaticResource GridLengthConverter}}" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <ContentControl x:Name="ContentHeader"
+                                                VerticalAlignment="Center"
+                                                Content="{Binding Path=(local:RadioButtonHelper.Header),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}" />
+
+                                <Grid Background="Transparent">
+                                    <Grid VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid x:Name="Grid"
                                               Width="{Binding Path=(local:RadioButtonHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                                              Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                                              Fill="{Binding Path=(local:RadioButtonHelper.GlyphBrush),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                                              StrokeThickness="0"
-                                                 RenderTransformOrigin="0.5,0.5">
-                                            <Ellipse.RenderTransform>
-                                                <ScaleTransform x:Name="Scale"
-                                                                ScaleX="0.4"
-                                                                ScaleY="0.4"/>
-                                            </Ellipse.RenderTransform>
-                                        </Ellipse>
+                                              Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}">
+                                            <Ellipse x:Name="Ellipse"
+                                                     Fill="{TemplateBinding Background}"
+                                                     Stroke="{TemplateBinding BorderBrush}"
+                                                     StrokeThickness="{TemplateBinding BorderThickness, Converter={StaticResource ThicknessToDoubleConverter}}" />
+                                            <Ellipse x:Name="EllipseInner"
+                                                     Width="{Binding Path=(local:RadioButtonHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                                                     Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                                                     Fill="{Binding Path=(local:RadioButtonHelper.GlyphBrush),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                                                     StrokeThickness="0"
+                                                     RenderTransformOrigin="0.5,0.5">
+                                                <Ellipse.RenderTransform>
+                                                    <ScaleTransform x:Name="Scale"
+                                                                    ScaleX="0.4"
+                                                                    ScaleY="0.4" />
+                                                </Ellipse.RenderTransform>
+                                            </Ellipse>
+                                        </Grid>
+                                        <ContentPresenter x:Name="Presenter"
+                                                          Grid.Column="1"
+                                                          ContentSource="Content"
+                                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                          Margin="{TemplateBinding Padding}" />
                                     </Grid>
-                                    <ContentPresenter x:Name="Presenter"
-                                                      Grid.Column="1"
-                                                      ContentSource="Content"
-                                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                      Margin="{TemplateBinding Padding}" />
                                 </Grid>
                             </Grid>
                             <ControlTemplate.Triggers>

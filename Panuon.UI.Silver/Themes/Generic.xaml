@@ -1511,7 +1511,7 @@
                 Value="0" />
         <Setter Property="Foreground"
                 Value="#3E3E3E" />
-        <Setter Property="Template"> 
+        <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:Countdown}">
                     <Border VerticalAlignment="{TemplateBinding VerticalAlignment}"
@@ -1532,4 +1532,5 @@
             </Setter.Value>
         </Setter>
     </Style>
+
 </ResourceDictionary>

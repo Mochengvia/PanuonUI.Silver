@@ -254,7 +254,6 @@
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
-
             </DataTrigger>
             <DataTrigger Binding="{Binding Path=(local:TreeViewHelper.TreeViewStyle),RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}"
                          Value="Classic">
@@ -266,6 +265,12 @@
                                         BorderBrush="{TemplateBinding BorderBrush}"
                                         BorderThickness="{TemplateBinding BorderThickness}"
                                         Background="{TemplateBinding Background}">
+                                </Border>
+                                <Border x:Name="BdrHover"
+                                        Opacity="0"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        Background="{Binding Path=(local:TreeViewHelper.SelectedBrush),RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}">
                                 </Border>
                                 <Grid>
                                     <Grid.RowDefinitions>
@@ -373,6 +378,33 @@
                                             Property="Visibility"
                                             Value="Hidden" />
                                 </Trigger>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}"
+                                                   Value="False" />
+                                        <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}"
+                                                   Value="True" />
+                                    </MultiDataTrigger.Conditions>
+                                    <MultiDataTrigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetName="BdrHover"
+                                                                 Storyboard.TargetProperty="Opacity"
+                                                                 To="0.2" 
+                                                                 Duration="0:0:0.5"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </MultiDataTrigger.EnterActions>
+                                    <MultiDataTrigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetName="BdrHover"
+                                                                 Storyboard.TargetProperty="Opacity"
+                                                                 Duration="0:0:0.5" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </MultiDataTrigger.ExitActions>
+                                </MultiDataTrigger>
                                 <Trigger Property="IsSelected"
                                          Value="True">
                                     <Setter TargetName="BdrMain"

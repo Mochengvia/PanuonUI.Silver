@@ -11,7 +11,7 @@ namespace Panuon.UI.Silver.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value == null)
-                return null;
+                return Colors.Transparent;
             if (value is SolidColorBrush)
                 return (value as SolidColorBrush).Color;
             else if (value is LinearGradientBrush)

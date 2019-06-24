@@ -42,7 +42,15 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
                     <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="{Binding Path=(local:TextBoxHelper.HeaderWidth),RelativeSource={RelativeSource AncestorType=TextBox}, Converter={StaticResource GridLengthConverter}}" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <ContentControl x:Name="ContentHeader"
+                                        VerticalAlignment="Center"
+                                        Content="{Binding Path=(local:TextBoxHelper.Header),RelativeSource={RelativeSource AncestorType=TextBox}, Mode=OneWay}" />
                         <Border x:Name="bdrOuter"
+                                Grid.Column="1"
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
@@ -55,19 +63,20 @@
                                                   Opacity="0" />
                             </Border.Effect>
                         </Border>
-                        <Grid>
+                        <Grid Grid.Column="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                                 <ColumnDefinition Width="*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <Label x:Name="LblIcon"
+                            <ContentControl x:Name="ContentIcon"
+                                   Grid.Column="1"
                                    Visibility="Collapsed"
                                    Padding="10,0,7,0"
                                    VerticalContentAlignment="Center"
                                    Content="{Binding Path=(local:TextBoxHelper.Icon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=TextBox}, Mode=OneWay}"
                                    Foreground="{TemplateBinding Foreground}"
-                                   FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"></Label>
-                            <Grid Grid.Column="1">
+                                   FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"></ContentControl>
+                            <Grid Grid.Column="2">
                                 <ScrollViewer x:Name="PART_ContentHost"
                                               Style="{StaticResource MiniScrollViewer}"
                                               VerticalAlignment="Stretch"
@@ -94,7 +103,7 @@
                     <ControlTemplate.Triggers>
                         <DataTrigger Binding="{Binding Path=(local:TextBoxHelper.Icon),Converter={StaticResource IsNotNullConverter},RelativeSource={RelativeSource Self}}"
                                      Value="True">
-                            <Setter TargetName="LblIcon"
+                            <Setter TargetName="ContentIcon"
                                     Property="Visibility"
                                     Value="Visible" />
                             <Setter Property="Padding"

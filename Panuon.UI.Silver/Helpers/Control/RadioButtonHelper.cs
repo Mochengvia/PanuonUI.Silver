@@ -126,5 +126,35 @@ namespace Panuon.UI.Silver
         public static readonly DependencyProperty CheckedContentProperty =
             DependencyProperty.RegisterAttached("CheckedContent", typeof(object), typeof(RadioButtonHelper));
         #endregion
+
+        #region Header
+        public static object GetHeader(DependencyObject obj)
+        {
+            return (object)obj.GetValue(HeaderProperty);
+        }
+
+        public static void SetHeader(DependencyObject obj, object value)
+        {
+            obj.SetValue(HeaderProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderProperty =
+            DependencyProperty.RegisterAttached("Header", typeof(object), typeof(RadioButtonHelper));
+        #endregion
+
+        #region HeaderWidth
+        public static string GetHeaderWidth(DependencyObject obj)
+        {
+            return (string)obj.GetValue(HeaderWidthProperty);
+        }
+
+        public static void SetHeaderWidth(DependencyObject obj, string value)
+        {
+            obj.SetValue(HeaderWidthProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderWidthProperty =
+            DependencyProperty.RegisterAttached("HeaderWidth", typeof(string), typeof(RadioButtonHelper), new PropertyMetadata("Auto"));
+        #endregion
     }
 }

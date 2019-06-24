@@ -35,4 +35,21 @@ namespace Panuon.UI.Silver.Converters
         }
     }
     #endregion
+
+    #region Minus 10
+    internal class Minus10Converter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return (double)value - 10;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return DependencyProperty.UnsetValue;
+        }
+    }
+
+    #endregion
+
 }

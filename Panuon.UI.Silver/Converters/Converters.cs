@@ -134,9 +134,36 @@ namespace Panuon.UI.Silver.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (double.IsNaN((double)value))
-                return new GridLength(1, GridUnitType.Auto);
-            return new GridLength((double)value);
+            var row = value.ToString();
+            var length = 0.0;
+
+            if (row.Contains("*"))
+            {
+                row = row.Replace("*", "");
+                if (row == "")
+                    row = "1";
+
+                if (double.TryParse(row, out length))
+                {
+                    return new GridLength(length, GridUnitType.Star);
+                }
+                else
+                {
+                    return new GridLength(0, GridUnitType.Auto);
+                }
+            }
+            else
+            {
+                if (double.TryParse(row, out length))
+                {
+                    return new GridLength(length, GridUnitType.Pixel);
+                }
+                else
+                {
+                    return new GridLength(0, GridUnitType.Auto);
+                }
+
+            }
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
