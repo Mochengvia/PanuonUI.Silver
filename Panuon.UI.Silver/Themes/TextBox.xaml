@@ -68,14 +68,13 @@
                                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                                 <ColumnDefinition Width="*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <ContentControl x:Name="ContentIcon"
-                                   Grid.Column="1"
+                            <Label x:Name="LblIcon"
                                    Visibility="Collapsed"
                                    Padding="10,0,7,0"
                                    VerticalContentAlignment="Center"
                                    Content="{Binding Path=(local:TextBoxHelper.Icon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=TextBox}, Mode=OneWay}"
                                    Foreground="{TemplateBinding Foreground}"
-                                   FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"></ContentControl>
+                                   FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"></Label>
                             <Grid Grid.Column="2">
                                 <ScrollViewer x:Name="PART_ContentHost"
                                               Style="{StaticResource MiniScrollViewer}"
@@ -103,7 +102,7 @@
                     <ControlTemplate.Triggers>
                         <DataTrigger Binding="{Binding Path=(local:TextBoxHelper.Icon),Converter={StaticResource IsNotNullConverter},RelativeSource={RelativeSource Self}}"
                                      Value="True">
-                            <Setter TargetName="ContentIcon"
+                            <Setter TargetName="LblIcon"
                                     Property="Visibility"
                                     Value="Visible" />
                             <Setter Property="Padding"
