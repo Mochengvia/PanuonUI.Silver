@@ -87,6 +87,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Themes\ListBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Themes\RepeatButton.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -217,6 +221,7 @@
     <Compile Include="Global\Models\TagItemModel.cs" />
     <Compile Include="Helpers\Control\ContextMenuHelper.cs" />
     <Compile Include="Helpers\Control\GroupBoxHelper.cs" />
+    <Compile Include="Helpers\Control\ListBoxHelper.cs" />
     <Compile Include="Helpers\Control\ProgressBarHelper.cs" />
     <Compile Include="Helpers\Control\RepeatButtonHelper.cs" />
     <Compile Include="Helpers\Control\TabControlHelper.cs" />
