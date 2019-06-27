@@ -103,7 +103,7 @@ namespace Panuon.UI.Silver
             var passwordBox = d as System.Windows.Controls.PasswordBox;
             var password = e.NewValue as string;
 
-            if(password != passwordBox.Password)
+            if (password != passwordBox.Password)
             {
                 passwordBox.Password = password;
             }
@@ -158,6 +158,8 @@ namespace Panuon.UI.Silver
         private static void OnPasswordHookChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var passwordBox = d as System.Windows.Controls.PasswordBox;
+            if (!passwordBox.Password.IsNullOrEmpty())
+                SetPassword(passwordBox, passwordBox.Password);
             passwordBox.PasswordChanged += new RoutedEventHandler(PasswordBox_PasswordChanged);
         }
 
