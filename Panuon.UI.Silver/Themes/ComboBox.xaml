@@ -77,12 +77,12 @@
                                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <ContentControl x:Name="ContentIcon"
+                                <Label x:Name="LblIcon"
                                                 Padding="10,0,2,0"
                                                 VerticalContentAlignment="Center"
                                                 Content="{Binding Path=(local:ComboBoxHelper.Icon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                                                 Foreground="{TemplateBinding Foreground}"
-                                                FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"></ContentControl>
+                                                FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"></Label>
                                 <ContentPresenter x:Name="ContentSite"
                                                   Grid.Column="1"
                                                   Margin="{TemplateBinding Padding}"
@@ -254,7 +254,7 @@
                         </DataTrigger>
                         <DataTrigger Binding="{Binding Path=(local:ComboBoxHelper.Icon),Converter={StaticResource IsNullConverter},RelativeSource={RelativeSource Self}}"
                                      Value="True">
-                            <Setter TargetName="ContentIcon"
+                            <Setter TargetName="LblIcon"
                                     Property="Visibility"
                                     Value="Collapsed" />
                         </DataTrigger>
