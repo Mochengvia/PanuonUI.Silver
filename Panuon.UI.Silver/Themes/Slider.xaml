@@ -417,7 +417,7 @@
                                     </Track.Thumb>
                                     <Track.IncreaseRepeatButton>
                                         <RepeatButton Command="Slider.IncreaseLarge"
-                                                      Background="{Binding Path=(local:SliderHelper.ThemeBrush),RelativeSource={RelativeSource AncestorType=Slider},Mode=OneWay}">
+                                                      Background="Transparent">
                                             <RepeatButton.Template>
                                                 <ControlTemplate TargetType="{x:Type RepeatButton}">
                                                     <Grid Background="Transparent">
