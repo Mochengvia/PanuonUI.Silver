@@ -17,9 +17,6 @@ Zhihu : @末城via
 Chinese document(English document is still being written, you can translate it by google or other translator):  
 中文文档：  
 https://github.com/Panuon/Panuon.Documents/blob/master/Documents/PanuonUI.Silver/zh-cn.md
-# Examples 示例
-
-![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/example_1.png)
 
 # Donate  捐赠
 Panuon.UI.Silver is an open source library.Your support will motivate me to continue Panuon.UI.Silver development.    
@@ -53,7 +50,7 @@ DataGrid / ScrollViewer (MiniScrollViewer)
 
 ### Button   
 
-![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/button.jpg)
+![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/button.gif)
 
 ### CheckBox  
 
