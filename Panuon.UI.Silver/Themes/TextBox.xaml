@@ -81,7 +81,7 @@
                                    VerticalContentAlignment="Center"
                                    Content="{Binding Path=(local:TextBoxHelper.Icon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=TextBox}, Mode=OneWay}"
                                    Foreground="{TemplateBinding Foreground}"
-                                   FontFamily="/Panuon.UI.Silver.Premuim;component/Resources/#fontawesome"></Label>
+                                   FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"></Label>
                             <Grid Grid.Column="2">
                                 <ScrollViewer x:Name="PART_ContentHost"
                                               Style="{StaticResource MiniScrollViewer}"
