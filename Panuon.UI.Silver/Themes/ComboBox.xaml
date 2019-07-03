@@ -77,12 +77,12 @@
                                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <Label x:Name="LblIcon"
+                                <ContentControl x:Name="ContentIcon"
                                                 Padding="10,0,2,0"
                                                 VerticalContentAlignment="Center"
                                                 Content="{Binding Path=(local:ComboBoxHelper.Icon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                                                 Foreground="{TemplateBinding Foreground}"
-                                                FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"></Label>
+                                                FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"></ContentControl>
                                 <ContentPresenter x:Name="ContentSite"
                                                   Grid.Column="1"
                                                   Margin="{TemplateBinding Padding}"
@@ -198,8 +198,7 @@
                                    Focusable="False"
                                    AllowsTransparency="True"
                                    PopupAnimation="Slide">
-                                <Grid MaxHeight="180"
-                                      MinWidth="{Binding ActualWidth,ElementName=ToggleButton}"
+                                <Grid MinWidth="{Binding ActualWidth,ElementName=ToggleButton}"
                                       x:Name="DropDown">
                                     <Border x:Name="DropDownBorder"
                                             Margin="0,0,0,10"
@@ -254,7 +253,7 @@
                         </DataTrigger>
                         <DataTrigger Binding="{Binding Path=(local:ComboBoxHelper.Icon),Converter={StaticResource IsNullConverter},RelativeSource={RelativeSource Self}}"
                                      Value="True">
-                            <Setter TargetName="LblIcon"
+                            <Setter TargetName="ContentIcon"
                                     Property="Visibility"
                                     Value="Collapsed" />
                         </DataTrigger>

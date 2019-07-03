@@ -37,11 +37,13 @@ namespace Panuon.UI.Silver
             Await,
         }
 
-        public MsgBox(string content, string title, MsgType msgTyle = MsgType.Message, Window owner = null, bool autoCoverMask = false, Action cancelAction = null)
+        public MsgBox(string content, string title, MsgType msgTyle = MsgType.Message, Window owner = null, bool showInTaskbar = true, bool autoCoverMask = false, bool topMost = true, Action cancelAction = null)
         {
             InitializeComponent();
             _msgType = msgTyle;
             Title = title;
+            Topmost = topMost;
+            ShowInTaskbar = showInTaskbar;
             if (owner != null)
             {
                 if (autoCoverMask)

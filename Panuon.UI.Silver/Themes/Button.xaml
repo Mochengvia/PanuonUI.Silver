@@ -223,8 +223,8 @@
                                                     Content="{TemplateBinding Content}"
                                                     FontSize="{TemplateBinding FontSize}"
                                                     FontFamily="{TemplateBinding FontFamily}"
-                                                    VerticalAlignment="Center" 
-                                                    Opacity="0"/>
+                                                    VerticalAlignment="Center"
+                                                    Opacity="0" />
                                 </Grid>
                                 <Grid x:Name="GrdWaiting"
                                       Visibility="Collapsed"
@@ -583,23 +583,32 @@
                                                FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
                                                VerticalAlignment="Center" />
                                         <Grid Grid.Column="1">
-                                            <ContentPresenter x:Name="Content"
-                                                              ContentSource="Content"
-                                                              VerticalAlignment="Center" />
+                                            <ContentControl x:Name="Content"
+                                                            Content="{TemplateBinding Content}"
+                                                            VerticalAlignment="Center"
+                                                            Foreground="{TemplateBinding Foreground}"
+                                                            FontFamily="{TemplateBinding FontFamily}"
+                                                            FontSize="{TemplateBinding FontSize}"
+                                                            FontWeight="{TemplateBinding FontWeight}"
+                                                            Margin="{TemplateBinding Padding}" />
                                             <ContentControl x:Name="ContentHover"
                                                             Content="{TemplateBinding Content}"
                                                             VerticalAlignment="Center"
                                                             Foreground="{Binding Path=(local:ButtonHelper.HoverBrush),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
                                                             FontFamily="{TemplateBinding FontFamily}"
                                                             FontSize="{TemplateBinding FontSize}"
-                                                            Opacity="0" />
+                                                            FontWeight="{TemplateBinding FontWeight}"
+                                                            Opacity="0"
+                                                            Margin="{TemplateBinding Padding}" />
                                             <ContentControl x:Name="ContentClick"
                                                             Content="{TemplateBinding Content}"
                                                             VerticalAlignment="Center"
                                                             Foreground="{Binding Path=(local:ButtonHelper.ClickCoverBrush),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
                                                             FontFamily="{TemplateBinding FontFamily}"
                                                             FontSize="{TemplateBinding FontSize}"
-                                                            Visibility="Hidden" />
+                                                            FontWeight="{TemplateBinding FontWeight}"
+                                                            Visibility="Hidden"
+                                                            Margin="{TemplateBinding Padding}" />
                                         </Grid>
 
                                     </Grid>
