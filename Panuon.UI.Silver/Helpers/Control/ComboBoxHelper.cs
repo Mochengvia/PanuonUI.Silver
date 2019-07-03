@@ -130,8 +130,9 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region (Event) SearchTextChanged
+
         public static readonly RoutedEvent SearchTextChangedEvent = EventManager.RegisterRoutedEvent("SearchTextChanged", RoutingStrategy.Bubble, typeof(RoutedPropertyChangedEventHandler<string>), typeof(ComboBoxHelper));
-        public static void AddSearchTextChangedHandler(DependencyObject d, RoutedEventHandler handler)
+        public static void AddSearchTextChangedHandler(DependencyObject d, RoutedPropertyChangedEventHandler<string> handler)
         {
             UIElement uie = d as UIElement;
             if (uie != null)
@@ -139,7 +140,7 @@ namespace Panuon.UI.Silver
                 uie.AddHandler(SearchTextChangedEvent, handler);
             }
         }
-        public static void RemoveSearchTextChangedHandler(DependencyObject d, RoutedEventHandler handler)
+        public static void RemoveSearchTextChangedHandler(DependencyObject d, RoutedPropertyChangedEventHandler<string> handler)
         {
             UIElement uie = d as UIElement;
             if (uie != null)
@@ -173,7 +174,15 @@ namespace Panuon.UI.Silver
         private static void OnSearchTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var comboBox = d as ComboBox;
+            comboBox.DropDownClosed -= ComboBox_DropDownClosed;
+            comboBox.DropDownClosed += ComboBox_DropDownClosed;
             RaiseSearchTextChanged(comboBox, (string)e.NewValue, (string)e.OldValue);
+        }
+
+        private static void ComboBox_DropDownClosed(object sender, EventArgs e)
+        {
+            var comboBox = sender as ComboBox;
+            SetSearchText(comboBox, "");
         }
         #endregion
 
