@@ -269,7 +269,7 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region APIs
-        public static void ShowPopup(Window window, string content, double durationSeconds = 2, double opacity = 0.7)
+        public static void ShowPopup(Window window, string content, double durationSeconds = 2, double opacity = 0.7, PopupPosition popupPosition = PopupPosition.Bottom)
         {
             var grid = window.Content as Grid;
             if (grid == null)
@@ -279,10 +279,10 @@ namespace Panuon.UI.Silver
             {
                 Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#AA3E3E3E")),
                 CornerRadius = new CornerRadius(3),
-                VerticalAlignment = VerticalAlignment.Bottom,
+                VerticalAlignment = popupPosition == PopupPosition.Bottom ? VerticalAlignment.Bottom : (popupPosition == PopupPosition.Center ? VerticalAlignment.Center : VerticalAlignment.Top),
                 HorizontalAlignment = HorizontalAlignment.Center,
                 Height = double.NaN,
-                Margin = new Thickness(0, 0, 0, 20),
+                Margin = popupPosition == PopupPosition.Bottom ? new Thickness(0, 0, 0, 20) : (popupPosition == PopupPosition.Center ? new Thickness(0, 0, 0, 0) : new Thickness(0, 20, 0, 0)),
                 Opacity = 0,
                 Effect = new DropShadowEffect()
                 {
@@ -309,11 +309,11 @@ namespace Panuon.UI.Silver
             };
             border.Child = textBlock;
             grid.Children.Add(border);
-            BeginPopupInAnimation(border);
+            BeginPopupInAnimation(border, popupPosition);
             var timer = new DispatcherTimer() { Interval = TimeSpan.FromSeconds(durationSeconds) };
             timer.Tick += delegate
             {
-                BeginPopupOutAnimation(border, grid);
+                BeginPopupOutAnimation(border, grid, popupPosition);
             };
             timer.Start();
         }
@@ -556,10 +556,10 @@ namespace Panuon.UI.Silver
         }
 
 
-        private static void BeginPopupInAnimation(FrameworkElement element)
+        private static void BeginPopupInAnimation(FrameworkElement element, PopupPosition popupPosition)
         {
             element.RenderTransformOrigin = new Point(0.5, 0.5);
-            var translate = new TranslateTransform(0, 20);
+            var translate = new TranslateTransform(0, popupPosition == PopupPosition.Top ? -20 : 20);
             element.RenderTransform = translate;
 
 
@@ -579,7 +579,7 @@ namespace Panuon.UI.Silver
             translate.BeginAnimation(TranslateTransform.YProperty, translateAnimation);
         }
 
-        private static void BeginPopupOutAnimation(FrameworkElement element, Grid container)
+        private static void BeginPopupOutAnimation(FrameworkElement element, Grid container, PopupPosition popupPosition)
         {
             var translate = element.RenderTransform as TranslateTransform;
 
@@ -592,7 +592,7 @@ namespace Panuon.UI.Silver
 
             var translateAnimation = new DoubleAnimation()
             {
-                To = 20,
+                To = popupPosition == PopupPosition.Top ? -20 : 20,
                 Duration = TimeSpan.FromSeconds(0.3),
                 EasingFunction = new CubicEase() { EasingMode = EasingMode.EaseOut },
             };

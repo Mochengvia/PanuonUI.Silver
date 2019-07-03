@@ -197,4 +197,13 @@ namespace Panuon.UI.Silver
         LeftBottom
     }
     #endregion
+
+    #region PopupPosition
+    public enum PopupPosition
+    {
+        Bottom,
+        Top,
+        Center,
+    }
+    #endregion
 }
