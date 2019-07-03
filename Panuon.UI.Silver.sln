@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.539
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29020.237
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panuon.UI.Silver", "Panuon.UI.Silver\Panuon.UI.Silver.csproj", "{527FF1E2-A99C-40C2-B589-69B5BAD77F5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panuon.UI.Silver.Browser", "Panuon.UI.Silver.Browser\Panuon.UI.Silver.Browser.csproj", "{2E66412A-3C82-404C-90E3-380BCD16F0A1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIBrowser", "UIBrowser\UIBrowser.csproj", "{F8A6F19C-B283-46F1-8576-7A2B1F4EB8A7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{527FF1E2-A99C-40C2-B589-69B5BAD77F5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{527FF1E2-A99C-40C2-B589-69B5BAD77F5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{527FF1E2-A99C-40C2-B589-69B5BAD77F5A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2E66412A-3C82-404C-90E3-380BCD16F0A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2E66412A-3C82-404C-90E3-380BCD16F0A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2E66412A-3C82-404C-90E3-380BCD16F0A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2E66412A-3C82-404C-90E3-380BCD16F0A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8A6F19C-B283-46F1-8576-7A2B1F4EB8A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8A6F19C-B283-46F1-8576-7A2B1F4EB8A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8A6F19C-B283-46F1-8576-7A2B1F4EB8A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8A6F19C-B283-46F1-8576-7A2B1F4EB8A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

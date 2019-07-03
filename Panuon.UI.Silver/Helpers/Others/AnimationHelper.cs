@@ -32,7 +32,7 @@ namespace Panuon.UI.Silver
             element.Opacity = 0;
 
             if (element.IsLoaded)
-                element.BeginAnimation(FrameworkElement.OpacityProperty, GetDoubleAnimation(1,element));
+                element.BeginAnimation(FrameworkElement.OpacityProperty, GetDoubleAnimation(1, element));
             else
             {
                 element.Loaded += delegate
@@ -150,7 +150,7 @@ namespace Panuon.UI.Silver
         {
             obj.SetValue(SlideInFromLeftProperty, value);
         }
-      
+
         private static void OnSlideInFromLeftChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var element = d as FrameworkElement;
@@ -350,10 +350,12 @@ namespace Panuon.UI.Silver
 
             if (element.IsLoaded)
             {
-               var duration = GetDurationSeconds(element);
+                var duration = GetDurationSeconds(element);
                 var beginSeconds = GetBeginTimeSeconds(element);
-                stop2.BeginAnimation(GradientStop.OffsetProperty, GetDoubleAnimation(1, TimeSpan.FromSeconds(duration), TimeSpan.FromSeconds(beginSeconds)));
-                stop2.BeginAnimation(GradientStop.ColorProperty, GetColorAnimation(Colors.White, TimeSpan.FromSeconds(duration / 0.5), TimeSpan.FromSeconds(duration * 0.75)));
+                var easingFunction = GetEasingFunction(element);
+
+                stop2.BeginAnimation(GradientStop.OffsetProperty, GetDoubleAnimation(1, TimeSpan.FromSeconds(duration), TimeSpan.FromSeconds(beginSeconds), easingFunction));
+                stop2.BeginAnimation(GradientStop.ColorProperty, GetColorAnimation(Colors.White, TimeSpan.FromSeconds(duration / 0.5), TimeSpan.FromSeconds(duration * 0.75), easingFunction));
             }
             else
             {
@@ -361,8 +363,43 @@ namespace Panuon.UI.Silver
                 {
                     var duration = GetDurationSeconds(element);
                     var beginSeconds = GetBeginTimeSeconds(element);
-                    stop2.BeginAnimation(GradientStop.OffsetProperty, GetDoubleAnimation(1, TimeSpan.FromSeconds(duration), TimeSpan.FromSeconds(beginSeconds)));
-                    stop2.BeginAnimation(GradientStop.ColorProperty, GetColorAnimation(Colors.White, TimeSpan.FromSeconds(duration / 0.5), TimeSpan.FromSeconds(duration * 0.75)));
+                    var easingFunction = GetEasingFunction(element);
+                    stop2.BeginAnimation(GradientStop.OffsetProperty, GetDoubleAnimation(1, TimeSpan.FromSeconds(duration), TimeSpan.FromSeconds(beginSeconds), easingFunction));
+                    stop2.BeginAnimation(GradientStop.ColorProperty, GetColorAnimation(Colors.White, TimeSpan.FromSeconds(duration / 0.5), TimeSpan.FromSeconds(duration * 0.75), easingFunction));
+                };
+            }
+        }
+        #endregion
+
+        #region MarginTo
+        public static Thickness GetMarginTo(DependencyObject obj)
+        {
+            return (Thickness)obj.GetValue(MarginToProperty);
+        }
+
+        public static void SetMarginTo(DependencyObject obj, Thickness value)
+        {
+            obj.SetValue(MarginToProperty, value);
+        }
+
+        public static readonly DependencyProperty MarginToProperty =
+            DependencyProperty.RegisterAttached("MarginTo", typeof(Thickness), typeof(AnimationHelper), new PropertyMetadata(OnMarginToChanged));
+
+        private static void OnMarginToChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var element = d as FrameworkElement;
+            if (element == null)
+                return;
+
+            var thickness = e.NewValue as Thickness? ?? new Thickness(0);
+
+            if (element.IsLoaded)
+                element.BeginAnimation(FrameworkElement.MarginProperty, GetThicknessAnimation(thickness, element));
+            else
+            {
+                element.Loaded += delegate
+                {
+                    element.BeginAnimation(FrameworkElement.MarginProperty, GetThicknessAnimation(thickness, element));
                 };
             }
         }
@@ -403,6 +440,21 @@ namespace Panuon.UI.Silver
 
         #endregion
 
+        #region EasingFunction
+        public static IEasingFunction GetEasingFunction(DependencyObject obj)
+        {
+            return (IEasingFunction)obj.GetValue(EasingFunctionProperty);
+        }
+
+        public static void SetEasingFunction(DependencyObject obj, IEasingFunction value)
+        {
+            obj.SetValue(EasingFunctionProperty, value);
+        }
+
+        public static readonly DependencyProperty EasingFunctionProperty =
+            DependencyProperty.RegisterAttached("EasingFunction", typeof(IEasingFunction), typeof(AnimationHelper));
+        #endregion
+
         #region Function
         private static DoubleAnimation GetDoubleAnimation(double to, FrameworkElement element)
         {
@@ -411,16 +463,18 @@ namespace Panuon.UI.Silver
                 To = to,
                 Duration = TimeSpan.FromSeconds(GetDurationSeconds(element)),
                 BeginTime = TimeSpan.FromSeconds(GetBeginTimeSeconds(element)),
+                EasingFunction = GetEasingFunction(element),
             };
         }
 
-        private static DoubleAnimation GetDoubleAnimation(double to, TimeSpan duration, TimeSpan? beginTime = null)
+        private static DoubleAnimation GetDoubleAnimation(double to, TimeSpan duration, TimeSpan? beginTime = null, IEasingFunction easingFunction = null)
         {
             return new DoubleAnimation()
             {
                 To = to,
                 Duration = duration,
                 BeginTime = beginTime ?? TimeSpan.FromSeconds(0),
+                EasingFunction = easingFunction,
             };
         }
 
@@ -432,16 +486,29 @@ namespace Panuon.UI.Silver
                 To = to,
                 Duration = TimeSpan.FromSeconds(GetDurationSeconds(element)),
                 BeginTime = TimeSpan.FromSeconds(GetBeginTimeSeconds(element)),
+                EasingFunction = GetEasingFunction(element),
             };
         }
 
-        private static ColorAnimation GetColorAnimation(Color to, TimeSpan duration, TimeSpan? beginTime = null)
+        private static ColorAnimation GetColorAnimation(Color to, TimeSpan duration, TimeSpan? beginTime = null, IEasingFunction easingFunction = null)
         {
             return new ColorAnimation()
             {
                 To = to,
                 Duration = duration,
                 BeginTime = beginTime ?? TimeSpan.FromSeconds(0),
+                EasingFunction = easingFunction,
+            };
+        }
+
+        private static ThicknessAnimation GetThicknessAnimation(Thickness to, FrameworkElement element)
+        {
+            return new ThicknessAnimation()
+            {
+                To = to,
+                Duration = TimeSpan.FromSeconds(GetDurationSeconds(element)),
+                BeginTime = TimeSpan.FromSeconds(GetBeginTimeSeconds(element)),
+                EasingFunction = GetEasingFunction(element),
             };
         }
 

@@ -1,0 +1,57 @@
+﻿<Window x:Class="UIBrowser.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:pu="clr-namespace:Panuon.UI.Silver;assembly=Panuon.UI.Silver"
+        xmlns:local="clr-namespace:UIBrowser"
+        xmlns:localized="clr-namespace:UIBrowser.Properties"
+        mc:Ignorable="d"
+        pu:WindowHelper.Applying="True"
+        Title="UIBrowser"
+        Height="700"
+        Width="1200"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.3*"
+                              MinWidth="250" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <TreeView x:Name="TvMenu"
+                  pu:TreeViewHelper.SelectedBrush="#49A9C0"
+                  pu:TreeViewHelper.ExpandMode="SingleClick"
+                  pu:TreeViewHelper.SelectMode="ChildOnly"
+                  SelectedValuePath="Value"
+                  SelectedItemChanged="TvMenu_SelectionChanged"
+                  Margin="5,0,0,0">
+            <TreeViewItem Header="{x:Static localized:Resource.Introduction}"
+                          pu:TreeViewHelper.ItemIcon="&#xf05a;"
+                          Tag="Introduction"
+                          IsSelected="True" />
+            <TreeViewItem Header="{x:Static localized:Resource.NativeControls}"
+                          pu:TreeViewHelper.ItemIcon="&#xf17a;"
+                          IsExpanded="True">
+                <!--<TreeViewItem Header="{x:Static localized:Resource.Window}"
+                              Tag="Window"/>-->
+                <TreeViewItem Header="{x:Static localized:Resource.Button}"
+                              Tag="Button" />
+                <TreeViewItem Header="{x:Static localized:Resource.TextBox}"
+                              Tag="TextBox" />
+                <TreeViewItem Header="{x:Static localized:Resource.PasswordBox}"
+                              Tag="PasswordBox" />
+                <TreeViewItem Header="{x:Static localized:Resource.CheckBox}"
+                              Tag="CheckBox" />
+                <TreeViewItem Header="{x:Static localized:Resource.RadioButton}"
+                              Tag="RadioButton" />
+            </TreeViewItem>
+        </TreeView>
+        <GridSplitter Width="2"
+                      VerticalAlignment="Stretch" />
+        <ContentControl x:Name="ContentControl"
+                        Grid.Column="1"
+                        Margin="20,0">
+
+        </ContentControl>
+    </Grid>
+</Window>

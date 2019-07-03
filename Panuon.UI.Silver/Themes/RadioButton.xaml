@@ -346,7 +346,7 @@
                 <Setter Property="BorderThickness"
                         Value="0" />
                 <Setter Property="Padding"
-                        Value="0,0,0,0" />
+                        Value="10,0" />
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type RadioButton}">
