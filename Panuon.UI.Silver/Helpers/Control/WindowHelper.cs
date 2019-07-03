@@ -269,7 +269,7 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region APIs
-        public static void ShowPopup(Window window, string content, double durationSeconds = 2)
+        public static void ShowPopup(Window window, string content, double durationSeconds = 2, double opacity = 0.7)
         {
             var grid = window.Content as Grid;
             if (grid == null)
@@ -281,15 +281,23 @@ namespace Panuon.UI.Silver
                 CornerRadius = new CornerRadius(3),
                 VerticalAlignment = VerticalAlignment.Bottom,
                 HorizontalAlignment = HorizontalAlignment.Center,
+                Height = double.NaN,
                 Margin = new Thickness(0, 0, 0, 20),
                 Opacity = 0,
                 Effect = new DropShadowEffect()
                 {
                     ShadowDepth = 0,
                     Color = Colors.DimGray,
-                    Opacity = 0.7,
-                }
+                    Opacity = opacity,
+                },
             };
+
+            if ((grid.RowDefinitions?.Count ?? 0) != 0)
+                Grid.SetRowSpan(border, grid.RowDefinitions.Count);
+
+            if ((grid.ColumnDefinitions?.Count ?? 0) != 0)
+                Grid.SetColumnSpan(border, grid.ColumnDefinitions.Count);
+
             var textBlock = new TextBlock()
             {
                 Text = content,
@@ -309,7 +317,6 @@ namespace Panuon.UI.Silver
             };
             timer.Start();
         }
-
         public static void ShowMessage(string content, string title = "Tips", Window owner = null, bool showInTaskbar = true, bool autoCoverMask = true, bool topMost = true)
         {
             var msgBox = new MsgBox(content, title, MsgBox.MsgType.Message, owner, showInTaskbar, autoCoverMask, topMost);
