@@ -163,7 +163,7 @@ namespace UIBrowser.PartialViews.Native
                         (icon == null ? "" : $"\npu:TextBoxHelper.Icon=\"{icon}\"") +
                         $"\npu:TextBoxHelper.FocusedBorderBrush=\"{TextBoxHelper.GetFocusedBorderBrush(TbCustom).ToColor().ToHexString(false)}\"" +
                         $"\npu:TextBoxHelper.FocusedShadowColor=\"{TextBoxHelper.GetFocusedShadowColor(TbCustom).ToHexString(false)}\"" +
-                        (cornerRadius == 0 ? "" : $"\npu:ButtonHelper.CornerRadius=\"{cornerRadius}\"") +
+                        (cornerRadius == 0 ? "" : $"\npu:TextBoxHelper.CornerRadius=\"{cornerRadius}\"") +
                         " />";
         }
 
