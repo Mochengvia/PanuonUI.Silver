@@ -1,0 +1,393 @@
+﻿<UserControl x:Class="UIBrowser.PartialViews.OverviewView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:pu="clr-namespace:Panuon.UI.Silver;assembly=Panuon.UI.Silver"
+             xmlns:local="clr-namespace:UIBrowser.PartialViews"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <ScrollViewer>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid Margin="10">
+                <Border Effect="{StaticResource DropShadow}"
+                        Background="White" />
+                <StackPanel Margin="10"
+                            VerticalAlignment="Top">
+                    <Slider x:Name="SliderTheme"
+                            pu:SliderHelper.IsTickValueVisible="False"
+                            pu:SliderHelper.SliderStyle="Classic"
+                            pu:SliderHelper.ThemeBrush="Transparent"
+                            IsMoveToPointEnabled="True"
+                            VerticalAlignment="Center"
+                            Padding="9,0"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Minimum="0"
+                            Maximum="70"
+                            Value="66.5"
+                            IsSnapToTickEnabled="True"
+                            TickFrequency="0.01"
+                            Margin="5,0"
+                            Background="{StaticResource ColorSelectorBrush}"
+                            ValueChanged="SliderTheme_ValueChanged">
+                    </Slider>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.ColumnSpan="2">
+                    <Grid Margin="10">
+                        <Border Effect="{StaticResource DropShadow}"
+                                Background="White" />
+                        <StackPanel Margin="10"
+                                    VerticalAlignment="Top">
+                            <Button  Height="30"
+                                     Content=" Button"
+                                     FontFamily="{DynamicResource FontAwesome}"
+                                     Background="{Binding LightBrush, Mode=OneWay}"
+                                     pu:ButtonHelper.HoverBrush="{Binding Brush, Mode=OneWay}" />
+                            <Button  Height="30"
+                                     Margin="0,5,0,0"
+                                     Content=" Button"
+                                     FontFamily="{DynamicResource FontAwesome}"
+                                     pu:ButtonHelper.ButtonStyle="Hollow"
+                                     BorderBrush="{Binding Brush, Mode=OneWay}"
+                                     Foreground="{Binding Brush, Mode=OneWay}"
+                                     pu:ButtonHelper.HoverBrush="{Binding Brush, Mode=OneWay}" />
+                            <Button  Height="30"
+                                     Margin="0,5,0,0"
+                                     Content=" Button"
+                                     FontFamily="{DynamicResource FontAwesome}"
+                                     pu:ButtonHelper.ButtonStyle="Outline"
+                                     BorderBrush="{Binding LightBrush, Mode=OneWay}"
+                                     Foreground="{Binding LightBrush, Mode=OneWay}"
+                                     pu:ButtonHelper.HoverBrush="{Binding Brush, Mode=OneWay}" />
+                            <Button  Height="30"
+                                     Margin="0,5,0,0"
+                                     Content=" Button"
+                                     FontFamily="{DynamicResource FontAwesome}"
+                                     pu:ButtonHelper.ButtonStyle="Link"
+                                     BorderBrush="{Binding LightBrush, Mode=OneWay}"
+                                     Foreground="{Binding LightBrush, Mode=OneWay}"
+                                     pu:ButtonHelper.HoverBrush="{Binding Brush, Mode=OneWay}" />
+                        </StackPanel>
+                    </Grid>
+                    <Grid Margin="10">
+                        <Border Effect="{StaticResource DropShadow}"
+                                Background="White" />
+                        <StackPanel Margin="10"
+                                    VerticalAlignment="Top">
+                            <CheckBox  Height="30"
+                                       Content="CheckBox"
+                                       IsChecked="True"
+                                       Background="{Binding BrushTran1, Mode=OneWay}"
+                                       pu:CheckBoxHelper.BoxHeight="16"
+                                       pu:CheckBoxHelper.BoxWidth="16"
+                                       pu:CheckBoxHelper.CheckedBackground="{Binding Brush, Mode=OneWay}" />
+                            <CheckBox  Height="30"
+                                       Margin="0,5,0,0"
+                                       Content="CheckBox"
+                                       BorderBrush="{Binding Brush, Mode=OneWay}"
+                                       BorderThickness="1"
+                                       Background="Transparent"
+                                       pu:CheckBoxHelper.BoxHeight="16"
+                                       pu:CheckBoxHelper.BoxWidth="16"
+                                       pu:CheckBoxHelper.CheckedBackground="Transparent"
+                                       pu:CheckBoxHelper.CheckedGlyphBrush="{Binding Brush, Mode=OneWay}" />
+                            <CheckBox  Height="30"
+                                       Margin="0,5,0,0"
+                                       Content="CheckBox"
+                                       pu:CheckBoxHelper.CheckBoxStyle="Switch"
+                                       pu:CheckBoxHelper.BoxHeight="20"
+                                       pu:CheckBoxHelper.BoxWidth="30"
+                                       pu:CheckBoxHelper.CheckedBackground="{Binding Brush, Mode=OneWay}" />
+                            <CheckBox  Height="30"
+                                       Margin="0,5,0,0"
+                                       Content="CheckBox"
+                                       pu:CheckBoxHelper.CheckBoxStyle="Button"
+                                       pu:CheckBoxHelper.CheckedBackground="{Binding Brush, Mode=OneWay}" />
+                        </StackPanel>
+                    </Grid>
+                    <Grid Margin="10">
+                        <Border Effect="{StaticResource DropShadow}"
+                                Background="White" />
+                        <StackPanel Margin="10"
+                                    VerticalAlignment="Top">
+                            <RadioButton  Height="30"
+                                          IsChecked="True"
+                                          Content="RadioButton"
+                                          Background="{Binding BrushTran1, Mode=OneWay}"
+                                          pu:RadioButtonHelper.BoxHeight="16"
+                                          pu:RadioButtonHelper.BoxWidth="16"
+                                          pu:RadioButtonHelper.CheckedBackground="{Binding Brush, Mode=OneWay}" />
+                            <RadioButton  Height="30"
+                                          Margin="0,5,0,0"
+                                          Content="CheckBox"
+                                          BorderBrush="{Binding Brush, Mode=OneWay}"
+                                          BorderThickness="1"
+                                          Background="Transparent"
+                                          pu:RadioButtonHelper.BoxHeight="16"
+                                          pu:RadioButtonHelper.BoxWidth="16"
+                                          pu:RadioButtonHelper.CheckedBackground="Transparent"
+                                          pu:RadioButtonHelper.CheckedGlyphBrush="{Binding Brush, Mode=OneWay}" />
+                            <RadioButton  Height="30"
+                                          Margin="0,5,0,0"
+                                          Content="RadioButton"
+                                          pu:RadioButtonHelper.RadioButtonStyle="Switch"
+                                          pu:RadioButtonHelper.BoxHeight="20"
+                                          pu:RadioButtonHelper.BoxWidth="30"
+                                          pu:RadioButtonHelper.CheckedBackground="{Binding Brush, Mode=OneWay}" />
+                            <RadioButton  Height="30"
+                                          Margin="0,5,0,0"
+                                          Content="RadioButton"
+                                          pu:RadioButtonHelper.RadioButtonStyle="Button"
+                                          pu:RadioButtonHelper.CheckedBackground="{Binding Brush, Mode=OneWay}" />
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+                <StackPanel Grid.Column="2"
+                            Grid.ColumnSpan="3">
+                    <Grid Margin="10">
+                        <Border Effect="{StaticResource DropShadow}"
+                                Background="White" />
+                        <StackPanel Margin="10"
+                                    VerticalAlignment="Top">
+                            <TextBox  Height="30"
+                                      pu:TextBoxHelper.FocusedBorderBrush="{Binding LightBrush, Mode=OneWay}"
+                                      pu:TextBoxHelper.FocusedShadowColor="{Binding LightBrush, Mode=OneWay}" />
+                            <TextBox  Height="30"
+                                      Margin="0,5,0,0"
+                                      pu:TextBoxHelper.Watermark="Enter you account"
+                                      pu:TextBoxHelper.Icon="&#xf007;"
+                                      pu:TextBoxHelper.FocusedBorderBrush="{Binding LightBrush, Mode=OneWay}"
+                                      pu:TextBoxHelper.FocusedShadowColor="{Binding LightBrush, Mode=OneWay}" />
+                        </StackPanel>
+
+                    </Grid>
+                    <Grid Margin="10">
+                        <Border Effect="{StaticResource DropShadow}"
+                                Background="White" />
+                        <StackPanel Margin="10"
+                                    VerticalAlignment="Top">
+                            <PasswordBox  Height="30"
+                                          Margin="0,5,0,0"
+                                          pu:PasswordBoxHelper.FocusedBorderBrush="{Binding LightBrush, Mode=OneWay}"
+                                          pu:PasswordBoxHelper.FocusedShadowColor="{Binding LightBrush, Mode=OneWay}" />
+                            <PasswordBox  Height="30"
+                                          Margin="0,5,0,0"
+                                          pu:PasswordBoxHelper.Watermark="Enter your password"
+                                          pu:PasswordBoxHelper.Icon="&#xf023;"
+                                          pu:PasswordBoxHelper.FocusedBorderBrush="{Binding LightBrush, Mode=OneWay}"
+                                          pu:PasswordBoxHelper.FocusedShadowColor="{Binding LightBrush, Mode=OneWay}" />
+                        </StackPanel>
+                    </Grid>
+                    <Grid Margin="10">
+                        <Border Effect="{StaticResource DropShadow}"
+                                Background="White" />
+                        <StackPanel Margin="10"
+                                    VerticalAlignment="Top">
+                            <ComboBox  Height="30"
+                                       Margin="0,5,0,0"
+                                       pu:ComboBoxHelper.HoverBrush="{Binding BrushTran1, Mode=OneWay}"
+                                       pu:ComboBoxHelper.SelectedBrush="{Binding BrushTran2, Mode=OneWay}">
+                                <ComboBoxItem Content="Item1"
+                                              IsSelected="True" />
+                                <ComboBoxItem Content="Item2" />
+                            </ComboBox>
+                            <ComboBox  Height="30"
+                                       Margin="0,5,0,0"
+                                       pu:ComboBoxHelper.Icon="&#xf109;"
+                                       pu:ComboBoxHelper.HoverBrush="{Binding BrushTran1, Mode=OneWay}"
+                                       pu:ComboBoxHelper.SelectedBrush="{Binding BrushTran2, Mode=OneWay}">
+                                <ComboBoxItem Content="Item1"
+                                              IsSelected="True" />
+                                <ComboBoxItem Content="Item2" />
+                            </ComboBox>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Margin="10">
+                        <Border Effect="{StaticResource DropShadow}"
+                                Background="White" />
+                        <StackPanel Margin="10"
+                                    VerticalAlignment="Top">
+                            <ProgressBar  Height="30"
+                                          Width="200"
+                                          Background="{Binding BrushTran1, Mode=OneWay}"
+                                          Foreground="{Binding Brush, Mode=OneWay}"
+                                          pu:ProgressBarHelper.AnimateTo="50"
+                                          pu:ProgressBarHelper.IsPercentVisible="True" />
+                            <ProgressBar  Height="30"
+                                          Margin="0,5,0,0"
+                                          Width="200"
+                                          Background="{Binding BrushTran1, Mode=OneWay}"
+                                          Foreground="{Binding Brush, Mode=OneWay}"
+                                          IsIndeterminate="True" />
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <ProgressBar  Height="80"
+                                              Margin="0,10,0,0"
+                                              Width="80"
+                                              BorderBrush="{Binding BrushTran1, Mode=OneWay}"
+                                              Foreground="{Binding Brush, Mode=OneWay}"
+                                              pu:ProgressBarHelper.ProgressBarStyle="Ring"
+                                              pu:ProgressBarHelper.AnimateTo="50"
+                                              pu:ProgressBarHelper.IsPercentVisible="True" />
+                                <ProgressBar  Grid.Column="1"
+                                              Height="80"
+                                              Margin="0,10,0,0"
+                                              Width="80"
+                                              BorderBrush="{Binding BrushTran1, Mode=OneWay}"
+                                              Foreground="{Binding Brush, Mode=OneWay}"
+                                              pu:ProgressBarHelper.ProgressBarStyle="Ring"
+                                              IsIndeterminate="True" />
+                            </Grid>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Margin="10">
+                        <Border Effect="{StaticResource DropShadow}"
+                                Background="White" />
+                        <StackPanel Margin="10"
+                                    VerticalAlignment="Top">
+                            <TabControl  Height="30"
+                                         Margin="0,5,0,0"
+                                         Width="250"
+                                         pu:TabControlHelper.SelectedForeground="{Binding Brush, Mode=OneWay}">
+                                <TabItem Header="Item1" />
+                                <TabItem Header="Item2" />
+                                <TabItem Header="Item3" />
+                            </TabControl>
+                            <TabControl  Height="30"
+                                         Margin="0,15,0,0"
+                                         Width="250"
+                                         pu:TabControlHelper.TabControlStyle="Classic"
+                                         pu:TabControlHelper.SelectedForeground="{Binding Brush, Mode=OneWay}">
+                                <TabItem Header="Item1" />
+                                <TabItem Header="Item2" />
+                                <TabItem Header="Item3" />
+                            </TabControl>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+                <StackPanel Grid.Column="5"
+                            Grid.ColumnSpan="4">
+                    <Grid Margin="10">
+                        <Border Effect="{StaticResource DropShadow}"
+                                Background="White" />
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Border Margin="5"
+                                    Height="150"
+                                    BorderBrush="LightGray"
+                                    BorderThickness="1">
+                                <TreeView pu:TreeViewHelper.ItemHeight="30"
+                                          pu:TreeViewHelper.SelectedBrush="{Binding LightBrush, Mode=OneWay}">
+                                    <TreeViewItem Header="Item1"
+                                                  IsExpanded="True">
+                                        <TreeViewItem Header="Item1-1"
+                                                      IsSelected="True" />
+                                        <TreeViewItem Header="Item1-2" />
+                                        <TreeViewItem Header="Item1-3" />
+                                    </TreeViewItem>
+                                    <TreeViewItem Header="Item2" />
+                                    <TreeViewItem Header="Item3" />
+                                </TreeView>
+
+                            </Border>
+                            <Border Grid.Column="1"
+                                    Margin="5"
+                                    Height="150"
+                                    BorderBrush="LightGray"
+                                    BorderThickness="1">
+                                <TreeView pu:TreeViewHelper.ItemHeight="30"
+                                          pu:TreeViewHelper.TreeViewStyle="Classic"
+                                          pu:TreeViewHelper.SelectedBrush="{Binding BrushTran1, Mode=OneWay}">
+                                    <TreeViewItem Header="Item1"
+                                                  IsExpanded="True">
+                                        <TreeViewItem Header="Item1-1"
+                                                      IsSelected="True" />
+                                        <TreeViewItem Header="Item1-2" />
+                                        <TreeViewItem Header="Item1-3" />
+                                    </TreeViewItem>
+                                    <TreeViewItem Header="Item2" />
+                                    <TreeViewItem Header="Item3" />
+                                </TreeView>
+
+                            </Border>
+                            <Border Grid.Row="1"
+                                    Margin="5"
+                                    Height="150"
+                                    BorderBrush="LightGray"
+                                    BorderThickness="1">
+                                <TreeView pu:TreeViewHelper.ItemHeight="30"
+                                          pu:TreeViewHelper.TreeViewStyle="Modern"
+                                          pu:TreeViewHelper.SelectedBrush="{Binding BrushTran1, Mode=OneWay}"
+                                          BorderBrush="{Binding Brush}">
+                                    <TreeViewItem Header="Item1"
+                                                  IsExpanded="True">
+                                        <TreeViewItem Header="Item1-1"
+                                                      IsSelected="True" />
+                                        <TreeViewItem Header="Item1-2" />
+                                        <TreeViewItem Header="Item1-3" />
+                                    </TreeViewItem>
+                                    <TreeViewItem Header="Item2" />
+                                    <TreeViewItem Header="Item3" />
+                                </TreeView>
+
+                            </Border>
+                            <Border Grid.Row="1"
+                                    Grid.Column="1"
+                                    Margin="5"
+                                    Height="150"
+                                    BorderBrush="LightGray"
+                                    BorderThickness="1">
+                                <TreeView pu:TreeViewHelper.ItemHeight="30"
+                                          pu:TreeViewHelper.TreeViewStyle="Chain"
+                                          pu:TreeViewHelper.SelectedBrush="{Binding LightBrush, Mode=OneWay}">
+                                    <TreeViewItem Header="Item1"
+                                                  IsExpanded="True">
+                                        <TreeViewItem Header="Item1-1"
+                                                      IsSelected="True" />
+                                        <TreeViewItem Header="Item1-2" />
+                                        <TreeViewItem Header="Item1-3" />
+                                    </TreeViewItem>
+                                    <TreeViewItem Header="Item2" />
+                                    <TreeViewItem Header="Item3" />
+                                </TreeView>
+
+                            </Border>
+                        </Grid>
+
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </Grid>
+
+    </ScrollViewer>
+</UserControl>

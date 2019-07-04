@@ -37,6 +37,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Caliburn.Micro, Version=3.2.0.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Caliburn.Micro.Core.3.2.0\lib\net45\Caliburn.Micro.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -69,6 +72,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PartialViews\Native\ComboBoxView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PartialViews\Native\ProgressBarView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="PartialViews\Native\RadioButtonView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -81,7 +92,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="PartialViews\Native\TabControlView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="PartialViews\Native\TextBoxView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PartialViews\Native\TreeViewView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -93,12 +112,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PartialViews\OverviewView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Resources\Styles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PartialViews\Native\ComboBoxView.xaml.cs">
+      <DependentUpon>ComboBoxView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PartialViews\Native\ProgressBarView.xaml.cs">
+      <DependentUpon>ProgressBarView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PartialViews\Native\RadioButtonView.xaml.cs">
       <DependentUpon>RadioButtonView.xaml</DependentUpon>
     </Compile>
@@ -108,14 +137,23 @@
     <Compile Include="PartialViews\Native\PasswordBoxView.xaml.cs">
       <DependentUpon>PasswordBoxView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PartialViews\Native\TabControlView.xaml.cs">
+      <DependentUpon>TabControlView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PartialViews\Native\TextBoxView.xaml.cs">
       <DependentUpon>TextBoxView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PartialViews\Native\TreeViewView.xaml.cs">
+      <DependentUpon>TreeViewView.xaml</DependentUpon>
     </Compile>
     <Compile Include="PartialViews\Native\WindowView.xaml.cs">
       <DependentUpon>WindowView.xaml</DependentUpon>
     </Compile>
     <Compile Include="PartialViews\Native\ButtonView.xaml.cs">
       <DependentUpon>ButtonView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PartialViews\OverviewView.xaml.cs">
+      <DependentUpon>OverviewView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -140,6 +178,7 @@
       <LastGenOutput>Resource.zh-CN.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

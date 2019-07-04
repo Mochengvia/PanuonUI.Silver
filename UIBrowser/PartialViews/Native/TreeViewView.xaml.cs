@@ -10,9 +10,9 @@ using UIBrowser.Helpers;
 namespace UIBrowser.PartialViews.Native
 {
     /// <summary>
-    /// ButtonView.xaml 的交互逻辑
+    /// TabControlView.xaml 的交互逻辑
     /// </summary>
-    public partial class ButtonView : UserControl
+    public partial class TreeViewView : UserControl
     {
         #region Identity
         private bool _isCodeViewing;
@@ -20,7 +20,7 @@ namespace UIBrowser.PartialViews.Native
         private LinearGradientBrush _linearGradientBrush;
         #endregion
 
-        public ButtonView()
+        public TreeViewView()
         {
             InitializeComponent();
             Loaded += ButtonView_Loaded;
@@ -45,16 +45,7 @@ namespace UIBrowser.PartialViews.Native
             UpdateCode();
         }
 
-        private void SliderCornerRadius_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            if (!IsLoaded)
-                return;
-
-            UpdateTemplate();
-            UpdateCode();
-        }
-
-        private void SliderWidth_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void SliderItemHeight_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (!IsLoaded)
                 return;
@@ -69,27 +60,39 @@ namespace UIBrowser.PartialViews.Native
                 return;
             var rdb = sender as RadioButton;
 
-            ButtonHelper.SetButtonStyle(BtnCustom, (ButtonStyle)Enum.Parse(typeof(ButtonStyle), rdb.Content.ToString()));
+            TreeViewHelper.SetTreeViewStyle(TvCustom, (TreeViewStyle)Enum.Parse(typeof(TreeViewStyle), rdb.Content.ToString()));
 
             UpdateTemplate();
             UpdateCode();
         }
 
-        private void ChbSink_CheckChanged(object sender, RoutedEventArgs e)
+        private void ChbSelectMode_CheckChanged(object sender, RoutedEventArgs e)
         {
             if (!IsLoaded)
                 return;
 
-            ButtonHelper.SetClickStyle(BtnCustom, ChbSink.IsChecked == true ? ClickStyle.Sink : ClickStyle.None);
+            TreeViewHelper.SetSelectMode(TvCustom, ChbSelectMode.IsChecked == true ? SelectMode.ChildOnly : SelectMode.Any);
+
             UpdateCode();
         }
 
-        private void ChbWaiting_CheckChanged(object sender, RoutedEventArgs e)
+        private void ChbExpandMode_CheckChanged(object sender, RoutedEventArgs e)
         {
             if (!IsLoaded)
                 return;
 
-            ButtonHelper.SetIsWaiting(BtnCustom, ChbWaiting.IsChecked == true);
+            TreeViewHelper.SetExpandMode(TvCustom, ChbExpandMode.IsChecked == true ? ExpandMode.SingleClick : ExpandMode.DoubleClick);
+
+            UpdateCode();
+        }
+
+        private void ChbExpandBehaviour_CheckChanged(object sender, RoutedEventArgs e)
+        {
+            if (!IsLoaded)
+                return;
+
+            TreeViewHelper.SetExpandBehaviour(TvCustom, ChbExpandBehaviour.IsChecked == true ? ExpandBehaviour.OnlyOne : ExpandBehaviour.Any);
+
             UpdateCode();
         }
 
@@ -153,62 +156,75 @@ namespace UIBrowser.PartialViews.Native
         private void UpdateTemplate()
         {
             var color = Helper.GetColorByOffset(_linearGradientBrush.GradientStops, SliderTheme.Value / 7);
-            ButtonHelper.SetCornerRadius(BtnCustom, new CornerRadius(SliderCornerRadius.Value));
-            BtnCustom.Width = SliderWidth.Value;
 
-            if (BtnCustom.Width < 60)
-                BtnCustom.Content = "";
-            else
-                BtnCustom.Content = " Button";
+            TreeViewHelper.SetItemHeight(TvCustom, SliderItemHeight.Value);
 
 
-            switch (ButtonHelper.GetButtonStyle(BtnCustom))
+            if(TreeViewHelper.GetTreeViewStyle(TvCustom) == TreeViewStyle.Standard || TreeViewHelper.GetTreeViewStyle(TvCustom) == TreeViewStyle.Chain)
             {
-                case ButtonStyle.Standard:
-                    BtnCustom.Foreground = Colors.White.ToBrush();
-                    BtnCustom.Background = new Color() { A = 200, R = color.R, G = color.G, B = color.B }.ToBrush();
-                    ButtonHelper.SetHoverBrush(BtnCustom, color.ToBrush());
+                foreach (TreeViewItem item in TvCustom.Items)
+                {
+                    foreach (TreeViewItem itemx in item.Items)
+                    {
+                        itemx.Padding = new Thickness(0);
+                    }
+                }
+            }
+            else
+            {
+                foreach (TreeViewItem item in TvCustom.Items)
+                {
+                    foreach(TreeViewItem itemx in item.Items)
+                    {
+                        itemx.Padding = new Thickness(20, 0, 0, 0);
+                    }
+                }
+            }
+           
+            switch (TreeViewHelper.GetTreeViewStyle(TvCustom))
+            {
+                case TreeViewStyle.Standard:
+                    TreeViewHelper.SetSelectedBrush(TvCustom, color.ToBrush());
                     break;
-                case ButtonStyle.Hollow:
-                    BtnCustom.Background = Colors.Transparent.ToBrush();
-                    BtnCustom.Foreground = color.ToBrush();
-                    BtnCustom.BorderBrush = color.ToBrush();
-                    ButtonHelper.SetHoverBrush(BtnCustom, color.ToBrush());
+                case TreeViewStyle.Classic:
+                    TreeViewHelper.SetSelectedBrush(TvCustom, new Color() { A = 34, R = color.R, G = color.G, B = color.B }.ToBrush());
                     break;
-                case ButtonStyle.Outline:
-                    BtnCustom.Background = Colors.Transparent.ToBrush();
-                    BtnCustom.Foreground = new Color() { A = 150, R = color.R, G = color.G, B = color.B }.ToBrush();
-                    BtnCustom.BorderBrush = new Color() { A = 150, R = color.R, G = color.G, B = color.B }.ToBrush();
-                    ButtonHelper.SetHoverBrush(BtnCustom, color.ToBrush());
+                case TreeViewStyle.Modern:
+                    TreeViewHelper.SetSelectedBrush(TvCustom, new Color() { A = 34, R = color.R, G = color.G, B = color.B }.ToBrush());
+                    TvCustom.BorderBrush = color.ToBrush();
                     break;
-                case ButtonStyle.Link:
-                    BtnCustom.Background = Colors.Transparent.ToBrush();
-                    BtnCustom.Foreground = new Color() { A = 150, R = color.R, G = color.G, B = color.B }.ToBrush();
-                    ButtonHelper.SetHoverBrush(BtnCustom, color.ToBrush());
+                case TreeViewStyle.Chain:
+                    TreeViewHelper.SetSelectedBrush(TvCustom, color.ToBrush());
                     break;
             }
         }
 
         private void UpdateCode()
         {
-            var buttonStyle = ButtonHelper.GetButtonStyle(BtnCustom);
-            var cornerRadius = SliderCornerRadius.Value;
+            var treeStyle = TreeViewHelper.GetTreeViewStyle(TvCustom);
+            var selectMode = TreeViewHelper.GetSelectMode(TvCustom);
+            var expandMode = TreeViewHelper.GetExpandMode(TvCustom);
+            var expandBehaviour = TreeViewHelper.GetExpandBehaviour(TvCustom);
+            var itemHeight = TreeViewHelper.GetItemHeight(TvCustom);
 
-            TbCode.Text = "<Button  Height=\"30\"" +
-                        $"\nWidth=\"{BtnCustom.Width}\"" +
-                        $"\nContent=\"{BtnCustom.Content}\"" +
-                        "\nFontFamily=\"{DynamicResource FontAwesome}\"" +
-                        (buttonStyle == ButtonStyle.Standard ? "" : $"\npu:ButtonHelper.ButtonStyle=\"{buttonStyle}\"") +
-                        (buttonStyle == ButtonStyle.Standard ? $"\nBackground=\"{BtnCustom.Background.ToColor().ToHexString()}\"" : "") +
-                        (buttonStyle == ButtonStyle.Standard ? "" : $"\nBorderBrush=\"{BtnCustom.BorderBrush.ToColor().ToHexString()}\"") +
-                        (buttonStyle == ButtonStyle.Standard ? "" : $"\nForeground=\"{BtnCustom.Foreground.ToColor().ToHexString()}\"") +
-                        $"\npu:ButtonHelper.HoverBrush=\"{ButtonHelper.GetHoverBrush(BtnCustom).ToColor().ToHexString(false)}\"" +
-                        (cornerRadius == 0 ? "" : $"\npu:ButtonHelper.CornerRadius=\"{cornerRadius}\"") +
-                        " />";
+            TbCode.Text = $"<TreeView  Height=\"{TvCustom.Height}\"" +
+                        $"\nWidth=\"{TvCustom.Width}\"" +
+                        (treeStyle == TreeViewStyle.Standard ? "" : $"\npu:TreeViewHelper.TreeViewStyle=\"{treeStyle}\"") +
+                        (selectMode == SelectMode.Any ? "" : $"\npu:TreeViewHelper.SelectMode=\"{selectMode}\"") +
+                        (expandMode == ExpandMode.DoubleClick ? "" : $"\npu:TreeViewHelper.SelectMode=\"{expandMode}\"") +
+                        (expandBehaviour == ExpandBehaviour.Any ? "" : $"\npu:TreeViewHelper.SelectMode=\"{expandBehaviour}\"") +
+                        (itemHeight == 40 ? "" : $"\npu:TreeViewHelper.ItemHeight=\"{itemHeight}\"") +
+                        $"\npu:TreeViewHelper.SelectedBrush=\"{TreeViewHelper.GetSelectedBrush(TvCustom).ToColor().ToHexString()}\"" +
+                        " >" +
+                        "\n<TreeViewItem Header=\"Item1\"/>" +
+                        "\n<TreeViewItem Header=\"Item2\"/>" +
+                        "\n<TreeViewItem Header=\"Item3\"/>" +
+                        "\n</TreeView>";
         }
+
 
         #endregion
 
-
+       
     }
 }

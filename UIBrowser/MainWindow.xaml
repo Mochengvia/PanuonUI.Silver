@@ -4,8 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:pu="clr-namespace:Panuon.UI.Silver;assembly=Panuon.UI.Silver"
-        xmlns:local="clr-namespace:UIBrowser"
         xmlns:localized="clr-namespace:UIBrowser.Properties"
+        xmlns:local="clr-namespace:UIBrowser"
         mc:Ignorable="d"
         pu:WindowHelper.Applying="True"
         Title="UIBrowser"
@@ -15,7 +15,7 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.3*"
-                              MinWidth="250" />
+                              MinWidth="250"/>
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <TreeView x:Name="TvMenu"
@@ -28,7 +28,10 @@
             <TreeViewItem Header="{x:Static localized:Resource.Introduction}"
                           pu:TreeViewHelper.ItemIcon="&#xf05a;"
                           Tag="Introduction"
-                          IsSelected="True" />
+                          IsSelected="True"/>
+            <TreeViewItem Header="{x:Static localized:Resource.Overview}"
+                          pu:TreeViewHelper.ItemIcon="&#xf0eb;"
+                          Tag="Overview" />
             <TreeViewItem Header="{x:Static localized:Resource.NativeControls}"
                           pu:TreeViewHelper.ItemIcon="&#xf17a;"
                           IsExpanded="True">
@@ -44,6 +47,14 @@
                               Tag="CheckBox" />
                 <TreeViewItem Header="{x:Static localized:Resource.RadioButton}"
                               Tag="RadioButton" />
+                <TreeViewItem Header="{x:Static localized:Resource.ComboBox}"
+                              Tag="ComboBox" />
+                <TreeViewItem Header="{x:Static localized:Resource.ProgressBar}"
+                              Tag="ProgressBar" />
+                <TreeViewItem Header="{x:Static localized:Resource.TabControl}"
+                              Tag="TabControl" />
+                <TreeViewItem Header="{x:Static localized:Resource.TreeView}"
+                              Tag="TreeView" />
             </TreeViewItem>
         </TreeView>
         <GridSplitter Width="2"

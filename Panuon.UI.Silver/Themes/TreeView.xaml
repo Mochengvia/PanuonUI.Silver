@@ -62,8 +62,6 @@
                          Value="Classic">
                 <Setter Property="Padding"
                         Value="10,0,0,0" />
-                <Setter Property="local:TreeViewHelper.ExpandedBrush"
-                        Value="#F1F1F1" />
                 <Setter Property="local:TreeViewHelper.SelectedBrush"
                         Value="#DDDDDD" />
             </DataTrigger>
@@ -73,8 +71,6 @@
                         Value="#3E3E3E" />
                 <Setter Property="Padding"
                         Value="10,0,0,0" />
-                <Setter Property="local:TreeViewHelper.ExpandedBrush"
-                        Value="#F1F1F1" />
                 <Setter Property="local:TreeViewHelper.SelectedBrush"
                         Value="#DDDDDD" />
             </DataTrigger>
@@ -289,7 +285,7 @@
                                                Foreground="{TemplateBinding Foreground}"
                                                FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
                                                VerticalAlignment="Center"
-                                               Margin="5,0,0,0"/>
+                                               Margin="5,0,0,0" />
                                         <ContentPresenter x:Name="PART_Header"
                                                           Grid.Column="1"
                                                           Margin="{TemplateBinding Padding}"
@@ -390,8 +386,8 @@
                                             <Storyboard>
                                                 <DoubleAnimation Storyboard.TargetName="BdrHover"
                                                                  Storyboard.TargetProperty="Opacity"
-                                                                 To="0.2" 
-                                                                 Duration="0:0:0.5"/>
+                                                                 To="0.2"
+                                                                 Duration="0:0:0.5" />
                                             </Storyboard>
                                         </BeginStoryboard>
                                     </MultiDataTrigger.EnterActions>
@@ -556,7 +552,7 @@
                                                    StrokeDashArray="3,2"
                                                    VerticalAlignment="Center"
                                                    Visibility="Visible"
-                                                   Margin="-7,0,0,0"/>
+                                                   Margin="-7,0,0,0" />
                                         <ToggleButton x:Name="Toggle"
                                                       Grid.Column="1"
                                                       Width="13"
@@ -620,7 +616,7 @@
                                                StrokeDashArray="3,2"
                                                HorizontalAlignment="Center"
                                                Visibility="Collapsed"
-                                               Margin="{Binding Path=(local:TreeViewHelper.ItemHeight),RelativeSource={RelativeSource AncestorType=TreeView},Mode=OneWay,Converter={StaticResource TreeViewVerticalChainConverter}}"/>
+                                               Margin="{Binding Path=(local:TreeViewHelper.ItemHeight),RelativeSource={RelativeSource AncestorType=TreeView},Mode=OneWay,Converter={StaticResource TreeViewVerticalChainConverter}}" />
                                     <ItemsPresenter x:Name="ItemsHost"
                                                     Grid.Row="1"
                                                     Grid.Column="1"
@@ -657,8 +653,7 @@
                                 </Trigger>
                                 <Trigger Property="IsSelected"
                                          Value="True">
-                                    <Setter
-                                            Property="Foreground"
+                                    <Setter Property="Foreground"
                                             Value="{Binding Path=(local:TreeViewHelper.SelectedBrush),RelativeSource={RelativeSource  AncestorType=TreeView},Mode=OneWay}" />
                                 </Trigger>
                             </ControlTemplate.Triggers>

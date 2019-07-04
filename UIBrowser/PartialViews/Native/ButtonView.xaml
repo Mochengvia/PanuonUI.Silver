@@ -42,7 +42,7 @@
                       MinWidth="300">
                 <Grid>
                     <StackPanel>
-                        <Grid Height="80">
+                        <Grid Height="100">
                             <Button x:Name="BtnCustom"
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Center"
@@ -64,7 +64,7 @@
                                 <RowDefinition Height="40" />
                                 <RowDefinition Height="40" />
                             </Grid.RowDefinitions>
-                            <TextBlock Text="{x:Static localized:Resource.ButtonStyle}"
+                            <TextBlock Text="{x:Static localized:Resource.BaseStyle}"
                                        VerticalAlignment="Center" />
                             <StackPanel Grid.Column="1"
                                         Orientation="Horizontal"
@@ -96,6 +96,7 @@
                                     Grid.Column="1"
                                     Minimum="0"
                                     Maximum="7"
+                                    Width="200"
                                     Value="6.65"
                                     IsSnapToTickEnabled="True"
                                     TickFrequency="0.01"
@@ -113,6 +114,7 @@
                                     Padding="9,0"
                                     Grid.Row="2"
                                     Grid.Column="1"
+                                    Width="200"
                                     Minimum="0"
                                     Maximum="15"
                                     IsSnapToTickEnabled="True"
@@ -130,6 +132,7 @@
                                     Padding="9,0"
                                     Grid.Row="3"
                                     Grid.Column="1"
+                                    Width="200"
                                     Minimum="30"
                                     Maximum="150"
                                     IsSnapToTickEnabled="True"

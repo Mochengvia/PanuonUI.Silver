@@ -10,9 +10,9 @@ using UIBrowser.Helpers;
 namespace UIBrowser.PartialViews.Native
 {
     /// <summary>
-    /// ButtonView.xaml 的交互逻辑
+    /// TabControlView.xaml 的交互逻辑
     /// </summary>
-    public partial class ButtonView : UserControl
+    public partial class TabControlView : UserControl
     {
         #region Identity
         private bool _isCodeViewing;
@@ -20,7 +20,7 @@ namespace UIBrowser.PartialViews.Native
         private LinearGradientBrush _linearGradientBrush;
         #endregion
 
-        public ButtonView()
+        public TabControlView()
         {
             InitializeComponent();
             Loaded += ButtonView_Loaded;
@@ -45,15 +45,6 @@ namespace UIBrowser.PartialViews.Native
             UpdateCode();
         }
 
-        private void SliderCornerRadius_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            if (!IsLoaded)
-                return;
-
-            UpdateTemplate();
-            UpdateCode();
-        }
-
         private void SliderWidth_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (!IsLoaded)
@@ -69,27 +60,9 @@ namespace UIBrowser.PartialViews.Native
                 return;
             var rdb = sender as RadioButton;
 
-            ButtonHelper.SetButtonStyle(BtnCustom, (ButtonStyle)Enum.Parse(typeof(ButtonStyle), rdb.Content.ToString()));
+            TabControlHelper.SetTabControlStyle(TabCustom, (TabControlStyle)Enum.Parse(typeof(TabControlStyle), rdb.Content.ToString()));
 
             UpdateTemplate();
-            UpdateCode();
-        }
-
-        private void ChbSink_CheckChanged(object sender, RoutedEventArgs e)
-        {
-            if (!IsLoaded)
-                return;
-
-            ButtonHelper.SetClickStyle(BtnCustom, ChbSink.IsChecked == true ? ClickStyle.Sink : ClickStyle.None);
-            UpdateCode();
-        }
-
-        private void ChbWaiting_CheckChanged(object sender, RoutedEventArgs e)
-        {
-            if (!IsLoaded)
-                return;
-
-            ButtonHelper.SetIsWaiting(BtnCustom, ChbWaiting.IsChecked == true);
             UpdateCode();
         }
 
@@ -153,58 +126,33 @@ namespace UIBrowser.PartialViews.Native
         private void UpdateTemplate()
         {
             var color = Helper.GetColorByOffset(_linearGradientBrush.GradientStops, SliderTheme.Value / 7);
-            ButtonHelper.SetCornerRadius(BtnCustom, new CornerRadius(SliderCornerRadius.Value));
-            BtnCustom.Width = SliderWidth.Value;
 
-            if (BtnCustom.Width < 60)
-                BtnCustom.Content = "";
-            else
-                BtnCustom.Content = " Button";
+            TabCustom.Width = SliderWidth.Value;
 
 
-            switch (ButtonHelper.GetButtonStyle(BtnCustom))
+            switch (TabControlHelper.GetTabControlStyle(TabCustom))
             {
-                case ButtonStyle.Standard:
-                    BtnCustom.Foreground = Colors.White.ToBrush();
-                    BtnCustom.Background = new Color() { A = 200, R = color.R, G = color.G, B = color.B }.ToBrush();
-                    ButtonHelper.SetHoverBrush(BtnCustom, color.ToBrush());
+                case TabControlStyle.Standard:
+                    TabControlHelper.SetSelectedForeground(TabCustom, color.ToBrush());
                     break;
-                case ButtonStyle.Hollow:
-                    BtnCustom.Background = Colors.Transparent.ToBrush();
-                    BtnCustom.Foreground = color.ToBrush();
-                    BtnCustom.BorderBrush = color.ToBrush();
-                    ButtonHelper.SetHoverBrush(BtnCustom, color.ToBrush());
-                    break;
-                case ButtonStyle.Outline:
-                    BtnCustom.Background = Colors.Transparent.ToBrush();
-                    BtnCustom.Foreground = new Color() { A = 150, R = color.R, G = color.G, B = color.B }.ToBrush();
-                    BtnCustom.BorderBrush = new Color() { A = 150, R = color.R, G = color.G, B = color.B }.ToBrush();
-                    ButtonHelper.SetHoverBrush(BtnCustom, color.ToBrush());
-                    break;
-                case ButtonStyle.Link:
-                    BtnCustom.Background = Colors.Transparent.ToBrush();
-                    BtnCustom.Foreground = new Color() { A = 150, R = color.R, G = color.G, B = color.B }.ToBrush();
-                    ButtonHelper.SetHoverBrush(BtnCustom, color.ToBrush());
+                case TabControlStyle.Classic:
+                    TabControlHelper.SetSelectedForeground(TabCustom, color.ToBrush());
                     break;
             }
         }
 
         private void UpdateCode()
         {
-            var buttonStyle = ButtonHelper.GetButtonStyle(BtnCustom);
-            var cornerRadius = SliderCornerRadius.Value;
+            var tabStyle = TabControlHelper.GetTabControlStyle(TabCustom);
 
-            TbCode.Text = "<Button  Height=\"30\"" +
-                        $"\nWidth=\"{BtnCustom.Width}\"" +
-                        $"\nContent=\"{BtnCustom.Content}\"" +
-                        "\nFontFamily=\"{DynamicResource FontAwesome}\"" +
-                        (buttonStyle == ButtonStyle.Standard ? "" : $"\npu:ButtonHelper.ButtonStyle=\"{buttonStyle}\"") +
-                        (buttonStyle == ButtonStyle.Standard ? $"\nBackground=\"{BtnCustom.Background.ToColor().ToHexString()}\"" : "") +
-                        (buttonStyle == ButtonStyle.Standard ? "" : $"\nBorderBrush=\"{BtnCustom.BorderBrush.ToColor().ToHexString()}\"") +
-                        (buttonStyle == ButtonStyle.Standard ? "" : $"\nForeground=\"{BtnCustom.Foreground.ToColor().ToHexString()}\"") +
-                        $"\npu:ButtonHelper.HoverBrush=\"{ButtonHelper.GetHoverBrush(BtnCustom).ToColor().ToHexString(false)}\"" +
-                        (cornerRadius == 0 ? "" : $"\npu:ButtonHelper.CornerRadius=\"{cornerRadius}\"") +
-                        " />";
+            TbCode.Text = "<TabControl  Width=\"{TabCustom.Width}\"" +
+                        (tabStyle == TabControlStyle.Standard ? "" : $"\npu:TabControlHelper.TabControlStyle=\"{tabStyle}\"") +
+                        $"\npu:TabControlHelper.SelectedForeground=\"{TabControlHelper.GetSelectedForeground(TabCustom).ToColor().ToHexString(false)}\"" +
+                        " >" +
+                        "\n<TabItem Header=\"Item1\"/>" +
+                        "\n<TabItem Header=\"Item2\"/>" +
+                        "\n<TabItem Header=\"Item3\"/>" +
+                        "\n</TabControl>";
         }
 
         #endregion

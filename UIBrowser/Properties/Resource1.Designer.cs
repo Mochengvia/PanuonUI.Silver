@@ -61,20 +61,20 @@ namespace UIBrowser.Properties {
         }
         
         /// <summary>
+        ///   查找类似 BaseStyle 的本地化字符串。
+        /// </summary>
+        public static string BaseStyle {
+            get {
+                return ResourceManager.GetString("BaseStyle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Button 的本地化字符串。
         /// </summary>
         public static string Button {
             get {
                 return ResourceManager.GetString("Button", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 ButtonStyle 的本地化字符串。
-        /// </summary>
-        public static string ButtonStyle {
-            get {
-                return ResourceManager.GetString("ButtonStyle", resourceCulture);
             }
         }
         
@@ -97,11 +97,29 @@ namespace UIBrowser.Properties {
         }
         
         /// <summary>
+        ///   查找类似 ChildOnly 的本地化字符串。
+        /// </summary>
+        public static string ChildOnly {
+            get {
+                return ResourceManager.GetString("ChildOnly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Close Code Viewer 的本地化字符串。
         /// </summary>
         public static string CloseCodeViewer {
             get {
                 return ResourceManager.GetString("CloseCodeViewer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 ComboBox 的本地化字符串。
+        /// </summary>
+        public static string ComboBox {
+            get {
+                return ResourceManager.GetString("ComboBox", resourceCulture);
             }
         }
         
@@ -124,6 +142,33 @@ namespace UIBrowser.Properties {
         }
         
         /// <summary>
+        ///   查找类似 ExpandBehaviour 的本地化字符串。
+        /// </summary>
+        public static string ExpandBehaviour {
+            get {
+                return ResourceManager.GetString("ExpandBehaviour", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 ExpandMode 的本地化字符串。
+        /// </summary>
+        public static string ExpandMode {
+            get {
+                return ResourceManager.GetString("ExpandMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Indeterminate 的本地化字符串。
+        /// </summary>
+        public static string Indeterminate {
+            get {
+                return ResourceManager.GetString("Indeterminate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Introduction 的本地化字符串。
         /// </summary>
         public static string Introduction {
@@ -142,11 +187,38 @@ namespace UIBrowser.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Item Height 的本地化字符串。
+        /// </summary>
+        public static string ItemHeight {
+            get {
+                return ResourceManager.GetString("ItemHeight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Native Controls 的本地化字符串。
         /// </summary>
         public static string NativeControls {
             get {
                 return ResourceManager.GetString("NativeControls", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 OnlyOne 的本地化字符串。
+        /// </summary>
+        public static string OnlyOne {
+            get {
+                return ResourceManager.GetString("OnlyOne", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Overview 的本地化字符串。
+        /// </summary>
+        public static string Overview {
+            get {
+                return ResourceManager.GetString("Overview", resourceCulture);
             }
         }
         
@@ -169,11 +241,38 @@ namespace UIBrowser.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Progress 的本地化字符串。
+        /// </summary>
+        public static string Progress {
+            get {
+                return ResourceManager.GetString("Progress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 ProgressBar 的本地化字符串。
+        /// </summary>
+        public static string ProgressBar {
+            get {
+                return ResourceManager.GetString("ProgressBar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 RadioButton 的本地化字符串。
         /// </summary>
         public static string RadioButton {
             get {
                 return ResourceManager.GetString("RadioButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 SelectMode 的本地化字符串。
+        /// </summary>
+        public static string SelectMode {
+            get {
+                return ResourceManager.GetString("SelectMode", resourceCulture);
             }
         }
         
@@ -187,11 +286,38 @@ namespace UIBrowser.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Show Percent 的本地化字符串。
+        /// </summary>
+        public static string ShowPercent {
+            get {
+                return ResourceManager.GetString("ShowPercent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Show Search Box 的本地化字符串。
+        /// </summary>
+        public static string ShowSearchBox {
+            get {
+                return ResourceManager.GetString("ShowSearchBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Show Watermark 的本地化字符串。
         /// </summary>
         public static string ShowWatermark {
             get {
                 return ResourceManager.GetString("ShowWatermark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 SingleClick 的本地化字符串。
+        /// </summary>
+        public static string SingleClick {
+            get {
+                return ResourceManager.GetString("SingleClick", resourceCulture);
             }
         }
         
@@ -214,6 +340,15 @@ namespace UIBrowser.Properties {
         }
         
         /// <summary>
+        ///   查找类似 TabControl 的本地化字符串。
+        /// </summary>
+        public static string TabControl {
+            get {
+                return ResourceManager.GetString("TabControl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 TextBox 的本地化字符串。
         /// </summary>
         public static string TextBox {
@@ -228,6 +363,24 @@ namespace UIBrowser.Properties {
         public static string ThemeBrush {
             get {
                 return ResourceManager.GetString("ThemeBrush", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 TreeView 的本地化字符串。
+        /// </summary>
+        public static string TreeView {
+            get {
+                return ResourceManager.GetString("TreeView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Using Animation 的本地化字符串。
+        /// </summary>
+        public static string UsingAnimation {
+            get {
+                return ResourceManager.GetString("UsingAnimation", resourceCulture);
             }
         }
         

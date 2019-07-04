@@ -72,7 +72,7 @@
                                 <RowDefinition Height="40" />
                                 <RowDefinition Height="40" />
                             </Grid.RowDefinitions>
-                            <TextBlock Text="{x:Static localized:Resource.ButtonStyle}"
+                            <TextBlock Text="{x:Static localized:Resource.BaseStyle}"
                                        VerticalAlignment="Center" />
                             <StackPanel Grid.Column="1"
                                         Orientation="Horizontal"
@@ -99,6 +99,7 @@
                                     Padding="9,0"
                                     Grid.Row="1"
                                     Grid.Column="1"
+                                    Width="200"
                                     Minimum="0"
                                     Maximum="7"
                                     Value="6.65"
@@ -118,6 +119,7 @@
                                     Padding="9,0"
                                     Grid.Row="2"
                                     Grid.Column="1"
+                                    Width="200"
                                     Minimum="0"
                                     Maximum="15"
                                     IsSnapToTickEnabled="True"
@@ -133,6 +135,7 @@
                                     IsMoveToPointEnabled="True"
                                     VerticalAlignment="Center"
                                     Padding="9,0"
+                                    Width="200"
                                     Grid.Row="3"
                                     Grid.Column="1"
                                     Minimum="16"
@@ -145,11 +148,11 @@
                             <TextBlock Grid.Row="4"
                                        Text="{x:Static localized:Resource.ChangeContentWhenChecked}"
                                        VerticalAlignment="Center" />
-                            <RadioButton x:Name="ChbChangeIfChecked"
-                                      pu:RadioButtonHelper.RadioButtonStyle="Switch"
-                                      pu:RadioButtonHelper.BoxHeight="25"
-                                      pu:RadioButtonHelper.BoxWidth="35"
-                                      pu:RadioButtonHelper.CheckedBackground="LightGray"
+                            <CheckBox x:Name="ChbChangeIfChecked"
+                                      pu:CheckBoxHelper.CheckBoxStyle="Switch"
+                                      pu:CheckBoxHelper.BoxHeight="25"
+                                      pu:CheckBoxHelper.BoxWidth="35"
+                                      pu:CheckBoxHelper.CheckedBackground="LightGray"
                                       Grid.Row="4"
                                       Grid.Column="1"
                                       HorizontalAlignment="Center"

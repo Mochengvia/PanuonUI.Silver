@@ -54,16 +54,6 @@ namespace UIBrowser.PartialViews.Native
             UpdateCode();
         }
 
-        private void SliderWidth_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            if (!IsLoaded)
-                return;
-
-            UpdateTemplate();
-            UpdateCode();
-        }
-
-
         private void BtnViewCode_Click(object sender, RoutedEventArgs e)
         {
             if (_isCodeViewing)

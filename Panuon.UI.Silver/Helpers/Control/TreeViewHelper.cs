@@ -66,21 +66,21 @@ namespace Panuon.UI.Silver
         {
             var treeView = d as TreeView;
 
-            treeView.RemoveHandler(TreeViewItem.SelectedEvent, new RoutedEventHandler(OnExpandModeItemSelected));
+            treeView.RemoveHandler(TreeViewItem.PreviewMouseDownEvent, new RoutedEventHandler(OnExpandModeItemSelected));
 
             if ((ExpandMode)e.NewValue == ExpandMode.SingleClick)
             {
-                treeView.AddHandler(TreeViewItem.SelectedEvent, new RoutedEventHandler(OnExpandModeItemSelected));
+                treeView.AddHandler(TreeViewItem.PreviewMouseDownEvent, new RoutedEventHandler(OnExpandModeItemSelected));
             }
         }
 
         private static void OnExpandModeItemSelected(object sender, RoutedEventArgs e)
         {
             var treeView = sender as TreeView;
-            if (e.OriginalSource is TreeViewItem)
+            if (e.Source is TreeViewItem)
             {
 
-                var treeViewItem = e.OriginalSource as TreeViewItem;
+                var treeViewItem = e.Source as TreeViewItem;
                 if (treeViewItem.HasItems)
                 {
                     treeViewItem.IsExpanded = !treeViewItem.IsExpanded;

@@ -117,11 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BaseStyle" xml:space="preserve">
+    <value>BaseStyle</value>
+  </data>
   <data name="Button" xml:space="preserve">
     <value>Button</value>
-  </data>
-  <data name="ButtonStyle" xml:space="preserve">
-    <value>ButtonStyle</value>
   </data>
   <data name="ChangeContentWhenChecked" xml:space="preserve">
     <value>Change If Checked</value>
@@ -129,8 +129,14 @@
   <data name="CheckBox" xml:space="preserve">
     <value>CheckBox</value>
   </data>
+  <data name="ChildOnly" xml:space="preserve">
+    <value>ChildOnly</value>
+  </data>
   <data name="CloseCodeViewer" xml:space="preserve">
     <value>Close Code Viewer</value>
+  </data>
+  <data name="ComboBox" xml:space="preserve">
+    <value>ComboBox</value>
   </data>
   <data name="CopyCode" xml:space="preserve">
     <value>Copy Code</value>
@@ -138,14 +144,32 @@
   <data name="CornerRadius" xml:space="preserve">
     <value>CornerRadius</value>
   </data>
+  <data name="ExpandBehaviour" xml:space="preserve">
+    <value>ExpandBehaviour</value>
+  </data>
+  <data name="ExpandMode" xml:space="preserve">
+    <value>ExpandMode</value>
+  </data>
+  <data name="Indeterminate" xml:space="preserve">
+    <value>Indeterminate</value>
+  </data>
   <data name="Introduction" xml:space="preserve">
     <value>Introduction</value>
   </data>
   <data name="IsWaiting" xml:space="preserve">
     <value>IsWaiting</value>
   </data>
+  <data name="ItemHeight" xml:space="preserve">
+    <value>Item Height</value>
+  </data>
   <data name="NativeControls" xml:space="preserve">
     <value>Native Controls</value>
+  </data>
+  <data name="OnlyOne" xml:space="preserve">
+    <value>OnlyOne</value>
+  </data>
+  <data name="Overview" xml:space="preserve">
+    <value>Overview</value>
   </data>
   <data name="Palette" xml:space="preserve">
     <value>Palette</value>
@@ -153,14 +177,32 @@
   <data name="PasswordBox" xml:space="preserve">
     <value>PasswordBox</value>
   </data>
+  <data name="Progress" xml:space="preserve">
+    <value>Progress</value>
+  </data>
+  <data name="ProgressBar" xml:space="preserve">
+    <value>ProgressBar</value>
+  </data>
   <data name="RadioButton" xml:space="preserve">
     <value>RadioButton</value>
+  </data>
+  <data name="SelectMode" xml:space="preserve">
+    <value>SelectMode</value>
   </data>
   <data name="ShowIcon" xml:space="preserve">
     <value>Show Icon</value>
   </data>
+  <data name="ShowPercent" xml:space="preserve">
+    <value>Show Percent</value>
+  </data>
+  <data name="ShowSearchBox" xml:space="preserve">
+    <value>Show Search Box</value>
+  </data>
   <data name="ShowWatermark" xml:space="preserve">
     <value>Show Watermark</value>
+  </data>
+  <data name="SingleClick" xml:space="preserve">
+    <value>SingleClick</value>
   </data>
   <data name="SinkWhenClick" xml:space="preserve">
     <value>SinkWhenClick</value>
@@ -168,11 +210,20 @@
   <data name="Size" xml:space="preserve">
     <value>Size</value>
   </data>
+  <data name="TabControl" xml:space="preserve">
+    <value>TabControl</value>
+  </data>
   <data name="TextBox" xml:space="preserve">
     <value>TextBox</value>
   </data>
   <data name="ThemeBrush" xml:space="preserve">
     <value>ThemeBrush</value>
+  </data>
+  <data name="TreeView" xml:space="preserve">
+    <value>TreeView</value>
+  </data>
+  <data name="UsingAnimation" xml:space="preserve">
+    <value>Using Animation</value>
   </data>
   <data name="ViewCode" xml:space="preserve">
     <value>View Code</value>

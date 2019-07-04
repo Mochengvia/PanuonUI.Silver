@@ -117,11 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Button" xml:space="preserve">
-    <value>Button 按钮</value>
-  </data>
-  <data name="ButtonStyle" xml:space="preserve">
+  <data name="BaseStyle" xml:space="preserve">
     <value>基础样式</value>
+  </data>
+  <data name="Button" xml:space="preserve">
+    <value>按钮</value>
   </data>
   <data name="ChangeContentWhenChecked" xml:space="preserve">
     <value>选中时变内容</value>
@@ -129,8 +129,14 @@
   <data name="CheckBox" xml:space="preserve">
     <value>CheckBox 复选框</value>
   </data>
+  <data name="ChildOnly" xml:space="preserve">
+    <value>仅Child</value>
+  </data>
   <data name="CloseCodeViewer" xml:space="preserve">
     <value>关闭源码</value>
+  </data>
+  <data name="ComboBox" xml:space="preserve">
+    <value>ComboBox 组合框</value>
   </data>
   <data name="CopyCode" xml:space="preserve">
     <value>复制源码</value>
@@ -138,14 +144,32 @@
   <data name="CornerRadius" xml:space="preserve">
     <value>圆角</value>
   </data>
+  <data name="ExpandBehaviour" xml:space="preserve">
+    <value>展开行为</value>
+  </data>
+  <data name="ExpandMode" xml:space="preserve">
+    <value>展开模式</value>
+  </data>
+  <data name="Indeterminate" xml:space="preserve">
+    <value>不确定进度</value>
+  </data>
   <data name="Introduction" xml:space="preserve">
     <value>概述</value>
   </data>
   <data name="IsWaiting" xml:space="preserve">
     <value>等待模式</value>
   </data>
+  <data name="ItemHeight" xml:space="preserve">
+    <value>子项高度</value>
+  </data>
   <data name="NativeControls" xml:space="preserve">
     <value>原生控件</value>
+  </data>
+  <data name="OnlyOne" xml:space="preserve">
+    <value>仅一个</value>
+  </data>
+  <data name="Overview" xml:space="preserve">
+    <value>Overview 总览</value>
   </data>
   <data name="Palette" xml:space="preserve">
     <value>Palette 调色板</value>
@@ -153,14 +177,32 @@
   <data name="PasswordBox" xml:space="preserve">
     <value>PasswordBox 密码框</value>
   </data>
+  <data name="Progress" xml:space="preserve">
+    <value>进度</value>
+  </data>
+  <data name="ProgressBar" xml:space="preserve">
+    <value>ProgressBar 进度条</value>
+  </data>
   <data name="RadioButton" xml:space="preserve">
     <value>RadioButton 单选框</value>
+  </data>
+  <data name="SelectMode" xml:space="preserve">
+    <value>选择模式</value>
   </data>
   <data name="ShowIcon" xml:space="preserve">
     <value>显示Icon</value>
   </data>
+  <data name="ShowPercent" xml:space="preserve">
+    <value>显示百分比</value>
+  </data>
+  <data name="ShowSearchBox" xml:space="preserve">
+    <value>显示搜索</value>
+  </data>
   <data name="ShowWatermark" xml:space="preserve">
     <value>显示水印</value>
+  </data>
+  <data name="SingleClick" xml:space="preserve">
+    <value>单击</value>
   </data>
   <data name="SinkWhenClick" xml:space="preserve">
     <value>点击时下沉</value>
@@ -168,11 +210,20 @@
   <data name="Size" xml:space="preserve">
     <value>大小</value>
   </data>
+  <data name="TabControl" xml:space="preserve">
+    <value>TabControl 选项卡</value>
+  </data>
   <data name="TextBox" xml:space="preserve">
     <value>TextBox 输入框</value>
   </data>
   <data name="ThemeBrush" xml:space="preserve">
     <value>主题颜色</value>
+  </data>
+  <data name="TreeView" xml:space="preserve">
+    <value>TreeView 树视图</value>
+  </data>
+  <data name="UsingAnimation" xml:space="preserve">
+    <value>使用动画</value>
   </data>
   <data name="ViewCode" xml:space="preserve">
     <value>查看源码</value>

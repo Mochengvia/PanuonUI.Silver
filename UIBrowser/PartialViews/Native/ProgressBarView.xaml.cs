@@ -10,17 +10,19 @@ using UIBrowser.Helpers;
 namespace UIBrowser.PartialViews.Native
 {
     /// <summary>
-    /// ButtonView.xaml 的交互逻辑
+    /// ProgressBarView.xaml 的交互逻辑
     /// </summary>
-    public partial class ButtonView : UserControl
+    public partial class ProgressBarView : UserControl
     {
         #region Identity
+        private bool _usingAnimation;
+
         private bool _isCodeViewing;
 
         private LinearGradientBrush _linearGradientBrush;
         #endregion
 
-        public ButtonView()
+        public ProgressBarView()
         {
             InitializeComponent();
             Loaded += ButtonView_Loaded;
@@ -54,7 +56,7 @@ namespace UIBrowser.PartialViews.Native
             UpdateCode();
         }
 
-        private void SliderWidth_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void SliderProgress_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (!IsLoaded)
                 return;
@@ -63,33 +65,18 @@ namespace UIBrowser.PartialViews.Native
             UpdateCode();
         }
 
-        private void RdbButtonStyle_CheckChanged(object sender, RoutedEventArgs e)
+        private void RdbProgressBarStyle_CheckChanged(object sender, RoutedEventArgs e)
         {
             if (!IsLoaded)
                 return;
             var rdb = sender as RadioButton;
+            var pgbStyle = (ProgressBarStyle)Enum.Parse(typeof(ProgressBarStyle), rdb.Content.ToString());
+            ProgressBarHelper.SetProgressBarStyle(PgbCustom, pgbStyle);
 
-            ButtonHelper.SetButtonStyle(BtnCustom, (ButtonStyle)Enum.Parse(typeof(ButtonStyle), rdb.Content.ToString()));
+            PgbCustom.Height = pgbStyle == ProgressBarStyle.Standard ? 30 : 80;
+            PgbCustom.Width = pgbStyle == ProgressBarStyle.Standard ? 200 : 80;
 
             UpdateTemplate();
-            UpdateCode();
-        }
-
-        private void ChbSink_CheckChanged(object sender, RoutedEventArgs e)
-        {
-            if (!IsLoaded)
-                return;
-
-            ButtonHelper.SetClickStyle(BtnCustom, ChbSink.IsChecked == true ? ClickStyle.Sink : ClickStyle.None);
-            UpdateCode();
-        }
-
-        private void ChbWaiting_CheckChanged(object sender, RoutedEventArgs e)
-        {
-            if (!IsLoaded)
-                return;
-
-            ButtonHelper.SetIsWaiting(BtnCustom, ChbWaiting.IsChecked == true);
             UpdateCode();
         }
 
@@ -134,6 +121,40 @@ namespace UIBrowser.PartialViews.Native
         {
             Clipboard.SetText(TbCode.Text);
         }
+
+
+        private void ChbIndeterminate_CheckChanged(object sender, RoutedEventArgs e)
+        {
+            if (!IsLoaded)
+                return;
+
+           PgbCustom.IsIndeterminate = ChbIndeterminate.IsChecked == true;
+
+            UpdateCode();
+        }
+
+        private void ChbUsingAnimation_CheckChanged(object sender, RoutedEventArgs e)
+        {
+            if (!IsLoaded)
+                return;
+
+            PgbCustom.BeginAnimation(ProgressBar.ValueProperty, null);
+
+            _usingAnimation = ChbUsingAnimation.IsChecked == true;
+
+            UpdateCode();
+        }
+
+        private void ChbShowPercent_CheckChanged(object sender, RoutedEventArgs e)
+        {
+            if (!IsLoaded)
+                return;
+
+            ProgressBarHelper.SetIsPercentVisible(PgbCustom, ChbShowPercent.IsChecked == true);
+
+            UpdateCode();
+        }
+
         #endregion
 
         #region Function
@@ -153,59 +174,49 @@ namespace UIBrowser.PartialViews.Native
         private void UpdateTemplate()
         {
             var color = Helper.GetColorByOffset(_linearGradientBrush.GradientStops, SliderTheme.Value / 7);
-            ButtonHelper.SetCornerRadius(BtnCustom, new CornerRadius(SliderCornerRadius.Value));
-            BtnCustom.Width = SliderWidth.Value;
+            ProgressBarHelper.SetCornerRadius(PgbCustom, SliderCornerRadius.Value);
 
-            if (BtnCustom.Width < 60)
-                BtnCustom.Content = "";
+            if (_usingAnimation)
+                ProgressBarHelper.SetAnimateTo(PgbCustom, SliderProgress.Value);
             else
-                BtnCustom.Content = " Button";
+                PgbCustom.Value = SliderProgress.Value;
 
-
-            switch (ButtonHelper.GetButtonStyle(BtnCustom))
+            switch (ProgressBarHelper.GetProgressBarStyle(PgbCustom))
             {
-                case ButtonStyle.Standard:
-                    BtnCustom.Foreground = Colors.White.ToBrush();
-                    BtnCustom.Background = new Color() { A = 200, R = color.R, G = color.G, B = color.B }.ToBrush();
-                    ButtonHelper.SetHoverBrush(BtnCustom, color.ToBrush());
+                case ProgressBarStyle.Standard:
+                    PgbCustom.Background = new Color() { A = 30, R = color.R, G = color.G, B = color.B }.ToBrush();
+                    PgbCustom.BorderBrush = Colors.Transparent.ToBrush();
+                    PgbCustom.Foreground = color.ToBrush();
                     break;
-                case ButtonStyle.Hollow:
-                    BtnCustom.Background = Colors.Transparent.ToBrush();
-                    BtnCustom.Foreground = color.ToBrush();
-                    BtnCustom.BorderBrush = color.ToBrush();
-                    ButtonHelper.SetHoverBrush(BtnCustom, color.ToBrush());
-                    break;
-                case ButtonStyle.Outline:
-                    BtnCustom.Background = Colors.Transparent.ToBrush();
-                    BtnCustom.Foreground = new Color() { A = 150, R = color.R, G = color.G, B = color.B }.ToBrush();
-                    BtnCustom.BorderBrush = new Color() { A = 150, R = color.R, G = color.G, B = color.B }.ToBrush();
-                    ButtonHelper.SetHoverBrush(BtnCustom, color.ToBrush());
-                    break;
-                case ButtonStyle.Link:
-                    BtnCustom.Background = Colors.Transparent.ToBrush();
-                    BtnCustom.Foreground = new Color() { A = 150, R = color.R, G = color.G, B = color.B }.ToBrush();
-                    ButtonHelper.SetHoverBrush(BtnCustom, color.ToBrush());
+                case ProgressBarStyle.Ring:
+                    PgbCustom.Background = Colors.White.ToBrush();
+                    PgbCustom.BorderBrush = new Color() { A = 30, R = color.R, G = color.G, B = color.B }.ToBrush();
+                    PgbCustom.Foreground = color.ToBrush();
                     break;
             }
         }
 
         private void UpdateCode()
         {
-            var buttonStyle = ButtonHelper.GetButtonStyle(BtnCustom);
+            var pgStyle = ProgressBarHelper.GetProgressBarStyle(PgbCustom);
+            var value = _usingAnimation ? ProgressBarHelper.GetAnimateTo(PgbCustom) : PgbCustom.Value;
+            var isIndeterminate = PgbCustom.IsIndeterminate;
             var cornerRadius = SliderCornerRadius.Value;
+            var percentVisible = ProgressBarHelper.GetIsPercentVisible(PgbCustom);
 
-            TbCode.Text = "<Button  Height=\"30\"" +
-                        $"\nWidth=\"{BtnCustom.Width}\"" +
-                        $"\nContent=\"{BtnCustom.Content}\"" +
-                        "\nFontFamily=\"{DynamicResource FontAwesome}\"" +
-                        (buttonStyle == ButtonStyle.Standard ? "" : $"\npu:ButtonHelper.ButtonStyle=\"{buttonStyle}\"") +
-                        (buttonStyle == ButtonStyle.Standard ? $"\nBackground=\"{BtnCustom.Background.ToColor().ToHexString()}\"" : "") +
-                        (buttonStyle == ButtonStyle.Standard ? "" : $"\nBorderBrush=\"{BtnCustom.BorderBrush.ToColor().ToHexString()}\"") +
-                        (buttonStyle == ButtonStyle.Standard ? "" : $"\nForeground=\"{BtnCustom.Foreground.ToColor().ToHexString()}\"") +
-                        $"\npu:ButtonHelper.HoverBrush=\"{ButtonHelper.GetHoverBrush(BtnCustom).ToColor().ToHexString(false)}\"" +
-                        (cornerRadius == 0 ? "" : $"\npu:ButtonHelper.CornerRadius=\"{cornerRadius}\"") +
+            TbCode.Text = $"<ProgressBar  Height=\"{PgbCustom.Height}\"" +
+                        $"\nWidth=\"{PgbCustom.Width}\"" +
+                        (pgStyle == ProgressBarStyle.Standard ? "" : $"\npu:ProgressBarHelper.ProgressBarStyle=\"{pgStyle}\"") +
+                        (pgStyle == ProgressBarStyle.Standard ? $"\nBackground=\"{PgbCustom.Background}\"" : $"\nBorderBrush=\"{PgbCustom.BorderBrush}\"") +
+                        $"\nForeground=\"{PgbCustom.Foreground}\"" +
+                        (value == 0 ? "" : _usingAnimation ? $"\npu:ProgressBarHelper.AnimateTo=\"{value}\"" : $"\nValue=\"{value}\"") +
+                        (cornerRadius == 0 ? "" : $"\npu:ProgressBarHelper.CornerRadius=\"{cornerRadius}\"") +
+                        (isIndeterminate ? "\nIsIndeterminate=\"True\"" : "") +
+                        (percentVisible ? "\npu:ProgressBarHelper.IsPercentVisible=\"True\"" : "") +
                         " />";
         }
+
+
 
         #endregion
 
