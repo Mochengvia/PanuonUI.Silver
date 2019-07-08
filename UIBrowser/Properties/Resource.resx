@@ -123,6 +123,12 @@
   <data name="Button" xml:space="preserve">
     <value>Button</value>
   </data>
+  <data name="Calendar" xml:space="preserve">
+    <value>Calendar</value>
+  </data>
+  <data name="Carousel" xml:space="preserve">
+    <value>Carousel</value>
+  </data>
   <data name="ChangeContentWhenChecked" xml:space="preserve">
     <value>Change If Checked</value>
   </data>
@@ -131,6 +137,9 @@
   </data>
   <data name="ChildOnly" xml:space="preserve">
     <value>ChildOnly</value>
+  </data>
+  <data name="Clock" xml:space="preserve">
+    <value>Clock</value>
   </data>
   <data name="CloseCodeViewer" xml:space="preserve">
     <value>Close Code Viewer</value>
@@ -144,11 +153,32 @@
   <data name="CornerRadius" xml:space="preserve">
     <value>CornerRadius</value>
   </data>
+  <data name="Countdown" xml:space="preserve">
+    <value>Countdown</value>
+  </data>
+  <data name="CustomControls" xml:space="preserve">
+    <value>Custom Controls</value>
+  </data>
+  <data name="DateTimePicker" xml:space="preserve">
+    <value>DateTimePicker</value>
+  </data>
+  <data name="DropDown" xml:space="preserve">
+    <value>DropDown</value>
+  </data>
   <data name="ExpandBehaviour" xml:space="preserve">
     <value>ExpandBehaviour</value>
   </data>
+  <data name="Expander" xml:space="preserve">
+    <value>Expander</value>
+  </data>
   <data name="ExpandMode" xml:space="preserve">
     <value>ExpandMode</value>
+  </data>
+  <data name="GroupBox" xml:space="preserve">
+    <value>GroupBox</value>
+  </data>
+  <data name="ImageCuter" xml:space="preserve">
+    <value>ImageCuter</value>
   </data>
   <data name="Indeterminate" xml:space="preserve">
     <value>Indeterminate</value>
@@ -162,14 +192,29 @@
   <data name="ItemHeight" xml:space="preserve">
     <value>Item Height</value>
   </data>
+  <data name="ListBox" xml:space="preserve">
+    <value>ListBox</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Loading</value>
+  </data>
+  <data name="MultiSelector" xml:space="preserve">
+    <value>MultiSelector</value>
+  </data>
   <data name="NativeControls" xml:space="preserve">
     <value>Native Controls</value>
+  </data>
+  <data name="NeonLabel" xml:space="preserve">
+    <value>NeonLabel</value>
   </data>
   <data name="OnlyOne" xml:space="preserve">
     <value>OnlyOne</value>
   </data>
   <data name="Overview" xml:space="preserve">
     <value>Overview</value>
+  </data>
+  <data name="Pagination" xml:space="preserve">
+    <value>Pagination</value>
   </data>
   <data name="Palette" xml:space="preserve">
     <value>Palette</value>
@@ -198,6 +243,12 @@
   <data name="ShowSearchBox" xml:space="preserve">
     <value>Show Search Box</value>
   </data>
+  <data name="ShowTickBar" xml:space="preserve">
+    <value>ShowTickBar</value>
+  </data>
+  <data name="ShowValue" xml:space="preserve">
+    <value>ShowValue</value>
+  </data>
   <data name="ShowWatermark" xml:space="preserve">
     <value>Show Watermark</value>
   </data>
@@ -210,6 +261,9 @@
   <data name="Size" xml:space="preserve">
     <value>Size</value>
   </data>
+  <data name="Slider" xml:space="preserve">
+    <value>Slider</value>
+  </data>
   <data name="TabControl" xml:space="preserve">
     <value>TabControl</value>
   </data>
@@ -218,6 +272,15 @@
   </data>
   <data name="ThemeBrush" xml:space="preserve">
     <value>ThemeBrush</value>
+  </data>
+  <data name="ThumbSize" xml:space="preserve">
+    <value>ThumbSize</value>
+  </data>
+  <data name="Timeline" xml:space="preserve">
+    <value>Timeline</value>
+  </data>
+  <data name="TrackThickness" xml:space="preserve">
+    <value>TrackThickness</value>
   </data>
   <data name="TreeView" xml:space="preserve">
     <value>TreeView</value>

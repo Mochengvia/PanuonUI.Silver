@@ -19,7 +19,7 @@
                         Background="White" />
                 <StackPanel Margin="10"
                             VerticalAlignment="Top">
-                    <Slider x:Name="SliderTheme"
+                    <Slider x:Name="SldTheme"
                             pu:SliderHelper.IsTickValueVisible="False"
                             pu:SliderHelper.SliderStyle="Classic"
                             pu:SliderHelper.ThemeBrush="Transparent"
@@ -35,7 +35,7 @@
                             TickFrequency="0.01"
                             Margin="5,0"
                             Background="{StaticResource ColorSelectorBrush}"
-                            ValueChanged="SliderTheme_ValueChanged">
+                            ValueChanged="SldTheme_ValueChanged">
                     </Slider>
                 </StackPanel>
             </Grid>

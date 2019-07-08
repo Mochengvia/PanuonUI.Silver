@@ -36,7 +36,7 @@ namespace UIBrowser.PartialViews.Native
             UpdateCode();
         }
 
-        private void SliderTheme_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void SldTheme_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (!IsLoaded)
                 return;
@@ -45,7 +45,7 @@ namespace UIBrowser.PartialViews.Native
             UpdateCode();
         }
 
-        private void SliderCornerRadius_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void SldCornerRadius_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (!IsLoaded)
                 return;
@@ -54,7 +54,7 @@ namespace UIBrowser.PartialViews.Native
             UpdateCode();
         }
 
-        private void SliderWidth_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void SldWidth_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (!IsLoaded)
                 return;
@@ -100,15 +100,15 @@ namespace UIBrowser.PartialViews.Native
             {
                 if (Helper.Tier == 2)
                 {
-                    AnimationHelper.SetEasingFunction(GroupPalette, new CubicEase() { EasingMode = EasingMode.EaseOut });
-                    AnimationHelper.SetMarginTo(GroupPalette, new Thickness(0, 0, 0, 0));
-                    AnimationHelper.SetEasingFunction(GroupCode, new CubicEase() { EasingMode = EasingMode.EaseOut });
-                    AnimationHelper.SetMarginTo(GroupCode, new Thickness(0, 0, 0, 0));
+                    AnimationHelper.SetEasingFunction(GrpPalette, new CubicEase() { EasingMode = EasingMode.EaseOut });
+                    AnimationHelper.SetMarginTo(GrpPalette, new Thickness(0, 0, 0, 0));
+                    AnimationHelper.SetEasingFunction(GrpCode, new CubicEase() { EasingMode = EasingMode.EaseOut });
+                    AnimationHelper.SetMarginTo(GrpCode, new Thickness(0, 0, 0, 0));
                 }
                 else
                 {
-                    GroupPalette.Margin = new Thickness(0, 0, 0, 0);
-                    GroupCode.Margin = new Thickness(0, 0, 0, 0);
+                    GrpPalette.Margin = new Thickness(0, 0, 0, 0);
+                    GrpCode.Margin = new Thickness(0, 0, 0, 0);
                 }
                 BtnViewCode.Content = Properties.Resource.ViewCode;
             }
@@ -116,15 +116,15 @@ namespace UIBrowser.PartialViews.Native
             {
                 if (Helper.Tier == 2)
                 {
-                    AnimationHelper.SetEasingFunction(GroupPalette, new CubicEase() { EasingMode = EasingMode.EaseOut });
-                    AnimationHelper.SetMarginTo(GroupPalette, new Thickness(0, -120, 0, 0));
-                    AnimationHelper.SetEasingFunction(GroupCode, new CubicEase() { EasingMode = EasingMode.EaseOut });
-                    AnimationHelper.SetMarginTo(GroupCode, new Thickness(0, 0, 0, -120));
+                    AnimationHelper.SetEasingFunction(GrpPalette, new CubicEase() { EasingMode = EasingMode.EaseOut });
+                    AnimationHelper.SetMarginTo(GrpPalette, new Thickness(0, -120, 0, 0));
+                    AnimationHelper.SetEasingFunction(GrpCode, new CubicEase() { EasingMode = EasingMode.EaseOut });
+                    AnimationHelper.SetMarginTo(GrpCode, new Thickness(0, 0, 0, -120));
                 }
                 else
                 {
-                    GroupPalette.Margin = new Thickness(0, -120, 0, 0);
-                    GroupCode.Margin = new Thickness(0, 0, 0, -120);
+                    GrpPalette.Margin = new Thickness(0, -120, 0, 0);
+                    GrpCode.Margin = new Thickness(0, 0, 0, -120);
                 }
                 BtnViewCode.Content = Properties.Resource.CloseCodeViewer;
             }
@@ -144,18 +144,18 @@ namespace UIBrowser.PartialViews.Native
             {
                 case 1:
                 case 2:
-                    AnimationHelper.SetSlideInFromBottom(GroupPalette, true);
+                    AnimationHelper.SetSlideInFromBottom(GrpPalette, true);
                     RectBackground.Fill = FindResource("GridBrush") as Brush;
-                    GroupBoxHelper.SetEffect(GroupPalette, FindResource("DropShadow") as Effect);
-                    GroupBoxHelper.SetEffect(GroupCode, FindResource("DropShadow") as Effect);
+                    GroupBoxHelper.SetEffect(GrpPalette, FindResource("DropShadow") as Effect);
+                    GroupBoxHelper.SetEffect(GrpCode, FindResource("DropShadow") as Effect);
                     break;
             }
         }
         private void UpdateTemplate()
         {
-            var color = Helper.GetColorByOffset(_linearGradientBrush.GradientStops, SliderTheme.Value / 7);
-            RadioButtonHelper.SetCornerRadius(RdbCustom1, SliderCornerRadius.Value);
-            RadioButtonHelper.SetCornerRadius(RdbCustom2, SliderCornerRadius.Value);
+            var color = Helper.GetColorByOffset(_linearGradientBrush.GradientStops, SldTheme.Value / 7);
+            RadioButtonHelper.SetCornerRadius(RdbCustom1, SldCornerRadius.Value);
+            RadioButtonHelper.SetCornerRadius(RdbCustom2, SldCornerRadius.Value);
 
 
 
@@ -168,10 +168,10 @@ namespace UIBrowser.PartialViews.Native
                     RadioButtonHelper.SetCheckedGlyphBrush(RdbCustom2, Colors.White.ToBrush());
                     RadioButtonHelper.SetCheckedBackground(RdbCustom1, color.ToBrush());
                     RadioButtonHelper.SetCheckedBackground(RdbCustom2, color.ToBrush());
-                    RadioButtonHelper.SetBoxHeight(RdbCustom1, SliderSize.Value);
-                    RadioButtonHelper.SetBoxHeight(RdbCustom2, SliderSize.Value);
-                    RadioButtonHelper.SetBoxWidth(RdbCustom1, SliderSize.Value);
-                    RadioButtonHelper.SetBoxWidth(RdbCustom2, SliderSize.Value);
+                    RadioButtonHelper.SetBoxHeight(RdbCustom1, SldSize.Value);
+                    RadioButtonHelper.SetBoxHeight(RdbCustom2, SldSize.Value);
+                    RadioButtonHelper.SetBoxWidth(RdbCustom1, SldSize.Value);
+                    RadioButtonHelper.SetBoxWidth(RdbCustom2, SldSize.Value);
                     break;
                 case RadioButtonStyle.Switch:
                     RdbCustom1.Background = Colors.White.ToBrush();
@@ -180,10 +180,10 @@ namespace UIBrowser.PartialViews.Native
                     RadioButtonHelper.SetCheckedGlyphBrush(RdbCustom2, Colors.Transparent.ToBrush());
                     RadioButtonHelper.SetCheckedBackground(RdbCustom1, color.ToBrush());
                     RadioButtonHelper.SetCheckedBackground(RdbCustom2, color.ToBrush());
-                    RadioButtonHelper.SetBoxHeight(RdbCustom1, SliderSize.Value);
-                    RadioButtonHelper.SetBoxHeight(RdbCustom2, SliderSize.Value);
-                    RadioButtonHelper.SetBoxWidth(RdbCustom1, SliderSize.Value * 1.5);
-                    RadioButtonHelper.SetBoxWidth(RdbCustom2, SliderSize.Value * 1.5);
+                    RadioButtonHelper.SetBoxHeight(RdbCustom1, SldSize.Value);
+                    RadioButtonHelper.SetBoxHeight(RdbCustom2, SldSize.Value);
+                    RadioButtonHelper.SetBoxWidth(RdbCustom1, SldSize.Value * 1.5);
+                    RadioButtonHelper.SetBoxWidth(RdbCustom2, SldSize.Value * 1.5);
                     break;
                 case RadioButtonStyle.Button:
                     RdbCustom1.Background = Colors.White.ToBrush();
@@ -199,7 +199,7 @@ namespace UIBrowser.PartialViews.Native
         private void UpdateCode()
         {
             var radioButtonStyle = RadioButtonHelper.GetRadioButtonStyle(RdbCustom1);
-            var cornerRadius = SliderCornerRadius.Value;
+            var cornerRadius = SldCornerRadius.Value;
             var checkedContent = RadioButtonHelper.GetCheckedContent(RdbCustom1);
 
             TbCode.Text = "<CheckBox  Height=\"30\"" +

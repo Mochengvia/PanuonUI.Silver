@@ -36,12 +36,12 @@ namespace UIBrowser.PartialViews
 
         public OverviewViewModel ViewModel { get; set; }
 
-        private void SliderTheme_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void SldTheme_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (!IsLoaded)
                 return;
 
-            var color = Helper.GetColorByOffset(_linearGradientBrush.GradientStops, SliderTheme.Value / 70);
+            var color = Helper.GetColorByOffset(_linearGradientBrush.GradientStops, SldTheme.Value / 70);
 
             ViewModel.Update(color);
 

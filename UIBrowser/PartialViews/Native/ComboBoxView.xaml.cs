@@ -36,7 +36,7 @@ namespace UIBrowser.PartialViews.Native
             UpdateCode();
         }
 
-        private void SliderTheme_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void SldTheme_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (!IsLoaded)
                 return;
@@ -45,7 +45,7 @@ namespace UIBrowser.PartialViews.Native
             UpdateCode();
         }
 
-        private void SliderCornerRadius_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void SldCornerRadius_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (!IsLoaded)
                 return;
@@ -61,15 +61,15 @@ namespace UIBrowser.PartialViews.Native
             {
                 if (Helper.Tier == 2)
                 {
-                    AnimationHelper.SetEasingFunction(GroupPalette, new CubicEase() { EasingMode = EasingMode.EaseOut });
-                    AnimationHelper.SetMarginTo(GroupPalette, new Thickness(0, 0, 0, 0));
-                    AnimationHelper.SetEasingFunction(GroupCode, new CubicEase() { EasingMode = EasingMode.EaseOut });
-                    AnimationHelper.SetMarginTo(GroupCode, new Thickness(0, 0, 0, 0));
+                    AnimationHelper.SetEasingFunction(GrpPalette, new CubicEase() { EasingMode = EasingMode.EaseOut });
+                    AnimationHelper.SetMarginTo(GrpPalette, new Thickness(0, 0, 0, 0));
+                    AnimationHelper.SetEasingFunction(GrpCode, new CubicEase() { EasingMode = EasingMode.EaseOut });
+                    AnimationHelper.SetMarginTo(GrpCode, new Thickness(0, 0, 0, 0));
                 }
                 else
                 {
-                    GroupPalette.Margin = new Thickness(0, 0, 0, 0);
-                    GroupCode.Margin = new Thickness(0, 0, 0, 0);
+                    GrpPalette.Margin = new Thickness(0, 0, 0, 0);
+                    GrpCode.Margin = new Thickness(0, 0, 0, 0);
                 }
                 BtnViewCode.Content = Properties.Resource.ViewCode;
             }
@@ -77,15 +77,15 @@ namespace UIBrowser.PartialViews.Native
             {
                 if (Helper.Tier == 2)
                 {
-                    AnimationHelper.SetEasingFunction(GroupPalette, new CubicEase() { EasingMode = EasingMode.EaseOut });
-                    AnimationHelper.SetMarginTo(GroupPalette, new Thickness(0, -120, 0, 0));
-                    AnimationHelper.SetEasingFunction(GroupCode, new CubicEase() { EasingMode = EasingMode.EaseOut });
-                    AnimationHelper.SetMarginTo(GroupCode, new Thickness(0, 0, 0, -120));
+                    AnimationHelper.SetEasingFunction(GrpPalette, new CubicEase() { EasingMode = EasingMode.EaseOut });
+                    AnimationHelper.SetMarginTo(GrpPalette, new Thickness(0, -120, 0, 0));
+                    AnimationHelper.SetEasingFunction(GrpCode, new CubicEase() { EasingMode = EasingMode.EaseOut });
+                    AnimationHelper.SetMarginTo(GrpCode, new Thickness(0, 0, 0, -120));
                 }
                 else
                 {
-                    GroupPalette.Margin = new Thickness(0, -120, 0, 0);
-                    GroupCode.Margin = new Thickness(0, 0, 0, -120);
+                    GrpPalette.Margin = new Thickness(0, -120, 0, 0);
+                    GrpCode.Margin = new Thickness(0, 0, 0, -120);
                 }
                 BtnViewCode.Content = Properties.Resource.CloseCodeViewer;
             }
@@ -147,17 +147,17 @@ namespace UIBrowser.PartialViews.Native
             {
                 case 1:
                 case 2:
-                    AnimationHelper.SetSlideInFromBottom(GroupPalette, true);
+                    AnimationHelper.SetSlideInFromBottom(GrpPalette, true);
                     RectBackground.Fill = FindResource("GridBrush") as Brush;
-                    GroupBoxHelper.SetEffect(GroupPalette, FindResource("DropShadow") as Effect);
-                    GroupBoxHelper.SetEffect(GroupCode, FindResource("DropShadow") as Effect);
+                    GroupBoxHelper.SetEffect(GrpPalette, FindResource("DropShadow") as Effect);
+                    GroupBoxHelper.SetEffect(GrpCode, FindResource("DropShadow") as Effect);
                     break;
             }
         }
         private void UpdateTemplate()
         {
-            var color = Helper.GetColorByOffset(_linearGradientBrush.GradientStops, SliderTheme.Value / 7);
-            ComboBoxHelper.SetCornerRadius(CmbCustom, new CornerRadius(SliderCornerRadius.Value));
+            var color = Helper.GetColorByOffset(_linearGradientBrush.GradientStops, SldTheme.Value / 7);
+            ComboBoxHelper.SetCornerRadius(CmbCustom, new CornerRadius(SldCornerRadius.Value));
 
 
             ComboBoxHelper.SetSelectedBrush(CmbCustom, new Color() { A = 50, R = color.R, G = color.G, B = color.B }.ToBrush());
@@ -168,7 +168,7 @@ namespace UIBrowser.PartialViews.Native
         {
             var icon = ComboBoxHelper.GetIcon(CmbCustom);
             var watermark = ComboBoxHelper.GetWatermark(CmbCustom);
-            var cornerRadius = SliderCornerRadius.Value;
+            var cornerRadius = SldCornerRadius.Value;
             var searchBoxVisible = ComboBoxHelper.GetIsSearchTextBoxVisible(CmbCustom);
 
             TbCode.Text = "<ComboBox  Height=\"30\"" +

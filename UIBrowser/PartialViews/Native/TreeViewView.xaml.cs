@@ -36,7 +36,7 @@ namespace UIBrowser.PartialViews.Native
             UpdateCode();
         }
 
-        private void SliderTheme_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void SldTheme_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (!IsLoaded)
                 return;
@@ -102,15 +102,15 @@ namespace UIBrowser.PartialViews.Native
             {
                 if (Helper.Tier == 2)
                 {
-                    AnimationHelper.SetEasingFunction(GroupPalette, new CubicEase() { EasingMode = EasingMode.EaseOut });
-                    AnimationHelper.SetMarginTo(GroupPalette, new Thickness(0, 0, 0, 0));
-                    AnimationHelper.SetEasingFunction(GroupCode, new CubicEase() { EasingMode = EasingMode.EaseOut });
-                    AnimationHelper.SetMarginTo(GroupCode, new Thickness(0, 0, 0, 0));
+                    AnimationHelper.SetEasingFunction(GrpPalette, new CubicEase() { EasingMode = EasingMode.EaseOut });
+                    AnimationHelper.SetMarginTo(GrpPalette, new Thickness(0, 0, 0, 0));
+                    AnimationHelper.SetEasingFunction(GrpCode, new CubicEase() { EasingMode = EasingMode.EaseOut });
+                    AnimationHelper.SetMarginTo(GrpCode, new Thickness(0, 0, 0, 0));
                 }
                 else
                 {
-                    GroupPalette.Margin = new Thickness(0, 0, 0, 0);
-                    GroupCode.Margin = new Thickness(0, 0, 0, 0);
+                    GrpPalette.Margin = new Thickness(0, 0, 0, 0);
+                    GrpCode.Margin = new Thickness(0, 0, 0, 0);
                 }
                 BtnViewCode.Content = Properties.Resource.ViewCode;
             }
@@ -118,15 +118,15 @@ namespace UIBrowser.PartialViews.Native
             {
                 if (Helper.Tier == 2)
                 {
-                    AnimationHelper.SetEasingFunction(GroupPalette, new CubicEase() { EasingMode = EasingMode.EaseOut });
-                    AnimationHelper.SetMarginTo(GroupPalette, new Thickness(0, -120, 0, 0));
-                    AnimationHelper.SetEasingFunction(GroupCode, new CubicEase() { EasingMode = EasingMode.EaseOut });
-                    AnimationHelper.SetMarginTo(GroupCode, new Thickness(0, 0, 0, -120));
+                    AnimationHelper.SetEasingFunction(GrpPalette, new CubicEase() { EasingMode = EasingMode.EaseOut });
+                    AnimationHelper.SetMarginTo(GrpPalette, new Thickness(0, -120, 0, 0));
+                    AnimationHelper.SetEasingFunction(GrpCode, new CubicEase() { EasingMode = EasingMode.EaseOut });
+                    AnimationHelper.SetMarginTo(GrpCode, new Thickness(0, 0, 0, -120));
                 }
                 else
                 {
-                    GroupPalette.Margin = new Thickness(0, -120, 0, 0);
-                    GroupCode.Margin = new Thickness(0, 0, 0, -120);
+                    GrpPalette.Margin = new Thickness(0, -120, 0, 0);
+                    GrpCode.Margin = new Thickness(0, 0, 0, -120);
                 }
                 BtnViewCode.Content = Properties.Resource.CloseCodeViewer;
             }
@@ -146,18 +146,18 @@ namespace UIBrowser.PartialViews.Native
             {
                 case 1:
                 case 2:
-                    AnimationHelper.SetSlideInFromBottom(GroupPalette, true);
+                    AnimationHelper.SetSlideInFromBottom(GrpPalette, true);
                     RectBackground.Fill = FindResource("GridBrush") as Brush;
-                    GroupBoxHelper.SetEffect(GroupPalette, FindResource("DropShadow") as Effect);
-                    GroupBoxHelper.SetEffect(GroupCode, FindResource("DropShadow") as Effect);
+                    GroupBoxHelper.SetEffect(GrpPalette, FindResource("DropShadow") as Effect);
+                    GroupBoxHelper.SetEffect(GrpCode, FindResource("DropShadow") as Effect);
                     break;
             }
         }
         private void UpdateTemplate()
         {
-            var color = Helper.GetColorByOffset(_linearGradientBrush.GradientStops, SliderTheme.Value / 7);
+            var color = Helper.GetColorByOffset(_linearGradientBrush.GradientStops, SldTheme.Value / 7);
 
-            TreeViewHelper.SetItemHeight(TvCustom, SliderItemHeight.Value);
+            TreeViewHelper.SetItemHeight(TvCustom, SldItemHeight.Value);
 
 
             if(TreeViewHelper.GetTreeViewStyle(TvCustom) == TreeViewStyle.Standard || TreeViewHelper.GetTreeViewStyle(TvCustom) == TreeViewStyle.Chain)

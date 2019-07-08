@@ -10,9 +10,9 @@ using UIBrowser.Helpers;
 namespace UIBrowser.PartialViews.Native
 {
     /// <summary>
-    /// TabControlView.xaml 的交互逻辑
+    /// ComboBoxView.xaml 的交互逻辑
     /// </summary>
-    public partial class TabControlView : UserControl
+    public partial class SliderView : UserControl
     {
         #region Identity
         private bool _isCodeViewing;
@@ -20,7 +20,7 @@ namespace UIBrowser.PartialViews.Native
         private LinearGradientBrush _linearGradientBrush;
         #endregion
 
-        public TabControlView()
+        public SliderView()
         {
             InitializeComponent();
             Loaded += ButtonView_Loaded;
@@ -36,6 +36,17 @@ namespace UIBrowser.PartialViews.Native
             UpdateCode();
         }
 
+        private void RdbButtonStyle_CheckChanged(object sender, RoutedEventArgs e)
+        {
+            if (!IsLoaded)
+                return;
+            var rdb = sender as RadioButton;
+
+            SliderHelper.SetSliderStyle(SldCustom, (SliderStyle)Enum.Parse(typeof(SliderStyle), rdb.Content.ToString()));
+            UpdateTemplate();
+            UpdateCode();
+        }
+
         private void SldTheme_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (!IsLoaded)
@@ -45,7 +56,7 @@ namespace UIBrowser.PartialViews.Native
             UpdateCode();
         }
 
-        private void SldWidth_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void SldTrackThickness_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (!IsLoaded)
                 return;
@@ -54,13 +65,10 @@ namespace UIBrowser.PartialViews.Native
             UpdateCode();
         }
 
-        private void RdbButtonStyle_CheckChanged(object sender, RoutedEventArgs e)
+        private void SldThumbSize_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (!IsLoaded)
                 return;
-            var rdb = sender as RadioButton;
-
-            TabControlHelper.SetTabControlStyle(TabCustom, (TabControlStyle)Enum.Parse(typeof(TabControlStyle), rdb.Content.ToString()));
 
             UpdateTemplate();
             UpdateCode();
@@ -107,6 +115,28 @@ namespace UIBrowser.PartialViews.Native
         {
             Clipboard.SetText(TbCode.Text);
         }
+
+        private void ChbShowValue_CheckChanged(object sender, RoutedEventArgs e)
+        {
+            if (!IsLoaded)
+                return;
+
+            SliderHelper.SetIsTickValueVisible(SldCustom, ChbShowValue.IsChecked == true);
+
+            UpdateCode();
+        }
+
+        private void ChbShowTickBar_CheckChanged(object sender, RoutedEventArgs e)
+        {
+
+            if (!IsLoaded)
+                return;
+
+            SldCustom.TickPlacement = ChbShowTickBar.IsChecked == true ? System.Windows.Controls.Primitives.TickPlacement.Both : System.Windows.Controls.Primitives.TickPlacement.None;
+
+            UpdateCode();
+        }
+
         #endregion
 
         #region Function
@@ -127,36 +157,37 @@ namespace UIBrowser.PartialViews.Native
         {
             var color = Helper.GetColorByOffset(_linearGradientBrush.GradientStops, SldTheme.Value / 7);
 
-            TabCustom.Width = SldWidth.Value;
+            SliderHelper.SetTrackThickness(SldCustom, SldTrackThickness.Value);
 
+            SliderHelper.SetThumbSize(SldCustom, SldThumbSize.Value);
 
-            switch (TabControlHelper.GetTabControlStyle(TabCustom))
-            {
-                case TabControlStyle.Standard:
-                    TabControlHelper.SetSelectedForeground(TabCustom, color.ToBrush());
-                    break;
-                case TabControlStyle.Classic:
-                    TabControlHelper.SetSelectedForeground(TabCustom, color.ToBrush());
-                    break;
-            }
+            SliderHelper.SetThemeBrush(SldCustom, color.ToBrush());
+            SldCustom.Background = new Color() { A = 30, R = color.R, G = color.G, B = color.B }.ToBrush();
         }
 
         private void UpdateCode()
         {
-            var tabStyle = TabControlHelper.GetTabControlStyle(TabCustom);
+            var style = SliderHelper.GetSliderStyle(SldCustom);
+            var thumbSize = SliderHelper.GetThumbSize(SldCustom);
+            var trackThickness = SliderHelper.GetTrackThickness(SldCustom);
+            var valueVisible = SliderHelper.GetIsTickValueVisible(SldCustom);
+            var tickBarVisible = SldCustom.TickPlacement == System.Windows.Controls.Primitives.TickPlacement.Both;
 
-            TbCode.Text = "<TabControl  Width=\"{TabCustom.Width}\"" +
-                        (tabStyle == TabControlStyle.Standard ? "" : $"\npu:TabControlHelper.TabControlStyle=\"{tabStyle}\"") +
-                        $"\npu:TabControlHelper.SelectedForeground=\"{TabControlHelper.GetSelectedForeground(TabCustom).ToColor().ToHexString(false)}\"" +
-                        " >" +
-                        "\n<TabItem Header=\"Item1\"/>" +
-                        "\n<TabItem Header=\"Item2\"/>" +
-                        "\n<TabItem Header=\"Item3\"/>" +
-                        "\n</TabControl>";
+            TbCode.Text = $"<Slider  Width=\"{SldCustom.Width}\"" +
+                        (style == SliderStyle.Standard ? "" : $"\npu:SliderHelper.SliderStyle=\"{style}\"") +
+                        (thumbSize == 18 ? "" : $"\npu:SliderHelper.ThumbSize=\"{thumbSize}\"") +
+                        (trackThickness == 3 ? "" : $"\npu:SliderHelper.TrackThickness=\"{trackThickness}\"") +
+                        $"\npu:SliderHelper.ThemeBrush=\"{SliderHelper.GetThemeBrush(SldCustom).ToColor().ToHexString(false)}\"" +
+                        $"\nBackground=\"{SldCustom.Background.ToColor().ToHexString()}\"" +
+                        (valueVisible ?  "" : "\npu:SliderHelper.IsTickValueVisible=\"True\"") +
+                        (tickBarVisible ? "\nTickPlacement=\"Both\"" : "") +
+
+                        " />";
         }
+
 
         #endregion
 
-
+       
     }
 }

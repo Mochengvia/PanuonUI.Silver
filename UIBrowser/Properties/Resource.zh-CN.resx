@@ -121,7 +121,13 @@
     <value>基础样式</value>
   </data>
   <data name="Button" xml:space="preserve">
-    <value>按钮</value>
+    <value>Button 按钮</value>
+  </data>
+  <data name="Calendar" xml:space="preserve">
+    <value>Calendar 日历</value>
+  </data>
+  <data name="Carousel" xml:space="preserve">
+    <value>Carousel 轮播</value>
   </data>
   <data name="ChangeContentWhenChecked" xml:space="preserve">
     <value>选中时变内容</value>
@@ -131,6 +137,9 @@
   </data>
   <data name="ChildOnly" xml:space="preserve">
     <value>仅Child</value>
+  </data>
+  <data name="Clock" xml:space="preserve">
+    <value>Clock 时钟</value>
   </data>
   <data name="CloseCodeViewer" xml:space="preserve">
     <value>关闭源码</value>
@@ -144,11 +153,32 @@
   <data name="CornerRadius" xml:space="preserve">
     <value>圆角</value>
   </data>
+  <data name="Countdown" xml:space="preserve">
+    <value>Countdown 倒计时</value>
+  </data>
+  <data name="CustomControls" xml:space="preserve">
+    <value>自定义控件</value>
+  </data>
+  <data name="DateTimePicker" xml:space="preserve">
+    <value>DateTimePicker 日期时间选择器</value>
+  </data>
+  <data name="DropDown" xml:space="preserve">
+    <value>DropDown 下拉菜单</value>
+  </data>
   <data name="ExpandBehaviour" xml:space="preserve">
     <value>展开行为</value>
   </data>
+  <data name="Expander" xml:space="preserve">
+    <value>Expander 折叠面板</value>
+  </data>
   <data name="ExpandMode" xml:space="preserve">
     <value>展开模式</value>
+  </data>
+  <data name="GroupBox" xml:space="preserve">
+    <value>GroupBox 组</value>
+  </data>
+  <data name="ImageCuter" xml:space="preserve">
+    <value>ImageCuter 图片裁剪器</value>
   </data>
   <data name="Indeterminate" xml:space="preserve">
     <value>不确定进度</value>
@@ -162,14 +192,29 @@
   <data name="ItemHeight" xml:space="preserve">
     <value>子项高度</value>
   </data>
+  <data name="ListBox" xml:space="preserve">
+    <value>ListBox 列表</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Loading 等待</value>
+  </data>
+  <data name="MultiSelector" xml:space="preserve">
+    <value>MultiSelector 多选组合框</value>
+  </data>
   <data name="NativeControls" xml:space="preserve">
     <value>原生控件</value>
+  </data>
+  <data name="NeonLabel" xml:space="preserve">
+    <value>NeonLabel 霓虹标签</value>
   </data>
   <data name="OnlyOne" xml:space="preserve">
     <value>仅一个</value>
   </data>
   <data name="Overview" xml:space="preserve">
     <value>Overview 总览</value>
+  </data>
+  <data name="Pagination" xml:space="preserve">
+    <value>Pagination 分页</value>
   </data>
   <data name="Palette" xml:space="preserve">
     <value>Palette 调色板</value>
@@ -198,6 +243,12 @@
   <data name="ShowSearchBox" xml:space="preserve">
     <value>显示搜索</value>
   </data>
+  <data name="ShowTickBar" xml:space="preserve">
+    <value>显示标尺</value>
+  </data>
+  <data name="ShowValue" xml:space="preserve">
+    <value>显示值</value>
+  </data>
   <data name="ShowWatermark" xml:space="preserve">
     <value>显示水印</value>
   </data>
@@ -210,6 +261,9 @@
   <data name="Size" xml:space="preserve">
     <value>大小</value>
   </data>
+  <data name="Slider" xml:space="preserve">
+    <value>Slider 滑块</value>
+  </data>
   <data name="TabControl" xml:space="preserve">
     <value>TabControl 选项卡</value>
   </data>
@@ -218,6 +272,15 @@
   </data>
   <data name="ThemeBrush" xml:space="preserve">
     <value>主题颜色</value>
+  </data>
+  <data name="ThumbSize" xml:space="preserve">
+    <value>滑块大小</value>
+  </data>
+  <data name="Timeline" xml:space="preserve">
+    <value>Timeline 时间轴</value>
+  </data>
+  <data name="TrackThickness" xml:space="preserve">
+    <value>轨道粗细</value>
   </data>
   <data name="TreeView" xml:space="preserve">
     <value>TreeView 树视图</value>

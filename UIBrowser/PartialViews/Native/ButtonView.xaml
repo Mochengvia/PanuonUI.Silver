@@ -12,9 +12,9 @@
     <Grid>
         <Rectangle x:Name="RectBackground" />
         <Grid VerticalAlignment="Center">
-            <GroupBox x:Name="GroupCode"
+            <GroupBox x:Name="GrpCode"
                       HorizontalAlignment="Center"
-                      Width="{Binding ActualWidth,ElementName=GroupPalette}"
+                      Width="{Binding ActualWidth,ElementName=GrpPalette}"
                       VerticalAlignment="Bottom"
                       >
                 <Grid>
@@ -36,7 +36,7 @@
                     </TextBox>
                 </Grid>
             </GroupBox>
-            <GroupBox x:Name="GroupPalette"
+            <GroupBox x:Name="GrpPalette"
                       HorizontalAlignment="Center"
                       Header="{x:Static localized:Resource.Palette}"
                       MinWidth="300">
@@ -85,7 +85,7 @@
                             <TextBlock Grid.Row="1"
                                        Text="{x:Static localized:Resource.ThemeBrush}"
                                        VerticalAlignment="Center" />
-                            <Slider x:Name="SliderTheme"
+                            <Slider x:Name="SldTheme"
                                     pu:SliderHelper.IsTickValueVisible="False"
                                     pu:SliderHelper.SliderStyle="Classic"
                                     pu:SliderHelper.ThemeBrush="Transparent"
@@ -102,12 +102,12 @@
                                     TickFrequency="0.01"
                                     Margin="5,0"
                                     Background="{StaticResource ColorSelectorBrush}"
-                                    ValueChanged="SliderTheme_ValueChanged">
+                                    ValueChanged="SldTheme_ValueChanged">
                             </Slider>
                             <TextBlock Grid.Row="2"
                                        Text="{x:Static localized:Resource.CornerRadius}"
                                        VerticalAlignment="Center" />
-                            <Slider x:Name="SliderCornerRadius"
+                            <Slider x:Name="SldCornerRadius"
                                     pu:SliderHelper.SliderStyle="Classic"
                                     IsMoveToPointEnabled="True"
                                     VerticalAlignment="Center"
@@ -121,11 +121,11 @@
                                     TickFrequency="1"
                                     Value="0"
                                     Margin="5,0"
-                                    ValueChanged="SliderCornerRadius_ValueChanged" />
+                                    ValueChanged="SldCornerRadius_ValueChanged" />
                             <TextBlock Grid.Row="3"
                                        Text="{x:Static localized:Resource.Width}"
                                        VerticalAlignment="Center" />
-                            <Slider x:Name="SliderWidth"
+                            <Slider x:Name="SldWidth"
                                     pu:SliderHelper.SliderStyle="Classic"
                                     IsMoveToPointEnabled="True"
                                     VerticalAlignment="Center"
@@ -139,7 +139,7 @@
                                     TickFrequency="1"
                                     Value="150"
                                     Margin="5,0"
-                                    ValueChanged="SliderWidth_ValueChanged" />
+                                    ValueChanged="SldWidth_ValueChanged" />
                             <TextBlock Grid.Row="4"
                                        Text="{x:Static localized:Resource.SinkWhenClick}"
                                        VerticalAlignment="Center" />
