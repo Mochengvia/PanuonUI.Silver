@@ -26,6 +26,15 @@ namespace Panuon.UI.Silver
             _window = Window.GetWindow(this);
             _window.PreviewMouseDown -= Window_PreviewMouseDown;
             _window.PreviewMouseDown += Window_PreviewMouseDown;
+            _window.LocationChanged -= Window_LocationChanged;
+            _window.LocationChanged += Window_LocationChanged;
+        }
+
+        private void Window_LocationChanged(object sender, EventArgs e)
+        {
+            var offset = HorizontalOffset;
+            HorizontalOffset = offset + 1;
+            HorizontalOffset = offset;
         }
 
         protected override void OnClosed(EventArgs e)

@@ -26,5 +26,5 @@
 
     <converter:TagPanelBackgroundConverter x:Key="TagPanelBackgroundConverter" />
     <converter:TagPanelRemovableConverter x:Key="TagPanelRemovableConverter" />
-    
+    <converter:Minus10Converter x:Key="Minus10Converter"/>
 </ResourceDictionary>

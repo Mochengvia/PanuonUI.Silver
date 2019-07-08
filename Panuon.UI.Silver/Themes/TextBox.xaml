@@ -183,6 +183,11 @@
             </Setter.Value>
         </Setter>
         <Style.Triggers>
+            <Trigger Property="HorizontalContentAlignment"
+                     Value="Center">
+                <Setter Property="Padding"
+                        Value="0" />
+            </Trigger>
             <Trigger Property="TextWrapping"
                      Value="Wrap">
                 <Setter Property="VerticalScrollBarVisibility"

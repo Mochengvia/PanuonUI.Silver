@@ -14,7 +14,6 @@
     <WarningLevel>4</WarningLevel>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
-    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -231,7 +230,7 @@
     <Compile Include="Global\Enums.cs" />
     <Compile Include="Controls\Loading.cs" />
     <Compile Include="Converters\Converters.cs" />
-    <Compile Include="Global\Extends.cs" />
+    <Compile Include="Global\Extend.cs" />
     <Compile Include="Helpers\Control\ComboBoxHelper.cs" />
     <Compile Include="Helpers\Control\RadioButtonHelper.cs" />
     <Compile Include="Helpers\Control\CheckBoxHelper.cs" />
@@ -271,8 +270,4 @@
     <Folder Include="Global\Statics\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
 </Project>
