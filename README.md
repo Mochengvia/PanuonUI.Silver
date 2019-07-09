@@ -31,18 +31,6 @@ Paypal:
 paypal.me/Zeoun  
 
 
-# Overview 概览
-
-DefaultTheme (Gray):  
-默认样式（灰色）：  
-
-Color of these controls are changeable.
-以下控件的颜色都是可变的。
-
-![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/overview.jpg)
-
-
-
 ## Where is the exmaple ? （示例在哪？）
 After downloading this repository, launch "Panuon.UI.Silver.Browser" project , and you will find it .  
 当您下载该仓库后，只需启动"Panuon.UI.Silver.Browser"项目，即可看到示例。
@@ -59,4 +47,10 @@ Calendar / Carousel / Loading / MultiSelector / ImageCuter / TagPanel / NeonLabe
 ### Styles only （仅样式）:
 DataGrid / ScrollViewer (MiniScrollViewer)
 
+# Button 
 
+![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/button.jpg)
+
+# TextBox
+
+![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/textbox.jpg)
