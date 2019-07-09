@@ -17,11 +17,6 @@ namespace Panuon.UI.Silver
 {
     public class WindowHelper
     {
-        #region Import
-        [DllImport("user32.dll", CharSet = CharSet.Auto)]
-        private static extern IntPtr SendMessage(IntPtr hWnd, UInt32 msg, IntPtr wParam, IntPtr lParam);
-        #endregion
-
         #region Identity
         private enum ResizeDirection
         {
@@ -59,9 +54,9 @@ namespace Panuon.UI.Silver
                 if (window.Style != window.FindResource("PanuonWindow"))
                     window.Style = window.FindResource("PanuonWindow") as Style;
             }
-            catch
+            catch(Exception ex)
             {
-                throw new Exception("Style resources not found. Have you imported resource dictionary in your project ?");
+                throw new Exception("Style resources not found. Have you imported resource dictionary in your project ?\nError Message : " + ex.Message);
             }
         }
         #endregion
@@ -390,12 +385,6 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Function
-        private static void ResizeWindow(ResizeDirection direction, Window window)
-        {
-            var hwndSource = (HwndSource)PresentationSource.FromVisual(window);
-            SendMessage(hwndSource.Handle, 0x112, (IntPtr)(61440 + direction), IntPtr.Zero);
-        }
-
         private static void BeginGradulInAnimation(Window window)
         {
             var storyboard = new Storyboard();
@@ -648,8 +637,7 @@ namespace Panuon.UI.Silver
         private static void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var window = sender as Window;
-            var border = VisualTreeHelper.GetChild(VisualTreeHelper.GetChild(window, 0), 0) as Border;
-            var grid = border.Child as Grid;
+            var grid = VisualTreeHelper.GetChild(VisualTreeHelper.GetChild(VisualTreeHelper.GetChild(window, 0), 1), 0) as Grid;
             var grdNavbar = VisualTreeHelper.GetChild(grid, 0) as Grid;
             if (grdNavbar != null)
             {
@@ -658,17 +646,7 @@ namespace Panuon.UI.Silver
                     window.DragMove();
                 };
             }
-            var grdResize = VisualTreeHelper.GetChild(VisualTreeHelper.GetChild(window, 0), 1) as Grid;
-            if (grdResize != null)
-            {
-                foreach (Rectangle resizeRectangle in grdResize.Children)
-                {
-                    resizeRectangle.PreviewMouseDown += delegate
-                    {
-                        ResizeWindow((ResizeDirection)Enum.Parse(typeof(ResizeDirection), resizeRectangle.Tag.ToString()), window);
-                    };
-                }
-            }
+            
             switch (GetWindowAnimation(window))
             {
                 case WindowAnimation.Fade:

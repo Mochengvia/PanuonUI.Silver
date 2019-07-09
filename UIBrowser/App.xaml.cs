@@ -16,6 +16,8 @@ namespace UIBrowser
         public App()
         {
             //System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+            //System.Threading.Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
+
         }
     }
 }
