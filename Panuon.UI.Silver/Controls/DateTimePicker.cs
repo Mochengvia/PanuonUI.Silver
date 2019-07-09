@@ -22,6 +22,21 @@ namespace Panuon.UI.Silver
         }
         #endregion
 
+        #region Event
+        public static readonly RoutedEvent SelectedDateTimeChangedEvent = EventManager.RegisterRoutedEvent("SelectedDateTimeChanged", RoutingStrategy.Bubble, typeof(RoutedPropertyChangedEventHandler<DateTime>), typeof(DateTimePicker));
+        public event RoutedPropertyChangedEventHandler<DateTime> SelectedDateTimeChanged
+        {
+            add { AddHandler(SelectedDateTimeChangedEvent, value); }
+            remove { RemoveHandler(SelectedDateTimeChangedEvent, value); }
+        }
+        void RaiseSelectedDateTimeChanged(DateTime oldValue, DateTime newValue)
+        {
+            var arg = new RoutedPropertyChangedEventArgs<DateTime>(oldValue, newValue, SelectedDateTimeChangedEvent);
+            RaiseEvent(arg);
+        }
+        
+        #endregion
+
         #region Property
         public DateTimePickerMode DateTimePickerMode
         {
@@ -68,12 +83,13 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty SelectedDateTimeProperty =
-            DependencyProperty.Register("SelectedDateTime", typeof(DateTime), typeof(DateTimePicker), new PropertyMetadata(new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0), OnSelectedDateTimeChanged));
+            DependencyProperty.Register("SelectedDateTime", typeof(DateTime), typeof(DateTimePicker), new PropertyMetadata(new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0), OnSelectedDateSelectedDateTimeChanged));
 
-        private static void OnSelectedDateTimeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnSelectedDateSelectedDateTimeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var picker = d as DateTimePicker;
             picker.UpdateText();
+            picker.RaiseSelectedDateTimeChanged((DateTime)e.NewValue, (DateTime)e.OldValue);
         }
 
         public DateTime? MaxDate

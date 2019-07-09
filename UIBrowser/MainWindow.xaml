@@ -64,34 +64,34 @@
                 <TreeViewItem Header="{x:Static localized:Resource.Expander}"
                               Tag="Expander" />-->
             </TreeViewItem>
-            <!--<TreeViewItem Header="{x:Static localized:Resource.CustomControls}"
+            <TreeViewItem Header="{x:Static localized:Resource.CustomControls}"
                           pu:TreeViewHelper.ItemIcon="&#xf004;"
                           IsExpanded="True">
-                <TreeViewItem Header="{x:Static localized:Resource.Carousel}"
+                <!--<TreeViewItem Header="{x:Static localized:Resource.Carousel}"
                               Tag="Carousel" />
                 <TreeViewItem Header="{x:Static localized:Resource.Countdown}"
-                              Tag="Countdown" />
+                              Tag="Countdown" />-->
                 <TreeViewItem Header="{x:Static localized:Resource.Calendar}"
                               Tag="Calendar" />
-                <TreeViewItem Header="{x:Static localized:Resource.Clock}"
+                <!--<TreeViewItem Header="{x:Static localized:Resource.Clock}"
                               Tag="Clock" />
                 <TreeViewItem Header="{x:Static localized:Resource.DateTimePicker}"
                               Tag="DateTimePicker" />
                 <TreeViewItem Header="{x:Static localized:Resource.DropDown}"
                               Tag="DropDown" />
                 <TreeViewItem Header="{x:Static localized:Resource.ImageCuter}"
-                              Tag="ImageCuter" />
+                              Tag="ImageCuter" />-->
                 <TreeViewItem Header="{x:Static localized:Resource.Loading}"
                               Tag="Loading" />
-                <TreeViewItem Header="{x:Static localized:Resource.MultiSelector}"
+                <!--<TreeViewItem Header="{x:Static localized:Resource.MultiSelector}"
                               Tag="MultiSelector" />
                 <TreeViewItem Header="{x:Static localized:Resource.NeonLabel}"
                               Tag="NeonLabel" />
                 <TreeViewItem Header="{x:Static localized:Resource.Pagination}"
                               Tag="Pagination" />
                 <TreeViewItem Header="{x:Static localized:Resource.Timeline}"
-                              Tag="Timeline" />
-            </TreeViewItem>-->
+                              Tag="Timeline" />-->
+            </TreeViewItem>
         </TreeView>
         <GridSplitter Width="2"
                       VerticalAlignment="Stretch" />

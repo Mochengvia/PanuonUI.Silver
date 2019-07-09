@@ -44,7 +44,7 @@ namespace Panuon.UI.Silver
     #region Loading
     public enum LoadingStyle
     {
-        Classic,
+        Standard,
         Ring,
         Wave,
     }

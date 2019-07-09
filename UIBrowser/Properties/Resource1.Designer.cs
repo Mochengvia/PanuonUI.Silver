@@ -88,6 +88,15 @@ namespace UIBrowser.Properties {
         }
         
         /// <summary>
+        ///   查找类似 CalendarMode 的本地化字符串。
+        /// </summary>
+        public static string CalendarMode {
+            get {
+                return ResourceManager.GetString("CalendarMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Carousel 的本地化字符串。
         /// </summary>
         public static string Carousel {
@@ -268,6 +277,24 @@ namespace UIBrowser.Properties {
         }
         
         /// <summary>
+        ///   查找类似 IsRunning 的本地化字符串。
+        /// </summary>
+        public static string IsRunning {
+            get {
+                return ResourceManager.GetString("IsRunning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 IsSundayFirst 的本地化字符串。
+        /// </summary>
+        public static string IsSundayFirst {
+            get {
+                return ResourceManager.GetString("IsSundayFirst", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 IsWaiting 的本地化字符串。
         /// </summary>
         public static string IsWaiting {
@@ -282,6 +309,24 @@ namespace UIBrowser.Properties {
         public static string ItemHeight {
             get {
                 return ResourceManager.GetString("ItemHeight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 LimitMaxDateTime 的本地化字符串。
+        /// </summary>
+        public static string LimitMaxDateTime {
+            get {
+                return ResourceManager.GetString("LimitMaxDateTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 LimitMinDateTime 的本地化字符串。
+        /// </summary>
+        public static string LimitMinDateTime {
+            get {
+                return ResourceManager.GetString("LimitMinDateTime", resourceCulture);
             }
         }
         

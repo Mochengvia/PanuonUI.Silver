@@ -72,6 +72,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PartialViews\Custom\LoadingView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PartialViews\Custom\CalendarView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="PartialViews\Native\SliderView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -126,6 +134,12 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PartialViews\Custom\LoadingView.xaml.cs">
+      <DependentUpon>LoadingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PartialViews\Custom\CalendarView.xaml.cs">
+      <DependentUpon>CalendarView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PartialViews\Native\SliderView.xaml.cs">
       <DependentUpon>SliderView.xaml</DependentUpon>
     </Compile>
@@ -189,7 +203,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
-    <Folder Include="PartialViews\Custom\" />
     <Folder Include="PartialViews\Template\" />
   </ItemGroup>
   <ItemGroup>

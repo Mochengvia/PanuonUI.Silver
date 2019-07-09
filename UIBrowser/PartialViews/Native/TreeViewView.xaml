@@ -94,16 +94,16 @@
                                         Margin="10,0">
                                 <RadioButton Content="Standard"
                                              IsChecked="True"
-                                             Checked="RdbButtonStyle_CheckChanged" />
+                                             Checked="RdbBaseStyle_CheckChanged" />
                                 <RadioButton Margin="5,0,0,0"
                                              Content="Classic"
-                                             Checked="RdbButtonStyle_CheckChanged" />
+                                             Checked="RdbBaseStyle_CheckChanged" />
                                 <RadioButton Margin="5,0,0,0"
                                              Content="Modern"
-                                             Checked="RdbButtonStyle_CheckChanged" />
+                                             Checked="RdbBaseStyle_CheckChanged" />
                                 <RadioButton Margin="5,0,0,0"
                                              Content="Chain"
-                                             Checked="RdbButtonStyle_CheckChanged" />
+                                             Checked="RdbBaseStyle_CheckChanged" />
                             </StackPanel>
                             <TextBlock Grid.Row="1"
                                        Text="{x:Static localized:Resource.ThemeBrush}"

@@ -63,7 +63,7 @@ namespace UIBrowser.PartialViews.Native
             UpdateCode();
         }
 
-        private void RdbButtonStyle_CheckChanged(object sender, RoutedEventArgs e)
+        private void RdbBaseStyle_CheckChanged(object sender, RoutedEventArgs e)
         {
             if (!IsLoaded)
                 return;

@@ -32,8 +32,6 @@ namespace Panuon.UI.Silver
         public static readonly DependencyProperty StrokeCoverProperty =
             DependencyProperty.Register("StrokeCover", typeof(Brush), typeof(Loading));
 
-
-
         /// <summary>
         /// 获取或设置加载控件的状态。默认为False。
         /// </summary>
@@ -47,7 +45,7 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("IsRunning", typeof(bool), typeof(Loading));
 
         /// <summary>
-        /// 获取或设置加载控件的基础样式。默认为Classic。
+        /// 获取或设置加载控件的基础样式。默认为Standard。
         /// </summary>
         public LoadingStyle LoadingStyle
         {
@@ -56,7 +54,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty LoadingStyleProperty =
-            DependencyProperty.Register("LoadingStyle", typeof(LoadingStyle), typeof(Loading), new PropertyMetadata(LoadingStyle.Classic));
+            DependencyProperty.Register("LoadingStyle", typeof(LoadingStyle), typeof(Loading), new PropertyMetadata(LoadingStyle.Standard));
         #endregion
     }
 }

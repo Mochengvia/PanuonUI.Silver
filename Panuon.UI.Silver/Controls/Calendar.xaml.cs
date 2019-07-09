@@ -125,7 +125,9 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty IsSundayFirstProperty =
-            DependencyProperty.Register("IsSundayFirst", typeof(bool), typeof(Calendar), new PropertyMetadata(true));
+            DependencyProperty.Register("IsSundayFirst", typeof(bool), typeof(Calendar), new PropertyMetadata(true, OnIsSundayFirstChanged));
+
+
 
         #endregion
 
@@ -195,12 +197,29 @@ namespace Panuon.UI.Silver
                     calendar.InitDayPanel(calendar.SelectedDate.Year, calendar.SelectedDate.Month);
                     break;
                 case DayMonthYear.Month:
-                    calendar.InitYearPanel(calendar.SelectedDate.Year);
+                    calendar.InitMonthPanel(calendar.SelectedDate.Year);
                     break;
                 case DayMonthYear.Year:
                     calendar.InitYearPanel(calendar.SelectedDate.Year);
                     break;
             }
+            if(calendar.MaxDate != null)
+            {
+                if(calendar.SelectedDate > (DateTime)calendar.MaxDate)
+                {
+                    calendar.SelectedDate = (DateTime)calendar.MaxDate;
+                    return;
+                }
+            }
+            if(calendar.MinDate != null)
+            {
+                if (calendar.SelectedDate < (DateTime)calendar.MinDate)
+                {
+                    calendar.SelectedDate = (DateTime)calendar.MinDate;
+                    return;
+                }
+            }
+            calendar.CheckButtonVisible();
         }
 
         private static void OnCalendarModeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -212,18 +231,30 @@ namespace Panuon.UI.Silver
             switch (calendar.CalendarMode)
             {
                 case CalendarMode.YearMonth:
-                    if(calendar._currentPosition == DayMonthYear.Day)
-                    {
+                    if (calendar._currentPosition != DayMonthYear.Month)
                         calendar.ChangePanel(DayMonthYear.Month);
-                    }
                     break;
                 case CalendarMode.Year:
-                    if (calendar._currentPosition == DayMonthYear.Day)
-                    {
+                    if(calendar._currentPosition != DayMonthYear.Year)
                         calendar.ChangePanel(DayMonthYear.Year);
-                    }
+                    break;
+                case CalendarMode.Date:
+                    if (calendar._currentPosition != DayMonthYear.Day)
+                        calendar.ChangePanel(DayMonthYear.Day);
                     break;
             }
+
+            calendar.CheckButtonVisible();
+        }
+
+        private static void OnIsSundayFirstChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var calendar = d as Calendar;
+            if (!calendar.IsLoaded)
+                return;
+
+            calendar.InitWeekTitle();
+            calendar.InitDayPanel(calendar.SelectedDate.Year, calendar.SelectedDate.Month);
         }
         #endregion
 
@@ -325,7 +356,12 @@ namespace Panuon.UI.Silver
                     BtnIncMonth.Visibility = Visibility.Visible;
                     BtnDecMonth.Visibility = Visibility.Visible;
                     InitDayPanel(SelectedDate.Year, SelectedDate.Month);
-                    if(_currentPosition != DayMonthYear.Day)
+                    if(_currentPosition == DayMonthYear.Year)
+                    {
+                        _storyboard_yeartoMonth.Begin();
+                        _storyboard_monthtoDay.Begin();
+                    }
+                    if (_currentPosition == DayMonthYear.Month)
                         _storyboard_monthtoDay.Begin();
                     BtnMonthYear.Content = $"{CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(SelectedDate.Month)}  {SelectedDate.Year}";
                     break;
@@ -335,7 +371,7 @@ namespace Panuon.UI.Silver
                     InitMonthPanel(SelectedDate.Year);
                     if (_currentPosition == DayMonthYear.Year)
                         _storyboard_yeartoMonth.Begin();
-                    else if (_currentPosition == DayMonthYear.Day)
+                    if (_currentPosition == DayMonthYear.Day)
                         _storyboard_daytoMonth.Begin();
                     BtnMonthYear.Content = $"{SelectedDate.Year}";
                     break;
@@ -343,7 +379,15 @@ namespace Panuon.UI.Silver
                     BtnIncMonth.Visibility = Visibility.Collapsed;
                     BtnDecMonth.Visibility = Visibility.Collapsed;
                     InitYearPanel(SelectedDate.Year);
-                    _storyboard_monthtoYear.Begin();
+                    if(_currentPosition == DayMonthYear.Day)
+                    {
+                        _storyboard_daytoMonth.Begin();
+                        _storyboard_monthtoYear.Begin();
+                    }
+                    if(_currentPosition== DayMonthYear.Month)
+                        _storyboard_monthtoYear.Begin();
+
+
                     BtnMonthYear.Content = $"{SelectedDate.Year - 7} - {SelectedDate.Year + 7}";
                     break;
             }
@@ -570,6 +614,11 @@ namespace Panuon.UI.Silver
                         BtnIncMonth.Visibility = Visibility.Visible;
                 }
             }
+            else
+            {
+                BtnIncYear.Visibility = Visibility.Visible;
+                BtnIncMonth.Visibility = Visibility.Visible;
+            }
             if (MinDate != null)
             {
                 var minDate = ((DateTime)MinDate).Date;
@@ -584,6 +633,11 @@ namespace Panuon.UI.Silver
                     if(_currentPosition != DayMonthYear.Year)
                         BtnDecMonth.Visibility = Visibility.Visible;
                 }
+            }
+            else
+            {
+                BtnDecYear.Visibility = Visibility.Visible;
+                BtnDecMonth.Visibility = Visibility.Visible;
             }
 
         }

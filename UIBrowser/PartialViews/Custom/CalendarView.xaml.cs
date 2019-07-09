@@ -10,9 +10,9 @@ using UIBrowser.Helpers;
 namespace UIBrowser.PartialViews.Native
 {
     /// <summary>
-    /// TabControlView.xaml 的交互逻辑
+    /// ComboBoxView.xaml 的交互逻辑
     /// </summary>
-    public partial class TabControlView : UserControl
+    public partial class CalendarView : UserControl
     {
         #region Identity
         private bool _isCodeViewing;
@@ -20,7 +20,7 @@ namespace UIBrowser.PartialViews.Native
         private LinearGradientBrush _linearGradientBrush;
         #endregion
 
-        public TabControlView()
+        public CalendarView()
         {
             InitializeComponent();
             Loaded += ButtonView_Loaded;
@@ -36,31 +36,21 @@ namespace UIBrowser.PartialViews.Native
             UpdateCode();
         }
 
-        private void SldTheme_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            if (!IsLoaded)
-                return;
-
-            UpdateTemplate();
-            UpdateCode();
-        }
-
-        private void SldWidth_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            if (!IsLoaded)
-                return;
-
-            UpdateTemplate();
-            UpdateCode();
-        }
-
-        private void RdbBaseStyle_CheckChanged(object sender, RoutedEventArgs e)
+        private void RdbCalendarMode_CheckChanged(object sender, RoutedEventArgs e)
         {
             if (!IsLoaded)
                 return;
             var rdb = sender as RadioButton;
 
-            TabControlHelper.SetTabControlStyle(TabCustom, (TabControlStyle)Enum.Parse(typeof(TabControlStyle), rdb.Content.ToString()));
+            CdrCustom.CalendarMode = (Panuon.UI.Silver.CalendarMode)Enum.Parse(typeof(Panuon.UI.Silver.CalendarMode), rdb.Content.ToString());
+
+            UpdateCode();
+        }
+
+        private void SldTheme_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (!IsLoaded)
+                return;
 
             UpdateTemplate();
             UpdateCode();
@@ -107,6 +97,35 @@ namespace UIBrowser.PartialViews.Native
         {
             Clipboard.SetText(TbCode.Text);
         }
+
+        private void ChbSundayFirst_CheckChanged(object sender, RoutedEventArgs e)
+        {
+            if (!IsLoaded)
+                return;
+
+            CdrCustom.IsSundayFirst = ChbSundayFirst.IsChecked == true ;
+
+            UpdateCode();
+        }
+
+        private void ChbLimitMax_CheckChanged(object sender, RoutedEventArgs e)
+        {
+            if (!IsLoaded)
+                return;
+
+            CdrCustom.MaxDate = ChbLimitMax.IsChecked == true ? DateTime.Now.Date.AddMonths(1) : (DateTime?)null;
+            UpdateCode();
+        }
+
+        private void ChbLimitMin_CheckChanged(object sender, RoutedEventArgs e)
+        {
+            if (!IsLoaded)
+                return;
+
+            CdrCustom.MinDate = ChbLimitMin.IsChecked == true ? DateTime.Now.Date.AddMonths(-1) : (DateTime?)null;
+            UpdateCode();
+        }
+
         #endregion
 
         #region Function
@@ -126,37 +145,30 @@ namespace UIBrowser.PartialViews.Native
         private void UpdateTemplate()
         {
             var color = Helper.GetColorByOffset(_linearGradientBrush.GradientStops, SldTheme.Value / 7);
-
-            TabCustom.Width = SldWidth.Value;
-
-
-            switch (TabControlHelper.GetTabControlStyle(TabCustom))
-            {
-                case TabControlStyle.Standard:
-                    TabControlHelper.SetSelectedForeground(TabCustom, color.ToBrush());
-                    break;
-                case TabControlStyle.Classic:
-                    TabControlHelper.SetSelectedForeground(TabCustom, color.ToBrush());
-                    break;
-            }
+            CdrCustom.ThemeBrush = color.ToBrush();
         }
 
         private void UpdateCode()
         {
-            var tabStyle = TabControlHelper.GetTabControlStyle(TabCustom);
+            var calendarMode = CdrCustom.CalendarMode;
+            var maxDate = CdrCustom.MaxDate;
+            var minDate = CdrCustom.MinDate;
+            var isSundayFirst = CdrCustom.IsSundayFirst;
 
-            TbCode.Text = "<TabControl  Width=\"{TabCustom.Width}\"" +
-                        (tabStyle == TabControlStyle.Standard ? "" : $"\npu:TabControlHelper.TabControlStyle=\"{tabStyle}\"") +
-                        $"\npu:TabControlHelper.SelectedForeground=\"{TabControlHelper.GetSelectedForeground(TabCustom).ToColor().ToHexString(false)}\"" +
-                        " >" +
-                        "\n<TabItem Header=\"Item1\"/>" +
-                        "\n<TabItem Header=\"Item2\"/>" +
-                        "\n<TabItem Header=\"Item3\"/>" +
-                        "\n</TabControl>";
+            TbCode.Text = $"<pu:Calendar  Width=\"{CdrCustom.ActualWidth}\"" +
+                        $"\nHeight=\"{CdrCustom.ActualHeight}\"" +
+                        (calendarMode == Panuon.UI.Silver.CalendarMode.Date ? "" : $"\nCalendarMode=\"{calendarMode}\"") +
+                        (maxDate == null ? "" : $"\nMaxDate=\"{((DateTime)maxDate).ToString("yyyy-MM-dd")}\"") +
+                        (minDate == null ? "" : $"\nMaxDate=\"{((DateTime)minDate).ToString("yyyy-MM-dd")}\"") +
+                        $"\nThemeBrush=\"{CdrCustom.ThemeBrush.ToColor().ToHexString(false)}\"" +
+                        (isSundayFirst ? "" : "\nIsSundayFirst=\"False\"") +
+                        " />";
         }
 
-        #endregion
 
+
+
+        #endregion
 
     }
 }

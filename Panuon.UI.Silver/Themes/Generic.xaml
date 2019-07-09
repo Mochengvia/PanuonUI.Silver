@@ -15,7 +15,7 @@
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Style.Triggers>
             <Trigger Property="LoadingStyle"
-                     Value="Classic">
+                     Value="Standard">
                 <Setter Property="Stroke"
                         Value="#3E3E3E" />
                 <Setter Property="Template">

@@ -12,6 +12,17 @@ Email : zeoun@qq.com
 QQ Group : 718778191  
 Zhihu : @末城via
 
+# News 动态
+
+2019-7-9  
+Loading : Change loading style name : "Classic" -> "Standard" .  
+Loading控件：将Classic样式重命名为Standard样式。  
+
+Calendar : Fix visual bugs .  
+Calendar日历控件：修复显示问题。  
+
+
+
 # Document 文档
 
 Chinese document(English document is still being written, you can translate it by google or other translator):  

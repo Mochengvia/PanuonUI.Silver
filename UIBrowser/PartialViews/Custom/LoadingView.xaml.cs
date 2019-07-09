@@ -10,9 +10,9 @@ using UIBrowser.Helpers;
 namespace UIBrowser.PartialViews.Native
 {
     /// <summary>
-    /// TabControlView.xaml 的交互逻辑
+    /// ComboBoxView.xaml 的交互逻辑
     /// </summary>
-    public partial class TabControlView : UserControl
+    public partial class LoadingView : UserControl
     {
         #region Identity
         private bool _isCodeViewing;
@@ -20,7 +20,7 @@ namespace UIBrowser.PartialViews.Native
         private LinearGradientBrush _linearGradientBrush;
         #endregion
 
-        public TabControlView()
+        public LoadingView()
         {
             InitializeComponent();
             Loaded += ButtonView_Loaded;
@@ -36,31 +36,22 @@ namespace UIBrowser.PartialViews.Native
             UpdateCode();
         }
 
-        private void SldTheme_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            if (!IsLoaded)
-                return;
-
-            UpdateTemplate();
-            UpdateCode();
-        }
-
-        private void SldWidth_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            if (!IsLoaded)
-                return;
-
-            UpdateTemplate();
-            UpdateCode();
-        }
-
         private void RdbBaseStyle_CheckChanged(object sender, RoutedEventArgs e)
         {
             if (!IsLoaded)
                 return;
             var rdb = sender as RadioButton;
 
-            TabControlHelper.SetTabControlStyle(TabCustom, (TabControlStyle)Enum.Parse(typeof(TabControlStyle), rdb.Content.ToString()));
+            LdCustom.LoadingStyle = (LoadingStyle)Enum.Parse(typeof(LoadingStyle), rdb.Content.ToString());
+
+            UpdateTemplate();
+            UpdateCode();
+        }
+
+        private void SldTheme_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (!IsLoaded)
+                return;
 
             UpdateTemplate();
             UpdateCode();
@@ -107,6 +98,17 @@ namespace UIBrowser.PartialViews.Native
         {
             Clipboard.SetText(TbCode.Text);
         }
+
+        
+
+        private void ChbIsRunning_CheckChanged(object sender, RoutedEventArgs e)
+        {
+            if (!IsLoaded)
+                return;
+
+            LdCustom.IsRunning = ChbIsRunning.IsChecked == true;
+        }
+
         #endregion
 
         #region Function
@@ -126,37 +128,39 @@ namespace UIBrowser.PartialViews.Native
         private void UpdateTemplate()
         {
             var color = Helper.GetColorByOffset(_linearGradientBrush.GradientStops, SldTheme.Value / 7);
-
-            TabCustom.Width = SldWidth.Value;
-
-
-            switch (TabControlHelper.GetTabControlStyle(TabCustom))
+            switch (LdCustom.LoadingStyle)
             {
-                case TabControlStyle.Standard:
-                    TabControlHelper.SetSelectedForeground(TabCustom, color.ToBrush());
+                case LoadingStyle.Standard:
+                    LdCustom.Stroke = color.ToBrush();
                     break;
-                case TabControlStyle.Classic:
-                    TabControlHelper.SetSelectedForeground(TabCustom, color.ToBrush());
+                case LoadingStyle.Wave:
+                    LdCustom.Stroke = color.ToBrush();
+                    break;
+                case LoadingStyle.Ring:
+                    LdCustom.Stroke = new Color() { A = 50, R = color.R, G = color.G, B = color.B }.ToBrush();
+                    LdCustom.StrokeCover = color.ToBrush();
                     break;
             }
         }
 
         private void UpdateCode()
         {
-            var tabStyle = TabControlHelper.GetTabControlStyle(TabCustom);
+            var loadingStyle = LdCustom.LoadingStyle;
+            var isRunning = LdCustom.IsRunning;
 
-            TbCode.Text = "<TabControl  Width=\"{TabCustom.Width}\"" +
-                        (tabStyle == TabControlStyle.Standard ? "" : $"\npu:TabControlHelper.TabControlStyle=\"{tabStyle}\"") +
-                        $"\npu:TabControlHelper.SelectedForeground=\"{TabControlHelper.GetSelectedForeground(TabCustom).ToColor().ToHexString(false)}\"" +
-                        " >" +
-                        "\n<TabItem Header=\"Item1\"/>" +
-                        "\n<TabItem Header=\"Item2\"/>" +
-                        "\n<TabItem Header=\"Item3\"/>" +
-                        "\n</TabControl>";
+            TbCode.Text = $"<pu:Calendar  Width=\"{LdCustom.ActualWidth}\"" +
+                        $"\nHeight=\"{LdCustom.ActualHeight}\"" +
+                        (loadingStyle == LoadingStyle.Standard ? "" : $"\nLoadingStyle=\"{loadingStyle}\"") +
+                        $"\nStroke=\"{LdCustom.Stroke}\"" +
+                        (loadingStyle == LoadingStyle.Ring ? $"StrokeCover=\"{LdCustom.StrokeCover.ToColor().ToHexString(true)}\"" : "") +
+                        (isRunning ? "\nIsRunning=\"True\"" : "") +
+                        " />";
         }
 
-        #endregion
 
+
+
+        #endregion
 
     }
 }

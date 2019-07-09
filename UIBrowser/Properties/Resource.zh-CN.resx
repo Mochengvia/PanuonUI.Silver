@@ -294,4 +294,19 @@
   <data name="Width" xml:space="preserve">
     <value>宽度</value>
   </data>
+  <data name="CalendarMode" xml:space="preserve">
+    <value>日历模式</value>
+  </data>
+  <data name="IsSundayFirst" xml:space="preserve">
+    <value>周日置首</value>
+  </data>
+  <data name="LimitMaxDateTime" xml:space="preserve">
+    <value>限制最大日期</value>
+  </data>
+  <data name="LimitMinDateTime" xml:space="preserve">
+    <value>限制最小日期</value>
+  </data>
+  <data name="IsRunning" xml:space="preserve">
+    <value>正在运行</value>
+  </data>
 </root>
