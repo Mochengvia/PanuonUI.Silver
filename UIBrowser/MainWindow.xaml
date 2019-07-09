@@ -11,7 +11,6 @@
         Title="UIBrowser"
         Height="700"
         Width="1200"
-        pu:WindowHelper.WindowAnimation="Gradual"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
