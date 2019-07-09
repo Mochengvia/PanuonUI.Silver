@@ -1,5 +1,7 @@
 ﻿using Panuon.UI.Silver;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -10,9 +12,9 @@ using UIBrowser.Helpers;
 namespace UIBrowser.PartialViews.Native
 {
     /// <summary>
-    /// ComboBoxView.xaml 的交互逻辑
+    /// DateTimePickerView.xaml 的交互逻辑
     /// </summary>
-    public partial class LoadingView : UserControl
+    public partial class DateTimePickerView : UserControl
     {
         #region Identity
         private bool _isCodeViewing;
@@ -20,7 +22,7 @@ namespace UIBrowser.PartialViews.Native
         private LinearGradientBrush _linearGradientBrush;
         #endregion
 
-        public LoadingView()
+        public DateTimePickerView()
         {
             InitializeComponent();
             Loaded += ButtonView_Loaded;
@@ -36,15 +38,14 @@ namespace UIBrowser.PartialViews.Native
             UpdateCode();
         }
 
-        private void RdbBaseStyle_CheckChanged(object sender, RoutedEventArgs e)
+        private void RdbDateTimePicker_CheckChanged(object sender, RoutedEventArgs e)
         {
             if (!IsLoaded)
                 return;
             var rdb = sender as RadioButton;
 
-            LdCustom.LoadingStyle = (LoadingStyle)Enum.Parse(typeof(LoadingStyle), rdb.Content.ToString());
+            DtpCustom.DateTimePickerMode = (Panuon.UI.Silver.DateTimePickerMode)Enum.Parse(typeof(Panuon.UI.Silver.DateTimePickerMode), rdb.Content.ToString());
 
-            UpdateTemplate();
             UpdateCode();
         }
 
@@ -99,14 +100,35 @@ namespace UIBrowser.PartialViews.Native
             Clipboard.SetText(TbCode.Text);
         }
 
-        
-
-        private void ChbIsRunning_CheckChanged(object sender, RoutedEventArgs e)
+        private void ChbSundayFirst_CheckChanged(object sender, RoutedEventArgs e)
         {
             if (!IsLoaded)
                 return;
 
-            LdCustom.IsRunning = ChbIsRunning.IsChecked == true;
+            var list = new List<string>();
+            list = list.Distinct().ToList();
+
+            DtpCustom.IsSundayFirst = ChbSundayFirst.IsChecked == true ;
+
+            UpdateCode();
+        }
+
+        private void ChbLimitMax_CheckChanged(object sender, RoutedEventArgs e)
+        {
+            if (!IsLoaded)
+                return;
+
+            DtpCustom.MaxDate = ChbLimitMax.IsChecked == true ? DateTime.Now.Date.AddMonths(1) : (DateTime?)null;
+            UpdateCode();
+        }
+
+        private void ChbLimitMin_CheckChanged(object sender, RoutedEventArgs e)
+        {
+            if (!IsLoaded)
+                return;
+
+            DtpCustom.MinDate = ChbLimitMin.IsChecked == true ? DateTime.Now.Date.AddMonths(-1) : (DateTime?)null;
+            UpdateCode();
         }
 
         #endregion
@@ -128,32 +150,23 @@ namespace UIBrowser.PartialViews.Native
         private void UpdateTemplate()
         {
             var color = Helper.GetColorByOffset(_linearGradientBrush.GradientStops, SldTheme.Value / 7);
-            switch (LdCustom.LoadingStyle)
-            {
-                case LoadingStyle.Standard:
-                    LdCustom.Stroke = color.ToBrush();
-                    break;
-                case LoadingStyle.Wave:
-                    LdCustom.Stroke = color.ToBrush();
-                    break;
-                case LoadingStyle.Ring:
-                    LdCustom.Stroke = new Color() { A = 50, R = color.R, G = color.G, B = color.B }.ToBrush();
-                    LdCustom.StrokeCover = color.ToBrush();
-                    break;
-            }
+            DtpCustom.ThemeBrush = color.ToBrush();
         }
 
         private void UpdateCode()
         {
-            var loadingStyle = LdCustom.LoadingStyle;
-            var isRunning = LdCustom.IsRunning;
+            var pickerMode = DtpCustom.DateTimePickerMode;
+            var maxDate = DtpCustom.MaxDate;
+            var minDate = DtpCustom.MinDate;
+            var isSundayFirst = DtpCustom.IsSundayFirst;
 
-            TbCode.Text = $"<pu:Loading  Width=\"{LdCustom.ActualWidth}\"" +
-                        $"\nHeight=\"{LdCustom.ActualHeight}\"" +
-                        (loadingStyle == LoadingStyle.Standard ? "" : $"\nLoadingStyle=\"{loadingStyle}\"") +
-                        $"\nStroke=\"{LdCustom.Stroke}\"" +
-                        (loadingStyle == LoadingStyle.Ring ? $"StrokeCover=\"{LdCustom.StrokeCover.ToColor().ToHexString(true)}\"" : "") +
-                        (isRunning ? "\nIsRunning=\"True\"" : "") +
+            TbCode.Text = $"<pu:DateTimePicker  Width=\"{DtpCustom.ActualWidth}\"" +
+                        $"\nHeight=\"{DtpCustom.ActualHeight}\"" +
+                        (pickerMode == DateTimePickerMode.Date ? "" : $"\nDateTimePickerMode=\"{pickerMode}\"") +
+                        (maxDate == null ? "" : $"\nMaxDate=\"{((DateTime)maxDate).ToString("yyyy-MM-dd")}\"") +
+                        (minDate == null ? "" : $"\nMaxDate=\"{((DateTime)minDate).ToString("yyyy-MM-dd")}\"") +
+                        $"\nThemeBrush=\"{DtpCustom.ThemeBrush.ToColor().ToHexString(false)}\"" +
+                        (isSundayFirst ? "" : "\nIsSundayFirst=\"False\"") +
                         " />";
         }
 

@@ -135,7 +135,7 @@ namespace Panuon.UI.Silver
         private static void OnSelectedDateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var calendar = d as Calendar;
-            if (!calendar.IsLoaded)
+            if (calendar.ActualWidth == 0)
                 return;
 
             var oldDate = (DateTime)e.OldValue;
@@ -188,7 +188,7 @@ namespace Panuon.UI.Silver
         private static void OnDateTimeLimitChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var calendar = d as Calendar;
-            if (!calendar.IsLoaded)
+            if (calendar.ActualWidth == 0)
                 return;
 
             switch (calendar._currentPosition)
@@ -225,7 +225,7 @@ namespace Panuon.UI.Silver
         private static void OnCalendarModeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var calendar = d as Calendar;
-            if (!calendar.IsLoaded)
+            if (calendar.ActualWidth == 0)
                 return;
 
             switch (calendar.CalendarMode)
@@ -250,7 +250,7 @@ namespace Panuon.UI.Silver
         private static void OnIsSundayFirstChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var calendar = d as Calendar;
-            if (!calendar.IsLoaded)
+            if (calendar.ActualWidth == 0)
                 return;
 
             calendar.InitWeekTitle();

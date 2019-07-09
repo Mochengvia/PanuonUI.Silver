@@ -15,9 +15,19 @@ namespace Panuon.UI.Silver
         /// <summary xml:lang="en">
         /// 
         /// </summary>
-        public static bool IsNullOrEmpty(this string context)
+        public static bool IsNullOrEmpty(this string text)
         {
-            return string.IsNullOrEmpty(context);
+            return string.IsNullOrEmpty(text);
+        }
+
+        public static string Cut(this string text, int length, string filler = null)
+        {
+            if (text.Length <= length)
+                return text;
+            else
+            {
+                return text.Remove(length) + filler;
+            }
         }
         #endregion
 

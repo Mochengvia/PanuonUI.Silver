@@ -1007,9 +1007,10 @@
                                     </Grid.ColumnDefinitions>
                                     <local:Calendar x:Name="Calendar"
                                                     ThemeBrush="{Binding ThemeBrush,RelativeSource={RelativeSource AncestorType=local:DateTimePicker},Mode=OneWay}"
-                                                    MaxDate="{Binding MaxDate,RelativeSource={RelativeSource AncestorType=local:DateTimePicker},Mode=OneWay}"
-                                                    MinDate="{Binding MaxDate,RelativeSource={RelativeSource AncestorType=local:DateTimePicker},Mode=OneWay}"
+                                                    MaxDate="{Binding MaxDate,RelativeSource={RelativeSource AncestorType=local:DateTimePicker},Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
+                                                    MinDate="{Binding MinDate,RelativeSource={RelativeSource AncestorType=local:DateTimePicker},Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
                                                     SelectedDate="{Binding SelectedDateTime,RelativeSource={RelativeSource AncestorType=local:DateTimePicker},Mode=TwoWay}"
+                                                    IsSundayFirst="{Binding IsSundayFirst,RelativeSource={RelativeSource AncestorType=local:DateTimePicker},Mode=OneWay}"
                                                     Width="300"
                                                     Height="300" />
                                     <Border HorizontalAlignment="Right"

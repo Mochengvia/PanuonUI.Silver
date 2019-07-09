@@ -184,7 +184,7 @@
     <value>不确定进度</value>
   </data>
   <data name="Introduction" xml:space="preserve">
-    <value>概述</value>
+    <value>Introduction 概述</value>
   </data>
   <data name="IsWaiting" xml:space="preserve">
     <value>等待模式</value>

@@ -18,6 +18,7 @@ namespace Panuon.UI.Silver.Converters
             var propertyInfo = item.GetType().GetProperty(selectedMemberPath);
             if (propertyInfo == null || propertyInfo.PropertyType != typeof(bool))
                 return false;
+
             return propertyInfo.GetValue(item, null);
         }
 

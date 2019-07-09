@@ -45,7 +45,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty DateTimePickerModeProperty =
-            DependencyProperty.Register("DateTimePickerMode", typeof(DateTimePickerMode), typeof(DateTimePicker), new PropertyMetadata(DateTimePickerMode.Date));
+            DependencyProperty.Register("DateTimePickerMode", typeof(DateTimePickerMode), typeof(DateTimePicker), new PropertyMetadata(DateTimePickerMode.Date, OnDateTimePickerModeChanged));
 
         public string Text
         {
@@ -85,13 +85,6 @@ namespace Panuon.UI.Silver
         public static readonly DependencyProperty SelectedDateTimeProperty =
             DependencyProperty.Register("SelectedDateTime", typeof(DateTime), typeof(DateTimePicker), new PropertyMetadata(new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0), OnSelectedDateSelectedDateTimeChanged));
 
-        private static void OnSelectedDateSelectedDateTimeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var picker = d as DateTimePicker;
-            picker.UpdateText();
-            picker.RaiseSelectedDateTimeChanged((DateTime)e.NewValue, (DateTime)e.OldValue);
-        }
-
         public DateTime? MaxDate
         {
             get { return (DateTime?)GetValue(MaxDateProperty); }
@@ -100,7 +93,6 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty MaxDateProperty =
             DependencyProperty.Register("MaxDate", typeof(DateTime?), typeof(DateTimePicker));
-
 
         public DateTime? MinDate
         {
@@ -128,6 +120,30 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty IconProperty =
             DependencyProperty.Register("Icon", typeof(object), typeof(DateTimePicker));
+
+        public bool IsSundayFirst
+        {
+            get { return (bool)GetValue(IsSundayFirstProperty); }
+            set { SetValue(IsSundayFirstProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsSundayFirstProperty =
+            DependencyProperty.Register("IsSundayFirst", typeof(bool), typeof(DateTimePicker), new PropertyMetadata(true));
+        #endregion
+
+        #region Event Handler
+        private static void OnSelectedDateSelectedDateTimeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var picker = d as DateTimePicker;
+            picker.UpdateText();
+            picker.RaiseSelectedDateTimeChanged((DateTime)e.NewValue, (DateTime)e.OldValue);
+        }
+
+        private static void OnDateTimePickerModeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var picker = d as DateTimePicker;
+            picker.UpdateText();
+        }
         #endregion
 
         #region Function

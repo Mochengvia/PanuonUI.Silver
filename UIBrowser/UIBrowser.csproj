@@ -72,6 +72,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PartialViews\Custom\DropDownView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PartialViews\Custom\DateTimePickerView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="PartialViews\Custom\LoadingView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -134,6 +142,14 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\MainWindowViewModel.cs" />
+    <Compile Include="Models\TreeViewItemModel.cs" />
+    <Compile Include="PartialViews\Custom\DropDownView.xaml.cs">
+      <DependentUpon>DropDownView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PartialViews\Custom\DateTimePickerView.xaml.cs">
+      <DependentUpon>DateTimePickerView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PartialViews\Custom\LoadingView.xaml.cs">
       <DependentUpon>LoadingView.xaml</DependentUpon>
     </Compile>
@@ -202,7 +218,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="PartialViews\Template\" />
   </ItemGroup>
   <ItemGroup>
@@ -210,6 +225,9 @@
       <Project>{527ff1e2-a99c-40c2-b589-69b5bad77f5a}</Project>
       <Name>Panuon.UI.Silver</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\head.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
