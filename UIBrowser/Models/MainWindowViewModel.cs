@@ -30,7 +30,7 @@ namespace UIBrowser.Models
                          //new TreeViewItemModel(Properties.Resource.Expander,"Expander"),
                      }
                 },
-                new TreeViewItemModel(Properties.Resource.NativeControls,"CustomControls", "\uf004")
+                new TreeViewItemModel(Properties.Resource.CustomControls,"CustomControls", "\uf040")
                 {
                      MenuItems = new BindableCollection<TreeViewItemModel>()
                      {
