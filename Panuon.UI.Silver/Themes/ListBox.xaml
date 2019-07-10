@@ -120,7 +120,6 @@
                                     Value="0.7" />
                         </MultiTrigger>
                     </ControlTemplate.Triggers>
-
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

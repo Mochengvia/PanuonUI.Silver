@@ -208,4 +208,15 @@ namespace Panuon.UI.Silver
         Center,
     }
     #endregion
+
+    
+    #region ItemsControl
+    public enum ItemAnimation
+    {
+        None,
+        Slide,
+        Gradual,
+        Fade,
+    }
+    #endregion
 }

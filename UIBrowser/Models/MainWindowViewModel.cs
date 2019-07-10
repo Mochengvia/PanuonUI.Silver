@@ -47,8 +47,15 @@ namespace UIBrowser.Models
                          //new TreeViewItemModel(Properties.Resource.Pagination,"Pagination"),
                          //new TreeViewItemModel(Properties.Resource.Timeline,"Timeline"),
                      }
+                },
+                new TreeViewItemModel(Properties.Resource.ExtraHelpers,"ExtraHelpers", "\uf06b")
+                {
+                     MenuItems = new BindableCollection<TreeViewItemModel>()
+                     {
+                         new TreeViewItemModel(Properties.Resource.AnimationHelper,"AnimationHelper"),
+                         //new TreeViewItemModel(Properties.Resource.LayoutHelper,"LayoutHelper"),
+                     }
                 }
-
             };
         }
 

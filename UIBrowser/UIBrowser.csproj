@@ -88,6 +88,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="PartialViews\Helpers\AnimationHelperView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="PartialViews\Native\SliderView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -155,6 +159,9 @@
     </Compile>
     <Compile Include="PartialViews\Custom\CalendarView.xaml.cs">
       <DependentUpon>CalendarView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PartialViews\Helpers\AnimationHelperView.xaml.cs">
+      <DependentUpon>AnimationHelperView.xaml</DependentUpon>
     </Compile>
     <Compile Include="PartialViews\Native\SliderView.xaml.cs">
       <DependentUpon>SliderView.xaml</DependentUpon>

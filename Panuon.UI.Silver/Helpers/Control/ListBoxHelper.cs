@@ -52,5 +52,6 @@ namespace Panuon.UI.Silver
         public static readonly DependencyProperty SelectedBrushProperty =
             DependencyProperty.RegisterAttached("SelectedBrush", typeof(Brush), typeof(ListBoxHelper));
         #endregion
+
     }
 }

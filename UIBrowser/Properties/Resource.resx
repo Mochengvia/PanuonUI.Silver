@@ -309,4 +309,43 @@
   <data name="IsRunning" xml:space="preserve">
     <value>IsRunning</value>
   </data>
+  <data name="Animation" xml:space="preserve">
+    <value>Animation</value>
+  </data>
+  <data name="AnimationHelper" xml:space="preserve">
+    <value>AnimationHelper</value>
+  </data>
+  <data name="BeginTime" xml:space="preserve">
+    <value>BeginTime</value>
+  </data>
+  <data name="Duration" xml:space="preserve">
+    <value>Duration</value>
+  </data>
+  <data name="ExtraHelpers" xml:space="preserve">
+    <value>Extra Helpers</value>
+  </data>
+  <data name="FadeIn" xml:space="preserve">
+    <value>FadeIn</value>
+  </data>
+  <data name="FadeOut" xml:space="preserve">
+    <value>FadeOut</value>
+  </data>
+  <data name="LayoutHelper" xml:space="preserve">
+    <value>LayoutHelper</value>
+  </data>
+  <data name="MarginTo" xml:space="preserve">
+    <value>MarginTo</value>
+  </data>
+  <data name="SlideFromBottom" xml:space="preserve">
+    <value>SlideFromBottom</value>
+  </data>
+  <data name="SlideFromLeft" xml:space="preserve">
+    <value>SlideFromLeft</value>
+  </data>
+  <data name="SlideFromRight" xml:space="preserve">
+    <value>SlideFromRight</value>
+  </data>
+  <data name="SlideFromTop" xml:space="preserve">
+    <value>SlideFromTop</value>
+  </data>
 </root>

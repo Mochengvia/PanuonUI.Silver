@@ -61,11 +61,38 @@ namespace UIBrowser.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Animation 的本地化字符串。
+        /// </summary>
+        public static string Animation {
+            get {
+                return ResourceManager.GetString("Animation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 AnimationHelper 的本地化字符串。
+        /// </summary>
+        public static string AnimationHelper {
+            get {
+                return ResourceManager.GetString("AnimationHelper", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 BaseStyle 的本地化字符串。
         /// </summary>
         public static string BaseStyle {
             get {
                 return ResourceManager.GetString("BaseStyle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 BeginTime 的本地化字符串。
+        /// </summary>
+        public static string BeginTime {
+            get {
+                return ResourceManager.GetString("BeginTime", resourceCulture);
             }
         }
         
@@ -214,6 +241,15 @@ namespace UIBrowser.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Duration 的本地化字符串。
+        /// </summary>
+        public static string Duration {
+            get {
+                return ResourceManager.GetString("Duration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 ExpandBehaviour 的本地化字符串。
         /// </summary>
         public static string ExpandBehaviour {
@@ -237,6 +273,33 @@ namespace UIBrowser.Properties {
         public static string ExpandMode {
             get {
                 return ResourceManager.GetString("ExpandMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Extra Helpers 的本地化字符串。
+        /// </summary>
+        public static string ExtraHelpers {
+            get {
+                return ResourceManager.GetString("ExtraHelpers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 FadeIn 的本地化字符串。
+        /// </summary>
+        public static string FadeIn {
+            get {
+                return ResourceManager.GetString("FadeIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 FadeOut 的本地化字符串。
+        /// </summary>
+        public static string FadeOut {
+            get {
+                return ResourceManager.GetString("FadeOut", resourceCulture);
             }
         }
         
@@ -313,6 +376,15 @@ namespace UIBrowser.Properties {
         }
         
         /// <summary>
+        ///   查找类似 LayoutHelper 的本地化字符串。
+        /// </summary>
+        public static string LayoutHelper {
+            get {
+                return ResourceManager.GetString("LayoutHelper", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 LimitMaxDateTime 的本地化字符串。
         /// </summary>
         public static string LimitMaxDateTime {
@@ -345,6 +417,15 @@ namespace UIBrowser.Properties {
         public static string Loading {
             get {
                 return ResourceManager.GetString("Loading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 MarginTo 的本地化字符串。
+        /// </summary>
+        public static string MarginTo {
+            get {
+                return ResourceManager.GetString("MarginTo", resourceCulture);
             }
         }
         
@@ -534,6 +615,42 @@ namespace UIBrowser.Properties {
         public static string Size {
             get {
                 return ResourceManager.GetString("Size", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 SlideFromBottom 的本地化字符串。
+        /// </summary>
+        public static string SlideFromBottom {
+            get {
+                return ResourceManager.GetString("SlideFromBottom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 SlideFromLeft 的本地化字符串。
+        /// </summary>
+        public static string SlideFromLeft {
+            get {
+                return ResourceManager.GetString("SlideFromLeft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 SlideFromRight 的本地化字符串。
+        /// </summary>
+        public static string SlideFromRight {
+            get {
+                return ResourceManager.GetString("SlideFromRight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 SlideFromTop 的本地化字符串。
+        /// </summary>
+        public static string SlideFromTop {
+            get {
+                return ResourceManager.GetString("SlideFromTop", resourceCulture);
             }
         }
         

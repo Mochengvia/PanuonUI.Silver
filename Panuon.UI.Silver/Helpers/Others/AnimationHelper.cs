@@ -26,6 +26,9 @@ namespace Panuon.UI.Silver
 
         private static void OnFadeInChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            if (e.NewValue as bool? != true)
+                return;
+
             var element = d as FrameworkElement;
             if (element == null)
                 return;
@@ -59,6 +62,9 @@ namespace Panuon.UI.Silver
 
         private static void OnFadeOutChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            if (e.NewValue as bool? != true)
+                return;
+
             var element = d as FrameworkElement;
             if (element == null)
                 return;
@@ -94,6 +100,9 @@ namespace Panuon.UI.Silver
 
         private static void OnSlideInFromRightChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            if (e.NewValue as bool? != true)
+                return;
+
             var element = d as FrameworkElement;
             if (element == null)
                 return;
@@ -153,6 +162,9 @@ namespace Panuon.UI.Silver
 
         private static void OnSlideInFromLeftChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            if (e.NewValue as bool? != true)
+                return;
+
             var element = d as FrameworkElement;
             if (element == null)
                 return;
@@ -212,6 +224,9 @@ namespace Panuon.UI.Silver
 
         private static void OnSlideInFromTopChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            if (e.NewValue as bool? != true)
+                return;
+
             var element = d as FrameworkElement;
             if (element == null)
                 return;
@@ -272,6 +287,9 @@ namespace Panuon.UI.Silver
 
         private static void OnSlideInFromBottomChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            if (e.NewValue as bool? != true)
+                return;
+
             var element = d as FrameworkElement;
             if (element == null)
                 return;
@@ -330,6 +348,9 @@ namespace Panuon.UI.Silver
 
         private static void OnGradualInChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            if (e.NewValue as bool? != true)
+                return;
+
             var element = d as FrameworkElement;
             var collection = new GradientStopCollection();
 
@@ -387,6 +408,9 @@ namespace Panuon.UI.Silver
 
         private static void OnMarginToChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            if (e.NewValue as bool? != true)
+                return;
+
             var element = d as FrameworkElement;
             if (element == null)
                 return;
