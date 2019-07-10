@@ -636,10 +636,8 @@
                                         <BeginStoryboard>
                                             <Storyboard>
                                                 <DoubleAnimation Storyboard.TargetName="rotate"
-                                                                 Storyboard.TargetProperty="Angle"
-                                                                 Duration="0:0:0" />
-                                                <DoubleAnimation Storyboard.TargetProperty="Value"
-                                                                 Duration="0:0:1" />
+                                                                 Storyboard.TargetProperty="Angle" />
+                                                <DoubleAnimation Storyboard.TargetProperty="Value" />
                                             </Storyboard>
                                         </BeginStoryboard>
 
@@ -958,7 +956,6 @@
                                                         <CircleEase EasingMode="EaseInOut" />
                                                     </DoubleAnimation.EasingFunction>
                                                 </DoubleAnimation>
-
                                                 
                                                 <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Ell1"
                                                                                Storyboard.TargetProperty="Opacity">
@@ -997,7 +994,27 @@
                                     <Trigger.ExitActions>
                                         <BeginStoryboard>
                                             <Storyboard>
-                                               
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Ell1"
+                                                                               Storyboard.TargetProperty="Opacity" />
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Ell2"
+                                                                               Storyboard.TargetProperty="Opacity" />
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Ell3"
+                                                                               Storyboard.TargetProperty="Opacity" />
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Ell4"
+                                                                               Storyboard.TargetProperty="Opacity" />
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Ell5"
+                                                                               Storyboard.TargetProperty="Opacity" />
+
+                                                <DoubleAnimation Storyboard.TargetName="Rotate1"
+                                                                 Storyboard.TargetProperty="Angle"/>
+                                                <DoubleAnimation Storyboard.TargetName="Rotate2"
+                                                                 Storyboard.TargetProperty="Angle" />
+                                                <DoubleAnimation Storyboard.TargetName="Rotate3"
+                                                                 Storyboard.TargetProperty="Angle"/>
+                                                <DoubleAnimation Storyboard.TargetName="Rotate4"
+                                                                 Storyboard.TargetProperty="Angle" />
+                                                <DoubleAnimation Storyboard.TargetName="Rotate5"
+                                                                 Storyboard.TargetProperty="Angle"/>
                                             </Storyboard>
                                         </BeginStoryboard>
 
