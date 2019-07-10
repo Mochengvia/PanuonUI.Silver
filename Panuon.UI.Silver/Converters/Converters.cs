@@ -96,40 +96,6 @@ namespace Panuon.UI.Silver.Converters
     }
     #endregion
 
-    #region Loading
-    internal class LoadingStrokeThicknessConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            var actualWidth = (value as double?).GetValueOrDefault();
-            if (actualWidth == 0)
-                return 0;
-            return Math.Ceiling(actualWidth / 15);
-        }
-
-        public object ConvertBack(object value, Type targetTypes, object parameter, CultureInfo culture)
-        {
-            return DependencyProperty.UnsetValue;
-        }
-    }
-
-    internal class LoadingLineYConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            var actualWidth = (value as double?).GetValueOrDefault();
-            if (actualWidth == 0)
-                return 0;
-            return Math.Ceiling(actualWidth / 4);
-        }
-
-        public object ConvertBack(object value, Type targetTypes, object parameter, CultureInfo culture)
-        {
-            return new object[] { DependencyProperty.UnsetValue, DependencyProperty.UnsetValue };
-        }
-    }
-    #endregion
-
     #region Double -> GridLength
     internal class GridLengthConverter : IValueConverter
     {

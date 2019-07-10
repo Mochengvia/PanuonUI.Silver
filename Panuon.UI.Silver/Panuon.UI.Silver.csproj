@@ -208,6 +208,7 @@
     <Compile Include="Converters\CornerRadiusConverter.cs" />
     <Compile Include="Converters\DirtyConverter.cs" />
     <Compile Include="Converters\DropDownMenuConverter.cs" />
+    <Compile Include="Converters\LoadingConverter.cs" />
     <Compile Include="Converters\MemberPathConverter.cs" />
     <Compile Include="Converters\MultiSelectorConverter.cs" />
     <Compile Include="Converters\ObjectConvert.cs" />

@@ -44,8 +44,8 @@
                     <StackPanel>
                         <Grid Height="80">
                             <pu:Loading x:Name="LdCustom"
-                                         Width="30"
-                                        Height="30"
+                                         Width="40"
+                                        Height="40"
                                         IsRunning="True"/>
                         </Grid>
                         <Grid>
@@ -71,6 +71,12 @@
                                              Checked="RdbBaseStyle_CheckChanged" />
                                 <RadioButton Margin="5,0,0,0"
                                              Content="Ring"
+                                             Checked="RdbBaseStyle_CheckChanged" />
+                                <RadioButton Margin="5,0,0,0"
+                                             Content="Ring2"
+                                             Checked="RdbBaseStyle_CheckChanged" />
+                                <RadioButton Margin="5,0,0,0"
+                                             Content="Classic"
                                              Checked="RdbBaseStyle_CheckChanged" />
                             </StackPanel>
                             <TextBlock Grid.Row="1"

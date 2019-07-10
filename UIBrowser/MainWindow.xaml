@@ -64,5 +64,6 @@
         <ContentControl x:Name="ContentControl"
                         Grid.Column="1"
                         Margin="20,0" />
+        
     </Grid>
 </Window>

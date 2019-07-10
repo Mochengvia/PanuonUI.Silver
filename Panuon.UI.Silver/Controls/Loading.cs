@@ -56,5 +56,34 @@ namespace Panuon.UI.Silver
         public static readonly DependencyProperty LoadingStyleProperty =
             DependencyProperty.Register("LoadingStyle", typeof(LoadingStyle), typeof(Loading), new PropertyMetadata(LoadingStyle.Standard));
         #endregion
+
+        #region Internal Property
+        internal double Minimum
+        {
+            get { return (double)GetValue(MinimumProperty); }
+            set { SetValue(MinimumProperty, value); }
+        }
+
+        internal static readonly DependencyProperty MinimumProperty =
+            DependencyProperty.Register("Minimum", typeof(double), typeof(Loading), new PropertyMetadata(0.0));
+
+        internal double Maximum
+        {
+            get { return (double)GetValue(MaximumProperty); }
+            set { SetValue(MaximumProperty, value); }
+        }
+
+        internal static readonly DependencyProperty MaximumProperty =
+            DependencyProperty.Register("Maximum", typeof(double), typeof(Loading), new PropertyMetadata(100.0));
+
+        internal double Value
+        {
+            get { return (double)GetValue(ValueProperty); }
+            set { SetValue(ValueProperty, value); }
+        }
+
+        internal static readonly DependencyProperty ValueProperty =
+            DependencyProperty.Register("Value", typeof(double), typeof(Loading), new PropertyMetadata(0.0));
+        #endregion
     }
 }

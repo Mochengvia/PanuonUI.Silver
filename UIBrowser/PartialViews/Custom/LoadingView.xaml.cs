@@ -136,7 +136,14 @@ namespace UIBrowser.PartialViews.Native
                 case LoadingStyle.Wave:
                     LdCustom.Stroke = color.ToBrush();
                     break;
+                case LoadingStyle.Classic:
+                    LdCustom.Stroke = color.ToBrush();
+                    break;
                 case LoadingStyle.Ring:
+                    LdCustom.Stroke = new Color() { A = 50, R = color.R, G = color.G, B = color.B }.ToBrush();
+                    LdCustom.StrokeCover = color.ToBrush();
+                    break;
+                case LoadingStyle.Ring2:
                     LdCustom.Stroke = new Color() { A = 50, R = color.R, G = color.G, B = color.B }.ToBrush();
                     LdCustom.StrokeCover = color.ToBrush();
                     break;

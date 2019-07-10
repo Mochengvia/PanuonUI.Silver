@@ -26,7 +26,12 @@ namespace Panuon.UI.Silver.Converters
         {
             var width = (double)values[0];
             var height = (double)values[1];
-            var radius = ((Thickness)values[2]).Left;
+
+            double radius = 0;
+            if(values[2] is Thickness)
+                radius = ((Thickness)values[2]).Left;
+            else if (values[2] is double)
+                radius = ((double)values[2]);
 
             var percent = 0.33;
             if(values.Length == 6)

@@ -47,6 +47,8 @@ namespace Panuon.UI.Silver
         Standard,
         Ring,
         Wave,
+        Ring2,
+        Classic
     }
     #endregion
 
