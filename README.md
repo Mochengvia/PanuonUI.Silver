@@ -19,11 +19,11 @@ You can bind enum type to comboBox now :)
 
 Example:  
 ```
-<ComboBox pu:ComboBoxHelper.BindingToEnum="{x:Static pu:ButtonStyle.Standard}"
-          SelectedItem="{x:Static pu:ButtonStyle.Standard}"/>
+<ComboBox pu:ComboBoxHelper.Icon="&#xf013;"
+          pu:ComboBoxHelper.BindingToEnum="{x:Static pu:ButtonStyle.Hollow}"/>
 ```
 
-![](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/Panuon.UI.Silver/combobox.png)
+![](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/Panuon.UI.Silver/comboEx.png)
 
 2019-7-10
 Loading : Add two new styles : "Ring2" and "Classic"  
