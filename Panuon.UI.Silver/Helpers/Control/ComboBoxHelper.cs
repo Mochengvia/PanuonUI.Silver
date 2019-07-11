@@ -217,21 +217,21 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("HeaderWidth", typeof(string), typeof(ComboBoxHelper), new PropertyMetadata("Auto"));
         #endregion
 
-        #region BindingToEnum
-        public static object GetBindingToEnum(DependencyObject obj)
+        #region BindToEnum
+        public static object GetBindToEnum(DependencyObject obj)
         {
-            return (object)obj.GetValue(BindingToEnumProperty);
+            return (object)obj.GetValue(BindToEnumProperty);
         }
 
-        public static void SetBindingToEnum(DependencyObject obj, Enum value)
+        public static void SetBindToEnum(DependencyObject obj, Enum value)
         {
-            obj.SetValue(BindingToEnumProperty, value);
+            obj.SetValue(BindToEnumProperty, value);
         }
 
-        public static readonly DependencyProperty BindingToEnumProperty =
-            DependencyProperty.RegisterAttached("BindingToEnum", typeof(object), typeof(ComboBoxHelper), new PropertyMetadata(OnBindingToEnumChanged));
+        public static readonly DependencyProperty BindToEnumProperty =
+            DependencyProperty.RegisterAttached("BindToEnum", typeof(object), typeof(ComboBoxHelper), new PropertyMetadata(OnBindToEnumChanged));
 
-        private static void OnBindingToEnumChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnBindToEnumChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var comboBox = d as ComboBox;
             var obj = e.NewValue as object;

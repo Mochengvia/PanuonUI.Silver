@@ -20,7 +20,7 @@ You can bind enum type to comboBox now :)
 Example:  
 ```
 <ComboBox pu:ComboBoxHelper.Icon="&#xf013;"
-          pu:ComboBoxHelper.BindingToEnum="{x:Static pu:ButtonStyle.Hollow}"/>
+          pu:ComboBoxHelper.BindToEnum="{x:Static pu:ButtonStyle.Hollow}"/>
 ```
 
 ![](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/Panuon.UI.Silver/comboEx.png)
