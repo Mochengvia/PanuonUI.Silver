@@ -23,7 +23,7 @@ Example:
           SelectedItem="{x:Static pu:ButtonStyle.Standard}"/>
 ```
 
-![](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/Panuon.UI.Silver/combobox.png)
+![](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/Panuon.UI.Silver/comboEx.png)
 
 2019-7-10
 Loading : Add two new styles : "Ring2" and "Classic"  
