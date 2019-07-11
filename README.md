@@ -13,19 +13,21 @@ QQ Group : 718778191
 Zhihu : @末城via
 
 # News 动态
+2019-7-11  
+You can bind enum type to comboBox now :)    
+现在可以将Enum类型直接绑定到ComboBox上了。  
+
+Example:  
+```
+<ComboBox pu:ComboBoxHelper.BindingToEnum="{x:Static pu:ButtonStyle.Standard}"
+          SelectedItem="{x:Static pu:ButtonStyle.Standard}"/>
+```
+
+![](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/Panuon.UI.Silver/combobox.png)
 
 2019-7-10
 Loading : Add two new styles : "Ring2" and "Classic"  
 Loading控件： 新增"Ring2"和"Classic"样式  
-  
-2019-7-9  
-Loading : Change loading style name : "Classic" -> "Standard" .  
-Loading控件：将Classic样式重命名为Standard样式。  
-
-Calendar : Fix visual bugs .  
-Calendar日历控件：修复显示问题。  
-
-
 
 # Document 文档
 
@@ -40,7 +42,7 @@ Panuon.UI.Silver是一个完全开源的控件库。您的支持是项目得以�
 Zhifubao:  
 支付宝：
 
-![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Global/zhifubao.jpg)
+![](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/Global/zhifubao.jpg)
 
 Paypal:  
 paypal.me/Zeoun  
@@ -50,9 +52,9 @@ paypal.me/Zeoun
 After downloading this repository, launch "Panuon.UI.Silver.Browser" project , and you will find it .  
 当您下载该仓库后，只需启动"Panuon.UI.Silver.Browser"项目，即可看到示例。
 
-![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/step1.png)
+![](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/Panuon.UI.Silver/step1.png)
 
-![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/temp.jpg)
+![](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/Panuon.UI.Silver/temp.jpg)
 ### Work with helper （需要使用Helper的控件）:
 Button / CheckBox / RadioButton / TextBox / PasswordBox / ComboBox / Expander / GroupBox / Expander
 
@@ -64,16 +66,16 @@ DataGrid / ScrollViewer (MiniScrollViewer)
 
 # Button 
 
-![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/button.jpg)
+![](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/Panuon.UI.Silver/button.jpg)
 
 # TextBox / PasswordBox
 
-![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/textbox.jpg)
+![](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/Panuon.UI.Silver/textbox.jpg)
 
 # CheckBox
 
-![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/checkbox.jpg)
+![](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/Panuon.UI.Silver/checkbox.jpg)
 
 # RadioButton
 
-![](https://raw.githubusercontent.com/Ruris/Panuon.Documents/master/Resources/Panuon.UI.Silver/radiobutton.jpg)
+![](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/Panuon.UI.Silver/radiobutton.jpg)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -214,6 +215,41 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty HeaderWidthProperty =
             DependencyProperty.RegisterAttached("HeaderWidth", typeof(string), typeof(ComboBoxHelper), new PropertyMetadata("Auto"));
+        #endregion
+
+        #region BindingToEnum
+        public static object GetBindingToEnum(DependencyObject obj)
+        {
+            return (object)obj.GetValue(BindingToEnumProperty);
+        }
+
+        public static void SetBindingToEnum(DependencyObject obj, Enum value)
+        {
+            obj.SetValue(BindingToEnumProperty, value);
+        }
+
+        public static readonly DependencyProperty BindingToEnumProperty =
+            DependencyProperty.RegisterAttached("BindingToEnum", typeof(object), typeof(ComboBoxHelper), new PropertyMetadata(OnBindingToEnumChanged));
+
+        private static void OnBindingToEnumChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var comboBox = d as ComboBox;
+            var obj = e.NewValue as object;
+            var en = obj.GetType();
+            if (!en.IsEnum)
+                throw new Exception($"\"{en.Name}\" is not enum type.");
+
+            if (en == null)
+            {
+                comboBox.ItemsSource = null;
+                comboBox.SelectedItem = null;
+            }
+            else
+            {
+                comboBox.ItemsSource = Enum.GetValues(en).Cast<Enum>();
+                comboBox.SelectedItem = obj;
+            }
+        }
         #endregion
 
     }
