@@ -112,7 +112,6 @@
                                 KeyboardNavigation.DirectionalNavigation="Contained"
                                 KeyboardNavigation.TabIndex="2">
                             <ContentPresenter x:Name="PART_SelectedContentHost"
-                                              Margin="4"
                                               ContentSource="SelectedContent" />
                         </Border>
                     </Grid>

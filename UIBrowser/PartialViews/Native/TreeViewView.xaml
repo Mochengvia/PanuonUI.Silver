@@ -59,14 +59,12 @@
                                         <TreeViewItem Header="Item1-3" />
                                     </TreeViewItem>
                                     <TreeViewItem Header="Item2">
-                                        <TreeViewItem Header="Item1-1"
-                                                      IsSelected="True" />
+                                        <TreeViewItem Header="Item1-1" />
                                         <TreeViewItem Header="Item2-2" />
                                         <TreeViewItem Header="Item2-3" />
                                     </TreeViewItem>
                                     <TreeViewItem Header="Item3">
-                                        <TreeViewItem Header="Item3-1"
-                                                      IsSelected="True" />
+                                        <TreeViewItem Header="Item3-1" />
                                         <TreeViewItem Header="Item3-2" />
                                         <TreeViewItem Header="Item3-3" />
                                     </TreeViewItem>

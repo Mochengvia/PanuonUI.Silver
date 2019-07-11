@@ -84,6 +84,7 @@ namespace UIBrowser.PartialViews.Native
             else
                 CheckBoxHelper.SetCheckedContent(ChbCustom, null);
 
+            UpdateCode();
         }
 
         private void BtnViewCode_Click(object sender, RoutedEventArgs e)

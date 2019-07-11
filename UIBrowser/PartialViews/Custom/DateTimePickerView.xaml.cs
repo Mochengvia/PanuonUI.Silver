@@ -164,7 +164,7 @@ namespace UIBrowser.PartialViews.Native
                         $"\nHeight=\"{DtpCustom.ActualHeight}\"" +
                         (pickerMode == DateTimePickerMode.Date ? "" : $"\nDateTimePickerMode=\"{pickerMode}\"") +
                         (maxDate == null ? "" : $"\nMaxDate=\"{((DateTime)maxDate).ToString("yyyy-MM-dd")}\"") +
-                        (minDate == null ? "" : $"\nMaxDate=\"{((DateTime)minDate).ToString("yyyy-MM-dd")}\"") +
+                        (minDate == null ? "" : $"\nMinDate=\"{((DateTime)minDate).ToString("yyyy-MM-dd")}\"") +
                         $"\nThemeBrush=\"{DtpCustom.ThemeBrush.ToColor().ToHexString(false)}\"" +
                         (isSundayFirst ? "" : "\nIsSundayFirst=\"False\"") +
                         " />";

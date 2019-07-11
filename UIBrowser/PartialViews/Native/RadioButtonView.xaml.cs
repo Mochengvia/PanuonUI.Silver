@@ -88,10 +88,10 @@ namespace UIBrowser.PartialViews.Native
             else
             {
                 RadioButtonHelper.SetCheckedContent(RdbCustom1, null);
-
                 RadioButtonHelper.SetCheckedContent(RdbCustom2, null);
             }
 
+            UpdateCode();
         }
 
         private void BtnViewCode_Click(object sender, RoutedEventArgs e)
