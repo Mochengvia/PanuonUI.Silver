@@ -14,6 +14,10 @@ Zhihu : @末城via
 
 # News 动态
 
+2019-7-10
+Loading : Add two new styles : "Ring2" and "Classic"  
+Loading控件： 新增"Ring2"和"Classic"样式  
+  
 2019-7-9  
 Loading : Change loading style name : "Classic" -> "Standard" .  
 Loading控件：将Classic样式重命名为Standard样式。  

@@ -408,9 +408,6 @@ namespace Panuon.UI.Silver
 
         private static void OnMarginToChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (e.NewValue as bool? != true)
-                return;
-
             var element = d as FrameworkElement;
             if (element == null)
                 return;

@@ -157,9 +157,15 @@ namespace UIBrowser.PartialViews.Native
             BtnCustom.Width = SldWidth.Value;
 
             if (BtnCustom.Width < 60)
+            {
                 BtnCustom.Content = "";
+                ButtonHelper.SetWaitingContent(BtnCustom, null);
+            }
             else
+            {
                 BtnCustom.Content = " Button";
+                ButtonHelper.SetWaitingContent(BtnCustom, "Please wait...");
+            }
 
 
             switch (ButtonHelper.GetButtonStyle(BtnCustom))
@@ -193,10 +199,13 @@ namespace UIBrowser.PartialViews.Native
         {
             var buttonStyle = ButtonHelper.GetButtonStyle(BtnCustom);
             var cornerRadius = SldCornerRadius.Value;
+            var isWaiting = ButtonHelper.GetIsWaiting(BtnCustom);
 
             TbCode.Text = "<Button  Height=\"30\"" +
                         $"\nWidth=\"{BtnCustom.Width}\"" +
                         $"\nContent=\"{BtnCustom.Content}\"" +
+                        (BtnCustom.Width < 60 ? $"\npu:ButtonHelper.WaitingContent=\"{{x:Null}}\"" : "")+
+                        (isWaiting ? $"\npu:ButtonHelper.IsWaiting=\"True\"" : "")+
                         "\nFontFamily=\"{DynamicResource FontAwesome}\"" +
                         (buttonStyle == ButtonStyle.Standard ? "" : $"\npu:ButtonHelper.ButtonStyle=\"{buttonStyle}\"") +
                         (buttonStyle == ButtonStyle.Standard ? $"\nBackground=\"{BtnCustom.Background.ToColor().ToHexString()}\"" : "") +
