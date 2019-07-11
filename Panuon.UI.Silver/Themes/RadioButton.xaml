@@ -368,14 +368,12 @@
                                         Background="{Binding Path=(local:RadioButtonHelper.CheckedBackground),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
                                         CornerRadius="{Binding Path=(local:RadioButtonHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
                                         Visibility="Collapsed" />
-                                <ContentControl x:Name="Content"
+                                <ContentPresenter x:Name="Content"
                                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                                 Margin="{TemplateBinding Padding}"
                                                 Content="{TemplateBinding Content}"
-                                                FontFamily="{TemplateBinding FontFamily}"
-                                                FontSize="{TemplateBinding FontSize}"
-                                                Foreground="{TemplateBinding Foreground}" />
+                                                TextBlock.Foreground="{TemplateBinding Foreground}" />
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <MultiDataTrigger>
@@ -420,7 +418,7 @@
                                 <Trigger Property="IsChecked"
                                          Value="True">
                                     <Setter TargetName="Content"
-                                            Property="Foreground"
+                                            Property="TextBlock.Foreground"
                                             Value="White" />
                                     <Setter TargetName="BdrChecked"
                                             Property="Visibility"

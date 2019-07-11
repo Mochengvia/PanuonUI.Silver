@@ -455,7 +455,8 @@
                                     <Setter TargetName="Rect"
                                             Property="Fill"
                                             Value="{Binding Path=(local:TabControlHelper.SelectedForeground),RelativeSource={RelativeSource AncestorType=TabControl},Mode=OneWay}" />
-                                    <Setter Property="Foreground"
+                                    <Setter TargetName="Presenter"
+                                            Property="TextBlock.Foreground"
                                             Value="{Binding Path=(local:TabControlHelper.SelectedForeground),RelativeSource={RelativeSource AncestorType=TabControl},Mode=OneWay}" />
                                 </Trigger>
                                 <MultiDataTrigger>
@@ -537,7 +538,8 @@
                                 </MultiTrigger>
                                 <Trigger Property="IsSelected"
                                          Value="True">
-                                    <Setter Property="Foreground"
+                                    <Setter TargetName="Presenter"
+                                            Property="TextBlock.Foreground"
                                             Value="{Binding Path=(local:TabControlHelper.SelectedForeground),RelativeSource={RelativeSource AncestorType=TabControl},Mode=OneWay}" />
                                 </Trigger>
                                 <MultiDataTrigger>

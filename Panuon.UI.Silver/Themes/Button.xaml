@@ -217,14 +217,12 @@
                                                       x:Name="Content"
                                                       ContentSource="Content"
                                                       VerticalAlignment="Center" />
-                                    <ContentControl Grid.Column="1"
-                                                    x:Name="ContentHover"
-                                                    Foreground="#FFFFFF"
-                                                    Content="{TemplateBinding Content}"
-                                                    FontSize="{TemplateBinding FontSize}"
-                                                    FontFamily="{TemplateBinding FontFamily}"
-                                                    VerticalAlignment="Center"
-                                                    Opacity="0" />
+                                    <ContentPresenter Grid.Column="1"
+                                                      x:Name="ContentHover"
+                                                      TextBlock.Foreground="#FFFFFF"
+                                                      Content="{TemplateBinding Content}"
+                                                      VerticalAlignment="Center"
+                                                      Opacity="0" />
                                 </Grid>
                                 <Grid x:Name="GrdWaiting"
                                       Visibility="Collapsed"
@@ -403,13 +401,11 @@
                                            FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
                                            FontSize="{TemplateBinding FontSize}"
                                            VerticalAlignment="Center" />
-                                    <ContentControl Grid.Column="1"
-                                                    x:Name="ContentHover"
-                                                    Foreground="{Binding Path=(local:ButtonHelper.HoverBrush),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
-                                                    Content="{TemplateBinding Content}"
-                                                    FontSize="{TemplateBinding FontSize}"
-                                                    FontFamily="{TemplateBinding FontFamily}"
-                                                    VerticalAlignment="Center" />
+                                    <ContentPresenter Grid.Column="1"
+                                                      x:Name="ContentHover"
+                                                      TextBlock.Foreground="{Binding Path=(local:ButtonHelper.HoverBrush),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
+                                                      Content="{TemplateBinding Content}"
+                                                      VerticalAlignment="Center" />
                                 </Grid>
                                 <Grid x:Name="GrdContentClick"
                                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -425,13 +421,11 @@
                                            Foreground="{TemplateBinding Foreground}"
                                            FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
                                            VerticalAlignment="Center" />
-                                    <ContentControl Grid.Column="1"
-                                                    x:Name="ContentClick"
-                                                    Foreground="{Binding Path=(local:ButtonHelper.ClickCoverBrush),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
-                                                    Content="{TemplateBinding Content}"
-                                                    FontSize="{TemplateBinding FontSize}"
-                                                    FontFamily="{TemplateBinding FontFamily}"
-                                                    VerticalAlignment="Center" />
+                                    <ContentPresenter Grid.Column="1"
+                                                      x:Name="ContentClick"
+                                                      TextBlock.Foreground="{Binding Path=(local:ButtonHelper.ClickCoverBrush),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
+                                                      Content="{TemplateBinding Content}"
+                                                      VerticalAlignment="Center" />
                                 </Grid>
                                 <Grid x:Name="GrdWaiting"
                                       Visibility="Collapsed"
@@ -583,32 +577,23 @@
                                                FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
                                                VerticalAlignment="Center" />
                                         <Grid Grid.Column="1">
-                                            <ContentControl x:Name="Content"
-                                                            Content="{TemplateBinding Content}"
-                                                            VerticalAlignment="Center"
-                                                            Foreground="{TemplateBinding Foreground}"
-                                                            FontFamily="{TemplateBinding FontFamily}"
-                                                            FontSize="{TemplateBinding FontSize}"
-                                                            FontWeight="{TemplateBinding FontWeight}"
-                                                            Margin="{TemplateBinding Padding}" />
-                                            <ContentControl x:Name="ContentHover"
-                                                            Content="{TemplateBinding Content}"
-                                                            VerticalAlignment="Center"
-                                                            Foreground="{Binding Path=(local:ButtonHelper.HoverBrush),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
-                                                            FontFamily="{TemplateBinding FontFamily}"
-                                                            FontSize="{TemplateBinding FontSize}"
-                                                            FontWeight="{TemplateBinding FontWeight}"
-                                                            Opacity="0"
-                                                            Margin="{TemplateBinding Padding}" />
-                                            <ContentControl x:Name="ContentClick"
-                                                            Content="{TemplateBinding Content}"
-                                                            VerticalAlignment="Center"
-                                                            Foreground="{Binding Path=(local:ButtonHelper.ClickCoverBrush),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
-                                                            FontFamily="{TemplateBinding FontFamily}"
-                                                            FontSize="{TemplateBinding FontSize}"
-                                                            FontWeight="{TemplateBinding FontWeight}"
-                                                            Visibility="Hidden"
-                                                            Margin="{TemplateBinding Padding}" />
+                                            <ContentPresenter x:Name="Content"
+                                                              Content="{TemplateBinding Content}"
+                                                              VerticalAlignment="Center"
+                                                              TextBlock.Foreground="{TemplateBinding Foreground}"
+                                                              Margin="{TemplateBinding Padding}" />
+                                            <ContentPresenter x:Name="ContentHover"
+                                                              Content="{TemplateBinding Content}"
+                                                              VerticalAlignment="Center"
+                                                              TextBlock.Foreground="{Binding Path=(local:ButtonHelper.HoverBrush),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
+                                                              Opacity="0"
+                                                              Margin="{TemplateBinding Padding}" />
+                                            <ContentPresenter x:Name="ContentClick"
+                                                              Content="{TemplateBinding Content}"
+                                                              VerticalAlignment="Center"
+                                                              TextBlock.Foreground="{Binding Path=(local:ButtonHelper.ClickCoverBrush),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
+                                                              Visibility="Hidden"
+                                                              Margin="{TemplateBinding Padding}" />
                                         </Grid>
 
                                     </Grid>

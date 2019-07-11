@@ -352,14 +352,12 @@
                                             Background="{Binding Path=(local:CheckBoxHelper.CheckedBackground),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
                                             CornerRadius="{Binding Path=(local:CheckBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
                                             Visibility="Collapsed" />
-                                    <ContentControl x:Name="Content"
+                                    <ContentPresenter x:Name="Content"
                                                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                                     Margin="{TemplateBinding Padding}"
                                                     Content="{TemplateBinding Content}"
-                                                    FontFamily="{TemplateBinding FontFamily}"
-                                                    FontSize="{TemplateBinding FontSize}"
-                                                    Foreground="{TemplateBinding Foreground}" />
+                                                    TextBlock.Foreground="{TemplateBinding Foreground}" />
                                 </Grid>
                             </Grid>
                             <ControlTemplate.Triggers>
@@ -405,7 +403,7 @@
                                 <Trigger Property="IsChecked"
                                          Value="True">
                                     <Setter TargetName="Content"
-                                            Property="Foreground"
+                                            Property="TextBlock.Foreground"
                                             Value="White" />
                                     <Setter TargetName="BdrChecked"
                                             Property="Visibility"

@@ -77,11 +77,8 @@
                                                Content="{Binding Path=(local:WindowHelper.Icon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}"
                                                Foreground="{Binding Path=(local:WindowHelper.NavbarForeground),RelativeSource={RelativeSource AncestorType=Window},Mode=OneWay}"
                                                FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"></Label>
-                                        <ContentControl Content="{TemplateBinding Title}"
-                                                        Foreground="{Binding Path=(local:WindowHelper.NavbarForeground),RelativeSource={RelativeSource AncestorType=Window},Mode=OneWay}"
-                                                        FontFamily="{TemplateBinding FontFamily}"
-                                                        FontWeight="{TemplateBinding FontWeight}"
-                                                        FontSize="{TemplateBinding FontSize}"
+                                        <ContentPresenter Content="{TemplateBinding Title}"
+                                                       TextBlock.Foreground="{Binding Path=(local:WindowHelper.NavbarForeground),RelativeSource={RelativeSource AncestorType=Window},Mode=OneWay}"
                                                           VerticalAlignment="Center"
                                                           HorizontalAlignment="Left" />
                                     </StackPanel>

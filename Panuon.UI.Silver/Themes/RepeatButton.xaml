@@ -586,19 +586,15 @@
                                             <ContentPresenter x:Name="Content"
                                                               ContentSource="Content"
                                                               VerticalAlignment="Center" />
-                                            <ContentControl x:Name="ContentHover"
+                                            <ContentPresenter x:Name="ContentHover"
                                                             Content="{TemplateBinding Content}"
                                                             VerticalAlignment="Center"
-                                                            Foreground="{Binding Path=(local:RepeatButtonHelper.HoverBrush),RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
-                                                            FontFamily="{TemplateBinding FontFamily}"
-                                                            FontSize="{TemplateBinding FontSize}"
+                                                           TextBlock.Foreground="{Binding Path=(local:RepeatButtonHelper.HoverBrush),RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
                                                             Opacity="0" />
-                                            <ContentControl x:Name="ContentClick"
+                                            <ContentPresenter x:Name="ContentClick"
                                                             Content="{TemplateBinding Content}"
                                                             VerticalAlignment="Center"
-                                                            Foreground="{Binding Path=(local:RepeatButtonHelper.ClickCoverBrush),RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
-                                                            FontFamily="{TemplateBinding FontFamily}"
-                                                            FontSize="{TemplateBinding FontSize}"
+                                                           TextBlock.Foreground="{Binding Path=(local:RepeatButtonHelper.ClickCoverBrush),RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
                                                             Visibility="Hidden" />
                                         </Grid>
 
