@@ -82,6 +82,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Helpers\Control\Badge.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Resources\Resource.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -219,6 +223,9 @@
     <Compile Include="Converters\TreeViewConverter.cs" />
     <Compile Include="Converters\WidthAndHeightConverter.cs" />
     <Compile Include="Global\Models\TagItemModel.cs" />
+    <Compile Include="Helpers\Control\Badge.xaml.cs">
+      <DependentUpon>Badge.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\Control\ContextMenuHelper.cs" />
     <Compile Include="Helpers\Control\DataGridHelper.cs" />
     <Compile Include="Helpers\Control\GroupBoxHelper.cs" />
