@@ -227,7 +227,7 @@ namespace Panuon.UI.Silver
             if (firstItem == null)
                 return;
 
-            if (SelectedMemberPath.IsNullOrEmpty())
+            if (DisplayMemberPath.IsNullOrEmpty())
                 throw new Exception("Property 'DisplayMemberPath' can not be null or empty.");
 
             if (SelectedMemberPath.IsNullOrEmpty())

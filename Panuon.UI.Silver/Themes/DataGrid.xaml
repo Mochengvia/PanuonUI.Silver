@@ -8,6 +8,8 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type DataGrid}">
+        <Setter Property="local:DataGridHelper.DataGridHook"
+                Value="True" />
         <Setter Property="RowHeaderWidth"
                 Value="0"></Setter>
         <Setter Property="AutoGenerateColumns"
@@ -181,7 +183,8 @@
                 <ControlTemplate TargetType="DataGridCell">
                     <Grid>
                         <Border x:Name="bdrOuter"
-                                Background="{TemplateBinding Background}">
+                                Background="{TemplateBinding Background}"
+                                Margin="{TemplateBinding Padding}">
                             <ContentPresenter VerticalAlignment="Center"
                                               Margin="{Binding Padding,RelativeSource={RelativeSource AncestorType=DataGridRow}}" />
                         </Border>
@@ -301,4 +304,18 @@
         </Style.Triggers>
     </Style>
 
+    <Style x:Key="TextBlockComboBoxStyle"
+           TargetType="{x:Type ComboBox}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ComboBox}">
+                    <Grid Background="Transparent">
+                        <TextBlock Text="{TemplateBinding Text}"
+                                   Style="{StaticResource {x:Type TextBlock}}"
+                                   Margin="0,0,10,0" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>
