@@ -264,7 +264,7 @@
                                 </Border>
                                 <Border x:Name="BdrHover"
                                         Opacity="0"
-                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderBrush="Transparent"
                                         BorderThickness="{TemplateBinding BorderThickness}"
                                         Background="{Binding Path=(local:TreeViewHelper.SelectedBrush),RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}">
                                 </Border>
@@ -273,6 +273,12 @@
                                         <RowDefinition Height="{Binding Path=(local:TreeViewHelper.ItemHeight),RelativeSource={RelativeSource AncestorType=TreeView},Mode=OneWay,Converter={StaticResource GridLengthConverter}}" />
                                         <RowDefinition />
                                     </Grid.RowDefinitions>
+                                    <Border x:Name="BdrSelected"
+                                            Visibility="Collapsed"
+                                            BorderBrush="Transparent"
+                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                            Background="{Binding Path=(local:TreeViewHelper.SelectedBrush),RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}">
+                                    </Border>
                                     <Grid x:Name="GrdContent"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
@@ -403,9 +409,9 @@
                                 </MultiDataTrigger>
                                 <Trigger Property="IsSelected"
                                          Value="True">
-                                    <Setter TargetName="BdrMain"
-                                            Property="Background"
-                                            Value="{Binding Path=(local:TreeViewHelper.SelectedBrush),RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+                                    <Setter TargetName="BdrSelected"
+                                            Property="Visibility"
+                                            Value="Visible" />
                                 </Trigger>
                                 <MultiDataTrigger>
                                     <MultiDataTrigger.Conditions>
@@ -446,6 +452,13 @@
                                         <ColumnDefinition Width="3" />
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
+                                    <Border x:Name="BdrSelected"
+                                            Visibility="Collapsed"
+                                            BorderBrush="Transparent"
+                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                            Background="{Binding Path=(local:TreeViewHelper.SelectedBrush),RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}"
+                                            Grid.ColumnSpan="2">
+                                    </Border>
                                     <Rectangle x:Name="Rect"
                                                Fill="#E0E0E0" />
                                     <Grid x:Name="GrdContent"
@@ -499,9 +512,9 @@
                                     <Setter TargetName="Rect"
                                             Property="Fill"
                                             Value="{Binding BorderBrush, RelativeSource={RelativeSource AncestorType=TreeView}}" />
-                                    <Setter TargetName="BdrMain"
-                                            Property="Background"
-                                            Value="{Binding Path=(local:TreeViewHelper.SelectedBrush),RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+                                    <Setter TargetName="BdrSelected"
+                                            Property="Visibility"
+                                            Value="Visible" />
                                 </Trigger>
                                 <MultiDataTrigger>
                                     <MultiDataTrigger.Conditions>
