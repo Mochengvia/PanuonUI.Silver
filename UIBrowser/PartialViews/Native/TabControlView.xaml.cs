@@ -169,8 +169,6 @@ namespace UIBrowser.PartialViews.Native
                         "\n<TabItem Header=\"Item3\"/>" +
                         "\n</TabControl>";
         }
-
-
         #endregion
 
       

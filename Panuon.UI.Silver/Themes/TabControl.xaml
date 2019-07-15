@@ -525,11 +525,43 @@
                                         BorderBrush="{TemplateBinding BorderBrush}"
                                         BorderThickness="0,0,0,1"
                                         Background="{TemplateBinding Background}" />
-                                <ContentPresenter x:Name="Presenter"
-                                                  ContentSource="Header"
-                                                  VerticalAlignment="Center"
-                                                  HorizontalAlignment="Center"
-                                                  Margin="{TemplateBinding Padding}" />
+                                <Grid x:Name="GrdMain">
+                                    <Grid.Margin>
+                                        <MultiBinding Converter="{StaticResource TabControlRemoveButtonPaddingConverter}">
+                                            <Binding Path="Padding"
+                                                     RelativeSource="{RelativeSource AncestorType=TabItem}" />
+                                            <Binding Path="Visibility"
+                                                     ElementName="BtnRemove" />
+                                        </MultiBinding>
+                                    </Grid.Margin>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <ContentPresenter x:Name="Presenter"
+                                                      ContentSource="Header"
+                                                      VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center" />
+                                    <Button x:Name="BtnRemove"
+                                            local:ButtonHelper.ButtonStyle="Link"
+                                            Visibility="Collapsed"
+                                            Grid.Column="1"
+                                            Content="×"
+                                            FontSize="14"
+                                            Margin="5,0,0,0"
+                                            VerticalAlignment="Center"
+                                            Command="{Binding Path=(local:TabControlHelper.RemoveCommand),RelativeSource={RelativeSource AncestorType=TabItem},Mode=OneWay}">
+                                        <Button.CommandParameter>
+                                            <MultiBinding Converter="{StaticResource MultiCombinerConverter}">
+                                                <Binding Path="."
+                                                         RelativeSource="{RelativeSource AncestorType=TabItem}" />
+                                                <Binding Path="."
+                                                         RelativeSource="{RelativeSource AncestorType=TabControl}" />
+                                            </MultiBinding>
+                                        </Button.CommandParameter>
+                                    </Button>
+                                </Grid>
+
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <MultiTrigger>
@@ -593,6 +625,12 @@
                                             Property="Background"
                                             Value="{Binding Path=(local:TabControlHelper.SelectedBackground), RelativeSource={RelativeSource AncestorType=TabControl},Mode=Oneway}" />
                                 </MultiDataTrigger>
+                                <DataTrigger Binding="{Binding Path=(local:TabControlHelper.CanRemove), RelativeSource={RelativeSource Self}}"
+                                             Value="True">
+                                    <Setter TargetName="BtnRemove"
+                                            Property="Visibility"
+                                            Value="Visible" />
+                                </DataTrigger>
 
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
