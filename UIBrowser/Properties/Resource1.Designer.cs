@@ -124,6 +124,15 @@ namespace UIBrowser.Properties {
         }
         
         /// <summary>
+        ///   查找类似 CanRemove 的本地化字符串。
+        /// </summary>
+        public static string CanRemove {
+            get {
+                return ResourceManager.GetString("CanRemove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Carousel 的本地化字符串。
         /// </summary>
         public static string Carousel {

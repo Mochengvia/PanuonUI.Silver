@@ -200,11 +200,13 @@ namespace UIBrowser.PartialViews.Native
             var buttonStyle = ButtonHelper.GetButtonStyle(BtnCustom);
             var cornerRadius = SldCornerRadius.Value;
             var isWaiting = ButtonHelper.GetIsWaiting(BtnCustom);
+            var isSink = ButtonHelper.GetClickStyle(BtnCustom);
 
             TbCode.Text = "<Button  Height=\"30\"" +
                         $"\nWidth=\"{BtnCustom.Width}\"" +
                         $"\nContent=\"{BtnCustom.Content}\"" +
                         (BtnCustom.Width < 60 ? $"\npu:ButtonHelper.WaitingContent=\"{{x:Null}}\"" : "")+
+                        (isSink == ClickStyle.Sink ? $"\npu:ButtonHelper.ClickStyle=\"Sink\"" : "") +
                         (isWaiting ? $"\npu:ButtonHelper.IsWaiting=\"True\"" : "")+
                         "\nFontFamily=\"{DynamicResource FontAwesome}\"" +
                         (buttonStyle == ButtonStyle.Standard ? "" : $"\npu:ButtonHelper.ButtonStyle=\"{buttonStyle}\"") +

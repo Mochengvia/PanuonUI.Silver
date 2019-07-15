@@ -348,4 +348,7 @@
   <data name="SlideFromTop" xml:space="preserve">
     <value>从顶部滑入</value>
   </data>
+  <data name="CanRemove" xml:space="preserve">
+    <value>可以移除</value>
+  </data>
 </root>

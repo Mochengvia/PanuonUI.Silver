@@ -22,6 +22,8 @@
     <converter:ObjectMemberPathConverter x:Key="ObjectMemberPathConverter" />
     <converter:BooleanMemberPathConverter x:Key="BooleanMemberPathConverter" />
 
+    <converter:MultiCombinerConverter x:Key="MultiCombinerConverter" />
+
     <converter:TagPanelBackgroundConverter x:Key="TagPanelBackgroundConverter" />
     <converter:TagPanelRemovableConverter x:Key="TagPanelRemovableConverter" />
     <converter:Minus10Converter x:Key="Minus10Converter"/>

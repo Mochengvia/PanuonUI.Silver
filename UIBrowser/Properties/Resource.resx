@@ -348,4 +348,7 @@
   <data name="SlideFromTop" xml:space="preserve">
     <value>SlideFromTop</value>
   </data>
+  <data name="CanRemove" xml:space="preserve">
+    <value>CanRemove</value>
+  </data>
 </root>

@@ -48,7 +48,8 @@
                                         HorizontalAlignment="Center"
                                         Height="30"
                                         Width="200">
-                                <TabItem Header="Item1"/>
+                                <TabItem Header="Item1"
+                                         pu:TabControlHelper.CanRemove="False" />
                                 <TabItem Header="Item2" />
                                 <TabItem Header="Item3" />
                             </TabControl>
@@ -59,6 +60,7 @@
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
+                                <RowDefinition Height="40" />
                                 <RowDefinition Height="40" />
                                 <RowDefinition Height="40" />
                                 <RowDefinition Height="40" />
@@ -115,6 +117,21 @@
                                     Value="200"
                                     Margin="5,0"
                                     ValueChanged="SldWidth_ValueChanged" />
+                            <TextBlock Grid.Row="3"
+                                       Text="{x:Static localized:Resource.CanRemove}"
+                                       VerticalAlignment="Center" />
+                            <CheckBox x:Name="ChbCanRemove"
+                                      pu:CheckBoxHelper.CheckBoxStyle="Switch"
+                                      pu:CheckBoxHelper.BoxHeight="25"
+                                      pu:CheckBoxHelper.BoxWidth="35"
+                                      pu:CheckBoxHelper.CheckedBackground="LightGray"
+                                      Grid.Row="3"
+                                      Grid.Column="1"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      Checked="ChbCanRemove_CheckChanged"
+                                      Unchecked="ChbCanRemove_CheckChanged" />
+
                         </Grid>
                     </StackPanel>
                     <Button x:Name="BtnViewCode"

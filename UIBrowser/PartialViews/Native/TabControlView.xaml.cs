@@ -54,6 +54,17 @@ namespace UIBrowser.PartialViews.Native
             UpdateCode();
         }
 
+        private void ChbCanRemove_CheckChanged(object sender, RoutedEventArgs e)
+        {
+            if (!IsLoaded)
+                return;
+
+            TabControlHelper.SetCanRemove(TabCustom, ChbCanRemove.IsChecked == true);
+
+            UpdateTemplate();
+            UpdateCode();
+        }
+
         private void RdbBaseStyle_CheckChanged(object sender, RoutedEventArgs e)
         {
             if (!IsLoaded)
@@ -123,12 +134,12 @@ namespace UIBrowser.PartialViews.Native
                     break;
             }
         }
+
         private void UpdateTemplate()
         {
             var color = Helper.GetColorByOffset(_linearGradientBrush.GradientStops, SldTheme.Value / 7);
 
             TabCustom.Width = SldWidth.Value;
-
 
             switch (TabControlHelper.GetTabControlStyle(TabCustom))
             {
@@ -144,19 +155,24 @@ namespace UIBrowser.PartialViews.Native
         private void UpdateCode()
         {
             var tabStyle = TabControlHelper.GetTabControlStyle(TabCustom);
+            var canRemove = TabControlHelper.GetCanRemove(TabCustom);
 
             TbCode.Text = "<TabControl  Width=\"{TabCustom.Width}\"" +
                         (tabStyle == TabControlStyle.Standard ? "" : $"\npu:TabControlHelper.TabControlStyle=\"{tabStyle}\"") +
                         $"\npu:TabControlHelper.SelectedForeground=\"{TabControlHelper.GetSelectedForeground(TabCustom).ToColor().ToHexString(false)}\"" +
+                        (canRemove ? $"\npu:TabControlHelper.CanRemove=\"True\"" : "") +
                         " >" +
-                        "\n<TabItem Header=\"Item1\"/>" +
+                        "\n<TabItem Header=\"Item1\"" +
+                        (canRemove ? $"\npu:TabControlHelper.CanRemove=\"False\"" : "") +
+                        "/>" +
                         "\n<TabItem Header=\"Item2\"/>" +
                         "\n<TabItem Header=\"Item3\"/>" +
                         "\n</TabControl>";
         }
 
+
         #endregion
 
-
+      
     }
 }

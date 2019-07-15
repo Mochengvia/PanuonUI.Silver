@@ -1,8 +1,10 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 
 namespace Panuon.UI.Silver
 {
@@ -68,6 +70,21 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("SelectedBackground", typeof(Brush), typeof(TabControlHelper));
         #endregion
 
+        #region CanRemove
+        public static bool GetCanRemove(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(CanRemoveProperty);
+        }
+
+        public static void SetCanRemove(DependencyObject obj, bool value)
+        {
+            obj.SetValue(CanRemoveProperty, value);
+        }
+
+        public static readonly DependencyProperty CanRemoveProperty =
+            DependencyProperty.RegisterAttached("CanRemove", typeof(bool), typeof(TabControlHelper));
+        #endregion
+
         #region (Internal Command)
         internal static ICommand GetScrollLeftCommand(DependencyObject obj)
         {
@@ -120,6 +137,23 @@ namespace Panuon.UI.Silver
 
         internal static readonly DependencyProperty ScrollDownCommandProperty =
             DependencyProperty.RegisterAttached("ScrollDownCommand", typeof(ICommand), typeof(TabControlHelper), new PropertyMetadata(new ScrollDownCommand()));
+
+
+
+        public static ICommand GetRemoveCommand(DependencyObject obj)
+        {
+            return (ICommand)obj.GetValue(RemoveCommandProperty);
+        }
+
+        public static void SetRemoveCommand(DependencyObject obj, ICommand value)
+        {
+            obj.SetValue(RemoveCommandProperty, value);
+        }
+
+        public static readonly DependencyProperty RemoveCommandProperty =
+            DependencyProperty.RegisterAttached("RemoveCommand", typeof(ICommand), typeof(TabControlHelper), new PropertyMetadata(new RemoveCommand()));
+
+
         #endregion
     }
 
@@ -200,6 +234,57 @@ namespace Panuon.UI.Silver
         {
             var scrollViewer = (parameter as ScrollViewer);
             scrollViewer.LineDown();
+        }
+    }
+
+    internal class RemoveCommand : ICommand
+    {
+        event EventHandler ICommand.CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
+
+        public bool CanExecute(object parameter)
+        {
+            return true;
+        }
+
+        public void Execute(object parameter)
+        {
+            var values = (object[])parameter;
+
+            var tabItem = values[0] as TabItem;
+            var tabControl = values[1] as TabControl;
+
+            if (tabItem != null && tabControl != null)
+            {
+                tabItem.IsSelected = false;
+
+                var anima1 = new DoubleAnimation()
+                {
+                    From = tabItem.ActualWidth,
+                    To = 0,
+                    Duration = TimeSpan.FromSeconds(0.3),
+                    EasingFunction = new CubicEase() { EasingMode = EasingMode.EaseOut },
+                };
+                anima1.Completed += delegate
+                {
+                    IEditableCollectionView items = tabControl.Items; //Cast to interface
+                    if (items.CanRemove)
+                    {
+                        items.Remove(tabItem);
+                    }
+                };
+
+                var anima2 = new DoubleAnimation()
+                {
+                    To = 0,
+                    Duration = TimeSpan.FromSeconds(0.3),
+                };
+                tabItem.BeginAnimation(TabItem.WidthProperty, anima1);
+                tabItem.BeginAnimation(TabItem.OpacityProperty, anima2);
+            }
         }
     }
 }
