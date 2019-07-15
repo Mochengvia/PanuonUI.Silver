@@ -117,36 +117,31 @@ namespace UIBrowser.PartialViews.Native
 
             if (ChbFadeIn.IsChecked == true)
             {
-                AnimationHelper.SetFadeIn(button, false);
                 AnimationHelper.SetFadeIn(button, true);
             }
             if (ChbFadeOut.IsChecked == true)
             {
-                AnimationHelper.SetFadeOut(button, false);
                 AnimationHelper.SetFadeOut(button, true);
             }
             if (ChbSlideFromLeft.IsChecked == true)
             {
-                AnimationHelper.SetSlideInFromLeft(button, false);
                 AnimationHelper.SetSlideInFromLeft(button, true);
             }
             if (ChbSlideFromTop.IsChecked == true)
             {
-                AnimationHelper.SetSlideInFromTop(button, false);
                 AnimationHelper.SetSlideInFromTop(button, true);
             }
             if (ChbSlideFromRight.IsChecked == true)
             {
-                AnimationHelper.SetSlideInFromRight(button, false);
                 AnimationHelper.SetSlideInFromRight(button, true);
             }
             if (ChbSlideFromBottom.IsChecked == true)
             {
-                AnimationHelper.SetSlideInFromBottom(button, false);
                 AnimationHelper.SetSlideInFromBottom(button, true);
             }
 
         }
+
 
         #endregion
 

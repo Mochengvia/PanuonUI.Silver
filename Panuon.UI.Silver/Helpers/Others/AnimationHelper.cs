@@ -43,6 +43,7 @@ namespace Panuon.UI.Silver
                     element.BeginAnimation(FrameworkElement.OpacityProperty, GetDoubleAnimation(1, element));
                 };
             }
+            SetFadeIn(element, false);
         }
         #endregion
 
@@ -78,6 +79,7 @@ namespace Panuon.UI.Silver
                     element.BeginAnimation(FrameworkElement.OpacityProperty, GetDoubleAnimation(0, element));
                 };
             }
+            SetFadeOut(element, false);
         }
         #endregion
 
@@ -204,6 +206,7 @@ namespace Panuon.UI.Silver
                     transform.BeginAnimation(TranslateTransform.XProperty, GetDoubleAnimation(0, element));
                 };
             }
+            SetSlideInFromLeft(element, false);
         }
 
         /// <summary>
@@ -266,6 +269,7 @@ namespace Panuon.UI.Silver
                     transform.BeginAnimation(TranslateTransform.YProperty, GetDoubleAnimation(0, element));
                 };
             }
+            SetSlideInFromTop(element, false);
         }
 
 
@@ -329,6 +333,7 @@ namespace Panuon.UI.Silver
                     transform.BeginAnimation(TranslateTransform.YProperty, GetDoubleAnimation(0, element));
                 };
             }
+            SetSlideInFromBottom(element, false);
         }
         #endregion
 
@@ -375,8 +380,8 @@ namespace Panuon.UI.Silver
                 var beginSeconds = GetBeginTimeSeconds(element);
                 var easingFunction = GetEasingFunction(element);
 
-                stop2.BeginAnimation(GradientStop.OffsetProperty, GetDoubleAnimation(1, TimeSpan.FromSeconds(duration), TimeSpan.FromSeconds(beginSeconds), easingFunction));
-                stop2.BeginAnimation(GradientStop.ColorProperty, GetColorAnimation(Colors.White, TimeSpan.FromSeconds(duration / 0.5), TimeSpan.FromSeconds(duration * 0.75), easingFunction));
+                stop2.BeginAnimation(GradientStop.OffsetProperty, GetDoubleAnimation(1, TimeSpan.FromSeconds(duration), element, TimeSpan.FromSeconds(beginSeconds), easingFunction));
+                stop2.BeginAnimation(GradientStop.ColorProperty, GetColorAnimation(Colors.White, TimeSpan.FromSeconds(duration / 0.5), element, TimeSpan.FromSeconds(duration * 0.75), easingFunction));
             }
             else
             {
@@ -385,10 +390,11 @@ namespace Panuon.UI.Silver
                     var duration = GetDurationSeconds(element);
                     var beginSeconds = GetBeginTimeSeconds(element);
                     var easingFunction = GetEasingFunction(element);
-                    stop2.BeginAnimation(GradientStop.OffsetProperty, GetDoubleAnimation(1, TimeSpan.FromSeconds(duration), TimeSpan.FromSeconds(beginSeconds), easingFunction));
-                    stop2.BeginAnimation(GradientStop.ColorProperty, GetColorAnimation(Colors.White, TimeSpan.FromSeconds(duration / 0.5), TimeSpan.FromSeconds(duration * 0.75), easingFunction));
+                    stop2.BeginAnimation(GradientStop.OffsetProperty, GetDoubleAnimation(1, TimeSpan.FromSeconds(duration), element, TimeSpan.FromSeconds(beginSeconds), easingFunction));
+                    stop2.BeginAnimation(GradientStop.ColorProperty, GetColorAnimation(Colors.White, TimeSpan.FromSeconds(duration / 0.5), element, TimeSpan.FromSeconds(duration * 0.75), easingFunction));
                 };
             }
+            SetGradualIn(element, false);
         }
         #endregion
 
@@ -479,59 +485,125 @@ namespace Panuon.UI.Silver
         #region Function
         private static DoubleAnimation GetDoubleAnimation(double to, FrameworkElement element)
         {
-            return new DoubleAnimation()
+            var anima = new DoubleAnimation()
             {
                 To = to,
                 Duration = TimeSpan.FromSeconds(GetDurationSeconds(element)),
                 BeginTime = TimeSpan.FromSeconds(GetBeginTimeSeconds(element)),
                 EasingFunction = GetEasingFunction(element),
             };
+
+            anima.Completed += delegate
+            {
+                RaiseCompleted(element);
+            };
+
+            return anima;
         }
 
-        private static DoubleAnimation GetDoubleAnimation(double to, TimeSpan duration, TimeSpan? beginTime = null, IEasingFunction easingFunction = null)
+        private static DoubleAnimation GetDoubleAnimation(double to, TimeSpan duration, FrameworkElement element, TimeSpan? beginTime = null, IEasingFunction easingFunction = null)
         {
-            return new DoubleAnimation()
+            var anima = new DoubleAnimation()
             {
                 To = to,
                 Duration = duration,
                 BeginTime = beginTime ?? TimeSpan.FromSeconds(0),
                 EasingFunction = easingFunction,
             };
+
+            anima.Completed += delegate
+            {
+                RaiseCompleted(element);
+            };
+
+            return anima;
         }
 
 
         private static ColorAnimation GetColorAnimation(Color to, FrameworkElement element)
         {
-            return new ColorAnimation()
+            var anima = new ColorAnimation()
             {
                 To = to,
                 Duration = TimeSpan.FromSeconds(GetDurationSeconds(element)),
                 BeginTime = TimeSpan.FromSeconds(GetBeginTimeSeconds(element)),
                 EasingFunction = GetEasingFunction(element),
             };
+
+
+            anima.Completed += delegate
+            {
+                RaiseCompleted(element);
+            };
+
+            return anima;
         }
 
-        private static ColorAnimation GetColorAnimation(Color to, TimeSpan duration, TimeSpan? beginTime = null, IEasingFunction easingFunction = null)
+        private static ColorAnimation GetColorAnimation(Color to, TimeSpan duration, FrameworkElement element, TimeSpan? beginTime = null, IEasingFunction easingFunction = null)
         {
-            return new ColorAnimation()
+            var anima = new ColorAnimation()
             {
                 To = to,
                 Duration = duration,
                 BeginTime = beginTime ?? TimeSpan.FromSeconds(0),
                 EasingFunction = easingFunction,
             };
+
+
+            anima.Completed += delegate
+            {
+                RaiseCompleted(element);
+            };
+
+            return anima;
         }
 
         private static ThicknessAnimation GetThicknessAnimation(Thickness to, FrameworkElement element)
         {
-            return new ThicknessAnimation()
+            var anima = new ThicknessAnimation()
             {
                 To = to,
                 Duration = TimeSpan.FromSeconds(GetDurationSeconds(element)),
                 BeginTime = TimeSpan.FromSeconds(GetBeginTimeSeconds(element)),
                 EasingFunction = GetEasingFunction(element),
             };
+
+
+            anima.Completed += delegate
+            {
+                RaiseCompleted(element);
+            };
+
+            return anima;
         }
+
+        #endregion
+
+        #region (Event) 
+        public static readonly RoutedEvent CompletedEvent = EventManager.RegisterRoutedEvent("Completed", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(TabControlHelper));
+        public static void AddCompletedHandler(DependencyObject d, RoutedEventHandler handler)
+        {
+            UIElement uie = d as UIElement;
+            if (uie != null)
+            {
+                uie.AddHandler(CompletedEvent, handler);
+            }
+        }
+        public static void RemoveCompletedHandler(DependencyObject d, RoutedEventHandler handler)
+        {
+            UIElement uie = d as UIElement;
+            if (uie != null)
+            {
+                uie.RemoveHandler(CompletedEvent, handler);
+            }
+        }
+
+        internal static void RaiseCompleted(UIElement uie)
+        {
+            var arg = new RoutedEventArgs(CompletedEvent);
+            uie.RaiseEvent(arg);
+        }
+
 
         #endregion
     }
