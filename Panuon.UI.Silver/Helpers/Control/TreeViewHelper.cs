@@ -77,18 +77,41 @@ namespace Panuon.UI.Silver
         private static void OnExpandModeItemSelected(object sender, RoutedEventArgs e)
         {
             var treeView = sender as TreeView;
+            TreeViewItem treeViewItem = null;
+
+
             if (e.Source is TreeViewItem)
             {
+                treeViewItem = e.Source as TreeViewItem;
+            }
+            else
+            {
+                treeViewItem = GetTreeViewItemFromChild(treeView, e.OriginalSource as UIElement);
+            }
 
-                var treeViewItem = e.Source as TreeViewItem;
-                if (treeViewItem.HasItems)
-                {
-                    treeViewItem.IsExpanded = !treeViewItem.IsExpanded;
-                }
+            if (treeViewItem != null && treeViewItem.HasItems)
+            {
+                treeViewItem.IsExpanded = !treeViewItem.IsExpanded;
             }
         }
 
+        private static TreeViewItem GetTreeViewItemFromChild(TreeView treeView, UIElement child)
+        {
+            try
+            {
+                UIElement target = child;
 
+                while ((target != null) && !(target is TreeViewItem))
+                    target = VisualTreeHelper.GetParent(target) as UIElement;
+
+                return target as TreeViewItem;
+            }
+            catch
+            {
+                return null;
+            }
+            
+        }
         #endregion
 
         #region ExpandBehaviour
@@ -120,22 +143,28 @@ namespace Panuon.UI.Silver
         private static void OnExpandBehaviourItemSelected(object sender, RoutedEventArgs e)
         {
             var treeView = sender as TreeView;
-            if (e.OriginalSource is TreeViewItem)
+            TreeViewItem treeViewItem = null;
+
+            if (e.Source is TreeViewItem)
             {
-                var treeViewItem = e.OriginalSource as TreeViewItem;
+                treeViewItem = e.Source as TreeViewItem;
+            }
+            else
+            {
+                treeViewItem = GetTreeViewItemFromChild(treeView, e.OriginalSource as UIElement);
+            }
 
-                if (treeViewItem.HasItems)
+            if (treeViewItem != null && treeViewItem.HasItems)
+            {
+                var lastTreeViewItem = GetLastExpandedItem(treeView);
+                if (lastTreeViewItem != null)
                 {
-                    var lastTreeViewItem = GetLastExpandedItem(treeView);
-                    if (lastTreeViewItem != null)
-                    {
-                        if (lastTreeViewItem == treeViewItem)
-                            return;
-                        lastTreeViewItem.IsExpanded = false;
-                    }
-
-                    SetLastExpandedItem(treeView, treeViewItem);
+                    if (lastTreeViewItem == treeViewItem)
+                        return;
+                    lastTreeViewItem.IsExpanded = false;
                 }
+
+                SetLastExpandedItem(treeView, treeViewItem);
             }
         }
 
