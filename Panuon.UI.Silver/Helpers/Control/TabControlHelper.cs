@@ -85,6 +85,61 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("CanRemove", typeof(bool), typeof(TabControlHelper));
         #endregion
 
+        #region (Event) Removed
+        public static readonly RoutedEvent RemovedEvent = EventManager.RegisterRoutedEvent("Removed", RoutingStrategy.Bubble, typeof(RoutedPropertyChangedEventHandler<TabItem>), typeof(TabControlHelper));
+        public static void AddRemovedHandler(DependencyObject d, RoutedPropertyChangedEventHandler<TabItem> handler)
+        {
+            UIElement uie = d as UIElement;
+            if (uie != null)
+            {
+                uie.AddHandler(RemovedEvent, handler);
+            }
+        }
+        public static void RemoveRemovedHandler(DependencyObject d, RoutedPropertyChangedEventHandler<TabItem> handler)
+        {
+            UIElement uie = d as UIElement;
+            if (uie != null)
+            {
+                uie.RemoveHandler(RemovedEvent, handler);
+            }
+        }
+
+        internal static void RaiseRemoved(UIElement uie, TabItem newValue)
+        {
+            var arg = new RoutedPropertyChangedEventArgs<TabItem>(null, newValue, RemovedEvent);
+            uie.RaiseEvent(arg);
+        }
+        #endregion
+
+        #region (Internal) TabControlHook
+        public static bool GetTabControlHook(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(TabControlHookProperty);
+        }
+
+        public static void SetTabControlHook(DependencyObject obj, bool value)
+        {
+            obj.SetValue(TabControlHookProperty, value);
+        }
+
+        public static readonly DependencyProperty TabControlHookProperty =
+            DependencyProperty.RegisterAttached("TabControlHook", typeof(bool), typeof(TabControlHelper), new PropertyMetadata(OnTabControlHookChanged));
+
+        private static void OnTabControlHookChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var tabControl = d as TabControl;
+            tabControl.AddHandler(Button.ClickEvent, new EventHandler(OnRemoveButtonClicked));
+        }
+
+        private static void OnRemoveButtonClicked(object sender, EventArgs e)
+        {
+            var BtnRemove = sender as Button;
+            if (BtnRemove.Name != "PART_RemoveButton")
+                return;
+        }
+
+        #endregion
+
         #region (Internal Command)
         internal static ICommand GetScrollLeftCommand(DependencyObject obj)
         {
@@ -275,6 +330,7 @@ namespace Panuon.UI.Silver
                     {
                         items.Remove(tabItem);
                     }
+                    TabControlHelper.RaiseRemoved(tabControl, tabItem);
                 };
 
                 var anima2 = new DoubleAnimation()
