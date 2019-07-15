@@ -1,0 +1,448 @@
+﻿<UserControl x:Class="Panuon.UI.Silver.ColorSelector"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Panuon.UI.Silver"
+             mc:Ignorable="d"
+             d:DesignHeight="300"
+             d:DesignWidth="340"
+             x:Name="Selector">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition x:Name="RowColor"
+                           Height="Auto" />
+            <RowDefinition x:Name="RowInfo"
+                           Height="Auto" />
+            <RowDefinition x:Name="RowDefaultColor"
+                           Height="Auto" />
+        </Grid.RowDefinitions>
+        <Border x:Name="BdrBackground"
+                Background="{Binding BackgroundBrush,ElementName=Selector}" />
+        <Border>
+            <Border.Background>
+                <LinearGradientBrush StartPoint="1,0"
+                                     EndPoint="0,0">
+                    <GradientStop Color="White"
+                                  Offset="1" />
+                    <GradientStop Color="#80ffffff"
+                                  Offset=".5" />
+                    <GradientStop Color="#00ffffff" />
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+        <Border BorderBrush="LightGray"
+                BorderThickness="1">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0"
+                                     EndPoint="0,1">
+                    <GradientStop Color="Black"
+                                  Offset="1" />
+                    <GradientStop Color="#80000000"
+                                  Offset=".5" />
+                    <GradientStop Color="#00000000" />
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+        <Canvas x:Name="CvaOuter"
+                SizeChanged="CvaOuter_SizeChanged"
+                ClipToBounds="True">
+            <Canvas x:Name="CvaMain"
+                    PreviewMouseLeftButtonDown="CvaOuter_PreviewMouseLeftButtonDown"
+                    Background="Transparent"
+                    Margin="-10,-10,0,0">
+                <Ellipse Width="20"
+                         Height="20"
+                         Stroke="White"
+                         StrokeThickness="1"
+                         x:Name="DragToggle"
+                         Canvas.Left="0"
+                         Canvas.Top="0">
+                    <Ellipse.Effect>
+                        <DropShadowEffect ShadowDepth="0" />
+                    </Ellipse.Effect>
+                </Ellipse>
+            </Canvas>
+        </Canvas>
+        <Grid Grid.Row="1"
+              Height="50">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="34" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid Height="30"
+                  Width="30">
+                <Rectangle RadiusX="25"
+                           RadiusY="25">
+                    <Rectangle.Fill>
+                        <DrawingBrush Viewport="0,0,12,12"
+                                      ViewportUnits="Absolute"
+                                      Stretch="None"
+                                      TileMode="Tile">
+                            <DrawingBrush.Drawing>
+                                <DrawingGroup>
+                                    <GeometryDrawing Brush="#D0CEC7">
+                                        <GeometryDrawing.Geometry>
+                                            <GeometryGroup>
+                                                <RectangleGeometry Rect="0,0,6,6" />
+                                                <RectangleGeometry Rect="6,6,6,6" />
+                                            </GeometryGroup>
+                                        </GeometryDrawing.Geometry>
+                                    </GeometryDrawing>
+                                    <GeometryDrawing Brush="#E7E7E2">
+                                        <GeometryDrawing.Geometry>
+                                            <RectangleGeometry Rect="0,6,12,0" />
+                                        </GeometryDrawing.Geometry>
+                                    </GeometryDrawing>
+                                </DrawingGroup>
+                            </DrawingBrush.Drawing>
+                        </DrawingBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Border CornerRadius="25"
+                        BorderBrush="LightGray"
+                        BorderThickness="1"
+                        Background="{Binding SelectedBrush,ElementName=Selector}" />
+            </Grid>
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition x:Name="RowOpacity"
+                                   Height="*" />
+                </Grid.RowDefinitions>
+                <Slider x:Name="SliderColor"
+                        Value="0"
+                        Minimum="0"
+                        Maximum="6"
+                        Padding="9,0"
+                        Margin="5,0,0,0"
+                        VerticalAlignment="Center"
+                        local:SliderHelper.IsTickValueVisible="False"
+                        local:SliderHelper.SliderStyle="Classic"
+                        local:SliderHelper.ThumbSize="20"
+                        local:SliderHelper.TrackThickness="16"
+                        local:SliderHelper.ThemeBrush="Transparent"
+                        IsMoveToPointEnabled="True"
+                        ValueChanged="SliderColor_ValueChanged">
+                    <Slider.Background>
+                        <LinearGradientBrush x:Name="Linear"
+                                             StartPoint="1,0"
+                                             EndPoint="0,0">
+                            <GradientStop Color="#ff0000" />
+                            <GradientStop Color="#ff00ff"
+                                          Offset="0.835" />
+                            <GradientStop Color="#0000ff"
+                                          Offset="0.668" />
+                            <GradientStop Color="#00ffff"
+                                          Offset="0.501" />
+                            <GradientStop Color="#00ff00"
+                                          Offset="0.334" />
+                            <GradientStop Color="#ffff00"
+                                          Offset="0.167" />
+                            <GradientStop Color="#ff0000"
+                                          Offset="1" />
+                        </LinearGradientBrush>
+                    </Slider.Background>
+                </Slider>
+                <Slider x:Name="SliderOpacity"
+                        Grid.Row="1"
+                        Minimum="0"
+                        Maximum="255"
+                        Value="255"
+                        Padding="9,0"
+                        Margin="5,0,0,0"
+                        VerticalAlignment="Center"
+                        local:SliderHelper.IsTickValueVisible="False"
+                        local:SliderHelper.SliderStyle="Classic"
+                        local:SliderHelper.ThumbSize="20"
+                        local:SliderHelper.TrackThickness="16"
+                        local:SliderHelper.ThemeBrush="Transparent"
+                        IsMoveToPointEnabled="True"
+                        ValueChanged="SliderOpacity_ValueChanged">
+                    <Slider.Background>
+                        <VisualBrush>
+                            <VisualBrush.Visual>
+                                <Grid Width="{Binding ActualWidth,ElementName=SliderOpacity}"
+                                      Height="{Binding ActualHeight,ElementName=SliderOpacity}">
+                                    <Rectangle>
+                                        <Rectangle.Fill>
+                                            <DrawingBrush Viewport="0,0,12,12"
+                                                          ViewportUnits="Absolute"
+                                                          Stretch="None"
+                                                          TileMode="Tile">
+                                                <DrawingBrush.Drawing>
+                                                    <DrawingGroup>
+                                                        <GeometryDrawing Brush="#D0CEC7">
+                                                            <GeometryDrawing.Geometry>
+                                                                <GeometryGroup>
+                                                                    <RectangleGeometry Rect="0,0,6,6" />
+                                                                    <RectangleGeometry Rect="6,6,6,6" />
+                                                                </GeometryGroup>
+                                                            </GeometryDrawing.Geometry>
+                                                        </GeometryDrawing>
+                                                        <GeometryDrawing Brush="#E7E7E2">
+                                                            <GeometryDrawing.Geometry>
+                                                                <RectangleGeometry Rect="0,6,12,0" />
+                                                            </GeometryDrawing.Geometry>
+                                                        </GeometryDrawing>
+                                                    </DrawingGroup>
+                                                </DrawingBrush.Drawing>
+                                            </DrawingBrush>
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                    <Rectangle>
+                                        <Rectangle.Fill>
+                                            <LinearGradientBrush StartPoint="1,0"
+                                                                 EndPoint="0,0">
+                                                <GradientStop Color="{Binding BackgroundBrush,ElementName=Selector,Converter={StaticResource BrushToColorConverter}}"
+                                                              Offset="0" />
+                                                <GradientStop Color="Transparent"
+                                                              Offset="1" />
+
+                                            </LinearGradientBrush>
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                </Grid>
+
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </Slider.Background>
+                </Slider>
+            </Grid>
+        </Grid>
+        <Grid x:Name="GrdMeasuredValue" Grid.Row="2"
+              Height="50">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="16" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition x:Name="ColumnA" />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="TbHex"
+                     local:TextBoxHelper.Watermark="HEX"
+                     Text="{Binding Hex,ElementName=Selector}"
+                     Height="30"
+                     Margin="5,0"
+                     HorizontalContentAlignment="Center"
+                     VerticalAlignment="Bottom" 
+                     KeyUp="TbInfo_Keyup"
+                     LostFocus="TbInfo_LostFocus"/>
+            <TextBox x:Name="TbA"
+                     Text="{Binding A,ElementName=Selector}"
+                     Grid.Column="1"
+                     local:TextBoxHelper.Watermark="A"
+                     Height="30"
+                     Margin="5,0"
+                     HorizontalContentAlignment="Center"
+                     VerticalAlignment="Bottom"
+                     KeyUp="TbInfo_Keyup"
+                     LostFocus="TbInfo_LostFocus" />
+            <TextBox x:Name="TbR"
+                     Text="{Binding R,ElementName=Selector}"
+                     Grid.Column="2"
+                     local:TextBoxHelper.Watermark="R"
+                     Height="30"
+                     Margin="5,0"
+                     HorizontalContentAlignment="Center"
+                     VerticalAlignment="Bottom"
+                     KeyUp="TbInfo_Keyup"
+                     LostFocus="TbInfo_LostFocus" />
+            <TextBox x:Name="TbG"
+                     Text="{Binding G,ElementName=Selector}"
+                     Grid.Column="3"
+                     local:TextBoxHelper.Watermark="G"
+                     Height="30"
+                     Margin="5,0"
+                     HorizontalContentAlignment="Center"
+                     VerticalAlignment="Bottom"
+                     KeyUp="TbInfo_Keyup"
+                     LostFocus="TbInfo_LostFocus" />
+            <TextBox x:Name="TbB"
+                     Text="{Binding B,ElementName=Selector,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     Grid.Column="4"
+                     local:TextBoxHelper.Watermark="B"
+                     Height="30"
+                     Margin="5,0"
+                     HorizontalContentAlignment="Center"
+                     VerticalAlignment="Bottom"
+                     KeyUp="TbInfo_Keyup"
+                     LostFocus="TbInfo_LostFocus" />
+            <TextBlock Text="HEX"
+                       Grid.Row="1"
+                       FontSize="14"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Foreground="Gray" />
+            <TextBlock Text="A"
+                       Grid.Row="1"
+                       Grid.Column="1"
+                       FontSize="14"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Foreground="Gray" />
+            <TextBlock Text="R"
+                       Grid.Row="1"
+                       Grid.Column="2"
+                       FontSize="14"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Foreground="Gray" />
+            <TextBlock Text="G"
+                       Grid.Row="1"
+                       Grid.Column="3"
+                       FontSize="14"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Foreground="Gray" />
+            <TextBlock Text="B"
+                       Grid.Row="1"
+                       Grid.Column="4"
+                       FontSize="14"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Foreground="Gray" />
+        </Grid>
+        <Grid x:Name="GrdDefaultColor" Grid.Row="3"
+               Height="70">
+            <Grid Height="60"
+                  Margin="0,10,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Border Width="25"
+                        Height="25"
+                        Background="#FFFFFF"
+                        BorderThickness="1"
+                        BorderBrush="LightGray"
+                        CornerRadius="15" 
+                        MouseLeftButtonDown="BdrDefaultColor_MouseLeftButtonDown"/>
+                <Border Width="25"
+                        Height="25"
+                        Background="#EFEFEF"
+                        Grid.Column="1"
+                        BorderThickness="1"
+                        BorderBrush="LightGray"
+                        CornerRadius="15"
+                        MouseLeftButtonDown="BdrDefaultColor_MouseLeftButtonDown" />
+                <Border Width="25"
+                        Height="25"
+                        Background="#CCCCCC"
+                        Grid.Column="2"
+                        BorderThickness="1"
+                        BorderBrush="LightGray"
+                        MouseLeftButtonDown="BdrDefaultColor_MouseLeftButtonDown"
+                        CornerRadius="15" />
+                <Border Width="25"
+                        Height="25"
+                        Background="#AAAAAA"
+                        Grid.Column="3"
+                        BorderThickness="1"
+                        BorderBrush="LightGray"
+                        MouseLeftButtonDown="BdrDefaultColor_MouseLeftButtonDown" CornerRadius="15" />
+                <Border Width="25"
+                        Height="25"
+                        Background="#999999"
+                        Grid.Column="4"
+                        BorderThickness="1"
+                        BorderBrush="LightGray"
+                        MouseLeftButtonDown="BdrDefaultColor_MouseLeftButtonDown"
+                        CornerRadius="15" />
+                <Border Width="25"
+                        Height="25"
+                        Background="#3E3E3E"
+                        Grid.Column="5"
+                        BorderThickness="1"
+                        BorderBrush="LightGray"
+                        MouseLeftButtonDown="BdrDefaultColor_MouseLeftButtonDown"
+                        CornerRadius="15" />
+                <Border Width="25"
+                        Height="25"
+                        Background="#000000"
+                        Grid.Column="6"
+                        BorderThickness="1"
+                        BorderBrush="LightGray"
+                        MouseLeftButtonDown="BdrDefaultColor_MouseLeftButtonDown"
+                        CornerRadius="15" />
+                <Border Width="25"
+                        Height="25"
+                        Background="#FFE61B1B"
+                        BorderThickness="1"
+                        BorderBrush="LightGray"
+                        MouseLeftButtonDown="BdrDefaultColor_MouseLeftButtonDown"
+                        CornerRadius="15" 
+                        Grid.Row="1"/>
+                <Border Width="25"
+                        Height="25"
+                        Background="#FFF15D26"
+                        Grid.Column="1"
+                        BorderThickness="1"
+                        BorderBrush="LightGray"
+                        MouseLeftButtonDown="BdrDefaultColor_MouseLeftButtonDown"
+                        CornerRadius="15"
+                        Grid.Row="1" />
+                <Border Width="25"
+                        Height="25"
+                        Background="#FFEED225"
+                        Grid.Column="2"
+                        BorderThickness="1"
+                        BorderBrush="LightGray"
+                        MouseLeftButtonDown="BdrDefaultColor_MouseLeftButtonDown"
+                        CornerRadius="15"
+                        Grid.Row="1"/>
+                <Border Width="25"
+                        Height="25"
+                        Background="#FF74E041"
+                        Grid.Column="3"
+                        BorderThickness="1"
+                        BorderBrush="LightGray"
+                        MouseLeftButtonDown="BdrDefaultColor_MouseLeftButtonDown"
+                        CornerRadius="15"
+                        Grid.Row="1" />
+                <Border Width="25"
+                        Height="25"
+                        Background="#FF47BBC7"
+                        Grid.Column="4"
+                        BorderThickness="1"
+                        BorderBrush="LightGray"
+                        MouseLeftButtonDown="BdrDefaultColor_MouseLeftButtonDown"
+                        CornerRadius="15"
+                        Grid.Row="1"/>
+                <Border Width="25"
+                        Height="25"
+                        Background="#FF306ACF"
+                        Grid.Column="5"
+                        BorderThickness="1"
+                        BorderBrush="LightGray"
+                        MouseLeftButtonDown="BdrDefaultColor_MouseLeftButtonDown"
+                        CornerRadius="15"
+                        Grid.Row="1"/>
+                <Border Width="25"
+                        Height="25"
+                        Background="#FFDB23EE"
+                        Grid.Column="6"
+                        BorderThickness="1"
+                        BorderBrush="LightGray"
+                        MouseLeftButtonDown="BdrDefaultColor_MouseLeftButtonDown"
+                        CornerRadius="15"
+                        Grid.Row="1" />
+
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

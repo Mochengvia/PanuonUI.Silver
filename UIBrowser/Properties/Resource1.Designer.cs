@@ -187,6 +187,24 @@ namespace UIBrowser.Properties {
         }
         
         /// <summary>
+        ///   查找类似 ColorPicker 的本地化字符串。
+        /// </summary>
+        public static string ColorPicker {
+            get {
+                return ResourceManager.GetString("ColorPicker", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 ColorSelector 的本地化字符串。
+        /// </summary>
+        public static string ColorSelector {
+            get {
+                return ResourceManager.GetString("ColorSelector", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 ComboBox 的本地化字符串。
         /// </summary>
         public static string ComboBox {
@@ -345,6 +363,15 @@ namespace UIBrowser.Properties {
         public static string Introduction {
             get {
                 return ResourceManager.GetString("Introduction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 IsOpacityEnabled 的本地化字符串。
+        /// </summary>
+        public static string IsOpacityEnabled {
+            get {
+                return ResourceManager.GetString("IsOpacityEnabled", resourceCulture);
             }
         }
         
@@ -547,11 +574,29 @@ namespace UIBrowser.Properties {
         }
         
         /// <summary>
+        ///   查找类似 ShowDefaultColorPanel 的本地化字符串。
+        /// </summary>
+        public static string ShowDefaultColorPanel {
+            get {
+                return ResourceManager.GetString("ShowDefaultColorPanel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Show Icon 的本地化字符串。
         /// </summary>
         public static string ShowIcon {
             get {
                 return ResourceManager.GetString("ShowIcon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 ShowMeasuredValue 的本地化字符串。
+        /// </summary>
+        public static string ShowMeasuredValue {
+            get {
+                return ResourceManager.GetString("ShowMeasuredValue", resourceCulture);
             }
         }
         

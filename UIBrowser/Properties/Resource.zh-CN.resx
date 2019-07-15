@@ -351,4 +351,19 @@
   <data name="CanRemove" xml:space="preserve">
     <value>可以移除</value>
   </data>
+  <data name="IsOpacityEnabled" xml:space="preserve">
+    <value>允许透明度</value>
+  </data>
+  <data name="ShowDefaultColorPanel" xml:space="preserve">
+    <value>显示默认色板</value>
+  </data>
+  <data name="ShowMeasuredValue" xml:space="preserve">
+    <value>显示数值板</value>
+  </data>
+  <data name="ColorPicker" xml:space="preserve">
+    <value>ColorPicker 颜色组合框</value>
+  </data>
+  <data name="ColorSelector" xml:space="preserve">
+    <value>ColorSelector 颜色选择器</value>
+  </data>
 </root>

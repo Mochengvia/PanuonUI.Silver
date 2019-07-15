@@ -25,27 +25,29 @@ namespace UIBrowser.Models
                          new TreeViewItemModel(Properties.Resource.TabControl,"TabControl"),
                          new TreeViewItemModel(Properties.Resource.TreeView,"TreeView"),
                          new TreeViewItemModel(Properties.Resource.Slider,"Slider"),
-                         //new TreeViewItemModel(Properties.Resource.ListBox,"ListBox"),
-                         //new TreeViewItemModel(Properties.Resource.GroupBox,"GroupBox"),
-                         //new TreeViewItemModel(Properties.Resource.Expander,"Expander"),
+                         new TreeViewItemModel(Properties.Resource.ListBox,"ListBox"),
+                         new TreeViewItemModel(Properties.Resource.GroupBox,"GroupBox"),
+                         new TreeViewItemModel(Properties.Resource.Expander,"Expander"),
                      }
                 },
                 new TreeViewItemModel(Properties.Resource.CustomControls,"CustomControls", "\uf040")
                 {
                      MenuItems = new BindableCollection<TreeViewItemModel>()
                      {
-                         //new TreeViewItemModel(Properties.Resource.Carousel,"Carousel"),
-                         //new TreeViewItemModel(Properties.Resource.Countdown,"Countdown"),
                          new TreeViewItemModel(Properties.Resource.Calendar,"Calendar"),
-                         //new TreeViewItemModel(Properties.Resource.Clock,"Clock"),
                          new TreeViewItemModel(Properties.Resource.DateTimePicker,"DateTimePicker"),
+                         new TreeViewItemModel(Properties.Resource.ColorSelector,"ColorSelector"),
+                         new TreeViewItemModel(Properties.Resource.ColorPicker,"ColorPicker"),
                          new TreeViewItemModel(Properties.Resource.DropDown,"DropDown"),
-                         //new TreeViewItemModel(Properties.Resource.ImageCuter,"ImageCuter"),
                          new TreeViewItemModel(Properties.Resource.Loading,"Loading"),
-                         //new TreeViewItemModel(Properties.Resource.MultiSelector,"MultiSelector"),
-                         //new TreeViewItemModel(Properties.Resource.NeonLabel,"NeonLabel"),
-                         //new TreeViewItemModel(Properties.Resource.Pagination,"Pagination"),
-                         //new TreeViewItemModel(Properties.Resource.Timeline,"Timeline"),
+                        new TreeViewItemModel(Properties.Resource.Carousel,"Carousel"),
+                         new TreeViewItemModel(Properties.Resource.Countdown,"Countdown"),
+                         new TreeViewItemModel(Properties.Resource.Clock,"Clock"),
+                         new TreeViewItemModel(Properties.Resource.ImageCuter,"ImageCuter"),
+                         new TreeViewItemModel(Properties.Resource.MultiSelector,"MultiSelector"),
+                         new TreeViewItemModel(Properties.Resource.NeonLabel,"NeonLabel"),
+                         new TreeViewItemModel(Properties.Resource.Pagination,"Pagination"),
+                         new TreeViewItemModel(Properties.Resource.Timeline,"Timeline"),
                      }
                 },
                 new TreeViewItemModel(Properties.Resource.ExtraHelpers,"ExtraHelpers", "\uf06b")
@@ -53,7 +55,7 @@ namespace UIBrowser.Models
                      MenuItems = new BindableCollection<TreeViewItemModel>()
                      {
                          new TreeViewItemModel(Properties.Resource.AnimationHelper,"AnimationHelper"),
-                         //new TreeViewItemModel(Properties.Resource.LayoutHelper,"LayoutHelper"),
+                         new TreeViewItemModel(Properties.Resource.LayoutHelper,"LayoutHelper"),
                      }
                 }
             };
@@ -92,7 +94,7 @@ namespace UIBrowser.Models
             if (model.Header.ToLower().Contains(SearchText.ToLower()))
                 result = true;
 
-            if(model.MenuItems.Count != 0)
+            if (model.MenuItems.Count != 0)
             {
                 foreach (var item in model.MenuItems)
                 {
@@ -100,7 +102,7 @@ namespace UIBrowser.Models
                     result = result ? true : inner;
                 }
             }
-           
+
             model.Visibility = result ? System.Windows.Visibility.Visible : System.Windows.Visibility.Collapsed;
             model.IsExpanded = result;
             return result;

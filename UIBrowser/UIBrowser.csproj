@@ -72,6 +72,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PartialViews\Custom\ColorPickerView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PartialViews\Custom\ColorSelectorView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="PartialViews\Custom\DropDownView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -148,6 +156,12 @@
   <ItemGroup>
     <Compile Include="Models\MainWindowViewModel.cs" />
     <Compile Include="Models\TreeViewItemModel.cs" />
+    <Compile Include="PartialViews\Custom\ColorPickerView.xaml.cs">
+      <DependentUpon>ColorPickerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PartialViews\Custom\ColorSelectorView.xaml.cs">
+      <DependentUpon>ColorSelectorView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PartialViews\Custom\DropDownView.xaml.cs">
       <DependentUpon>DropDownView.xaml</DependentUpon>
     </Compile>
@@ -237,4 +251,8 @@
     <Resource Include="Resources\head.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
 </Project>

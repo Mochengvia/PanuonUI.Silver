@@ -351,4 +351,19 @@
   <data name="CanRemove" xml:space="preserve">
     <value>CanRemove</value>
   </data>
+  <data name="IsOpacityEnabled" xml:space="preserve">
+    <value>IsOpacityEnabled</value>
+  </data>
+  <data name="ShowDefaultColorPanel" xml:space="preserve">
+    <value>ShowDefaultColorPanel</value>
+  </data>
+  <data name="ShowMeasuredValue" xml:space="preserve">
+    <value>ShowMeasuredValue</value>
+  </data>
+  <data name="ColorPicker" xml:space="preserve">
+    <value>ColorPicker</value>
+  </data>
+  <data name="ColorSelector" xml:space="preserve">
+    <value>ColorSelector</value>
+  </data>
 </root>
