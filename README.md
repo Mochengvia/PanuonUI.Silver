@@ -12,7 +12,13 @@ Email : zeoun@qq.com
 QQ Group : 718778191  
 Zhihu : @末城via
 
-# News 动态
+# News 动态  
+
+2019-7-15  
+New controls : ColorSelector and ColorPicker  
+新增控件：颜色选择器和颜色组合框  
+
+
 2019-7-11  
 You can bind enum type to comboBox now :)    
 现在可以将Enum类型直接绑定到ComboBox上了。  
