@@ -65,6 +65,7 @@ namespace Panuon.UI.Silver
     {
         Any,
         ChildOnly,
+        Disabled
     }
 
     public enum ExpandMode

@@ -581,19 +581,19 @@
                                                               Content="{TemplateBinding Content}"
                                                               VerticalAlignment="Center"
                                                               TextBlock.Foreground="{TemplateBinding Foreground}"
-                                                              Margin="{TemplateBinding Padding}" />
+                                                               />
                                             <ContentPresenter x:Name="ContentHover"
                                                               Content="{TemplateBinding Content}"
                                                               VerticalAlignment="Center"
                                                               TextBlock.Foreground="{Binding Path=(local:ButtonHelper.HoverBrush),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
                                                               Opacity="0"
-                                                              Margin="{TemplateBinding Padding}" />
+                                                               />
                                             <ContentPresenter x:Name="ContentClick"
                                                               Content="{TemplateBinding Content}"
                                                               VerticalAlignment="Center"
                                                               TextBlock.Foreground="{Binding Path=(local:ButtonHelper.ClickCoverBrush),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
                                                               Visibility="Hidden"
-                                                              Margin="{TemplateBinding Padding}" />
+                                                               />
                                         </Grid>
 
                                     </Grid>

@@ -281,33 +281,42 @@ namespace Panuon.UI.Silver
             try
             {
                 var treeView = sender as TreeView;
-                if (GetSelectMode(treeView) != SelectMode.ChildOnly)
+                var selectMode = GetSelectMode(treeView);
+
+                if (selectMode == SelectMode.Any)
                     return;
 
                 var sourceData = treeView.SelectedItem;
                 if (sourceData is TreeViewItem)
                 {
-                    if (((TreeViewItem)sourceData).HasItems)
+                    if (selectMode == SelectMode.ChildOnly && ((TreeViewItem)sourceData).HasItems)
+                        e.Handled = true;
+                    else if (selectMode == SelectMode.Disabled)
                         e.Handled = true;
                 }
                 else
                 {
-                    if (!(treeView.ItemTemplate is HierarchicalDataTemplate))
-                        return;
-                    var itemsPath = ((Binding)((HierarchicalDataTemplate)treeView.ItemTemplate)?.ItemsSource)?.Path?.Path;
-                    if (string.IsNullOrEmpty(itemsPath))
-                        return;
-
-                    var propertyInfo = sourceData.GetType().GetProperty(itemsPath);
-                    if (propertyInfo == null)
-                        return;
-
-                    var children = propertyInfo.GetValue(sourceData, null) as ICollection;
-                    if (children == null)
-                        return;
-
-                    if (children != null && children.Count != 0)
+                    if (selectMode == SelectMode.Disabled)
                         e.Handled = true;
+                    else if(selectMode == SelectMode.ChildOnly)
+                    {
+                        if (!(treeView.ItemTemplate is HierarchicalDataTemplate))
+                            return;
+                        var itemsPath = ((Binding)((HierarchicalDataTemplate)treeView.ItemTemplate)?.ItemsSource)?.Path?.Path;
+                        if (string.IsNullOrEmpty(itemsPath))
+                            return;
+
+                        var propertyInfo = sourceData.GetType().GetProperty(itemsPath);
+                        if (propertyInfo == null)
+                            return;
+
+                        var children = propertyInfo.GetValue(sourceData, null) as ICollection;
+                        if (children == null)
+                            return;
+
+                        if (children != null && children.Count != 0)
+                            e.Handled = true;
+                    }
                 }
             }
             catch { }
@@ -318,7 +327,10 @@ namespace Panuon.UI.Silver
             try
             {
                 var treeView = sender as TreeView;
-                if (GetSelectMode(treeView) != SelectMode.ChildOnly)
+
+                var selectMode = GetSelectMode(treeView);
+
+                if (selectMode == SelectMode.Any)
                     return;
 
                 if (e.OriginalSource is TreeViewItem)
@@ -326,7 +338,7 @@ namespace Panuon.UI.Silver
                     var treeViewItem = e.OriginalSource as TreeViewItem;
 
                     var oldItem = GetLastSelectedItem(treeView);
-                    if (treeViewItem.HasItems)
+                    if ((selectMode == SelectMode.ChildOnly && treeViewItem.HasItems) || selectMode == SelectMode.Disabled)
                     {
                         treeViewItem.IsSelected = false;
 
