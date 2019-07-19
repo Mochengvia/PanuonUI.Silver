@@ -36,8 +36,14 @@
                 Value="Auto"></Setter>
         <Setter Property="Foreground"
                 Value="#666666"></Setter>
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Left" />
         <Setter Property="AlternationCount"
                 Value="2" />
+        <Setter Property="Padding"
+                Value="10,0,10,0" />
         <Style.Resources>
                 <Style TargetType="ScrollBar"
                        BasedOn="{StaticResource {x:Type ScrollBar}}">
@@ -55,14 +61,19 @@
                     </Style.Triggers>
                 </Style>
         </Style.Resources>
+        <Style.Triggers>
+            <Trigger Property="HorizontalContentAlignment"
+                     Value="Center">
+                <Setter Property="Padding"
+                        Value="0" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
     <Style TargetType="DataGridColumnHeader">
         <Setter Property="VerticalContentAlignment"
                 Value="Center" />
         <Setter Property="Height"
                 Value="35" />
-        <Setter Property="Padding"
-                Value="10,0,0,0"></Setter>
         <Setter Property="Background"
                 Value="#EFEFEF"></Setter>
         <Setter Property="BorderBrush"
@@ -76,10 +87,10 @@
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 Background="{TemplateBinding Background}">
                             <Grid>
-                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                  Margin="{TemplateBinding Padding}"
+                                <ContentPresenter HorizontalAlignment="{Binding HorizontalContentAlignment,RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                                  Margin="{Binding Padding,RelativeSource={RelativeSource AncestorType=DataGrid}}"
                                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                                  VerticalAlignment="{Binding VerticalContentAlignment,RelativeSource={RelativeSource AncestorType=DataGrid}}" />
                                 <Grid Width="15"
                                       Height="15"
                                       Margin="0,0,6,0"
@@ -184,9 +195,10 @@
                     <Grid>
                         <Border x:Name="bdrOuter"
                                 Background="{TemplateBinding Background}"
-                                Margin="{TemplateBinding Padding}">
-                            <ContentPresenter VerticalAlignment="Center"
-                                              Margin="{Binding Padding,RelativeSource={RelativeSource AncestorType=DataGridRow}}" />
+                                >
+                            <ContentPresenter VerticalAlignment="{Binding VerticalContentAlignment,RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                              HorizontalAlignment="{Binding HorizontalContentAlignment,RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                              Margin="{Binding Padding,RelativeSource={RelativeSource AncestorType=DataGrid}}" />
                         </Border>
                     </Grid>
                     <ControlTemplate.Triggers>
@@ -215,8 +227,6 @@
     <Style  TargetType="DataGridRow">
         <Setter Property="FocusVisualStyle"
                 Value="{x:Null}"></Setter>
-        <Setter Property="Padding"
-                Value="10,0,0,0"></Setter>
         <Setter Property="Background"
                 Value="Transparent"></Setter>
         <Setter Property="SnapsToDevicePixels"

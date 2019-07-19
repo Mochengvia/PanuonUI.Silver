@@ -68,15 +68,10 @@ namespace Panuon.UI.Silver
                 {
                     BasedOn = (Style)dataGrid.FindResource(typeof(ComboBox))
                 };
+                newColumn.EditingElementStyle.Setters.Add(new Setter(ComboBox.VerticalAlignmentProperty, dataGrid.VerticalContentAlignment));
+                newColumn.EditingElementStyle.Setters.Add(new Setter(ComboBox.HorizontalAlignmentProperty, dataGrid.HorizontalContentAlignment));
                 newColumn.EditingElementStyle.Setters.Add(new Setter(ComboBox.HeightProperty, 30.0));
-                newColumn.EditingElementStyle.Setters.Add(new Setter(ComboBox.PaddingProperty, new Thickness(5, 0, 20, 0)));
-
-
-                newColumn.CellStyle = new Style(typeof(DataGridCell))
-                {
-                    BasedOn = (Style)dataGrid.FindResource(typeof(DataGridCell)),
-                };
-                newColumn.CellStyle.Setters.Add(new Setter(DataGridCell.PaddingProperty, new Thickness(0, 0, 10, 0)));
+                //newColumn.EditingElementStyle.Setters.Add(new Setter(ComboBox.PaddingProperty, new Thickness(5, 0, 20, 0)));
 
                 e.Column = newColumn;
             }
@@ -97,11 +92,12 @@ namespace Panuon.UI.Silver
                     {
                         BasedOn = (Style)dataGrid.FindResource(typeof(CheckBox))
                     };
+                    newColumn.ElementStyle.Setters.Add(new Setter(CheckBox.VerticalAlignmentProperty, dataGrid.VerticalContentAlignment));
+                    newColumn.ElementStyle.Setters.Add(new Setter(CheckBox.HorizontalAlignmentProperty, dataGrid.HorizontalContentAlignment));
                     newColumn.ElementStyle.Setters.Add(new Setter(CheckBox.BorderBrushProperty, "#3E3E3E".ToColor().ToBrush()));
                     newColumn.ElementStyle.Setters.Add(new Setter(CheckBox.BorderThicknessProperty, new Thickness(1)));
                     newColumn.ElementStyle.Setters.Add(new Setter(CheckBox.BackgroundProperty, Colors.Transparent.ToBrush()));
                     newColumn.ElementStyle.Setters.Add(new Setter(CheckBoxHelper.GlyphBrushProperty, Colors.Transparent.ToBrush()));
-                    newColumn.ElementStyle.Setters.Add(new Setter(CheckBox.HorizontalAlignmentProperty, HorizontalAlignment.Center));
                 }
                 else
                 {
@@ -137,13 +133,18 @@ namespace Panuon.UI.Silver
                 {
                     BasedOn = (Style)dataGrid.FindResource(typeof(TextBlock))
                 };
-                newColumn.ElementStyle.Setters.Add(new Setter(TextBlock.VerticalAlignmentProperty, VerticalAlignment.Center));
-                newColumn.ElementStyle.Setters.Add(new Setter(TextBlock.PaddingProperty, new Thickness(0, 0, 21, 0)));
+                newColumn.ElementStyle.Setters.Add(new Setter(TextBlock.HorizontalAlignmentProperty, dataGrid.HorizontalContentAlignment));
+                newColumn.ElementStyle.Setters.Add(new Setter(TextBlock.VerticalAlignmentProperty, dataGrid.VerticalContentAlignment));
+
+                if (dataGrid.HorizontalContentAlignment == HorizontalAlignment.Left)
+                    newColumn.ElementStyle.Setters.Add(new Setter(TextBlock.PaddingProperty, new Thickness(0, 0, 21, 0)));
 
                 newColumn.EditingElementStyle = new Style(typeof(TextBox))
                 {
                     BasedOn = (Style)dataGrid.FindResource(typeof(TextBox))
                 };
+                newColumn.EditingElementStyle.Setters.Add(new Setter(TextBox.VerticalAlignmentProperty, dataGrid.VerticalContentAlignment));
+                newColumn.EditingElementStyle.Setters.Add(new Setter(TextBox.HorizontalAlignmentProperty, dataGrid.HorizontalContentAlignment));
                 newColumn.EditingElementStyle.Setters.Add(new Setter(TextBox.PaddingProperty, new Thickness(0)));
                 newColumn.EditingElementStyle.Setters.Add(new Setter(TextBox.HeightProperty, 30.0));
 
