@@ -51,7 +51,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty CurrentIndexProperty =
-            DependencyProperty.Register("CurrentIndex", typeof(int), typeof(Pagination), new PropertyMetadata(1, OnCurrentIndexChanged));
+            DependencyProperty.Register("CurrentIndex", typeof(int), typeof(Pagination), new PropertyMetadata(0, OnCurrentIndexChanged));
 
         public int TotalIndex
         {

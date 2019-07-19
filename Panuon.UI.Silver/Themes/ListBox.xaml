@@ -92,7 +92,7 @@
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           x:Name="Presenter"
-                                          Opacity="0.8"
+                                          Opacity="0.95"
                                           ContentSource="Content" />
                     </Grid>
                     <ControlTemplate.Triggers>
@@ -115,9 +115,6 @@
                             <Setter TargetName="BdrMain"
                                     Property="Background"
                                     Value="{Binding Path=(local:ListBoxHelper.HoverBrush),RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
-                            <Setter TargetName="Presenter"
-                                    Property="Opacity"
-                                    Value="0.7" />
                         </MultiTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
