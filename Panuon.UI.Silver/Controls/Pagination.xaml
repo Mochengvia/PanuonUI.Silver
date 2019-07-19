@@ -4,10 +4,12 @@
                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                 xmlns:local="clr-namespace:Panuon.UI.Silver"
+                xmlns:converter="clr-namespace:Panuon.UI.Silver.Converters"
                 mc:Ignorable="d"
                 d:DesignHeight="30"
                 d:DesignWidth="200"
                 Height="30"
+                FontSize="13"
                 HorizontalAlignment="Left"
                 Background="#888888"
                 Foreground="#FFFFFF"
@@ -16,6 +18,9 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converter.xaml" />
+                <ResourceDictionary>
+                    <converter:Add5Converter x:Key="Add5Converter"/>
+                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentControl.Resources>
@@ -26,7 +31,7 @@
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
         <RepeatButton x:Name="BtnPrevious"
-                      FontSize="18"
+                      FontSize="{Binding FontSize,ElementName=pagination,Converter={StaticResource Add5Converter}}"
                       local:RepeatButtonHelper.HoverBrush="{Binding ThemeBrush,ElementName=pagination}"
                       local:RepeatButtonHelper.CornerRadius="{Binding CornerRadius,ElementName=pagination}"
                       Width="{Binding ActualHeight,ElementName=pagination}"
@@ -48,8 +53,8 @@
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Grid x:Name="GrdMain"
-                          Width="30"
-                          Height="30"
+                          MinWidth="{Binding ActualHeight,ElementName=pagination}"
+                          Height="{Binding ActualHeight,ElementName=pagination}"
                           Margin="0,0,5,0">
                         <Border x:Name="BdrDot"
                                 Visibility="Collapsed"
@@ -69,8 +74,7 @@
                                      IsChecked="{Binding IsChecked}"
                                      GroupName="{Binding GroupId,ElementName=pagination}"
                                      Click="RdbIndex_Click"
-                                     Width="30"
-                                     Height="30"
+                                     FontSize="{Binding FontSize,ElementName=pagination}"
                                      Foreground="{Binding Foreground,ElementName=pagination}"
                                      Background="{Binding Background,ElementName=pagination}"
                                      BorderThickness="{Binding BorderThickness,ElementName=pagination}"
