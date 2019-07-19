@@ -39,7 +39,7 @@
         <Setter Property="VerticalContentAlignment"
                 Value="Center" />
         <Setter Property="HorizontalContentAlignment"
-                Value="Left" />
+                Value="Stretch" />
         <Setter Property="AlternationCount"
                 Value="2" />
         <Setter Property="Padding"
