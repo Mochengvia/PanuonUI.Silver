@@ -18,19 +18,6 @@ Zhihu : @末城via
 New controls : ColorSelector and ColorPicker  
 新增控件：颜色选择器和颜色组合框  
 
-
-2019-7-11  
-You can bind enum type to comboBox now :)    
-现在可以将Enum类型直接绑定到ComboBox上了。  
-
-Example:  
-```
-<ComboBox pu:ComboBoxHelper.Icon="&#xf013;"
-          pu:ComboBoxHelper.BindToEnum="{x:Static pu:ButtonStyle.Hollow}"/>
-```
-
-![](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/Panuon.UI.Silver/comboEx.png)
-
 2019-7-10
 Loading : Add two new styles : "Ring2" and "Classic"  
 Loading控件： 新增"Ring2"和"Classic"样式  
