@@ -9,7 +9,9 @@
             Title="NavbarWindow"
             WindowStartupLocation="CenterScreen"
             Height="450"
-            Width="800">
+            Width="800"
+            BorderThickness="0"
+            pu:WindowXCaption.Header=" ">
     <pu:WindowXCaption.ExtendControl>
         <pu:DropDown HorizontalAlignment="Left"
                      VerticalAlignment="Top">
@@ -114,6 +116,104 @@
         <TextBlock Text="Examples/NavbarWindow.xaml"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
-                   Foreground="Gray" />
+                   Foreground="Gray"
+                   Opacity="0.5" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid Background="#3E3E3E"
+                  Margin="0,-35,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBlock FontSize="20"
+                           FontWeight="Light"
+                           Foreground="White"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top"
+                           FontFamily="Segoe UI"
+                           Margin="10,5,0,0">
+                    <Run>P A N</Run>
+                    <Run Foreground="#FF67DA82">U O N</Run>
+                    <TextBlock.Effect>
+                        <DropShadowEffect Color="White"
+                                          ShadowDepth="0"
+                                          BlurRadius="10"
+                                          Opacity="0.5" />
+                    </TextBlock.Effect>
+                </TextBlock>
+                <TreeView Grid.Row="1"
+                          Background="Transparent"
+                          pu:TreeViewHelper.ItemHeight="40"
+                          pu:TreeViewHelper.TreeViewStyle="Modern"
+                          pu:TreeViewHelper.SelectedBrush="#22FFFFFF"
+                          BorderBrush="White"
+                          Foreground="#AAFFFFFF">
+                    <TreeViewItem Header="Home"
+                                  IsSelected="True"
+                                  Padding="10,0,0,0"
+                                  pu:TreeViewHelper.ItemIcon="&#xf015;" />
+                    <TreeViewItem Header="Departments"
+                                  IsExpanded="True"
+                                  Padding="10,0,0,0"
+                                  pu:TreeViewHelper.ItemIcon="&#xf022;">
+                        <TreeViewItem Header="General Manager"
+                                      Padding="40,0,0,0" />
+                        <TreeViewItem Header="Human Resource"
+                                      Padding="40,0,0,0" />
+                        <TreeViewItem Header="Development"
+                                      Padding="40,0,0,0" />
+                        <TreeViewItem Header="Sales"
+                                      Padding="40,0,0,0" />
+                    </TreeViewItem>
+                    <TreeViewItem Header="Settings"
+                                  Padding="10,0,0,0"
+                                  pu:TreeViewHelper.ItemIcon="&#xf013;" />
+                </TreeView>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid Width="300"
+                      HorizontalAlignment="Left">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="17*" />
+                        <ColumnDefinition Width="43*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBox pu:TextBoxHelper.CornerRadius="20"
+                             pu:TextBoxHelper.Watermark="Search ..."
+                             Height="40"
+                             Margin="10,10"
+                             Padding="15,0,30,0"
+                             Grid.ColumnSpan="2" />
+                    <Button HorizontalAlignment="Right"
+                            pu:ButtonHelper.ButtonStyle="Link"
+                            Content="&#xf002;"
+                            FontFamily="{DynamicResource FontAwesome}"
+                            Margin="0,0,15,0"
+                            Width="30"
+                            Grid.Column="1" />
+                </Grid>
+                <Grid Grid.Row="1">
+                    <DataGrid
+                        Margin="10">
+                        <DataGrid.Columns>
+                            <DataGridCheckBoxColumn Width="40"/>
+                            <DataGridTextColumn Width="*"
+                                                Header="Name"/>
+                            <DataGridTextColumn Width="*"
+                                                Header="PhoneNumber" />
+                            <DataGridTextColumn Width="*"
+                                                Header="Email" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </Grid>
+        </Grid>
     </Grid>
 </pu:WindowX>
