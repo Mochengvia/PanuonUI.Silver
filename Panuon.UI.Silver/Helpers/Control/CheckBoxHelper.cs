@@ -17,7 +17,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty CheckBoxStyleProperty =
-            DependencyProperty.RegisterAttached("CheckBoxStyle", typeof(CheckBoxStyle), typeof(CheckBoxHelper));
+            DependencyProperty.RegisterAttached("CheckBoxStyle", typeof(CheckBoxStyle), typeof(CheckBoxHelper), new PropertyMetadata(CheckBoxStyle.Standard));
         #endregion
 
         #region CheckedBackground

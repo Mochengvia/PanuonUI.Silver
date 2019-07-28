@@ -191,6 +191,7 @@
                                         </Grid.ColumnDefinitions>
                                         <Label x:Name="LblIcon"
                                                Content="{Binding Path=(local:TreeViewHelper.ItemIcon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
+                                               FontSize="{Binding FontSize,RelativeSource={RelativeSource AncestorType=TreeViewItem}}"
                                                Foreground="{TemplateBinding Foreground}"
                                                FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
                                                VerticalAlignment="Center"
@@ -289,6 +290,7 @@
                                         <Label x:Name="LblIcon"
                                                Content="{Binding Path=(local:TreeViewHelper.ItemIcon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
                                                Foreground="{TemplateBinding Foreground}"
+                                               FontSize="{Binding FontSize,RelativeSource={RelativeSource AncestorType=TreeViewItem}}"
                                                FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
                                                VerticalAlignment="Center"
                                                Margin="5,0,0,0" />
@@ -471,6 +473,7 @@
                                         </Grid.ColumnDefinitions>
                                         <Label x:Name="LblIcon"
                                                Content="{Binding Path=(local:TreeViewHelper.ItemIcon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
+                                               FontSize="{Binding FontSize,RelativeSource={RelativeSource AncestorType=TreeViewItem}}"
                                                Foreground="{TemplateBinding Foreground}"
                                                FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
                                                VerticalAlignment="Center"
@@ -611,6 +614,7 @@
                                         </Grid.ColumnDefinitions>
                                         <Label x:Name="LblIcon"
                                                Content="{Binding Path=(local:TreeViewHelper.ItemIcon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
+                                               FontSize="{Binding FontSize,RelativeSource={RelativeSource AncestorType=TreeViewItem}}"
                                                Foreground="{TemplateBinding Foreground}"
                                                FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
                                                VerticalAlignment="Center"

@@ -5,13 +5,28 @@ using System.Text;
 
 namespace Panuon.UI.Silver
 {
-    #region WindowAnimation
-    public enum WindowAnimation
+    #region MessageBoxStyle
+    public enum MessageBoxStyle
+    {
+        Standard,
+        Modern,
+        //Poster
+    }
+
+    public enum MessageBoxIcon
     {
         None,
-        Fade,
-        Gradual,
-        Scale,
+        Info,
+        Success,
+        Error,
+    }
+
+    public enum DefaultButton
+    {
+        None,
+        YesOK,
+        NoOrCancel,
+        CancelOrNo,
     }
     #endregion
 
@@ -155,6 +170,7 @@ namespace Panuon.UI.Silver
     {
         Standard,
         Classic,
+        Card,
     }
     #endregion
 
@@ -209,6 +225,7 @@ namespace Panuon.UI.Silver
         Center,
     }
     #endregion
+
 
     
     #region ItemsControl

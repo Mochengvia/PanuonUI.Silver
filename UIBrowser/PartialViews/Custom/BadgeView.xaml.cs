@@ -1,5 +1,7 @@
 ﻿using Panuon.UI.Silver;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -10,9 +12,9 @@ using UIBrowser.Helpers;
 namespace UIBrowser.PartialViews.Native
 {
     /// <summary>
-    /// ComboBoxView.xaml 的交互逻辑
+    /// DateTimePickerView.xaml 的交互逻辑
     /// </summary>
-    public partial class ColorPickerView : UserControl
+    public partial class BadgeView : UserControl
     {
         #region Identity
         private bool _isCodeViewing;
@@ -20,7 +22,7 @@ namespace UIBrowser.PartialViews.Native
         private LinearGradientBrush _linearGradientBrush;
         #endregion
 
-        public ColorPickerView()
+        public BadgeView()
         {
             InitializeComponent();
             Loaded += ButtonView_Loaded;
@@ -32,6 +34,15 @@ namespace UIBrowser.PartialViews.Native
 
         private void ButtonView_Loaded(object sender, RoutedEventArgs e)
         {
+            UpdateTemplate();
+            UpdateCode();
+        }
+
+        private void SldTheme_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (!IsLoaded)
+                return;
+
             UpdateTemplate();
             UpdateCode();
         }
@@ -78,35 +89,25 @@ namespace UIBrowser.PartialViews.Native
             Clipboard.SetText(TbCode.Text);
         }
 
-        private void ChbIsOpacityEnabled_CheckChanged(object sender, RoutedEventArgs e)
+
+        private void ChbIsWaving_CheckChanged(object sender, RoutedEventArgs e)
         {
             if (!IsLoaded)
                 return;
 
-            CpCustom.IsOpacityEnabled = ChbIsOpacityEnabled.IsChecked == true;
-
+            BdgCustom.IsWaving = ChbIsWaving.IsChecked == true;
             UpdateCode();
         }
 
-        private void ChbShowMeasuredValue_CheckChanged(object sender, RoutedEventArgs e)
+        private void TbText_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!IsLoaded)
                 return;
 
-            CpCustom.IsMeasuredValueVisible = ChbShowMeasuredValue.IsChecked == true;
-            UpdateCode();
-        }
-
-        private void ChbShowDefaultColorPanel_CheckChanged(object sender, RoutedEventArgs e)
-        {
-            if (!IsLoaded)
-                return;
-
-            CpCustom.IsDefaultColorPanelVisible = ChbShowDefaultColorPanel.IsChecked == true;
+            BdgCustom.Text = TbText.Text;
 
             UpdateCode();
         }
-
         #endregion
 
         #region Function
@@ -125,27 +126,30 @@ namespace UIBrowser.PartialViews.Native
         }
         private void UpdateTemplate()
         {
-
+            var color = Helper.GetColorByOffset(_linearGradientBrush.GradientStops, SldTheme.Value / 7);
+            BdgCustom.Background = color.ToBrush();
         }
 
         private void UpdateCode()
         {
-            var isOpacityEnabled = CpCustom.IsOpacityEnabled;
-            var isShowValue = CpCustom.IsMeasuredValueVisible;
-            var isDefaultPanelVisible = CpCustom.IsDefaultColorPanelVisible;
+            var isWaving = BdgCustom.IsWaving;
+            var text = BdgCustom.Text;
 
-            TbCode.Text = $"<pu:ColorPicker  Width=\"{CpCustom.ActualWidth}\"" +
-                        $"\nHeight=\"{CpCustom.ActualHeight}\"" +
-                        (isOpacityEnabled ? "\nIsOpacityEnabled=\"True\"" : "") +
-                        (isShowValue ? "\nIsMeasuredValueVisible=\"True\"" : "") +
-                        (isDefaultPanelVisible ? "\nIsDefaultColorPanelVisible=\"True\"" : "") +
-                        " />";
+            TbCode.Text = $"<pu:Badge Height=\"{BdgCustom.ActualHeight}\"" +
+                          "\nHorizontalAlignment=\"Right\"" +
+                          "\nVerticalAlignment=\"Top\"" +
+                          $"\nMargin=\"-{BdgCustom.ActualHeight / 2},-{BdgCustom.ActualHeight / 2}\"" +
+                          (isWaving ? $"\nIsWaving=\"{isWaving}\"" : "") +
+                          (text.IsNullOrEmpty() ? "" : $"\nText=\"{text}\"") +
+                          $"\nBackground=\"{BdgCustom.Background.ToColor().ToHexString(false)}\"" +
+                          " />";
         }
 
 
 
 
         #endregion
+
 
     }
 }

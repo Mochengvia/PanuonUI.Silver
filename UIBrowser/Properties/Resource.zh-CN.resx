@@ -331,7 +331,7 @@
     <value>淡出</value>
   </data>
   <data name="LayoutHelper" xml:space="preserve">
-    <value>AnimationHelper 布局辅助</value>
+    <value>LayoutHelper 布局辅助</value>
   </data>
   <data name="MarginTo" xml:space="preserve">
     <value>移动到指定位置</value>
@@ -365,5 +365,20 @@
   </data>
   <data name="ColorSelector" xml:space="preserve">
     <value>ColorSelector 颜色选择器</value>
+  </data>
+  <data name="IsWaving" xml:space="preserve">
+    <value>波纹</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>文字</value>
+  </data>
+  <data name="Badge" xml:space="preserve">
+    <value>Badge 徽章</value>
+  </data>
+  <data name="WindowX" xml:space="preserve">
+    <value>WindowX 窗体X</value>
+  </data>
+  <data name="MessageBoxX" xml:space="preserve">
+    <value>MessageBoxX 消息框X</value>
   </data>
 </root>

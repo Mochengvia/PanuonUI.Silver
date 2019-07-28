@@ -1,4 +1,4 @@
-﻿<Window x:Class="UIBrowser.MainWindow"
+﻿<pu:WindowX x:Class="UIBrowser.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -11,6 +11,16 @@
         Height="700"
         Width="1200"
         WindowStartupLocation="CenterScreen">
+    <pu:WindowXCaption.ExtendControl>
+        <Button Content="&#xf09b;"
+                FontFamily="{DynamicResource FontAwesome}"
+                pu:ButtonHelper.ButtonStyle="Hollow"
+                pu:ButtonHelper.HoverBrush="#99999999"
+                Width="40"
+                BorderThickness="0"
+                Foreground="#3E3E3E"
+                FontSize="20" />
+    </pu:WindowXCaption.ExtendControl>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.3*"
@@ -65,4 +75,4 @@
                         Grid.Column="1"
                         Margin="20,0" />
     </Grid>
-</Window>
+</pu:WindowX>

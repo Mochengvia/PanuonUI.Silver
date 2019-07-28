@@ -2,8 +2,11 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Panuon.UI.Silver"
                     xmlns:converter="clr-namespace:Panuon.UI.Silver.Converters"
-                    xmlns:options="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
+                    xmlns:options="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+                    xmlns:shell="http://schemas.microsoft.com/winfx/2006/xaml/presentation/shell"
+                    xmlns:internal="clr-namespace:Panuon.UI.Silver.Controls.Internal">
     <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Button.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/CheckBox.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
@@ -15,6 +18,285 @@
     <converter:LoadingLineYConverter x:Key="LoadingLineYConverter" />
     <converter:LoadingClassicMarginConverter x:Key="LoadingClassicMarginConverter" />
     <converter:LoadingClassicEllipseSizeConverter x:Key="LoadingClassicEllipseSizeConverter" />
+    <converter:CornerRadiusAdd1Converter x:Key="CornerRadiusAdd1Converter" />
+    <converter:Minus4Converter x:Key="Minus4Converter" />
+
+    <Style TargetType="{x:Type local:WindowX}">
+        <Setter Property="FontFamily"
+                Value="{StaticResource Default_FontFamily}" />
+        <Setter Property="SnapsToDevicePixels"
+                Value="{StaticResource Default_SnapsToDevicePixels}" />
+        <Setter Property="FontSize"
+                Value="{StaticResource Default_FontSize}" />
+        <Setter Property="FocusVisualStyle"
+                Value="{x:Null}" />
+        <Setter Property="BorderBrush"
+                Value="LightGray" />
+        <Setter Property="BorderThickness"
+                Value="1" />
+        <Setter Property="Background"
+                Value="White" />
+        <Setter Property="MaskBrush"
+                Value="#AA3E3E3E" />
+        <Setter Property="local:WindowXCaption.Background"
+                Value="Transparent" />
+        <Setter Property="local:WindowXCaption.Foreground"
+                Value="#3E3E3E" />
+        <Setter Property="local:WindowXCaption.Height"
+                Value="35" />
+        <Setter Property="shell:WindowChrome.WindowChrome">
+            <Setter.Value>
+                <shell:WindowChrome  ResizeBorderThickness="5"
+                                     CornerRadius="0"
+                                     CaptionHeight="0"
+                                     GlassFrameThickness="5" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:WindowX}">
+                    <Border Grid.RowSpan="2"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid x:Name="GrdMain">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid shell:WindowChrome.IsHitTestVisibleInChrome="True"
+                                  Background="{Binding Path=(local:WindowXCaption.Background),RelativeSource={RelativeSource AncestorType=Window}}"
+                                  Height="{Binding Path=(local:WindowXCaption.Height),RelativeSource={RelativeSource AncestorType=Window}}"
+                                  x:Name="GrdCaption">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <StackPanel x:Name="StkTitle"
+                                            Orientation="Horizontal"
+                                            VerticalAlignment="Stretch">
+                                    <Image x:Name="ImgIcon"
+                                           Source="{TemplateBinding Icon}"
+                                           RenderOptions.BitmapScalingMode="HighQuality"
+                                           VerticalAlignment="Center"
+                                           Width="{TemplateBinding FontSize,Converter={StaticResource Add5Converter}}"
+                                           Height="{TemplateBinding FontSize,Converter={StaticResource Add5Converter}}"
+                                           Margin="5,0,0,0" />
+                                    <TextBlock Margin="5,0,0,0"
+                                               Text="{TemplateBinding Title}"
+                                               VerticalAlignment="Center" />
+                                </StackPanel>
+                                <ContentControl x:Name="CpHeader"
+                                                Visibility="Collapsed"
+                                                Content="{Binding Path=(local:WindowXCaption.Header),RelativeSource={RelativeSource AncestorType=Window}}" />
+                                <ContentControl Grid.Column="1"
+                                                x:Name="CcExtend"
+                                                Content="{Binding Path=(local:WindowXCaption.ExtendControl),RelativeSource={RelativeSource AncestorType=Window}}" />
+                                <Button Grid.Column="2"
+                                        x:Name="BtnMinimize"
+                                        Style="{Binding Path=(local:WindowXCaption.MinimizeButtonStyle),RelativeSource={RelativeSource AncestorType=Window}}"
+                                        Command="{TemplateBinding MinCommand}"
+                                        CommandParameter="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}}" />
+                                <Button Grid.Column="3"
+                                        x:Name="BtnMaximize"
+                                        Style="{Binding Path=(local:WindowXCaption.MaximizeButtonStyle),RelativeSource={RelativeSource AncestorType=Window}}"
+                                        Command="{TemplateBinding MaxCommand}"
+                                        CommandParameter="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}}" />
+                                <Button Grid.Column="4"
+                                        x:Name="BtnClose"
+                                        IsEnabled="{Binding Path=(local:WindowXCaption.DisableCloseButton),RelativeSource={RelativeSource AncestorType=Window},Converter={StaticResource BoolInverseConverter}}"
+                                        Style="{Binding Path=(local:WindowXCaption.CloseButtonStyle),RelativeSource={RelativeSource AncestorType=Window}}"
+                                        Command="{TemplateBinding CloseCommand}"
+                                        CommandParameter="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}}" />
+                            </Grid>
+                            <AdornerDecorator Grid.Row="1">
+                                <ContentPresenter />
+                            </AdornerDecorator>
+                            <Rectangle x:Name="Rect"
+                                       Grid.RowSpan="2"
+                                       Fill="{TemplateBinding MaskBrush}"
+                                       Opacity="0"
+                                       Visibility="Collapsed" />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMaskVisible"
+                                 Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Rect"
+                                                                       Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0"
+                                                                    Value="{x:Static Visibility.Visible}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <DoubleAnimation Storyboard.TargetName="Rect"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         From="0"
+                                                         To="1"
+                                                         Duration="0:0:0.3" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Rect"
+                                                                       Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0.1"
+                                                                    Value="{x:Static Visibility.Collapsed}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <DoubleAnimation Storyboard.TargetName="Rect"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         Duration="0:0:0.1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger Property="WindowState"
+                                 Value="Maximized">
+                            <Setter TargetName="GrdMain"
+                                    Property="Margin"
+                                    Value="5" />
+                        </Trigger>
+                        <DataTrigger Binding="{Binding Icon,RelativeSource={RelativeSource Self},Mode=OneWay, Converter={StaticResource IsNullConverter}}"
+                                     Value="True">
+                            <Setter TargetName="ImgIcon"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=(local:WindowXCaption.Header),RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={StaticResource IsNotNullConverter}}"
+                                     Value="True">
+                            <Setter TargetName="StkTitle"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
+                            <Setter TargetName="CpHeader"
+                                    Property="Visibility"
+                                    Value="Visible" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=(local:WindowXCaption.HideBasicButtons),RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                                     Value="True">
+                            <Setter TargetName="BtnMinimize"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
+                            <Setter TargetName="BtnMaximize"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
+                            <Setter TargetName="BtnClose"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="local:WindowXCaption.MaximizeButtonStyle">
+            <Setter.Value>
+                <Style TargetType="{x:Type Button}"
+                       BasedOn="{StaticResource {x:Type Button}}">
+                    <Setter Property="local:ButtonHelper.ButtonStyle"
+                            Value="Hollow" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=(local:ButtonHelper.ButtonStyle),RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                                     Value="Hollow">
+                            <Setter Property="BorderThickness"
+                                    Value="0" />
+                            <Setter Property="local:ButtonHelper.HoverBrush"
+                                    Value="#99999999" />
+                            <Setter Property="Height"
+                                    Value="35" />
+                            <Setter Property="Width"
+                                    Value="{Binding ActualHeight,Converter={StaticResource Add5Converter},RelativeSource={RelativeSource Self}}" />
+                            <Setter Property="BorderThickness"
+                                    Value="0" />
+                            <Setter Property="Foreground"
+                                    Value="{Binding Path=(local:WindowXCaption.Foreground),RelativeSource={RelativeSource AncestorType=Window},Mode=OneWay}" />
+                            <Setter Property="FontSize"
+                                    Value="20" />
+                            <Setter Property="Content"
+                                    Value="□" />
+                            <Setter Property="HorizontalAlignment"
+                                    Value="Right" />
+                            <Setter Property="VerticalAlignment"
+                                    Value="Top" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="local:WindowXCaption.MinimizeButtonStyle">
+            <Setter.Value>
+                <Style TargetType="{x:Type Button}"
+                       BasedOn="{StaticResource {x:Type Button}}">
+                    <Setter Property="local:ButtonHelper.ButtonStyle"
+                            Value="Hollow" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=(local:ButtonHelper.ButtonStyle),RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                                     Value="Hollow">
+                            <Setter Property="BorderThickness"
+                                    Value="0" />
+                            <Setter Property="local:ButtonHelper.HoverBrush"
+                                    Value="#99999999" />
+                            <Setter Property="Height"
+                                    Value="35" />
+                            <Setter Property="Width"
+                                    Value="{Binding ActualHeight,Converter={StaticResource Add5Converter},RelativeSource={RelativeSource Self}}" />
+                            <Setter Property="BorderThickness"
+                                    Value="0" />
+                            <Setter Property="Foreground"
+                                    Value="{Binding Path=(local:WindowXCaption.Foreground),RelativeSource={RelativeSource AncestorType=Window},Mode=OneWay}" />
+                            <Setter Property="FontSize"
+                                    Value="20" />
+                            <Setter Property="Content"
+                                    Value="-" />
+                            <Setter Property="HorizontalAlignment"
+                                    Value="Right" />
+                            <Setter Property="VerticalAlignment"
+                                    Value="Top" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="local:WindowXCaption.CloseButtonStyle">
+            <Setter.Value>
+                <Style TargetType="{x:Type Button}"
+                       BasedOn="{StaticResource {x:Type Button}}">
+                    <Setter Property="local:ButtonHelper.ButtonStyle"
+                            Value="Hollow" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=(local:ButtonHelper.ButtonStyle),RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                                     Value="Hollow">
+                            <Setter Property="BorderThickness"
+                                    Value="0" />
+                            <Setter Property="local:ButtonHelper.HoverBrush"
+                                    Value="#CCC53434" />
+                            <Setter Property="Height"
+                                    Value="35" />
+                            <Setter Property="Width"
+                                    Value="{Binding ActualHeight,Converter={StaticResource Add5Converter},RelativeSource={RelativeSource Self}}" />
+                            <Setter Property="BorderThickness"
+                                    Value="0" />
+                            <Setter Property="Foreground"
+                                    Value="{Binding Path=(local:WindowXCaption.Foreground),RelativeSource={RelativeSource AncestorType=Window},Mode=OneWay}" />
+                            <Setter Property="FontSize"
+                                    Value="20" />
+                            <Setter Property="Content"
+                                    Value="×" />
+                            <Setter Property="HorizontalAlignment"
+                                    Value="Right" />
+                            <Setter Property="VerticalAlignment"
+                                    Value="Top" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
     <Style TargetType="{x:Type local:Loading}">
         <Setter Property="SnapsToDevicePixels"
@@ -627,7 +909,7 @@
                                                                  Duration="0:0:1"
                                                                  AutoReverse="True"
                                                                  RepeatBehavior="Forever">
-                                                  
+
                                                 </DoubleAnimation>
                                             </Storyboard>
                                         </BeginStoryboard>
@@ -639,7 +921,7 @@
                                                                  Storyboard.TargetProperty="Angle"
                                                                  Duration="0:0:0" />
                                                 <DoubleAnimation Storyboard.TargetProperty="Value"
-                                                                 Duration="0:0:0"/>
+                                                                 Duration="0:0:0" />
                                             </Storyboard>
                                         </BeginStoryboard>
 
@@ -664,13 +946,14 @@
                                   Visibility="Collapsed">
                                 <Border Margin="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=local:Loading},Converter={StaticResource LoadingClassicMarginConverter}}">
                                     <Border.RenderTransform>
-                                        <RotateTransform x:Name="Rotate1" Angle="-75" />
+                                        <RotateTransform x:Name="Rotate1"
+                                                         Angle="-75" />
                                     </Border.RenderTransform>
                                     <Ellipse x:Name="Ell1"
                                              Fill="{TemplateBinding Stroke}"
                                              Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=local:Loading},Converter={StaticResource LoadingClassicEllipseSizeConverter}}"
-                                             Height="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=local:Loading},Converter={StaticResource LoadingClassicEllipseSizeConverter}}" 
-                                             Opacity="0"/>
+                                             Height="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=local:Loading},Converter={StaticResource LoadingClassicEllipseSizeConverter}}"
+                                             Opacity="0" />
                                 </Border>
                                 <Border Margin="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=local:Loading},Converter={StaticResource LoadingClassicMarginConverter}}">
                                     <Border.RenderTransform>
@@ -713,8 +996,8 @@
                                     <Ellipse x:Name="Ell5"
                                              Fill="{TemplateBinding Stroke}"
                                              Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=local:Loading},Converter={StaticResource LoadingClassicEllipseSizeConverter}}"
-                                             Height="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=local:Loading},Converter={StaticResource LoadingClassicEllipseSizeConverter}}" 
-                                             Opacity="0"/>
+                                             Height="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=local:Loading},Converter={StaticResource LoadingClassicEllipseSizeConverter}}"
+                                             Opacity="0" />
                                 </Border>
                             </Grid>
                             <ControlTemplate.Triggers>
@@ -729,7 +1012,7 @@
                                                 <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Ell1"
                                                                                Storyboard.TargetProperty="Opacity">
                                                     <DiscreteDoubleKeyFrame KeyTime="0:0:0.3"
-                                                                            Value="1"/>
+                                                                            Value="1" />
                                                 </DoubleAnimationUsingKeyFrames>
                                                 <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Ell2"
                                                                                Storyboard.TargetProperty="Opacity">
@@ -751,7 +1034,7 @@
                                                     <DiscreteDoubleKeyFrame KeyTime="0:0:0.9"
                                                                             Value="1" />
                                                 </DoubleAnimationUsingKeyFrames>
-                                                
+
                                                 <DoubleAnimation Storyboard.TargetName="Rotate1"
                                                                  Storyboard.TargetProperty="Angle"
                                                                  From="-135"
@@ -801,8 +1084,8 @@
                                                         <CircleEase EasingMode="EaseInOut" />
                                                     </DoubleAnimation.EasingFunction>
                                                 </DoubleAnimation>
-                                                
-                                                
+
+
                                                 <DoubleAnimation Storyboard.TargetName="Rotate1"
                                                                  Storyboard.TargetProperty="Angle"
                                                                  To="245"
@@ -880,7 +1163,7 @@
                                                     </DoubleAnimation.EasingFunction>
                                                 </DoubleAnimation>
 
-                                              
+
                                                 <DoubleAnimation Storyboard.TargetName="Rotate1"
                                                                  Storyboard.TargetProperty="Angle"
                                                                  To="605"
@@ -958,7 +1241,7 @@
                                                         <CircleEase EasingMode="EaseInOut" />
                                                     </DoubleAnimation.EasingFunction>
                                                 </DoubleAnimation>
-                                                
+
                                                 <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Ell1"
                                                                                Storyboard.TargetProperty="Opacity">
                                                     <DiscreteDoubleKeyFrame KeyTime="0:0:4.5"
@@ -1009,7 +1292,7 @@
 
                                                 <DoubleAnimation Storyboard.TargetName="Rotate1"
                                                                  Storyboard.TargetProperty="Angle"
-                                                                 Duration="0:0:0"/>
+                                                                 Duration="0:0:0" />
                                                 <DoubleAnimation Storyboard.TargetName="Rotate2"
                                                                  Storyboard.TargetProperty="Angle"
                                                                  Duration="0:0:0" />
@@ -1220,6 +1503,7 @@
                         <local:NotTopMostPopup Placement="Bottom"
                                                x:Name="Popup"
                                                Focusable="False"
+                                               StaysOpen="True"
                                                Tag="{Binding ElementName=ToggleButton}"
                                                AllowsTransparency="True"
                                                PopupAnimation="Slide">

@@ -53,5 +53,19 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("SelectedBrush", typeof(Brush), typeof(ListBoxHelper));
         #endregion
 
+        #region SelectedForeground
+        public static Brush GetSelectedForeground(DependencyObject obj)
+        {
+            return (Brush)obj.GetValue(SelectedForegroundProperty);
+        }
+
+        public static void SetSelectedForeground(DependencyObject obj, Brush value)
+        {
+            obj.SetValue(SelectedForegroundProperty, value);
+        }
+
+        public static readonly DependencyProperty SelectedForegroundProperty =
+            DependencyProperty.RegisterAttached("SelectedForeground", typeof(Brush), typeof(ListBoxHelper));
+        #endregion
     }
 }

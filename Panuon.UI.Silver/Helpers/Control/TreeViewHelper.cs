@@ -30,7 +30,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty TreeViewStyleProperty =
-            DependencyProperty.RegisterAttached("TreeViewStyle", typeof(TreeViewStyle), typeof(TreeViewHelper));
+            DependencyProperty.RegisterAttached("TreeViewStyle", typeof(TreeViewStyle), typeof(TreeViewHelper), new PropertyMetadata(TreeViewStyle.Standard));
         #endregion
 
         #region SelectMode

@@ -145,9 +145,17 @@ namespace UIBrowser.PartialViews.Native
             {
                 case TabControlStyle.Standard:
                     TabControlHelper.SetSelectedForeground(TabCustom, color.ToBrush());
+                    TabControlHelper.SetSelectedBackground(TabCustom, null);
                     break;
                 case TabControlStyle.Classic:
+                    TabCustom.Background = Brushes.Transparent;
                     TabControlHelper.SetSelectedForeground(TabCustom, color.ToBrush());
+                    TabControlHelper.SetSelectedBackground(TabCustom, null);
+                    break;
+                case TabControlStyle.Card:
+
+                    TabControlHelper.SetSelectedForeground(TabCustom, Brushes.White);
+                    TabControlHelper.SetSelectedBackground(TabCustom, color.ToBrush());
                     break;
             }
         }
@@ -160,6 +168,8 @@ namespace UIBrowser.PartialViews.Native
             TbCode.Text = "<TabControl  Width=\"{TabCustom.Width}\"" +
                         (tabStyle == TabControlStyle.Standard ? "" : $"\npu:TabControlHelper.TabControlStyle=\"{tabStyle}\"") +
                         $"\npu:TabControlHelper.SelectedForeground=\"{TabControlHelper.GetSelectedForeground(TabCustom).ToColor().ToHexString(false)}\"" +
+                        (tabStyle != TabControlStyle.Card ? "" : $"\npu:TabControlHelper.SelectedBackground=\"{TabControlHelper.GetSelectedBackground(TabCustom).ToColor().ToHexString(false)}\"") +
+                        (tabStyle != TabControlStyle.Card ? "" : $"\nBackground=\"{TabCustom.Background.ToColor().ToHexString(false)}\"") +
                         (canRemove ? $"\npu:TabControlHelper.CanRemove=\"True\"" : "") +
                         " >" +
                         "\n<TabItem Header=\"Item1\"" +

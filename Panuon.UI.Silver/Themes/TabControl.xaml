@@ -34,7 +34,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabControl}">
-                    <Grid KeyboardNavigation.TabNavigation="Local">
+                    <Grid KeyboardNavigation.TabNavigation="Local"
+                          Background="{TemplateBinding Background}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="*" />
@@ -42,10 +43,13 @@
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
-                            <RepeatButton local:RepeatButtonHelper.RepeatButtonStyle="Link"
+                            <ContentControl Content="{Binding Path=(local:TabControlHelper.ExtendControl),RelativeSource={RelativeSource AncestorType=TabControl},Mode=OneWay}"/>
+                            <RepeatButton Grid.Column="1"
+                                          local:RepeatButtonHelper.RepeatButtonStyle="Link"
                                           local:RepeatButtonHelper.HoverBrush="{Binding Path=(local:TabControlHelper.SelectedForeground),RelativeSource={RelativeSource AncestorType=TabControl},Mode=OneWay}"
                                           FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
                                           Content=""
@@ -58,11 +62,12 @@
                                                  ElementName="HeaderPanel" />
                                         <Binding Path="ActualWidth"
                                                  ElementName="ScrollViewer" />
+                                       
                                     </MultiBinding>
                                 </RepeatButton.Visibility>
                             </RepeatButton>
                             <ScrollViewer x:Name="ScrollViewer"
-                                          Grid.Column="1"
+                                          Grid.Column="2"
                                           VirtualizingStackPanel.IsVirtualizing="True"
                                           VirtualizingStackPanel.VirtualizationMode="Recycling"
                                           VerticalScrollBarVisibility="Disabled"
@@ -74,9 +79,10 @@
                                           IsItemsHost="True"
                                           KeyboardNavigation.TabIndex="1" />
                             </ScrollViewer>
-                            <Path Stroke="{TemplateBinding BorderBrush}"
+                            <Path x:Name="Path"
+                                  Stroke="{TemplateBinding BorderBrush}"
                                   StrokeThickness="1"
-                                  Grid.Column="1"
+                                  Grid.Column="2"
                                   VerticalAlignment="Bottom">
                                 <Path.Data>
                                     <MultiBinding Converter="{StaticResource TabControlPathConverter}">
@@ -94,7 +100,7 @@
                                           FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
                                           Content=""
                                           Margin="7,0,0,0"
-                                          Grid.Column="2"
+                                          Grid.Column="3"
                                           Command="{Binding Path=(local:TabControlHelper.ScrollRightCommand),RelativeSource={RelativeSource AncestorType=TabControl},Mode=OneWay}"
                                           CommandParameter="{Binding Path=.,ElementName=ScrollViewer}">
                                 <RepeatButton.Visibility>
@@ -116,6 +122,14 @@
                                               ContentSource="SelectedContent" />
                         </Border>
                     </Grid>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Path=(local:TabControlHelper.TabControlStyle),RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                                     Value="Card">
+                            <Setter TargetName="Path" 
+                                    Property="Visibility"
+                                    Value="Collapsed" />
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -125,7 +139,8 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type TabControl}">
-                            <Grid KeyboardNavigation.TabNavigation="Local">
+                            <Grid KeyboardNavigation.TabNavigation="Local"
+                                  Background="{TemplateBinding Background}">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*" />
                                     <RowDefinition Height="Auto" />
@@ -141,10 +156,13 @@
                                 <Grid Grid.Row="1">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
-                                    <RepeatButton local:RepeatButtonHelper.RepeatButtonStyle="Link"
+                                    <ContentControl Content="{Binding Path=(local:TabControlHelper.ExtendControl),RelativeSource={RelativeSource AncestorType=TabControl},Mode=OneWay}" />
+                                    <RepeatButton Grid.Column="1"
+                                                  local:RepeatButtonHelper.RepeatButtonStyle="Link"
                                                   local:RepeatButtonHelper.HoverBrush="{Binding Path=(local:TabControlHelper.SelectedForeground),RelativeSource={RelativeSource AncestorType=TabControl},Mode=OneWay}"
                                                   FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
                                                   Content=""
@@ -161,7 +179,7 @@
                                         </RepeatButton.Visibility>
                                     </RepeatButton>
                                     <ScrollViewer x:Name="ScrollViewer"
-                                                  Grid.Column="1"
+                                                  Grid.Column="2"
                                                   VirtualizingStackPanel.IsVirtualizing="True"
                                                   VirtualizingStackPanel.VirtualizationMode="Recycling"
                                                   VerticalScrollBarVisibility="Disabled"
@@ -173,12 +191,28 @@
                                                   IsItemsHost="True"
                                                   KeyboardNavigation.TabIndex="1" />
                                     </ScrollViewer>
+                                    <Path x:Name="Path"
+                                          Stroke="{TemplateBinding BorderBrush}"
+                                          StrokeThickness="1"
+                                          Grid.Column="2"
+                                          VerticalAlignment="Top">
+                                        <Path.Data>
+                                            <MultiBinding Converter="{StaticResource TabControlPathConverter}">
+                                                <Binding Path="ActualWidth"
+                                                         ElementName="HeaderPanel" />
+                                                <Binding Path="ActualWidth"
+                                                         ElementName="ScrollViewer" />
+                                                <Binding Path="TabControlPathConverter"
+                                                         RelativeSource="{RelativeSource AncestorType=TabControl}" />
+                                            </MultiBinding>
+                                        </Path.Data>
+                                    </Path>
                                     <RepeatButton local:RepeatButtonHelper.RepeatButtonStyle="Link"
                                                   local:RepeatButtonHelper.HoverBrush="{Binding Path=(local:TabControlHelper.SelectedForeground),RelativeSource={RelativeSource AncestorType=TabControl},Mode=OneWay}"
                                                   FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
                                                   Content=""
                                                   Margin="7,0,0,0"
-                                                  Grid.Column="2"
+                                                  Grid.Column="3"
                                                   Command="{Binding Path=(local:TabControlHelper.ScrollRightCommand),RelativeSource={RelativeSource AncestorType=TabControl},Mode=OneWay}"
                                                   CommandParameter="{Binding Path=.,ElementName=ScrollViewer}">
                                         <RepeatButton.Visibility>
@@ -192,6 +226,14 @@
                                     </RepeatButton>
                                 </Grid>
                             </Grid>
+                            <ControlTemplate.Triggers>
+                                <DataTrigger Binding="{Binding Path=(local:TabControlHelper.TabControlStyle),RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                                             Value="Card">
+                                    <Setter TargetName="Path"
+                                            Property="Visibility"
+                                            Value="Collapsed" />
+                                </DataTrigger>
+                            </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
@@ -201,7 +243,8 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type TabControl}">
-                            <Grid KeyboardNavigation.TabNavigation="Local">
+                            <Grid KeyboardNavigation.TabNavigation="Local"
+                                  Background="{TemplateBinding Background}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*" />
@@ -209,10 +252,13 @@
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
                                         <RowDefinition Height="*" />
                                         <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
-                                    <RepeatButton local:RepeatButtonHelper.RepeatButtonStyle="Link"
+                                    <ContentControl Content="{Binding Path=(local:TabControlHelper.ExtendControl),RelativeSource={RelativeSource AncestorType=TabControl},Mode=OneWay}" />
+                                    <RepeatButton Grid.Row="1"
+                                                  local:RepeatButtonHelper.RepeatButtonStyle="Link"
                                                   local:RepeatButtonHelper.HoverBrush="{Binding Path=(local:TabControlHelper.SelectedForeground),RelativeSource={RelativeSource AncestorType=TabControl},Mode=OneWay}"
                                                   FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
                                                   Content=""
@@ -229,7 +275,7 @@
                                         </RepeatButton.Visibility>
                                     </RepeatButton>
                                     <ScrollViewer x:Name="ScrollViewer"
-                                                  Grid.Row="1"
+                                                  Grid.Row="2"
                                                   VirtualizingStackPanel.IsVirtualizing="True"
                                                   VirtualizingStackPanel.VirtualizationMode="Recycling"
                                                   VerticalScrollBarVisibility="Hidden"
@@ -241,12 +287,28 @@
                                                   IsItemsHost="True"
                                                   KeyboardNavigation.TabIndex="1" />
                                     </ScrollViewer>
+                                    <Path x:Name="Path"
+                                          Stroke="{TemplateBinding BorderBrush}"
+                                          StrokeThickness="1"
+                                          Grid.Row="2"
+                                          VerticalAlignment="Bottom">
+                                        <Path.Data>
+                                            <MultiBinding Converter="{StaticResource TabControlPathConverter}">
+                                                <Binding Path="ActualWidth"
+                                                         ElementName="HeaderPanel" />
+                                                <Binding Path="ActualWidth"
+                                                         ElementName="ScrollViewer" />
+                                                <Binding Path="TabControlPathConverter"
+                                                         RelativeSource="{RelativeSource AncestorType=TabControl}" />
+                                            </MultiBinding>
+                                        </Path.Data>
+                                    </Path>
                                     <RepeatButton local:RepeatButtonHelper.RepeatButtonStyle="Link"
                                                   local:RepeatButtonHelper.HoverBrush="{Binding Path=(local:TabControlHelper.SelectedForeground),RelativeSource={RelativeSource AncestorType=TabControl},Mode=OneWay}"
                                                   FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
                                                   Content=""
                                                   Margin="0,7,0,0"
-                                                  Grid.Row="2"
+                                                  Grid.Row="3"
                                                   Command="{Binding Path=(local:TabControlHelper.ScrollDownCommand),RelativeSource={RelativeSource AncestorType=TabControl},Mode=OneWay}"
                                                   CommandParameter="{Binding Path=.,ElementName=ScrollViewer}">
                                         <RepeatButton.Visibility>
@@ -278,7 +340,8 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type TabControl}">
-                            <Grid KeyboardNavigation.TabNavigation="Local">
+                            <Grid KeyboardNavigation.TabNavigation="Local"
+                                  Background="{TemplateBinding Background}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
@@ -294,10 +357,13 @@
                                 <Grid Grid.Column="1">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
                                         <RowDefinition Height="*" />
                                         <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
-                                    <RepeatButton local:RepeatButtonHelper.RepeatButtonStyle="Link"
+                                    <ContentControl Content="{Binding Path=(local:TabControlHelper.ExtendControl),RelativeSource={RelativeSource AncestorType=TabControl},Mode=OneWay}" />
+                                    <RepeatButton Grid.Row="1"
+                                                  local:RepeatButtonHelper.RepeatButtonStyle="Link"
                                                   local:RepeatButtonHelper.HoverBrush="{Binding Path=(local:TabControlHelper.SelectedForeground),RelativeSource={RelativeSource AncestorType=TabControl},Mode=OneWay}"
                                                   FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
                                                   Content=""
@@ -314,7 +380,7 @@
                                         </RepeatButton.Visibility>
                                     </RepeatButton>
                                     <ScrollViewer x:Name="ScrollViewer"
-                                                  Grid.Row="1"
+                                                  Grid.Row="2"
                                                   VirtualizingStackPanel.IsVirtualizing="True"
                                                   VirtualizingStackPanel.VirtualizationMode="Recycling"
                                                   VerticalScrollBarVisibility="Hidden"
@@ -331,7 +397,7 @@
                                                   FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
                                                   Content=""
                                                   Margin="0,7,0,0"
-                                                  Grid.Row="2"
+                                                  Grid.Row="3"
                                                   Command="{Binding Path=(local:TabControlHelper.ScrollDownCommand),RelativeSource={RelativeSource AncestorType=TabControl},Mode=OneWay}"
                                                   CommandParameter="{Binding Path=.,ElementName=ScrollViewer}">
                                         <RepeatButton.Visibility>
@@ -358,6 +424,13 @@
                          Value="Classic">
                 <Setter Property="BorderBrush"
                         Value="LightGray" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=(local:TabControlHelper.TabControlStyle),RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                         Value="Card">
+                <Setter Property="local:TabControlHelper.SelectedBackground"
+                        Value="#EEEEEE" />
+                <Setter Property="BorderThickness"
+                        Value="0" />
             </DataTrigger>
         </Style.Triggers>
     </Style>
@@ -637,6 +710,84 @@
                     </Setter.Value>
                 </Setter>
             </DataTrigger>
+            <DataTrigger Binding="{Binding Path=(local:TabControlHelper.TabControlStyle),RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}"
+                         Value="Card">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TabItem}">
+                            <Grid>
+                                <Border x:Name="Border"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        Background="{TemplateBinding Background}" />
+                                <Grid x:Name="GrdMain">
+                                    <Grid.Margin>
+                                        <MultiBinding Converter="{StaticResource TabControlRemoveButtonPaddingConverter}">
+                                            <Binding Path="Padding"
+                                                     RelativeSource="{RelativeSource AncestorType=TabItem}" />
+                                            <Binding Path="Visibility"
+                                                     ElementName="BtnRemove" />
+                                        </MultiBinding>
+                                    </Grid.Margin>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <ContentPresenter x:Name="Presenter"
+                                                      ContentSource="Header"
+                                                      VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center" />
+                                    <Button x:Name="BtnRemove"
+                                            local:ButtonHelper.ButtonStyle="Link"
+                                            Visibility="Collapsed"
+                                            Grid.Column="1"
+                                            Content="×"
+                                            FontSize="14"
+                                            Margin="5,0,0,0"
+                                            VerticalAlignment="Center"
+                                            Command="{Binding Path=(local:TabControlHelper.RemoveCommand),RelativeSource={RelativeSource AncestorType=TabItem},Mode=OneWay}">
+                                        <Button.CommandParameter>
+                                            <MultiBinding Converter="{StaticResource MultiCombinerConverter}">
+                                                <Binding Path="."
+                                                         RelativeSource="{RelativeSource AncestorType=TabItem}" />
+                                                <Binding Path="."
+                                                         RelativeSource="{RelativeSource AncestorType=TabControl}" />
+                                            </MultiBinding>
+                                        </Button.CommandParameter>
+                                    </Button>
+                                </Grid>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsSelected"
+                                         Value="True">
+                                    <Setter TargetName="Presenter"
+                                            Property="TextBlock.Foreground"
+                                            Value="{Binding Path=(local:TabControlHelper.SelectedForeground),RelativeSource={RelativeSource AncestorType=TabControl},Mode=OneWay}" />
+                                </Trigger>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}"
+                                                   Value="True" />
+                                        <Condition Binding="{Binding Path=(local:TabControlHelper.SelectedBackground), RelativeSource={RelativeSource AncestorType=TabControl}, Converter={StaticResource IsNotNullConverter}}"
+                                                   Value="True" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter TargetName="Border"
+                                            Property="Background"
+                                            Value="{Binding Path=(local:TabControlHelper.SelectedBackground), RelativeSource={RelativeSource AncestorType=TabControl},Mode=Oneway}" />
+                                </MultiDataTrigger>
+                                <DataTrigger Binding="{Binding Path=(local:TabControlHelper.CanRemove), RelativeSource={RelativeSource Self}}"
+                                             Value="True">
+                                    <Setter TargetName="BtnRemove"
+                                            Property="Visibility"
+                                            Value="Visible" />
+                                </DataTrigger>
+
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+
         </Style.Triggers>
     </Style>
 </ResourceDictionary>

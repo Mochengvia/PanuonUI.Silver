@@ -23,7 +23,7 @@ namespace Panuon.UI.Silver.Converters
         }
     }
 
-    internal class CornerRadiusToBottomHalfConverter : IValueConverter
+    internal class CornerRadiusToBottomConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

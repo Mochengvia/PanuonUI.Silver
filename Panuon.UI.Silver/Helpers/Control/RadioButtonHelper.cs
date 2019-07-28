@@ -17,7 +17,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty RadioButtonStyleProperty =
-            DependencyProperty.RegisterAttached("RadioButtonStyle", typeof(RadioButtonStyle), typeof(RadioButtonHelper));
+            DependencyProperty.RegisterAttached("RadioButtonStyle", typeof(RadioButtonStyle), typeof(RadioButtonHelper), new PropertyMetadata(RadioButtonStyle.Standard));
         #endregion
 
         #region CheckedBackground

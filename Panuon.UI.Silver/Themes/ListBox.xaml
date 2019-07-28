@@ -88,14 +88,20 @@
                     <Grid Background="Transparent">
                         <Border x:Name="BdrMain"
                                 Background="Transparent" />
-                        <ContentPresenter Margin="{TemplateBinding Padding}"
+                        <ContentPresenter x:Name="Presenter"
+                                          Margin="{TemplateBinding Padding}"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                          x:Name="Presenter"
                                           Opacity="0.95"
                                           ContentSource="Content" />
                     </Grid>
                     <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Path=(local:ListBoxHelper.SelectedForeground), RelativeSource={RelativeSource AncestorType=ListBox},Converter={StaticResource IsNotNullConverter}}"
+                                     Value="True">
+                            <Setter TargetName="Presenter"
+                                    Property="TextBlock.Foreground"
+                                    Value="{Binding Path=(local:ListBoxHelper.SelectedForeground),RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+                        </DataTrigger>
                         <Trigger Property="IsSelected"
                                  Value="True">
                             <Setter TargetName="BdrMain"

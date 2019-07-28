@@ -70,6 +70,23 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("SelectedBackground", typeof(Brush), typeof(TabControlHelper));
         #endregion
 
+        #region ExtendControl
+        public static UIElement GetExtendControl(DependencyObject obj)
+        {
+            return (UIElement)obj.GetValue(ExtendControlProperty);
+        }
+
+        public static void SetExtendControl(DependencyObject obj, UIElement value)
+        {
+            obj.SetValue(ExtendControlProperty, value);
+        }
+
+        public static readonly DependencyProperty ExtendControlProperty =
+            DependencyProperty.RegisterAttached("ExtendControl", typeof(UIElement), typeof(TabControlHelper));
+
+
+        #endregion
+
         #region CanRemove
         public static bool GetCanRemove(DependencyObject obj)
         {
@@ -83,6 +100,21 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty CanRemoveProperty =
             DependencyProperty.RegisterAttached("CanRemove", typeof(bool), typeof(TabControlHelper));
+        #endregion
+
+        #region DisableSideButton
+        public static bool GetDisableSideButton(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(DisableSideButtonProperty);
+        }
+
+        public static void SetDisableSideButton(DependencyObject obj, bool value)
+        {
+            obj.SetValue(DisableSideButtonProperty, value);
+        }
+
+        public static readonly DependencyProperty DisableSideButtonProperty =
+            DependencyProperty.RegisterAttached("DisableSideButton", typeof(bool), typeof(TabControlHelper));
         #endregion
 
         #region (Event) Removed
@@ -112,17 +144,17 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region (Internal) TabControlHook
-        public static bool GetTabControlHook(DependencyObject obj)
+        internal static bool GetTabControlHook(DependencyObject obj)
         {
             return (bool)obj.GetValue(TabControlHookProperty);
         }
 
-        public static void SetTabControlHook(DependencyObject obj, bool value)
+        internal static void SetTabControlHook(DependencyObject obj, bool value)
         {
             obj.SetValue(TabControlHookProperty, value);
         }
 
-        public static readonly DependencyProperty TabControlHookProperty =
+        internal  static readonly DependencyProperty TabControlHookProperty =
             DependencyProperty.RegisterAttached("TabControlHook", typeof(bool), typeof(TabControlHelper), new PropertyMetadata(OnTabControlHookChanged));
 
         private static void OnTabControlHookChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)

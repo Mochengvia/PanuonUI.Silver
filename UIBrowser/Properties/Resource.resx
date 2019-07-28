@@ -366,4 +366,19 @@
   <data name="ColorSelector" xml:space="preserve">
     <value>ColorSelector</value>
   </data>
+  <data name="IsWaving" xml:space="preserve">
+    <value>IsWaving</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="Badge" xml:space="preserve">
+    <value>Badge</value>
+  </data>
+  <data name="WindowX" xml:space="preserve">
+    <value>WindowX</value>
+  </data>
+  <data name="MessageBoxX" xml:space="preserve">
+    <value>MessageBoxX</value>
+  </data>
 </root>

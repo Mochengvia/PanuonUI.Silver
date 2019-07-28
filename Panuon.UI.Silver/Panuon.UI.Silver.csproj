@@ -35,6 +35,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Windows.Shell">
+      <HintPath>References\Microsoft.Windows.Shell.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -74,9 +77,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Internal\MsgBox.xaml">
+    <Page Include="Controls\Internal\CheckIcon.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Internal\MsgBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\NeonLabel.xaml">
       <SubType>Designer</SubType>
@@ -178,10 +185,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Themes\Window.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\Calendar.xaml.cs">
@@ -200,6 +203,9 @@
     <Compile Include="Controls\Countdown.cs" />
     <Compile Include="Controls\DateTimePicker.cs" />
     <Compile Include="Controls\DropDown.cs" />
+    <Compile Include="Controls\Internal\CheckIcon.xaml.cs">
+      <DependentUpon>CheckIcon.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Internal\DragableThumb.cs" />
     <Compile Include="Controls\ImageCuter.xaml.cs">
       <DependentUpon>ImageCuter.xaml</DependentUpon>
@@ -209,6 +215,7 @@
     </Compile>
     <Compile Include="Controls\Internal\NotTopMostPopup.cs" />
     <Compile Include="Controls\Internal\ResizeThumb.cs" />
+    <Compile Include="Controls\MessageBoxX.cs" />
     <Compile Include="Controls\MultiSelector.cs" />
     <Compile Include="Controls\Internal\ResizeContainer.cs" />
     <Compile Include="Controls\NeonLabel.xaml.cs">
@@ -221,7 +228,9 @@
       <DependentUpon>TagPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Timeline.cs" />
+    <Compile Include="Controls\WindowX.cs" />
     <Compile Include="Converters\BrushOrColorConverter.cs" />
+    <Compile Include="Converters\MsbConverter.cs" />
     <Compile Include="Converters\CheckBoxOrRadioButtonConverter.cs" />
     <Compile Include="Converters\CornerRadiusConverter.cs" />
     <Compile Include="Converters\DirtyConverter.cs" />
@@ -236,6 +245,9 @@
     <Compile Include="Converters\ThicknessConverter.cs" />
     <Compile Include="Converters\TreeViewConverter.cs" />
     <Compile Include="Converters\WidthAndHeightConverter.cs" />
+    <Compile Include="Global\Models\MessageBoxXConfigurations.cs" />
+    <Compile Include="Helpers\BubbleHelper.cs" />
+    <Compile Include="Helpers\Control\WindowXCaption.cs" />
     <Compile Include="Global\Models\TagItemModel.cs" />
     <Compile Include="Helpers\Control\Badge.xaml.cs">
       <DependentUpon>Badge.xaml</DependentUpon>
@@ -247,8 +259,8 @@
     <Compile Include="Helpers\Control\ProgressBarHelper.cs" />
     <Compile Include="Helpers\Control\RepeatButtonHelper.cs" />
     <Compile Include="Helpers\Control\TabControlHelper.cs" />
-    <Compile Include="Helpers\Control\WindowHelper.cs" />
     <Compile Include="Helpers\Internal\ScrollViewerHelper.cs" />
+    <Compile Include="Utils\Cache.cs" />
     <Compile Include="Utils\DelegateCommand.cs" />
     <Compile Include="Global\Enums.cs" />
     <Compile Include="Controls\Loading.cs" />
@@ -291,6 +303,9 @@
   <ItemGroup>
     <Folder Include="Global\Interfaces\" />
     <Folder Include="Global\Statics\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="References\Microsoft.Windows.Shell.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

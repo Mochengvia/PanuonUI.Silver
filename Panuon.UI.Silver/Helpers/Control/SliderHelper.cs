@@ -17,7 +17,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty SliderStyleProperty =
-            DependencyProperty.RegisterAttached("SliderStyle", typeof(SliderStyle), typeof(SliderHelper));
+            DependencyProperty.RegisterAttached("SliderStyle", typeof(SliderStyle), typeof(SliderHelper), new PropertyMetadata(SliderStyle.Standard));
         #endregion
 
         #region ThemeBrush

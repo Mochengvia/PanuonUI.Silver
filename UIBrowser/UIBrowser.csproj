@@ -40,6 +40,9 @@
     <Reference Include="Caliburn.Micro, Version=3.2.0.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
       <HintPath>..\packages\Caliburn.Micro.Core.3.2.0\lib\net45\Caliburn.Micro.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Windows.Shell">
+      <HintPath>..\Panuon.UI.Silver\References\Microsoft.Windows.Shell.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -59,6 +62,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Examples\NavbarWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Examples\MacLikeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -66,6 +77,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Examples\NavbarWindow.xaml.cs">
+      <DependentUpon>NavbarWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Examples\MacLikeWindow.xaml.cs">
+      <DependentUpon>MacLikeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Helper.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -77,6 +94,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="PartialViews\Custom\ColorSelectorView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PartialViews\Custom\BadgeView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -93,6 +114,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="PartialViews\Custom\CalendarView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PartialViews\Custom\MessageBoxXView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -136,7 +161,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="PartialViews\Native\WindowView.xaml">
+    <Page Include="PartialViews\Custom\WindowXView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -162,6 +187,9 @@
     <Compile Include="PartialViews\Custom\ColorSelectorView.xaml.cs">
       <DependentUpon>ColorSelectorView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PartialViews\Custom\BadgeView.xaml.cs">
+      <DependentUpon>BadgeView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PartialViews\Custom\DropDownView.xaml.cs">
       <DependentUpon>DropDownView.xaml</DependentUpon>
     </Compile>
@@ -173,6 +201,9 @@
     </Compile>
     <Compile Include="PartialViews\Custom\CalendarView.xaml.cs">
       <DependentUpon>CalendarView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PartialViews\Custom\MessageBoxXView.xaml.cs">
+      <DependentUpon>MessageBoxXView.xaml</DependentUpon>
     </Compile>
     <Compile Include="PartialViews\Helpers\AnimationHelperView.xaml.cs">
       <DependentUpon>AnimationHelperView.xaml</DependentUpon>
@@ -204,8 +235,8 @@
     <Compile Include="PartialViews\Native\TreeViewView.xaml.cs">
       <DependentUpon>TreeViewView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PartialViews\Native\WindowView.xaml.cs">
-      <DependentUpon>WindowView.xaml</DependentUpon>
+    <Compile Include="PartialViews\Custom\WindowXView.xaml.cs">
+      <DependentUpon>WindowXView.xaml</DependentUpon>
     </Compile>
     <Compile Include="PartialViews\Native\ButtonView.xaml.cs">
       <DependentUpon>ButtonView.xaml</DependentUpon>

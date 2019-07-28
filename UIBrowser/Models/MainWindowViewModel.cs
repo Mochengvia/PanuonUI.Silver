@@ -34,6 +34,9 @@ namespace UIBrowser.Models
                 {
                      MenuItems = new BindableCollection<TreeViewItemModel>()
                      {
+                         new TreeViewItemModel(Properties.Resource.WindowX,"WindowX"),
+                         new TreeViewItemModel(Properties.Resource.MessageBoxX,"MessageBoxX"),
+                         new TreeViewItemModel(Properties.Resource.Badge,"Badge"),
                          new TreeViewItemModel(Properties.Resource.Calendar,"Calendar"),
                          new TreeViewItemModel(Properties.Resource.DateTimePicker,"DateTimePicker"),
                          new TreeViewItemModel(Properties.Resource.ColorSelector,"ColorSelector"),
@@ -60,7 +63,6 @@ namespace UIBrowser.Models
                 }
             };
         }
-
 
         public string SearchText
         {

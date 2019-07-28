@@ -6,7 +6,7 @@
                     xmlns:windows2="clr-namespace:System.Windows;assembly=PresentationFramework">
 
     <!--===========Default===========-->
-    <FontFamily x:Key="Default_FontFamily">Microsoft YaHei UI</FontFamily>
+    <FontFamily x:Key="Default_FontFamily">Microsoft YaHei</FontFamily>
     <sys:Double x:Key="Default_FontSize">14</sys:Double>
     <sys:Boolean x:Key="Default_SnapsToDevicePixels">False</sys:Boolean>
     <FontFamily x:Key="FontAwesome">/Panuon.UI.Silver;component/Resources/#fontawesome</FontFamily>
@@ -14,4 +14,5 @@
     <windows:Duration x:Key="Button_ShadeDuration">0:0:0.3</windows:Duration>
     <windows2:CornerRadius x:Key="Button_CornerRadius">0</windows2:CornerRadius>
     <sys:String x:Key="Button_WaitingContent" xml:space="preserve">  Please wait...</sys:String>
+    
 </ResourceDictionary>

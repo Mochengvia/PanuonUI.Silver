@@ -79,6 +79,15 @@ namespace UIBrowser.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Badge 的本地化字符串。
+        /// </summary>
+        public static string Badge {
+            get {
+                return ResourceManager.GetString("Badge", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 BaseStyle 的本地化字符串。
         /// </summary>
         public static string BaseStyle {
@@ -403,6 +412,15 @@ namespace UIBrowser.Properties {
         }
         
         /// <summary>
+        ///   查找类似 IsWaving 的本地化字符串。
+        /// </summary>
+        public static string IsWaving {
+            get {
+                return ResourceManager.GetString("IsWaving", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Item Height 的本地化字符串。
         /// </summary>
         public static string ItemHeight {
@@ -462,6 +480,15 @@ namespace UIBrowser.Properties {
         public static string MarginTo {
             get {
                 return ResourceManager.GetString("MarginTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 MessageBoxX 的本地化字符串。
+        /// </summary>
+        public static string MessageBoxX {
+            get {
+                return ResourceManager.GetString("MessageBoxX", resourceCulture);
             }
         }
         
@@ -727,6 +754,15 @@ namespace UIBrowser.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Text 的本地化字符串。
+        /// </summary>
+        public static string Text {
+            get {
+                return ResourceManager.GetString("Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 TextBox 的本地化字符串。
         /// </summary>
         public static string TextBox {
@@ -804,6 +840,15 @@ namespace UIBrowser.Properties {
         public static string Width {
             get {
                 return ResourceManager.GetString("Width", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 WindowX 的本地化字符串。
+        /// </summary>
+        public static string WindowX {
+            get {
+                return ResourceManager.GetString("WindowX", resourceCulture);
             }
         }
     }

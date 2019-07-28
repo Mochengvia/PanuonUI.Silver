@@ -10,7 +10,7 @@
     <converter:BoolToVisibleConverter x:Key="BoolToVisibleConverter" />
     <converter:HalfConverter x:Key="HalfConverter" />
     <converter:CornerRadiusToTopHalfConverter x:Key="CornerRadiusToTopHalfConverter" />
-    <converter:CornerRadiusToBottomHalfConverter x:Key="CornerRadiusToBottomHalfConverter" />
+    <converter:CornerRadiusToBottomConverter x:Key="CornerRadiusToBottomConverter" />
     <converter:BrushToColorConverter x:Key="BrushToColorConverter" />
     <converter:ColorToBrushConverter x:Key="ColorToBrushConverter" />
     <converter:GridLengthConverter x:Key="GridLengthConverter" />
@@ -27,4 +27,6 @@
     <converter:TagPanelBackgroundConverter x:Key="TagPanelBackgroundConverter" />
     <converter:TagPanelRemovableConverter x:Key="TagPanelRemovableConverter" />
     <converter:Minus10Converter x:Key="Minus10Converter"/>
+
+    <converter:BoolInverseConverter x:Key="BoolInverseConverter" />
 </ResourceDictionary>

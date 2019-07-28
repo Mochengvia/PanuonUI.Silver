@@ -196,6 +196,9 @@ namespace Panuon.UI.Silver
             var offset = LblContent.ActualWidth - GrdMain.ActualWidth + FontSize;
             LblContent.Margin = new Thickness(0, 0, 0, 0);
 
+            if (offset < 0)
+                offset = 0;
+
             var thicknessAnima = new ThicknessAnimation()
             {
                 From = new Thickness(0),

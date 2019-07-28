@@ -11,7 +11,7 @@ namespace UIBrowser
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : WindowX
     {
         #region Identity
         private static IDictionary<string, Type> _dicPartialView;
@@ -60,12 +60,5 @@ namespace UIBrowser
         {
             ViewModel.SearchText = "";
         }
-    }
-
-    public enum TestEnum
-    {
-        Enum1,
-        Enum2,
-        Enum3,
     }
 }

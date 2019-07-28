@@ -21,6 +21,37 @@ namespace Panuon.UI.Silver.Converters
 
     #endregion
 
+    #region Minus 4
+    internal class Minus4Converter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return (double)value - 4;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return DependencyProperty.UnsetValue;
+        }
+    }
+
+    #endregion
+
+    #region Add 3
+    internal class Add3Converter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return (double)value + 3;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return DependencyProperty.UnsetValue;
+        }
+    }
+    #endregion
+
     #region Add 5
     internal class Add5Converter : IValueConverter
     {
@@ -51,5 +82,22 @@ namespace Panuon.UI.Silver.Converters
     }
 
     #endregion
+
+    #region CornerRadiusAdd1
+    internal class CornerRadiusAdd1Converter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var thick = (CornerRadius)value;
+            return new CornerRadius(thick.TopLeft + 1, thick.TopRight + 1, thick.BottomRight + 1, thick.BottomLeft + 1);
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return DependencyProperty.UnsetValue;
+        }
+    }
+    #endregion
+
 
 }
