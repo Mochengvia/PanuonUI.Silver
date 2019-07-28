@@ -38,7 +38,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Caliburn.Micro, Version=3.2.0.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Caliburn.Micro.Core.3.2.0\lib\net45\Caliburn.Micro.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Panuon.UI.Silver\References\Caliburn.Micro.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Windows.Shell">
       <HintPath>..\Panuon.UI.Silver\References\Microsoft.Windows.Shell.dll</HintPath>
@@ -267,7 +268,6 @@
       <LastGenOutput>Resource.zh-CN.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="PartialViews\Template\" />
@@ -280,6 +280,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\head.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
