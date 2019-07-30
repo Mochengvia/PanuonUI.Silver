@@ -11,7 +11,7 @@ namespace Panuon.UI.Silver.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var tag = parameter.ToString();
-            var msbButton = Enum.Parse(typeof(MessageBoxButton), value.ToString());
+            var msbButton = (MessageBoxButton)Enum.Parse(typeof(MessageBoxButton), value.ToString());
             if (tag == "Yes")
             {
                 switch (msbButton)
@@ -144,7 +144,7 @@ namespace Panuon.UI.Silver.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var icon = Enum.Parse(typeof(MessageBoxIcon), value.ToString());
+            var icon = (MessageBoxIcon)Enum.Parse(typeof(MessageBoxIcon), value.ToString());
 
             switch (icon)
             {
@@ -168,7 +168,7 @@ namespace Panuon.UI.Silver.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var icon = Enum.Parse(typeof(MessageBoxIcon), value.ToString());
+            var icon = (MessageBoxIcon)Enum.Parse(typeof(MessageBoxIcon), value.ToString());
 
             switch (icon)
             {
