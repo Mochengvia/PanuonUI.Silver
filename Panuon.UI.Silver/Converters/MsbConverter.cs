@@ -11,10 +11,10 @@ namespace Panuon.UI.Silver.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var tag = parameter.ToString();
-
+            var msbButton = Enum.Parse(typeof(MessageBoxButton), value.ToString());
             if (tag == "Yes")
             {
-                switch (value)
+                switch (msbButton)
                 {
                     case MessageBoxButton.YesNo:
                     case MessageBoxButton.YesNoCancel:
@@ -25,7 +25,7 @@ namespace Panuon.UI.Silver.Converters
             }
             else if (tag == "No")
             {
-                switch (value)
+                switch (msbButton)
                 {
                     case MessageBoxButton.YesNo:
                     case MessageBoxButton.YesNoCancel:
@@ -36,7 +36,7 @@ namespace Panuon.UI.Silver.Converters
             }
             else if (tag == "Cancel")
             {
-                switch (value)
+                switch (msbButton)
                 {
                     case MessageBoxButton.YesNoCancel:
                     case MessageBoxButton.OKCancel:
@@ -47,7 +47,7 @@ namespace Panuon.UI.Silver.Converters
             }
             else if (tag == "OK")
             {
-                switch (value)
+                switch (msbButton)
                 {
                     case MessageBoxButton.OK:
                     case MessageBoxButton.OKCancel:
@@ -144,7 +144,9 @@ namespace Panuon.UI.Silver.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            switch (value)
+            var icon = Enum.Parse(typeof(MessageBoxIcon), value.ToString());
+
+            switch (icon)
             {
                 case MessageBoxIcon.None:
                     return Visibility.Collapsed;
@@ -166,7 +168,9 @@ namespace Panuon.UI.Silver.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            switch (value)
+            var icon = Enum.Parse(typeof(MessageBoxIcon), value.ToString());
+
+            switch (icon)
             {
                 case MessageBoxIcon.None:
                     return new GridLength(20);
