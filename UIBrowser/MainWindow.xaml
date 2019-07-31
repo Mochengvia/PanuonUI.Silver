@@ -11,6 +11,13 @@
         Height="700"
         Width="1200"
         WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Control.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <pu:WindowXCaption.ExtendControl>
         <Button Content="&#xf09b;"
                 FontFamily="{DynamicResource FontAwesome}"

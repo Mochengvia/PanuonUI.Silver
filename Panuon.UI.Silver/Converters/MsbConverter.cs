@@ -177,8 +177,6 @@ namespace Panuon.UI.Silver.Converters
                 default:
                     return new GridLength(0.5, GridUnitType.Star);
             }
-
-
         }
 
         public object ConvertBack(object value, Type targetTypes, object parameter, CultureInfo culture)

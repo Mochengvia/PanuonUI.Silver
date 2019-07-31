@@ -44,7 +44,7 @@ namespace Panuon.UI.Silver
         public Brush ThemeBrush { get; set; } = "#55CEF1".ToColor().ToBrush();
 
         /// <summary>
-        /// Min width. Default : 250.
+        /// Min height. Default : 250.
         /// </summary>
         public double MinHeight { get; set; } = 250;
 
@@ -55,7 +55,7 @@ namespace Panuon.UI.Silver
 
 
         /// <summary>
-        /// Max content width, default : 100.
+        /// Max content height. default : 100.
         /// </summary>
         public double MaxContentHeight { get; set; } = 100;
 
@@ -76,7 +76,7 @@ namespace Panuon.UI.Silver
         public bool Topmost { get; set; } = true;
 
         /// <summary>
-        /// Window startup location
+        /// Window startup location.
         /// </summary>
         public WindowStartupLocation WindowStartupLocation { get; set; } = WindowStartupLocation.CenterScreen;
 
