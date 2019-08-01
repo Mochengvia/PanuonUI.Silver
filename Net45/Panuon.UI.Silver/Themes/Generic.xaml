@@ -55,7 +55,6 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:WindowX}">
                     <Border Grid.RowSpan="2"
-                            CornerRadius="5"
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">

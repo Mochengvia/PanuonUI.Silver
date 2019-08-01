@@ -24,7 +24,13 @@
         <converter:MsbCheckIconWidthConverter x:Key="MsbCheckIconWidthConverter" />
     </Window.Resources>
     <Border Background="White"
-            CornerRadius="3">
+            CornerRadius="3"
+            Margin="5">
+        <Border.Effect>
+            <DropShadowEffect Color="LightGray"
+                              BlurRadius="5" 
+                              ShadowDepth="0"/>
+        </Border.Effect>
         <Grid>
             <Grid x:Name="GrdStandard"
                   Visibility="Visible"
