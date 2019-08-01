@@ -41,9 +41,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Panuon.UI.Silver\References\Caliburn.Micro.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Windows.Shell">
-      <HintPath>..\Panuon.UI.Silver\References\Microsoft.Windows.Shell.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -273,20 +270,23 @@
     <Folder Include="PartialViews\Template\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Panuon.UI.Silver\Panuon.UI.Silver.csproj">
-      <Project>{527ff1e2-a99c-40c2-b589-69b5bad77f5a}</Project>
-      <Name>Panuon.UI.Silver</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\head.jpg" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Net45\Panuon.UI.Silver\Panuon.UI.Silver.csproj">
+      <Project>{461fe59d-57b8-4599-8e7d-439e27a2bbb2}</Project>
+      <Name>Panuon.UI.Silver</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>if not exist "$(SolutionDir)Output\Net40" mkdir "$(SolutionDir)Output\Net40" 
+xcopy "$(SolutionDir)\Net40\Panuon.UI.Silver\bin\Release\Panuon.UI.Silver.dll" "$(SolutionDir)\Output\Net40" /q /y
+xcopy "$(SolutionDir)\Net40\Panuon.UI.Silver\bin\Release\Microsoft.Windows.Shell.dll" "$(SolutionDir)\Output\Net40" /q /y
+if not exist "$(SolutionDir)Output\Net45" mkdir "$(SolutionDir)Output\Net45" 
+xcopy "$(SolutionDir)\Net45\Panuon.UI.Silver\bin\Release\Panuon.UI.Silver.dll" "$(SolutionDir)\Output\Net45" /q /y</PostBuildEvent>
   </PropertyGroup>
 </Project>

@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{461FE59D-57B8-4599-8E7D-439E27A2BBB2}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <RootNamespace>Panuon.UI.Silver</RootNamespace>
+    <AssemblyName>Panuon.UI.Silver</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Calendar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Clock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ColorPicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ColorSelector.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ImageCuter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Internal\CheckIcon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Internal\MsgBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\NeonLabel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Pagination.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TagPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Helpers\Control\Badge.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Resource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\ListBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\RepeatButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\ContextMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Menu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Button.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Converter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\ComboBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\DataGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Expander.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\GroupBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\RadioButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\CheckBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Slider.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\TabControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\TreeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\ScrollViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\ProgressBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\PasswordBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\TextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\Calendar.xaml.cs">
+      <DependentUpon>Calendar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Carousel.cs" />
+    <Compile Include="Controls\Clock.xaml.cs">
+      <DependentUpon>Clock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ColorPicker.xaml.cs">
+      <DependentUpon>ColorPicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ColorSelector.xaml.cs">
+      <DependentUpon>ColorSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Countdown.cs" />
+    <Compile Include="Controls\DateTimePicker.cs" />
+    <Compile Include="Controls\DropDown.cs" />
+    <Compile Include="Controls\Internal\CheckIcon.xaml.cs">
+      <DependentUpon>CheckIcon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Internal\DragableThumb.cs" />
+    <Compile Include="Controls\ImageCuter.xaml.cs">
+      <DependentUpon>ImageCuter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Internal\MsgBox.xaml.cs">
+      <DependentUpon>MsgBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Internal\NotTopMostPopup.cs" />
+    <Compile Include="Controls\Internal\ResizeThumb.cs" />
+    <Compile Include="Controls\MessageBoxX.cs" />
+    <Compile Include="Controls\MultiSelector.cs" />
+    <Compile Include="Controls\Internal\ResizeContainer.cs" />
+    <Compile Include="Controls\NeonLabel.xaml.cs">
+      <DependentUpon>NeonLabel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Pagination.xaml.cs">
+      <DependentUpon>Pagination.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TagPanel.xaml.cs">
+      <DependentUpon>TagPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Timeline.cs" />
+    <Compile Include="Controls\WindowX.cs" />
+    <Compile Include="Converters\BrushOrColorConverter.cs" />
+    <Compile Include="Converters\MsbConverter.cs" />
+    <Compile Include="Converters\CheckBoxOrRadioButtonConverter.cs" />
+    <Compile Include="Converters\CornerRadiusConverter.cs" />
+    <Compile Include="Converters\DirtyConverter.cs" />
+    <Compile Include="Converters\DropDownMenuConverter.cs" />
+    <Compile Include="Converters\LoadingConverter.cs" />
+    <Compile Include="Converters\MemberPathConverter.cs" />
+    <Compile Include="Converters\MultiSelectorConverter.cs" />
+    <Compile Include="Converters\ObjectConvert.cs" />
+    <Compile Include="Converters\ProgressBarConverter.cs" />
+    <Compile Include="Converters\TabControlConverter.cs" />
+    <Compile Include="Converters\TagPanelConverter.cs" />
+    <Compile Include="Converters\ThicknessConverter.cs" />
+    <Compile Include="Converters\TreeViewConverter.cs" />
+    <Compile Include="Converters\WidthAndHeightConverter.cs" />
+    <Compile Include="Global\Models\MessageBoxXConfigurations.cs" />
+    <Compile Include="Helpers\BubbleHelper.cs" />
+    <Compile Include="Helpers\Control\WindowXCaption.cs" />
+    <Compile Include="Global\Models\TagItemModel.cs" />
+    <Compile Include="Helpers\Control\Badge.xaml.cs">
+      <DependentUpon>Badge.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\Control\ContextMenuHelper.cs" />
+    <Compile Include="Helpers\Control\DataGridHelper.cs" />
+    <Compile Include="Helpers\Control\GroupBoxHelper.cs" />
+    <Compile Include="Helpers\Control\ListBoxHelper.cs" />
+    <Compile Include="Helpers\Control\ProgressBarHelper.cs" />
+    <Compile Include="Helpers\Control\RepeatButtonHelper.cs" />
+    <Compile Include="Helpers\Control\TabControlHelper.cs" />
+    <Compile Include="Helpers\Internal\ScrollViewerHelper.cs" />
+    <Compile Include="Utils\Cache.cs" />
+    <Compile Include="Utils\DelegateCommand.cs" />
+    <Compile Include="Global\Enums.cs" />
+    <Compile Include="Controls\Loading.cs" />
+    <Compile Include="Converters\Converters.cs" />
+    <Compile Include="Global\Extend.cs" />
+    <Compile Include="Helpers\Control\ComboBoxHelper.cs" />
+    <Compile Include="Helpers\Control\RadioButtonHelper.cs" />
+    <Compile Include="Helpers\Control\CheckBoxHelper.cs" />
+    <Compile Include="Helpers\Control\PasswordBoxHelper.cs" />
+    <Compile Include="Helpers\Control\SliderHelper.cs" />
+    <Compile Include="Helpers\Others\AnimationHelper.cs" />
+    <Compile Include="Helpers\Control\ButtonHelper.cs" />
+    <Compile Include="Helpers\Control\ExpanderHelper.cs" />
+    <Compile Include="Helpers\Others\LayoutHelper.cs" />
+    <Compile Include="Helpers\Control\TextBoxHelper.cs" />
+    <Compile Include="Helpers\Control\TreeViewHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Resource Include="Resources\fontawesome.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Global\Interfaces\" />
+    <Folder Include="Global\Statics\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="References\Microsoft.Windows.Shell.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

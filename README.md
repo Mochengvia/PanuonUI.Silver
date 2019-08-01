@@ -13,6 +13,9 @@ QQ Group : 718778191
 Zhihu : @末城via
 
 # News 动态  
+`2019-8-1 分为.NET40和.NET45双版本`  
+`对于.NET4.0版本，需要同时引用Output文件夹中的Panuon.UI.Silver.dll和Windows.Shell.dll。对于.NET4.5及以上版本，无需引用Windows.Shell.dll。`
+
 `2019-7-28 较大改动`  
 `由于AllowTransparent带来的性能问题，自2019-7-28日起，PanuonUI.Silver将不再支持WindowHelper中的全部内容。对于Window窗体，请使用全新的WindowX控件，并使用WindowXCaption附加类为其设计标题（参见示例项目）。对于消息框，请使用全新的MessageBoxX.Show(...)方法。对于ShowPopup方法，请改用BubbleHelper.Show(...)方法。`  
 `更新该版本需要您对项目中涉及到的代码进行一些修改，但这些修改对于UI视觉和性能的提升是显而易见的。`  

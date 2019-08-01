@@ -3,9 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29020.237
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panuon.UI.Silver", "Panuon.UI.Silver\Panuon.UI.Silver.csproj", "{527FF1E2-A99C-40C2-B589-69B5BAD77F5A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIBrowser", "UIBrowser\UIBrowser.csproj", "{F8A6F19C-B283-46F1-8576-7A2B1F4EB8A7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{527FF1E2-A99C-40C2-B589-69B5BAD77F5A} = {527FF1E2-A99C-40C2-B589-69B5BAD77F5A}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Net4.0", "Net4.0", "{D380FB9B-6461-4F58-B8EF-96C2FDA2A856}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panuon.UI.Silver", "Net40\Panuon.UI.Silver\Panuon.UI.Silver.csproj", "{527FF1E2-A99C-40C2-B589-69B5BAD77F5A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Net4.5", "Net4.5", "{218C15E8-B6A4-4CF1-8D5F-EB567F9AF8C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panuon.UI.Silver", "Net45\Panuon.UI.Silver\Panuon.UI.Silver.csproj", "{461FE59D-57B8-4599-8E7D-439E27A2BBB2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,17 +22,25 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{527FF1E2-A99C-40C2-B589-69B5BAD77F5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{527FF1E2-A99C-40C2-B589-69B5BAD77F5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{527FF1E2-A99C-40C2-B589-69B5BAD77F5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{527FF1E2-A99C-40C2-B589-69B5BAD77F5A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F8A6F19C-B283-46F1-8576-7A2B1F4EB8A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F8A6F19C-B283-46F1-8576-7A2B1F4EB8A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8A6F19C-B283-46F1-8576-7A2B1F4EB8A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8A6F19C-B283-46F1-8576-7A2B1F4EB8A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{527FF1E2-A99C-40C2-B589-69B5BAD77F5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{527FF1E2-A99C-40C2-B589-69B5BAD77F5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{527FF1E2-A99C-40C2-B589-69B5BAD77F5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{527FF1E2-A99C-40C2-B589-69B5BAD77F5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{461FE59D-57B8-4599-8E7D-439E27A2BBB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{461FE59D-57B8-4599-8E7D-439E27A2BBB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{461FE59D-57B8-4599-8E7D-439E27A2BBB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{461FE59D-57B8-4599-8E7D-439E27A2BBB2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{527FF1E2-A99C-40C2-B589-69B5BAD77F5A} = {D380FB9B-6461-4F58-B8EF-96C2FDA2A856}
+		{461FE59D-57B8-4599-8E7D-439E27A2BBB2} = {218C15E8-B6A4-4CF1-8D5F-EB567F9AF8C8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9B3F19A6-8D38-45CA-945A-A2D448FD75DB}

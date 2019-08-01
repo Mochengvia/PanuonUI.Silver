@@ -1,0 +1,32 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver.Themes"
+                    xmlns:converter="clr-namespace:Panuon.UI.Silver.Converters">
+    <converter:IsNotNullConverter x:Key="IsNotNullConverter" />
+    <converter:IsNullConverter x:Key="IsNullConverter" />
+    <converter:IsNullOrEmptyConverter x:Key="IsNullOrEmptyConverter" />
+    <converter:IconConverter x:Key="IconConverter" />
+    <converter:BoolToInvisibleConverter x:Key="BoolToInvisibleConverter" />
+    <converter:BoolToVisibleConverter x:Key="BoolToVisibleConverter" />
+    <converter:HalfConverter x:Key="HalfConverter" />
+    <converter:CornerRadiusToTopHalfConverter x:Key="CornerRadiusToTopHalfConverter" />
+    <converter:CornerRadiusToBottomConverter x:Key="CornerRadiusToBottomConverter" />
+    <converter:BrushToColorConverter x:Key="BrushToColorConverter" />
+    <converter:ColorToBrushConverter x:Key="ColorToBrushConverter" />
+    <converter:GridLengthConverter x:Key="GridLengthConverter" />
+    <converter:ThicknessToDoubleConverter x:Key="ThicknessToDoubleConverter" />
+    <converter:DoubleToCornerRadiusConverter x:Key="DoubleToCornerRadiusConverter" />
+    <converter:CornerRadiusToDoubleConverter x:Key="CornerRadiusToDoubleConverter" />
+    <converter:WidthAndHeightToSizeConverter x:Key="WidthAndHeightToSizeConverter" />
+
+    <converter:ObjectMemberPathConverter x:Key="ObjectMemberPathConverter" />
+    <converter:BooleanMemberPathConverter x:Key="BooleanMemberPathConverter" />
+
+    <converter:MultiCombinerConverter x:Key="MultiCombinerConverter" />
+
+    <converter:TagPanelBackgroundConverter x:Key="TagPanelBackgroundConverter" />
+    <converter:TagPanelRemovableConverter x:Key="TagPanelRemovableConverter" />
+    <converter:Minus10Converter x:Key="Minus10Converter"/>
+
+    <converter:BoolInverseConverter x:Key="BoolInverseConverter" />
+</ResourceDictionary>
