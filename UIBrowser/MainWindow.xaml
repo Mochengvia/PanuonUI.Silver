@@ -1,16 +1,16 @@
 ﻿<pu:WindowX x:Class="UIBrowser.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:pu="clr-namespace:Panuon.UI.Silver;assembly=Panuon.UI.Silver"
-        xmlns:localized="clr-namespace:UIBrowser.Properties"
-        xmlns:local="clr-namespace:UIBrowser"
-        mc:Ignorable="d"
-        Title="UIBrowser"
-        Height="700"
-        Width="1200"
-        WindowStartupLocation="CenterScreen">
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:pu="clr-namespace:Panuon.UI.Silver;assembly=Panuon.UI.Silver"
+            xmlns:localized="clr-namespace:UIBrowser.Properties"
+            xmlns:local="clr-namespace:UIBrowser"
+            mc:Ignorable="d"
+            Title="UIBrowser"
+            Height="700"
+            Width="1200"
+            WindowStartupLocation="CenterScreen">
     <pu:WindowXCaption.ExtendControl>
         <Button Content="&#xf09b;"
                 FontFamily="{DynamicResource FontAwesome}"
@@ -24,23 +24,23 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.3*"
-                              MinWidth="250"/>
+                              MinWidth="250" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="34"/>
+                <RowDefinition Height="34" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <TextBox pu:TextBoxHelper.Watermark="Search ..."
                      Margin="5,2,8,2"
-                     Text="{Binding SearchText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,Delay=300}"/>
+                     Text="{Binding SearchText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,Delay=300}" />
             <Button HorizontalAlignment="Right"
                     Margin="0,2,10,2"
                     Width="20"
                     Content="×"
                     pu:ButtonHelper.ButtonStyle="Link"
-                    Click="BtnClear_Click"/>
+                    Click="BtnClear_Click" />
             <TreeView x:Name="TvMenu"
                       Grid.Row="1"
                       pu:TreeViewHelper.SelectedBrush="#49A9C0"

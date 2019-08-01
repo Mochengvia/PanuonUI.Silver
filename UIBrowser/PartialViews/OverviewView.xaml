@@ -9,7 +9,7 @@
              d:DesignHeight="450"
              d:DesignWidth="800">
     <ScrollViewer>
-        <Grid>
+        <Grid >
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition />
