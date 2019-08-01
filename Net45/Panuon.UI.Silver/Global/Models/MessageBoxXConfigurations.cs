@@ -104,5 +104,10 @@ namespace Panuon.UI.Silver
         /// Content of cancel button. 
         /// </summary>
         public string CancelButton { get; set; } = "Cancel";
+
+        /// <summary>
+        /// Reverse button sequence.
+        /// </summary>
+        public bool ReverseButtonSequence { get; set; }
     }
 }
