@@ -21,6 +21,16 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Show API
+        public static MessageBoxResult Show(string message, string title = null)
+        {
+            return CallMsgBox(null, message, title, MessageBoxButton.OK, new MessageBoxXConfigurations());
+        }
+
+        public static MessageBoxResult Show(string message, string title = null, Window owner = null)
+        {
+            return CallMsgBox(owner, message, title,  MessageBoxButton.OK, new MessageBoxXConfigurations());
+        }
+
         public static MessageBoxResult Show(string message, string title = null, Window owner = null, MessageBoxButton messageBoxButton = MessageBoxButton.OK)
         {
             return CallMsgBox(owner, message, title, messageBoxButton, new MessageBoxXConfigurations());
@@ -62,9 +72,11 @@ namespace Panuon.UI.Silver
             if(configurations.InteractOwnerMask && owner != null && owner is WindowX)
                 windowX = owner as WindowX;
 
-            windowX.IsMaskVisible = true;
+            if(windowX != null)
+                windowX.IsMaskVisible = true;
             msb.ShowDialog();
-            windowX.IsMaskVisible = false;
+            if (windowX != null)
+                windowX.IsMaskVisible = false;
 
             return msb.MessageBoxResult;
         }

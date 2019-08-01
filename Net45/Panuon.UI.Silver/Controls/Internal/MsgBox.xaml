@@ -443,10 +443,7 @@
                                 </MultiBinding>
                             </Button.IsDefault>
                         </Button>
-
                     </StackPanel>
-
-
                 </Grid>
             </Grid>
 

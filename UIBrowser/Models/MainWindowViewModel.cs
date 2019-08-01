@@ -43,7 +43,7 @@ namespace UIBrowser.Models
                          new TreeViewItemModel(Properties.Resource.ColorPicker,"ColorPicker"),
                          new TreeViewItemModel(Properties.Resource.DropDown,"DropDown"),
                          new TreeViewItemModel(Properties.Resource.Loading,"Loading"),
-                        new TreeViewItemModel(Properties.Resource.Carousel,"Carousel"),
+                         new TreeViewItemModel(Properties.Resource.Carousel,"Carousel"),
                          new TreeViewItemModel(Properties.Resource.Countdown,"Countdown"),
                          new TreeViewItemModel(Properties.Resource.Clock,"Clock"),
                          new TreeViewItemModel(Properties.Resource.ImageCuter,"ImageCuter"),

@@ -84,7 +84,8 @@
                 </Grid>
                 <Grid  Margin="0,0"
                        Grid.Row="1">
-                    <StackPanel x:Name="StkButtonGroup1" Orientation="Horizontal"
+                    <StackPanel x:Name="StkButtonGroup1"
+                                Orientation="Horizontal"
                                 Height="35"
                                 HorizontalAlignment="Right"
                                 Margin="0,0,30,0">
@@ -100,7 +101,7 @@
                                 <MultiBinding Converter="{StaticResource MsbButtonIsDefaultConverter}"
                                               ConverterParameter="Cancel">
                                     <Binding Path="DefaultButton"
-                                             ElementName="Msb"/>
+                                             ElementName="Msb" />
                                     <Binding Path="MessageBoxButton"
                                              ElementName="Msb" />
                                 </MultiBinding>
@@ -265,7 +266,6 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <local:CheckIcon MessageBoxIcon="{Binding MessageBoxIcon, ElementName=Msb}"
-                                     
                                      Visibility="{Binding MessageBoxIcon,ElementName=Msb, Converter={StaticResource MsbCheckIconVisibilityConverter}}" />
                     <TextBlock Grid.Row="1"
                                Text="{Binding Title,ElementName=Msb}"
@@ -287,7 +287,8 @@
                     </ScrollViewer>
                 </Grid>
                 <Grid Grid.Row="1">
-                    <StackPanel x:Name="StkButtonGroup2" Grid.Row="1"
+                    <StackPanel x:Name="StkButtonGroup2"
+                                Grid.Row="1"
                                 Orientation="Horizontal"
                                 Height="35"
                                 HorizontalAlignment="Center">
@@ -444,8 +445,6 @@
                         </Button>
 
                     </StackPanel>
-
-                    
                 </Grid>
             </Grid>
 

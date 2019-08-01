@@ -40,7 +40,7 @@ namespace UIBrowser.Examples
             if (WindowState == WindowState.Maximized)
                 WindowState = WindowState.Normal;
             else
-                WindowState = WindowState.Minimized;
+                WindowState = WindowState.Maximized;
         }
     }
 }

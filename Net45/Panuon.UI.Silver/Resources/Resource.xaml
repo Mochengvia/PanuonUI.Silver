@@ -14,5 +14,4 @@
     <windows:Duration x:Key="Button_ShadeDuration">0:0:0.3</windows:Duration>
     <windows2:CornerRadius x:Key="Button_CornerRadius">0</windows2:CornerRadius>
     <sys:String x:Key="Button_WaitingContent" xml:space="preserve">  Please wait...</sys:String>
-    
-</ResourceDictionary>
+</ResourceDictionary>  

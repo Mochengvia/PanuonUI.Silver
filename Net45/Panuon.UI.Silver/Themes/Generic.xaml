@@ -46,15 +46,16 @@
         <Setter Property="WindowChrome.WindowChrome">
             <Setter.Value>
                 <WindowChrome  ResizeBorderThickness="5"
-                                     CornerRadius="0"
-                                     CaptionHeight="0"
-                                     GlassFrameThickness="5" />
+                               CaptionHeight="0"
+                               GlassFrameThickness="5"
+                               CornerRadius="0" />
             </Setter.Value>
         </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:WindowX}">
                     <Border Grid.RowSpan="2"
+                            CornerRadius="5"
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">

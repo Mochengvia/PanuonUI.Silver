@@ -82,7 +82,6 @@ namespace Panuon.UI.Silver.Controls.Internal
         public static readonly DependencyProperty MessageBoxResultProperty =
             DependencyProperty.Register("MessageBoxResult", typeof(MessageBoxResult), typeof(MsgBox), new PropertyMetadata(MessageBoxResult.No));
 
-
         public MessageBoxIcon MessageBoxIcon
         {
             get { return (MessageBoxIcon)GetValue(MessageBoxIconProperty); }
@@ -100,8 +99,6 @@ namespace Panuon.UI.Silver.Controls.Internal
 
         public static readonly DependencyProperty ButtonGroupHorizontalAlignmentProperty =
             DependencyProperty.Register("ButtonGroupHorizontalAlignment", typeof(HorizontalAlignment), typeof(MsgBox), new PropertyMetadata(HorizontalAlignment.Left));
-
-
 
         public double MaxContentWidth
         {
@@ -121,8 +118,6 @@ namespace Panuon.UI.Silver.Controls.Internal
 
         public static readonly DependencyProperty MaxContentHeightProperty =
             DependencyProperty.Register("MaxContentHeight", typeof(double), typeof(MsgBox));
-
-
 
         public string Text
         {
@@ -151,7 +146,6 @@ namespace Panuon.UI.Silver.Controls.Internal
         public static readonly DependencyProperty NoButtonProperty =
             DependencyProperty.Register("NoButton", typeof(string), typeof(MsgBox));
 
-
         public string OKButton
         {
             get { return (string)GetValue(OKButtonProperty); }
@@ -170,9 +164,6 @@ namespace Panuon.UI.Silver.Controls.Internal
         public static readonly DependencyProperty CancelButtonProperty =
             DependencyProperty.Register("CancelButton", typeof(string), typeof(MsgBox));
 
-
-
-
         public double MinContentWidth
         {
             get { return (double)GetValue(MinContentWidthProperty); }
@@ -181,9 +172,6 @@ namespace Panuon.UI.Silver.Controls.Internal
 
         public static readonly DependencyProperty MinContentWidthProperty =
             DependencyProperty.Register("MinContentWidth", typeof(double), typeof(MsgBox));
-
-
-
 
         public double MinContentHeight
         {
@@ -194,9 +182,6 @@ namespace Panuon.UI.Silver.Controls.Internal
         public static readonly DependencyProperty MinContentHeightProperty =
             DependencyProperty.Register("MinContentHeight", typeof(double), typeof(MsgBox));
 
-
-
-
         public DefaultButton DefaultButton
         {
             get { return (DefaultButton)GetValue(DefaultButtonProperty); }
@@ -206,8 +191,6 @@ namespace Panuon.UI.Silver.Controls.Internal
         public static readonly DependencyProperty DefaultButtonProperty =
             DependencyProperty.Register("DefaultButton", typeof(DefaultButton), typeof(MsgBox));
 
-
-
         public Brush ThemeBrush
         {
             get { return (Brush)GetValue(ThemeBrushProperty); }
@@ -216,8 +199,6 @@ namespace Panuon.UI.Silver.Controls.Internal
 
         public static readonly DependencyProperty ThemeBrushProperty =
             DependencyProperty.Register("ThemeBrush", typeof(Brush), typeof(MsgBox));
-
-
 
         public bool ReverseButtonSequence
         {
@@ -246,8 +227,6 @@ namespace Panuon.UI.Silver.Controls.Internal
                 msb.StkButtonGroupReverse2.Visibility = Visibility.Collapsed;
             }
         }
-
-
         #endregion
 
         #region EventHandler
@@ -261,9 +240,7 @@ namespace Panuon.UI.Silver.Controls.Internal
                     msb.GrdModern.Visibility = Visibility.Visible;
                     break;
             }
-
         }
-        #endregion
 
         private void BtnYes_Click(object sender, RoutedEventArgs e)
         {
@@ -288,5 +265,7 @@ namespace Panuon.UI.Silver.Controls.Internal
             MessageBoxResult = MessageBoxResult.OK;
             Close();
         }
+        #endregion
+
     }
 }

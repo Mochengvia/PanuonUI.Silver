@@ -60,7 +60,6 @@ namespace Panuon.UI.Silver
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(Countdown));
 
-
         public int Second
         {
             get { return (int)GetValue(SecondProperty); }
@@ -103,7 +102,6 @@ namespace Panuon.UI.Silver
                 countdown._timer.Stop();
             }
         }
-
         #endregion
 
         #region Event
