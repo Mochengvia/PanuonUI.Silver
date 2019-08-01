@@ -42,6 +42,7 @@ namespace Panuon.UI.Silver.Controls.Internal
             DefaultButton = messageBoxXConfigurations.DefaultButton;
             MaxContentHeight = messageBoxXConfigurations.MaxContentHeight;
             MaxContentWidth = messageBoxXConfigurations.MaxContentWidth;
+            ReverseButtonSequence = messageBoxXConfigurations.ReverseButtonSequence;
         }
 
         #region Property
@@ -215,6 +216,38 @@ namespace Panuon.UI.Silver.Controls.Internal
 
         public static readonly DependencyProperty ThemeBrushProperty =
             DependencyProperty.Register("ThemeBrush", typeof(Brush), typeof(MsgBox));
+
+
+
+        public bool ReverseButtonSequence
+        {
+            get { return (bool)GetValue(ReverseButtonSequenceProperty); }
+            set { SetValue(ReverseButtonSequenceProperty, value); }
+        }
+
+        public static readonly DependencyProperty ReverseButtonSequenceProperty =
+            DependencyProperty.Register("ReverseButtonSequence", typeof(bool), typeof(MsgBox), new PropertyMetadata(OnReverseButtonSequenceChanged));
+
+        private static void OnReverseButtonSequenceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var msb = d as MsgBox;
+            if (msb.ReverseButtonSequence)
+            {
+                msb.StkButtonGroup1.Visibility = Visibility.Collapsed;
+                msb.StkButtonGroup2.Visibility = Visibility.Collapsed;
+                msb.StkButtonGroupReverse1.Visibility = Visibility.Visible;
+                msb.StkButtonGroupReverse2.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                msb.StkButtonGroup1.Visibility = Visibility.Visible;
+                msb.StkButtonGroup2.Visibility = Visibility.Visible;
+                msb.StkButtonGroupReverse1.Visibility = Visibility.Collapsed;
+                msb.StkButtonGroupReverse2.Visibility = Visibility.Collapsed;
+            }
+        }
+
+
         #endregion
 
         #region EventHandler
