@@ -153,7 +153,7 @@ namespace UIBrowser.PartialViews.Native
                         (icon == null ? "" : $"\npu:PasswordBoxHelper.Icon=\"{icon}\"") +
                         $"\npu:PasswordBoxHelper.FocusedBorderBrush=\"{PasswordBoxHelper.GetFocusedBorderBrush(PbCustom).ToColor().ToHexString(false)}\"" +
                         $"\npu:PasswordBoxHelper.FocusedShadowColor=\"{PasswordBoxHelper.GetFocusedShadowColor(PbCustom).ToHexString(false)}\"" +
-                        (cornerRadius == 0 ? "" : $"\npu:ButtonHelper.CornerRadius=\"{cornerRadius}\"") +
+                        (cornerRadius == 0 ? "" : $"\npu:PasswordBoxHelper.CornerRadius=\"{cornerRadius}\"") +
                         " />";
         }
 

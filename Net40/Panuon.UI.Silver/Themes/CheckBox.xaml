@@ -10,7 +10,7 @@
     <converter:CheckBoxGlyphPathConverter x:Key="CheckBoxGlyphPathConverter" />
     <converter:SwitchToggleMarginConverter x:Key="SwitchToggleMarginConverter" />
     <converter:Minus2Converter x:Key="Minus2Converter" />
-    
+
     <Style TargetType="{x:Type CheckBox}">
         <Setter Property="FontFamily"
                 Value="{StaticResource Default_FontFamily}" />
@@ -34,6 +34,8 @@
                 Value="LightGray" />
         <Setter Property="local:CheckBoxHelper.CheckedBackground"
                 Value="#3E3E3E" />
+        <Setter Property="local:CheckBoxHelper.NullGlyphBrush"
+                Value="DimGray" />
         <Setter Property="BorderThickness"
                 Value="0" />
         <Setter Property="VerticalContentAlignment"
@@ -50,7 +52,7 @@
                         <ControlTemplate TargetType="{x:Type CheckBox}">
                             <Grid>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="{Binding Path=(local:CheckBoxHelper.HeaderWidth),RelativeSource={RelativeSource AncestorType=CheckBox}, Converter={StaticResource GridLengthConverter}}"/>
+                                    <ColumnDefinition Width="{Binding Path=(local:CheckBoxHelper.HeaderWidth),RelativeSource={RelativeSource AncestorType=CheckBox}, Converter={StaticResource GridLengthConverter}}" />
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
                                 <ContentControl x:Name="ContentHeader"
@@ -89,6 +91,17 @@
                                                 </MultiBinding>
                                             </Path.Data>
                                         </Path>
+                                        <Rectangle x:Name="RectNull"
+                                                   Visibility="Collapsed"
+                                                   Fill="{Binding Path=(local:CheckBoxHelper.NullGlyphBrush),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
+                                                   RadiusX="{Binding Path=(local:CheckBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
+                                                   RadiusY="{Binding Path=(local:CheckBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
+                                                   RenderTransformOrigin="0.5,0.5">
+                                            <Rectangle.RenderTransform>
+                                                <ScaleTransform ScaleX="0.5"
+                                                                ScaleY="0.5" />
+                                            </Rectangle.RenderTransform>
+                                        </Rectangle>
                                     </Grid>
                                     <ContentPresenter x:Name="Presenter"
                                                       Grid.Column="1"
@@ -100,6 +113,15 @@
                                 </Grid>
                             </Grid>
                             <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked"
+                                         Value="{x:Null}">
+                                    <Setter TargetName="RectNull"
+                                            Property="Visibility"
+                                            Value="Visible" />
+                                    <Setter TargetName="Path"
+                                            Property="Visibility"
+                                            Value="Collapsed" />
+                                </Trigger>
                                 <MultiDataTrigger>
                                     <MultiDataTrigger.Conditions>
                                         <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
@@ -152,7 +174,7 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type CheckBox}">
-                            <Grid >
+                            <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="{Binding Path=(local:CheckBoxHelper.HeaderWidth),RelativeSource={RelativeSource AncestorType=CheckBox}, Converter={StaticResource GridLengthConverter}}" />
                                     <ColumnDefinition />
@@ -353,11 +375,11 @@
                                             CornerRadius="{Binding Path=(local:CheckBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
                                             Visibility="Collapsed" />
                                     <ContentPresenter x:Name="Content"
-                                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                    Margin="{TemplateBinding Padding}"
-                                                    Content="{TemplateBinding Content}"
-                                                    TextBlock.Foreground="{TemplateBinding Foreground}" />
+                                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                      Margin="{TemplateBinding Padding}"
+                                                      Content="{TemplateBinding Content}"
+                                                      TextBlock.Foreground="{TemplateBinding Foreground}" />
                                 </Grid>
                             </Grid>
                             <ControlTemplate.Triggers>
