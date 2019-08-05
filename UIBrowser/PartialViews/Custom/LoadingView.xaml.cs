@@ -159,13 +159,10 @@ namespace UIBrowser.PartialViews.Native
                         $"\nHeight=\"{LdCustom.ActualHeight}\"" +
                         (loadingStyle == LoadingStyle.Standard ? "" : $"\nLoadingStyle=\"{loadingStyle}\"") +
                         $"\nStroke=\"{LdCustom.Stroke}\"" +
-                        (loadingStyle == LoadingStyle.Ring ? $"StrokeCover=\"{LdCustom.StrokeCover.ToColor().ToHexString(true)}\"" : "") +
+                        ((loadingStyle == LoadingStyle.Ring || loadingStyle == LoadingStyle.Ring2) ? $"StrokeCover=\"{LdCustom.StrokeCover.ToColor().ToHexString(true)}\"" : "") +
                         (isRunning ? "\nIsRunning=\"True\"" : "") +
                         " />";
         }
-
-
-
 
         #endregion
 

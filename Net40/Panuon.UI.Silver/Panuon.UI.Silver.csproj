@@ -230,6 +230,7 @@
     <Compile Include="Controls\Timeline.cs" />
     <Compile Include="Controls\WindowX.cs" />
     <Compile Include="Converters\BrushOrColorConverter.cs" />
+    <Compile Include="Converters\ComboBoxConverter.cs" />
     <Compile Include="Converters\MsbConverter.cs" />
     <Compile Include="Converters\CheckBoxOrRadioButtonConverter.cs" />
     <Compile Include="Converters\CornerRadiusConverter.cs" />

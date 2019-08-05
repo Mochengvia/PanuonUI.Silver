@@ -18,7 +18,7 @@ namespace Panuon.UI.Silver
             DefaultStyleKeyProperty.OverrideMetadata(typeof(Carousel), new FrameworkPropertyMetadata(typeof(Carousel)));
         }
 
-        public Carousel() : base()
+        public Carousel()
         {
             Children = new ObservableCollection<UIElement>();
             Loaded += Carousel_Loaded;
