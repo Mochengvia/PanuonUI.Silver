@@ -127,6 +127,23 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("CheckedContent", typeof(object), typeof(CheckBoxHelper));
         #endregion
 
+        #region NullGlyphBrush
+        public static Brush GetNullGlyphBrush(DependencyObject obj)
+        {
+            return (Brush)obj.GetValue(NullGlyphBrushProperty);
+        }
+
+        public static void SetNullGlyphBrush(DependencyObject obj, Brush value)
+        {
+            obj.SetValue(NullGlyphBrushProperty, value);
+        }
+
+
+        public static readonly DependencyProperty NullGlyphBrushProperty =
+            DependencyProperty.RegisterAttached("NullGlyphBrush", typeof(Brush), typeof(CheckBoxHelper));
+
+        #endregion
+
         #region Header
         public static object GetHeader(DependencyObject obj)
         {

@@ -102,6 +102,7 @@
                                        pu:CheckBoxHelper.BoxWidth="16"
                                        pu:CheckBoxHelper.CheckedBackground="{Binding Brush, Mode=OneWay}" />
                             <CheckBox  Height="30"
+                                       IsChecked="{x:Null}"
                                        Margin="0,5,0,0"
                                        Content="CheckBox"
                                        BorderBrush="{Binding Brush, Mode=OneWay}"

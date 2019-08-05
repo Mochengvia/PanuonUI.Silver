@@ -208,7 +208,7 @@
                                    Focusable="False"
                                    AllowsTransparency="True"
                                    PopupAnimation="Slide">
-                                <Grid MaxHeight="180"
+                                <Grid MaxHeight="{TemplateBinding MaxDropDownHeight}"
                                       MinWidth="{Binding ActualWidth,ElementName=ToggleButton}"
                                       x:Name="DropDown">
                                     <Border x:Name="DropDownBorder"

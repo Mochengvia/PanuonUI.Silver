@@ -7,7 +7,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Effects;
 using UIBrowser.Helpers;
 
-namespace UIBrowser.PartialViews.Native
+namespace UIBrowser.PartialViews.Custom
 {
     /// <summary>
     /// ComboBoxView.xaml 的交互逻辑
