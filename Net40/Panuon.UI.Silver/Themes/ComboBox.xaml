@@ -268,12 +268,18 @@
                                     Property="Visibility"
                                     Value="Collapsed" />
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding SelectedItem,RelativeSource={RelativeSource Self},Converter={StaticResource IsNullConverter}}"
-                                     Value="True">
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding SelectedItem,RelativeSource={RelativeSource Self},Converter={StaticResource IsNullConverter}}"
+                                           Value="True" />
+                                <Condition Binding="{Binding Text, RelativeSource={RelativeSource Self},Converter={StaticResource IsNullOrEmptyConverter}}"
+                                           Value="True" />
+                            </MultiDataTrigger.Conditions>
                             <Setter Property="Visibility"
                                     TargetName="TxtWatermark"
                                     Value="Visible" />
-                        </DataTrigger>
+                        </MultiDataTrigger>
+
                         <Trigger Property="IsEditable"
                                  Value="True">
                             <Setter TargetName="PART_EditableTextBox"
