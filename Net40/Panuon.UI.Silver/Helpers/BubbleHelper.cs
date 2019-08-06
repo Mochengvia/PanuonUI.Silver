@@ -9,7 +9,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Effects;
 using System.Windows.Threading;
 
-namespace Panuon.UI.Silver.Helpers
+namespace Panuon.UI.Silver
 {
     public class BubbleHelper
     {

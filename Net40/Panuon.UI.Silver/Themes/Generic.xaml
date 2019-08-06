@@ -123,6 +123,21 @@
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
+                        <Trigger Property="ResizeMode"
+                                 Value="NoResize">
+                            <Setter TargetName="BtnMinimize"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
+                            <Setter TargetName="BtnMaximize"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
+                        </Trigger>
+                        <Trigger Property="ResizeMode"
+                                 Value="CanMinimize">
+                            <Setter TargetName="BtnMaximize"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
+                        </Trigger>
                         <Trigger Property="IsMaskVisible"
                                  Value="True">
                             <Trigger.EnterActions>
