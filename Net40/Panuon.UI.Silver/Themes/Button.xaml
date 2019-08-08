@@ -83,7 +83,7 @@
                                                    Stroke="{TemplateBinding Foreground}"
                                                    Width="20"
                                                    Height="20" />
-                                    <ContentPresenter Grid.Column="1"
+                                    <ContentControl Grid.Column="1"
                                                       Content="{Binding Path=(local:ButtonHelper.WaitingContent),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
                                                       VerticalAlignment="Center" />
 
@@ -237,7 +237,7 @@
                                                    Stroke="{TemplateBinding Foreground}"
                                                    Width="20"
                                                    Height="20" />
-                                    <ContentPresenter Grid.Column="1"
+                                    <ContentControl Grid.Column="1"
                                                       Content="{Binding Path=(local:ButtonHelper.WaitingContent),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
                                                       VerticalAlignment="Center" />
 
@@ -440,7 +440,7 @@
                                                    Stroke="{TemplateBinding Foreground}"
                                                    Width="20"
                                                    Height="20" />
-                                    <ContentPresenter Grid.Column="1"
+                                    <ContentControl Grid.Column="1"
                                                       Content="{Binding Path=(local:ButtonHelper.WaitingContent),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
                                                       VerticalAlignment="Center" />
 
@@ -609,7 +609,7 @@
                                                        Stroke="{TemplateBinding Foreground}"
                                                        Width="20"
                                                        Height="20" />
-                                        <ContentPresenter Grid.Column="1"
+                                        <ContentControl Grid.Column="1"
                                                           Content="{Binding Path=(local:ButtonHelper.WaitingContent),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
                                                           VerticalAlignment="Center" />
 
