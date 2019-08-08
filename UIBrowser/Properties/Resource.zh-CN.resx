@@ -381,4 +381,10 @@
   <data name="MessageBoxX" xml:space="preserve">
     <value>MessageBoxX 消息框X</value>
   </data>
+  <data name="Index" xml:space="preserve">
+    <value>索引</value>
+  </data>
+  <data name="Recyclable" xml:space="preserve">
+    <value>可循环的</value>
+  </data>
 </root>

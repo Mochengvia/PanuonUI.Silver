@@ -87,6 +87,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PartialViews\Custom\CarouselView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="PartialViews\Custom\ColorPickerView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -179,6 +183,9 @@
   <ItemGroup>
     <Compile Include="Models\MainWindowViewModel.cs" />
     <Compile Include="Models\TreeViewItemModel.cs" />
+    <Compile Include="PartialViews\Custom\CarouselView.xaml.cs">
+      <DependentUpon>CarouselView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PartialViews\Custom\ColorPickerView.xaml.cs">
       <DependentUpon>ColorPickerView.xaml</DependentUpon>
     </Compile>

@@ -381,4 +381,10 @@
   <data name="MessageBoxX" xml:space="preserve">
     <value>MessageBoxX</value>
   </data>
+  <data name="Index" xml:space="preserve">
+    <value>Index</value>
+  </data>
+  <data name="Recyclable" xml:space="preserve">
+    <value>Recyclable</value>
+  </data>
 </root>

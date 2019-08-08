@@ -12,7 +12,7 @@ namespace UIBrowser.PartialViews.Custom
     /// <summary>
     /// ComboBoxView.xaml 的交互逻辑
     /// </summary>
-    public partial class CalendarView : UserControl
+    public partial class CarouselView : UserControl
     {
         #region Identity
         private bool _isCodeViewing;
@@ -20,40 +20,30 @@ namespace UIBrowser.PartialViews.Custom
         private LinearGradientBrush _linearGradientBrush;
         #endregion
 
-        public CalendarView()
+        public CarouselView()
         {
             InitializeComponent();
             Loaded += ButtonView_Loaded;
             UpdateVisualEffect();
             _linearGradientBrush = FindResource("ColorSelectorBrush") as LinearGradientBrush;
-            
         }
 
         #region Event
-
         private void ButtonView_Loaded(object sender, RoutedEventArgs e)
         {
             UpdateTemplate();
             UpdateCode();
         }
 
-        private void RdbCalendarMode_CheckChanged(object sender, RoutedEventArgs e)
+        private void BtnInc_Click(object sender, RoutedEventArgs e)
         {
-            if (!IsLoaded)
-                return;
-            var rdb = sender as RadioButton;
-
-            CdrCustom.CalendarMode = (Panuon.UI.Silver.CalendarMode)Enum.Parse(typeof(Panuon.UI.Silver.CalendarMode), rdb.Content.ToString());
-
+            CrlCustom.Index++;
             UpdateCode();
         }
 
-        private void SldTheme_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void BtnDec_Click(object sender, RoutedEventArgs e)
         {
-            if (!IsLoaded)
-                return;
-
-            UpdateTemplate();
+            CrlCustom.Index--;
             UpdateCode();
         }
 
@@ -99,34 +89,11 @@ namespace UIBrowser.PartialViews.Custom
             Clipboard.SetText(TbCode.Text);
         }
 
-        private void ChbSundayFirst_CheckChanged(object sender, RoutedEventArgs e)
+        private void ChbRecyclable_CheckChanged(object sender, RoutedEventArgs e)
         {
-            if (!IsLoaded)
-                return;
-
-            CdrCustom.IsSundayFirst = ChbSundayFirst.IsChecked == true ;
-
+            CrlCustom.Recyclable = ChbRecyclable.IsChecked == true;
             UpdateCode();
         }
-
-        private void ChbLimitMax_CheckChanged(object sender, RoutedEventArgs e)
-        {
-            if (!IsLoaded)
-                return;
-
-            CdrCustom.MaxDate = ChbLimitMax.IsChecked == true ? DateTime.Now.Date.AddMonths(1) : (DateTime?)null;
-            UpdateCode();
-        }
-
-        private void ChbLimitMin_CheckChanged(object sender, RoutedEventArgs e)
-        {
-            if (!IsLoaded)
-                return;
-
-            CdrCustom.MinDate = ChbLimitMin.IsChecked == true ? DateTime.Now.Date.AddMonths(-1) : (DateTime?)null;
-            UpdateCode();
-        }
-
         #endregion
 
         #region Function
@@ -145,31 +112,25 @@ namespace UIBrowser.PartialViews.Custom
         }
         private void UpdateTemplate()
         {
-            var color = Helper.GetColorByOffset(_linearGradientBrush.GradientStops, SldTheme.Value / 7);
-            CdrCustom.ThemeBrush = color.ToBrush();
         }
 
         private void UpdateCode()
         {
-            var calendarMode = CdrCustom.CalendarMode;
-            var maxDate = CdrCustom.MaxDate;
-            var minDate = CdrCustom.MinDate;
-            var isSundayFirst = CdrCustom.IsSundayFirst;
+            var recyclable = CrlCustom.Recyclable;
+            var index = CrlCustom.Index;
 
-            TbCode.Text = $"<pu:Calendar  Width=\"{CdrCustom.ActualWidth}\"" +
-                        $"\nHeight=\"{CdrCustom.ActualHeight}\"" +
-                        (calendarMode == Panuon.UI.Silver.CalendarMode.Date ? "" : $"\nCalendarMode=\"{calendarMode}\"") +
-                        (maxDate == null ? "" : $"\nMaxDate=\"{((DateTime)maxDate).ToString("yyyy-MM-dd")}\"") +
-                        (minDate == null ? "" : $"\nMaxDate=\"{((DateTime)minDate).ToString("yyyy-MM-dd")}\"") +
-                        $"\nThemeBrush=\"{CdrCustom.ThemeBrush.ToColor().ToHexString(false)}\"" +
-                        (isSundayFirst ? "" : "\nIsSundayFirst=\"False\"") +
-                        " />";
+            TbCode.Text = $"<pu:Carousel  Width=\"{CrlCustom.ActualWidth}\"" +
+                        $"\nHeight=\"{CrlCustom.ActualHeight}\"" +
+                        (recyclable ? $"\nRecyclable=\"{recyclable}\"" : "") +
+                        $"\nIndex=\"{CrlCustom.Index}\"" +
+                        " >" +
+                        "\n<Grid Background=\"#F15D26\" />" +
+                        "\n<Grid Background=\"#EED225\" />" +
+                        "\n<Grid Background=\"#47BBC7\" />" +
+                        "\n<Grid Background=\"#306ACF\" />" +
+                        "\n</pu:Carousel>";
         }
 
-
-
-
         #endregion
-
     }
 }

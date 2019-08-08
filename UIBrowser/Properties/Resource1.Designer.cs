@@ -367,6 +367,15 @@ namespace UIBrowser.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Index 的本地化字符串。
+        /// </summary>
+        public static string Index {
+            get {
+                return ResourceManager.GetString("Index", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Introduction 的本地化字符串。
         /// </summary>
         public static string Introduction {
@@ -588,6 +597,15 @@ namespace UIBrowser.Properties {
         public static string RadioButton {
             get {
                 return ResourceManager.GetString("RadioButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Recyclable 的本地化字符串。
+        /// </summary>
+        public static string Recyclable {
+            get {
+                return ResourceManager.GetString("Recyclable", resourceCulture);
             }
         }
         
