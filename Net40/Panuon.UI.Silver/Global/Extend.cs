@@ -35,7 +35,7 @@ namespace Panuon.UI.Silver
         #region Timestamp <-> Datetime
         public static long ToTimeStamp(this DateTime date, bool withMilliseconds = true)
         {
-            TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1);
+            TimeSpan ts = date - new DateTime(1970, 1, 1);
             if (withMilliseconds)
                 return Convert.ToInt64(ts.TotalMilliseconds);
             else
