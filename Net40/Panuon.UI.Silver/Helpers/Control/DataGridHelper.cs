@@ -72,19 +72,19 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("HeaderForeground", typeof(Brush), typeof(DataGridHelper));
         #endregion
 
-        #region ColumnResizeThumbThickness
-        public static double GetColumnResizeThumbThickness(DependencyObject obj)
+        #region ResizeThumbThickness
+        public static double GetResizeThumbThickness(DependencyObject obj)
         {
-            return (double)obj.GetValue(ColumnResizeThumbThicknessProperty);
+            return (double)obj.GetValue(ResizeThumbThicknessProperty);
         }
 
-        public static void SetColumnResizeThumbThickness(DependencyObject obj, double value)
+        public static void SetResizeThumbThickness(DependencyObject obj, double value)
         {
-            obj.SetValue(ColumnResizeThumbThicknessProperty, value);
+            obj.SetValue(ResizeThumbThicknessProperty, value);
         }
 
-        public static readonly DependencyProperty ColumnResizeThumbThicknessProperty =
-            DependencyProperty.RegisterAttached("ColumnResizeThumbThickness", typeof(double), typeof(DataGridHelper));
+        public static readonly DependencyProperty ResizeThumbThicknessProperty =
+            DependencyProperty.RegisterAttached("ResizeThumbThickness", typeof(double), typeof(DataGridHelper));
         #endregion
 
         #region ResizeThumbBrush

@@ -42,7 +42,7 @@
                 Value="Center" />
         <Setter Property="local:DataGridHelper.ColumnHorizontalContentAlignment"
                 Value="Stretch" />
-        <Setter Property="local:DataGridHelper.ColumnResizeThumbThickness"
+        <Setter Property="local:DataGridHelper.ResizeThumbThickness"
                 Value="0.5" />
         <Setter Property="local:DataGridHelper.ResizeThumbBrush"
                 Value="LightGray" />
@@ -136,7 +136,7 @@
                         <Thumb x:Name="PART_LeftHeaderGripper"
                                HorizontalAlignment="Left"
                                Background="{Binding Path=(local:DataGridHelper.ResizeThumbBrush),RelativeSource={RelativeSource AncestorType=DataGrid}}"
-                               Width="{Binding Path=(local:DataGridHelper.ColumnResizeThumbThickness),RelativeSource={RelativeSource AncestorType=DataGrid},Converter={StaticResource Add5Converter}}"
+                               Width="{Binding Path=(local:DataGridHelper.ResizeThumbThickness),RelativeSource={RelativeSource AncestorType=DataGrid},Converter={StaticResource Add5Converter}}"
                                Cursor="SizeWE">
                             <Thumb.Template>
                                 <ControlTemplate TargetType="Thumb">
@@ -173,7 +173,7 @@
                         <Thumb x:Name="PART_RightHeaderGripper"
                                HorizontalAlignment="Right"
                                Background="{Binding Path=(local:DataGridHelper.ResizeThumbBrush),RelativeSource={RelativeSource AncestorType=DataGrid}}"
-                               Width="{Binding Path=(local:DataGridHelper.ColumnResizeThumbThickness),RelativeSource={RelativeSource AncestorType=DataGrid},Converter={StaticResource Add5Converter}}"
+                               Width="{Binding Path=(local:DataGridHelper.ResizeThumbThickness),RelativeSource={RelativeSource AncestorType=DataGrid},Converter={StaticResource Add5Converter}}"
                                Cursor="SizeWE">
                             <Thumb.Template>
                                 <ControlTemplate TargetType="Thumb">
@@ -390,7 +390,7 @@
                         <Thumb x:Name="PART_TopHeaderGripper"
                                VerticalAlignment="Top"
                                Background="{Binding Path=(local:DataGridHelper.ResizeThumbBrush),RelativeSource={RelativeSource AncestorType=DataGrid}}"
-                               Height="{Binding Path=(local:DataGridHelper.ColumnResizeThumbThickness),RelativeSource={RelativeSource AncestorType=DataGrid},Converter={StaticResource Add5Converter}}"
+                               Height="{Binding Path=(local:DataGridHelper.ResizeThumbThickness),RelativeSource={RelativeSource AncestorType=DataGrid},Converter={StaticResource Add5Converter}}"
                                Cursor="SizeNS">
                             <Thumb.Template>
                                 <ControlTemplate TargetType="Thumb">
@@ -404,7 +404,7 @@
                         <Thumb x:Name="PART_BottomHeaderGripper"
                                VerticalAlignment="Bottom"
                                Background="{Binding Path=(local:DataGridHelper.ResizeThumbBrush),RelativeSource={RelativeSource AncestorType=DataGrid}}"
-                               Height="{Binding Path=(local:DataGridHelper.ColumnResizeThumbThickness),RelativeSource={RelativeSource AncestorType=DataGrid},Converter={StaticResource Add5Converter}}"
+                               Height="{Binding Path=(local:DataGridHelper.ResizeThumbThickness),RelativeSource={RelativeSource AncestorType=DataGrid},Converter={StaticResource Add5Converter}}"
                                Cursor="SizeNS">
                             <Thumb.Template>
                                 <ControlTemplate TargetType="Thumb">
