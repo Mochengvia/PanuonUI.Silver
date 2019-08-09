@@ -20,9 +20,24 @@ Zhihu : @末城via
 `由于AllowTransparent带来的性能问题，自2019-7-28日起，PanuonUI.Silver将不再支持WindowHelper中的全部内容。对于Window窗体，请使用全新的WindowX控件，并使用WindowXCaption附加类为其设计标题（参见示例项目）。对于消息框，请使用全新的MessageBoxX.Show(...)方法。对于ShowPopup方法，请改用BubbleHelper.Show(...)方法。`  
 `更新该版本需要您对项目中涉及到的代码进行一些修改，但这些修改对于UI视觉和性能的提升是显而易见的。`  
 
+
+# Case 案例  
+
+### Morin 魔音
+
+http://www.huanghunxiao.com/  
+  
+![](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/Panuon.UI.Silver/case_morin_3.png)  
+
+![](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/Panuon.UI.Silver/case_morin_2.png)  
+
+
+
+
 # Examples 示例  
 
 ![](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/Panuon.UI.Silver/window_1.png)
+
 
 # Document 文档
 
