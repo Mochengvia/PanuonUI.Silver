@@ -144,7 +144,7 @@ namespace Panuon.UI.Silver
     {
         Standard,
         Classic,
-        
+
     }
     #endregion
 
@@ -226,8 +226,14 @@ namespace Panuon.UI.Silver
     }
     #endregion
 
+    #region ColumnStyle
+    public enum ColumnStyle
+    {
+        Standard,
+        Hover
+    }
+    #endregion
 
-    
     #region ItemsControl
     public enum ItemAnimation
     {

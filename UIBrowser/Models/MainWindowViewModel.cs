@@ -25,6 +25,7 @@ namespace UIBrowser.Models
                          new TreeViewItemModel(Properties.Resource.TabControl,"TabControl"),
                          new TreeViewItemModel(Properties.Resource.TreeView,"TreeView"),
                          new TreeViewItemModel(Properties.Resource.Slider,"Slider"),
+                         new TreeViewItemModel(Properties.Resource.DataGrid,"DataGrid"),
                          new TreeViewItemModel(Properties.Resource.ListBox,"ListBox"),
                          new TreeViewItemModel(Properties.Resource.GroupBox,"GroupBox"),
                          new TreeViewItemModel(Properties.Resource.Expander,"Expander"),

@@ -246,6 +246,7 @@
     <Compile Include="Converters\ThicknessConverter.cs" />
     <Compile Include="Converters\TreeViewConverter.cs" />
     <Compile Include="Converters\WidthAndHeightConverter.cs" />
+    <Compile Include="Global\Attributes\DataGridColumnAttribute.cs" />
     <Compile Include="Global\Models\MessageBoxXConfigurations.cs" />
     <Compile Include="Helpers\BubbleHelper.cs" />
     <Compile Include="Helpers\Control\GridHelper.cs" />

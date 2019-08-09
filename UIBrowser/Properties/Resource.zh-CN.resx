@@ -387,4 +387,16 @@
   <data name="Recyclable" xml:space="preserve">
     <value>可循环的</value>
   </data>
+  <data name="CenterColumnContent" xml:space="preserve">
+    <value>列内容居中</value>
+  </data>
+  <data name="DataGrid" xml:space="preserve">
+    <value>DataGrid 数据表格</value>
+  </data>
+  <data name="MinHeaderHeight" xml:space="preserve">
+    <value>最小标题高度</value>
+  </data>
+  <data name="MinRowHeight" xml:space="preserve">
+    <value>最小行高度</value>
+  </data>
 </root>

@@ -151,6 +151,15 @@ namespace UIBrowser.Properties {
         }
         
         /// <summary>
+        ///   查找类似 CenterColumnContent 的本地化字符串。
+        /// </summary>
+        public static string CenterColumnContent {
+            get {
+                return ResourceManager.GetString("CenterColumnContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Change If Checked 的本地化字符串。
         /// </summary>
         public static string ChangeContentWhenChecked {
@@ -255,6 +264,15 @@ namespace UIBrowser.Properties {
         public static string CustomControls {
             get {
                 return ResourceManager.GetString("CustomControls", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 DataGrid 的本地化字符串。
+        /// </summary>
+        public static string DataGrid {
+            get {
+                return ResourceManager.GetString("DataGrid", resourceCulture);
             }
         }
         
@@ -498,6 +516,24 @@ namespace UIBrowser.Properties {
         public static string MessageBoxX {
             get {
                 return ResourceManager.GetString("MessageBoxX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 MinHeaderHeight 的本地化字符串。
+        /// </summary>
+        public static string MinHeaderHeight {
+            get {
+                return ResourceManager.GetString("MinHeaderHeight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 MinRowHeight 的本地化字符串。
+        /// </summary>
+        public static string MinRowHeight {
+            get {
+                return ResourceManager.GetString("MinRowHeight", resourceCulture);
             }
         }
         
