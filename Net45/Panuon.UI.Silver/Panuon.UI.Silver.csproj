@@ -82,6 +82,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Controls\Internal\NoticeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\NeonLabel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -210,6 +214,10 @@
     <Compile Include="Controls\Internal\MsgBox.xaml.cs">
       <DependentUpon>MsgBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Internal\NoticeCard.cs" />
+    <Compile Include="Controls\Internal\NoticeWindow.xaml.cs">
+      <DependentUpon>NoticeWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Internal\NotTopMostPopup.cs" />
     <Compile Include="Controls\Internal\ResizeThumb.cs" />
     <Compile Include="Controls\MessageBoxX.cs" />
@@ -218,6 +226,7 @@
     <Compile Include="Controls\NeonLabel.xaml.cs">
       <DependentUpon>NeonLabel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Notice.cs" />
     <Compile Include="Controls\Pagination.xaml.cs">
       <DependentUpon>Pagination.xaml</DependentUpon>
     </Compile>
