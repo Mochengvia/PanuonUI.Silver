@@ -13,7 +13,8 @@ QQ Group : 718778191
 Zhihu : @末城via
 
 # News 动态  
-`2019-8-9 Rewrite datagrid style`
+`2019-8-9 重写DataGrid样式`
+`谨慎更新：该改动会对现有样式造成影响。`  
 
 `2019-8-1 分为.NET40和.NET45双版本`  
 `对于.NET4.0版本，需要同时引用Output文件夹中的Panuon.UI.Silver.dll和Windows.Shell.dll。对于.NET4.5及以上版本，无需引用Windows.Shell.dll。`
