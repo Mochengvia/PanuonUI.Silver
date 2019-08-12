@@ -28,7 +28,7 @@ namespace Panuon.UI.Silver
 
         public static MessageBoxResult Show(string message, string title = null, Window owner = null)
         {
-            return CallMsgBox(owner, message, title, MessageBoxButton.OK, new MessageBoxXConfigurations());
+            return CallMsgBox(owner, message, title,  MessageBoxButton.OK, new MessageBoxXConfigurations());
         }
 
         public static MessageBoxResult Show(string message, string title = null, Window owner = null, MessageBoxButton messageBoxButton = MessageBoxButton.OK)
@@ -69,10 +69,10 @@ namespace Panuon.UI.Silver
 
             WindowX windowX = null;
 
-            if (configurations.InteractOwnerMask && owner != null && owner is WindowX)
+            if(configurations.InteractOwnerMask && owner != null && owner is WindowX)
                 windowX = owner as WindowX;
 
-            if (windowX != null)
+            if(windowX != null)
                 windowX.IsMaskVisible = true;
             msb.ShowDialog();
             if (windowX != null)

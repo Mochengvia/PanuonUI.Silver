@@ -10,7 +10,8 @@
             Title="UIBrowser"
             Height="700"
             Width="1200"
-            WindowStartupLocation="CenterScreen">
+            WindowStartupLocation="CenterScreen"
+            Closing="WindowX_Closing">
     <pu:WindowXCaption.ExtendControl>
         <Button Content="&#xf09b;"
                 FontFamily="{DynamicResource FontAwesome}"
@@ -74,5 +75,9 @@
         <ContentControl x:Name="ContentControl"
                         Grid.Column="1"
                         Margin="20,0" />
+        <!--<Button Grid.Column="1"
+                Height="30"
+                Width="200"
+                Click="Button_Click"/>-->
     </Grid>
 </pu:WindowX>

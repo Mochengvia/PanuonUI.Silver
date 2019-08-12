@@ -565,6 +565,15 @@ namespace UIBrowser.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Notice 的本地化字符串。
+        /// </summary>
+        public static string Notice {
+            get {
+                return ResourceManager.GetString("Notice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 OnlyOne 的本地化字符串。
         /// </summary>
         public static string OnlyOne {

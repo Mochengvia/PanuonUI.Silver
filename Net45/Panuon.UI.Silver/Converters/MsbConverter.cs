@@ -175,7 +175,7 @@ namespace Panuon.UI.Silver.Converters
                 case MessageBoxIcon.None:
                     return new GridLength(20);
                 default:
-                    return new GridLength(0.5, GridUnitType.Star);
+                    return new GridLength(140);
             }
         }
 

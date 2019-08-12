@@ -236,6 +236,7 @@
     <Compile Include="Controls\Timeline.cs" />
     <Compile Include="Controls\WindowX.cs" />
     <Compile Include="Converters\BrushOrColorConverter.cs" />
+    <Compile Include="Converters\CheckIconConverter.cs" />
     <Compile Include="Converters\ComboBoxConverter.cs" />
     <Compile Include="Converters\MsbConverter.cs" />
     <Compile Include="Converters\CheckBoxOrRadioButtonConverter.cs" />
@@ -312,9 +313,6 @@
   <ItemGroup>
     <Folder Include="Global\Interfaces\" />
     <Folder Include="Global\Statics\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="References\Microsoft.Windows.Shell.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

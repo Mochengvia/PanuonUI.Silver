@@ -26,7 +26,7 @@ namespace UIBrowser
         {
             _partialViewDic = new Dictionary<string, Type>();
             var assembly = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(x => x.FullName.StartsWith("UIBrowser"));
-            assembly.GetTypes().Where(x => x.Namespace.StartsWith("UIBrowser.PartialViews") && x.IsSubclassOf(typeof(UserControl))).ToList().ForEach(x =>_partialViewDic.Add(x.Name.Remove(x.Name.Length - 4), x));
+            assembly.GetTypes().Where(x => x.Namespace.StartsWith("UIBrowser.PartialViews") && x.IsSubclassOf(typeof(UserControl))).ToList().ForEach(x => _partialViewDic.Add(x.Name.Remove(x.Name.Length - 4), x));
         }
 
         public MainWindow()
@@ -34,6 +34,7 @@ namespace UIBrowser
             InitializeComponent();
             ViewModel = new MainWindowViewModel();
             DataContext = ViewModel;
+
         }
 
         #endregion
@@ -59,6 +60,15 @@ namespace UIBrowser
         private void BtnClear_Click(object sender, RoutedEventArgs e)
         {
             ViewModel.SearchText = "";
+        }
+
+        private void WindowX_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
         }
     }
 }

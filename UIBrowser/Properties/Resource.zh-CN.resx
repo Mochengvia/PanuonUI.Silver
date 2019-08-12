@@ -399,4 +399,7 @@
   <data name="MinRowHeight" xml:space="preserve">
     <value>最小行高度</value>
   </data>
+  <data name="Notice" xml:space="preserve">
+    <value>Notice 通知</value>
+  </data>
 </root>

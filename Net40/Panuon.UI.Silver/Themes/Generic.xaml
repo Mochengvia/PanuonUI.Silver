@@ -47,9 +47,9 @@
         <Setter Property="shell:WindowChrome.WindowChrome">
             <Setter.Value>
                 <shell:WindowChrome  ResizeBorderThickness="5"
-                                     CornerRadius="0"
                                      CaptionHeight="0"
-                                     GlassFrameThickness="5" />
+                                     GlassFrameThickness="5"
+                                     CornerRadius="0" />
             </Setter.Value>
         </Setter>
         <Setter Property="Template">
@@ -2308,4 +2308,92 @@
         </Setter>
     </Style>
 
+    <Style TargetType="{x:Type internal:NoticeCard}">
+        <Setter Property="FontFamily"
+                Value="{StaticResource Default_FontFamily}" />
+        <Setter Property="SnapsToDevicePixels"
+                Value="{StaticResource Default_SnapsToDevicePixels}" />
+        <Setter Property="FontSize"
+                Value="{StaticResource Default_FontSize}" />
+        <Setter Property="FocusVisualStyle"
+                Value="{x:Null}" />
+        <Setter Property="BorderBrush"
+                Value="LightGray" />
+        <Setter Property="BorderThickness"
+                Value="1" />
+        <Setter Property="Width"
+                Value="400" />
+        <Setter Property="Height"
+                Value="150" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type internal:NoticeCard}">
+                    <Grid Margin="10,0">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                            <Border.Effect>
+                                <DropShadowEffect Color="LightGray"
+                                                  Opacity="0.5"
+                                                  BlurRadius="10"
+                                                  ShadowDepth="0" />
+                            </Border.Effect>
+                        </Border>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <internal:CheckIcon x:Name="Icon"
+                                                MessageBoxIcon="{TemplateBinding MessageBoxIcon}"
+                                                VerticalAlignment="Center"
+                                                Margin="15,0"
+                                                Height="70"
+                                                Width="70" />
+                            <Grid x:Name="GrdContent"
+                                  Grid.Column="1"
+                                  Margin="0,0,10,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="{TemplateBinding Title}"
+                                           FontSize="16"
+                                           Margin="0,15,0,5"
+                                           TextWrapping="Wrap"
+                                           FontWeight="Bold" />
+                                <TextBlock Text="{TemplateBinding Message}"
+                                           FontSize="14"
+                                           Grid.Row="1"
+                                           Margin="0,5,0,15"
+                                           TextWrapping="Wrap" />
+                                <Button x:Name="BtnClose"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Right"
+                                        local:ButtonHelper.ButtonStyle="Link"
+                                        Content="×"
+                                        FontSize="25"
+                                        Margin="10,5"
+                                        Command="{Binding CloseCommand, RelativeSource={RelativeSource AncestorType=internal:NoticeCard}}"
+                                        CommandParameter="{Binding Path=.,RelativeSource={RelativeSource AncestorType=internal:NoticeCard}}" />
+                            </Grid>
+
+                        </Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding MessageBoxIcon,RelativeSource={RelativeSource Self},Mode=OneWay}"
+                                     Value="None">
+                            <Setter TargetName="Icon"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
+                            <Setter TargetName="GrdContent"
+                                    Property="Margin"
+                                    Value="20,0,10,0" />
+                        </DataTrigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

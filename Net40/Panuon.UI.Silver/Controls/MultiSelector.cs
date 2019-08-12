@@ -41,7 +41,6 @@ namespace Panuon.UI.Silver
 
         void RaiseSelectionChanged()
         {
-            var dataGird = new DataGrid();
             var arg = new RoutedEventArgs(SelectionChangedEvent);
             RaiseEvent(arg);
         }
