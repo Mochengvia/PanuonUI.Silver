@@ -2347,9 +2347,10 @@
                             <internal:CheckIcon x:Name="Icon"
                                                 MessageBoxIcon="{TemplateBinding MessageBoxIcon}"
                                                 VerticalAlignment="Center"
-                                                Margin="15,0"
-                                                Height="70"
-                                                Width="70" />
+                                                Margin="25,0,15,0"
+                                                Thickness="3"
+                                                Height="50"
+                                                Width="50" />
                             <Grid x:Name="GrdContent"
                                   Grid.Column="1"
                                   Margin="0,0,10,0">
