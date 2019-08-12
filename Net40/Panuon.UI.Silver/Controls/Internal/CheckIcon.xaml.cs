@@ -34,6 +34,17 @@ namespace Panuon.UI.Silver.Controls.Internal
             DependencyProperty.Register("MessageBoxIcon", typeof(MessageBoxIcon), typeof(CheckIcon), new PropertyMetadata(MessageBoxIcon.None, OnMessageBoxIconChanged));
 
 
+        public double Thickness
+        {
+            get { return (double)GetValue(ThicknessProperty); }
+            set { SetValue(ThicknessProperty, value); }
+        }
+
+        public static readonly DependencyProperty ThicknessProperty =
+            DependencyProperty.Register("Thickness", typeof(double), typeof(CheckIcon), new PropertyMetadata(5.0));
+
+
+
         private static void OnMessageBoxIconChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var icon = d as CheckIcon;

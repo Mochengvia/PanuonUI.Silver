@@ -17,7 +17,7 @@ namespace Panuon.UI.Silver.Converters
             var padding = values[1] as Thickness? ?? new Thickness(0);
 
             return new Thickness(width + padding.Left, padding.Top, padding.Right + 25, padding.Bottom);
-
+         
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)

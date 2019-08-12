@@ -41,6 +41,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>References\Caliburn.Micro.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Windows.Shell">
+      <HintPath>..\Net40\Panuon.UI.Silver\References\Microsoft.Windows.Shell.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -116,6 +119,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="PartialViews\Custom\CalendarView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PartialViews\Custom\NoticeView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -210,6 +217,9 @@
     </Compile>
     <Compile Include="PartialViews\Custom\CalendarView.xaml.cs">
       <DependentUpon>CalendarView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PartialViews\Custom\NoticeView.xaml.cs">
+      <DependentUpon>NoticeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="PartialViews\Custom\MessageBoxXView.xaml.cs">
       <DependentUpon>MessageBoxXView.xaml</DependentUpon>

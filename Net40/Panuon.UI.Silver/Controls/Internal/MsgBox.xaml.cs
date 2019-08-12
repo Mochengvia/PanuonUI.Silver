@@ -82,6 +82,7 @@ namespace Panuon.UI.Silver.Controls.Internal
         public static readonly DependencyProperty MessageBoxResultProperty =
             DependencyProperty.Register("MessageBoxResult", typeof(MessageBoxResult), typeof(MsgBox), new PropertyMetadata(MessageBoxResult.No));
 
+
         public MessageBoxIcon MessageBoxIcon
         {
             get { return (MessageBoxIcon)GetValue(MessageBoxIconProperty); }
@@ -99,6 +100,8 @@ namespace Panuon.UI.Silver.Controls.Internal
 
         public static readonly DependencyProperty ButtonGroupHorizontalAlignmentProperty =
             DependencyProperty.Register("ButtonGroupHorizontalAlignment", typeof(HorizontalAlignment), typeof(MsgBox), new PropertyMetadata(HorizontalAlignment.Left));
+
+
 
         public double MaxContentWidth
         {
@@ -266,6 +269,7 @@ namespace Panuon.UI.Silver.Controls.Internal
             Close();
         }
         #endregion
+
 
     }
 }

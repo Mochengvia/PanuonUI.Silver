@@ -37,6 +37,7 @@ namespace UIBrowser.Models
                      {
                          new TreeViewItemModel(Properties.Resource.WindowX,"WindowX"),
                          new TreeViewItemModel(Properties.Resource.MessageBoxX,"MessageBoxX"),
+                         new TreeViewItemModel(Properties.Resource.Notice,"Notice"),
                          new TreeViewItemModel(Properties.Resource.Badge,"Badge"),
                          new TreeViewItemModel(Properties.Resource.Calendar,"Calendar"),
                          new TreeViewItemModel(Properties.Resource.DateTimePicker,"DateTimePicker"),

@@ -198,7 +198,7 @@
                                     <MultiBinding Converter="{StaticResource ComboBoxTextMarginConverter}">
                                         <Binding Path="ActualWidth"
                                                  ElementName="LblIcon" />
-                                        <Binding Path="Padding" />
+                                        <Binding Path="Padding"/>
                                     </MultiBinding>
                                 </TextBox.Margin>
                             </TextBox>
@@ -279,7 +279,7 @@
                                     TargetName="TxtWatermark"
                                     Value="Visible" />
                         </MultiDataTrigger>
-
+                       
                         <Trigger Property="IsEditable"
                                  Value="True">
                             <Setter TargetName="PART_EditableTextBox"

@@ -152,7 +152,7 @@
                               HorizontalAlignment="{Binding Path=(local:DataGridHelper.ColumnHorizontalContentAlignment),RelativeSource={RelativeSource AncestorType=DataGridColumnHeader}}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
-                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
                             <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                             <Grid Grid.Column="1">
@@ -283,7 +283,7 @@
                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                     </Grid>
                     <ControlTemplate.Triggers>
-
+                      
                         <Trigger  Property="IsSelected"
                                   Value="True">
                             <Setter Property="Foreground"
@@ -420,7 +420,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-
+    
     <Style x:Key="TextBlockComboBoxStyle"
            TargetType="{x:Type ComboBox}">
         <Setter Property="Template">
