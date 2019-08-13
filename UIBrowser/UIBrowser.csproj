@@ -71,6 +71,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Examples\NeteaseMusicWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -84,6 +88,9 @@
     </Compile>
     <Compile Include="Examples\MacLikeWindow.xaml.cs">
       <DependentUpon>MacLikeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Examples\NeteaseMusicWindow.xaml.cs">
+      <DependentUpon>NeteaseMusicWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Helper.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -289,6 +296,7 @@
       <LastGenOutput>Resource.zh-CN.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <Resource Include="Resources\NeteaseExample\iconfont.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="PartialViews\Template\" />

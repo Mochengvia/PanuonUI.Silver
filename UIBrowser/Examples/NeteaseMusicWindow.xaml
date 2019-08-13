@@ -1,0 +1,119 @@
+﻿<pu:WindowX x:Class="UIBrowser.Examples.NeteaseMusicWindow"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:local="clr-namespace:UIBrowser.Examples"
+            xmlns:pu="clr-namespace:Panuon.UI.Silver;assembly=Panuon.UI.Silver"
+            mc:Ignorable="d"
+            Title="NeteaseMusicWindow"
+            Height="600"
+            Width="1000"
+            Style="{StaticResource NeteaseMusicWindow}"
+            WindowStartupLocation="CenterScreen">
+    <pu:WindowXCaption.Header>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBlock FontSize="18"
+                       FontWeight="Light"
+                       VerticalAlignment="Center"
+                       Margin="15,0,0,0"
+                       Foreground="White"
+                       Text="NETEASE MUSIC" />
+            <StackPanel Grid.Column="1"
+                        Orientation="Horizontal">
+            </StackPanel>
+            <Grid Grid.Column="2"
+                  Margin="30,0,0,0">
+                <TextBox pu:TextBoxHelper.CornerRadius="13"
+                         Height="26"
+                         Width="220"
+                         FontSize="12"
+                         Background="#B12323"
+                         BorderThickness="0"
+                         pu:TextBoxHelper.Watermark="Search music, vedio, radio"
+                         pu:TextBoxHelper.FocusedShadowColor="#C62F2F"
+                         Foreground="White"
+                         CaretBrush="White"
+                         Padding="10,0,30,0"/>
+                <Button FontSize="16"
+                        pu:ButtonHelper.ButtonStyle="Link"
+                        Foreground="#EAEAEA"
+                        Content="&#xe69a;"
+                        FontFamily="/Resources/NeteaseExample/#iconfont"
+                        pu:ButtonHelper.HoverBrush="White"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Right"
+                        Margin="0,0,7,0" />
+            </Grid>
+            <StackPanel Grid.Column="4"
+                        Orientation="Horizontal"
+                        VerticalAlignment="Center">
+                <Button FontSize="19"
+                        Width="28"
+                        Height="28"
+                        pu:ButtonHelper.ButtonStyle="Link"
+                        Foreground="#EAEAEA"
+                        Content="&#xe6ae;"
+                        FontFamily="/Resources/NeteaseExample/#iconfont"
+                        pu:ButtonHelper.HoverBrush="White"
+                        VerticalAlignment="Center"
+                        Margin="0,0,10,2" />
+                <Grid Margin="0,0,10,0">
+                    <Button FontSize="19"
+                            Width="28"
+                            Height="28"
+                            pu:ButtonHelper.ButtonStyle="Link"
+                            Foreground="#EAEAEA"
+                            Content="&#xe6b5;"
+                            FontFamily="/Resources/NeteaseExample/#iconfont"
+                            pu:ButtonHelper.HoverBrush="White"
+                            VerticalAlignment="Center"
+                            Margin="0,0,0,2" />
+                    <pu:Badge Text="82"
+                              Height="14"
+                              Margin="-5,0"
+                              FontSize="10"
+                              HorizontalAlignment="Right"
+                              VerticalAlignment="Top"
+                              Foreground="#C62F2F"
+                              Background="White"/>
+                </Grid>
+                <Button FontSize="17"
+                        Width="28"
+                        Height="28"
+                        pu:ButtonHelper.ButtonStyle="Link"
+                        Foreground="#EAEAEA"
+                        Content="&#xe62a;"
+                        FontFamily="/Resources/NeteaseExample/#iconfont"
+                        pu:ButtonHelper.HoverBrush="White"
+                        VerticalAlignment="Center"
+                        Margin="0,0,0,2" />
+                <Border BorderBrush="#FF9B1C1C"
+                        BorderThickness="0,0,1,0"
+                        Margin="5,5"/>
+                <Button FontSize="16"
+                        Width="28"
+                        Height="28"
+                        pu:ButtonHelper.ButtonStyle="Link"
+                        Foreground="#EAEAEA"
+                        Content="&#xe634;"
+                        FontFamily="/Resources/NeteaseExample/#iconfont"
+                        pu:ButtonHelper.HoverBrush="White"
+                        VerticalAlignment="Center"
+                        Margin="0,0,0,2"/>
+            </StackPanel>
+        </Grid>
+    </pu:WindowXCaption.Header>
+    <Window.Resources>
+    </Window.Resources>
+    <Grid>
+
+    </Grid>
+</pu:WindowX>

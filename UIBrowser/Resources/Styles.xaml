@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:pu="clr-namespace:Panuon.UI.Silver;assembly=Panuon.UI.Silver"
                     xmlns:local="clr-namespace:UIBrowser.Resources">
     <DrawingBrush x:Key="GridBrush"
                   Viewport="0,0,12,12"
@@ -24,7 +25,7 @@
             </DrawingGroup>
         </DrawingBrush.Drawing>
     </DrawingBrush>
-    
+
     <DropShadowEffect x:Key="DropShadow"
                       Color="LightGray"
                       ShadowDepth="2"
@@ -45,10 +46,114 @@
                       Offset="0.114" />
         <GradientStop Color="#ff0000"
                       Offset="0.7994" />
-        <GradientStop Color="White" 
-                      Offset="0.7995"/>
+        <GradientStop Color="White"
+                      Offset="0.7995" />
         <GradientStop Color="Black"
                       Offset="1" />
     </LinearGradientBrush>
+
+    <Style x:Key="NeteaseMusicWindow"
+           TargetType="{x:Type pu:WindowX}"
+           BasedOn="{StaticResource {x:Type pu:WindowX}}">
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="pu:WindowXCaption.Height"
+                Value="40" />
+        <Setter Property="pu:WindowXCaption.Background"
+                Value="#C62F2F" />
+        <Setter Property="pu:WindowXCaption.MinimizeButtonStyle">
+            <Setter.Value>
+                <Style TargetType="{x:Type Button}"
+                       BasedOn="{StaticResource {x:Type Button}}">
+                    <Setter Property="pu:ButtonHelper.ButtonStyle"
+                            Value="Link" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=(pu:ButtonHelper.ButtonStyle),RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                                     Value="Link">
+                            <Setter Property="Content"
+                                    Value="&#xe65a;" />
+                            <Setter Property="FontFamily"
+                                    Value="/Resources/NeteaseExample/#iconfont" />
+                            <Setter Property="Width"
+                                    Value="28" />
+                            <Setter Property="Height"
+                                    Value="28" />
+                            <Setter Property="FontSize"
+                                    Value="16" />
+                            <Setter Property="VerticalAlignment"
+                                    Value="Center" />
+                            <Setter Property="Foreground"
+                                    Value="#EAEAEA" />
+                            <Setter Property="pu:ButtonHelper.HoverBrush"
+                                    Value="#FFFFFF" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="pu:WindowXCaption.MaximizeButtonStyle">
+            <Setter.Value>
+                <Style TargetType="{x:Type Button}"
+                       BasedOn="{StaticResource {x:Type Button}}">
+                    <Setter Property="pu:ButtonHelper.ButtonStyle"
+                            Value="Link" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=(pu:ButtonHelper.ButtonStyle),RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                                     Value="Link">
+                            <Setter Property="Content"
+                                    Value="&#xe65d;" />
+                            <Setter Property="Width"
+                                    Value="28" />
+                            <Setter Property="Height"
+                                    Value="28" />
+                            <Setter Property="FontSize"
+                                    Value="16" />
+                            <Setter Property="FontFamily"
+                                    Value="/Resources/NeteaseExample/#iconfont" />
+                            <Setter Property="VerticalAlignment"
+                                    Value="Center" />
+                            <Setter Property="Foreground"
+                                    Value="#EAEAEA" />
+                            <Setter Property="pu:ButtonHelper.HoverBrush"
+                                    Value="#FFFFFF" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="pu:WindowXCaption.CloseButtonStyle">
+            <Setter.Value>
+                <Style TargetType="{x:Type Button}"
+                       BasedOn="{StaticResource {x:Type Button}}">
+                    <Setter Property="pu:ButtonHelper.ButtonStyle"
+                            Value="Link" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=(pu:ButtonHelper.ButtonStyle),RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                                     Value="Link">
+                            <Setter Property="Content"
+                                    Value="&#xe621;" />
+                            <Setter Property="FontFamily"
+                                    Value="/Resources/NeteaseExample/#iconfont" />
+                            <Setter Property="Width"
+                                    Value="28" />
+                            <Setter Property="Height"
+                                    Value="28" />
+                            <Setter Property="FontSize"
+                                    Value="16" />
+                            <Setter Property="Margin"
+                                    Value="0,0,5,0" />
+                            <Setter Property="VerticalAlignment"
+                                    Value="Center" />
+                            <Setter Property="Foreground"
+                                    Value="#EAEAEA" />
+                            <Setter Property="pu:ButtonHelper.HoverBrush"
+                                    Value="#FFFFFF" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
 
 </ResourceDictionary>

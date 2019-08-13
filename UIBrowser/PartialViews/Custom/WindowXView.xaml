@@ -34,6 +34,15 @@
                         Click="BtnWindow_Click"
                         pu:ButtonHelper.ButtonStyle="Outline"
                         pu:ButtonHelper.HoverBrush="#FF3CBCC9" />
+                <Button Tag="NeteaseMusic"
+                        Margin="0,15,0,0"
+                        Height="30"
+                        HorizontalAlignment="Left"
+                        Padding="50,0"
+                        Content="Netease music (imitate)"
+                        Click="BtnWindow_Click"
+                        pu:ButtonHelper.ButtonStyle="Outline"
+                        pu:ButtonHelper.HoverBrush="#FF3CBCC9" />
             </StackPanel>
 
         </GroupBox>

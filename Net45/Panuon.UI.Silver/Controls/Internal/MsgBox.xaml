@@ -59,7 +59,7 @@
                                      Thickness="3"
                                      Width="60"
                                      Height="60"
-                                     Margin="30,0,10,0">
+                                     Margin="0,0,20,0">
                     </local:CheckIcon>
                     <Grid Grid.Column="1"
                           VerticalAlignment="Center">

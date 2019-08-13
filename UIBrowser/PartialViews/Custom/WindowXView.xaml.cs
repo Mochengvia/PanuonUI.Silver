@@ -35,6 +35,9 @@ namespace UIBrowser.PartialViews.Custom
                 case "Navbar":
                     window = new NavbarWindow();
                     break;
+                case "NeteaseMusic":
+                    window = new NeteaseMusicWindow();
+                    break;
             }
             if (window != null)
             {
