@@ -20,6 +20,16 @@
     <converter:CornerRadiusAdd1Converter x:Key="CornerRadiusAdd1Converter" />
     <converter:Minus4Converter x:Key="Minus4Converter" />
 
+    <!--<Style TargetType="{x:Type local:Pagination}">
+        <Setter Property="FontFamily"
+                Value="{StaticResource Default_FontFamily}" />
+        <Setter Property="SnapsToDevicePixels"
+                Value="{StaticResource Default_SnapsToDevicePixels}" />
+        <Setter Property="FontSize"
+                Value="{StaticResource Default_FontSize}" />
+        <Setter Property="FocusVisualStyle"
+                Value="{x:Null}" />
+    </Style>-->
     <Style TargetType="{x:Type local:WindowX}">
         <Setter Property="FontFamily"
                 Value="{StaticResource Default_FontFamily}" />

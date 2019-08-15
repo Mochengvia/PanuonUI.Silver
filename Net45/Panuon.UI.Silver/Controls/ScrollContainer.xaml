@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="Panuon.UI.Silver.ScrollContainer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Panuon.UI.Silver"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             x:Name="Container">
+    <Grid>
+        <ScrollViewer x:Name="SvMain"
+                      CanContentScroll="False"
+                      VerticalScrollBarVisibility="{Binding VerticalScrollBarVisibility,ElementName=Container}"
+                      HorizontalScrollBarVisibility="Disabled"
+                      PreviewMouseWheel="SvMain_PreviewMouseWheel">
+            <StackPanel>
+                <WrapPanel x:Name="WrapMain" />
+
+                <StackPanel x:Name="StkLoading"
+                            Height="70"
+                            Orientation="Horizontal"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center">
+                    <local:Loading Height="20"
+                                   Width="20"
+                                   Margin="0,-20,0,0"
+                                   IsRunning="True"
+                                   VerticalAlignment="Center"
+                                   Stroke="LightGray" />
+                    <TextBlock Text="  加载中..."
+                               Margin="0,-20,0,0"
+                               Foreground="Gray"
+                               VerticalAlignment="Center" />
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

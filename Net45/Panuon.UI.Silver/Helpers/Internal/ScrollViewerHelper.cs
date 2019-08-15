@@ -7,6 +7,7 @@ namespace Panuon.UI.Silver
 {
     internal class ScrollViewerHelper
     {
+        #region (Internal) ScrollViewerHook
         public static bool GetScrollViewerHook(DependencyObject obj)
         {
             return (bool)obj.GetValue(ScrollViewerHookProperty);
@@ -61,5 +62,6 @@ namespace Panuon.UI.Silver
             if (scrollViewer.ComputedVerticalScrollBarVisibility == Visibility.Visible || scrollViewer.ComputedHorizontalScrollBarVisibility == Visibility.Visible)
                 e.Handled = true;
         }
+        #endregion
     }
 }

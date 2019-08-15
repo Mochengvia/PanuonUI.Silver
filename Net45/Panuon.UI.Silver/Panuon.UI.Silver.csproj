@@ -91,6 +91,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Pagination.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ScrollContainer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -228,8 +232,12 @@
       <DependentUpon>NeonLabel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Notice.cs" />
+    <Compile Include="Controls\Pagination.cs" />
     <Compile Include="Controls\Pagination.xaml.cs">
       <DependentUpon>Pagination.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ScrollContainer.xaml.cs">
+      <DependentUpon>ScrollContainer.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\TagPanel.xaml.cs">
       <DependentUpon>TagPanel.xaml</DependentUpon>

@@ -252,4 +252,13 @@ namespace Panuon.UI.Silver
         Fade,
     }
     #endregion
+
+    #region PaginationStyle
+    public enum PaginationStyle
+    {
+        Standard,
+        Outline,
+        Simple,
+    }
+    #endregion
 }
