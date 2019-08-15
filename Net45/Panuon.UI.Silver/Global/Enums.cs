@@ -30,6 +30,14 @@ namespace Panuon.UI.Silver
     }
     #endregion
 
+    #region ClickMode
+    public enum ClickMode
+    {
+        Both,
+        OnlyOne,
+    }
+    #endregion
+
     #region Button
     public enum ButtonStyle
     {
@@ -109,6 +117,7 @@ namespace Panuon.UI.Silver
     {
         Standard,
         Switch,
+        Switch2,
         Button
     }
     #endregion

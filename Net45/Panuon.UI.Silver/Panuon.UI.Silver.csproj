@@ -221,6 +221,7 @@
     <Compile Include="Controls\Internal\NotTopMostPopup.cs" />
     <Compile Include="Controls\Internal\ResizeThumb.cs" />
     <Compile Include="Controls\MessageBoxX.cs" />
+    <Compile Include="Controls\MouseOperationContainer.cs" />
     <Compile Include="Controls\MultiSelector.cs" />
     <Compile Include="Controls\Internal\ResizeContainer.cs" />
     <Compile Include="Controls\NeonLabel.xaml.cs">
@@ -254,6 +255,11 @@
     <Compile Include="Converters\TreeViewConverter.cs" />
     <Compile Include="Converters\WidthAndHeightConverter.cs" />
     <Compile Include="Global\Attributes\DataGridColumnAttribute.cs" />
+    <Compile Include="Global\EventArgs\LongPressEventArgs.cs" />
+    <Compile Include="Global\EventArgs\DoubleClickEventArgs.cs" />
+    <Compile Include="Global\EventArgs\ClickEventArgs.cs" />
+    <Compile Include="Global\EventArgs\DragingEventArgs.cs" />
+    <Compile Include="Global\EventArgs\DragAreaEventArgs.cs" />
     <Compile Include="Global\Models\MessageBoxXConfigurations.cs" />
     <Compile Include="Helpers\BubbleHelper.cs" />
     <Compile Include="Helpers\Control\GridHelper.cs" />

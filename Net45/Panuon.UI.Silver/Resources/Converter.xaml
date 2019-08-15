@@ -29,4 +29,6 @@
     <converter:Minus10Converter x:Key="Minus10Converter"/>
 
     <converter:BoolInverseConverter x:Key="BoolInverseConverter" />
+
+    <converter:DoubleToRightMarginConverter x:Key="DoubleToRightMarginConverter" />
 </ResourceDictionary>
