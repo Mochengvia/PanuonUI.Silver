@@ -85,7 +85,8 @@
                    HorizontalAlignment="Right"
                    VerticalAlignment="Bottom" />
         <pu:ScrollContainer Grid.Column="1"
-                            Width="450">
+                            Width="450"
+                            Visibility="Collapsed">
             <Grid Background="#F15D26"
                   Height="200"
                   Width="200" 

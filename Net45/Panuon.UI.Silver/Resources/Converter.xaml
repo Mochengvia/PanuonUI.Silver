@@ -31,4 +31,7 @@
     <converter:BoolInverseConverter x:Key="BoolInverseConverter" />
 
     <converter:DoubleToRightMarginConverter x:Key="DoubleToRightMarginConverter" />
+    
+    <converter:Add3Converter x:Key="Add3Converter"/>
+    <converter:Add5Converter x:Key="Add5Converter"/>
 </ResourceDictionary>
