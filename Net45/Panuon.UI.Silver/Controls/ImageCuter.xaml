@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Panuon.UI.Silver"
+             xmlns:internal="clr-namespace:Panuon.UI.Silver.Controls.Internal"
              mc:Ignorable="d"
              d:DesignHeight="450"
              d:DesignWidth="800"
@@ -16,7 +17,7 @@
                Source="{Binding ImageSource,ElementName=imagecuter}"
                Stretch="Uniform" />
         <Canvas x:Name="CvaMain">
-            <local:ResizeContainer x:Name="ResizeContainer"
+            <internal:ResizeContainer x:Name="ResizeContainer"
                                    Visibility="Hidden"
                                    MinHeight="{Binding ImageMinHeight,ElementName=imagecuter}"
                                    MinWidth="{Binding ImageMinWidth,ElementName=imagecuter}"
@@ -79,10 +80,10 @@
                                        StrokeDashArray="2,1"></Rectangle>
                         </Grid>
                     </Grid>
-                    <local:DragableThumb DragTarget="{Binding Path=.,ElementName=ResizeContainer}"
+                    <internal:DragableThumb DragTarget="{Binding Path=.,ElementName=ResizeContainer}"
                                          LimitInParent="True" />
                 </Grid>
-            </local:ResizeContainer>
+            </internal:ResizeContainer>
 
         </Canvas>
     </Grid>

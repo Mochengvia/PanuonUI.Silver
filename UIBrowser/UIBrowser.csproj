@@ -97,6 +97,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PartialViews\Custom\WaterfallViewerView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="PartialViews\Custom\CarouselView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -201,6 +205,9 @@
   <ItemGroup>
     <Compile Include="Models\MainWindowViewModel.cs" />
     <Compile Include="Models\TreeViewItemModel.cs" />
+    <Compile Include="PartialViews\Custom\WaterfallViewerView.xaml.cs">
+      <DependentUpon>WaterfallViewerView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PartialViews\Custom\CarouselView.xaml.cs">
       <DependentUpon>CarouselView.xaml</DependentUpon>
     </Compile>
@@ -308,8 +315,8 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Net45\Panuon.UI.Silver\Panuon.UI.Silver.csproj">
-      <Project>{461fe59d-57b8-4599-8e7d-439e27a2bbb2}</Project>
+    <ProjectReference Include="..\Net40\Panuon.UI.Silver\Panuon.UI.Silver.csproj">
+      <Project>{527ff1e2-a99c-40c2-b589-69b5bad77f5a}</Project>
       <Name>Panuon.UI.Silver</Name>
     </ProjectReference>
   </ItemGroup>

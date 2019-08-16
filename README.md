@@ -13,11 +13,11 @@ QQ Group : 718778191
 Zhihu : @末城via
 
 # News 动态  
+`2019-8-16 新增WaterfallViewer瀑布流控件，新增ScrollViewerHelper，移除MiniScrollViewer样式`
+`新增WaterfallViewer（支持LazyLoading，参加示例，文档尚未更新）。项目中已移除MiniScrollViewer样式。若该样式已在项目中使用，请使用pu:ScrollViewerHelper.ScrollBarThickness="6" pu:ScrollViewerHelper.ScrollBarCornerRadius="3" 替代。`
+
 `2019-8-9 重写DataGrid样式`
 `谨慎更新：该改动会对现有样式造成影响。`  
-
-`2019-8-1 分为.NET40和.NET45双版本`  
-`对于.NET4.0版本，需要同时引用Output文件夹中的Panuon.UI.Silver.dll和Windows.Shell.dll。对于.NET4.5及以上版本，无需引用Windows.Shell.dll。`
 
 # Case 案例  
 

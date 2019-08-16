@@ -402,4 +402,22 @@
   <data name="Notice" xml:space="preserve">
     <value>Notice</value>
   </data>
+  <data name="Groups" xml:space="preserve">
+    <value>Groups</value>
+  </data>
+  <data name="Horizontal" xml:space="preserve">
+    <value>Horizontal</value>
+  </data>
+  <data name="HorizontalSpacing" xml:space="preserve">
+    <value>HorizontalSpacing</value>
+  </data>
+  <data name="LazyLoading" xml:space="preserve">
+    <value>LazyLoading</value>
+  </data>
+  <data name="VerticalSpacing" xml:space="preserve">
+    <value>VerticalSpacing</value>
+  </data>
+  <data name="WaterfallViewer" xml:space="preserve">
+    <value>WaterfallViewer</value>
+  </data>
 </root>

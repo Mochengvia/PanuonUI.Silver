@@ -165,6 +165,12 @@ namespace UIBrowser.PartialViews.Native
                     CheckBoxHelper.SetBoxHeight(ChbCustom, SldSize.Value);
                     CheckBoxHelper.SetBoxWidth(ChbCustom, SldSize.Value * 1.5);
                     break;
+                case CheckBoxStyle.Switch2:
+                    ChbCustom.Background = Colors.White.ToBrush();
+                    CheckBoxHelper.SetCheckedBackground(ChbCustom, color.ToBrush());
+                    CheckBoxHelper.SetBoxHeight(ChbCustom, SldSize.Value);
+                    CheckBoxHelper.SetBoxWidth(ChbCustom, SldSize.Value * 2);
+                    break;
                 case CheckBoxStyle.Button:
                     ChbCustom.Background = Colors.White.ToBrush();
                     CheckBoxHelper.SetCheckedBackground(ChbCustom, color.ToBrush());

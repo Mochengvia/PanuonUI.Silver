@@ -71,7 +71,6 @@
                                           VirtualizingStackPanel.IsVirtualizing="True"
                                           VirtualizingStackPanel.VirtualizationMode="Recycling"
                                           VerticalScrollBarVisibility="Disabled"
-                                          local:ScrollViewerHelper.ScrollViewerHook="True"
                                           HorizontalScrollBarVisibility="Hidden">
                                 <TabPanel x:Name="HeaderPanel"
                                           Panel.ZIndex="1"
@@ -183,7 +182,6 @@
                                                   VirtualizingStackPanel.IsVirtualizing="True"
                                                   VirtualizingStackPanel.VirtualizationMode="Recycling"
                                                   VerticalScrollBarVisibility="Disabled"
-                                                  local:ScrollViewerHelper.ScrollViewerHook="True"
                                                   HorizontalScrollBarVisibility="Hidden">
                                         <TabPanel x:Name="HeaderPanel"
                                                   Panel.ZIndex="1"
@@ -279,7 +277,6 @@
                                                   VirtualizingStackPanel.IsVirtualizing="True"
                                                   VirtualizingStackPanel.VirtualizationMode="Recycling"
                                                   VerticalScrollBarVisibility="Hidden"
-                                                  local:ScrollViewerHelper.ScrollViewerHook="True"
                                                   HorizontalScrollBarVisibility="Disabled">
                                         <TabPanel x:Name="HeaderPanel"
                                                   Panel.ZIndex="1"
@@ -384,7 +381,6 @@
                                                   VirtualizingStackPanel.IsVirtualizing="True"
                                                   VirtualizingStackPanel.VirtualizationMode="Recycling"
                                                   VerticalScrollBarVisibility="Hidden"
-                                                  local:ScrollViewerHelper.ScrollViewerHook="True"
                                                   HorizontalScrollBarVisibility="Disabled">
                                         <TabPanel x:Name="HeaderPanel"
                                                   Panel.ZIndex="1"

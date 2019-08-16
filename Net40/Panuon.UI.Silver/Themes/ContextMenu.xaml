@@ -46,7 +46,8 @@
                             </Border.Effect>
 
                         </Border>
-                        <ScrollViewer Style="{StaticResource MiniScrollViewer}"
+                        <ScrollViewer local:ScrollViewerHelper.ScrollBarThickness="6"
+                                      local:ScrollViewerHelper.ScrollBarCornerRadius="3"
                                       CanContentScroll="True">
                             <StackPanel IsItemsHost="True"
                                         KeyboardNavigation.DirectionalNavigation="Cycle" />
@@ -119,7 +120,8 @@
                                             Background="{Binding Background,RelativeSource={RelativeSource AncestorType=ContextMenu}}"
                                             Width="{Binding Width,RelativeSource={RelativeSource AncestorType=ContextMenu}}">
                                         <ScrollViewer CanContentScroll="True"
-                                                      Style="{StaticResource MiniScrollViewer}">
+                                                      local:ScrollViewerHelper.ScrollBarCornerRadius="3"
+                                                      local:ScrollViewerHelper.ScrollBarThickness="6">
                                             <StackPanel IsItemsHost="True"
                                                         KeyboardNavigation.DirectionalNavigation="Cycle" />
                                         </ScrollViewer>

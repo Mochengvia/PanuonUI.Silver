@@ -367,6 +367,33 @@ namespace UIBrowser.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Groups 的本地化字符串。
+        /// </summary>
+        public static string Groups {
+            get {
+                return ResourceManager.GetString("Groups", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Horizontal 的本地化字符串。
+        /// </summary>
+        public static string Horizontal {
+            get {
+                return ResourceManager.GetString("Horizontal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 HorizontalSpacing 的本地化字符串。
+        /// </summary>
+        public static string HorizontalSpacing {
+            get {
+                return ResourceManager.GetString("HorizontalSpacing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 ImageCuter 的本地化字符串。
         /// </summary>
         public static string ImageCuter {
@@ -462,6 +489,15 @@ namespace UIBrowser.Properties {
         public static string LayoutHelper {
             get {
                 return ResourceManager.GetString("LayoutHelper", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 LazyLoading 的本地化字符串。
+        /// </summary>
+        public static string LazyLoading {
+            get {
+                return ResourceManager.GetString("LazyLoading", resourceCulture);
             }
         }
         
@@ -889,11 +925,29 @@ namespace UIBrowser.Properties {
         }
         
         /// <summary>
+        ///   查找类似 VerticalSpacing 的本地化字符串。
+        /// </summary>
+        public static string VerticalSpacing {
+            get {
+                return ResourceManager.GetString("VerticalSpacing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 View Code 的本地化字符串。
         /// </summary>
         public static string ViewCode {
             get {
                 return ResourceManager.GetString("ViewCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 WaterfallViewer 的本地化字符串。
+        /// </summary>
+        public static string WaterfallViewer {
+            get {
+                return ResourceManager.GetString("WaterfallViewer", resourceCulture);
             }
         }
         
