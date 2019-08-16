@@ -50,7 +50,8 @@
                                       VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}"
                                       HorizontalScrollBarVisibility="{Binding Path=(ScrollViewer.HorizontalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}"
                                       CanContentScroll="True"
-                                      Style="{StaticResource MiniScrollViewer}">
+                                      local:ScrollViewerHelper.ScrollBarCornerRadius="3"
+                                      local:ScrollViewerHelper.ScrollBarThickness="6">
                             <ItemsPresenter />
                         </ScrollViewer>
                     </Border>

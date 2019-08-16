@@ -4,6 +4,7 @@
                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                 xmlns:local="clr-namespace:Panuon.UI.Silver"
+                xmlns:internal="clr-namespace:Panuon.UI.Silver.Controls.Internal"
                 mc:Ignorable="d"
                 BorderBrush="LightGray"
                 BorderThickness="1"
@@ -134,7 +135,7 @@
                     </Style>
                 </ToggleButton.Style>
             </ToggleButton>
-            <local:NotTopMostPopup Placement="Bottom"
+            <internal:NotTopMostPopup Placement="Bottom"
                                 x:Name="Popup"
                                 Focusable="False"
                                 Tag="{Binding ElementName=ToggleButton}"
@@ -167,7 +168,7 @@
                         </Border>
                     </Grid>
                 </Grid>
-            </local:NotTopMostPopup>
+            </internal:NotTopMostPopup>
         </Grid>
     </Grid>
 </ContentControl>

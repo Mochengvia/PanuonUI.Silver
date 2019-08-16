@@ -1,6 +1,7 @@
 ﻿using Panuon.UI.Silver.Core;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -140,7 +141,10 @@ namespace Panuon.UI.Silver
         internal void RaiseDraging(Point startPosition, Point endPosition)
         {
             if (_cancelOperation)
+            {
+                _cancelOperation = false;
                 return;
+            }
 
             var arg = new DragingEventArgs(startPosition, endPosition, DragingEvent);
             RaiseEvent(arg);
@@ -239,7 +243,6 @@ namespace Panuon.UI.Silver
             }
 
             _dragHandler = false;
-
         }
 
         private void MouseOperationContainer_MouseDown(object sender, MouseButtonEventArgs e)
@@ -283,19 +286,22 @@ namespace Panuon.UI.Silver
 
         private void MouseOperationContainer_MouseMove(object sender, MouseEventArgs e)
         {
-            if (e.LeftButton != MouseButtonState.Pressed || _lastMouseDownPosition == null || _dragHandler)
+
+            if (e.LeftButton != MouseButtonState.Pressed || _lastMouseDownPosition == null)
                 return;
 
             var currentPosition = e.GetPosition(this);
+
+            if (_dragHandler)
+            {
+                RaiseDraging(new Point(_lastMouseDownPosition.X, _lastMouseDownPosition.Y), currentPosition);
+                return;
+            }
 
             if (Math.Abs(currentPosition.X - _lastMouseDownPosition.X) > DragDeviation || Math.Abs(currentPosition.Y - _lastMouseDownPosition.Y) > DragDeviation)
             {
                 _dragHandler = true;
                 StopTimer();
-            }
-            if (_dragHandler)
-            {
-                RaiseDraging(new Point(_lastMouseDownPosition.X, _lastMouseDownPosition.Y), currentPosition);
             }
         }
 

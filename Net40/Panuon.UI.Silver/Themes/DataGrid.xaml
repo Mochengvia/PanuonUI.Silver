@@ -60,7 +60,7 @@
                 Value="#3E3E3E" />
         <Style.Resources>
             <Style TargetType="{x:Type ScrollViewer}"
-                   BasedOn="{StaticResource MiniScrollViewer}">
+                   BasedOn="{StaticResource {x:Type ScrollViewer}}">
                 <Style.Resources>
                     <Style TargetType="ScrollBar"
                            BasedOn="{StaticResource {x:Type ScrollBar}}">

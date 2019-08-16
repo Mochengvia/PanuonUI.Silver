@@ -32,7 +32,8 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <ScrollViewer x:Name="ScrollHour"
-                              Style="{DynamicResource MiniScrollViewer}"
+                              local:ScrollViewerHelper.ScrollBarThickness="6"
+                              local:ScrollViewerHelper.ScrollBarCornerRadius="3"
                               VerticalScrollBarVisibility="Auto"
                               HorizontalScrollBarVisibility="Disabled"
                               >
@@ -40,14 +41,16 @@
                 </ScrollViewer>
                 <ScrollViewer x:Name="ScrollMinute"
                               Grid.Column="1"
-                              Style="{DynamicResource MiniScrollViewer}"
+                              local:ScrollViewerHelper.ScrollBarThickness="6"
+                              local:ScrollViewerHelper.ScrollBarCornerRadius="3"
                               VerticalScrollBarVisibility="Auto"
                               HorizontalScrollBarVisibility="Disabled">
                     <StackPanel x:Name="StkMinute" />
                 </ScrollViewer>
                 <ScrollViewer x:Name="ScrollSecond"
                               Grid.Column="2"
-                              Style="{DynamicResource MiniScrollViewer}"
+                              local:ScrollViewerHelper.ScrollBarThickness="6"
+                              local:ScrollViewerHelper.ScrollBarCornerRadius="3"
                               VerticalScrollBarVisibility="Auto"
                               HorizontalScrollBarVisibility="Disabled">
                     <StackPanel x:Name="StkSecond" />

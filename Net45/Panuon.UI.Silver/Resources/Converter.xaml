@@ -34,4 +34,6 @@
     
     <converter:Add3Converter x:Key="Add3Converter"/>
     <converter:Add5Converter x:Key="Add5Converter"/>
+
+    <converter:InverseOrientationConverter x:Key="InverseOrientationConverter" />
 </ResourceDictionary>

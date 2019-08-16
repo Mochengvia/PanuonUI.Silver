@@ -5,7 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Interop;
 
-namespace Panuon.UI.Silver
+namespace Panuon.UI.Silver.Controls.Internal
 {
     internal class ResizeThumb : Thumb
     {
