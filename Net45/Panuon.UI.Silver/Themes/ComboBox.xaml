@@ -244,7 +244,8 @@
                                                       VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                                                       HorizontalScrollBarVisibility="{Binding Path=(ScrollViewer.HorizontalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                                                       CanContentScroll="True"
-                                                      Style="{DynamicResource MiniScrollViewer}"
+                                                      local:ScrollViewerHelper.ScrollBarThickness="6"
+                                                      local:ScrollViewerHelper.ScrollBarCornerRadius="3"
                                                       Margin="1,5,1,15"
                                                       MaxHeight="{TemplateBinding MaxDropDownHeight}">
                                             <ItemsPresenter />

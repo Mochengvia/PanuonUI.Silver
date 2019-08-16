@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace Panuon.UI.Silver
+namespace Panuon.UI.Silver.Controls.Internal
 {
     internal class ResizeContainer : ContentControl
     {

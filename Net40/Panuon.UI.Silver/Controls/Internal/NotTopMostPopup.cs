@@ -8,7 +8,7 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Interop;
 
-namespace Panuon.UI.Silver
+namespace Panuon.UI.Silver.Controls.Internal
 {
     internal class NotTopMostPopup : Popup
     {
