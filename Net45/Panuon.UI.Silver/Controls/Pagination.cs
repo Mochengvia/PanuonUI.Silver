@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Panuon.UI.Silver.Core;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -25,6 +26,20 @@ namespace Panuon.UI.Silver
             if (CurrentIndex == 0)
                 CurrentIndex = 1;
         }
+
+        #region Routed Event
+        public static readonly RoutedEvent CurrentIndexChangedEvent = EventManager.RegisterRoutedEvent("CurrentIndexChanged", RoutingStrategy.Bubble, typeof(CurrentIndexChangedEventHandler), typeof(Pagination));
+        public event CurrentIndexChangedEventHandler CurrentIndexChanged
+        {
+            add { AddHandler(CurrentIndexChangedEvent, value); }
+            remove { RemoveHandler(CurrentIndexChangedEvent, value); }
+        }
+        void RaiseCurrentIndexChanged(int index)
+        {
+            var arg = new CurrentIndexChangedEventArgs(index, CurrentIndexChangedEvent);
+            RaiseEvent(arg);
+        }
+        #endregion
 
         #region Property
         /// <summary>
@@ -164,6 +179,7 @@ namespace Panuon.UI.Silver
             }
 
             pagination.UpdatePaginationItems();
+            pagination.RaiseCurrentIndexChanged(pagination.CurrentIndex);
         }
 
         private static void OnTotalIndexChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)

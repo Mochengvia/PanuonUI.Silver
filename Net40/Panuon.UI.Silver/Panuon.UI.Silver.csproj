@@ -263,6 +263,7 @@
     <Compile Include="Converters\WidthAndHeightConverter.cs" />
     <Compile Include="Global\Attributes\DataGridColumnAttribute.cs" />
     <Compile Include="Global\EventArgs\ClickEventArgs.cs" />
+    <Compile Include="Global\EventArgs\CurrentIndexChangedEventHandler.cs" />
     <Compile Include="Global\EventArgs\DoubleClickEventArgs.cs" />
     <Compile Include="Global\EventArgs\DragAreaEventArgs.cs" />
     <Compile Include="Global\EventArgs\DragingEventArgs.cs" />

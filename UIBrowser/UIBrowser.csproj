@@ -329,18 +329,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if not exist "$(SolutionDir)Output\Net40" mkdir "$(SolutionDir)Output\Net40" 
-
-
-xcopy "$(SolutionDir)\Net40\Panuon.UI.Silver\bin\$(ConfigurationName)\Panuon.UI.Silver.dll" "$(SolutionDir)\Output\Net40" /q /y
-
-
-xcopy "$(SolutionDir)\Net40\Panuon.UI.Silver\bin\$(ConfigurationName)\Microsoft.Windows.Shell.dll" "$(SolutionDir)\Output\Net40" /q /y
-
-if not exist "$(SolutionDir)Output\Net45" mkdir "$(SolutionDir)Output\Net45" 
-
-
-xcopy "$(SolutionDir)\Net45\Panuon.UI.Silver\bin\$(ConfigurationName)\Panuon.UI.Silver.dll" "$(SolutionDir)\Output\Net45" /q /y
-EXIT 0</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>
