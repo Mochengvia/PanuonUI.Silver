@@ -169,8 +169,8 @@ namespace UIBrowser.PartialViews.Custom
                 {
                     WfvCustom.Children.Add(new Rectangle()
                     {
-                        Fill =  Brushes.CadetBlue,
-                        Height = i % 2 == 0 ? 150 : 100,
+                        Fill =  Brushes.LightSkyBlue,
+                        Width = i % 2 == 0 ? 150 : 100,
                         RadiusX = 3,
                         RadiusY = 3,
                         Effect = FindResource("DropShadow") as Effect,

@@ -40,7 +40,7 @@ namespace Panuon.UI.Silver
         /// <summary>
         /// LazyLoading.
         /// </summary>
-        public static readonly RoutedEvent LazyLoadingEvent = EventManager.RegisterRoutedEvent("LazyLoading", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(MouseOperationContainer));
+        public static readonly RoutedEvent LazyLoadingEvent = EventManager.RegisterRoutedEvent("LazyLoading", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(WaterfallViewer));
         public event RoutedEventHandler LazyLoading
         {
             add { AddHandler(LazyLoadingEvent, value); }
