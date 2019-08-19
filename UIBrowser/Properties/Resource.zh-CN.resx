@@ -420,4 +420,7 @@
   <data name="WaterfallViewer" xml:space="preserve">
     <value>WaterfallViewer 瀑布流</value>
   </data>
+  <data name="Spacing" xml:space="preserve">
+    <value>间距</value>
+  </data>
 </root>

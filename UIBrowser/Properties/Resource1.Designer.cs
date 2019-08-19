@@ -844,6 +844,15 @@ namespace UIBrowser.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Spacing 的本地化字符串。
+        /// </summary>
+        public static string Spacing {
+            get {
+                return ResourceManager.GetString("Spacing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 TabControl 的本地化字符串。
         /// </summary>
         public static string TabControl {

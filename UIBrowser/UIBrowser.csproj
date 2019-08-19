@@ -97,6 +97,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PartialViews\Custom\PaginationView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="PartialViews\Custom\WaterfallViewerView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -205,6 +209,9 @@
   <ItemGroup>
     <Compile Include="Models\MainWindowViewModel.cs" />
     <Compile Include="Models\TreeViewItemModel.cs" />
+    <Compile Include="PartialViews\Custom\PaginationView.xaml.cs">
+      <DependentUpon>PaginationView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PartialViews\Custom\WaterfallViewerView.xaml.cs">
       <DependentUpon>WaterfallViewerView.xaml</DependentUpon>
     </Compile>
@@ -315,8 +322,8 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Net40\Panuon.UI.Silver\Panuon.UI.Silver.csproj">
-      <Project>{527ff1e2-a99c-40c2-b589-69b5bad77f5a}</Project>
+    <ProjectReference Include="..\Net45\Panuon.UI.Silver\Panuon.UI.Silver.csproj">
+      <Project>{461fe59d-57b8-4599-8e7d-439e27a2bbb2}</Project>
       <Name>Panuon.UI.Silver</Name>
     </ProjectReference>
   </ItemGroup>
@@ -324,11 +331,16 @@
   <PropertyGroup>
     <PostBuildEvent>if not exist "$(SolutionDir)Output\Net40" mkdir "$(SolutionDir)Output\Net40" 
 
+
 xcopy "$(SolutionDir)\Net40\Panuon.UI.Silver\bin\$(ConfigurationName)\Panuon.UI.Silver.dll" "$(SolutionDir)\Output\Net40" /q /y
 
+
 xcopy "$(SolutionDir)\Net40\Panuon.UI.Silver\bin\$(ConfigurationName)\Microsoft.Windows.Shell.dll" "$(SolutionDir)\Output\Net40" /q /y
+
 if not exist "$(SolutionDir)Output\Net45" mkdir "$(SolutionDir)Output\Net45" 
 
-xcopy "$(SolutionDir)\Net45\Panuon.UI.Silver\bin\$(ConfigurationName)\Panuon.UI.Silver.dll" "$(SolutionDir)\Output\Net45" /q /y</PostBuildEvent>
+
+xcopy "$(SolutionDir)\Net45\Panuon.UI.Silver\bin\$(ConfigurationName)\Panuon.UI.Silver.dll" "$(SolutionDir)\Output\Net45" /q /y
+EXIT 0</PostBuildEvent>
   </PropertyGroup>
 </Project>

@@ -90,10 +90,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Pagination.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Controls\TagPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -233,9 +229,6 @@
     </Compile>
     <Compile Include="Controls\Notice.cs" />
     <Compile Include="Controls\Pagination.cs" />
-    <Compile Include="Controls\Pagination.xaml.cs">
-      <DependentUpon>Pagination.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\TagPanel.xaml.cs">
       <DependentUpon>TagPanel.xaml</DependentUpon>
     </Compile>
@@ -247,6 +240,7 @@
     <Compile Include="Controls\WindowX.cs" />
     <Compile Include="Converters\BrushOrColorConverter.cs" />
     <Compile Include="Converters\CheckIconConverter.cs" />
+    <Compile Include="Converters\CloneConverter.cs" />
     <Compile Include="Converters\ComboBoxConverter.cs" />
     <Compile Include="Converters\MsbConverter.cs" />
     <Compile Include="Converters\CheckBoxOrRadioButtonConverter.cs" />

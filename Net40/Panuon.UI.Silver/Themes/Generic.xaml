@@ -2,7 +2,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Panuon.UI.Silver"
                     xmlns:converter="clr-namespace:Panuon.UI.Silver.Converters"
-                    xmlns:options="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
                     xmlns:shell="http://schemas.microsoft.com/winfx/2006/xaml/presentation/shell"
                     xmlns:internal="clr-namespace:Panuon.UI.Silver.Controls.Internal">
     <ResourceDictionary.MergedDictionaries>
@@ -21,7 +20,7 @@
     <converter:CornerRadiusAdd1Converter x:Key="CornerRadiusAdd1Converter" />
     <converter:Minus4Converter x:Key="Minus4Converter" />
 
-    <!--<Style TargetType="{x:Type local:Pagination}">
+    <Style TargetType="{x:Type local:Pagination}">
         <Setter Property="FontFamily"
                 Value="{StaticResource Default_FontFamily}" />
         <Setter Property="SnapsToDevicePixels"
@@ -30,7 +29,201 @@
                 Value="{StaticResource Default_FontSize}" />
         <Setter Property="FocusVisualStyle"
                 Value="{x:Null}" />
-    </Style>-->
+        <Setter Property="Background"
+                Value="#888888" />
+        <Setter Property="HoverBrush"
+                Value="#3E3E3E" />
+        <Setter Property="Foreground"
+                Value="White" />
+        <Setter Property="CornerRadius"
+                Value="2" />
+        <Setter Property="Spacing"
+                Value="5" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:Pagination}">
+                    <Grid x:Name="GrdMain">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <RepeatButton x:Name="BtnPrevious"
+                                      Command="{TemplateBinding PreviousCommand}"
+                                      CommandParameter="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}}"
+                                      Height="{Binding ActualHeight,ElementName=GrdMain}"
+                                      MinWidth="{Binding ActualHeight,ElementName=GrdMain}"
+                                      Background="{TemplateBinding Background}"
+                                      Foreground="{TemplateBinding Foreground}"
+                                      FontSize="{Binding FontSize,RelativeSource={RelativeSource AncestorType=local:Pagination},Converter={StaticResource Add5Converter}}"
+                                      FontWeight="{TemplateBinding FontWeight}"
+                                      FontFamily="{DynamicResource FontAwesome}"
+                                      FontStyle="{TemplateBinding FontStyle}"
+                                      local:RepeatButtonHelper.HoverBrush="{TemplateBinding HoverBrush}"
+                                      local:RepeatButtonHelper.CornerRadius="{TemplateBinding CornerRadius}"
+                                      Content="&#xf104;"/>
+                        <ItemsControl Grid.Column="1"
+                                      ItemsSource="{TemplateBinding PaginationItems}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="{Binding Spacing,RelativeSource={RelativeSource AncestorType=local:Pagination},Converter={StaticResource DoubleToLeftMarginConverter}}"
+                                          Height="{Binding ActualHeight,ElementName=GrdMain}"
+                                          MinWidth="{Binding ActualHeight,ElementName=GrdMain}">
+                                        <TextBlock x:Name="TxtDot"
+                                                   Visibility="Collapsed"
+                                                   Text="&#xf111; &#xf111; &#xf111;"
+                                                   FontSize="3"
+                                                   FontFamily="{DynamicResource FontAwesome}"
+                                                   VerticalAlignment="Center"
+                                                   HorizontalAlignment="Center"
+                                                   Foreground="{Binding Background,RelativeSource={RelativeSource AncestorType=local:Pagination}}"
+                                                   FontWeight="{Binding FontWeight,RelativeSource={RelativeSource AncestorType=local:Pagination}}" />
+                                        <Button x:Name="BtnItem"
+                                                Command="{Binding IndexCommand,RelativeSource={RelativeSource AncestorType=local:Pagination}}"
+                                                Background="{Binding Background,RelativeSource={RelativeSource AncestorType=local:Pagination}}"
+                                                Foreground="{Binding Foreground,RelativeSource={RelativeSource AncestorType=local:Pagination}}"
+                                                FontSize="{Binding FontSize,RelativeSource={RelativeSource AncestorType=local:Pagination}}"
+                                                FontWeight="{Binding FontWeight,RelativeSource={RelativeSource AncestorType=local:Pagination}}"
+                                                FontFamily="{Binding FontFamily,RelativeSource={RelativeSource AncestorType=local:Pagination}}"
+                                                FontStyle="{Binding FontStyle,RelativeSource={RelativeSource AncestorType=local:Pagination}}"
+                                                local:ButtonHelper.HoverBrush="{Binding HoverBrush,RelativeSource={RelativeSource AncestorType=local:Pagination}}"
+                                                local:ButtonHelper.CornerRadius="{Binding CornerRadius,RelativeSource={RelativeSource AncestorType=local:Pagination}}"
+                                                Content="{Binding Value}">
+                                            <Button.CommandParameter>
+                                                <MultiBinding Converter="{StaticResource CloneConverter}">
+                                                        <Binding Path="."
+                                                             RelativeSource="{RelativeSource AncestorType=local:Pagination}" />
+                                                        <Binding Path="Content"
+                                                                 RelativeSource="{x:Static RelativeSource.Self}" />
+                                                </MultiBinding>
+                                            </Button.CommandParameter>
+                                        </Button>
+                                    </Grid>
+                                    <DataTemplate.Triggers>
+                                        <DataTrigger Binding="{Binding PaginationStyle,RelativeSource={RelativeSource AncestorType=local:Pagination}}"
+                                                     Value="Classic">
+                                            <Setter TargetName="BtnItem"
+                                                    Property="local:ButtonHelper.ButtonStyle"
+                                                    Value="Outline" />
+                                            <Setter TargetName="TxtDot"
+                                                    Property="Foreground"
+                                                    Value="{Binding Foreground,RelativeSource={RelativeSource AncestorType=local:Pagination}}" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding PaginationStyle,RelativeSource={RelativeSource AncestorType=local:Pagination}}"
+                                                     Value="Simple">
+                                            <Setter TargetName="BtnItem"
+                                                    Property="local:ButtonHelper.ButtonStyle"
+                                                    Value="Link" />
+                                            <Setter TargetName="TxtDot"
+                                                    Property="Foreground"
+                                                    Value="{Binding Foreground,RelativeSource={RelativeSource AncestorType=local:Pagination}}" />
+                                        </DataTrigger>
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding IsSelected}"
+                                                           Value="True"/>
+                                                <Condition Binding="{Binding PaginationStyle,RelativeSource={RelativeSource AncestorType=local:Pagination}}"
+                                                           Value="Standard" />
+                                            </MultiDataTrigger.Conditions>
+                                            <Setter TargetName="BtnItem"
+                                                    Property="Background"
+                                                    Value="{Binding HoverBrush,RelativeSource={RelativeSource AncestorType=local:Pagination}}" />
+                                        </MultiDataTrigger>
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding IsSelected}"
+                                                           Value="True" />
+                                                <Condition Binding="{Binding PaginationStyle,RelativeSource={RelativeSource AncestorType=local:Pagination}}"
+                                                           Value="Classic" />
+                                            </MultiDataTrigger.Conditions>
+                                            <Setter TargetName="BtnItem"
+                                                    Property="BorderBrush"
+                                                    Value="{Binding HoverBrush,RelativeSource={RelativeSource AncestorType=local:Pagination}}" />
+                                            <Setter TargetName="BtnItem"
+                                                    Property="Foreground"
+                                                    Value="{Binding HoverBrush,RelativeSource={RelativeSource AncestorType=local:Pagination}}" />
+                                        </MultiDataTrigger>
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding IsSelected}"
+                                                           Value="True" />
+                                                <Condition Binding="{Binding PaginationStyle,RelativeSource={RelativeSource AncestorType=local:Pagination}}"
+                                                           Value="Simple" />
+                                            </MultiDataTrigger.Conditions>
+                                            <Setter TargetName="BtnItem"
+                                                    Property="Foreground"
+                                                    Value="{Binding HoverBrush,RelativeSource={RelativeSource AncestorType=local:Pagination}}" />
+                                        </MultiDataTrigger>
+                                        <DataTrigger Binding="{Binding Value}"
+                                                     Value="{x:Null}">
+                                            <Setter TargetName="BtnItem"
+                                                    Property="Visibility"
+                                                    Value="Collapsed" />
+                                            <Setter TargetName="TxtDot"
+                                                    Property="Visibility"
+                                                    Value="Visible" />
+                                        </DataTrigger>
+                                    </DataTemplate.Triggers>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                        <RepeatButton x:Name="BtnNext"
+                                      Command="{TemplateBinding NextCommand}"
+                                      CommandParameter="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}}"
+                                      Grid.Column="2"
+                                      Height="{Binding ActualHeight,ElementName=GrdMain}"
+                                      MinWidth="{Binding ActualHeight,ElementName=GrdMain}"
+                                      Margin="{Binding Spacing,RelativeSource={RelativeSource AncestorType=local:Pagination},Converter={StaticResource DoubleToLeftMarginConverter}}"
+                                      Background="{TemplateBinding Background}"
+                                      Foreground="{TemplateBinding Foreground}"
+                                      FontSize="{Binding FontSize,RelativeSource={RelativeSource AncestorType=local:Pagination},Converter={StaticResource Add5Converter}}"
+                                      FontWeight="{TemplateBinding FontWeight}"
+                                      FontFamily="{DynamicResource FontAwesome}"
+                                      FontStyle="{TemplateBinding FontStyle}"
+                                      local:RepeatButtonHelper.HoverBrush="{TemplateBinding HoverBrush}"
+                                      local:RepeatButtonHelper.CornerRadius="{TemplateBinding CornerRadius}"
+                                      Content="&#xf105;"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="PaginationStyle"
+                                 Value="Classic">
+                            <Setter TargetName="BtnPrevious"
+                                    Property="local:RepeatButtonHelper.RepeatButtonStyle"
+                                    Value="Outline" />
+                            <Setter TargetName="BtnNext"
+                                    Property="local:RepeatButtonHelper.RepeatButtonStyle"
+                                    Value="Outline" />
+                            <Setter Property="Foreground"
+                                    Value="#888888" />
+                            <Setter Property="BorderBrush"
+                                    Value="#888888" />
+                            <Setter Property="Background"
+                                    Value="Transparent" />
+                        </Trigger>
+                        <Trigger Property="PaginationStyle"
+                                 Value="Simple">
+                            <Setter TargetName="BtnPrevious"
+                                    Property="local:RepeatButtonHelper.RepeatButtonStyle"
+                                    Value="Link" />
+                            <Setter TargetName="BtnNext"
+                                    Property="local:RepeatButtonHelper.RepeatButtonStyle"
+                                    Value="Link" />
+                            <Setter Property="Foreground"
+                                    Value="#888888" />
+                            <Setter Property="Background"
+                                    Value="Transparent" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
     <Style TargetType="{x:Type local:WindowX}">
         <Setter Property="FontFamily"
                 Value="{StaticResource Default_FontFamily}" />
