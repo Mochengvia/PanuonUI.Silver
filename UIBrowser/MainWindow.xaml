@@ -75,17 +75,29 @@
         <ContentControl x:Name="ContentControl"
                         Grid.Column="1"
                         Margin="20,0" />
-        <Button Grid.Column="1"
+        <!--<Button Grid.Column="1"
                 Height="30"
                 Width="200"
-                Click="Button_Click" />
+                Click="Button_Click" />-->
 
-        <Image x:Name="Img" 
-               VerticalAlignment="Top"
-               HorizontalAlignment="Left"
-               Grid.Column="1"
-               Height="100"
-               Width="50"
-               Source="Resources/head.jpg" />
+        <Menu Grid.Column="1"
+              VerticalAlignment="Top">
+            <MenuItem Header="Item1"
+                    >
+                <MenuItem Header="Item1-1" />
+                <MenuItem Header="Item1-2" />
+            </MenuItem>
+            <MenuItem Header="Item2"
+                      >
+                <MenuItem Header="Item2-1">
+                    <MenuItem Header="Item3-1" />
+                    <MenuItem Header="Item3-1" />
+                </MenuItem>
+                <GroupBox Header="HelloWorld">
+                    <Button Height="30"/>
+                </GroupBox>
+            </MenuItem>
+            
+        </Menu>
     </Grid>
 </pu:WindowX>

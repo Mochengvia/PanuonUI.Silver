@@ -41,6 +41,10 @@ namespace Panuon.UI.Silver
             MouseLeave += MouseOperationContainer_MouseLeave;
         }
 
+        static MouseOperationContainer()
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(MouseOperationContainer), new FrameworkPropertyMetadata(typeof(MouseOperationContainer)));
+        }
         #endregion
 
         #region Routed Event

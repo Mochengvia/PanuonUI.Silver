@@ -547,6 +547,15 @@ namespace UIBrowser.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Menu 的本地化字符串。
+        /// </summary>
+        public static string Menu {
+            get {
+                return ResourceManager.GetString("Menu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 MessageBoxX 的本地化字符串。
         /// </summary>
         public static string MessageBoxX {

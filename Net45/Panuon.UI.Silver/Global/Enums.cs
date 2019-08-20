@@ -261,4 +261,12 @@ namespace Panuon.UI.Silver
         Simple,
     }
     #endregion
+
+    #region MenuStyle
+    public enum MenuStyle
+    {
+        Standard,
+        Classic,
+    }
+    #endregion
 }

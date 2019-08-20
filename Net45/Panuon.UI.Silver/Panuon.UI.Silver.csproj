@@ -276,6 +276,7 @@
     <Compile Include="Global\Models\MessageBoxXConfigurations.cs" />
     <Compile Include="Helpers\BubbleHelper.cs" />
     <Compile Include="Helpers\Control\GridHelper.cs" />
+    <Compile Include="Helpers\Control\MenuHelper.cs" />
     <Compile Include="Helpers\Control\ScrollViewerHelper.cs" />
     <Compile Include="Helpers\Control\WindowXCaption.cs" />
     <Compile Include="Global\Models\TagItemModel.cs" />
