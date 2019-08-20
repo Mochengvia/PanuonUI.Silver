@@ -225,7 +225,6 @@
     <Compile Include="Controls\Internal\ResizeThumb.cs" />
     <Compile Include="Controls\Internal\WaterfallPanel.cs" />
     <Compile Include="Controls\MessageBoxX.cs" />
-    <Compile Include="Controls\MouseOperationContainer.cs" />
     <Compile Include="Controls\MultiSelector.cs" />
     <Compile Include="Controls\Internal\ResizeContainer.cs" />
     <Compile Include="Controls\NeonLabel.xaml.cs">

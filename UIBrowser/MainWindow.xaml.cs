@@ -71,9 +71,7 @@ namespace UIBrowser
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var source = ScreenshotHelper.BeginScreenshot();
-
-            Img.Source = source.ToBitmapImage();
+           
         }
     }
 }
