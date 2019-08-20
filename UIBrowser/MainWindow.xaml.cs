@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 using Panuon.UI.Silver;
 using UIBrowser.Models;
 
@@ -69,6 +71,9 @@ namespace UIBrowser
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            var source = ScreenshotHelper.BeginScreenshot();
+
+            Img.Source = source.ToBitmapImage();
         }
     }
 }

@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -83,6 +84,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\Internal\NoticeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Internal\ScreenshotWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -220,6 +225,9 @@
     </Compile>
     <Compile Include="Controls\Internal\NotTopMostPopup.cs" />
     <Compile Include="Controls\Internal\ResizeThumb.cs" />
+    <Compile Include="Controls\Internal\ScreenshotWindow.xaml.cs">
+      <DependentUpon>ScreenshotWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\MessageBoxX.cs" />
     <Compile Include="Controls\MouseOperationContainer.cs" />
     <Compile Include="Controls\MultiSelector.cs" />
@@ -281,6 +289,7 @@
     <Compile Include="Helpers\Control\ProgressBarHelper.cs" />
     <Compile Include="Helpers\Control\RepeatButtonHelper.cs" />
     <Compile Include="Helpers\Control\TabControlHelper.cs" />
+    <Compile Include="Helpers\Others\ScreenshotHelper.cs" />
     <Compile Include="Utils\Cache.cs" />
     <Compile Include="Utils\DelegateCommand.cs" />
     <Compile Include="Global\Enums.cs" />

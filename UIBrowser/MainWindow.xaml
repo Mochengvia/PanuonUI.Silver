@@ -75,9 +75,17 @@
         <ContentControl x:Name="ContentControl"
                         Grid.Column="1"
                         Margin="20,0" />
-        <!--<Button Grid.Column="1"
+        <Button Grid.Column="1"
                 Height="30"
                 Width="200"
-                Click="Button_Click"/>-->
+                Click="Button_Click" />
+
+        <Image x:Name="Img" 
+               VerticalAlignment="Top"
+               HorizontalAlignment="Left"
+               Grid.Column="1"
+               Height="100"
+               Width="50"
+               Source="Resources/head.jpg" />
     </Grid>
 </pu:WindowX>
