@@ -101,7 +101,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Helpers\Control\Badge.xaml">
+    <Page Include="Controls\Badge.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -225,7 +225,6 @@
     <Compile Include="Controls\Internal\ResizeThumb.cs" />
     <Compile Include="Controls\Internal\WaterfallPanel.cs" />
     <Compile Include="Controls\MessageBoxX.cs" />
-    <Compile Include="Controls\MouseOperationContainer.cs" />
     <Compile Include="Controls\MultiSelector.cs" />
     <Compile Include="Controls\Internal\ResizeContainer.cs" />
     <Compile Include="Controls\NeonLabel.xaml.cs">
@@ -270,12 +269,11 @@
     <Compile Include="Global\EventArgs\LongPressEventArgs.cs" />
     <Compile Include="Global\Models\MessageBoxXConfigurations.cs" />
     <Compile Include="Helpers\BubbleHelper.cs" />
-    <Compile Include="Helpers\Control\MenuHelper.cs" />
     <Compile Include="Helpers\Control\GridHelper.cs" />
     <Compile Include="Helpers\Control\ScrollViewerHelper.cs" />
     <Compile Include="Helpers\Control\WindowXCaption.cs" />
     <Compile Include="Global\Models\TagItemModel.cs" />
-    <Compile Include="Helpers\Control\Badge.xaml.cs">
+    <Compile Include="Controls\Badge.xaml.cs">
       <DependentUpon>Badge.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Control\ContextMenuHelper.cs" />
@@ -285,6 +283,7 @@
     <Compile Include="Helpers\Control\ProgressBarHelper.cs" />
     <Compile Include="Helpers\Control\RepeatButtonHelper.cs" />
     <Compile Include="Helpers\Control\TabControlHelper.cs" />
+    <Compile Include="Helpers\Others\MouseEventHelper.cs" />
     <Compile Include="Utils\Cache.cs" />
     <Compile Include="Utils\DelegateCommand.cs" />
     <Compile Include="Global\Enums.cs" />

@@ -25,24 +25,17 @@ namespace Panuon.UI.Silver.Controls.Internal
 
         public BitmapSource Result { get; set; }
 
-        private void MouseOperationContainer_DragArea(object sender, Core.DragAreaEventArgs e)
+        private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            Hide();
-            var left = (int)Math.Min(e.StartPosition.X, e.EndPosition.X);
-            var top = (int)Math.Min(e.StartPosition.Y, e.EndPosition.Y);
-
-            using (Bitmap bmp = new Bitmap((int)e.Size.Width,(int)e.Size.Height))
+            switch (e.Key)
             {
-                using (Graphics g = Graphics.FromImage(bmp))
-                {
-                    g.CopyFromScreen(left, top, 0, 0, bmp.Size);
-                }
-                Result = Imaging.CreateBitmapSourceFromHBitmap(bmp.GetHbitmap(), IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
-                Close();
+                case Key.Escape:
+                    Close();
+                    break;
             }
         }
 
-        private void MouseOperationContainer_Draging(object sender, Core.DragingEventArgs e)
+        private void Border_Draging(object sender, Core.DragingEventArgs e)
         {
             Txt.Text = $"({e.StartPosition.X},{e.StartPosition.Y})({e.EndPosition.X},{e.EndPosition.Y})";
 
@@ -65,20 +58,21 @@ namespace Panuon.UI.Silver.Controls.Internal
             CvaMain.Children.Add(rect);
         }
 
-        private void Window_KeyDown(object sender, KeyEventArgs e)
+        private void Border_DragArea(object sender, Core.DragAreaEventArgs e)
         {
-            switch (e.Key)
+            Hide();
+            var left = (int)Math.Min(e.StartPosition.X, e.EndPosition.X);
+            var top = (int)Math.Min(e.StartPosition.Y, e.EndPosition.Y);
+
+            using (Bitmap bmp = new Bitmap((int)e.Size.Width, (int)e.Size.Height))
             {
-                case Key.Escape:
-                    Close();
-                    break;
+                using (Graphics g = Graphics.FromImage(bmp))
+                {
+                    g.CopyFromScreen(left, top, 0, 0, bmp.Size);
+                }
+                Result = Imaging.CreateBitmapSourceFromHBitmap(bmp.GetHbitmap(), IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
+                Close();
             }
-
-        }
-
-        private void MouseOperationContainer_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-
         }
     }
 }

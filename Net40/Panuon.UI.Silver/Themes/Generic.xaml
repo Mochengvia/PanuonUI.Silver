@@ -20,17 +20,6 @@
     <converter:CornerRadiusAdd1Converter x:Key="CornerRadiusAdd1Converter" />
     <converter:Minus4Converter x:Key="Minus4Converter" />
 
-    <Style TargetType="{x:Type local:MouseOperationContainer}">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type local:MouseOperationContainer}">
-                    <Border Background="Transparent">
-                        <ContentPresenter ContentSource="Content" />
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
     
     <Style TargetType="{x:Type local:Pagination}">
         <Setter Property="FontFamily"

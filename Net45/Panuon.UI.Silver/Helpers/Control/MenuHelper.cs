@@ -37,19 +37,19 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("ShadowColor", typeof(Color), typeof(MenuHelper));
         #endregion
 
-        #region ItemHeight
-        public static double GetItemHeight(DependencyObject obj)
+        #region SubmentItemHeight
+        public static double GetSubmentItemHeight(DependencyObject obj)
         {
-            return (double)obj.GetValue(ItemHeightProperty);
+            return (double)obj.GetValue(SubmentItemHeightProperty);
         }
 
-        public static void SetItemHeight(DependencyObject obj, double value)
+        public static void SetSubmentItemHeight(DependencyObject obj, double value)
         {
-            obj.SetValue(ItemHeightProperty, value);
+            obj.SetValue(SubmentItemHeightProperty, value);
         }
 
-        public static readonly DependencyProperty ItemHeightProperty =
-            DependencyProperty.RegisterAttached("ItemHeight", typeof(double), typeof(MenuHelper));
+        public static readonly DependencyProperty SubmentItemHeightProperty =
+            DependencyProperty.RegisterAttached("SubmentItemHeight", typeof(double), typeof(MenuHelper));
         #endregion
 
         #region ItemIcon
@@ -94,7 +94,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty PopupAnimationProperty =
-            DependencyProperty.RegisterAttached("PopupAnimation", typeof(PopupAnimation), typeof(MenuHelper), new PropertyMetadata(PopupAnimation.Slide));
+            DependencyProperty.RegisterAttached("PopupAnimation", typeof(PopupAnimation), typeof(MenuHelper), new PropertyMetadata(PopupAnimation.Fade));
         #endregion
 
         #region MenuStyle

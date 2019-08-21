@@ -46,7 +46,7 @@
                             <Menu x:Name="MenuCustom"
                                   VerticalAlignment="Center"
                                   HorizontalAlignment="Center"
-                                  pu:MenuHelper.MenuStyle="Classic">
+                                  >
                                 <MenuItem Header="Item1">
                                     <MenuItem Header="Item1-1">
                                         <MenuItem Header="Item1-1-1" />

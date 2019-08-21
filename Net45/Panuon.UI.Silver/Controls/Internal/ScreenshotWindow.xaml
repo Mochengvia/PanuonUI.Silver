@@ -18,12 +18,13 @@
         KeyDown="Window_KeyDown">
 
     <Grid>
-        <pu:MouseOperationContainer DragArea="MouseOperationContainer_DragArea"
-                                    Draging="MouseOperationContainer_Draging">
             <Border BorderBrush="Red"
                     BorderThickness="10"
-                    Background="#01FFFFFF" />
-        </pu:MouseOperationContainer>
+                    Background="#01FFFFFF"
+                    pu:MouseEventHelper.IsEnabled="True"
+                    pu:MouseEventHelper.Draging="Border_Draging"
+                pu:MouseEventHelper.DragArea="Border_DragArea"
+                  />
         <Canvas x:Name="CvaMain"
                 IsHitTestVisible="False" />
         <TextBlock x:Name="Txt"
