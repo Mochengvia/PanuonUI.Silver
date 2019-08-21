@@ -213,7 +213,7 @@ namespace Panuon.UI.Silver
             {
                 for (var i = 1; i <= TotalIndex; i++)
                 {
-                    PaginationItems.Add(new PaginationItem(i, TotalIndex == i));
+                    PaginationItems.Add(new PaginationItem(i, CurrentIndex == i));
                 }
             }
             else
