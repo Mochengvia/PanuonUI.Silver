@@ -437,7 +437,7 @@
         <Setter Property="SnapsToDevicePixels"
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="FontSize"
-                Value="{StaticResource Default_FontSize}" />
+                Value="{Binding FontSize,RelativeSource={RelativeSource AncestorType=TabControl},Mode=OneWay}" />
         <Setter Property="FocusVisualStyle"
                 Value="{x:Null}" />
         <Setter Property="Height"
@@ -485,7 +485,7 @@
                                             Visibility="Collapsed"
                                             Grid.Column="1"
                                             Content="×"
-                                            FontSize="14"
+                                            FontSize="{TemplateBinding FontSize}"
                                             Margin="5,0,0,0"
                                             VerticalAlignment="Center"
                                             Command="{Binding Path=(local:TabControlHelper.RemoveCommand),RelativeSource={RelativeSource AncestorType=TabItem},Mode=OneWay}">
