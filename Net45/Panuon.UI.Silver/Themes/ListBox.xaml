@@ -30,6 +30,10 @@
                 Value="Auto" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility"
                 Value="Disabled" />
+        <Setter Property="local:ScrollViewerHelper.ScrollBarCornerRadius"
+                Value="3" />
+        <Setter Property="local:ScrollViewerHelper.ScrollBarThickness"
+                Value="6" />
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>
@@ -48,8 +52,8 @@
                         <ScrollViewer VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}"
                                       HorizontalScrollBarVisibility="{Binding Path=(ScrollViewer.HorizontalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}"
                                       CanContentScroll="True"
-                                      local:ScrollViewerHelper.ScrollBarCornerRadius="3"
-                                      local:ScrollViewerHelper.ScrollBarThickness="6">
+                                      local:ScrollViewerHelper.ScrollBarCornerRadius="{Binding Path=(local:ScrollViewerHelper.ScrollBarCornerRadius),RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}"
+                                      local:ScrollViewerHelper.ScrollBarThickness="{Binding Path=(local:ScrollViewerHelper.ScrollBarThickness),RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}">
                             <ItemsPresenter />
                         </ScrollViewer>
                     </Border>
