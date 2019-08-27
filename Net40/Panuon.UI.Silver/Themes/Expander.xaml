@@ -5,7 +5,7 @@
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Resource.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converter.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    
+
     <Style TargetType="{x:Type Expander}">
         <Setter Property="FontSize"
                 Value="{StaticResource Default_FontSize}" />
@@ -25,6 +25,8 @@
                 Value="30" />
         <Setter Property="local:ExpanderHelper.CornerRadius"
                 Value="0" />
+        <Setter Property="local:ExpanderHelper.HeaderForeground"
+                Value="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Expander}}" />
         <Setter Property="Foreground"
                 Value="#3E3E3E" />
         <Setter Property="Padding"
@@ -49,7 +51,7 @@
                                                   OverridesDefaultStyle="True"
                                                   Content="{TemplateBinding Header}"
                                                   IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
-                                                  Foreground="{TemplateBinding Foreground}"
+                                                  Foreground="{Binding Path=(local:ExpanderHelper.HeaderForeground),RelativeSource={RelativeSource AncestorType=Expander},Mode=OneWay}"
                                                   Height="{Binding Path=(local:ExpanderHelper.HeaderHeight),RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"
                                                   Padding="{TemplateBinding Padding}"
                                                   FontWeight="Bold"
@@ -191,7 +193,7 @@
                                                   Content="{TemplateBinding Header}"
                                                   IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
                                                   Cursor="Hand"
-                                                  Foreground="{TemplateBinding Foreground}"
+                                                  Foreground="{Binding Path=(local:ExpanderHelper.HeaderForeground),RelativeSource={RelativeSource AncestorType=Expander},Mode=OneWay}"
                                                   Height="{Binding Path=(local:ExpanderHelper.HeaderHeight),RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"
                                                   Padding="{TemplateBinding Padding}">
                                         <ToggleButton.Template>
