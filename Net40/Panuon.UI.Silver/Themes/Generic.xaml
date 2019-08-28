@@ -44,9 +44,9 @@
                 <ControlTemplate TargetType="{x:Type local:Pagination}">
                     <Grid x:Name="GrdMain">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <RepeatButton x:Name="BtnPrevious"
                                       Command="{TemplateBinding PreviousCommand}"
@@ -61,7 +61,7 @@
                                       FontStyle="{TemplateBinding FontStyle}"
                                       local:RepeatButtonHelper.HoverBrush="{TemplateBinding HoverBrush}"
                                       local:RepeatButtonHelper.CornerRadius="{TemplateBinding CornerRadius}"
-                                      Content="&#xf104;"/>
+                                      Content="&#xf104;" />
                         <ItemsControl Grid.Column="1"
                                       ItemsSource="{TemplateBinding PaginationItems}">
                             <ItemsControl.ItemsPanel>
@@ -96,10 +96,10 @@
                                                 Content="{Binding Value}">
                                             <Button.CommandParameter>
                                                 <MultiBinding Converter="{StaticResource CloneConverter}">
-                                                        <Binding Path="."
+                                                    <Binding Path="."
                                                              RelativeSource="{RelativeSource AncestorType=local:Pagination}" />
-                                                        <Binding Path="Content"
-                                                                 RelativeSource="{x:Static RelativeSource.Self}" />
+                                                    <Binding Path="Content"
+                                                             RelativeSource="{x:Static RelativeSource.Self}" />
                                                 </MultiBinding>
                                             </Button.CommandParameter>
                                         </Button>
@@ -126,7 +126,7 @@
                                         <MultiDataTrigger>
                                             <MultiDataTrigger.Conditions>
                                                 <Condition Binding="{Binding IsSelected}"
-                                                           Value="True"/>
+                                                           Value="True" />
                                                 <Condition Binding="{Binding PaginationStyle,RelativeSource={RelativeSource AncestorType=local:Pagination}}"
                                                            Value="Standard" />
                                             </MultiDataTrigger.Conditions>
@@ -187,7 +187,7 @@
                                       FontStyle="{TemplateBinding FontStyle}"
                                       local:RepeatButtonHelper.HoverBrush="{TemplateBinding HoverBrush}"
                                       local:RepeatButtonHelper.CornerRadius="{TemplateBinding CornerRadius}"
-                                      Content="&#xf105;"/>
+                                      Content="&#xf105;" />
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="PaginationStyle"
@@ -223,7 +223,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
     <Style TargetType="{x:Type local:WindowX}">
         <Setter Property="FontFamily"
                 Value="{StaticResource Default_FontFamily}" />
@@ -249,10 +249,10 @@
                 Value="35" />
         <Setter Property="shell:WindowChrome.WindowChrome">
             <Setter.Value>
-                <shell:WindowChrome  ResizeBorderThickness="5"
-                               CaptionHeight="0"
-                               GlassFrameThickness="5"
-                               CornerRadius="0" />
+                <shell:WindowChrome  ResizeBorderThickness="3"
+                                     CaptionHeight="0"
+                                     GlassFrameThickness="5"
+                                     CornerRadius="0" />
             </Setter.Value>
         </Setter>
         <Setter Property="Template">
@@ -267,8 +267,7 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition />
                             </Grid.RowDefinitions>
-                            <Grid shell:WindowChrome.IsHitTestVisibleInChrome="True"
-                                  Background="{Binding Path=(local:WindowXCaption.Background),RelativeSource={RelativeSource AncestorType=Window}}"
+                            <Grid Background="{Binding Path=(local:WindowXCaption.Background),RelativeSource={RelativeSource AncestorType=Window}}"
                                   Height="{Binding Path=(local:WindowXCaption.Height),RelativeSource={RelativeSource AncestorType=Window}}"
                                   x:Name="GrdCaption">
                                 <Grid.ColumnDefinitions>
@@ -1719,12 +1718,12 @@
                             </ToggleButton.Style>
                         </ToggleButton>
                         <internal:NotTopMostPopup Placement="Bottom"
-                                               x:Name="Popup"
-                                               Focusable="False"
-                                               StaysOpen="True"
-                                               Tag="{Binding ElementName=ToggleButton}"
-                                               AllowsTransparency="True"
-                                               PopupAnimation="Slide">
+                                                  x:Name="Popup"
+                                                  Focusable="False"
+                                                  StaysOpen="True"
+                                                  Tag="{Binding ElementName=ToggleButton}"
+                                                  AllowsTransparency="True"
+                                                  PopupAnimation="Slide">
                             <Grid MaxHeight="180"
                                   MinWidth="{TemplateBinding ActualWidth}"
                                   x:Name="DropDown">
@@ -1959,11 +1958,11 @@
                             </ToggleButton.Style>
                         </ToggleButton>
                         <internal:NotTopMostPopup Placement="Bottom"
-                                               x:Name="Popup"
-                                               Focusable="False"
-                                               Tag="{Binding ElementName=ToggleButton}"
-                                               AllowsTransparency="True"
-                                               PopupAnimation="Slide">
+                                                  x:Name="Popup"
+                                                  Focusable="False"
+                                                  Tag="{Binding ElementName=ToggleButton}"
+                                                  AllowsTransparency="True"
+                                                  PopupAnimation="Slide">
                             <Grid x:Name="DropDown">
                                 <Border x:Name="DropDownBorder"
                                         Margin="0,0,0,10"
@@ -2106,15 +2105,15 @@
                                     </ToggleButton.Style>
                                 </ToggleButton>
                                 <internal:NotTopMostPopup Placement="Left"
-                                                       IsOpen="{Binding IsOpen,RelativeSource={RelativeSource AncestorType=local:DropDown},Mode=TwoWay}"
-                                                       x:Name="Popup"
-                                                       PlacementTarget="{Binding ElementName=ToggleButton}"
-                                                       HorizontalOffset="{Binding ActualWidth, ElementName=ToggleButton}"
-                                                       VerticalOffset="{Binding ActualHeight, ElementName=ToggleButton}"
-                                                       Focusable="False"
-                                                       Tag="{Binding ElementName=ToggleButton}"
-                                                       AllowsTransparency="True"
-                                                       PopupAnimation="Slide">
+                                                          IsOpen="{Binding IsOpen,RelativeSource={RelativeSource AncestorType=local:DropDown},Mode=TwoWay}"
+                                                          x:Name="Popup"
+                                                          PlacementTarget="{Binding ElementName=ToggleButton}"
+                                                          HorizontalOffset="{Binding ActualWidth, ElementName=ToggleButton}"
+                                                          VerticalOffset="{Binding ActualHeight, ElementName=ToggleButton}"
+                                                          Focusable="False"
+                                                          Tag="{Binding ElementName=ToggleButton}"
+                                                          AllowsTransparency="True"
+                                                          PopupAnimation="Slide">
                                     <Grid x:Name="DropDown"
                                           Margin="1,1,1,10">
                                         <Path x:Name="Path"
@@ -2190,12 +2189,12 @@
                                     </ToggleButton.Style>
                                 </ToggleButton>
                                 <internal:NotTopMostPopup Placement="Bottom"
-                                                       x:Name="Popup"
-                                                       PlacementTarget="{Binding ElementName=ToggleButton}"
-                                                       Focusable="False"
-                                                       Tag="{Binding ElementName=ToggleButton}"
-                                                       AllowsTransparency="True"
-                                                       PopupAnimation="Slide">
+                                                          x:Name="Popup"
+                                                          PlacementTarget="{Binding ElementName=ToggleButton}"
+                                                          Focusable="False"
+                                                          Tag="{Binding ElementName=ToggleButton}"
+                                                          AllowsTransparency="True"
+                                                          PopupAnimation="Slide">
                                     <Grid x:Name="DropDown"
                                           Margin="1,1,1,10">
                                         <Path x:Name="Path"
@@ -2251,89 +2250,89 @@
                     <Grid DataContext="{Binding RelativeSource={RelativeSource TemplatedParent}}">
                         <Grid x:Name="GrdResizeGroup">
                             <internal:ResizeThumb Height="5"
-                                               Tag="Top"
-                                               Cursor="SizeNS"
-                                               BorderBrush="Transparent"
-                                               BorderThickness="5"
-                                               Margin="0 -5 0 0"
-                                               VerticalAlignment="Top"
-                                               HorizontalAlignment="Stretch"
-                                               IsSquare="{TemplateBinding IsSquare}"
-                                               LimitInParent="{TemplateBinding LimitInParent}" />
+                                                  Tag="Top"
+                                                  Cursor="SizeNS"
+                                                  BorderBrush="Transparent"
+                                                  BorderThickness="5"
+                                                  Margin="0 -5 0 0"
+                                                  VerticalAlignment="Top"
+                                                  HorizontalAlignment="Stretch"
+                                                  IsSquare="{TemplateBinding IsSquare}"
+                                                  LimitInParent="{TemplateBinding LimitInParent}" />
                             <internal:ResizeThumb Width="5"
-                                               Tag="Left"
-                                               Cursor="SizeWE"
-                                               Margin="-5 0 0 0"
-                                               BorderBrush="Transparent"
-                                               BorderThickness="5"
-                                               VerticalAlignment="Stretch"
-                                               HorizontalAlignment="Left"
-                                               IsSquare="{TemplateBinding IsSquare}"
-                                               LimitInParent="{TemplateBinding LimitInParent}" />
+                                                  Tag="Left"
+                                                  Cursor="SizeWE"
+                                                  Margin="-5 0 0 0"
+                                                  BorderBrush="Transparent"
+                                                  BorderThickness="5"
+                                                  VerticalAlignment="Stretch"
+                                                  HorizontalAlignment="Left"
+                                                  IsSquare="{TemplateBinding IsSquare}"
+                                                  LimitInParent="{TemplateBinding LimitInParent}" />
                             <internal:ResizeThumb Width="5"
-                                               Tag="Right"
-                                               Cursor="SizeWE"
-                                               Margin="0 0 -5 0"
-                                               BorderBrush="Transparent"
-                                               BorderThickness="5"
-                                               VerticalAlignment="Stretch"
-                                               HorizontalAlignment="Right"
-                                               IsSquare="{TemplateBinding IsSquare}"
-                                               LimitInParent="{TemplateBinding LimitInParent}" />
+                                                  Tag="Right"
+                                                  Cursor="SizeWE"
+                                                  Margin="0 0 -5 0"
+                                                  BorderBrush="Transparent"
+                                                  BorderThickness="5"
+                                                  VerticalAlignment="Stretch"
+                                                  HorizontalAlignment="Right"
+                                                  IsSquare="{TemplateBinding IsSquare}"
+                                                  LimitInParent="{TemplateBinding LimitInParent}" />
                             <internal:ResizeThumb Height="5"
-                                               Tag="Bottom"
-                                               Cursor="SizeNS"
-                                               Margin="0 0 0 -5"
-                                               BorderBrush="Transparent"
-                                               BorderThickness="5"
-                                               VerticalAlignment="Bottom"
-                                               HorizontalAlignment="Stretch"
-                                               IsSquare="{TemplateBinding IsSquare}"
-                                               LimitInParent="{TemplateBinding LimitInParent}" />
+                                                  Tag="Bottom"
+                                                  Cursor="SizeNS"
+                                                  Margin="0 0 0 -5"
+                                                  BorderBrush="Transparent"
+                                                  BorderThickness="5"
+                                                  VerticalAlignment="Bottom"
+                                                  HorizontalAlignment="Stretch"
+                                                  IsSquare="{TemplateBinding IsSquare}"
+                                                  LimitInParent="{TemplateBinding LimitInParent}" />
                             <internal:ResizeThumb Width="5"
-                                               Tag="TopLeft"
-                                               Height="5"
-                                               Cursor="SizeNWSE"
-                                               Margin="-5 -5 0 0"
-                                               BorderBrush="Transparent"
-                                               BorderThickness="5"
-                                               VerticalAlignment="Top"
-                                               HorizontalAlignment="Left"
-                                               IsSquare="{TemplateBinding IsSquare}"
-                                               LimitInParent="{TemplateBinding LimitInParent}" />
+                                                  Tag="TopLeft"
+                                                  Height="5"
+                                                  Cursor="SizeNWSE"
+                                                  Margin="-5 -5 0 0"
+                                                  BorderBrush="Transparent"
+                                                  BorderThickness="5"
+                                                  VerticalAlignment="Top"
+                                                  HorizontalAlignment="Left"
+                                                  IsSquare="{TemplateBinding IsSquare}"
+                                                  LimitInParent="{TemplateBinding LimitInParent}" />
                             <internal:ResizeThumb Width="5"
-                                               Tag="TopRight"
-                                               Height="5"
-                                               Cursor="SizeNESW"
-                                               Margin="0 -5 -5 0"
-                                               BorderBrush="Transparent"
-                                               BorderThickness="5"
-                                               VerticalAlignment="Top"
-                                               HorizontalAlignment="Right"
-                                               IsSquare="{TemplateBinding IsSquare}"
-                                               LimitInParent="{TemplateBinding LimitInParent}" />
+                                                  Tag="TopRight"
+                                                  Height="5"
+                                                  Cursor="SizeNESW"
+                                                  Margin="0 -5 -5 0"
+                                                  BorderBrush="Transparent"
+                                                  BorderThickness="5"
+                                                  VerticalAlignment="Top"
+                                                  HorizontalAlignment="Right"
+                                                  IsSquare="{TemplateBinding IsSquare}"
+                                                  LimitInParent="{TemplateBinding LimitInParent}" />
                             <internal:ResizeThumb Width="5"
-                                               Tag="BottomLeft"
-                                               Height="5"
-                                               Cursor="SizeNESW"
-                                               Margin="-5 0 0 -5"
-                                               BorderBrush="Transparent"
-                                               BorderThickness="5"
-                                               VerticalAlignment="Bottom"
-                                               HorizontalAlignment="Left"
-                                               IsSquare="{TemplateBinding IsSquare}"
-                                               LimitInParent="{TemplateBinding LimitInParent}" />
+                                                  Tag="BottomLeft"
+                                                  Height="5"
+                                                  Cursor="SizeNESW"
+                                                  Margin="-5 0 0 -5"
+                                                  BorderBrush="Transparent"
+                                                  BorderThickness="5"
+                                                  VerticalAlignment="Bottom"
+                                                  HorizontalAlignment="Left"
+                                                  IsSquare="{TemplateBinding IsSquare}"
+                                                  LimitInParent="{TemplateBinding LimitInParent}" />
                             <internal:ResizeThumb Width="5"
-                                               Tag="BottomRight"
-                                               Height="5"
-                                               Cursor="SizeNWSE"
-                                               Margin="0 0 -5 -5"
-                                               BorderBrush="Transparent"
-                                               BorderThickness="5"
-                                               VerticalAlignment="Bottom"
-                                               HorizontalAlignment="Right"
-                                               IsSquare="{TemplateBinding IsSquare}"
-                                               LimitInParent="{TemplateBinding LimitInParent}" />
+                                                  Tag="BottomRight"
+                                                  Height="5"
+                                                  Cursor="SizeNWSE"
+                                                  Margin="0 0 -5 -5"
+                                                  BorderBrush="Transparent"
+                                                  BorderThickness="5"
+                                                  VerticalAlignment="Bottom"
+                                                  HorizontalAlignment="Right"
+                                                  IsSquare="{TemplateBinding IsSquare}"
+                                                  LimitInParent="{TemplateBinding LimitInParent}" />
                         </Grid>
                         <ContentPresenter Content="{TemplateBinding Content}" />
                     </Grid>
