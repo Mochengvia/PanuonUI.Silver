@@ -90,15 +90,16 @@ namespace Panuon.UI.Silver
         private static void ScrollViewer_PreviewMouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)
         {
             var scrollViewer = sender as ScrollViewer;
+            var handle = true;
 
             if (e.Delta > 0)
             {
                 if (scrollViewer.ComputedVerticalScrollBarVisibility == Visibility.Visible)
-                    scrollViewer.ScrollToVerticalOffset(scrollViewer.VerticalOffset - e.Delta / 2);
+                { handle = false; }
                 else if (scrollViewer.ComputedHorizontalScrollBarVisibility == Visibility.Visible)
                     scrollViewer.ScrollToHorizontalOffset(scrollViewer.HorizontalOffset - e.Delta / 2);
                 else if (scrollViewer.VerticalScrollBarVisibility != ScrollBarVisibility.Disabled)
-                    scrollViewer.ScrollToVerticalOffset(scrollViewer.VerticalOffset - e.Delta / 2);
+                { handle = false; }
                 else if (scrollViewer.HorizontalScrollBarVisibility != ScrollBarVisibility.Disabled)
                     scrollViewer.ScrollToHorizontalOffset(scrollViewer.HorizontalOffset - e.Delta / 2);
                 else
@@ -107,11 +108,11 @@ namespace Panuon.UI.Silver
             else
             {
                 if (scrollViewer.ComputedVerticalScrollBarVisibility == Visibility.Visible)
-                    scrollViewer.ScrollToVerticalOffset(scrollViewer.VerticalOffset - e.Delta / 2);
+                { handle = false; }
                 else if (scrollViewer.ComputedHorizontalScrollBarVisibility == Visibility.Visible)
                     scrollViewer.ScrollToHorizontalOffset(scrollViewer.HorizontalOffset - e.Delta / 2);
                 else if (scrollViewer.VerticalScrollBarVisibility != ScrollBarVisibility.Disabled)
-                    scrollViewer.ScrollToVerticalOffset(scrollViewer.VerticalOffset - e.Delta / 2);
+                { handle = false; }
                 else if (scrollViewer.HorizontalScrollBarVisibility != ScrollBarVisibility.Disabled)
                     scrollViewer.ScrollToHorizontalOffset(scrollViewer.HorizontalOffset - e.Delta / 2);
                 else
@@ -119,7 +120,7 @@ namespace Panuon.UI.Silver
             }
 
 
-            if (scrollViewer.ComputedVerticalScrollBarVisibility == Visibility.Visible || scrollViewer.ComputedHorizontalScrollBarVisibility == Visibility.Visible)
+            if (handle)
                 e.Handled = true;
         }
         #endregion
