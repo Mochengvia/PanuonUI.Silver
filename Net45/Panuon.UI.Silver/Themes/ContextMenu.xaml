@@ -46,7 +46,8 @@
                             </Border.Effect>
 
                         </Border>
-                        <ScrollViewer Style="{StaticResource MiniScrollViewer}"
+                        <ScrollViewer local:ScrollViewerHelper.ScrollBarThickness="6"
+                                      local:ScrollViewerHelper.ScrollBarCornerRadius="3"
                                       CanContentScroll="True">
                             <StackPanel IsItemsHost="True"
                                         KeyboardNavigation.DirectionalNavigation="Cycle" />
@@ -95,7 +96,7 @@
                                                       Grid.Column="1"
                                                       VerticalAlignment="Center" />
                                     <Path x:Name="Path"
-                                          Grid.Column="1"
+                                          Grid.Column="2"
                                           Width="5"
                                           Height="10"
                                           Data="M0,0 L5,5 L0,10"
@@ -119,7 +120,8 @@
                                             Background="{Binding Background,RelativeSource={RelativeSource AncestorType=ContextMenu}}"
                                             Width="{Binding Width,RelativeSource={RelativeSource AncestorType=ContextMenu}}">
                                         <ScrollViewer CanContentScroll="True"
-                                                      Style="{StaticResource MiniScrollViewer}">
+                                                      local:ScrollViewerHelper.ScrollBarCornerRadius="3"
+                                                      local:ScrollViewerHelper.ScrollBarThickness="6">
                                             <StackPanel IsItemsHost="True"
                                                         KeyboardNavigation.DirectionalNavigation="Cycle" />
                                         </ScrollViewer>

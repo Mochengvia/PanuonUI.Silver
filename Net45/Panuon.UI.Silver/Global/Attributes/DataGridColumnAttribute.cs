@@ -19,10 +19,23 @@ namespace Panuon.UI.Silver
             DisplayName = displayName;
         }
 
+        public DataGridColumnAttribute(string displayName, bool isReadOnly)
+        {
+            DisplayName = displayName;
+            IsReadOnly = isReadOnly;
+        }
+
         public DataGridColumnAttribute(string displayName, string width)
         {
             DisplayName = displayName;
             Width = width;
+        }
+
+        public DataGridColumnAttribute(string displayName, string width, bool isReadOnly)
+        {
+            DisplayName = displayName;
+            Width = width;
+            IsReadOnly = isReadOnly;
         }
 
         public string DisplayName { get; set; }
@@ -30,5 +43,7 @@ namespace Panuon.UI.Silver
         public bool Ignore { get; set; }
 
         public string Width { get; set; }
+
+        public bool IsReadOnly { get; set; }
     }
 }

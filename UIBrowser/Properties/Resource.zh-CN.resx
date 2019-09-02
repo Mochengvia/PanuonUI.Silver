@@ -402,4 +402,28 @@
   <data name="Notice" xml:space="preserve">
     <value>Notice 通知</value>
   </data>
+  <data name="Groups" xml:space="preserve">
+    <value>行/列数</value>
+  </data>
+  <data name="Horizontal" xml:space="preserve">
+    <value>横向的</value>
+  </data>
+  <data name="HorizontalSpacing" xml:space="preserve">
+    <value>水平间距</value>
+  </data>
+  <data name="LazyLoading" xml:space="preserve">
+    <value>懒加载</value>
+  </data>
+  <data name="VerticalSpacing" xml:space="preserve">
+    <value>垂直间距</value>
+  </data>
+  <data name="WaterfallViewer" xml:space="preserve">
+    <value>WaterfallViewer 瀑布流</value>
+  </data>
+  <data name="Spacing" xml:space="preserve">
+    <value>间距</value>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>Menu 菜单</value>
+  </data>
 </root>

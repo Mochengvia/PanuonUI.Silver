@@ -37,6 +37,7 @@ namespace Panuon.UI.Silver
         public Calendar()
         {
             InitializeComponent();
+            FontSize = (double)FindResource("Default_FontSize");
             _storyboard_daytoMonth = FindResource("Storyboard_DayToMonth") as Storyboard;
             _storyboard_monthtoDay = FindResource("Storyboard_MonthToDay") as Storyboard;
             _storyboard_yeartoMonth = FindResource("Storyboard_YearToMonth") as Storyboard;

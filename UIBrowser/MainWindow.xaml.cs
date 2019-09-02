@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 using Panuon.UI.Silver;
 using UIBrowser.Models;
 
@@ -69,32 +71,7 @@ namespace UIBrowser
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-        }
-
-
-        private void MouseOperationContainer_Click(object sender, Panuon.UI.Silver.Core.ClickEventArgs e)
-        {
-            txt.Text += $"Click({e.Position.X},{e.Position.Y})\n";
-        }
-
-        private void MouseOperationContainer_DoubleClick(object sender, Panuon.UI.Silver.Core.DoubleClickEventArgs e)
-        {
-            txt.Text += $"DoubleClick({e.Position.X},{e.Position.Y})\n";
-        }
-
-        private void MouseOperationContainer_DragArea(object sender, Panuon.UI.Silver.Core.DragAreaEventArgs e)
-        {
-            txt.Text += $"DragArea({e.StartPosition.X},{e.StartPosition.Y})({e.EndPosition.X},{e.EndPosition.Y})\n";
-        }
-
-        private void MouseOperationContainer_LongPress(object sender, Panuon.UI.Silver.Core.LongPressEventArgs e)
-        {
-            txt.Text += "Long press\n";
-        }
-
-        private void MouseOperationContainer_Draging(object sender, Panuon.UI.Silver.Core.DragingEventArgs e)
-        {
-            txt.Text += $"Draging({e.StartPosition.X},{e.StartPosition.Y})({e.EndPosition.X},{e.EndPosition.Y})\n";
+            ScreenshotHelper.BeginScreenshot();
         }
     }
 }

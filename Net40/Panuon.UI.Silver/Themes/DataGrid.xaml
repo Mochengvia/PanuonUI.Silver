@@ -60,7 +60,7 @@
                 Value="#3E3E3E" />
         <Style.Resources>
             <Style TargetType="{x:Type ScrollViewer}"
-                   BasedOn="{StaticResource MiniScrollViewer}">
+                   BasedOn="{StaticResource {x:Type ScrollViewer}}">
                 <Style.Resources>
                     <Style TargetType="ScrollBar"
                            BasedOn="{StaticResource {x:Type ScrollBar}}">
@@ -101,7 +101,7 @@
         <Setter Property="SnapsToDevicePixels"
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="FontSize"
-                Value="{StaticResource Default_FontSize}" />
+                Value="{Binding FontSize,RelativeSource={RelativeSource AncestorType=DataGrid}}" />
         <Setter Property="FocusVisualStyle"
                 Value="{x:Null}" />
         <Setter Property="FontWeight"
@@ -152,7 +152,7 @@
                               HorizontalAlignment="{Binding Path=(local:DataGridHelper.ColumnHorizontalContentAlignment),RelativeSource={RelativeSource AncestorType=DataGridColumnHeader}}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
-                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                             <Grid Grid.Column="1">
@@ -254,7 +254,7 @@
         <Setter Property="SnapsToDevicePixels"
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="FontSize"
-                Value="{StaticResource Default_FontSize}" />
+                Value="{Binding FontSize,RelativeSource={RelativeSource AncestorType=DataGrid}}" />
         <Setter Property="FocusVisualStyle"
                 Value="{x:Null}" />
         <Setter Property="Background"
@@ -283,7 +283,7 @@
                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                     </Grid>
                     <ControlTemplate.Triggers>
-                      
+
                         <Trigger  Property="IsSelected"
                                   Value="True">
                             <Setter Property="Foreground"
@@ -304,7 +304,7 @@
         <Setter Property="SnapsToDevicePixels"
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="FontSize"
-                Value="{StaticResource Default_FontSize}" />
+                Value="{Binding FontSize,RelativeSource={RelativeSource AncestorType=DataGrid}}" />
         <Setter Property="FocusVisualStyle"
                 Value="{x:Null}" />
         <Setter Property="MinHeight"
@@ -420,7 +420,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
     <Style x:Key="TextBlockComboBoxStyle"
            TargetType="{x:Type ComboBox}">
         <Setter Property="Template">

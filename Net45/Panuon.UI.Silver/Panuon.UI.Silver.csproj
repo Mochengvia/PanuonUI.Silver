@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -86,15 +87,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\Internal\ScreenshotWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\NeonLabel.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Pagination.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\ScrollContainer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -102,7 +99,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Helpers\Control\Badge.xaml">
+    <Page Include="Controls\WaterfallViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Badge.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -224,8 +225,10 @@
     </Compile>
     <Compile Include="Controls\Internal\NotTopMostPopup.cs" />
     <Compile Include="Controls\Internal\ResizeThumb.cs" />
+    <Compile Include="Controls\Internal\ScreenshotWindow.xaml.cs">
+      <DependentUpon>ScreenshotWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\MessageBoxX.cs" />
-    <Compile Include="Controls\MouseOperationContainer.cs" />
     <Compile Include="Controls\MultiSelector.cs" />
     <Compile Include="Controls\Internal\ResizeContainer.cs" />
     <Compile Include="Controls\NeonLabel.xaml.cs">
@@ -233,19 +236,18 @@
     </Compile>
     <Compile Include="Controls\Notice.cs" />
     <Compile Include="Controls\Pagination.cs" />
-    <Compile Include="Controls\Pagination.xaml.cs">
-      <DependentUpon>Pagination.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ScrollContainer.xaml.cs">
-      <DependentUpon>ScrollContainer.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\TagPanel.xaml.cs">
       <DependentUpon>TagPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Timeline.cs" />
+    <Compile Include="Controls\Internal\WaterfallPanel.cs" />
+    <Compile Include="Controls\WaterfallViewer.xaml.cs">
+      <DependentUpon>WaterfallViewer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\WindowX.cs" />
     <Compile Include="Converters\BrushOrColorConverter.cs" />
     <Compile Include="Converters\CheckIconConverter.cs" />
+    <Compile Include="Converters\CloneConverter.cs" />
     <Compile Include="Converters\ComboBoxConverter.cs" />
     <Compile Include="Converters\MsbConverter.cs" />
     <Compile Include="Converters\CheckBoxOrRadioButtonConverter.cs" />
@@ -256,6 +258,7 @@
     <Compile Include="Converters\MemberPathConverter.cs" />
     <Compile Include="Converters\MultiSelectorConverter.cs" />
     <Compile Include="Converters\ObjectConvert.cs" />
+    <Compile Include="Converters\OrientationConverter.cs" />
     <Compile Include="Converters\ProgressBarConverter.cs" />
     <Compile Include="Converters\TabControlConverter.cs" />
     <Compile Include="Converters\TagPanelConverter.cs" />
@@ -263,17 +266,20 @@
     <Compile Include="Converters\TreeViewConverter.cs" />
     <Compile Include="Converters\WidthAndHeightConverter.cs" />
     <Compile Include="Global\Attributes\DataGridColumnAttribute.cs" />
-    <Compile Include="Global\EventArgs\LongPressEventArgs.cs" />
-    <Compile Include="Global\EventArgs\DoubleClickEventArgs.cs" />
-    <Compile Include="Global\EventArgs\ClickEventArgs.cs" />
-    <Compile Include="Global\EventArgs\DragingEventArgs.cs" />
-    <Compile Include="Global\EventArgs\DragAreaEventArgs.cs" />
+    <Compile Include="Global\EventArgs\CurrentIndexChangedEventHandler.cs" />
+    <Compile Include="Global\EventArgs\LongPressEventHandler.cs" />
+    <Compile Include="Global\EventArgs\DoubleClickEventHandler.cs" />
+    <Compile Include="Global\EventArgs\ClickEventHandler.cs" />
+    <Compile Include="Global\EventArgs\DragingEventHandler.cs" />
+    <Compile Include="Global\EventArgs\DragAreaEventHandler.cs" />
     <Compile Include="Global\Models\MessageBoxXConfigurations.cs" />
     <Compile Include="Helpers\BubbleHelper.cs" />
     <Compile Include="Helpers\Control\GridHelper.cs" />
+    <Compile Include="Helpers\Control\MenuHelper.cs" />
+    <Compile Include="Helpers\Control\ScrollViewerHelper.cs" />
     <Compile Include="Helpers\Control\WindowXCaption.cs" />
     <Compile Include="Global\Models\TagItemModel.cs" />
-    <Compile Include="Helpers\Control\Badge.xaml.cs">
+    <Compile Include="Controls\Badge.xaml.cs">
       <DependentUpon>Badge.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Control\ContextMenuHelper.cs" />
@@ -283,7 +289,8 @@
     <Compile Include="Helpers\Control\ProgressBarHelper.cs" />
     <Compile Include="Helpers\Control\RepeatButtonHelper.cs" />
     <Compile Include="Helpers\Control\TabControlHelper.cs" />
-    <Compile Include="Helpers\Internal\ScrollViewerHelper.cs" />
+    <Compile Include="Helpers\Others\MouseEventHelper.cs" />
+    <Compile Include="Helpers\Others\ScreenshotHelper.cs" />
     <Compile Include="Utils\Cache.cs" />
     <Compile Include="Utils\DelegateCommand.cs" />
     <Compile Include="Global\Enums.cs" />
@@ -327,6 +334,7 @@
   <ItemGroup>
     <Folder Include="Global\Interfaces\" />
     <Folder Include="Global\Statics\" />
+    <Folder Include="Helpers\Internal\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

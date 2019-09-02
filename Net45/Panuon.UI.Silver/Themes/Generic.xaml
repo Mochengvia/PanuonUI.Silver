@@ -20,7 +20,8 @@
     <converter:CornerRadiusAdd1Converter x:Key="CornerRadiusAdd1Converter" />
     <converter:Minus4Converter x:Key="Minus4Converter" />
 
-    <!--<Style TargetType="{x:Type local:Pagination}">
+    
+    <Style TargetType="{x:Type local:Pagination}">
         <Setter Property="FontFamily"
                 Value="{StaticResource Default_FontFamily}" />
         <Setter Property="SnapsToDevicePixels"
@@ -29,7 +30,201 @@
                 Value="{StaticResource Default_FontSize}" />
         <Setter Property="FocusVisualStyle"
                 Value="{x:Null}" />
-    </Style>-->
+        <Setter Property="Background"
+                Value="#888888" />
+        <Setter Property="HoverBrush"
+                Value="#3E3E3E" />
+        <Setter Property="Foreground"
+                Value="White" />
+        <Setter Property="CornerRadius"
+                Value="2" />
+        <Setter Property="Spacing"
+                Value="5" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:Pagination}">
+                    <Grid x:Name="GrdMain">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <RepeatButton x:Name="BtnPrevious"
+                                      Command="{TemplateBinding PreviousCommand}"
+                                      CommandParameter="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}}"
+                                      Height="{Binding ActualHeight,ElementName=GrdMain}"
+                                      MinWidth="{Binding ActualHeight,ElementName=GrdMain}"
+                                      Background="{TemplateBinding Background}"
+                                      Foreground="{TemplateBinding Foreground}"
+                                      FontSize="{Binding FontSize,RelativeSource={RelativeSource AncestorType=local:Pagination},Converter={StaticResource Add5Converter}}"
+                                      FontWeight="{TemplateBinding FontWeight}"
+                                      FontFamily="{DynamicResource FontAwesome}"
+                                      FontStyle="{TemplateBinding FontStyle}"
+                                      local:RepeatButtonHelper.HoverBrush="{TemplateBinding HoverBrush}"
+                                      local:RepeatButtonHelper.CornerRadius="{TemplateBinding CornerRadius}"
+                                      Content="&#xf104;"/>
+                        <ItemsControl Grid.Column="1"
+                                      ItemsSource="{TemplateBinding PaginationItems}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="{Binding Spacing,RelativeSource={RelativeSource AncestorType=local:Pagination},Converter={StaticResource DoubleToLeftMarginConverter}}"
+                                          Height="{Binding ActualHeight,ElementName=GrdMain}"
+                                          MinWidth="{Binding ActualHeight,ElementName=GrdMain}">
+                                        <TextBlock x:Name="TxtDot"
+                                                   Visibility="Collapsed"
+                                                   Text="&#xf111; &#xf111; &#xf111;"
+                                                   FontSize="3"
+                                                   FontFamily="{DynamicResource FontAwesome}"
+                                                   VerticalAlignment="Center"
+                                                   HorizontalAlignment="Center"
+                                                   Foreground="{Binding Background,RelativeSource={RelativeSource AncestorType=local:Pagination}}"
+                                                   FontWeight="{Binding FontWeight,RelativeSource={RelativeSource AncestorType=local:Pagination}}" />
+                                        <Button x:Name="BtnItem"
+                                                Command="{Binding IndexCommand,RelativeSource={RelativeSource AncestorType=local:Pagination}}"
+                                                Background="{Binding Background,RelativeSource={RelativeSource AncestorType=local:Pagination}}"
+                                                Foreground="{Binding Foreground,RelativeSource={RelativeSource AncestorType=local:Pagination}}"
+                                                FontSize="{Binding FontSize,RelativeSource={RelativeSource AncestorType=local:Pagination}}"
+                                                FontWeight="{Binding FontWeight,RelativeSource={RelativeSource AncestorType=local:Pagination}}"
+                                                FontFamily="{Binding FontFamily,RelativeSource={RelativeSource AncestorType=local:Pagination}}"
+                                                FontStyle="{Binding FontStyle,RelativeSource={RelativeSource AncestorType=local:Pagination}}"
+                                                local:ButtonHelper.HoverBrush="{Binding HoverBrush,RelativeSource={RelativeSource AncestorType=local:Pagination}}"
+                                                local:ButtonHelper.CornerRadius="{Binding CornerRadius,RelativeSource={RelativeSource AncestorType=local:Pagination}}"
+                                                Content="{Binding Value}">
+                                            <Button.CommandParameter>
+                                                <MultiBinding Converter="{StaticResource CloneConverter}">
+                                                        <Binding Path="."
+                                                             RelativeSource="{RelativeSource AncestorType=local:Pagination}" />
+                                                        <Binding Path="Content"
+                                                                 RelativeSource="{x:Static RelativeSource.Self}" />
+                                                </MultiBinding>
+                                            </Button.CommandParameter>
+                                        </Button>
+                                    </Grid>
+                                    <DataTemplate.Triggers>
+                                        <DataTrigger Binding="{Binding PaginationStyle,RelativeSource={RelativeSource AncestorType=local:Pagination}}"
+                                                     Value="Classic">
+                                            <Setter TargetName="BtnItem"
+                                                    Property="local:ButtonHelper.ButtonStyle"
+                                                    Value="Outline" />
+                                            <Setter TargetName="TxtDot"
+                                                    Property="Foreground"
+                                                    Value="{Binding Foreground,RelativeSource={RelativeSource AncestorType=local:Pagination}}" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding PaginationStyle,RelativeSource={RelativeSource AncestorType=local:Pagination}}"
+                                                     Value="Simple">
+                                            <Setter TargetName="BtnItem"
+                                                    Property="local:ButtonHelper.ButtonStyle"
+                                                    Value="Link" />
+                                            <Setter TargetName="TxtDot"
+                                                    Property="Foreground"
+                                                    Value="{Binding Foreground,RelativeSource={RelativeSource AncestorType=local:Pagination}}" />
+                                        </DataTrigger>
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding IsSelected}"
+                                                           Value="True"/>
+                                                <Condition Binding="{Binding PaginationStyle,RelativeSource={RelativeSource AncestorType=local:Pagination}}"
+                                                           Value="Standard" />
+                                            </MultiDataTrigger.Conditions>
+                                            <Setter TargetName="BtnItem"
+                                                    Property="Background"
+                                                    Value="{Binding HoverBrush,RelativeSource={RelativeSource AncestorType=local:Pagination}}" />
+                                        </MultiDataTrigger>
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding IsSelected}"
+                                                           Value="True" />
+                                                <Condition Binding="{Binding PaginationStyle,RelativeSource={RelativeSource AncestorType=local:Pagination}}"
+                                                           Value="Classic" />
+                                            </MultiDataTrigger.Conditions>
+                                            <Setter TargetName="BtnItem"
+                                                    Property="BorderBrush"
+                                                    Value="{Binding HoverBrush,RelativeSource={RelativeSource AncestorType=local:Pagination}}" />
+                                            <Setter TargetName="BtnItem"
+                                                    Property="Foreground"
+                                                    Value="{Binding HoverBrush,RelativeSource={RelativeSource AncestorType=local:Pagination}}" />
+                                        </MultiDataTrigger>
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding IsSelected}"
+                                                           Value="True" />
+                                                <Condition Binding="{Binding PaginationStyle,RelativeSource={RelativeSource AncestorType=local:Pagination}}"
+                                                           Value="Simple" />
+                                            </MultiDataTrigger.Conditions>
+                                            <Setter TargetName="BtnItem"
+                                                    Property="Foreground"
+                                                    Value="{Binding HoverBrush,RelativeSource={RelativeSource AncestorType=local:Pagination}}" />
+                                        </MultiDataTrigger>
+                                        <DataTrigger Binding="{Binding Value}"
+                                                     Value="{x:Null}">
+                                            <Setter TargetName="BtnItem"
+                                                    Property="Visibility"
+                                                    Value="Collapsed" />
+                                            <Setter TargetName="TxtDot"
+                                                    Property="Visibility"
+                                                    Value="Visible" />
+                                        </DataTrigger>
+                                    </DataTemplate.Triggers>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                        <RepeatButton x:Name="BtnNext"
+                                      Command="{TemplateBinding NextCommand}"
+                                      CommandParameter="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}}"
+                                      Grid.Column="2"
+                                      Height="{Binding ActualHeight,ElementName=GrdMain}"
+                                      MinWidth="{Binding ActualHeight,ElementName=GrdMain}"
+                                      Margin="{Binding Spacing,RelativeSource={RelativeSource AncestorType=local:Pagination},Converter={StaticResource DoubleToLeftMarginConverter}}"
+                                      Background="{TemplateBinding Background}"
+                                      Foreground="{TemplateBinding Foreground}"
+                                      FontSize="{Binding FontSize,RelativeSource={RelativeSource AncestorType=local:Pagination},Converter={StaticResource Add5Converter}}"
+                                      FontWeight="{TemplateBinding FontWeight}"
+                                      FontFamily="{DynamicResource FontAwesome}"
+                                      FontStyle="{TemplateBinding FontStyle}"
+                                      local:RepeatButtonHelper.HoverBrush="{TemplateBinding HoverBrush}"
+                                      local:RepeatButtonHelper.CornerRadius="{TemplateBinding CornerRadius}"
+                                      Content="&#xf105;"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="PaginationStyle"
+                                 Value="Classic">
+                            <Setter TargetName="BtnPrevious"
+                                    Property="local:RepeatButtonHelper.RepeatButtonStyle"
+                                    Value="Outline" />
+                            <Setter TargetName="BtnNext"
+                                    Property="local:RepeatButtonHelper.RepeatButtonStyle"
+                                    Value="Outline" />
+                            <Setter Property="Foreground"
+                                    Value="#888888" />
+                            <Setter Property="BorderBrush"
+                                    Value="#888888" />
+                            <Setter Property="Background"
+                                    Value="Transparent" />
+                        </Trigger>
+                        <Trigger Property="PaginationStyle"
+                                 Value="Simple">
+                            <Setter TargetName="BtnPrevious"
+                                    Property="local:RepeatButtonHelper.RepeatButtonStyle"
+                                    Value="Link" />
+                            <Setter TargetName="BtnNext"
+                                    Property="local:RepeatButtonHelper.RepeatButtonStyle"
+                                    Value="Link" />
+                            <Setter Property="Foreground"
+                                    Value="#888888" />
+                            <Setter Property="Background"
+                                    Value="Transparent" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
     <Style TargetType="{x:Type local:WindowX}">
         <Setter Property="FontFamily"
                 Value="{StaticResource Default_FontFamily}" />
@@ -1524,7 +1719,7 @@
                                 </Style>
                             </ToggleButton.Style>
                         </ToggleButton>
-                        <local:NotTopMostPopup Placement="Bottom"
+                        <internal:NotTopMostPopup Placement="Bottom"
                                                x:Name="Popup"
                                                Focusable="False"
                                                StaysOpen="True"
@@ -1550,7 +1745,8 @@
                                 <ScrollViewer VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=local:MultiSelector}, Mode=OneWay}"
                                               HorizontalScrollBarVisibility="{Binding Path=(ScrollViewer.HorizontalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=local:MultiSelector}, Mode=OneWay}"
                                               CanContentScroll="True"
-                                              Style="{DynamicResource MiniScrollViewer}"
+                                              local:ScrollViewerHelper.ScrollBarThickness="6"
+                                              local:ScrollViewerHelper.ScrollBarCornerRadius="3"
                                               Margin="1,5,1,15"
                                               MaxHeight="{TemplateBinding MaxDropDownHeight}">
                                     <ItemsControl ItemsSource="{Binding ItemsSource,RelativeSource={RelativeSource AncestorType=local:MultiSelector},Mode=OneWay}">
@@ -1596,7 +1792,7 @@
                                     </ItemsControl>
                                 </ScrollViewer>
                             </Grid>
-                        </local:NotTopMostPopup>
+                        </internal:NotTopMostPopup>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <DataTrigger Binding="{Binding Text,Converter={StaticResource IsNullOrEmptyConverter},RelativeSource={RelativeSource Self}}"
@@ -1763,7 +1959,7 @@
                                 </Style>
                             </ToggleButton.Style>
                         </ToggleButton>
-                        <local:NotTopMostPopup Placement="Bottom"
+                        <internal:NotTopMostPopup Placement="Bottom"
                                                x:Name="Popup"
                                                Focusable="False"
                                                Tag="{Binding ElementName=ToggleButton}"
@@ -1808,7 +2004,7 @@
                                                  Height="300" />
                                 </Grid>
                             </Grid>
-                        </local:NotTopMostPopup>
+                        </internal:NotTopMostPopup>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="DateTimePickerMode"
@@ -1910,7 +2106,7 @@
                                         </Style>
                                     </ToggleButton.Style>
                                 </ToggleButton>
-                                <local:NotTopMostPopup Placement="Left"
+                                <internal:NotTopMostPopup Placement="Left"
                                                        IsOpen="{Binding IsOpen,RelativeSource={RelativeSource AncestorType=local:DropDown},Mode=TwoWay}"
                                                        x:Name="Popup"
                                                        PlacementTarget="{Binding ElementName=ToggleButton}"
@@ -1954,7 +2150,7 @@
                                                               ContentSource="Child" />
                                         </Grid>
                                     </Grid>
-                                </local:NotTopMostPopup>
+                                </internal:NotTopMostPopup>
                             </Grid>
                             <ControlTemplate.Triggers>
                             </ControlTemplate.Triggers>
@@ -1994,7 +2190,7 @@
                                         </Style>
                                     </ToggleButton.Style>
                                 </ToggleButton>
-                                <local:NotTopMostPopup Placement="Bottom"
+                                <internal:NotTopMostPopup Placement="Bottom"
                                                        x:Name="Popup"
                                                        PlacementTarget="{Binding ElementName=ToggleButton}"
                                                        Focusable="False"
@@ -2036,7 +2232,7 @@
                                                               IsHitTestVisible="False" />
                                         </Grid>
                                     </Grid>
-                                </local:NotTopMostPopup>
+                                </internal:NotTopMostPopup>
                             </Grid>
                             <ControlTemplate.Triggers>
                             </ControlTemplate.Triggers>
@@ -2049,13 +2245,13 @@
         </Style.Triggers>
     </Style>
 
-    <Style TargetType="{x:Type local:ResizeContainer}">
+    <Style TargetType="{x:Type internal:ResizeContainer}">
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type local:ResizeContainer}">
+                <ControlTemplate TargetType="{x:Type internal:ResizeContainer}">
                     <Grid DataContext="{Binding RelativeSource={RelativeSource TemplatedParent}}">
                         <Grid x:Name="GrdResizeGroup">
-                            <local:ResizeThumb Height="5"
+                            <internal:ResizeThumb Height="5"
                                                Tag="Top"
                                                Cursor="SizeNS"
                                                BorderBrush="Transparent"
@@ -2065,7 +2261,7 @@
                                                HorizontalAlignment="Stretch"
                                                IsSquare="{TemplateBinding IsSquare}"
                                                LimitInParent="{TemplateBinding LimitInParent}" />
-                            <local:ResizeThumb Width="5"
+                            <internal:ResizeThumb Width="5"
                                                Tag="Left"
                                                Cursor="SizeWE"
                                                Margin="-5 0 0 0"
@@ -2075,7 +2271,7 @@
                                                HorizontalAlignment="Left"
                                                IsSquare="{TemplateBinding IsSquare}"
                                                LimitInParent="{TemplateBinding LimitInParent}" />
-                            <local:ResizeThumb Width="5"
+                            <internal:ResizeThumb Width="5"
                                                Tag="Right"
                                                Cursor="SizeWE"
                                                Margin="0 0 -5 0"
@@ -2085,7 +2281,7 @@
                                                HorizontalAlignment="Right"
                                                IsSquare="{TemplateBinding IsSquare}"
                                                LimitInParent="{TemplateBinding LimitInParent}" />
-                            <local:ResizeThumb Height="5"
+                            <internal:ResizeThumb Height="5"
                                                Tag="Bottom"
                                                Cursor="SizeNS"
                                                Margin="0 0 0 -5"
@@ -2095,7 +2291,7 @@
                                                HorizontalAlignment="Stretch"
                                                IsSquare="{TemplateBinding IsSquare}"
                                                LimitInParent="{TemplateBinding LimitInParent}" />
-                            <local:ResizeThumb Width="5"
+                            <internal:ResizeThumb Width="5"
                                                Tag="TopLeft"
                                                Height="5"
                                                Cursor="SizeNWSE"
@@ -2106,7 +2302,7 @@
                                                HorizontalAlignment="Left"
                                                IsSquare="{TemplateBinding IsSquare}"
                                                LimitInParent="{TemplateBinding LimitInParent}" />
-                            <local:ResizeThumb Width="5"
+                            <internal:ResizeThumb Width="5"
                                                Tag="TopRight"
                                                Height="5"
                                                Cursor="SizeNESW"
@@ -2117,7 +2313,7 @@
                                                HorizontalAlignment="Right"
                                                IsSquare="{TemplateBinding IsSquare}"
                                                LimitInParent="{TemplateBinding LimitInParent}" />
-                            <local:ResizeThumb Width="5"
+                            <internal:ResizeThumb Width="5"
                                                Tag="BottomLeft"
                                                Height="5"
                                                Cursor="SizeNESW"
@@ -2128,7 +2324,7 @@
                                                HorizontalAlignment="Left"
                                                IsSquare="{TemplateBinding IsSquare}"
                                                LimitInParent="{TemplateBinding LimitInParent}" />
-                            <local:ResizeThumb Width="5"
+                            <internal:ResizeThumb Width="5"
                                                Tag="BottomRight"
                                                Height="5"
                                                Cursor="SizeNWSE"
@@ -2155,12 +2351,12 @@
         </Setter>
     </Style>
 
-    <Style TargetType="{x:Type local:DragableThumb}">
+    <Style TargetType="{x:Type internal:DragableThumb}">
         <Setter Property="Background"
                 Value="Transparent" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type local:DragableThumb}">
+                <ControlTemplate TargetType="{x:Type internal:DragableThumb}">
                     <Border Background="{TemplateBinding Background}" />
                 </ControlTemplate>
             </Setter.Value>
@@ -2187,7 +2383,8 @@
                 <ControlTemplate TargetType="{x:Type local:Timeline}">
                     <ScrollViewer VerticalScrollBarVisibility="Auto"
                                   HorizontalScrollBarVisibility="Disabled"
-                                  Style="{DynamicResource MiniScrollViewer}">
+                                  local:ScrollViewerHelper.ScrollBarCornerRadius="3"
+                                  local:ScrollViewerHelper.ScrollBarThickness="6">
                         <ItemsControl ItemsSource="{TemplateBinding ItemsSource}"
                                       Margin="0,0,5,0">
                             <ItemsControl.ItemsPanel>

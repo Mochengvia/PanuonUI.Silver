@@ -31,4 +31,12 @@
     <converter:BoolInverseConverter x:Key="BoolInverseConverter" />
 
     <converter:DoubleToRightMarginConverter x:Key="DoubleToRightMarginConverter" />
+    <converter:DoubleToLeftMarginConverter x:Key="DoubleToLeftMarginConverter" />
+
+    <converter:Add3Converter x:Key="Add3Converter"/>
+    <converter:Add5Converter x:Key="Add5Converter"/>
+
+    <converter:InverseOrientationConverter x:Key="InverseOrientationConverter" />
+    <converter:CloneConverter x:Key="CloneConverter" />
+    
 </ResourceDictionary>

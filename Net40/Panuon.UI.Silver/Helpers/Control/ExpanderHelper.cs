@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Media;
 
 namespace Panuon.UI.Silver
 {
@@ -67,6 +68,21 @@ namespace Panuon.UI.Silver
 
 
 
+        #endregion
+
+        #region HeaderForeground
+        public static Brush GetHeaderForeground(DependencyObject obj)
+        {
+            return (Brush)obj.GetValue(HeaderForegroundProperty);
+        }
+
+        public static void SetHeaderForeground(DependencyObject obj, Brush value)
+        {
+            obj.SetValue(HeaderForegroundProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderForegroundProperty =
+            DependencyProperty.RegisterAttached("HeaderForeground", typeof(Brush), typeof(ExpanderHelper));
         #endregion
     }
 }

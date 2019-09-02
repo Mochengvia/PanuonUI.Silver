@@ -257,8 +257,16 @@ namespace Panuon.UI.Silver
     public enum PaginationStyle
     {
         Standard,
-        Outline,
+        Classic,
         Simple,
+    }
+    #endregion
+
+    #region MenuStyle
+    public enum MenuStyle
+    {
+        Standard,
+        Classic,
     }
     #endregion
 }

@@ -60,7 +60,7 @@
                 Value="#3E3E3E" />
         <Style.Resources>
             <Style TargetType="{x:Type ScrollViewer}"
-                   BasedOn="{StaticResource MiniScrollViewer}">
+                   BasedOn="{StaticResource {x:Type ScrollViewer}}">
                 <Style.Resources>
                     <Style TargetType="ScrollBar"
                            BasedOn="{StaticResource {x:Type ScrollBar}}">
@@ -101,7 +101,7 @@
         <Setter Property="SnapsToDevicePixels"
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="FontSize"
-                Value="{StaticResource Default_FontSize}" />
+                Value="{Binding FontSize,RelativeSource={RelativeSource AncestorType=DataGrid}}" />
         <Setter Property="FocusVisualStyle"
                 Value="{x:Null}" />
         <Setter Property="FontWeight"
@@ -254,7 +254,7 @@
         <Setter Property="SnapsToDevicePixels"
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="FontSize"
-                Value="{StaticResource Default_FontSize}" />
+                Value="{Binding FontSize,RelativeSource={RelativeSource AncestorType=DataGrid}}" />
         <Setter Property="FocusVisualStyle"
                 Value="{x:Null}" />
         <Setter Property="Background"
@@ -304,7 +304,7 @@
         <Setter Property="SnapsToDevicePixels"
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="FontSize"
-                Value="{StaticResource Default_FontSize}" />
+                Value="{Binding FontSize,RelativeSource={RelativeSource AncestorType=DataGrid}}" />
         <Setter Property="FocusVisualStyle"
                 Value="{x:Null}" />
         <Setter Property="MinHeight"

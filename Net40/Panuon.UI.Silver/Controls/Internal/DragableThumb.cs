@@ -6,7 +6,7 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Interop;
 using System.Windows.Media;
 
-namespace Panuon.UI.Silver
+namespace Panuon.UI.Silver.Controls.Internal
 {
     internal class DragableThumb : Thumb
     {

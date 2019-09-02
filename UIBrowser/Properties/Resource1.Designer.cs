@@ -367,6 +367,33 @@ namespace UIBrowser.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Groups 的本地化字符串。
+        /// </summary>
+        public static string Groups {
+            get {
+                return ResourceManager.GetString("Groups", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Horizontal 的本地化字符串。
+        /// </summary>
+        public static string Horizontal {
+            get {
+                return ResourceManager.GetString("Horizontal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 HorizontalSpacing 的本地化字符串。
+        /// </summary>
+        public static string HorizontalSpacing {
+            get {
+                return ResourceManager.GetString("HorizontalSpacing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 ImageCuter 的本地化字符串。
         /// </summary>
         public static string ImageCuter {
@@ -466,6 +493,15 @@ namespace UIBrowser.Properties {
         }
         
         /// <summary>
+        ///   查找类似 LazyLoading 的本地化字符串。
+        /// </summary>
+        public static string LazyLoading {
+            get {
+                return ResourceManager.GetString("LazyLoading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 LimitMaxDateTime 的本地化字符串。
         /// </summary>
         public static string LimitMaxDateTime {
@@ -507,6 +543,15 @@ namespace UIBrowser.Properties {
         public static string MarginTo {
             get {
                 return ResourceManager.GetString("MarginTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Menu 的本地化字符串。
+        /// </summary>
+        public static string Menu {
+            get {
+                return ResourceManager.GetString("Menu", resourceCulture);
             }
         }
         
@@ -808,6 +853,15 @@ namespace UIBrowser.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Spacing 的本地化字符串。
+        /// </summary>
+        public static string Spacing {
+            get {
+                return ResourceManager.GetString("Spacing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 TabControl 的本地化字符串。
         /// </summary>
         public static string TabControl {
@@ -889,11 +943,29 @@ namespace UIBrowser.Properties {
         }
         
         /// <summary>
+        ///   查找类似 VerticalSpacing 的本地化字符串。
+        /// </summary>
+        public static string VerticalSpacing {
+            get {
+                return ResourceManager.GetString("VerticalSpacing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 View Code 的本地化字符串。
         /// </summary>
         public static string ViewCode {
             get {
                 return ResourceManager.GetString("ViewCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 WaterfallViewer 的本地化字符串。
+        /// </summary>
+        public static string WaterfallViewer {
+            get {
+                return ResourceManager.GetString("WaterfallViewer", resourceCulture);
             }
         }
         

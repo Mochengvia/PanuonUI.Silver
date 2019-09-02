@@ -290,7 +290,7 @@
                     local:ButtonHelper.HoverBrush="{Binding ThemeBrush,ElementName=calendar}"
                     Content=""
                     FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
-                    FontSize="20"
+                    FontSize="{Binding FontSize,ElementName=calendar,Converter={StaticResource Add5Converter}}"
                     Click="BtnDecYear_Click">
             </Button>
             <Button x:Name="BtnDecMonth"
@@ -300,7 +300,7 @@
                     local:ButtonHelper.HoverBrush="{Binding ThemeBrush,ElementName=calendar}"
                     Content=""
                     FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
-                    FontSize="20"
+                    FontSize="{Binding FontSize,ElementName=calendar,Converter={StaticResource Add5Converter}}"
                     Click="BtnDecMonth_Click">
             </Button>
             <Button x:Name="BtnMonthYear"
@@ -308,7 +308,7 @@
                     Padding="10,0"
                     HorizontalAlignment="Center"
                     Grid.Column="2"
-                    FontSize="16"
+                    FontSize="{Binding FontSize,ElementName=calendar,Converter={StaticResource Add3Converter}}"
                     Foreground="{Binding Foreground,ElementName=calendar}"
                     local:ButtonHelper.ButtonStyle="Link"
                     local:ButtonHelper.HoverBrush="{Binding ThemeBrush,ElementName=calendar}"
@@ -322,7 +322,7 @@
                     local:ButtonHelper.HoverBrush="{Binding ThemeBrush,ElementName=calendar}"
                     Content=""
                     FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
-                    FontSize="20"
+                    FontSize="{Binding FontSize,ElementName=calendar,Converter={StaticResource Add5Converter}}"
                     Click="BtnIncMonth_Click">
             </Button>
             <Button x:Name="BtnIncYear"
@@ -332,7 +332,7 @@
                     local:ButtonHelper.HoverBrush="{Binding ThemeBrush,ElementName=calendar}"
                     Content=""
                     FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
-                    FontSize="20"
+                    FontSize="{Binding FontSize,ElementName=calendar,Converter={StaticResource Add5Converter}}"
                     Click="BtnIncYear_Click">
             </Button>
         </Grid>

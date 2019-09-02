@@ -298,9 +298,13 @@ namespace Panuon.UI.Silver
                 e.Column.Visibility = Visibility.Collapsed;
                 return;
             }
+            if (columnAttribute != null && columnAttribute.IsReadOnly)
+            {
+                e.Column.IsReadOnly = true;
+            }
 
             DataGridLength dgLength = e.Column.Width;
-            if (columnAttribute != null && !columnAttribute.Width.IsNullOrEmpty())
+            if (columnAttribute != null && columnAttribute.Width != null)
             {
                 var width = columnAttribute.Width.Trim().ToLower();
                 if (width == "auto")
@@ -330,7 +334,7 @@ namespace Panuon.UI.Silver
             }
 
             var header = e.Column.Header;
-            if (columnAttribute != null && !columnAttribute.DisplayName.IsNullOrEmpty())
+            if (columnAttribute != null && columnAttribute.DisplayName != null)
             {
                 header = columnAttribute.DisplayName;
             }
@@ -346,7 +350,6 @@ namespace Panuon.UI.Silver
 
                 newColumn.ItemsSource = Enum.GetValues(e.PropertyType).Cast<Enum>();
                 newColumn.SelectedItemBinding = new Binding(e.PropertyName) { Mode = BindingMode.TwoWay };
-
                 newColumn.EditingElementStyle = new Style(typeof(ComboBox))
                 {
                     BasedOn = (Style)dataGrid.FindResource(typeof(ComboBox))
@@ -415,7 +418,7 @@ namespace Panuon.UI.Silver
                     Header = header,
                 };
 
-                newColumn.Binding = new Binding(e.PropertyName) { Mode = BindingMode.TwoWay };
+                newColumn.Binding = new Binding(e.PropertyName) { Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
 
                 newColumn.ElementStyle = new Style(typeof(TextBlock))
                 {

@@ -84,8 +84,8 @@
                                                    Width="20"
                                                    Height="20" />
                                     <ContentControl Grid.Column="1"
-                                                      Content="{Binding Path=(local:ButtonHelper.WaitingContent),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
-                                                      VerticalAlignment="Center" />
+                                                    Content="{Binding Path=(local:ButtonHelper.WaitingContent),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
+                                                    VerticalAlignment="Center" />
 
                                 </Grid>
                             </Grid>
@@ -238,8 +238,8 @@
                                                    Width="20"
                                                    Height="20" />
                                     <ContentControl Grid.Column="1"
-                                                      Content="{Binding Path=(local:ButtonHelper.WaitingContent),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
-                                                      VerticalAlignment="Center" />
+                                                    Content="{Binding Path=(local:ButtonHelper.WaitingContent),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
+                                                    VerticalAlignment="Center" />
 
                                 </Grid>
                             </Grid>
@@ -368,82 +368,51 @@
                                         Background="{TemplateBinding Background}"
                                         CornerRadius="{Binding Path=(local:ButtonHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
                                         Visibility="Hidden" />
-                                <Grid x:Name="GrdContent"
-                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                <Grid VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                       Margin="{TemplateBinding Padding}">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-                                    <Label x:Name="LblIcon"
-                                           Content="{Binding Path=(local:ButtonHelper.Icon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
-                                           Foreground="{TemplateBinding Foreground}"
-                                           FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
-                                           VerticalAlignment="Center" />
-                                    <ContentPresenter Grid.Column="1"
-                                                      x:Name="Content"
-                                                      ContentSource="Content"
-                                                      VerticalAlignment="Center" />
-                                </Grid>
-                                <Grid x:Name="GrdContentHover"
-                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                      Opacity="0"
-                                      Margin="{TemplateBinding Padding}">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-                                    <Label x:Name="LblIconHover"
-                                           Content="{Binding Path=(local:ButtonHelper.Icon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
-                                           Foreground="{TemplateBinding Foreground}"
-                                           FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
-                                           FontSize="{TemplateBinding FontSize}"
-                                           VerticalAlignment="Center" />
-                                    <ContentPresenter Grid.Column="1"
-                                                      x:Name="ContentHover"
-                                                      TextBlock.Foreground="{Binding Path=(local:ButtonHelper.HoverBrush),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
-                                                      Content="{TemplateBinding Content}"
-                                                      VerticalAlignment="Center" />
-                                </Grid>
-                                <Grid x:Name="GrdContentClick"
-                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                      Visibility="Hidden"
-                                      Margin="{TemplateBinding Padding}">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-                                    <Label x:Name="LblIconClick"
-                                           Content="{Binding Path=(local:ButtonHelper.Icon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
-                                           Foreground="{TemplateBinding Foreground}"
-                                           FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
-                                           VerticalAlignment="Center" />
-                                    <ContentPresenter Grid.Column="1"
-                                                      x:Name="ContentClick"
-                                                      TextBlock.Foreground="{Binding Path=(local:ButtonHelper.ClickCoverBrush),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
-                                                      Content="{TemplateBinding Content}"
-                                                      VerticalAlignment="Center" />
-                                </Grid>
-                                <Grid x:Name="GrdWaiting"
-                                      Visibility="Collapsed"
-                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                      Margin="{TemplateBinding Padding}">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-                                    <local:Loading x:Name="Loading"
-                                                   Stroke="{TemplateBinding Foreground}"
-                                                   Width="20"
-                                                   Height="20" />
-                                    <ContentControl Grid.Column="1"
-                                                      Content="{Binding Path=(local:ButtonHelper.WaitingContent),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
-                                                      VerticalAlignment="Center" />
+                                    <Grid x:Name="GrdContent">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label x:Name="LblIcon"
+                                               Content="{Binding Path=(local:ButtonHelper.Icon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
+                                               Foreground="{TemplateBinding Foreground}"
+                                               FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
+                                               VerticalAlignment="Center" />
+                                        <Grid Grid.Column="1">
+                                            <ContentPresenter x:Name="Content"
+                                                              Content="{Binding Content,RelativeSource={RelativeSource AncestorType=Button},Mode=OneWay}"
+                                                              VerticalAlignment="Center"
+                                                              TextBlock.Foreground="{TemplateBinding Foreground}" />
+                                            <ContentPresenter x:Name="ContentHover"
+                                                              Content="{Binding Content,RelativeSource={RelativeSource AncestorType=Button},Mode=OneWay}"
+                                                              VerticalAlignment="Center"
+                                                              TextBlock.Foreground="{Binding Path=(local:ButtonHelper.HoverBrush),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
+                                                              Opacity="0" />
+                                            <ContentPresenter x:Name="ContentClick"
+                                                              Content="{Binding Content,RelativeSource={RelativeSource AncestorType=Button},Mode=OneWay}"
+                                                              VerticalAlignment="Center"
+                                                              TextBlock.Foreground="{Binding Path=(local:ButtonHelper.ClickCoverBrush),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
+                                                              Visibility="Hidden" />
+                                        </Grid>
+                                    </Grid>
+                                    <Grid x:Name="GrdWaiting"
+                                          Visibility="Collapsed">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <local:Loading x:Name="Loading"
+                                                       Stroke="{TemplateBinding Foreground}"
+                                                       Width="20"
+                                                       Height="20" />
+                                        <ContentControl Grid.Column="1"
+                                                        Content="{Binding Path=(local:ButtonHelper.WaitingContent),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
+                                                        VerticalAlignment="Center" />
 
+                                    </Grid>
                                 </Grid>
                             </Grid>
                             <ControlTemplate.Triggers>
@@ -456,7 +425,7 @@
                                                                  Storyboard.TargetProperty="Opacity"
                                                                  To="1"
                                                                  Duration="{StaticResource Button_ShadeDuration}" />
-                                                <DoubleAnimation Storyboard.TargetName="GrdContentHover"
+                                                <DoubleAnimation Storyboard.TargetName="ContentHover"
                                                                  Storyboard.TargetProperty="Opacity"
                                                                  To="1"
                                                                  Duration="{StaticResource Button_ShadeDuration}" />
@@ -469,7 +438,7 @@
                                                 <DoubleAnimation Storyboard.TargetName="BdrHover"
                                                                  Storyboard.TargetProperty="Opacity"
                                                                  Duration="{StaticResource Button_ShadeDuration}" />
-                                                <DoubleAnimation Storyboard.TargetName="GrdContentHover"
+                                                <DoubleAnimation Storyboard.TargetName="ContentHover"
                                                                  Storyboard.TargetProperty="Opacity"
                                                                  Duration="{StaticResource Button_ShadeDuration}" />
                                             </Storyboard>
@@ -479,7 +448,7 @@
                                 </Trigger>
                                 <Trigger Property="IsPressed"
                                          Value="True">
-                                    <Setter TargetName="GrdContentClick"
+                                    <Setter TargetName="ContentClick"
                                             Property="Visibility"
                                             Value="Visible" />
                                     <Setter TargetName="BdrClick"
@@ -502,12 +471,7 @@
                                     <Setter TargetName="LblIcon"
                                             Property="Visibility"
                                             Value="Collapsed" />
-                                    <Setter TargetName="LblIconHover"
-                                            Property="Visibility"
-                                            Value="Collapsed" />
-                                    <Setter TargetName="LblIconClick"
-                                            Property="Visibility"
-                                            Value="Collapsed" />
+
                                 </DataTrigger>
                                 <DataTrigger Binding="{Binding Path=(local:ButtonHelper.IsWaiting), RelativeSource={RelativeSource Self}}"
                                              Value="True">
@@ -515,12 +479,6 @@
                                             Property="Visibility"
                                             Value="Visible" />
                                     <Setter TargetName="GrdContent"
-                                            Property="Visibility"
-                                            Value="Collapsed" />
-                                    <Setter TargetName="GrdContentHover"
-                                            Property="Visibility"
-                                            Value="Collapsed" />
-                                    <Setter TargetName="GrdContentClick"
                                             Property="Visibility"
                                             Value="Collapsed" />
                                     <Setter TargetName="Loading"
@@ -578,22 +536,19 @@
                                                VerticalAlignment="Center" />
                                         <Grid Grid.Column="1">
                                             <ContentPresenter x:Name="Content"
-                                                              Content="{TemplateBinding Content}"
+                                                              Content="{Binding Content,RelativeSource={RelativeSource AncestorType=Button},Mode=OneWay}"
                                                               VerticalAlignment="Center"
-                                                              TextBlock.Foreground="{TemplateBinding Foreground}"
-                                                               />
+                                                              TextBlock.Foreground="{TemplateBinding Foreground}" />
                                             <ContentPresenter x:Name="ContentHover"
-                                                              Content="{TemplateBinding Content}"
+                                                              Content="{Binding Content,RelativeSource={RelativeSource AncestorType=Button},Mode=OneWay}"
                                                               VerticalAlignment="Center"
                                                               TextBlock.Foreground="{Binding Path=(local:ButtonHelper.HoverBrush),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
-                                                              Opacity="0"
-                                                               />
+                                                              Opacity="0" />
                                             <ContentPresenter x:Name="ContentClick"
-                                                              Content="{TemplateBinding Content}"
+                                                              Content="{Binding Content,RelativeSource={RelativeSource AncestorType=Button},Mode=OneWay}"
                                                               VerticalAlignment="Center"
                                                               TextBlock.Foreground="{Binding Path=(local:ButtonHelper.ClickCoverBrush),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
-                                                              Visibility="Hidden"
-                                                               />
+                                                              Visibility="Hidden" />
                                         </Grid>
 
                                     </Grid>
@@ -610,8 +565,8 @@
                                                        Width="20"
                                                        Height="20" />
                                         <ContentControl Grid.Column="1"
-                                                          Content="{Binding Path=(local:ButtonHelper.WaitingContent),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
-                                                          VerticalAlignment="Center" />
+                                                        Content="{Binding Path=(local:ButtonHelper.WaitingContent),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
+                                                        VerticalAlignment="Center" />
 
                                     </Grid>
                                 </Grid>

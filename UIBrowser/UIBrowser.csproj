@@ -46,6 +46,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -97,6 +98,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PartialViews\Custom\PaginationView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PartialViews\Custom\WaterfallViewerView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="PartialViews\Custom\CarouselView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -138,6 +147,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="PartialViews\Helpers\AnimationHelperView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PartialViews\Native\MenuView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -201,6 +214,12 @@
   <ItemGroup>
     <Compile Include="Models\MainWindowViewModel.cs" />
     <Compile Include="Models\TreeViewItemModel.cs" />
+    <Compile Include="PartialViews\Custom\PaginationView.xaml.cs">
+      <DependentUpon>PaginationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PartialViews\Custom\WaterfallViewerView.xaml.cs">
+      <DependentUpon>WaterfallViewerView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PartialViews\Custom\CarouselView.xaml.cs">
       <DependentUpon>CarouselView.xaml</DependentUpon>
     </Compile>
@@ -233,6 +252,9 @@
     </Compile>
     <Compile Include="PartialViews\Helpers\AnimationHelperView.xaml.cs">
       <DependentUpon>AnimationHelperView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PartialViews\Native\MenuView.xaml.cs">
+      <DependentUpon>MenuView.xaml</DependentUpon>
     </Compile>
     <Compile Include="PartialViews\Native\DataGridView.xaml.cs">
       <DependentUpon>DataGridView.xaml</DependentUpon>
