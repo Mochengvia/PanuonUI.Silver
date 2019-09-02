@@ -427,8 +427,6 @@ namespace Panuon.UI.Silver
                 };
 
                 newColumn.ElementStyle.Setters.Add(new Setter(TextBox.MaxHeightProperty, 100.0));
-                newColumn.ElementStyle.Setters.Add(new Setter(TextBox.MinHeightProperty, DataGridHelper.GetRowMinHeight(dataGrid) - 5));
-
 
                 newColumn.EditingElementStyle = new Style(typeof(TextBox))
                 {
@@ -438,8 +436,7 @@ namespace Panuon.UI.Silver
                 newColumn.EditingElementStyle.Setters.Add(new Setter(TextBox.MaxHeightProperty, 100.0));
                 newColumn.EditingElementStyle.Setters.Add(new Setter(TextBox.VerticalScrollBarVisibilityProperty, ScrollBarVisibility.Auto));
                 newColumn.EditingElementStyle.Setters.Add(new Setter(TextBox.HorizontalScrollBarVisibilityProperty, ScrollBarVisibility.Auto));
-                newColumn.EditingElementStyle.Setters.Add(new Setter(TextBox.MinHeightProperty, DataGridHelper.GetRowMinHeight(dataGrid) - 5));
-                newColumn.EditingElementStyle.Setters.Add(new Setter(TextBox.PaddingProperty, new Thickness(2, 0, 2, 0)));
+                newColumn.EditingElementStyle.Setters.Add(new Setter(TextBox.MarginProperty, new Thickness(2)));
                 newColumn.EditingElementStyle.Setters.Add(new Setter(TextBoxHelper.FocusedShadowColorProperty, Colors.Transparent));
 
                 newColumn.CellStyle = new Style(typeof(DataGridCell))
