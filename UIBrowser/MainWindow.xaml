@@ -79,9 +79,5 @@
                 Height="30"
                 Width="200"
                 Click="Button_Click" />-->
-        <Expander pu:ExpanderHelper.HeaderForeground="Red"
-                  Header="ASD">
-            
-        </Expander>
     </Grid>
 </pu:WindowX>

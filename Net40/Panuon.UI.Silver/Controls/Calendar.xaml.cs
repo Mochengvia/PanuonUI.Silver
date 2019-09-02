@@ -58,6 +58,17 @@ namespace Panuon.UI.Silver
             RaiseEvent(arg);
         }
 
+        public static readonly RoutedEvent SelectedEvent = EventManager.RegisterRoutedEvent("Selected", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Calendar));
+        public event RoutedEventHandler Selected
+        {
+            add { AddHandler(SelectedEvent, value); }
+            remove { RemoveHandler(SelectedEvent, value); }
+        }
+        void RaiseSelectedEvent()
+        {
+            var arg = new RoutedEventArgs(SelectedEvent);
+            RaiseEvent(arg);
+        }
         #endregion
 
         #region Property
@@ -288,6 +299,8 @@ namespace Panuon.UI.Silver
             var radioButton = sender as RadioButton;
             var currentDate = (DateTime)radioButton.Tag;
             SelectedDate = new DateTime(currentDate.Year, currentDate.Month, currentDate.Day, SelectedDate.Hour, SelectedDate.Minute, SelectedDate.Second);
+            if (CalendarMode == CalendarMode.Date)
+                RaiseSelectedEvent();
         }
 
         private void RdbMonth_Click(object sender, RoutedEventArgs e)
@@ -297,6 +310,8 @@ namespace Panuon.UI.Silver
             SelectedDate = new DateTime(currentDate.Year, currentDate.Month, SelectedDate.Day, SelectedDate.Hour, SelectedDate.Minute, SelectedDate.Second);
             if(CalendarMode == CalendarMode.Date)
                 ChangePanel(DayMonthYear.Day);
+            if (CalendarMode == CalendarMode.YearMonth)
+                RaiseSelectedEvent();
         }
 
         private void RdbYear_Click(object sender, RoutedEventArgs e)
@@ -306,6 +321,8 @@ namespace Panuon.UI.Silver
             SelectedDate = new DateTime(currentDate.Year, SelectedDate.Month, SelectedDate.Day, SelectedDate.Hour, SelectedDate.Minute, SelectedDate.Second);
             if (CalendarMode != CalendarMode.Year)
             ChangePanel(DayMonthYear.Month);
+            if (CalendarMode == CalendarMode.Year)
+                RaiseSelectedEvent();
         }
 
         private void BtnDecMonth_Click(object sender, RoutedEventArgs e)

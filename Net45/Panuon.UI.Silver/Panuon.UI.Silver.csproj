@@ -87,10 +87,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Internal\ScreenshotWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Controls\NeonLabel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -225,9 +221,6 @@
     </Compile>
     <Compile Include="Controls\Internal\NotTopMostPopup.cs" />
     <Compile Include="Controls\Internal\ResizeThumb.cs" />
-    <Compile Include="Controls\Internal\ScreenshotWindow.xaml.cs">
-      <DependentUpon>ScreenshotWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\MessageBoxX.cs" />
     <Compile Include="Controls\MultiSelector.cs" />
     <Compile Include="Controls\Internal\ResizeContainer.cs" />
@@ -289,7 +282,6 @@
     <Compile Include="Helpers\Control\ProgressBarHelper.cs" />
     <Compile Include="Helpers\Control\RepeatButtonHelper.cs" />
     <Compile Include="Helpers\Control\TabControlHelper.cs" />
-    <Compile Include="Helpers\Others\MouseEventHelper.cs" />
     <Compile Include="Helpers\Others\ScreenshotHelper.cs" />
     <Compile Include="Utils\Cache.cs" />
     <Compile Include="Utils\DelegateCommand.cs" />

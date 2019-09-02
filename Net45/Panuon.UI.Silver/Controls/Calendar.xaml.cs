@@ -58,6 +58,17 @@ namespace Panuon.UI.Silver
             RaiseEvent(arg);
         }
 
+        public static readonly RoutedEvent SelectedEvent = EventManager.RegisterRoutedEvent("Selected", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Calendar));
+        public event RoutedEventHandler Selected
+        {
+            add { AddHandler(SelectedEvent, value); }
+            remove { RemoveHandler(SelectedEvent, value); }
+        }
+        void RaiseSelectedEvent()
+        {
+            var arg = new RoutedEventArgs(SelectedEvent);
+            RaiseEvent(arg);
+        }
         #endregion
 
         #region Property
@@ -204,15 +215,15 @@ namespace Panuon.UI.Silver
                     calendar.InitYearPanel(calendar.SelectedDate.Year);
                     break;
             }
-            if(calendar.MaxDate != null)
+            if (calendar.MaxDate != null)
             {
-                if(calendar.SelectedDate > (DateTime)calendar.MaxDate)
+                if (calendar.SelectedDate > (DateTime)calendar.MaxDate)
                 {
                     calendar.SelectedDate = (DateTime)calendar.MaxDate;
                     return;
                 }
             }
-            if(calendar.MinDate != null)
+            if (calendar.MinDate != null)
             {
                 if (calendar.SelectedDate < (DateTime)calendar.MinDate)
                 {
@@ -236,7 +247,7 @@ namespace Panuon.UI.Silver
                         calendar.ChangePanel(DayMonthYear.Month);
                     break;
                 case CalendarMode.Year:
-                    if(calendar._currentPosition != DayMonthYear.Year)
+                    if (calendar._currentPosition != DayMonthYear.Year)
                         calendar.ChangePanel(DayMonthYear.Year);
                     break;
                 case CalendarMode.Date:
@@ -288,6 +299,8 @@ namespace Panuon.UI.Silver
             var radioButton = sender as RadioButton;
             var currentDate = (DateTime)radioButton.Tag;
             SelectedDate = new DateTime(currentDate.Year, currentDate.Month, currentDate.Day, SelectedDate.Hour, SelectedDate.Minute, SelectedDate.Second);
+            if (CalendarMode == CalendarMode.Date)
+                RaiseSelectedEvent();
         }
 
         private void RdbMonth_Click(object sender, RoutedEventArgs e)
@@ -295,8 +308,10 @@ namespace Panuon.UI.Silver
             var radioButton = sender as RadioButton;
             var currentDate = (DateTime)radioButton.Tag;
             SelectedDate = new DateTime(currentDate.Year, currentDate.Month, SelectedDate.Day, SelectedDate.Hour, SelectedDate.Minute, SelectedDate.Second);
-            if(CalendarMode == CalendarMode.Date)
+            if (CalendarMode == CalendarMode.Date)
                 ChangePanel(DayMonthYear.Day);
+            if (CalendarMode == CalendarMode.YearMonth)
+                RaiseSelectedEvent();
         }
 
         private void RdbYear_Click(object sender, RoutedEventArgs e)
@@ -305,7 +320,9 @@ namespace Panuon.UI.Silver
             var currentDate = (DateTime)radioButton.Tag;
             SelectedDate = new DateTime(currentDate.Year, SelectedDate.Month, SelectedDate.Day, SelectedDate.Hour, SelectedDate.Minute, SelectedDate.Second);
             if (CalendarMode != CalendarMode.Year)
-            ChangePanel(DayMonthYear.Month);
+                ChangePanel(DayMonthYear.Month);
+            if (CalendarMode == CalendarMode.Year)
+                RaiseSelectedEvent();
         }
 
         private void BtnDecMonth_Click(object sender, RoutedEventArgs e)
@@ -357,7 +374,7 @@ namespace Panuon.UI.Silver
                     BtnIncMonth.Visibility = Visibility.Visible;
                     BtnDecMonth.Visibility = Visibility.Visible;
                     InitDayPanel(SelectedDate.Year, SelectedDate.Month);
-                    if(_currentPosition == DayMonthYear.Year)
+                    if (_currentPosition == DayMonthYear.Year)
                     {
                         _storyboard_yeartoMonth.Begin();
                         _storyboard_monthtoDay.Begin();
@@ -380,12 +397,12 @@ namespace Panuon.UI.Silver
                     BtnIncMonth.Visibility = Visibility.Collapsed;
                     BtnDecMonth.Visibility = Visibility.Collapsed;
                     InitYearPanel(SelectedDate.Year);
-                    if(_currentPosition == DayMonthYear.Day)
+                    if (_currentPosition == DayMonthYear.Day)
                     {
                         _storyboard_daytoMonth.Begin();
                         _storyboard_monthtoYear.Begin();
                     }
-                    if(_currentPosition== DayMonthYear.Month)
+                    if (_currentPosition == DayMonthYear.Month)
                         _storyboard_monthtoYear.Begin();
 
 
@@ -611,7 +628,7 @@ namespace Panuon.UI.Silver
                 else
                 {
                     BtnIncYear.Visibility = Visibility.Visible;
-                    if(_currentPosition != DayMonthYear.Year)
+                    if (_currentPosition != DayMonthYear.Year)
                         BtnIncMonth.Visibility = Visibility.Visible;
                 }
             }
@@ -631,7 +648,7 @@ namespace Panuon.UI.Silver
                 else
                 {
                     BtnDecYear.Visibility = Visibility.Visible;
-                    if(_currentPosition != DayMonthYear.Year)
+                    if (_currentPosition != DayMonthYear.Year)
                         BtnDecMonth.Visibility = Visibility.Visible;
                 }
             }

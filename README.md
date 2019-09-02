@@ -5,19 +5,25 @@
 Panuon.UI optimized version. A beautiful wpf ui library using templates &amp; attached properties.  
 Panuon.UI的优化版本。一个漂亮的、使用样式与附加属性的WPF UI控件库。
 
-This is a developing program.  
-这是一个正在开发的项目。
+This is a developing program.   
+这是一个正在开发的项目。  
+
+You can download Panuon.UI.Silver (pre-release) from nuget now. Check "include pre-release" option before query.  
+Panuon.UI.Silver(预发行版)现已加入Nuget平台。在搜索"Panuon.UI.Silver"前，请在Nuget包管理器中勾选“包括预发行版”。  
 
 Email : zeoun@qq.com  
 QQ Group : 718778191  
 Zhihu : @末城via
 
 # News 动态  
-`2019-8-16 新增WaterfallViewer瀑布流控件，新增ScrollViewerHelper，移除MiniScrollViewer样式`
-`新增WaterfallViewer（支持LazyLoading，参加示例，文档尚未更新）。项目中已移除MiniScrollViewer样式。若该样式已在项目中使用，请使用pu:ScrollViewerHelper.ScrollBarThickness="6" pu:ScrollViewerHelper.ScrollBarCornerRadius="3" 替代。`
+`2019-8-28 Fix scrollviewer bug , and optimize windowX resize border`  
+``  
 
-`2019-8-9 重写DataGrid样式`
-`谨慎更新：该改动会对现有样式造成影响。`  
+`2019-8-19 重写Pagination样式`  
+`取消了ThemeBrush属性，新增HoverBrush、PaginationStyle、CornerRadius、Spacing属性。`  
+
+`2019-8-16 新增WaterfallViewer瀑布流控件，新增ScrollViewerHelper，移除MiniScrollViewer样式`  
+`新增WaterfallViewer（支持LazyLoading，参加示例，文档尚未更新）。项目中已移除MiniScrollViewer样式。若该样式已在项目中使用，请使用pu:ScrollViewerHelper.ScrollBarThickness="6" pu:ScrollViewerHelper.ScrollBarCornerRadius="3" 替代。`  
 
 # Case 案例  
 
