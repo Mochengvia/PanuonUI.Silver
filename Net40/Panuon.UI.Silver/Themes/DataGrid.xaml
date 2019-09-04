@@ -155,7 +155,8 @@
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                            <Grid Grid.Column="1">
+                            <Grid x:Name="GrdSort"
+                                  Grid.Column="1">
                                 <Path x:Name="PathDesc"
                                       Visibility="Hidden"
                                       Height="15"
@@ -215,6 +216,12 @@
                                     Property="Opacity"
                                     Value="1"></Setter>
                         </Trigger>
+                        <DataTrigger Binding="{Binding CanUserSortColumns,RelativeSource={RelativeSource AncestorType=DataGrid},Mode=OneWay}"
+                                     Value="False">
+                            <Setter TargetName="GrdSort"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
+                        </DataTrigger>
                         <Trigger Property="SortDirection"
                                  Value="{x:Null}">
                             <Setter TargetName="PathAsc"
