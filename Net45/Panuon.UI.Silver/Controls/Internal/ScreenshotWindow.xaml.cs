@@ -68,7 +68,7 @@ namespace Panuon.UI.Silver.Controls.Internal
             {
                 using (Graphics g = Graphics.FromImage(bmp))
                 {
-                    g.CopyFromScreen(left, top, 0, 0, bmp.Size);
+                    g.CopyFromScreen(left - 5, top - 5, 0, 0, bmp.Size);
                 }
                 Result = Imaging.CreateBitmapSourceFromHBitmap(bmp.GetHbitmap(), IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
                 Close();

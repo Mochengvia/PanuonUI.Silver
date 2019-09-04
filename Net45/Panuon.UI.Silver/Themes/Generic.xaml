@@ -2018,21 +2018,7 @@
                                     Property="Visibility"
                                     Value="Collapsed" />
                         </Trigger>
-                        <Trigger Property="IsMouseOver"
-                                 Value="True">
-                            <Setter Property="Opacity"
-                                    Value="1"></Setter>
-                        </Trigger>
-                        <Trigger Property="IsMouseOver"
-                                 Value="False">
-                            <Setter Property="Opacity"
-                                    Value="0.9"></Setter>
-                        </Trigger>
-                        <Trigger Property="IsFocused"
-                                 Value="True">
-                            <Setter Property="Opacity"
-                                    Value="1"></Setter>
-                        </Trigger>
+                       
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -2042,6 +2028,11 @@
                      Value="Time">
                 <Setter Property="Icon"
                         Value="&#xf017;" />
+            </Trigger>
+            <Trigger Property="IsEnabled"
+                     Value="False">
+                <Setter Property="Opacity"
+                        Value="0.4" />
             </Trigger>
         </Style.Triggers>
     </Style>

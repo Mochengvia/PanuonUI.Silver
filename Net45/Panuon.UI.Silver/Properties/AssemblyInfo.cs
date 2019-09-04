@@ -8,12 +8,12 @@ using System.Windows;
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("Panuon.UI.Silver")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("A beautiful wpf ui control library.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("HP Inc.")]
-[assembly: AssemblyProduct("Panuon.UI.Silver")]
-[assembly: AssemblyCopyright("Copyright © HP Inc. 2019")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCompany("Panuon")]
+[assembly: AssemblyProduct("PanuonUI.Silver")]
+[assembly: AssemblyCopyright("Copyright © Panuon. 2019")]
+[assembly: AssemblyTrademark("Panuon")]
 [assembly: AssemblyCulture("")]
 [assembly: InternalsVisibleTo("PanuonUI.Silver.Extends")]
 
@@ -52,5 +52,7 @@ using System.Windows;
 // 可以指定所有值，也可以使用以下所示的 "*" 预置版本号和修订号
 // 方法是按如下所示使用“*”: :
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.1.0")]
-[assembly: AssemblyFileVersion("1.0.1.0")]
+[assembly: AssemblyVersion("1.0.2.0")]
+[assembly: AssemblyFileVersion("1.0.2.0")]
+[assembly: Guid("16dbb0c9-f9b0-4bcf-a1f6-cb740041699e")]
+

@@ -71,8 +71,7 @@ namespace UIBrowser
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            await System.Threading.Tasks.Task.Delay(400);
-            ScreenshotHelper.BeginScreenshot();
+           
         }
     }
 }
