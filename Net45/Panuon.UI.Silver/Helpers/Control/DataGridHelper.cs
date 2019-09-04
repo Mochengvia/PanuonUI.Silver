@@ -346,6 +346,8 @@ namespace Panuon.UI.Silver
                 {
                     Width = dgLength,
                     Header = header,
+                    IsReadOnly = e.Column.IsReadOnly,
+                    Visibility = e.Column.Visibility,
                 };
 
                 newColumn.ItemsSource = Enum.GetValues(e.PropertyType).Cast<Enum>();
@@ -365,6 +367,8 @@ namespace Panuon.UI.Silver
                 {
                     Width = dgLength,
                     Header = header,
+                    IsReadOnly = e.Column.IsReadOnly,
+                    Visibility = e.Column.Visibility,
                 };
 
                 newColumn.Binding = new Binding(e.PropertyName) { Mode = BindingMode.TwoWay };
@@ -388,7 +392,6 @@ namespace Panuon.UI.Silver
                     newColumn.EditingElementStyle.Setters.Add(new Setter(CheckBox.BorderThicknessProperty, new Thickness(1)));
                     newColumn.EditingElementStyle.Setters.Add(new Setter(CheckBox.BackgroundProperty, Colors.Transparent.ToBrush()));
                     newColumn.EditingElementStyle.Setters.Add(new Setter(CheckBoxHelper.GlyphBrushProperty, Colors.Transparent.ToBrush()));
-
                 }
                 else
                 {
@@ -416,6 +419,8 @@ namespace Panuon.UI.Silver
                 {
                     Width = dgLength,
                     Header = header,
+                    IsReadOnly = e.Column.IsReadOnly,
+                    Visibility = e.Column.Visibility,
                 };
 
                 newColumn.Binding = new Binding(e.PropertyName) { Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };

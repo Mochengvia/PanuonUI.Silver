@@ -346,6 +346,8 @@ namespace Panuon.UI.Silver
                 {
                     Width = dgLength,
                     Header = header,
+                    IsReadOnly = e.Column.IsReadOnly,
+                    Visibility = e.Column.Visibility,
                 };
 
                 newColumn.ItemsSource = Enum.GetValues(e.PropertyType).Cast<Enum>();
@@ -365,6 +367,8 @@ namespace Panuon.UI.Silver
                 {
                     Width = dgLength,
                     Header = header,
+                    IsReadOnly = e.Column.IsReadOnly,
+                    Visibility = e.Column.Visibility,
                 };
 
                 newColumn.Binding = new Binding(e.PropertyName) { Mode = BindingMode.TwoWay };
@@ -416,6 +420,8 @@ namespace Panuon.UI.Silver
                 {
                     Width = dgLength,
                     Header = header,
+                    IsReadOnly = e.Column.IsReadOnly,
+                    Visibility = e.Column.Visibility,
                 };
 
                 newColumn.Binding = new Binding(e.PropertyName) { Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
@@ -425,7 +431,7 @@ namespace Panuon.UI.Silver
                     BasedOn = (Style)dataGrid.FindResource(typeof(TextBlock))
                 };
 
-                newColumn.EditingElementStyle = new Style(typeof(TextBox))
+               newColumn.EditingElementStyle = new Style(typeof(TextBox))
                 {
                     BasedOn = (Style)dataGrid.FindResource(typeof(TextBox))
                 };
