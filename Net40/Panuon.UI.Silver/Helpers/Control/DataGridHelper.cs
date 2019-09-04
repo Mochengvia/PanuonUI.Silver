@@ -346,6 +346,8 @@ namespace Panuon.UI.Silver
                 {
                     Width = dgLength,
                     Header = header,
+                    IsReadOnly = e.Column.IsReadOnly,
+                    Visibility = e.Column.Visibility,
                 };
 
                 newColumn.ItemsSource = Enum.GetValues(e.PropertyType).Cast<Enum>();
@@ -365,6 +367,8 @@ namespace Panuon.UI.Silver
                 {
                     Width = dgLength,
                     Header = header,
+                    IsReadOnly = e.Column.IsReadOnly,
+                    Visibility = e.Column.Visibility,
                 };
 
                 newColumn.Binding = new Binding(e.PropertyName) { Mode = BindingMode.TwoWay };
@@ -416,7 +420,10 @@ namespace Panuon.UI.Silver
                 {
                     Width = dgLength,
                     Header = header,
+                    IsReadOnly = e.Column.IsReadOnly,
+                    Visibility = e.Column.Visibility,
                 };
+
 
                 newColumn.Binding = new Binding(e.PropertyName) { Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
 
@@ -425,12 +432,17 @@ namespace Panuon.UI.Silver
                     BasedOn = (Style)dataGrid.FindResource(typeof(TextBlock))
                 };
 
+                newColumn.ElementStyle.Setters.Add(new Setter(TextBox.MaxHeightProperty, 100.0));
+
                 newColumn.EditingElementStyle = new Style(typeof(TextBox))
                 {
                     BasedOn = (Style)dataGrid.FindResource(typeof(TextBox))
                 };
-                newColumn.EditingElementStyle.Setters.Add(new Setter(TextBox.HeightProperty, 30.0));
-                newColumn.EditingElementStyle.Setters.Add(new Setter(TextBox.PaddingProperty, new Thickness(2, 0, 2, 0)));
+
+                newColumn.EditingElementStyle.Setters.Add(new Setter(TextBox.MaxHeightProperty, 100.0));
+                newColumn.EditingElementStyle.Setters.Add(new Setter(TextBox.VerticalScrollBarVisibilityProperty, ScrollBarVisibility.Auto));
+                newColumn.EditingElementStyle.Setters.Add(new Setter(TextBox.HorizontalScrollBarVisibilityProperty, ScrollBarVisibility.Auto));
+                newColumn.EditingElementStyle.Setters.Add(new Setter(TextBox.MarginProperty, new Thickness(2)));
                 newColumn.EditingElementStyle.Setters.Add(new Setter(TextBoxHelper.FocusedShadowColorProperty, Colors.Transparent));
 
                 newColumn.CellStyle = new Style(typeof(DataGridCell))
