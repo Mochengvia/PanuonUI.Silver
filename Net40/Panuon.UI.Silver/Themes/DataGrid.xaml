@@ -152,10 +152,11 @@
                               HorizontalAlignment="{Binding Path=(local:DataGridHelper.ColumnHorizontalContentAlignment),RelativeSource={RelativeSource AncestorType=DataGridColumnHeader}}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
-                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                            <Grid Grid.Column="1">
+                            <Grid x:Name="GrdSort"
+                                  Grid.Column="1">
                                 <Path x:Name="PathDesc"
                                       Visibility="Hidden"
                                       Height="15"
@@ -215,6 +216,12 @@
                                     Property="Opacity"
                                     Value="1"></Setter>
                         </Trigger>
+                        <DataTrigger Binding="{Binding CanUserSortColumns,RelativeSource={RelativeSource AncestorType=DataGrid},Mode=OneWay}"
+                                     Value="False">
+                            <Setter TargetName="GrdSort"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
+                        </DataTrigger>
                         <Trigger Property="SortDirection"
                                  Value="{x:Null}">
                             <Setter TargetName="PathAsc"
@@ -283,7 +290,7 @@
                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                     </Grid>
                     <ControlTemplate.Triggers>
-                      
+
                         <Trigger  Property="IsSelected"
                                   Value="True">
                             <Setter Property="Foreground"
@@ -420,7 +427,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
     <Style x:Key="TextBlockComboBoxStyle"
            TargetType="{x:Type ComboBox}">
         <Setter Property="Template">
