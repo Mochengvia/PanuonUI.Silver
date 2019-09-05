@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace Panuon.UI.Silver
+namespace Panuon.UI.Silver.Utils
 {
     internal class DelegateCommand : ICommand
     {

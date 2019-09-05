@@ -6,7 +6,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Media;
 
-namespace Panuon.UI.Silver
+namespace Panuon.UI.Silver.Core
 {
     public class MessageBoxXConfigurations
     {

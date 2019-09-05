@@ -1,6 +1,8 @@
 ﻿using Panuon.UI.Silver;
+using Panuon.UI.Silver.Core;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -175,7 +177,7 @@ namespace UIBrowser.PartialViews.Native
                         $"\npu:DataGridHelper.SelectedBackground=\"{DataGridHelper.GetSelectedBackground(DgCustom).ToColor().ToHexString()}\"" +
                         $"\npu:DataGridHelper.HoverBackground=\"{DataGridHelper.GetHoverBackground(DgCustom).ToColor().ToHexString()}\"" +
                         " >" +
-                        "\n<pu:DataGridHelper.AutoGenerateCheckBoxStyle>"+
+                        "\n<pu:DataGridHelper.AutoGenerateCheckBoxStyle>" +
                             "\n<Style TargetType=\"CheckBox\"" +
                                    "\nBasedOn=\"{StaticResource {x:Type CheckBox}}\">" +
                                 "\n<Setter Property=\"pu:CheckBoxHelper.CheckBoxStyle\"" +
@@ -196,16 +198,19 @@ namespace UIBrowser.PartialViews.Native
 
     public class DataGridTestModel
     {
-        [DataGridColumn("名称", "*")]
+        [DisplayName("名称")]
+        [ReadOnlyColumn()]
+        [ColumnWidth("*")]
         public string Name { get; set; }
 
-        [DataGridColumn("分数")]
+        [DisplayName("分数")]
+        [ColumnWidth("0.5*")]
         public int Score { get; set; }
 
-        [DataGridColumn("已启用")]
+        [DisplayName("已启用")]
         public bool IsEnabled { get; set; }
 
-        [DataGridColumn(true)]
+        [IgnoreColumn()]
         public object CustomData { get; set; }
 
     }

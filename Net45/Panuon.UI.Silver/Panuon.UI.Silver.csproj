@@ -81,7 +81,8 @@
     </Page>
   </ItemGroup>
   <ItemGroup />
-  <Import Project="..\..\SharedResources\Panuon.UI.Silver.Share\Panuon.UI.Silver.Share.projitems" Label="Shared" />
+  <Import Project="..\..\SharedResources\Panuon.UI.Silver\Panuon.UI.Silver.projitems" Label="Shared" />
+  <Import Project="..\..\SharedResources\Panuon.UI.Silver.Core\Panuon.UI.Silver.Core.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

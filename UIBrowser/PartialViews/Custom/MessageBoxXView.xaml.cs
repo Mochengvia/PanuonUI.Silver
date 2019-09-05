@@ -1,4 +1,5 @@
 ﻿using Panuon.UI.Silver;
+using Panuon.UI.Silver.Core;
 using System;
 using System.Windows;
 using System.Windows.Controls;

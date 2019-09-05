@@ -1,4 +1,6 @@
 ﻿using Panuon.UI.Silver.Converters;
+using Panuon.UI.Silver.Core;
+using Panuon.UI.Silver.Utils;
 using System;
 using System.ComponentModel;
 using System.Linq;
@@ -283,60 +285,31 @@ namespace Panuon.UI.Silver
             var dataGrid = sender as DataGrid;
 
             #region Get User Custom DataGridColumnAttribute
-            DataGridColumnAttribute columnAttribute = null;
+
+            var visibility = e.Column.Visibility;
+            var width = e.Column.Width;
+            var header = e.Column.Header;
+            var readOnly = e.Column.IsReadOnly;
+
             var descriptor = e.PropertyDescriptor as PropertyDescriptor;
             foreach (Attribute attribute in descriptor.Attributes)
             {
-                if (attribute is DataGridColumnAttribute)
+                if (attribute is IgnoreColumnAttribute)
                 {
-                    columnAttribute = attribute as DataGridColumnAttribute;
-                    break;
+                    visibility = Visibility.Collapsed;
                 }
-            }
-            if (columnAttribute != null && columnAttribute.Ignore)
-            {
-                e.Column.Visibility = Visibility.Collapsed;
-                return;
-            }
-            if (columnAttribute != null && columnAttribute.IsReadOnly)
-            {
-                e.Column.IsReadOnly = true;
-            }
-
-            DataGridLength dgLength = e.Column.Width;
-            if (columnAttribute != null && columnAttribute.Width != null)
-            {
-                var width = columnAttribute.Width.Trim().ToLower();
-                if (width == "auto")
+                if(attribute is ColumnWidthAttribute)
                 {
-                    dgLength = DataGridLength.Auto;
+                    width = GridLengthUtil.ConvertToDataGridLength((attribute as ColumnWidthAttribute).Width);
                 }
-                else if (width.Contains("*"))
+                if(attribute is DisplayNameAttribute)
                 {
-                    var starString = width.Replace("*", "");
-                    double star;
-                    if (!double.TryParse(starString, out star))
-                        star = 1;
-                    dgLength = new DataGridLength(star, DataGridLengthUnitType.Star);
+                    header = (attribute as DisplayNameAttribute).DisplayName;
                 }
-                else
+                if(attribute is ReadOnlyColumnAttribute)
                 {
-                    double pixel;
-                    if (!double.TryParse(width, out pixel))
-                    {
-                        dgLength = DataGridLength.Auto;
-                    }
-                    else
-                    {
-                        dgLength = new DataGridLength(pixel);
-                    }
+                    readOnly = true;
                 }
-            }
-
-            var header = e.Column.Header;
-            if (columnAttribute != null && columnAttribute.DisplayName != null)
-            {
-                header = columnAttribute.DisplayName;
             }
             #endregion
 
@@ -344,10 +317,10 @@ namespace Panuon.UI.Silver
             {
                 var newColumn = new DataGridComboBoxColumn()
                 {
-                    Width = dgLength,
+                    Width = width,
                     Header = header,
-                    IsReadOnly = e.Column.IsReadOnly,
-                    Visibility = e.Column.Visibility,
+                    IsReadOnly = readOnly,
+                    Visibility = visibility,
                 };
 
                 newColumn.ItemsSource = Enum.GetValues(e.PropertyType).Cast<Enum>();
@@ -365,10 +338,10 @@ namespace Panuon.UI.Silver
             {
                 var newColumn = new DataGridCheckBoxColumn()
                 {
-                    Width = dgLength,
+                    Width = width,
                     Header = header,
-                    IsReadOnly = e.Column.IsReadOnly,
-                    Visibility = e.Column.Visibility,
+                    IsReadOnly = readOnly,
+                    Visibility = visibility,
                 };
 
                 newColumn.Binding = new Binding(e.PropertyName) { Mode = BindingMode.TwoWay };
@@ -405,7 +378,6 @@ namespace Panuon.UI.Silver
                     newColumn.ElementStyle.Setters.Add(new Setter(CheckBox.OpacityProperty, 1.0));
                 }
 
-
                 newColumn.CellStyle = new Style(typeof(DataGridCell))
                 {
                     BasedOn = (Style)dataGrid.FindResource(typeof(DataGridCell)),
@@ -413,16 +385,15 @@ namespace Panuon.UI.Silver
 
                 e.Column = newColumn;
             }
-            else if (e.PropertyType == typeof(string) || e.PropertyType.IsPrimitive)
+            else
             {
                 var newColumn = new DataGridTextColumn()
                 {
-                    Width = dgLength,
+                    Width = width,
                     Header = header,
-                    IsReadOnly = e.Column.IsReadOnly,
-                    Visibility = e.Column.Visibility,
+                    IsReadOnly = readOnly,
+                    Visibility = visibility,
                 };
-
 
                 newColumn.Binding = new Binding(e.PropertyName) { Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
 
