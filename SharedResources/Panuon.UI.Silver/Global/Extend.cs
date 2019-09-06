@@ -128,6 +128,26 @@ namespace Panuon.UI.Silver
 
         #endregion
 
+        #region Converter
+        public static int? ToInt(this string text)
+        {
+            var result = 0;
+            if (int.TryParse(text, out result))
+                return result;
+            else
+                return null;
+        }
+
+        public static double? ToDouble(this string text)
+        {
+            var result = 0.0;
+            if (double.TryParse(text, out result))
+                return result;
+            else
+                return null;
+        }
+        #endregion
+
         #region Bitmap -> BitmapImage
         public static BitmapImage ToBitmapImage(this System.Drawing.Bitmap bmp)
         {

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Panuon.UI.Silver.Utils;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Panuon.UI.Silver
@@ -30,34 +31,7 @@ namespace Panuon.UI.Silver
 
             Grid.SetRow(element, parentGrid.RowDefinitions.Count);
 
-            var length = 0.0;
-
-            if (row.Contains("*"))
-            {
-                row = row.Replace("*", "");
-                if (row == "")
-                    row = "1";
-
-                if (double.TryParse(row, out length))
-                {
-                    parentGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(length, GridUnitType.Star) });
-                }
-                else
-                {
-                    parentGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(0, GridUnitType.Auto) });
-                }
-            }
-            else
-            {
-                if (double.TryParse(row, out length))
-                {
-                    parentGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(length, GridUnitType.Pixel) });
-                }
-                else
-                {
-                    parentGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(0, GridUnitType.Auto) });
-                }
-            }
+            parentGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLengthUtil.ConvertToGridLength(row) });
         }
 
 
@@ -88,34 +62,7 @@ namespace Panuon.UI.Silver
 
             Grid.SetColumn(element, parentGrid.ColumnDefinitions.Count);
 
-            var length = 0.0;
-
-            if (column.Contains("*"))
-            {
-                column = column.Replace("*", "");
-                if (column == "")
-                    column = "1";
-
-                if (double.TryParse(column, out length))
-                {
-                    parentGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(length, GridUnitType.Star) });
-                }
-                else
-                {
-                    parentGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(0, GridUnitType.Auto) });
-                }
-            }
-            else
-            {
-                if (double.TryParse(column, out length))
-                {
-                    parentGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(length, GridUnitType.Pixel) });
-                }
-                else
-                {
-                    parentGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(0, GridUnitType.Auto) });
-                }
-            }
+            parentGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLengthUtil.ConvertToGridLength(column) });
         }
 
 

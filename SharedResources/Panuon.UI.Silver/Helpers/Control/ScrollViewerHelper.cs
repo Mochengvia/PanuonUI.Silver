@@ -68,17 +68,17 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region (Internal) ScrollViewerHook
-        public static bool GetScrollViewerHook(DependencyObject obj)
+        internal static bool GetScrollViewerHook(DependencyObject obj)
         {
             return (bool)obj.GetValue(ScrollViewerHookProperty);
         }
 
-        public static void SetScrollViewerHook(DependencyObject obj, bool value)
+        internal static void SetScrollViewerHook(DependencyObject obj, bool value)
         {
             obj.SetValue(ScrollViewerHookProperty, value);
         }
 
-        public static readonly DependencyProperty ScrollViewerHookProperty =
+        internal static readonly DependencyProperty ScrollViewerHookProperty =
             DependencyProperty.RegisterAttached("ScrollViewerHook", typeof(bool), typeof(ScrollViewerHelper), new PropertyMetadata(OnScrollViewerHookChanged));
 
         private static void OnScrollViewerHookChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
