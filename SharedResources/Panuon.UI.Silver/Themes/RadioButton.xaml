@@ -334,6 +334,188 @@
                 </Setter>
             </DataTrigger>
             <DataTrigger Binding="{Binding Path=(local:RadioButtonHelper.RadioButtonStyle),RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                         Value="Switch2">
+                <Setter Property="Background"
+                        Value="White" />
+                <Setter Property="BorderBrush"
+                        Value="LightGray" />
+                <Setter Property="BorderThickness"
+                        Value="1" />
+                <Setter Property="local:RadioButtonHelper.GlyphBrush"
+                        Value="#FFFFFF" />
+                <Setter Property="local:RadioButtonHelper.CheckedBackground"
+                        Value="#888888" />
+                <Setter Property="local:RadioButtonHelper.CheckedGlyphBrush"
+                        Value="#FFFFFF" />
+                <Setter Property="local:RadioButtonHelper.BoxHeight"
+                        Value="22" />
+                <Setter Property="local:RadioButtonHelper.BoxWidth"
+                        Value="44" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type RadioButton}">
+                            <Grid Background="Transparent">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="{Binding Path=(local:RadioButtonHelper.HeaderWidth),RelativeSource={RelativeSource AncestorType=RadioButton}, Converter={StaticResource GridLengthConverter}}" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <ContentControl x:Name="ContentHeader"
+                                                VerticalAlignment="Center"
+                                                Content="{Binding Path=(local:RadioButtonHelper.Header),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}" />
+                                <Grid Grid.Column="1"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid x:Name="Grid"
+                                          Width="{Binding Path=(local:RadioButtonHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                                          Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}">
+                                        <Rectangle x:Name="RectChecked"
+                                                   Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                                                   Width="{Binding Path=(local:RadioButtonHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                                                   Fill="{Binding Path=(local:RadioButtonHelper.CheckedBackground),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                                                   Stroke="{TemplateBinding BorderBrush}"
+                                                   StrokeThickness="{TemplateBinding BorderThickness, Converter={StaticResource ThicknessToDoubleConverter}}"
+                                                   RadiusX="{Binding Path=(local:RadioButtonHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                                                   RadiusY="{Binding Path=(local:RadioButtonHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}" />
+                                        <Rectangle x:Name="Rect"
+                                                   Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                                                   Width="{Binding Path=(local:RadioButtonHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                                                   Fill="{TemplateBinding Background}"
+                                                   Stroke="{TemplateBinding BorderBrush}"
+                                                   StrokeThickness="{TemplateBinding BorderThickness, Converter={StaticResource ThicknessToDoubleConverter}}"
+                                                   RadiusX="{Binding Path=(local:RadioButtonHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                                                   RadiusY="{Binding Path=(local:RadioButtonHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                                                   RenderTransformOrigin="0.5,0.5">
+                                            <Rectangle.RenderTransform>
+                                                <ScaleTransform x:Name="scale"
+                                                                ScaleX="1"
+                                                                ScaleY="1"></ScaleTransform>
+                                            </Rectangle.RenderTransform>
+                                        </Rectangle>
+                                        <Rectangle HorizontalAlignment="Left"
+                                                   Fill="White"
+                                                   Width="3"
+                                                   Margin="5,5,0,5" />
+                                        <Rectangle x:Name="RectToggle"
+                                                   Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),Converter={StaticResource Minus2Converter},RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                                                   Width="{Binding Path=(local:RadioButtonHelper.BoxHeight),Converter={StaticResource Minus2Converter},RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                                                   StrokeThickness="{TemplateBinding BorderThickness, Converter={StaticResource ThicknessToDoubleConverter}}"
+                                                   HorizontalAlignment="Right"
+                                                   VerticalAlignment="Center"
+                                                   Fill="{Binding Path=(local:RadioButtonHelper.GlyphBrush),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                                                   RadiusX="{Binding Path=(local:RadioButtonHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                                                   RadiusY="{Binding Path=(local:RadioButtonHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}">
+                                            <Rectangle.Margin>
+                                                <MultiBinding Converter="{StaticResource SwitchToggleMarginConverter}">
+                                                    <Binding Path="Width"
+                                                             ElementName="Rect" />
+                                                    <Binding Path="Height"
+                                                             ElementName="Rect" />
+                                                </MultiBinding>
+                                            </Rectangle.Margin>
+                                            <Rectangle.Effect>
+                                                <DropShadowEffect x:Name="effect"
+                                                                  Color="DimGray"
+                                                                  Opacity="0.4"
+                                                                  BlurRadius="3"
+                                                                  ShadowDepth="1"
+                                                                  Direction="275" />
+                                            </Rectangle.Effect>
+                                        </Rectangle>
+                                    </Grid>
+                                    <ContentPresenter x:Name="Presenter"
+                                                      Grid.Column="1"
+                                                      ContentSource="Content"
+                                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                      Margin="{TemplateBinding Padding}" />
+                                </Grid>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
+                                                   Value="True" />
+                                        <Condition Binding="{Binding Path=(local:RadioButtonHelper.CheckedContent),Converter={StaticResource IsNotNullConverter}, RelativeSource={RelativeSource Self}}"
+                                                   Value="True" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter TargetName="Presenter"
+                                            Property="Content"
+                                            Value="{Binding Path=(local:RadioButtonHelper.CheckedContent), RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}" />
+                                </MultiDataTrigger>
+                                <Trigger Property="IsChecked"
+                                         Value="True">
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ThicknessAnimation Storyboard.TargetName="RectToggle"
+                                                                    Storyboard.TargetProperty="Margin"
+                                                                    To="0,0,0,0"
+                                                                    Duration="0:0:0.3">
+                                                    <ThicknessAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseOut" />
+                                                    </ThicknessAnimation.EasingFunction>
+                                                </ThicknessAnimation>
+                                                <DoubleAnimation Storyboard.TargetName="scale"
+                                                                 Storyboard.TargetProperty="ScaleX"
+                                                                 To="0"
+                                                                 Duration="0:0:0.2">
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseOut" />
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+                                                <DoubleAnimation Storyboard.TargetName="scale"
+                                                                 Storyboard.TargetProperty="ScaleY"
+                                                                 To="0"
+                                                                 Duration="0:0:0.3">
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseOut" />
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ThicknessAnimation Storyboard.TargetName="RectToggle"
+                                                                    Storyboard.TargetProperty="Margin"
+                                                                    Duration="0:0:0.3">
+                                                    <ThicknessAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseOut" />
+                                                    </ThicknessAnimation.EasingFunction>
+                                                </ThicknessAnimation>
+                                                <DoubleAnimation Storyboard.TargetName="scale"
+                                                                 Storyboard.TargetProperty="ScaleX"
+                                                                 Duration="0:0:0.3">
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseOut" />
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+                                                <DoubleAnimation Storyboard.TargetName="scale"
+                                                                 Storyboard.TargetProperty="ScaleY"
+                                                                 Duration="0:0:0.3">
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseOut" />
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+
+                                            </Storyboard>
+                                        </BeginStoryboard>
+
+                                    </Trigger.ExitActions>
+                                </Trigger>
+
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+
+            <DataTrigger Binding="{Binding Path=(local:RadioButtonHelper.RadioButtonStyle),RelativeSource={RelativeSource Self}, Mode=OneWay}"
                          Value="Button">
                 <Setter Property="VerticalContentAlignment"
                         Value="Center" />
@@ -380,12 +562,12 @@
                                     <MultiDataTrigger.Conditions>
                                         <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
                                                    Value="True" />
-                                        <Condition Binding="{Binding Path=(local:CheckBoxHelper.CheckedContent),Converter={StaticResource IsNotNullConverter}, RelativeSource={RelativeSource Self}}"
+                                        <Condition Binding="{Binding Path=(local:RadioButtonHelper.CheckedContent),Converter={StaticResource IsNotNullConverter}, RelativeSource={RelativeSource Self}}"
                                                    Value="True" />
                                     </MultiDataTrigger.Conditions>
                                     <Setter TargetName="Content"
                                             Property="Content"
-                                            Value="{Binding Path=(local:CheckBoxHelper.CheckedContent), RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}" />
+                                            Value="{Binding Path=(local:RadioButtonHelper.CheckedContent), RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}" />
                                 </MultiDataTrigger>
                                 <MultiDataTrigger>
                                     <MultiDataTrigger.Conditions>

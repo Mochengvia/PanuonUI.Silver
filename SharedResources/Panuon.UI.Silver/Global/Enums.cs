@@ -127,6 +127,7 @@ namespace Panuon.UI.Silver
     {
         Standard,
         Switch,
+        Switch2,
         Button
     }
     #endregion

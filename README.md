@@ -16,11 +16,19 @@ QQ Group : 718778191
 Zhihu : @末城via
 
 # News 动态  
-`2019-8-28 Fix scrollviewer bug , and optimize windowX resize border`  
-``  
+`2019-9-6 `  
+`1.0.5-rc 改动`  
+`移除了 'DataGridColumn' 特性, 新增 'IgnoreColumn', 'ColumnWidth', 'ReadOnlyColumn' 特性。这些特性位于Panuon.UI.Silver.Core命名空间中。使用方式如下：`
+```
+[DisplayName("名称")]
+[ColumnWidth("2*")]
+[ReadOnlyColumn()]
+public string Name { get;set; }
 
-`2019-8-19 Rewrite Pagination style`  
-`Remove 'ThemeBrush' property, add 'HoverBrush', 'PaginationStyle', 'CornerRadius', and 'Spacing' property.`  
+[IgnoreColumn()]
+public object CustomData { get;set; }
+```  
+`新增了MouseEventHelper辅助类。`
 
 # Case 案例  
 
