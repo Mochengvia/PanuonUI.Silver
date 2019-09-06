@@ -185,6 +185,18 @@ namespace UIBrowser.PartialViews.Native
                     RadioButtonHelper.SetBoxWidth(RdbCustom1, SldSize.Value * 1.5);
                     RadioButtonHelper.SetBoxWidth(RdbCustom2, SldSize.Value * 1.5);
                     break;
+                case RadioButtonStyle.Switch2:
+                    RdbCustom1.Background = Colors.White.ToBrush();
+                    RdbCustom2.Background = Colors.White.ToBrush();
+                    RadioButtonHelper.SetCheckedGlyphBrush(RdbCustom1, Colors.Transparent.ToBrush());
+                    RadioButtonHelper.SetCheckedGlyphBrush(RdbCustom2, Colors.Transparent.ToBrush());
+                    RadioButtonHelper.SetCheckedBackground(RdbCustom1, color.ToBrush());
+                    RadioButtonHelper.SetCheckedBackground(RdbCustom2, color.ToBrush());
+                    RadioButtonHelper.SetBoxHeight(RdbCustom1, SldSize.Value);
+                    RadioButtonHelper.SetBoxHeight(RdbCustom2, SldSize.Value);
+                    RadioButtonHelper.SetBoxWidth(RdbCustom1, SldSize.Value * 2);
+                    RadioButtonHelper.SetBoxWidth(RdbCustom2, SldSize.Value * 2);
+                    break;
                 case RadioButtonStyle.Button:
                     RdbCustom1.Background = Colors.White.ToBrush();
                     RdbCustom2.Background = Colors.White.ToBrush();

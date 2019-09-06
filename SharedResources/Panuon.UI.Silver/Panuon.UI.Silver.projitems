@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>2f11d2d6-b0cc-49f6-944b-2ad8cd905644</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Panuon.UI.Silver</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Global\Attributes\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Global\Statics\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Helpers\Internal\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Badge.xaml.cs">
+      <DependentUpon>Badge.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Calendar.xaml.cs">
+      <DependentUpon>Calendar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Carousel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Clock.xaml.cs">
+      <DependentUpon>Clock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ColorPicker.xaml.cs">
+      <DependentUpon>ColorPicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ColorSelector.xaml.cs">
+      <DependentUpon>ColorSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Countdown.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\DateTimePicker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\DropDown.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ImageCuter.xaml.cs">
+      <DependentUpon>ImageCuter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Internal\CheckIcon.xaml.cs">
+      <DependentUpon>CheckIcon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Internal\DragableThumb.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Internal\MsgBox.xaml.cs">
+      <DependentUpon>MsgBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Internal\NoticeCard.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Internal\NoticeWindow.xaml.cs">
+      <DependentUpon>NoticeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Internal\NotTopMostPopup.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Internal\ResizeContainer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Internal\ResizeThumb.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Internal\WaterfallPanel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\MessageBoxX.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiSelector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\NeonLabel.xaml.cs">
+      <DependentUpon>NeonLabel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Notice.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Pagination.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\TagPanel.xaml.cs">
+      <DependentUpon>TagPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Timeline.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\WaterfallViewer.xaml.cs">
+      <DependentUpon>WaterfallViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\WindowX.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\BrushOrColorConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\CheckBoxOrRadioButtonConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\CheckIconConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\CloneConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ComboBoxConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\Converters.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\CornerRadiusConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\DirtyConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\DropDownMenuConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\LoadingConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\MemberPathConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\MsbConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\MultiSelectorConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ObjectConvert.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\OrientationConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ProgressBarConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\TabControlConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\TagPanelConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ThicknessConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\TreeViewConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\WidthAndHeightConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Global\Enums.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Global\Extend.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Global\Models\TagItemModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\BubbleHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Control\ButtonHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Control\CheckBoxHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Control\ComboBoxHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Control\ContextMenuHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Control\DataGridHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Control\ExpanderHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Control\GridHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Control\GroupBoxHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Control\ListBoxHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Control\MenuHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Control\PasswordBoxHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Control\ProgressBarHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Control\RadioButtonHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Control\RepeatButtonHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Control\ScrollViewerHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Control\SliderHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Control\TabControlHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Control\TextBoxHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Control\TreeViewHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Control\WindowXCaption.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Others\AnimationHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Others\LayoutHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Others\MouseEventHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\Cache.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\DelegateCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\GridLengthUtil.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\Badge.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\Calendar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\Clock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\ColorPicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\ColorSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\ImageCuter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\Internal\CheckIcon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\Internal\MsgBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\Internal\NoticeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\NeonLabel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\TagPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\WaterfallViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Resources\Converter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Resources\Resource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Button.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\CheckBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\ComboBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\ContextMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\DataGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Expander.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Generic.Core.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\GroupBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\ListBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Menu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\PasswordBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\ProgressBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\RadioButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\RepeatButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\ScrollViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Slider.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\TabControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\TextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\TreeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+</Project>

@@ -49,7 +49,8 @@
                                     Height="30"
                                     Width="150"
                                     Content=" Button"
-                                    FontFamily="{DynamicResource FontAwesome}" />
+                                    FontFamily="{DynamicResource FontAwesome}">
+                            </Button>
                         </Grid>
                         <Grid>
                             <Grid.ColumnDefinitions>

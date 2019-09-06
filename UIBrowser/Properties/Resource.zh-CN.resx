@@ -423,4 +423,7 @@
   <data name="Spacing" xml:space="preserve">
     <value>间距</value>
   </data>
+  <data name="Menu" xml:space="preserve">
+    <value>Menu 菜单</value>
+  </data>
 </root>
