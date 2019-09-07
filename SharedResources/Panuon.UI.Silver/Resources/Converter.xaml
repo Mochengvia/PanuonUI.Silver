@@ -1,0 +1,51 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver.Themes"
+                    xmlns:converter="clr-namespace:Panuon.UI.Silver.Converters">
+    <converter:IsNotNullConverter x:Key="IsNotNullConverter" />
+    <converter:IsNullConverter x:Key="IsNullConverter" />
+    <converter:IsNullOrEmptyConverter x:Key="IsNullOrEmptyConverter" />
+    <converter:IconConverter x:Key="IconConverter" />
+    <converter:BoolToInvisibleConverter x:Key="BoolToInvisibleConverter" />
+    <converter:BoolToVisibleConverter x:Key="BoolToVisibleConverter" />
+    <converter:HalfConverter x:Key="HalfConverter" />
+    <converter:CornerRadiusToTopHalfConverter x:Key="CornerRadiusToTopHalfConverter" />
+    <converter:CornerRadiusToBottomConverter x:Key="CornerRadiusToBottomConverter" />
+    <converter:BrushToColorConverter x:Key="BrushToColorConverter" />
+    <converter:ColorToBrushConverter x:Key="ColorToBrushConverter" />
+    <converter:GridLengthConverter x:Key="GridLengthConverter" />
+    <converter:ThicknessToDoubleConverter x:Key="ThicknessToDoubleConverter" />
+    <converter:DoubleToCornerRadiusConverter x:Key="DoubleToCornerRadiusConverter" />
+    <converter:CornerRadiusToDoubleConverter x:Key="CornerRadiusToDoubleConverter" />
+    <converter:WidthAndHeightToSizeConverter x:Key="WidthAndHeightToSizeConverter" />
+
+    <converter:ObjectMemberPathConverter x:Key="ObjectMemberPathConverter" />
+    <converter:BooleanMemberPathConverter x:Key="BooleanMemberPathConverter" />
+
+    <converter:MultiCombinerConverter x:Key="MultiCombinerConverter" />
+
+    <converter:TagPanelBackgroundConverter x:Key="TagPanelBackgroundConverter" />
+    <converter:TagPanelRemovableConverter x:Key="TagPanelRemovableConverter" />
+    <converter:Minus10Converter x:Key="Minus10Converter"/>
+
+    <converter:BoolInverseConverter x:Key="BoolInverseConverter" />
+
+    <converter:DoubleToRightMarginConverter x:Key="DoubleToRightMarginConverter" />
+    <converter:DoubleToLeftMarginConverter x:Key="DoubleToLeftMarginConverter" />
+
+    <converter:Add3Converter x:Key="Add3Converter"/>
+    <converter:Add5Converter x:Key="Add5Converter"/>
+
+    <converter:InverseOrientationConverter x:Key="InverseOrientationConverter" />
+    <converter:CloneConverter x:Key="CloneConverter" />
+    
+    <converter:MultiSelectorIsCheckedConverter x:Key="MultiSelectorIsCheckedConverter" />
+    <converter:DropDownBorderPathConverter x:Key="DropDownBorderPathConverter" />
+    <converter:RingProgressBarConverter x:Key="RingProgressBarConverter" />
+    <converter:LoadingStrokeThicknessConverter x:Key="LoadingStrokeThicknessConverter" />
+    <converter:LoadingLineYConverter x:Key="LoadingLineYConverter" />
+    <converter:LoadingClassicMarginConverter x:Key="LoadingClassicMarginConverter" />
+    <converter:LoadingClassicEllipseSizeConverter x:Key="LoadingClassicEllipseSizeConverter" />
+    <converter:CornerRadiusAdd1Converter x:Key="CornerRadiusAdd1Converter" />
+    <converter:Minus4Converter x:Key="Minus4Converter" />
+</ResourceDictionary>

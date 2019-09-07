@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29020.237
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIBrowser", "UIBrowser\UIBrowser.csproj", "{F8A6F19C-B283-46F1-8576-7A2B1F4EB8A7}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -17,7 +17,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Net4.5", "Net4.5", "{218C15
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panuon.UI.Silver", "Net45\Panuon.UI.Silver\Panuon.UI.Silver.csproj", "{461FE59D-57B8-4599-8E7D-439E27A2BBB2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SharedResources", "SharedResources", "{637442C4-FAFA-457B-B379-696A0185B624}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Panuon.UI.Silver.Core", "SharedResources\Panuon.UI.Silver.Core\Panuon.UI.Silver.Core.shproj", "{DC698B56-EA97-4D48-9E82-E261324EC475}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Panuon.UI.Silver", "SharedResources\Panuon.UI.Silver\Panuon.UI.Silver.shproj", "{2F11D2D6-B0CC-49F6-944B-2AD8CD905644}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		SharedResources\Panuon.UI.Silver\Panuon.UI.Silver.projitems*{2f11d2d6-b0cc-49f6-944b-2ad8cd905644}*SharedItemsImports = 13
+		SharedResources\Panuon.UI.Silver.Core\Panuon.UI.Silver.Core.projitems*{461fe59d-57b8-4599-8e7d-439e27a2bbb2}*SharedItemsImports = 4
+		SharedResources\Panuon.UI.Silver\Panuon.UI.Silver.projitems*{461fe59d-57b8-4599-8e7d-439e27a2bbb2}*SharedItemsImports = 4
+		SharedResources\Panuon.UI.Silver.Core\Panuon.UI.Silver.Core.projitems*{527ff1e2-a99c-40c2-b589-69b5bad77f5a}*SharedItemsImports = 4
+		SharedResources\Panuon.UI.Silver\Panuon.UI.Silver.projitems*{527ff1e2-a99c-40c2-b589-69b5bad77f5a}*SharedItemsImports = 4
+		SharedResources\Panuon.UI.Silver.Core\Panuon.UI.Silver.Core.projitems*{dc698b56-ea97-4d48-9e82-e261324ec475}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -42,6 +56,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{527FF1E2-A99C-40C2-B589-69B5BAD77F5A} = {D380FB9B-6461-4F58-B8EF-96C2FDA2A856}
 		{461FE59D-57B8-4599-8E7D-439E27A2BBB2} = {218C15E8-B6A4-4CF1-8D5F-EB567F9AF8C8}
+		{DC698B56-EA97-4D48-9E82-E261324EC475} = {637442C4-FAFA-457B-B379-696A0185B624}
+		{2F11D2D6-B0CC-49F6-944B-2AD8CD905644} = {637442C4-FAFA-457B-B379-696A0185B624}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9B3F19A6-8D38-45CA-945A-A2D448FD75DB}
