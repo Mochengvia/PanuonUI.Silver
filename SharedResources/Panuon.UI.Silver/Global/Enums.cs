@@ -10,6 +10,7 @@ namespace Panuon.UI.Silver
     {
         Standard,
         Modern,
+        Classic,
         //Poster
     }
 

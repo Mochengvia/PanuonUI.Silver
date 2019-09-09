@@ -155,24 +155,6 @@ namespace Panuon.UI.Silver.Converters
     }
     #endregion
 
-    #region Increase / Decrease
-    internal class Add10Converter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            if (value == null)
-                return value;
-            var doubleValue = (value as double?).GetValueOrDefault();
-            return doubleValue + 10;
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            return DependencyProperty.UnsetValue;
-        }
-    }
-    #endregion
-
     #region Combiner
     internal class MultiCombinerConverter : IMultiValueConverter
     {

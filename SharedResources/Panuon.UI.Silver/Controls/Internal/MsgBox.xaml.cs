@@ -44,6 +44,7 @@ namespace Panuon.UI.Silver.Controls.Internal
             MaxContentHeight = messageBoxXConfigurations.MaxContentHeight;
             MaxContentWidth = messageBoxXConfigurations.MaxContentWidth;
             ReverseButtonSequence = messageBoxXConfigurations.ReverseButtonSequence;
+            FontSize = messageBoxXConfigurations.FontSize;
         }
 
         #region Property

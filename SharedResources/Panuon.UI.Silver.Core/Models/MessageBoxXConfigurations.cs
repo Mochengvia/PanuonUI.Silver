@@ -53,6 +53,10 @@ namespace Panuon.UI.Silver.Core
         /// </summary>
         public double MinWidth { get; set; } = 500;
 
+        /// <summary>
+        /// Font size. Default : 16.
+        /// </summary>
+        public double FontSize { get; set; } = 16;
 
         /// <summary>
         /// Max content height. default : 100.

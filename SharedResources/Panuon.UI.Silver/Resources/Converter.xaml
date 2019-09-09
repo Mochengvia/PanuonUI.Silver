@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Panuon.UI.Silver.Themes"
                     xmlns:converter="clr-namespace:Panuon.UI.Silver.Converters">
+    
     <converter:IsNotNullConverter x:Key="IsNotNullConverter" />
     <converter:IsNullConverter x:Key="IsNullConverter" />
     <converter:IsNullOrEmptyConverter x:Key="IsNullOrEmptyConverter" />
@@ -34,7 +35,8 @@
     <converter:DoubleToLeftMarginConverter x:Key="DoubleToLeftMarginConverter" />
 
     <converter:Add3Converter x:Key="Add3Converter"/>
-    <converter:Add5Converter x:Key="Add5Converter"/>
+    <converter:Add5Converter x:Key="Add5Converter" />
+    <converter:Add10Converter x:Key="Add10Converter"/>
 
     <converter:InverseOrientationConverter x:Key="InverseOrientationConverter" />
     <converter:CloneConverter x:Key="CloneConverter" />
@@ -48,4 +50,10 @@
     <converter:LoadingClassicEllipseSizeConverter x:Key="LoadingClassicEllipseSizeConverter" />
     <converter:CornerRadiusAdd1Converter x:Key="CornerRadiusAdd1Converter" />
     <converter:Minus4Converter x:Key="Minus4Converter" />
+
+    <converter:MsbButtonVisibilityConverter x:Key="MsbButtonVisibilityConverter" />
+    <converter:MsbButtonIsDefaultConverter x:Key="MsbButtonIsDefaultConverter" />
+    <converter:MsbCheckIconVisibilityConverter x:Key="MsbCheckIconVisibilityConverter" />
+    <converter:MsbCheckIconWidthConverter x:Key="MsbCheckIconWidthConverter" />
+    
 </ResourceDictionary>
