@@ -12,7 +12,7 @@ namespace Panuon.UI.Silver.Core
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        void NotifyPropertyChanged([CallerMemberName] string propertyName = null)
+        protected void NotifyPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
