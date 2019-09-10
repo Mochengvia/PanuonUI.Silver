@@ -18,9 +18,9 @@
                 Value="{x:Null}" />
         <Setter Property="local:ListBoxHelper.ItemHeight"
                 Value="30" />
-        <Setter Property="local:ListBoxHelper.HoverBrush"
+        <Setter Property="local:ListBoxHelper.HoverBackground"
                 Value="#EEEEEE" />
-        <Setter Property="local:ListBoxHelper.SelectedBrush"
+        <Setter Property="local:ListBoxHelper.SelectedBackground"
                 Value="#DDDDDD" />
         <Setter Property="VirtualizingStackPanel.IsVirtualizing"
                 Value="True" />
@@ -83,6 +83,10 @@
                 Value="{StaticResource Default_FontSize}" />
         <Setter Property="FocusVisualStyle"
                 Value="{x:Null}" />
+        <Setter Property="BorderBrush"
+                Value="Transparent" />
+        <Setter Property="BorderThickness"
+                Value="0" />
         <Setter Property="Foreground"
                 Value="{Binding Foreground,RelativeSource={RelativeSource AncestorType=ListBoxItem}}" />
         <Setter Property="Height"
@@ -91,8 +95,19 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListBoxItem}">
                     <Grid Background="Transparent">
-                        <Border x:Name="BdrMain"
-                                Background="Transparent" />
+                        <Border BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}" />
+                        <Border x:Name="BdrHover"
+                                BorderBrush="Transparent"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{Binding Path=(local:ListBoxHelper.HoverBackground),RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}"
+                                Opacity="0" />
+                        <Border x:Name="BdrSelected"
+                                BorderBrush="Transparent"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{Binding Path=(local:ListBoxHelper.SelectedBackground),RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}"
+                                Visibility="Collapsed" />
                         <ContentPresenter x:Name="Presenter"
                                           Margin="{TemplateBinding Padding}"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -101,32 +116,69 @@
                                           ContentSource="Content" />
                     </Grid>
                     <ControlTemplate.Triggers>
-                        <DataTrigger Binding="{Binding Path=(local:ListBoxHelper.SelectedForeground), RelativeSource={RelativeSource AncestorType=ListBox},Converter={StaticResource IsNotNullConverter}}"
-                                     Value="True">
-                            <Setter TargetName="Presenter"
-                                    Property="TextBlock.Foreground"
-                                    Value="{Binding Path=(local:ListBoxHelper.SelectedForeground),RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
-                        </DataTrigger>
-                        <Trigger Property="IsSelected"
-                                 Value="True">
-                            <Setter TargetName="BdrMain"
-                                    Property="Background"
-                                    Value="{Binding Path=(local:ListBoxHelper.SelectedBrush),RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
-                            <Setter TargetName="Presenter"
-                                    Property="Opacity"
-                                    Value="1" />
-                        </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsSelected"
-                                           Value="false" />
+                                           Value="False" />
                                 <Condition Property="IsMouseOver"
-                                           Value="true" />
+                                           Value="True" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="BdrMain"
-                                    Property="Background"
-                                    Value="{Binding Path=(local:ListBoxHelper.HoverBrush),RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="BdrHover"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1"
+                                                         Duration="0:0:0.3" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+                            <MultiTrigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="BdrHover"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         Duration="0:0:0.3" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.ExitActions>
                         </MultiTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsSelected,RelativeSource={RelativeSource Self}}"
+                                           Value="False" />
+                                <Condition Binding="{Binding IsMouseOver,RelativeSource={RelativeSource Self}}"
+                                           Value="True" />
+                                <Condition Binding="{Binding Path=(local:ListBoxHelper.HoverForeground), RelativeSource={RelativeSource AncestorType=ListBox},Converter={StaticResource IsNullConverter}}"
+                                           Value="False" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="Presenter"
+                                    Property="TextBlock.Foreground"
+                                    Value="{Binding Path=(local:ListBoxHelper.HoverForeground),RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+                            <Setter TargetName="Presenter"
+                                    Property="TextElement.Foreground"
+                                    Value="{Binding Path=(local:ListBoxHelper.HoverForeground),RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+                        </MultiDataTrigger>
+                        <Trigger Property="IsSelected"
+                                 Value="True">
+                            <Setter TargetName="BdrSelected"
+                                    Property="Visibility"
+                                    Value="Visible" />
+                        </Trigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsSelected,RelativeSource={RelativeSource Self}}"
+                                           Value="True" />
+                                <Condition Binding="{Binding Path=(local:ListBoxHelper.SelectedForeground), RelativeSource={RelativeSource AncestorType=ListBox},Converter={StaticResource IsNullConverter}}"
+                                           Value="False" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="Presenter"
+                                    Property="TextBlock.Foreground"
+                                    Value="{Binding Path=(local:ListBoxHelper.SelectedForeground),RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+                            <Setter TargetName="Presenter"
+                                    Property="TextElement.Foreground"
+                                    Value="{Binding Path=(local:ListBoxHelper.SelectedForeground),RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+                        </MultiDataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

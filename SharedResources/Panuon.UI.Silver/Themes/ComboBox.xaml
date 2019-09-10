@@ -344,7 +344,6 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected"
                                  Value="True">
-                           
                             <Setter TargetName="Presenter"
                                     Property="Opacity"
                                     Value="1" />
