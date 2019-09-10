@@ -152,11 +152,8 @@
                                 <Condition Binding="{Binding Path=(local:ListBoxHelper.HoverForeground), RelativeSource={RelativeSource AncestorType=ListBox},Converter={StaticResource IsNullConverter}}"
                                            Value="False" />
                             </MultiDataTrigger.Conditions>
-                            <Setter TargetName="Presenter"
-                                    Property="TextBlock.Foreground"
-                                    Value="{Binding Path=(local:ListBoxHelper.HoverForeground),RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
-                            <Setter TargetName="Presenter"
-                                    Property="TextElement.Foreground"
+                            <Setter 
+                                    Property="Foreground"
                                     Value="{Binding Path=(local:ListBoxHelper.HoverForeground),RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
                         </MultiDataTrigger>
                         <Trigger Property="IsSelected"
@@ -172,12 +169,10 @@
                                 <Condition Binding="{Binding Path=(local:ListBoxHelper.SelectedForeground), RelativeSource={RelativeSource AncestorType=ListBox},Converter={StaticResource IsNullConverter}}"
                                            Value="False" />
                             </MultiDataTrigger.Conditions>
-                            <Setter TargetName="Presenter"
-                                    Property="TextBlock.Foreground"
+                            <Setter 
+                                    Property="Foreground"
                                     Value="{Binding Path=(local:ListBoxHelper.SelectedForeground),RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
-                            <Setter TargetName="Presenter"
-                                    Property="TextElement.Foreground"
-                                    Value="{Binding Path=(local:ListBoxHelper.SelectedForeground),RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+                           
                         </MultiDataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

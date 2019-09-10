@@ -366,8 +366,7 @@
                                 <Condition Binding="{Binding Path=(local:ComboBoxHelper.SelectedForeground), RelativeSource={RelativeSource AncestorType=ComboBox},Converter={StaticResource IsNullConverter}}"
                                            Value="False" />
                             </MultiDataTrigger.Conditions>
-                            <Setter TargetName="Presenter"
-                                    Property="TextBlock.Foreground"
+                            <Setter Property="Foreground"
                                     Value="{Binding Path=(local:ComboBoxHelper.SelectedForeground),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
                         </MultiDataTrigger>
                         
@@ -394,8 +393,7 @@
                                 <Condition Binding="{Binding Path=(local:ComboBoxHelper.HoverForeground), RelativeSource={RelativeSource AncestorType=ComboBox},Converter={StaticResource IsNullConverter}}"
                                            Value="False" />
                             </MultiDataTrigger.Conditions>
-                            <Setter TargetName="Presenter"
-                                    Property="TextBlock.Foreground"
+                            <Setter Property="Foreground"
                                     Value="{Binding Path=(local:ComboBoxHelper.HoverForeground),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
                         </MultiDataTrigger>
                     </ControlTemplate.Triggers>

@@ -148,8 +148,14 @@
                                         <Condition Binding="{Binding Path=(local:ContextMenuHelper.HoverForeground), RelativeSource={RelativeSource AncestorType=ContextMenu},Converter={StaticResource IsNullConverter}}"
                                                    Value="False" />
                                     </MultiDataTrigger.Conditions>
+                                    <Setter TargetName="GrdMain"
+                                            Property="TextElement.Foreground"
+                                            Value="{Binding Path=(local:ContextMenuHelper.HoverForeground),RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
                                     <Setter TargetName="LblIcon"
-                                            Property="Foreground"
+                                            Property="TextBlock.Foreground"
+                                            Value="{Binding Path=(local:ContextMenuHelper.HoverForeground),RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+                                    <Setter TargetName="LblIcon"
+                                            Property="TextElement.Foreground"
                                             Value="{Binding Path=(local:ContextMenuHelper.HoverForeground),RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
                                     <Setter TargetName="Presenter"
                                             Property="TextBlock.Foreground"
@@ -157,7 +163,9 @@
                                     <Setter TargetName="Presenter"
                                             Property="TextElement.Foreground"
                                             Value="{Binding Path=(local:ContextMenuHelper.HoverForeground),RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
-
+                                    <Setter TargetName="Path"
+                                            Property="Stroke"
+                                            Value="{Binding Path=(local:ContextMenuHelper.HoverForeground),RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
                                 </MultiDataTrigger>
                                 <Trigger Property="IsMouseOver"
                                          Value="True">

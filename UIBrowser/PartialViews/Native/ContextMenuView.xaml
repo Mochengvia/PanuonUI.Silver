@@ -56,7 +56,6 @@
                                         <MenuItem Header="Copy">
                                             <MenuItem.Icon>
                                                 <TextBlock Text="&#xf0c5;"
-                                                           Foreground="Gray"
                                                            FontFamily="{StaticResource FontAwesome}"/>
                                             </MenuItem.Icon>
                                         </MenuItem>
@@ -67,7 +66,6 @@
                                             <MenuItem.Icon>
                                                 <TextBlock Text="&#xf013;"
                                                            FontSize="16"
-                                                           Foreground="Gray"
                                                            FontFamily="{StaticResource FontAwesome}" />
                                             </MenuItem.Icon>
                                             <MenuItem Header="Nothing Here"/>
