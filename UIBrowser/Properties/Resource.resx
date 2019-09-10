@@ -423,4 +423,7 @@
   <data name="Spacing" xml:space="preserve">
     <value>Spacing</value>
   </data>
+  <data name="Menu" xml:space="preserve">
+    <value>Menu</value>
+  </data>
 </root>

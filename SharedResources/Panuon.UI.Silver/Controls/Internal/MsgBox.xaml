@@ -1,0 +1,671 @@
+﻿<Window x:Class="Panuon.UI.Silver.Controls.Internal.MsgBox"
+        x:ClassModifier="internal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Panuon.UI.Silver.Controls.Internal"
+        xmlns:converter="clr-namespace:Panuon.UI.Silver.Converters"
+        xmlns:pu="clr-namespace:Panuon.UI.Silver"
+        mc:Ignorable="d"
+        Title="MsgBox"
+        Width="700"
+        Height="450"
+        x:Name="Msb"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ResizeMode="NoResize"
+        SizeToContent="WidthAndHeight">
+    <Window.Resources>
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converter.xaml" />
+    </Window.Resources>
+    <Border Background="White"
+            CornerRadius="3"
+            Margin="5">
+        <Border.Effect>
+            <DropShadowEffect Color="LightGray"
+                              BlurRadius="5"
+                              ShadowDepth="0" />
+        </Border.Effect>
+        <Grid>
+            <Grid x:Name="GrdStandard"
+                  Visibility="Visible"
+                  Margin="0,20,0,15">
+                <Grid.Resources>
+                    <Style TargetType="Button"
+                           BasedOn="{StaticResource {x:Type Button}}">
+                        <Setter Property="pu:ButtonHelper.CornerRadius"
+                                Value="3" />
+                    </Style>
+                </Grid.Resources>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Grid VerticalAlignment="Center"
+                      Margin="0,30,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="{Binding MessageBoxIcon,ElementName=Msb, Converter={StaticResource MsbCheckIconWidthConverter}}" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <local:CheckIcon MessageBoxIcon="{Binding MessageBoxIcon, ElementName=Msb}"
+                                     RenderTransformOrigin="0.5,0.5"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Right"
+                                     Thickness="3"
+                                     Width="60"
+                                     Height="60"
+                                     Margin="0,0,20,0">
+                    </local:CheckIcon>
+                    <Grid Grid.Column="1"
+                          VerticalAlignment="Center">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="{Binding Title,ElementName=Msb}"
+                                   FontSize="{Binding FontSize,ElementName=Msb,Converter={StaticResource Add10Converter}}"
+                                   VerticalAlignment="Top"
+                                   Margin="0,10,40,10" />
+                        <ScrollViewer Grid.Row="1"
+                                      pu:ScrollViewerHelper.ScrollBarThickness="6"
+                                      pu:ScrollViewerHelper.ScrollBarCornerRadius="3"
+                                      Margin="0,10,40,0"
+                                      MaxHeight="{Binding MaxContentHeight,ElementName=Msb}"
+                                      HorizontalAlignment="Left"
+                                      VerticalScrollBarVisibility="Auto"
+                                      Padding="0,0,10,0">
+                            <TextBlock MaxWidth="{Binding MaxContentWidth,ElementName=Msb}"
+                                       Text="{Binding Text,ElementName=Msb}"
+                                       FontSize="{Binding FontSize,ElementName=Msb}"
+                                       Foreground="Gray"
+                                       TextWrapping="Wrap" />
+                        </ScrollViewer>
+
+                    </Grid>
+                </Grid>
+                <Grid  Margin="0,0"
+                       Grid.Row="1">
+                    <StackPanel x:Name="StkButtonGroup1"
+                                Orientation="Horizontal"
+                                Height="35"
+                                HorizontalAlignment="Right"
+                                Margin="0,0,30,0">
+                        <Button Padding="40,0"
+                                Background="#BBBBBB"
+                                Content="{Binding CancelButton,ElementName=Msb}"
+                                pu:ButtonHelper.HoverBrush="#AAAAAA"
+                                Tag="Cancel"
+                                Visibility="{Binding MessageBoxButton,ElementName=Msb,Converter={StaticResource MsbButtonVisibilityConverter},ConverterParameter=Cancel}"
+                                Margin="5,0"
+                                Click="BtnCancel_Click">
+                            <Button.IsDefault>
+                                <MultiBinding Converter="{StaticResource MsbButtonIsDefaultConverter}"
+                                              ConverterParameter="Cancel">
+                                    <Binding Path="DefaultButton"
+                                             ElementName="Msb" />
+                                    <Binding Path="MessageBoxButton"
+                                             ElementName="Msb" />
+                                </MultiBinding>
+                            </Button.IsDefault>
+                        </Button>
+                        <Button Padding="40,0"
+                                Background="#BBBBBB"
+                                Content="{Binding NoButton,ElementName=Msb}"
+                                pu:ButtonHelper.HoverBrush="#AAAAAA"
+                                Tag="No"
+                                Visibility="{Binding MessageBoxButton,ElementName=Msb,Converter={StaticResource MsbButtonVisibilityConverter},ConverterParameter=No}"
+                                Margin="5,0"
+                                Click="BtnNo_Click">
+                            <Button.IsDefault>
+                                <MultiBinding Converter="{StaticResource MsbButtonIsDefaultConverter}"
+                                              ConverterParameter="No">
+                                    <Binding Path="DefaultButton"
+                                             ElementName="Msb" />
+                                    <Binding Path="MessageBoxButton"
+                                             ElementName="Msb" />
+                                </MultiBinding>
+                            </Button.IsDefault>
+                        </Button>
+                        <Button Padding="40,0"
+                                Background="{Binding ThemeBrush,ElementName=Msb}"
+                                Content="{Binding YesButton,ElementName=Msb}"
+                                Tag="Yes"
+                                pu:ButtonHelper.HoverBrush="{Binding ThemeBrush,ElementName=Msb}"
+                                Visibility="{Binding MessageBoxButton,ElementName=Msb,Converter={StaticResource MsbButtonVisibilityConverter},ConverterParameter=Yes}"
+                                Margin="5,0"
+                                Click="BtnYes_Click">
+                            <Button.IsDefault>
+                                <MultiBinding Converter="{StaticResource MsbButtonIsDefaultConverter}"
+                                              ConverterParameter="Yes">
+                                    <Binding Path="DefaultButton"
+                                             ElementName="Msb" />
+                                    <Binding Path="MessageBoxButton"
+                                             ElementName="Msb" />
+                                </MultiBinding>
+                            </Button.IsDefault>
+                        </Button>
+                        <Button Padding="40,0"
+                                Background="{Binding ThemeBrush,ElementName=Msb}"
+                                Content="{Binding OKButton,ElementName=Msb}"
+                                Tag="OK"
+                                pu:ButtonHelper.HoverBrush="{Binding ThemeBrush,ElementName=Msb}"
+                                Visibility="{Binding MessageBoxButton,ElementName=Msb,Converter={StaticResource MsbButtonVisibilityConverter},ConverterParameter=OK}"
+                                Margin="5,0"
+                                Click="BtnOK_Click">
+                            <Button.IsDefault>
+                                <MultiBinding Converter="{StaticResource MsbButtonIsDefaultConverter}"
+                                              ConverterParameter="OK">
+                                    <Binding Path="DefaultButton"
+                                             ElementName="Msb" />
+                                    <Binding Path="MessageBoxButton"
+                                             ElementName="Msb" />
+                                </MultiBinding>
+                            </Button.IsDefault>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel x:Name="StkButtonGroupReverse1"
+                                Visibility="Collapsed"
+                                Orientation="Horizontal"
+                                Height="35"
+                                HorizontalAlignment="Right"
+                                Margin="0,0,30,0">
+                        <Button Padding="40,0"
+                                Background="{Binding ThemeBrush,ElementName=Msb}"
+                                Content="{Binding OKButton,ElementName=Msb}"
+                                Tag="OK"
+                                pu:ButtonHelper.HoverBrush="{Binding ThemeBrush,ElementName=Msb}"
+                                Visibility="{Binding MessageBoxButton,ElementName=Msb,Converter={StaticResource MsbButtonVisibilityConverter},ConverterParameter=OK}"
+                                Margin="5,0"
+                                Click="BtnOK_Click">
+                            <Button.IsDefault>
+                                <MultiBinding Converter="{StaticResource MsbButtonIsDefaultConverter}"
+                                              ConverterParameter="OK">
+                                    <Binding Path="DefaultButton"
+                                             ElementName="Msb" />
+                                    <Binding Path="MessageBoxButton"
+                                             ElementName="Msb" />
+                                </MultiBinding>
+                            </Button.IsDefault>
+                        </Button>
+                        <Button Padding="40,0"
+                                Background="{Binding ThemeBrush,ElementName=Msb}"
+                                Content="{Binding YesButton,ElementName=Msb}"
+                                Tag="Yes"
+                                pu:ButtonHelper.HoverBrush="{Binding ThemeBrush,ElementName=Msb}"
+                                Visibility="{Binding MessageBoxButton,ElementName=Msb,Converter={StaticResource MsbButtonVisibilityConverter},ConverterParameter=Yes}"
+                                Margin="5,0"
+                                Click="BtnYes_Click">
+                            <Button.IsDefault>
+                                <MultiBinding Converter="{StaticResource MsbButtonIsDefaultConverter}"
+                                              ConverterParameter="Yes">
+                                    <Binding Path="DefaultButton"
+                                             ElementName="Msb" />
+                                    <Binding Path="MessageBoxButton"
+                                             ElementName="Msb" />
+                                </MultiBinding>
+                            </Button.IsDefault>
+                        </Button>
+                        <Button Padding="40,0"
+                                Background="#BBBBBB"
+                                Content="{Binding NoButton,ElementName=Msb}"
+                                pu:ButtonHelper.HoverBrush="#AAAAAA"
+                                Tag="No"
+                                Visibility="{Binding MessageBoxButton,ElementName=Msb,Converter={StaticResource MsbButtonVisibilityConverter},ConverterParameter=No}"
+                                Margin="5,0"
+                                Click="BtnNo_Click">
+                            <Button.IsDefault>
+                                <MultiBinding Converter="{StaticResource MsbButtonIsDefaultConverter}"
+                                              ConverterParameter="No">
+                                    <Binding Path="DefaultButton"
+                                             ElementName="Msb" />
+                                    <Binding Path="MessageBoxButton"
+                                             ElementName="Msb" />
+                                </MultiBinding>
+                            </Button.IsDefault>
+                        </Button>
+                        <Button Padding="40,0"
+                                Background="#BBBBBB"
+                                Content="{Binding CancelButton,ElementName=Msb}"
+                                pu:ButtonHelper.HoverBrush="#AAAAAA"
+                                Tag="Cancel"
+                                Visibility="{Binding MessageBoxButton,ElementName=Msb,Converter={StaticResource MsbButtonVisibilityConverter},ConverterParameter=Cancel}"
+                                Margin="5,0"
+                                Click="BtnCancel_Click">
+                            <Button.IsDefault>
+                                <MultiBinding Converter="{StaticResource MsbButtonIsDefaultConverter}"
+                                              ConverterParameter="Cancel">
+                                    <Binding Path="DefaultButton"
+                                             ElementName="Msb" />
+                                    <Binding Path="MessageBoxButton"
+                                             ElementName="Msb" />
+                                </MultiBinding>
+                            </Button.IsDefault>
+                        </Button>
+                    </StackPanel>
+
+                </Grid>
+            </Grid>
+            <Grid x:Name="GrdModern"
+                  Visibility="Collapsed"
+                  Margin="50,20,50,15">
+                <Grid.Resources>
+                    <Style TargetType="Button"
+                           BasedOn="{StaticResource {x:Type Button}}">
+                        <Setter Property="pu:ButtonHelper.CornerRadius"
+                                Value="3" />
+                    </Style>
+                </Grid.Resources>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Grid VerticalAlignment="Center"
+                      Margin="0,30,0,10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <local:CheckIcon MessageBoxIcon="{Binding MessageBoxIcon, ElementName=Msb}"
+                                     Width="100"
+                                     Height="100"
+                                     Visibility="{Binding MessageBoxIcon,ElementName=Msb, Converter={StaticResource MsbCheckIconVisibilityConverter}}" />
+                    <TextBlock Grid.Row="1"
+                               Text="{Binding Title,ElementName=Msb}"
+                               FontSize="{Binding FontSize,ElementName=Msb,Converter={StaticResource Add10Converter}}"
+                               Margin="0,10"
+                               HorizontalAlignment="Center" />
+                    <ScrollViewer Grid.Row="2"
+                                  pu:ScrollViewerHelper.ScrollBarThickness="6"
+                                  pu:ScrollViewerHelper.ScrollBarCornerRadius="3"
+                                  Margin="20,10"
+                                  MaxHeight="{Binding MaxContentHeight,ElementName=Msb}"
+                                  VerticalScrollBarVisibility="Auto"
+                                  Padding="0,0,10,0">
+                        <TextBlock MaxWidth="{Binding MaxContentWidth,ElementName=Msb}"
+                                   Text="{Binding Text,ElementName=Msb}"
+                                   HorizontalAlignment="Center"
+                                   FontSize="{Binding FontSize,ElementName=Msb}"
+                                   Foreground="Gray"
+                                   TextWrapping="Wrap" />
+                    </ScrollViewer>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <StackPanel x:Name="StkButtonGroup2"
+                                Grid.Row="1"
+                                Orientation="Horizontal"
+                                Height="35"
+                                HorizontalAlignment="Center">
+                        <Button Padding="40,0"
+                                Background="#BBBBBB"
+                                Content="{Binding CancelButton,ElementName=Msb}"
+                                pu:ButtonHelper.HoverBrush="#AAAAAA"
+                                Tag="Cancel"
+                                Visibility="{Binding MessageBoxButton,ElementName=Msb,Converter={StaticResource MsbButtonVisibilityConverter},ConverterParameter=Cancel}"
+                                Margin="5,0"
+                                Click="BtnCancel_Click">
+                            <Button.IsDefault>
+                                <MultiBinding Converter="{StaticResource MsbButtonIsDefaultConverter}"
+                                              ConverterParameter="Cancel">
+                                    <Binding Path="DefaultButton"
+                                             ElementName="Msb" />
+                                    <Binding Path="MessageBoxButton"
+                                             ElementName="Msb" />
+                                </MultiBinding>
+                            </Button.IsDefault>
+                        </Button>
+                        <Button Padding="40,0"
+                                Background="#BBBBBB"
+                                Content="{Binding NoButton,ElementName=Msb}"
+                                pu:ButtonHelper.HoverBrush="#AAAAAA"
+                                Tag="No"
+                                Visibility="{Binding MessageBoxButton,ElementName=Msb,Converter={StaticResource MsbButtonVisibilityConverter},ConverterParameter=No}"
+                                Margin="5,0"
+                                Click="BtnNo_Click">
+                            <Button.IsDefault>
+                                <MultiBinding Converter="{StaticResource MsbButtonIsDefaultConverter}"
+                                              ConverterParameter="No">
+                                    <Binding Path="DefaultButton"
+                                             ElementName="Msb" />
+                                    <Binding Path="MessageBoxButton"
+                                             ElementName="Msb" />
+                                </MultiBinding>
+                            </Button.IsDefault>
+                        </Button>
+                        <Button Padding="40,0"
+                                Background="{Binding ThemeBrush,ElementName=Msb}"
+                                Content="{Binding YesButton,ElementName=Msb}"
+                                Tag="Yes"
+                                pu:ButtonHelper.HoverBrush="{Binding ThemeBrush,ElementName=Msb}"
+                                Visibility="{Binding MessageBoxButton,ElementName=Msb,Converter={StaticResource MsbButtonVisibilityConverter},ConverterParameter=Yes}"
+                                Margin="5,0"
+                                Click="BtnYes_Click">
+                            <Button.IsDefault>
+                                <MultiBinding Converter="{StaticResource MsbButtonIsDefaultConverter}"
+                                              ConverterParameter="Yes">
+                                    <Binding Path="DefaultButton"
+                                             ElementName="Msb" />
+                                    <Binding Path="MessageBoxButton"
+                                             ElementName="Msb" />
+                                </MultiBinding>
+                            </Button.IsDefault>
+                        </Button>
+                        <Button Padding="40,0"
+                                Background="{Binding ThemeBrush,ElementName=Msb}"
+                                Content="{Binding OKButton,ElementName=Msb}"
+                                Tag="OK"
+                                pu:ButtonHelper.HoverBrush="{Binding ThemeBrush,ElementName=Msb}"
+                                Visibility="{Binding MessageBoxButton,ElementName=Msb,Converter={StaticResource MsbButtonVisibilityConverter},ConverterParameter=OK}"
+                                Margin="5,0"
+                                Click="BtnOK_Click">
+                            <Button.IsDefault>
+                                <MultiBinding Converter="{StaticResource MsbButtonIsDefaultConverter}"
+                                              ConverterParameter="OK">
+                                    <Binding Path="DefaultButton"
+                                             ElementName="Msb" />
+                                    <Binding Path="MessageBoxButton"
+                                             ElementName="Msb" />
+                                </MultiBinding>
+                            </Button.IsDefault>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel x:Name="StkButtonGroupReverse2"
+                                Visibility="Collapsed"
+                                Grid.Row="1"
+                                Orientation="Horizontal"
+                                Height="35"
+                                HorizontalAlignment="Center">
+                        <Button Padding="40,0"
+                                Background="{Binding ThemeBrush,ElementName=Msb}"
+                                Content="{Binding OKButton,ElementName=Msb}"
+                                Tag="OK"
+                                pu:ButtonHelper.HoverBrush="{Binding ThemeBrush,ElementName=Msb}"
+                                Visibility="{Binding MessageBoxButton,ElementName=Msb,Converter={StaticResource MsbButtonVisibilityConverter},ConverterParameter=OK}"
+                                Margin="5,0"
+                                Click="BtnOK_Click">
+                            <Button.IsDefault>
+                                <MultiBinding Converter="{StaticResource MsbButtonIsDefaultConverter}"
+                                              ConverterParameter="OK">
+                                    <Binding Path="DefaultButton"
+                                             ElementName="Msb" />
+                                    <Binding Path="MessageBoxButton"
+                                             ElementName="Msb" />
+                                </MultiBinding>
+                            </Button.IsDefault>
+                        </Button>
+                        <Button Padding="40,0"
+                                Background="{Binding ThemeBrush,ElementName=Msb}"
+                                Content="{Binding YesButton,ElementName=Msb}"
+                                Tag="Yes"
+                                pu:ButtonHelper.HoverBrush="{Binding ThemeBrush,ElementName=Msb}"
+                                Visibility="{Binding MessageBoxButton,ElementName=Msb,Converter={StaticResource MsbButtonVisibilityConverter},ConverterParameter=Yes}"
+                                Margin="5,0"
+                                Click="BtnYes_Click">
+                            <Button.IsDefault>
+                                <MultiBinding Converter="{StaticResource MsbButtonIsDefaultConverter}"
+                                              ConverterParameter="Yes">
+                                    <Binding Path="DefaultButton"
+                                             ElementName="Msb" />
+                                    <Binding Path="MessageBoxButton"
+                                             ElementName="Msb" />
+                                </MultiBinding>
+                            </Button.IsDefault>
+                        </Button>
+                        <Button Padding="40,0"
+                                Background="#BBBBBB"
+                                Content="{Binding NoButton,ElementName=Msb}"
+                                pu:ButtonHelper.HoverBrush="#AAAAAA"
+                                Tag="No"
+                                Visibility="{Binding MessageBoxButton,ElementName=Msb,Converter={StaticResource MsbButtonVisibilityConverter},ConverterParameter=No}"
+                                Margin="5,0"
+                                Click="BtnNo_Click">
+                            <Button.IsDefault>
+                                <MultiBinding Converter="{StaticResource MsbButtonIsDefaultConverter}"
+                                              ConverterParameter="No">
+                                    <Binding Path="DefaultButton"
+                                             ElementName="Msb" />
+                                    <Binding Path="MessageBoxButton"
+                                             ElementName="Msb" />
+                                </MultiBinding>
+                            </Button.IsDefault>
+                        </Button>
+                        <Button Padding="40,0"
+                                Background="#BBBBBB"
+                                Content="{Binding CancelButton,ElementName=Msb}"
+                                pu:ButtonHelper.HoverBrush="#AAAAAA"
+                                Tag="Cancel"
+                                Visibility="{Binding MessageBoxButton,ElementName=Msb,Converter={StaticResource MsbButtonVisibilityConverter},ConverterParameter=Cancel}"
+                                Margin="5,0"
+                                Click="BtnCancel_Click">
+                            <Button.IsDefault>
+                                <MultiBinding Converter="{StaticResource MsbButtonIsDefaultConverter}"
+                                              ConverterParameter="Cancel">
+                                    <Binding Path="DefaultButton"
+                                             ElementName="Msb" />
+                                    <Binding Path="MessageBoxButton"
+                                             ElementName="Msb" />
+                                </MultiBinding>
+                            </Button.IsDefault>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+            <Grid x:Name="GrdClassic"
+                  Visibility="Collapsed">
+                <TextBlock Text="{Binding Title,ElementName=Msb}"
+                           FontSize="{Binding FontSize,ElementName=Msb}"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left"
+                           Margin="15,10,0,0" />
+                <Grid 
+                      Margin="0,20,0,15">
+                    <Grid.Resources>
+                        <Style TargetType="Button"
+                               BasedOn="{StaticResource {x:Type Button}}">
+                            <Setter Property="pu:ButtonHelper.CornerRadius"
+                                    Value="3" />
+                        </Style>
+                    </Grid.Resources>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="50" />
+                    </Grid.RowDefinitions>
+                    <Grid VerticalAlignment="Center"
+                          Margin="0,30,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="{Binding MessageBoxIcon,ElementName=Msb, Converter={StaticResource MsbCheckIconWidthConverter}}" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <local:CheckIcon MessageBoxIcon="{Binding MessageBoxIcon, ElementName=Msb}"
+                                         RenderTransformOrigin="0.5,0.5"
+                                         VerticalAlignment="Center"
+                                         HorizontalAlignment="Right"
+                                         Thickness="3"
+                                         Width="60"
+                                         Height="60"
+                                         Margin="0,0,20,0">
+                        </local:CheckIcon>
+                        <ScrollViewer Grid.Column="1"
+                                      VerticalAlignment="Center"
+                                      pu:ScrollViewerHelper.ScrollBarThickness="6"
+                                      pu:ScrollViewerHelper.ScrollBarCornerRadius="3"
+                                      Margin="10,0,40,0"
+                                      MaxHeight="{Binding MaxContentHeight,ElementName=Msb}"
+                                      HorizontalAlignment="Left"
+                                      VerticalScrollBarVisibility="Auto"
+                                      Padding="0,0,10,0">
+                            <TextBlock MaxWidth="{Binding MaxContentWidth,ElementName=Msb}"
+                                       Text="{Binding Text,ElementName=Msb}"
+                                       FontSize="{Binding FontSize,ElementName=Msb}"
+                                       Foreground="Gray"
+                                       TextWrapping="Wrap" />
+                        </ScrollViewer>
+
+                    </Grid>
+                    <Grid  Margin="0,0"
+                           Grid.Row="1">
+                        <StackPanel x:Name="StkButtonGroup3"
+                                    Orientation="Horizontal"
+                                    Height="35"
+                                    HorizontalAlignment="Right"
+                                    Margin="0,0,30,0">
+                            <Button Padding="40,0"
+                                    Background="#BBBBBB"
+                                    Content="{Binding CancelButton,ElementName=Msb}"
+                                    pu:ButtonHelper.HoverBrush="#AAAAAA"
+                                    Tag="Cancel"
+                                    Visibility="{Binding MessageBoxButton,ElementName=Msb,Converter={StaticResource MsbButtonVisibilityConverter},ConverterParameter=Cancel}"
+                                    Margin="5,0"
+                                    Click="BtnCancel_Click">
+                                <Button.IsDefault>
+                                    <MultiBinding Converter="{StaticResource MsbButtonIsDefaultConverter}"
+                                                  ConverterParameter="Cancel">
+                                        <Binding Path="DefaultButton"
+                                                 ElementName="Msb" />
+                                        <Binding Path="MessageBoxButton"
+                                                 ElementName="Msb" />
+                                    </MultiBinding>
+                                </Button.IsDefault>
+                            </Button>
+                            <Button Padding="40,0"
+                                    Background="#BBBBBB"
+                                    Content="{Binding NoButton,ElementName=Msb}"
+                                    pu:ButtonHelper.HoverBrush="#AAAAAA"
+                                    Tag="No"
+                                    Visibility="{Binding MessageBoxButton,ElementName=Msb,Converter={StaticResource MsbButtonVisibilityConverter},ConverterParameter=No}"
+                                    Margin="5,0"
+                                    Click="BtnNo_Click">
+                                <Button.IsDefault>
+                                    <MultiBinding Converter="{StaticResource MsbButtonIsDefaultConverter}"
+                                                  ConverterParameter="No">
+                                        <Binding Path="DefaultButton"
+                                                 ElementName="Msb" />
+                                        <Binding Path="MessageBoxButton"
+                                                 ElementName="Msb" />
+                                    </MultiBinding>
+                                </Button.IsDefault>
+                            </Button>
+                            <Button Padding="40,0"
+                                    Background="{Binding ThemeBrush,ElementName=Msb}"
+                                    Content="{Binding YesButton,ElementName=Msb}"
+                                    Tag="Yes"
+                                    pu:ButtonHelper.HoverBrush="{Binding ThemeBrush,ElementName=Msb}"
+                                    Visibility="{Binding MessageBoxButton,ElementName=Msb,Converter={StaticResource MsbButtonVisibilityConverter},ConverterParameter=Yes}"
+                                    Margin="5,0"
+                                    Click="BtnYes_Click">
+                                <Button.IsDefault>
+                                    <MultiBinding Converter="{StaticResource MsbButtonIsDefaultConverter}"
+                                                  ConverterParameter="Yes">
+                                        <Binding Path="DefaultButton"
+                                                 ElementName="Msb" />
+                                        <Binding Path="MessageBoxButton"
+                                                 ElementName="Msb" />
+                                    </MultiBinding>
+                                </Button.IsDefault>
+                            </Button>
+                            <Button Padding="40,0"
+                                    Background="{Binding ThemeBrush,ElementName=Msb}"
+                                    Content="{Binding OKButton,ElementName=Msb}"
+                                    Tag="OK"
+                                    pu:ButtonHelper.HoverBrush="{Binding ThemeBrush,ElementName=Msb}"
+                                    Visibility="{Binding MessageBoxButton,ElementName=Msb,Converter={StaticResource MsbButtonVisibilityConverter},ConverterParameter=OK}"
+                                    Margin="5,0"
+                                    Click="BtnOK_Click">
+                                <Button.IsDefault>
+                                    <MultiBinding Converter="{StaticResource MsbButtonIsDefaultConverter}"
+                                                  ConverterParameter="OK">
+                                        <Binding Path="DefaultButton"
+                                                 ElementName="Msb" />
+                                        <Binding Path="MessageBoxButton"
+                                                 ElementName="Msb" />
+                                    </MultiBinding>
+                                </Button.IsDefault>
+                            </Button>
+                        </StackPanel>
+                        <StackPanel x:Name="StkButtonGroupReverse3"
+                                    Visibility="Collapsed"
+                                    Orientation="Horizontal"
+                                    Height="35"
+                                    HorizontalAlignment="Right"
+                                    Margin="0,0,30,0">
+                            <Button Padding="40,0"
+                                    Background="{Binding ThemeBrush,ElementName=Msb}"
+                                    Content="{Binding OKButton,ElementName=Msb}"
+                                    Tag="OK"
+                                    pu:ButtonHelper.HoverBrush="{Binding ThemeBrush,ElementName=Msb}"
+                                    Visibility="{Binding MessageBoxButton,ElementName=Msb,Converter={StaticResource MsbButtonVisibilityConverter},ConverterParameter=OK}"
+                                    Margin="5,0"
+                                    Click="BtnOK_Click">
+                                <Button.IsDefault>
+                                    <MultiBinding Converter="{StaticResource MsbButtonIsDefaultConverter}"
+                                                  ConverterParameter="OK">
+                                        <Binding Path="DefaultButton"
+                                                 ElementName="Msb" />
+                                        <Binding Path="MessageBoxButton"
+                                                 ElementName="Msb" />
+                                    </MultiBinding>
+                                </Button.IsDefault>
+                            </Button>
+                            <Button Padding="40,0"
+                                    Background="{Binding ThemeBrush,ElementName=Msb}"
+                                    Content="{Binding YesButton,ElementName=Msb}"
+                                    Tag="Yes"
+                                    pu:ButtonHelper.HoverBrush="{Binding ThemeBrush,ElementName=Msb}"
+                                    Visibility="{Binding MessageBoxButton,ElementName=Msb,Converter={StaticResource MsbButtonVisibilityConverter},ConverterParameter=Yes}"
+                                    Margin="5,0"
+                                    Click="BtnYes_Click">
+                                <Button.IsDefault>
+                                    <MultiBinding Converter="{StaticResource MsbButtonIsDefaultConverter}"
+                                                  ConverterParameter="Yes">
+                                        <Binding Path="DefaultButton"
+                                                 ElementName="Msb" />
+                                        <Binding Path="MessageBoxButton"
+                                                 ElementName="Msb" />
+                                    </MultiBinding>
+                                </Button.IsDefault>
+                            </Button>
+                            <Button Padding="40,0"
+                                    Background="#BBBBBB"
+                                    Content="{Binding NoButton,ElementName=Msb}"
+                                    pu:ButtonHelper.HoverBrush="#AAAAAA"
+                                    Tag="No"
+                                    Visibility="{Binding MessageBoxButton,ElementName=Msb,Converter={StaticResource MsbButtonVisibilityConverter},ConverterParameter=No}"
+                                    Margin="5,0"
+                                    Click="BtnNo_Click">
+                                <Button.IsDefault>
+                                    <MultiBinding Converter="{StaticResource MsbButtonIsDefaultConverter}"
+                                                  ConverterParameter="No">
+                                        <Binding Path="DefaultButton"
+                                                 ElementName="Msb" />
+                                        <Binding Path="MessageBoxButton"
+                                                 ElementName="Msb" />
+                                    </MultiBinding>
+                                </Button.IsDefault>
+                            </Button>
+                            <Button Padding="40,0"
+                                    Background="#BBBBBB"
+                                    Content="{Binding CancelButton,ElementName=Msb}"
+                                    pu:ButtonHelper.HoverBrush="#AAAAAA"
+                                    Tag="Cancel"
+                                    Visibility="{Binding MessageBoxButton,ElementName=Msb,Converter={StaticResource MsbButtonVisibilityConverter},ConverterParameter=Cancel}"
+                                    Margin="5,0"
+                                    Click="BtnCancel_Click">
+                                <Button.IsDefault>
+                                    <MultiBinding Converter="{StaticResource MsbButtonIsDefaultConverter}"
+                                                  ConverterParameter="Cancel">
+                                        <Binding Path="DefaultButton"
+                                                 ElementName="Msb" />
+                                        <Binding Path="MessageBoxButton"
+                                                 ElementName="Msb" />
+                                    </MultiBinding>
+                                </Button.IsDefault>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

@@ -46,6 +46,11 @@ namespace UIBrowser.PartialViews.Custom
         {
             Notice.Show("This is a notice.This is a notice.This is a notice.This is a notice.This is a notice.This is a notice.", "Notice", 3, MessageBoxIcon.Success);
         }
+
+        private void BtnWarning_Click(object sender, RoutedEventArgs e)
+        {
+            Notice.Show("This is a notice.This is a notice.This is a notice.This is a notice.This is a notice.This is a notice.", "Notice", 3, MessageBoxIcon.Warning);
+        }
     }
 
 }

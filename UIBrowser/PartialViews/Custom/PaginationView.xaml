@@ -43,7 +43,7 @@
                 <StackPanel>
                     <Grid Height="80">
                         <pu:Pagination x:Name="PgnCustom"
-                                           TotalIndex="15"
+                                           TotalIndex="2"
                                            Height="28"
                                           
                                        HorizontalAlignment="Center"/>

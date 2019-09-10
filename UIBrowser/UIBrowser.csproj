@@ -150,6 +150,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="PartialViews\Native\MenuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="PartialViews\Native\DataGridView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -249,6 +253,9 @@
     <Compile Include="PartialViews\Helpers\AnimationHelperView.xaml.cs">
       <DependentUpon>AnimationHelperView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PartialViews\Native\MenuView.xaml.cs">
+      <DependentUpon>MenuView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PartialViews\Native\DataGridView.xaml.cs">
       <DependentUpon>DataGridView.xaml</DependentUpon>
     </Compile>
@@ -324,7 +331,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Net45\Panuon.UI.Silver\Panuon.UI.Silver.csproj">
-      <Project>{461fe59d-57b8-4599-8e7d-439e27a2bbb2}</Project>
+      <Project>{461FE59D-57B8-4599-8E7D-439E27A2BBB2}</Project>
       <Name>Panuon.UI.Silver</Name>
     </ProjectReference>
   </ItemGroup>

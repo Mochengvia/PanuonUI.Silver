@@ -84,6 +84,9 @@
                                              Content="Switch"
                                              Checked="RdbBaseStyle_CheckChanged" />
                                 <RadioButton Margin="5,0,0,0"
+                                             Content="Switch2"
+                                             Checked="RdbBaseStyle_CheckChanged" />
+                                <RadioButton Margin="5,0,0,0"
                                              Content="Button"
                                              Checked="RdbBaseStyle_CheckChanged" />
                             </StackPanel>

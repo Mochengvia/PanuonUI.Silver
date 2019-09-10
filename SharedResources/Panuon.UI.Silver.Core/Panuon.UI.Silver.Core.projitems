@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>dc698b56-ea97-4d48-9e82-e261324ec475</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Panuon.UI.Silver.Core</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Interfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Attributes\ColumnWidthAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Attributes\IgnoreColumnAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Attributes\ReadOnlyColumnAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EventHandler\ClickEventHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EventHandler\CurrentIndexChangedEventHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EventHandler\DoubleClickEventHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EventHandler\DragAreaEventHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EventHandler\DragingEventHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EventHandler\LongPressEventHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\MessageBoxXConfigurations.cs" />
+  </ItemGroup>
+</Project>
