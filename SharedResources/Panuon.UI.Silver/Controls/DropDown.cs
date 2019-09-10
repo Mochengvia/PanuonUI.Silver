@@ -61,6 +61,24 @@ namespace Panuon.UI.Silver
         public static readonly DependencyProperty IsOpenProperty =
             DependencyProperty.Register("IsOpen", typeof(bool), typeof(DropDown));
 
+        public bool IsAngleVisible
+        {
+            get { return (bool)GetValue(IsAngleVisibleProperty); }
+            set { SetValue(IsAngleVisibleProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsAngleVisibleProperty =
+            DependencyProperty.Register("IsAngleVisible", typeof(bool), typeof(DropDown));
+
+        public bool StaysOpen
+        {
+            get { return (bool)GetValue(StaysOpenProperty); }
+            set { SetValue(StaysOpenProperty, value); }
+        }
+
+        public static readonly DependencyProperty StaysOpenProperty =
+            DependencyProperty.Register("StaysOpen", typeof(bool), typeof(DropDown));
+
 
         #endregion
     }

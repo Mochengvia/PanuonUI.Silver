@@ -24,23 +24,26 @@
                 Value="1" />
         <Setter Property="BorderBrush"
                 Value="LightGray" />
-        <Setter Property="local:ContextMenuHelper.HoverBrush"
+        <Setter Property="local:ContextMenuHelper.HoverBackground"
                 Value="#EEEEEE" />
         <Setter Property="local:ContextMenuHelper.ShadowColor"
                 Value="#DDDDDD" />
         <Setter Property="local:ContextMenuHelper.ItemHeight"
                 Value="35" />
+        <Setter Property="local:ContextMenuHelper.ItemIconWidth"
+                Value="{Binding Path=(local:ContextMenuHelper.ItemHeight),RelativeSource={RelativeSource Self},Mode=OneWay}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ContextMenu}">
-                    <Grid  Margin="3">
+                    <Grid  Margin="10">
                         <Border x:Name="Border"
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}">
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{Binding Path=(local:ContextMenuHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=ContextMenu},Mode=OneWay}">
                             <Border.Effect>
                                 <DropShadowEffect ShadowDepth="0"
-                                                  BlurRadius="3"
+                                                  BlurRadius="10"
                                                   Opacity="1"
                                                   Color="{Binding Path=(local:ContextMenuHelper.ShadowColor),RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
                             </Border.Effect>
@@ -48,7 +51,8 @@
                         </Border>
                         <ScrollViewer local:ScrollViewerHelper.ScrollBarThickness="6"
                                       local:ScrollViewerHelper.ScrollBarCornerRadius="3"
-                                      CanContentScroll="True">
+                                      CanContentScroll="True"
+                                      Margin="{TemplateBinding Padding}">
                             <StackPanel IsItemsHost="True"
                                         KeyboardNavigation.DirectionalNavigation="Cycle" />
                         </ScrollViewer>
@@ -68,6 +72,8 @@
                         Value="{x:Null}" />
                 <Setter Property="Height"
                         Value="{Binding Path=(local:ContextMenuHelper.ItemHeight),RelativeSource={RelativeSource AncestorType=ContextMenu},Mode=OneWay}" />
+                <Setter Property="Padding"
+                        Value="{Binding Path=(local:ContextMenuHelper.ItemPadding),RelativeSource={RelativeSource AncestorType=ContextMenu},Mode=OneWay}" />
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type MenuItem}">
@@ -78,11 +84,12 @@
                                 <Border x:Name="BdrHover"
                                         BorderBrush="Transparent"
                                         BorderThickness="{TemplateBinding BorderThickness}"
-                                        Background="{Binding Path=(local:ContextMenuHelper.HoverBrush),RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}"
+                                        Background="{Binding Path=(local:ContextMenuHelper.HoverBackground),RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}"
                                         Opacity="0" />
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="{Binding Height,Converter={StaticResource GridLengthConverter},RelativeSource={RelativeSource AncestorType=MenuItem}}" />
+                                        <ColumnDefinition x:Name="ColumnIcon"
+                                                          Width="{Binding Path=(local:ContextMenuHelper.ItemIconWidth),Converter={StaticResource GridLengthConverter},RelativeSource={RelativeSource AncestorType=ContextMenu}}" />
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
@@ -92,9 +99,11 @@
                                            FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
                                            VerticalAlignment="Center" 
                                            HorizontalAlignment="Center"/>
-                                    <ContentPresenter ContentSource="Header"
+                                    <ContentPresenter x:Name="Presenter"
+                                                      ContentSource="Header"
                                                       Grid.Column="1"
-                                                      VerticalAlignment="Center" />
+                                                      VerticalAlignment="Center"
+                                                      Margin="{TemplateBinding Padding}"/>
                                     <Path x:Name="Path"
                                           Grid.Column="2"
                                           Width="5"
@@ -129,6 +138,24 @@
                                 </Popup>
                             </Grid>
                             <ControlTemplate.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding IsMouseOver,RelativeSource={RelativeSource Self}}"
+                                                   Value="True" />
+                                        <Condition Binding="{Binding Path=(local:ContextMenuHelper.HoverForeground), RelativeSource={RelativeSource AncestorType=ContextMenu},Converter={StaticResource IsNullConverter}}"
+                                                   Value="False" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter TargetName="LblIcon"
+                                            Property="Foreground"
+                                            Value="{Binding Path=(local:ContextMenuHelper.HoverForeground),RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+                                    <Setter TargetName="Presenter"
+                                            Property="TextBlock.Foreground"
+                                            Value="{Binding Path=(local:ContextMenuHelper.HoverForeground),RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+                                    <Setter TargetName="Presenter"
+                                            Property="TextElement.Foreground"
+                                            Value="{Binding Path=(local:ContextMenuHelper.HoverForeground),RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+
+                                </MultiDataTrigger>
                                 <Trigger Property="IsMouseOver"
                                          Value="True">
                                     <Trigger.EnterActions>
@@ -158,6 +185,28 @@
                                             Value="Visible" />
                                 </Trigger>
                             </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="{x:Static MenuItem.SeparatorStyleKey}"
+                   TargetType="{x:Type Separator}">
+                <Setter Property="BorderBrush"
+                        Value="#EEEEEE" />
+                <Setter Property="BorderThickness"
+                        Value="0,0,0,1" />
+                <Setter Property="Margin"
+                        Value="1,5" />
+                <Setter Property="Focusable"
+                        Value="false" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Separator}">
+                            <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    SnapsToDevicePixels="true"
+                                    Height="1" />
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
