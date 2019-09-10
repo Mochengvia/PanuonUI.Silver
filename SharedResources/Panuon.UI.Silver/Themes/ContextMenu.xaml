@@ -148,9 +148,6 @@
                                         <Condition Binding="{Binding Path=(local:ContextMenuHelper.HoverForeground), RelativeSource={RelativeSource AncestorType=ContextMenu},Converter={StaticResource IsNullConverter}}"
                                                    Value="False" />
                                     </MultiDataTrigger.Conditions>
-                                    <Setter TargetName="GrdMain"
-                                            Property="TextElement.Foreground"
-                                            Value="{Binding Path=(local:ContextMenuHelper.HoverForeground),RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
                                     <Setter TargetName="LblIcon"
                                             Property="TextBlock.Foreground"
                                             Value="{Binding Path=(local:ContextMenuHelper.HoverForeground),RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />

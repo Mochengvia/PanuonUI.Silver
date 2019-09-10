@@ -141,7 +141,5 @@ namespace UIBrowser.PartialViews.Custom
         }
 
         #endregion
-
-       
     }
 }
