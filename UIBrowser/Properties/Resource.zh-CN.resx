@@ -429,4 +429,7 @@
   <data name="AutoPlay" xml:space="preserve">
     <value>自动播放</value>
   </data>
+  <data name="ContextMenu" xml:space="preserve">
+    <value>ContextMenu 右键菜单</value>
+  </data>
 </root>

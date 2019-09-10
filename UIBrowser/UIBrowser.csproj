@@ -150,6 +150,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="PartialViews\Native\ContextMenuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="PartialViews\Native\MenuView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -252,6 +256,9 @@
     </Compile>
     <Compile Include="PartialViews\Helpers\AnimationHelperView.xaml.cs">
       <DependentUpon>AnimationHelperView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PartialViews\Native\ContextMenuView.xaml.cs">
+      <DependentUpon>ContextMenuView.xaml</DependentUpon>
     </Compile>
     <Compile Include="PartialViews\Native\MenuView.xaml.cs">
       <DependentUpon>MenuView.xaml</DependentUpon>

@@ -429,4 +429,7 @@
   <data name="AutoPlay" xml:space="preserve">
     <value>AutoPlay</value>
   </data>
+  <data name="ContextMenu" xml:space="preserve">
+    <value>ContextMenu</value>
+  </data>
 </root>

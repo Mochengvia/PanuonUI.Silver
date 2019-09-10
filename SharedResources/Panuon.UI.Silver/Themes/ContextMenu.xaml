@@ -32,6 +32,7 @@
                 Value="35" />
         <Setter Property="local:ContextMenuHelper.ItemIconWidth"
                 Value="{Binding Path=(local:ContextMenuHelper.ItemHeight),RelativeSource={RelativeSource Self},Mode=OneWay}"/>
+        
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ContextMenu}">
@@ -74,6 +75,8 @@
                         Value="{Binding Path=(local:ContextMenuHelper.ItemHeight),RelativeSource={RelativeSource AncestorType=ContextMenu},Mode=OneWay}" />
                 <Setter Property="Padding"
                         Value="{Binding Path=(local:ContextMenuHelper.ItemPadding),RelativeSource={RelativeSource AncestorType=ContextMenu},Mode=OneWay}" />
+                <Setter Property="Icon"
+                        Value="{Binding Path=(local:ContextMenuHelper.ItemIcon),RelativeSource={RelativeSource AncestorType=ContextMenu},Mode=OneWay}" />
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type MenuItem}">
@@ -94,7 +97,7 @@
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <Label x:Name="LblIcon"
-                                           Content="{Binding Path=(local:ContextMenuHelper.ItemIcon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}"
+                                           Content="{TemplateBinding Icon}"
                                            Foreground="{TemplateBinding Foreground}"
                                            FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
                                            VerticalAlignment="Center" 

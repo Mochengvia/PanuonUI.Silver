@@ -1,0 +1,97 @@
+﻿<UserControl x:Class="UIBrowser.PartialViews.Native.ContextMenuView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:UIBrowser.PartialViews.Native"
+             xmlns:pu="clr-namespace:Panuon.UI.Silver;assembly=Panuon.UI.Silver"
+             xmlns:localized="clr-namespace:UIBrowser.Properties"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <Grid>
+        <Rectangle x:Name="RectBackground" />
+        <Grid VerticalAlignment="Center">
+            <GroupBox x:Name="GrpCode"
+                      HorizontalAlignment="Center"
+                      Width="{Binding ActualWidth,ElementName=GrpPalette}"
+                      VerticalAlignment="Bottom"
+                      >
+                <Grid>
+                    <TextBox x:Name="TbCode"
+                             Height="100"
+                             AcceptsReturn="True"
+                             VerticalContentAlignment="Top"
+                             Padding="5"
+                             VerticalScrollBarVisibility="Auto"
+                             HorizontalScrollBarVisibility="Auto"
+                             IsReadOnly="True">
+                        <TextBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="{x:Static localized:Resource.CopyCode}"
+                                          pu:ContextMenuHelper.ItemIcon="&#xf0c5;"
+                                          Click="MenuItem_CopyCode"/>
+                            </ContextMenu>
+                        </TextBox.ContextMenu>
+                    </TextBox>
+                </Grid>
+            </GroupBox>
+            <GroupBox x:Name="GrpPalette"
+                      HorizontalAlignment="Center"
+                      Header="{x:Static localized:Resource.Palette}"
+                      MinWidth="300">
+                <Grid>
+                    <StackPanel>
+                        <Grid Height="80">
+                            <TextBlock Text="RightClickHere"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Left"
+                                       Margin="20,0,0,0"
+                                       Background="Transparent">
+                                <TextBlock.ContextMenu>
+                                    <ContextMenu pu:ContextMenuHelper.ItemIconWidth="45"
+                                                 pu:ContextMenuHelper.CornerRadius="1"
+                                                 Padding="0,3"
+                                                 MinWidth="250">
+                                        <MenuItem Header="Copy">
+                                            <MenuItem.Icon>
+                                                <TextBlock Text="&#xf0c5;"
+                                                           Foreground="Gray"
+                                                           FontFamily="{StaticResource FontAwesome}"/>
+                                            </MenuItem.Icon>
+                                        </MenuItem>
+                                        <MenuItem Header="Cut" />
+                                        <MenuItem Header="Paste" />
+                                        <Separator />
+                                        <MenuItem Header="More Settings">
+                                            <MenuItem.Icon>
+                                                <TextBlock Text="&#xf013;"
+                                                           FontSize="16"
+                                                           Foreground="Gray"
+                                                           FontFamily="{StaticResource FontAwesome}" />
+                                            </MenuItem.Icon>
+                                            <MenuItem Header="Nothing Here"/>
+                                            <MenuItem Header="Nothing Here" />
+                                            <MenuItem Header="Nothing Here" />
+                                        </MenuItem>
+                                    </ContextMenu>
+                                </TextBlock.ContextMenu>
+                            </TextBlock>
+                        </Grid>
+                    </StackPanel>
+                    <Button x:Name="BtnViewCode"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            pu:ButtonHelper.ButtonStyle="Link"
+                            Foreground="#AA57A2E0"
+                            pu:ButtonHelper.HoverBrush="#57A2E0"
+                            Content="{x:Static localized:Resource.ViewCode}"
+                            Margin="0,-40,0,0"
+                            Click="BtnViewCode_Click" />
+                </Grid>
+            </GroupBox>
+            
+
+        </Grid>
+    </Grid>
+</UserControl>
