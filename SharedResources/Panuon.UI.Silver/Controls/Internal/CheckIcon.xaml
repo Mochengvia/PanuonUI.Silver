@@ -9,15 +9,16 @@
              mc:Ignorable="d"
              d:DesignHeight="450"
              d:DesignWidth="800"
-             Background="White"
              x:Name="icon">
     <UserControl.Resources>
         <SolidColorBrush x:Key="SuccessBrush"
-                         Color="#FF75CD43" />
+                         Color="#75CD43" />
         <SolidColorBrush x:Key="InfoBrush"
-                         Color="#FF55CEF1" />
+                         Color="#55CEF1" />
         <SolidColorBrush x:Key="ErrorBrush"
-                         Color="#FFFF5656" />
+                         Color="#FF5656" />
+        <SolidColorBrush x:Key="WarnBrush"
+                         Color="#F9D01A" />
         <converter:CheckIconConverter x:Key="CheckIconConverter" />
     </UserControl.Resources>
     <Grid>
@@ -74,6 +75,27 @@
                     <MultiBinding Converter="{StaticResource CheckIconConverter}">
                         <Binding Path="ActualWidth"
                                  ElementName="icon" />
+                        <Binding Path="MessageBoxIcon"
+                                 ElementName="icon" />
+                        <Binding Path="Thickness"
+                                 ElementName="icon" />
+                    </MultiBinding>
+                </Path.Data>
+            </Path>
+
+        </Grid>
+        <Grid x:Name="GrdWarn"
+              Margin="-5"
+              Visibility="Collapsed">
+            <Path Stroke="{StaticResource WarnBrush}"
+                  StrokeThickness="{Binding Thickness,ElementName=icon}"
+                  StrokeEndLineCap="Round"
+                  StrokeStartLineCap="Round"
+                  StrokeDashCap="Round">
+                <Path.Data>
+                    <MultiBinding Converter="{StaticResource CheckIconConverter}">
+                        <Binding Path="ActualWidth"
+                                 ElementName="GrdWarn" />
                         <Binding Path="MessageBoxIcon"
                                  ElementName="icon" />
                         <Binding Path="Thickness"

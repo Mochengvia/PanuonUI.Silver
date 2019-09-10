@@ -59,6 +59,11 @@ namespace Panuon.UI.Silver.Controls.Internal
                 case MessageBoxIcon.Error:
                     icon.GrdError.Visibility = Visibility.Visible;
                     break;
+                case MessageBoxIcon.Warning:
+                    icon.GrdWarn.Visibility = Visibility.Visible;
+                    break;
+
+
             }
         }
     }

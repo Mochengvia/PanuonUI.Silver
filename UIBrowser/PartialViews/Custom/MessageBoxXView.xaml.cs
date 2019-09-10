@@ -51,6 +51,15 @@ namespace UIBrowser.PartialViews.Custom
             });
         }
 
+        private void BtnStandardWarn_Click(object sender, RoutedEventArgs e)
+        {
+            var result = MessageBoxX.Show(_message, "Warning", Application.Current.MainWindow, MessageBoxButton.YesNo, new MessageBoxXConfigurations()
+            {
+                MessageBoxIcon = MessageBoxIcon.Warning,
+                ThemeBrush = "#F1C825".ToColor().ToBrush(),
+            });
+        }
+
         private void BtnModernInfo_Click(object sender, RoutedEventArgs e)
         {
             var result = MessageBoxX.Show(_message2, "Error", Application.Current.MainWindow, MessageBoxButton.YesNo, new MessageBoxXConfigurations()
@@ -78,6 +87,56 @@ namespace UIBrowser.PartialViews.Custom
                 ThemeBrush = "#FF4C4C".ToColor().ToBrush(),
             });
         }
+
+        private void BtnModernWarning_Click(object sender, RoutedEventArgs e)
+        {
+            var result = MessageBoxX.Show(_message, "Warning", Application.Current.MainWindow, MessageBoxButton.YesNo, new MessageBoxXConfigurations()
+            {
+                MessageBoxStyle = MessageBoxStyle.Modern,
+                MessageBoxIcon = MessageBoxIcon.Warning,
+                ThemeBrush = "#F1C825".ToColor().ToBrush(),
+            });
+        }
+
+        private void BtnClassicInfo_Click(object sender, RoutedEventArgs e)
+        {
+            var result = MessageBoxX.Show(_message2, "Error", Application.Current.MainWindow, MessageBoxButton.YesNo, new MessageBoxXConfigurations()
+            {
+                MessageBoxStyle = MessageBoxStyle.Classic,
+            });
+        }
+
+        private void BtnClassicError_Click(object sender, RoutedEventArgs e)
+        {
+            var result = MessageBoxX.Show(_message2, "Success", Application.Current.MainWindow, MessageBoxButton.YesNo, new MessageBoxXConfigurations()
+            {
+                MessageBoxStyle = MessageBoxStyle.Classic,
+                MessageBoxIcon = MessageBoxIcon.Success,
+                ThemeBrush = "#75CD43".ToColor().ToBrush(),
+            });
+        }
+
+        private void BtnClassicSuccess_Click(object sender, RoutedEventArgs e)
+        {
+            var result = MessageBoxX.Show(_message, "Error", Application.Current.MainWindow, MessageBoxButton.YesNo, new MessageBoxXConfigurations()
+            {
+                MessageBoxStyle = MessageBoxStyle.Classic,
+                MessageBoxIcon = MessageBoxIcon.Error,
+                ThemeBrush = "#FF4C4C".ToColor().ToBrush(),
+            });
+        }
+
+        private void BtnClassicWarning_Click(object sender, RoutedEventArgs e)
+        {
+            var result = MessageBoxX.Show(_message, "Warning", Application.Current.MainWindow, MessageBoxButton.YesNo, new MessageBoxXConfigurations()
+            {
+                MessageBoxStyle = MessageBoxStyle.Classic,
+                MessageBoxIcon = MessageBoxIcon.Warning,
+                ThemeBrush = "#F1C825".ToColor().ToBrush(),
+            });
+        }
+
+
 
         //private void BtnPosterInfo_Click(object sender, RoutedEventArgs e)
         //{

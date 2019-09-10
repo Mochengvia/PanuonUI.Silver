@@ -48,6 +48,14 @@
                         Click="BtnInfo_Click"
                         pu:ButtonHelper.ButtonStyle="Outline"
                         pu:ButtonHelper.HoverBrush="#FF3CBCC9" />
+                <Button Margin="0,15,0,0"
+                        Height="30"
+                        HorizontalAlignment="Left"
+                        Padding="50,0"
+                        Content="Warning"
+                        Click="BtnWarning_Click"
+                        pu:ButtonHelper.ButtonStyle="Outline"
+                        pu:ButtonHelper.HoverBrush="#FF3CBCC9" />
             </StackPanel>
 
         </GroupBox>

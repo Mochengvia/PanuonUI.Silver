@@ -20,6 +20,7 @@ namespace Panuon.UI.Silver
         Info,
         Success,
         Error,
+        Warning,
     }
 
     public enum DefaultButton

@@ -242,7 +242,13 @@ namespace Panuon.UI.Silver.Controls.Internal
             {
                 case MessageBoxStyle.Modern:
                     msb.GrdStandard.Visibility = Visibility.Collapsed;
+                    msb.GrdClassic.Visibility = Visibility.Collapsed;
                     msb.GrdModern.Visibility = Visibility.Visible;
+                    break;
+                case MessageBoxStyle.Classic:
+                    msb.GrdStandard.Visibility = Visibility.Collapsed;
+                    msb.GrdModern.Visibility = Visibility.Collapsed;
+                    msb.GrdClassic.Visibility = Visibility.Visible;
                     break;
             }
         }
