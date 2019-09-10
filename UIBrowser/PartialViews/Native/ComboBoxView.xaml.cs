@@ -160,8 +160,8 @@ namespace UIBrowser.PartialViews.Native
             ComboBoxHelper.SetCornerRadius(CmbCustom, new CornerRadius(SldCornerRadius.Value));
 
 
-            ComboBoxHelper.SetSelectedBrush(CmbCustom, new Color() { A = 50, R = color.R, G = color.G, B = color.B }.ToBrush());
-            ComboBoxHelper.SetHoverBrush(CmbCustom, new Color() { A = 30, R = color.R, G = color.G, B = color.B }.ToBrush());
+            ComboBoxHelper.SetSelectedBackground(CmbCustom, new Color() { A = 50, R = color.R, G = color.G, B = color.B }.ToBrush());
+            ComboBoxHelper.SetHoverBackground(CmbCustom, new Color() { A = 30, R = color.R, G = color.G, B = color.B }.ToBrush());
         }
 
         private void UpdateCode()
@@ -175,8 +175,8 @@ namespace UIBrowser.PartialViews.Native
                         $"\nWidth=\"{CmbCustom.Width}\"" +
                         (watermark == null ? "" : $"\npu:ComboBoxHelper.Watermark=\"{watermark}\"") +
                         (icon == null ? "" : $"\npu:ComboBoxHelper.Icon=\"{icon}\"") +
-                        $"\npu:ComboBoxHelper.HoverBrush=\"{ComboBoxHelper.GetHoverBrush(CmbCustom).ToColor().ToHexString()}\"" +
-                        $"\npu:ComboBoxHelper.SelectedBrush=\"{ComboBoxHelper.GetSelectedBrush(CmbCustom).ToColor().ToHexString()}\"" +
+                        $"\npu:ComboBoxHelper.HoverBrush=\"{ComboBoxHelper.GetHoverBackground(CmbCustom).ToColor().ToHexString()}\"" +
+                        $"\npu:ComboBoxHelper.SelectedBrush=\"{ComboBoxHelper.GetSelectedBackground(CmbCustom).ToColor().ToHexString()}\"" +
                         (cornerRadius == 0 ? "" : $"\npu:ComboBoxHelper.CornerRadius=\"{cornerRadius}\"") +
                         (searchBoxVisible ? "pu:ComboBoxHelper.IsSearchTextBoxVisible=\"True\"" : "") +
                         (searchBoxVisible ? "pu:ComboBoxHelper.SearchTextChanged=\"...\"" : "") +

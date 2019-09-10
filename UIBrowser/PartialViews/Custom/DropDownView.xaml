@@ -83,7 +83,7 @@
                                                                 ImageSource="/UIBrowser;component/Resources/head.jpg" />
                                                 </Ellipse.Fill>
                                             </Ellipse>
-                                            <TextBlock Margin="0,0,0,0"
+                                            <TextBlock Margin="50,0,0,0"
                                                        Text="Zeoun"
                                                        Foreground="Gray"
                                                        FontSize="15"

@@ -1763,6 +1763,8 @@
                 Value="3" />
         <Setter Property="DropDownPlacement"
                 Value="LeftBottom" />
+        <Setter Property="IsAngleVisible"
+                Value="True" />
         <Style.Triggers>
             <Trigger Property="DropDownPlacement"
                      Value="LeftBottom">
@@ -1804,7 +1806,8 @@
                                                           Focusable="False"
                                                           Tag="{Binding ElementName=ToggleButton}"
                                                           AllowsTransparency="True"
-                                                          PopupAnimation="Slide">
+                                                          PopupAnimation="Slide"
+                                                          StaysOpen="{Binding StaysOpen,RelativeSource={RelativeSource AncestorType=local:DropDown},Mode=OneWay}">
                                     <Grid x:Name="DropDown"
                                           Margin="1,1,1,10">
                                         <Path x:Name="Path"
@@ -1824,6 +1827,8 @@
                                                     <Binding Path="DropDownPlacement"
                                                              RelativeSource="{RelativeSource AncestorType=local:DropDown}" />
                                                     <Binding Path="CornerRadius"
+                                                             RelativeSource="{RelativeSource AncestorType=local:DropDown}" />
+                                                    <Binding Path="IsAngleVisible"
                                                              RelativeSource="{RelativeSource AncestorType=local:DropDown}" />
                                                 </MultiBinding>
                                             </Path.Data>

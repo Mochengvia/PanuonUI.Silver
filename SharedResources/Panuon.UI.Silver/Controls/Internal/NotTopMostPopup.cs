@@ -47,7 +47,7 @@ namespace Panuon.UI.Silver.Controls.Internal
         private void Window_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             var element = Tag as FrameworkElement;
-            if (!IsMouseOver && !element.IsMouseOver)
+            if (!StaysOpen && !IsMouseOver && !element.IsMouseOver)
                 IsOpen = false;
         }
 

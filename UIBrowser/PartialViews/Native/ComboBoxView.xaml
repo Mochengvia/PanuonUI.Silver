@@ -44,7 +44,6 @@
                     <StackPanel>
                         <Grid Height="80">
                             <ComboBox x:Name="CmbCustom"
-                                      IsEditable="True"
                                       VerticalAlignment="Center"
                                       HorizontalAlignment="Center"
                                       Height="30"
