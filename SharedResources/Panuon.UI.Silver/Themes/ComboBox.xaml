@@ -36,9 +36,9 @@
                 Value="#888888" />
         <Setter Property="local:ComboBoxHelper.ItemHeight"
                 Value="30" />
-        <Setter Property="local:ComboBoxHelper.HoverBrush"
+        <Setter Property="local:ComboBoxHelper.HoverBackground"
                 Value="#EEEEEE" />
-        <Setter Property="local:ComboBoxHelper.SelectedBrush"
+        <Setter Property="local:ComboBoxHelper.SelectedBackground"
                 Value="#DDDDDD" />
         <Setter Property="VirtualizingStackPanel.IsVirtualizing"
                 Value="True" />
@@ -344,27 +344,61 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected"
                                  Value="True">
-                            <Setter TargetName="BdrMain"
-                                    Property="Background"
-                                    Value="{Binding Path=(local:ComboBoxHelper.SelectedBrush),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
+                           
                             <Setter TargetName="Presenter"
                                     Property="Opacity"
                                     Value="1" />
                         </Trigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="IsSelected"
-                                           Value="false" />
-                                <Condition Property="IsMouseOver"
-                                           Value="true" />
-                            </MultiTrigger.Conditions>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsSelected,RelativeSource={RelativeSource Self}}"
+                                           Value="True" />
+                                <Condition Binding="{Binding Path=(local:ComboBoxHelper.SelectedBackground), RelativeSource={RelativeSource AncestorType=ComboBox},Converter={StaticResource IsNullConverter}}"
+                                           Value="False" />
+                            </MultiDataTrigger.Conditions>
                             <Setter TargetName="BdrMain"
                                     Property="Background"
-                                    Value="{Binding Path=(local:ComboBoxHelper.HoverBrush),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
+                                    Value="{Binding Path=(local:ComboBoxHelper.SelectedBackground),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsSelected,RelativeSource={RelativeSource Self}}"
+                                           Value="True" />
+                                <Condition Binding="{Binding Path=(local:ComboBoxHelper.SelectedForeground), RelativeSource={RelativeSource AncestorType=ComboBox},Converter={StaticResource IsNullConverter}}"
+                                           Value="False" />
+                            </MultiDataTrigger.Conditions>
                             <Setter TargetName="Presenter"
-                                    Property="Opacity"
-                                    Value="0.7" />
-                        </MultiTrigger>
+                                    Property="TextBlock.Foreground"
+                                    Value="{Binding Path=(local:ComboBoxHelper.SelectedForeground),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
+                        </MultiDataTrigger>
+                        
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsSelected,RelativeSource={RelativeSource Self}}"
+                                           Value="False" />
+                                <Condition Binding="{Binding IsMouseOver,RelativeSource={RelativeSource Self}}"
+                                           Value="True" />
+                                <Condition Binding="{Binding Path=(local:ComboBoxHelper.HoverBackground), RelativeSource={RelativeSource AncestorType=ComboBox},Converter={StaticResource IsNullConverter}}"
+                                           Value="False" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="BdrMain"
+                                    Property="Background"
+                                    Value="{Binding Path=(local:ComboBoxHelper.HoverBackground),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
+                        </MultiDataTrigger>
+                        
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsSelected,RelativeSource={RelativeSource Self}}"
+                                           Value="False" />
+                                <Condition Binding="{Binding IsMouseOver,RelativeSource={RelativeSource Self}}"
+                                           Value="True" />
+                                <Condition Binding="{Binding Path=(local:ComboBoxHelper.HoverForeground), RelativeSource={RelativeSource AncestorType=ComboBox},Converter={StaticResource IsNullConverter}}"
+                                           Value="False" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="Presenter"
+                                    Property="TextBlock.Foreground"
+                                    Value="{Binding Path=(local:ComboBoxHelper.HoverForeground),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
+                        </MultiDataTrigger>
                     </ControlTemplate.Triggers>
 
                 </ControlTemplate>

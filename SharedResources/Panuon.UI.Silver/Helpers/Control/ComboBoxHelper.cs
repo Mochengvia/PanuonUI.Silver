@@ -25,34 +25,64 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("ItemHeight", typeof(double), typeof(ComboBoxHelper));
         #endregion
 
-        #region HoverBrush
-        public static Brush GetHoverBrush(DependencyObject obj)
+        #region HoverForeground
+        public static Brush GetHoverForeground(DependencyObject obj)
         {
-            return (Brush)obj.GetValue(HoverBrushProperty);
+            return (Brush)obj.GetValue(HoverForegroundProperty);
         }
 
-        public static void SetHoverBrush(DependencyObject obj, Brush value)
+        public static void SetHoverForeground(DependencyObject obj, Brush value)
         {
-            obj.SetValue(HoverBrushProperty, value);
+            obj.SetValue(HoverForegroundProperty, value);
         }
 
-        public static readonly DependencyProperty HoverBrushProperty =
-            DependencyProperty.RegisterAttached("HoverBrush", typeof(Brush), typeof(ComboBoxHelper));
+        public static readonly DependencyProperty HoverForegroundProperty =
+            DependencyProperty.RegisterAttached("HoverForeground", typeof(Brush), typeof(ComboBoxHelper));
         #endregion
 
-        #region SelectedBrush
-        public static Brush GetSelectedBrush(DependencyObject obj)
+        #region HoverBackground
+        public static Brush GetHoverBackground(DependencyObject obj)
         {
-            return (Brush)obj.GetValue(SelectedBrushProperty);
+            return (Brush)obj.GetValue(HoverBackgroundProperty);
         }
 
-        public static void SetSelectedBrush(DependencyObject obj, Brush value)
+        public static void SetHoverBackground(DependencyObject obj, Brush value)
         {
-            obj.SetValue(SelectedBrushProperty, value);
+            obj.SetValue(HoverBackgroundProperty, value);
         }
 
-        public static readonly DependencyProperty SelectedBrushProperty =
-            DependencyProperty.RegisterAttached("SelectedBrush", typeof(Brush), typeof(ComboBoxHelper));
+        public static readonly DependencyProperty HoverBackgroundProperty =
+            DependencyProperty.RegisterAttached("HoverBackground", typeof(Brush), typeof(ComboBoxHelper));
+        #endregion
+
+        #region SelectedForeground
+        public static Brush GetSelectedForeground(DependencyObject obj)
+        {
+            return (Brush)obj.GetValue(SelectedForegroundProperty);
+        }
+
+        public static void SetSelectedForeground(DependencyObject obj, Brush value)
+        {
+            obj.SetValue(SelectedForegroundProperty, value);
+        }
+
+        public static readonly DependencyProperty SelectedForegroundProperty =
+            DependencyProperty.RegisterAttached("SelectedForeground", typeof(Brush), typeof(ComboBoxHelper));
+        #endregion
+
+        #region SelectedBackground
+        public static Brush GetSelectedBackground(DependencyObject obj)
+        {
+            return (Brush)obj.GetValue(SelectedBackgroundProperty);
+        }
+
+        public static void SetSelectedBackground(DependencyObject obj, Brush value)
+        {
+            obj.SetValue(SelectedBackgroundProperty, value);
+        }
+
+        public static readonly DependencyProperty SelectedBackgroundProperty =
+            DependencyProperty.RegisterAttached("SelectedBackground", typeof(Brush), typeof(ComboBoxHelper));
         #endregion
 
         #region CornerRadius
