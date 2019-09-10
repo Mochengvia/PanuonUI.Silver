@@ -426,4 +426,7 @@
   <data name="Menu" xml:space="preserve">
     <value>Menu</value>
   </data>
+  <data name="AutoPlay" xml:space="preserve">
+    <value>AutoPlay</value>
+  </data>
 </root>

@@ -5,13 +5,18 @@ using System.Windows.Controls;
 using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Threading;
 
 namespace Panuon.UI.Silver
 {
     [ContentProperty(nameof(Children))]
     public class Carousel : Control
     {
-        private StackPanel _stackPanel;
+        #region Identifier
+        private StackPanel _stkMain;
+
+        private DispatcherTimer _dtAutoPlay;
+        #endregion
 
         static Carousel()
         {
@@ -37,7 +42,7 @@ namespace Panuon.UI.Silver
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            _stackPanel = VisualTreeHelper.GetChild(VisualTreeHelper.GetChild(this, 0), 0) as StackPanel;
+            _stkMain = VisualTreeHelper.GetChild(VisualTreeHelper.GetChild(this, 0), 0) as StackPanel;
         }
 
         private void Carousel_Loaded(object sender, RoutedEventArgs e)
@@ -89,46 +94,8 @@ namespace Panuon.UI.Silver
         public static readonly DependencyProperty IndexProperty =
             DependencyProperty.Register("Index", typeof(int), typeof(Carousel), new PropertyMetadata(0, OnIndexChanged));
 
-        private static void OnIndexChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var carousel = d as Carousel;
-            if (!carousel.IsLoaded)
-                return;
-
-            var targetIndex = 0;
-            if(!carousel.Recyclable)
-                targetIndex = carousel.Index > (carousel.Children.Count - 1) ? carousel.Children.Count - 1 : (carousel.Index < 0 ? 0 : carousel.Index);
-            else
-                targetIndex = carousel.Index > (carousel.Children.Count - 1) ? 0 : (carousel.Index < 0 ? carousel.Children.Count - 1 : carousel.Index);
-
-            if(targetIndex != carousel.Index)
-            {
-                carousel.Index = targetIndex;
-                return;
-            }
-
-            if (carousel.Orientation == Orientation.Vertical)
-            {
-                carousel._stackPanel.BeginAnimation(StackPanel.MarginProperty, new ThicknessAnimation()
-                {
-                    To = new Thickness(0, -1 * carousel.ActualHeight * carousel.Index, 0, 0),
-                    Duration = carousel.AnimateDuration,
-                    EasingFunction = new CubicEase() { EasingMode = EasingMode.EaseOut }
-                });
-            }
-            else
-            {
-                carousel._stackPanel.BeginAnimation(StackPanel.MarginProperty, new ThicknessAnimation()
-                {
-                    To = new Thickness(-1 * carousel.ActualWidth * carousel.Index, 0, 0, 0),
-                    Duration = carousel.AnimateDuration,
-                    EasingFunction = new CubicEase() { EasingMode = EasingMode.EaseOut }
-                });
-            }
-        }
-
         /// <summary>
-        /// 获取或设置滑动动画的持续时间。默认为0.5秒。
+        /// Gets or sets animation duration.
         /// </summary>
         public TimeSpan AnimateDuration
         {
@@ -140,7 +107,7 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("AnimateDuration", typeof(TimeSpan), typeof(Carousel), new PropertyMetadata(TimeSpan.FromSeconds(0.5)));
 
         /// <summary>
-        /// 获取或设置当滑动到最后一页（或第一页）时，是否允许回滚到第一页（或最后一页）。默认为False。
+        /// Gets or sets recyclable.
         /// </summary>
         public bool Recyclable
         {
@@ -151,9 +118,98 @@ namespace Panuon.UI.Silver
         public static readonly DependencyProperty RecyclableProperty =
             DependencyProperty.Register("Recyclable", typeof(bool), typeof(Carousel), new PropertyMetadata(false));
 
+
+        public TimeSpan AutoPlayInterval
+        {
+            get { return (TimeSpan)GetValue(AutoPlayIntervalProperty); }
+            set { SetValue(AutoPlayIntervalProperty, value); }
+        }
+
+        public static readonly DependencyProperty AutoPlayIntervalProperty =
+            DependencyProperty.Register("AutoPlayInterval", typeof(TimeSpan), typeof(Carousel), new PropertyMetadata(OnAutoPlayIntervalChanged));
+
+
+        #endregion
+
+        #region Event Handler
+        private static void OnAutoPlayIntervalChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var carousel = d as Carousel;
+            carousel.RestartAutoPlayTimer();
+        }
+
+        private void DispatcherTimerAutoPlay_Tick(object sender, EventArgs e)
+        {
+            Index++;
+        }
+
+        private static void OnIndexChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var carousel = d as Carousel;
+            if (!carousel.IsLoaded)
+                return;
+
+            var targetIndex = 0;
+            if (!carousel.Recyclable)
+                targetIndex = carousel.Index > (carousel.Children.Count - 1) ? carousel.Children.Count - 1 : (carousel.Index < 0 ? 0 : carousel.Index);
+            else
+                targetIndex = carousel.Index > (carousel.Children.Count - 1) ? 0 : (carousel.Index < 0 ? carousel.Children.Count - 1 : carousel.Index);
+
+            if (targetIndex != carousel.Index)
+            {
+                carousel.Index = targetIndex;
+                return;
+            }
+
+            carousel.ResetAutoPlayTimer();
+            if (carousel.Orientation == Orientation.Vertical)
+            {
+                carousel._stkMain.BeginAnimation(StackPanel.MarginProperty, new ThicknessAnimation()
+                {
+                    To = new Thickness(0, -1 * carousel.ActualHeight * carousel.Index, 0, 0),
+                    Duration = carousel.AnimateDuration,
+                    EasingFunction = new CubicEase() { EasingMode = EasingMode.EaseOut }
+                });
+            }
+            else
+            {
+                carousel._stkMain.BeginAnimation(StackPanel.MarginProperty, new ThicknessAnimation()
+                {
+                    To = new Thickness(-1 * carousel.ActualWidth * carousel.Index, 0, 0, 0),
+                    Duration = carousel.AnimateDuration,
+                    EasingFunction = new CubicEase() { EasingMode = EasingMode.EaseOut }
+                });
+            }
+        }
+
         #endregion
 
         #region Function
+        private void RestartAutoPlayTimer()
+        {
+            if(_dtAutoPlay != null)
+            {
+                _dtAutoPlay.Stop();
+            }
+            if(AutoPlayInterval.TotalSeconds != 0)
+            {
+                _dtAutoPlay = new DispatcherTimer()
+                {
+                    Interval = AutoPlayInterval,
+                };
+                _dtAutoPlay.Tick += DispatcherTimerAutoPlay_Tick;
+                _dtAutoPlay.Start();
+            }
+        }
+
+        private void ResetAutoPlayTimer()
+        {
+            if (_dtAutoPlay != null)
+            {
+                _dtAutoPlay.Stop();
+                _dtAutoPlay.Start();
+            }
+        }
 
         #endregion
     }

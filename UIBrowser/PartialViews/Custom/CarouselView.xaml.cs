@@ -23,13 +23,13 @@ namespace UIBrowser.PartialViews.Custom
         public CarouselView()
         {
             InitializeComponent();
-            Loaded += ButtonView_Loaded;
+            Loaded += CarouselView_Loaded;
             UpdateVisualEffect();
             _linearGradientBrush = FindResource("ColorSelectorBrush") as LinearGradientBrush;
         }
 
-        #region Event
-        private void ButtonView_Loaded(object sender, RoutedEventArgs e)
+        #region Event Handler
+        private void CarouselView_Loaded(object sender, RoutedEventArgs e)
         {
             UpdateTemplate();
             UpdateCode();
@@ -94,6 +94,13 @@ namespace UIBrowser.PartialViews.Custom
             CrlCustom.Recyclable = ChbRecyclable.IsChecked == true;
             UpdateCode();
         }
+
+        private void ChbAutoPlay_CheckChanged(object sender, RoutedEventArgs e)
+        {
+            ChbRecyclable.IsChecked = true;
+            CrlCustom.AutoPlayInterval = TimeSpan.FromSeconds(1);
+            UpdateCode();
+        }
         #endregion
 
         #region Function
@@ -117,11 +124,13 @@ namespace UIBrowser.PartialViews.Custom
         private void UpdateCode()
         {
             var recyclable = CrlCustom.Recyclable;
+            var autoPlay = CrlCustom.AutoPlayInterval;
             var index = CrlCustom.Index;
 
             TbCode.Text = $"<pu:Carousel  Width=\"{CrlCustom.ActualWidth}\"" +
                         $"\nHeight=\"{CrlCustom.ActualHeight}\"" +
                         (recyclable ? $"\nRecyclable=\"{recyclable}\"" : "") +
+                        (autoPlay.TotalSeconds == 0 ? "" : $"\nAutoPlayInterval=\"0:0:{autoPlay.TotalSeconds}\"") +
                         $"\nIndex=\"{CrlCustom.Index}\"" +
                         " >" +
                         "\n<Grid Background=\"#F15D26\" />" +
@@ -132,5 +141,7 @@ namespace UIBrowser.PartialViews.Custom
         }
 
         #endregion
+
+       
     }
 }

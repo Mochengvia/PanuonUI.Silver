@@ -84,6 +84,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="40" />
                             <RowDefinition Height="40" />
+                            <RowDefinition Height="40" />
                         </Grid.RowDefinitions>
                         <TextBlock Text="{x:Static localized:Resource.Index}"
                                    VerticalAlignment="Center" />
@@ -115,6 +116,20 @@
                                   VerticalAlignment="Center"
                                   Checked="ChbRecyclable_CheckChanged"
                                   Unchecked="ChbRecyclable_CheckChanged" />
+                        <TextBlock Grid.Row="2"
+                                   Text="{x:Static localized:Resource.AutoPlay}"
+                                   VerticalAlignment="Center" />
+                        <CheckBox x:Name="ChbAutoPlay"
+                                  pu:CheckBoxHelper.CheckBoxStyle="Switch"
+                                  pu:CheckBoxHelper.BoxHeight="25"
+                                  pu:CheckBoxHelper.BoxWidth="35"
+                                  pu:CheckBoxHelper.CheckedBackground="LightGray"
+                                  Grid.Row="2"
+                                  Grid.Column="1"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  Checked="ChbAutoPlay_CheckChanged"
+                                  Unchecked="ChbAutoPlay_CheckChanged" />
 
                     </Grid>
                     <Button x:Name="BtnViewCode"
