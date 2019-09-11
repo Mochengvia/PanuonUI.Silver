@@ -16,19 +16,12 @@ QQ Group : 718778191
 Zhihu : @末城via
 
 # News 动态  
-`2019-9-6 `  
-`1.0.5-rc 改动`  
-`移除了 'DataGridColumn' 特性, 新增 'IgnoreColumn', 'ColumnWidth', 'ReadOnlyColumn' 特性。这些特性位于Panuon.UI.Silver.Core命名空间中。使用方式如下：`
-```
-[DisplayName("名称")]
-[ColumnWidth("2*")]
-[ReadOnlyColumn()]
-public string Name { get;set; }
+`2019-9-11 v1.0.6-rc`
+`本次更新对一些参数进行了较大的修改。详情请参考下方的发布文档。`
 
-[IgnoreColumn()]
-public object CustomData { get;set; }
-```  
-`新增了MouseEventHelper辅助类。`
+# ReleaseNote 发布文档  
+
+https://github.com/Panuon/Panuon.Documents/blob/master/Documents/PanuonUI.Silver/release-note.zh-cn.md
 
 # Case 案例  
 
