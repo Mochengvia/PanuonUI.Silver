@@ -23,7 +23,7 @@ namespace Panuon.UI.Silver.Utils
         {
             try
             {
-                return (GridLength)_tcDataGridLength.ConvertFromString(widthOrHeight);
+                return (GridLength)_tcGridLength.ConvertFromString(widthOrHeight);
             }
             catch
             {

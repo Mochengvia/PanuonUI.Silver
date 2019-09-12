@@ -11,7 +11,6 @@
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Global\Attributes\" />
     <Folder Include="$(MSBuildThisFileDirectory)Global\Statics\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Helpers\Internal\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Badge.xaml.cs">

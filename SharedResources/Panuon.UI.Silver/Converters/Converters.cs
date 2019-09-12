@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Panuon.UI.Silver.Utils;
+using System;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -116,36 +117,8 @@ namespace Panuon.UI.Silver.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var row = value.ToString();
-            var length = 0.0;
-
-            if (row.Contains("*"))
-            {
-                row = row.Replace("*", "");
-                if (row == "")
-                    row = "1";
-
-                if (double.TryParse(row, out length))
-                {
-                    return new GridLength(length, GridUnitType.Star);
-                }
-                else
-                {
-                    return new GridLength(0, GridUnitType.Auto);
-                }
-            }
-            else
-            {
-                if (double.TryParse(row, out length))
-                {
-                    return new GridLength(length, GridUnitType.Pixel);
-                }
-                else
-                {
-                    return new GridLength(0, GridUnitType.Auto);
-                }
-
-            }
+            var length = value.ToString();
+            return GridLengthUtil.ConvertToGridLength(length);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
