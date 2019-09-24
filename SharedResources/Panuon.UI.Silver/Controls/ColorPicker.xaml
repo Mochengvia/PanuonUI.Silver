@@ -136,6 +136,7 @@
                 </ToggleButton.Style>
             </ToggleButton>
             <internal:NotTopMostPopup Placement="Bottom"
+                                      StaysOpen="{Binding StaysOpen,ElementName=picker}"
                                 x:Name="Popup"
                                 Focusable="False"
                                 Tag="{Binding ElementName=ToggleButton}"

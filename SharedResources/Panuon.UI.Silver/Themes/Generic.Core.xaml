@@ -1660,6 +1660,7 @@
                         <internal:NotTopMostPopup Placement="Bottom"
                                                   x:Name="Popup"
                                                   Focusable="False"
+                                                  StaysOpen="{TemplateBinding StaysOpen}"
                                                   Tag="{Binding ElementName=ToggleButton}"
                                                   AllowsTransparency="True"
                                                   PopupAnimation="Slide">
