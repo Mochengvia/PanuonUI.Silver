@@ -598,11 +598,13 @@
                                                       Height="{TemplateBinding Height}">
                                                     <TextBlock x:Name="arrow1"
                                                                Text=""
+                                                               FontSize="{Binding FontSize,RelativeSource={RelativeSource AncestorType=TreeView}}"
                                                                Foreground="{TemplateBinding Foreground}"
                                                                FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome" />
                                                     <TextBlock x:Name="arrow2"
                                                                Text=""
                                                                Foreground="{TemplateBinding Foreground}"
+                                                               FontSize="{Binding FontSize,RelativeSource={RelativeSource AncestorType=TreeView}}"
                                                                Opacity="0"
                                                                FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome" />
                                                 </Grid>
