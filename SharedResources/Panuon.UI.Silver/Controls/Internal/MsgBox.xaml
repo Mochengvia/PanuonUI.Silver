@@ -18,7 +18,7 @@
         ResizeMode="NoResize"
         SizeToContent="WidthAndHeight">
     <Window.Resources>
-        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Control.xaml" />
     </Window.Resources>
     <Border Background="White"
             CornerRadius="3"
