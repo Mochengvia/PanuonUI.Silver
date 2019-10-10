@@ -1,14 +1,10 @@
 ﻿using Panuon.UI.Silver.Core;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Markup;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
 
 namespace Panuon.UI.Silver
 {

@@ -205,10 +205,10 @@ namespace UIBrowser.PartialViews.Native
             TbCode.Text = "<Button  Height=\"30\"" +
                         $"\nWidth=\"{BtnCustom.Width}\"" +
                         $"\nContent=\"{BtnCustom.Content}\"" +
-                        (BtnCustom.Width < 60 ? $"\npu:ButtonHelper.WaitingContent=\"{{x:Null}}\"" : "")+
+                        (BtnCustom.Width < 60 ? $"\npu:ButtonHelper.WaitingContent=\"{{x:Null}}\"" : "") +
                         (isSink == ClickStyle.Sink ? $"\npu:ButtonHelper.ClickStyle=\"Sink\"" : "") +
-                        (isWaiting ? $"\npu:ButtonHelper.IsWaiting=\"True\"" : "")+
-                        "\nFontFamily=\"{DynamicResource FontAwesome}\"" +
+                        (isWaiting ? $"\npu:ButtonHelper.IsWaiting=\"True\"" : "") +
+                        "\nFontFamily=\"{StaticResource FontAwesome}\"" +
                         (buttonStyle == ButtonStyle.Standard ? "" : $"\npu:ButtonHelper.ButtonStyle=\"{buttonStyle}\"") +
                         (buttonStyle == ButtonStyle.Standard ? $"\nBackground=\"{BtnCustom.Background.ToColor().ToHexString()}\"" : "") +
                         (buttonStyle == ButtonStyle.Standard ? "" : $"\nBorderBrush=\"{BtnCustom.BorderBrush.ToColor().ToHexString()}\"") +

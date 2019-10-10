@@ -179,7 +179,7 @@ namespace UIBrowser.PartialViews.Native
                         (trackThickness == 3 ? "" : $"\npu:SliderHelper.TrackThickness=\"{trackThickness}\"") +
                         $"\npu:SliderHelper.ThemeBrush=\"{SliderHelper.GetThemeBrush(SldCustom).ToColor().ToHexString(false)}\"" +
                         $"\nBackground=\"{SldCustom.Background.ToColor().ToHexString()}\"" +
-                        (valueVisible ?  "" : "\npu:SliderHelper.IsTickValueVisible=\"True\"") +
+                        (valueVisible ? "" : "\npu:SliderHelper.IsTickValueVisible=\"True\"") +
                         (tickBarVisible ? "\nTickPlacement=\"Both\"" : "") +
 
                         " />";
@@ -188,6 +188,6 @@ namespace UIBrowser.PartialViews.Native
 
         #endregion
 
-       
+
     }
 }

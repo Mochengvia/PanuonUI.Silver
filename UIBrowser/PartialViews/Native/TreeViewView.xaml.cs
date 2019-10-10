@@ -160,7 +160,7 @@ namespace UIBrowser.PartialViews.Native
             TreeViewHelper.SetItemHeight(TvCustom, SldItemHeight.Value);
 
 
-            if(TreeViewHelper.GetTreeViewStyle(TvCustom) == TreeViewStyle.Standard || TreeViewHelper.GetTreeViewStyle(TvCustom) == TreeViewStyle.Chain)
+            if (TreeViewHelper.GetTreeViewStyle(TvCustom) == TreeViewStyle.Standard || TreeViewHelper.GetTreeViewStyle(TvCustom) == TreeViewStyle.Chain)
             {
                 foreach (TreeViewItem item in TvCustom.Items)
                 {
@@ -174,27 +174,27 @@ namespace UIBrowser.PartialViews.Native
             {
                 foreach (TreeViewItem item in TvCustom.Items)
                 {
-                    foreach(TreeViewItem itemx in item.Items)
+                    foreach (TreeViewItem itemx in item.Items)
                     {
                         itemx.Padding = new Thickness(20, 0, 0, 0);
                     }
                 }
             }
-           
+
             switch (TreeViewHelper.GetTreeViewStyle(TvCustom))
             {
                 case TreeViewStyle.Standard:
-                    TreeViewHelper.SetSelectedBrush(TvCustom, color.ToBrush());
+                    TreeViewHelper.SetSelectedBackground(TvCustom, color.ToBrush());
                     break;
                 case TreeViewStyle.Classic:
-                    TreeViewHelper.SetSelectedBrush(TvCustom, new Color() { A = 34, R = color.R, G = color.G, B = color.B }.ToBrush());
+                    TreeViewHelper.SetSelectedBackground(TvCustom, new Color() { A = 34, R = color.R, G = color.G, B = color.B }.ToBrush());
                     break;
                 case TreeViewStyle.Modern:
-                    TreeViewHelper.SetSelectedBrush(TvCustom, new Color() { A = 34, R = color.R, G = color.G, B = color.B }.ToBrush());
+                    TreeViewHelper.SetSelectedBackground(TvCustom, new Color() { A = 34, R = color.R, G = color.G, B = color.B }.ToBrush());
                     TvCustom.BorderBrush = color.ToBrush();
                     break;
                 case TreeViewStyle.Chain:
-                    TreeViewHelper.SetSelectedBrush(TvCustom, color.ToBrush());
+                    TreeViewHelper.SetSelectedBackground(TvCustom, color.ToBrush());
                     break;
             }
         }
@@ -214,7 +214,7 @@ namespace UIBrowser.PartialViews.Native
                         (expandMode == ExpandMode.DoubleClick ? "" : $"\npu:TreeViewHelper.SelectMode=\"{expandMode}\"") +
                         (expandBehaviour == ExpandBehaviour.Any ? "" : $"\npu:TreeViewHelper.SelectMode=\"{expandBehaviour}\"") +
                         (itemHeight == 40 ? "" : $"\npu:TreeViewHelper.ItemHeight=\"{itemHeight}\"") +
-                        $"\npu:TreeViewHelper.SelectedBrush=\"{TreeViewHelper.GetSelectedBrush(TvCustom).ToColor().ToHexString()}\"" +
+                        $"\npu:TreeViewHelper.SelectedBackground=\"{TreeViewHelper.GetSelectedBackground(TvCustom).ToColor().ToHexString()}\"" +
                         " >" +
                         "\n<TreeViewItem Header=\"Item1\"/>" +
                         "\n<TreeViewItem Header=\"Item2\"/>" +
@@ -225,6 +225,6 @@ namespace UIBrowser.PartialViews.Native
 
         #endregion
 
-       
+
     }
 }

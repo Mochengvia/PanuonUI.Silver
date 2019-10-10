@@ -1,9 +1,4 @@
 ﻿using Panuon.UI.Silver.Controls.Internal;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Panuon.UI.Silver
 {

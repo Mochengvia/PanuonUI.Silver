@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Text;
+﻿using Panuon.UI.Silver.Core;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Panuon.UI.Silver
 {
@@ -20,6 +10,7 @@ namespace Panuon.UI.Silver
     /// </summary>
     public partial class ColorPicker : ContentControl
     {
+        #region Constructor
         public ColorPicker()
         {
             InitializeComponent();
@@ -35,22 +26,26 @@ namespace Panuon.UI.Silver
                 UpdateText();
             };
         }
+        #endregion
 
         #region RoutedEvent
-        public static readonly RoutedEvent SelectedBrushChangedEvent = EventManager.RegisterRoutedEvent("SelectedBrushChanged", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(ColorPicker));
-        public event RoutedEventHandler SelectedBrushChanged
+        public static readonly RoutedEvent SelectedBrushChangedEvent = EventManager.RegisterRoutedEvent("SelectedBrushChanged", RoutingStrategy.Bubble, typeof(SelectedBrushChangedEventHandler), typeof(ColorPicker));
+        public event SelectedBrushChangedEventHandler SelectedBrushChanged
         {
             add { AddHandler(SelectedBrushChangedEvent, value); }
             remove { RemoveHandler(SelectedBrushChangedEvent, value); }
         }
-        void RaiseSelectedBrushChanged()
+        void RaiseSelectedBrushChanged(Brush brush)
         {
-            var arg = new RoutedEventArgs(SelectedBrushChangedEvent);
+            var arg = new SelectedBrushChangedEventArgs(brush, SelectedBrushChangedEvent);
             RaiseEvent(arg);
         }
         #endregion
 
         #region Property
+        /// <summary>
+        /// Gets or sets text.
+        /// </summary>
         public string Text
         {
             get { return (string)GetValue(TextProperty); }
@@ -60,6 +55,9 @@ namespace Panuon.UI.Silver
         public static readonly DependencyProperty TextProperty =
             DependencyProperty.Register("Text", typeof(string), typeof(ColorPicker));
 
+        /// <summary>
+        /// Gets or sets shadow color.
+        /// </summary>
         public Color ShadowColor
         {
             get { return (Color)GetValue(ShadowColorProperty); }
@@ -69,6 +67,9 @@ namespace Panuon.UI.Silver
         public static readonly DependencyProperty ShadowColorProperty =
             DependencyProperty.Register("ShadowColor", typeof(Color), typeof(ColorPicker));
 
+        /// <summary>
+        /// Gets or sets selected brush.
+        /// </summary>
         public SolidColorBrush SelectedBrush
         {
             get { return (SolidColorBrush)GetValue(SelectedBrushProperty); }
@@ -82,9 +83,12 @@ namespace Panuon.UI.Silver
         {
             var picker = d as ColorPicker;
             picker.UpdateText();
-            picker.RaiseSelectedBrushChanged();
+            picker.RaiseSelectedBrushChanged(picker.SelectedBrush);
         }
 
+        /// <summary>
+        /// Gets or sets is opacity enabled.
+        /// </summary>
         public bool IsOpacityEnabled
         {
             get { return (bool)GetValue(IsOpacityEnabledProperty); }
@@ -92,9 +96,17 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty IsOpacityEnabledProperty =
-            DependencyProperty.Register("IsOpacityEnabled", typeof(bool), typeof(ColorPicker), new PropertyMetadata(true));
+            DependencyProperty.Register("IsOpacityEnabled", typeof(bool), typeof(ColorPicker), new PropertyMetadata(true, OnIsOpacityEnabled));
 
+        private static void OnIsOpacityEnabled(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var picker = d as ColorPicker;
+            picker.UpdateText();
+        }
 
+        /// <summary>
+        /// Gets or sets corner radius.
+        /// </summary>
         public CornerRadius CornerRadius
         {
             get { return (CornerRadius)GetValue(CornerRadiusProperty); }
@@ -104,6 +116,9 @@ namespace Panuon.UI.Silver
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(ColorPicker));
 
+        /// <summary>
+        /// Gets or sets is text visible.
+        /// </summary>
         public bool IsTextVisible
         {
             get { return (bool)GetValue(IsTextVisibleProperty); }
@@ -113,7 +128,9 @@ namespace Panuon.UI.Silver
         public static readonly DependencyProperty IsTextVisibleProperty =
             DependencyProperty.Register("IsTextVisible", typeof(bool), typeof(ColorPicker), new PropertyMetadata(true));
 
-
+        /// <summary>
+        /// Gets or sets header.
+        /// </summary>
         public object Header
         {
             get { return (object)GetValue(HeaderProperty); }
@@ -123,6 +140,9 @@ namespace Panuon.UI.Silver
         public static readonly DependencyProperty HeaderProperty =
             DependencyProperty.Register("Header", typeof(object), typeof(ColorPicker));
 
+        /// <summary>
+        /// Gets or sets is measured value visible.
+        /// </summary>
         public bool IsMeasuredValueVisible
         {
             get { return (bool)GetValue(IsMeasuredValueVisibleProperty); }
@@ -138,6 +158,9 @@ namespace Panuon.UI.Silver
             picker.ColorSelector.Height = 340 - (picker.IsMeasuredValueVisible ? 0 : 50) - (picker.IsDefaultColorPanelVisible ? 0 : 70);
         }
 
+        /// <summary>
+        /// Gets or sets is default color panel visible.
+        /// </summary>
         public bool IsDefaultColorPanelVisible
         {
             get { return (bool)GetValue(IsDefaultColorPanelVisibleProperty); }
@@ -152,15 +175,6 @@ namespace Panuon.UI.Silver
             var picker = d as ColorPicker;
             picker.ColorSelector.Height = 340 - (picker.IsMeasuredValueVisible ? 0 : 50) - (picker.IsDefaultColorPanelVisible ? 0 : 70);
         }
-
-        public bool StaysOpen
-        {
-            get { return (bool)GetValue(StaysOpenProperty); }
-            set { SetValue(StaysOpenProperty, value); }
-        }
-
-        public static readonly DependencyProperty StaysOpenProperty =
-            DependencyProperty.Register("StaysOpen", typeof(bool), typeof(ColorPicker), new PropertyMetadata(false));
         #endregion
 
         #region Function

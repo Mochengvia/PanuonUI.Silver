@@ -99,7 +99,7 @@ namespace UIBrowser.PartialViews.Custom
             Clipboard.SetText(TbCode.Text);
         }
 
-        
+
 
         private void ChbIsRunning_CheckChanged(object sender, RoutedEventArgs e)
         {
@@ -131,21 +131,21 @@ namespace UIBrowser.PartialViews.Custom
             switch (LdCustom.LoadingStyle)
             {
                 case LoadingStyle.Standard:
-                    LdCustom.Stroke = color.ToBrush();
+                    LdCustom.Foreground = color.ToBrush();
                     break;
                 case LoadingStyle.Wave:
-                    LdCustom.Stroke = color.ToBrush();
+                    LdCustom.Foreground = color.ToBrush();
                     break;
                 case LoadingStyle.Classic:
-                    LdCustom.Stroke = color.ToBrush();
+                    LdCustom.Foreground = color.ToBrush();
                     break;
                 case LoadingStyle.Ring:
-                    LdCustom.Stroke = new Color() { A = 50, R = color.R, G = color.G, B = color.B }.ToBrush();
-                    LdCustom.StrokeCover = color.ToBrush();
+                    LdCustom.Background = new Color() { A = 50, R = color.R, G = color.G, B = color.B }.ToBrush();
+                    LdCustom.Foreground = color.ToBrush();
                     break;
                 case LoadingStyle.Ring2:
-                    LdCustom.Stroke = new Color() { A = 50, R = color.R, G = color.G, B = color.B }.ToBrush();
-                    LdCustom.StrokeCover = color.ToBrush();
+                    LdCustom.Background = new Color() { A = 50, R = color.R, G = color.G, B = color.B }.ToBrush();
+                    LdCustom.Foreground = color.ToBrush();
                     break;
             }
         }
@@ -158,8 +158,8 @@ namespace UIBrowser.PartialViews.Custom
             TbCode.Text = $"<pu:Loading  Width=\"{LdCustom.ActualWidth}\"" +
                         $"\nHeight=\"{LdCustom.ActualHeight}\"" +
                         (loadingStyle == LoadingStyle.Standard ? "" : $"\nLoadingStyle=\"{loadingStyle}\"") +
-                        $"\nStroke=\"{LdCustom.Stroke}\"" +
-                        ((loadingStyle == LoadingStyle.Ring || loadingStyle == LoadingStyle.Ring2) ? $"StrokeCover=\"{LdCustom.StrokeCover.ToColor().ToHexString(true)}\"" : "") +
+                        $"\nForeground=\"{LdCustom.Foreground.ToColor().ToHexString(false)}\"" +
+                        ((loadingStyle == LoadingStyle.Ring || loadingStyle == LoadingStyle.Ring2) ? $"\nBackground=\"{LdCustom.Background.ToColor().ToHexString(true)}\"" : "") +
                         (isRunning ? "\nIsRunning=\"True\"" : "") +
                         " />";
         }

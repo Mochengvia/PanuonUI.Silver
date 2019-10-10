@@ -1,6 +1,5 @@
 ﻿using Panuon.UI.Silver;
 using Panuon.UI.Silver.Core;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
@@ -32,16 +31,16 @@ namespace UIBrowser.PartialViews.Native
             _linearGradientBrush = FindResource("ColorSelectorBrush") as LinearGradientBrush;
             TestDataList = new List<DataGridTestModel>()
             {
-                new DataGridTestModel(){ Name = "Chris", IsEnabled = true, Score = 98,  },
-                new DataGridTestModel(){ Name = "Judy", Score = 100,  },
+                new DataGridTestModel(){ Name = "Chris", IsEnabled = true, Score = 98, Sex = DataGridTestEnum.Girl  },
+                new DataGridTestModel(){ Name = "Judy", Score = 100, Sex = DataGridTestEnum.Girl  },
                 new DataGridTestModel(){ Name = "Jack", IsEnabled = true, Score = 100,  },
                 new DataGridTestModel(){ Name = "Mario", IsEnabled = true, Score = 100,  },
-                new DataGridTestModel(){ Name = "Chris", IsEnabled = true, Score = 98,  },
-                new DataGridTestModel(){ Name = "Judy", Score = 100,  },
+                new DataGridTestModel(){ Name = "Chris", IsEnabled = true, Score = 98,  Sex = DataGridTestEnum.Girl },
+                new DataGridTestModel(){ Name = "Judy", Score = 100, Sex = DataGridTestEnum.Girl  },
                 new DataGridTestModel(){ Name = "Jack", IsEnabled = true, Score = 100,  },
                 new DataGridTestModel(){ Name = "Mario", IsEnabled = true, Score = 100,  },
-                new DataGridTestModel(){ Name = "Chris", IsEnabled = true, Score = 98,  },
-                new DataGridTestModel(){ Name = "Judy", Score = 100,  },
+                new DataGridTestModel(){ Name = "Chris", IsEnabled = true, Score = 98,  Sex = DataGridTestEnum.Girl },
+                new DataGridTestModel(){ Name = "Judy", Score = 100, Sex = DataGridTestEnum.Girl  },
                 new DataGridTestModel(){ Name = "Jack", IsEnabled = true, Score = 100,  },
                 new DataGridTestModel(){ Name = "Mario", IsEnabled = true, Score = 100,  },
             };
@@ -58,6 +57,8 @@ namespace UIBrowser.PartialViews.Native
         {
             UpdateTemplate();
             UpdateCode();
+
+           
         }
 
         private void SldHeaderMinHeight_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -176,6 +177,7 @@ namespace UIBrowser.PartialViews.Native
                         (ChbCenterColumn.IsChecked == true ? $"\npu:DataGridHelper.ColumnHorizontalContentAlignment=\"Center\"" : "") +
                         $"\npu:DataGridHelper.SelectedBackground=\"{DataGridHelper.GetSelectedBackground(DgCustom).ToColor().ToHexString()}\"" +
                         $"\npu:DataGridHelper.HoverBackground=\"{DataGridHelper.GetHoverBackground(DgCustom).ToColor().ToHexString()}\"" +
+                        $"\nCanUserAddRows=\"False\"" +
                         " >" +
                         "\n<pu:DataGridHelper.AutoGenerateCheckBoxStyle>" +
                             "\n<Style TargetType=\"CheckBox\"" +
@@ -198,20 +200,30 @@ namespace UIBrowser.PartialViews.Native
 
     public class DataGridTestModel
     {
-        [DisplayName("名称")]
-        [ReadOnlyColumn()]
+        [DisplayName("Name (Read Only) ")]
+        [ReadOnlyColumn]
         [ColumnWidth("*")]
         public string Name { get; set; }
 
-        [DisplayName("分数")]
-        [ColumnWidth("0.5*")]
+        [DisplayName("Score")]
         public int Score { get; set; }
 
-        [DisplayName("已启用")]
+        [DisplayName("IsEnabled")]
         public bool IsEnabled { get; set; }
 
-        [IgnoreColumn()]
+        [DisplayName("Sex")]
+        [ColumnWidth("0.5*")]
+        public DataGridTestEnum Sex { get; set; }
+
+        [IgnoreColumn]
         public object CustomData { get; set; }
 
     }
+
+    public enum DataGridTestEnum
+    {
+        Boy,
+        Girl,
+    }
+
 }

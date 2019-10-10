@@ -128,7 +128,7 @@ namespace UIBrowser.PartialViews.Native
             if (!IsLoaded)
                 return;
 
-           PgbCustom.IsIndeterminate = ChbIndeterminate.IsChecked == true;
+            PgbCustom.IsIndeterminate = ChbIndeterminate.IsChecked == true;
 
             UpdateCode();
         }

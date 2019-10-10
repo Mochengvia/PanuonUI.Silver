@@ -19,7 +19,7 @@ namespace Panuon.UI.Silver.Converters
             switch (icon)
             {
                 case MessageBoxIcon.Info:
-                    path = $"M {thickness/2},{0.2 * width} V {0.2 * width} M {thickness/2},{0.35 * width} V {0.8 * width}";
+                    path = $"M {thickness / 2},{0.2 * width} V {0.2 * width} M {thickness / 2},{0.35 * width} V {0.8 * width}";
                     break;
                 case MessageBoxIcon.Error:
                     path = $"M {0.3 * width},{0.3 * width} L {0.7 * width},{0.7 * width} M {0.7 * width},{0.3 * width} L {0.3 * width},{0.7 * width}";

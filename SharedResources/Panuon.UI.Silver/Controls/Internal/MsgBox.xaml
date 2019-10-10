@@ -22,7 +22,8 @@
     </Window.Resources>
     <Border Background="White"
             CornerRadius="3"
-            Margin="5">
+            Margin="5"
+MouseLeftButtonDown="BdrMain_MouseLeftButtonDown">
         <Border.Effect>
             <DropShadowEffect Color="LightGray"
                               BlurRadius="5"
@@ -473,7 +474,7 @@
                         <RowDefinition Height="50" />
                     </Grid.RowDefinitions>
                     <Grid VerticalAlignment="Center"
-                          Margin="0,30,0,10">
+                          Margin="0,30,0,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="{Binding MessageBoxIcon,ElementName=Msb, Converter={StaticResource MsbCheckIconWidthConverter}}" />
                             <ColumnDefinition />

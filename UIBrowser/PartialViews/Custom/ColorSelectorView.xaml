@@ -28,7 +28,7 @@
                         <TextBox.ContextMenu>
                             <ContextMenu>
                                 <MenuItem Header="{x:Static localized:Resource.CopyCode}"
-                                          pu:ContextMenuHelper.ItemIcon="&#xf0c5;"
+                                          Icon="&#xf0c5;"
                                           Click="MenuItem_CopyCode" />
                             </ContextMenu>
                         </TextBox.ContextMenu>

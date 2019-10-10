@@ -1,5 +1,4 @@
 ﻿using Caliburn.Micro;
-using System;
 
 namespace UIBrowser.Models
 {
@@ -39,6 +38,7 @@ namespace UIBrowser.Models
                      {
                          new TreeViewItemModel(Properties.Resource.WindowX,"WindowX"),
                          new TreeViewItemModel(Properties.Resource.MessageBoxX,"MessageBoxX"),
+                         new TreeViewItemModel(Properties.Resource.PendingBox,"PendingBox"),
                          new TreeViewItemModel(Properties.Resource.Notice,"Notice"),
                          new TreeViewItemModel(Properties.Resource.Badge,"Badge"),
                          new TreeViewItemModel(Properties.Resource.Calendar,"Calendar"),
@@ -71,7 +71,7 @@ namespace UIBrowser.Models
 
         public string SearchText
         {
-            get { return _searchText; }
+            get => _searchText;
             set { _searchText = value; NotifyOfPropertyChange(); OnSearchTextChanged(); }
         }
 
@@ -80,7 +80,7 @@ namespace UIBrowser.Models
 
         public IObservableCollection<TreeViewItemModel> MenuItems
         {
-            get { return _menuItems; }
+            get => _menuItems;
             set { _menuItems = value; NotifyOfPropertyChange(); }
         }
         private IObservableCollection<TreeViewItemModel> _menuItems;

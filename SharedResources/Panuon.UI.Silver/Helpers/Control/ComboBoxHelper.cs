@@ -1,10 +1,10 @@
-﻿using System;
-using System.Diagnostics;
-using System.Linq;
+﻿using Panuon.UI.Silver.Core;
+using System;
+using System.Collections;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System.Windows.Threading;
 
 namespace Panuon.UI.Silver
 {
@@ -103,7 +103,7 @@ namespace Panuon.UI.Silver
         #region Icon
         public static object GetIcon(DependencyObject obj)
         {
-            return (object)obj.GetValue(IconProperty);
+            return obj.GetValue(IconProperty);
         }
 
         public static void SetIcon(DependencyObject obj, object value)
@@ -160,10 +160,25 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("IsSearchTextBoxVisible", typeof(bool), typeof(ComboBoxHelper));
         #endregion
 
+        #region SearchTextBoxWatermark
+        public static string GetSearchTextBoxWatermark(DependencyObject obj)
+        {
+            return (string)obj.GetValue(SearchTextBoxWatermarkProperty);
+        }
+
+        public static void SetSearchTextBoxWatermark(DependencyObject obj, string value)
+        {
+            obj.SetValue(SearchTextBoxWatermarkProperty, value);
+        }
+
+        public static readonly DependencyProperty SearchTextBoxWatermarkProperty =
+            DependencyProperty.RegisterAttached("SearchTextBoxWatermark", typeof(string), typeof(ComboBoxHelper));
+        #endregion
+
         #region (Event) SearchTextChanged
 
-        public static readonly RoutedEvent SearchTextChangedEvent = EventManager.RegisterRoutedEvent("SearchTextChanged", RoutingStrategy.Bubble, typeof(RoutedPropertyChangedEventHandler<string>), typeof(ComboBoxHelper));
-        public static void AddSearchTextChangedHandler(DependencyObject d, RoutedPropertyChangedEventHandler<string> handler)
+        public static readonly RoutedEvent SearchTextChangedEvent = EventManager.RegisterRoutedEvent("SearchTextChanged", RoutingStrategy.Bubble, typeof(SearchTextChangedEventHandler), typeof(ComboBoxHelper));
+        public static void AddSearchTextChangedHandler(DependencyObject d, SearchTextChangedEventHandler handler)
         {
             UIElement uie = d as UIElement;
             if (uie != null)
@@ -171,7 +186,7 @@ namespace Panuon.UI.Silver
                 uie.AddHandler(SearchTextChangedEvent, handler);
             }
         }
-        public static void RemoveSearchTextChangedHandler(DependencyObject d, RoutedPropertyChangedEventHandler<string> handler)
+        public static void RemoveSearchTextChangedHandler(DependencyObject d, SearchTextChangedEventHandler handler)
         {
             UIElement uie = d as UIElement;
             if (uie != null)
@@ -180,9 +195,9 @@ namespace Panuon.UI.Silver
             }
         }
 
-        private static void RaiseSearchTextChanged(UIElement uie, string newValue, string oldValue)
+        private static void RaiseSearchTextChanged(UIElement uie, string newValue)
         {
-            var arg = new RoutedPropertyChangedEventArgs<string>(oldValue, newValue, SearchTextChangedEvent);
+            var arg = new SearchTextChangedEventArgs(newValue, SearchTextChangedEvent);
             uie.RaiseEvent(arg);
         }
         #endregion
@@ -207,7 +222,7 @@ namespace Panuon.UI.Silver
             var comboBox = d as ComboBox;
             comboBox.DropDownClosed -= ComboBox_DropDownClosed;
             comboBox.DropDownClosed += ComboBox_DropDownClosed;
-            RaiseSearchTextChanged(comboBox, (string)e.NewValue, (string)e.OldValue);
+            RaiseSearchTextChanged(comboBox, (string)e.NewValue);
         }
 
         private static void ComboBox_DropDownClosed(object sender, EventArgs e)
@@ -220,7 +235,7 @@ namespace Panuon.UI.Silver
         #region Header
         public static object GetHeader(DependencyObject obj)
         {
-            return (object)obj.GetValue(HeaderProperty);
+            return obj.GetValue(HeaderProperty);
         }
 
         public static void SetHeader(DependencyObject obj, object value)
@@ -250,7 +265,7 @@ namespace Panuon.UI.Silver
         #region BindToEnum
         public static object GetBindToEnum(DependencyObject obj)
         {
-            return (object)obj.GetValue(BindToEnumProperty);
+            return obj.GetValue(BindToEnumProperty);
         }
 
         public static void SetBindToEnum(DependencyObject obj, Enum value)
@@ -265,19 +280,44 @@ namespace Panuon.UI.Silver
         {
             var comboBox = d as ComboBox;
             var obj = e.NewValue as object;
-            var en = obj.GetType();
-            if (!en.IsEnum)
-                throw new Exception($"\"{en.Name}\" is not enum type.");
+            var type = obj.GetType();
+            if (!type.IsEnum)
+                throw new Exception($"\"{type.Name}\" is not enum type.");
 
-            if (en == null)
+            if (type == null)
             {
                 comboBox.ItemsSource = null;
                 comboBox.SelectedItem = null;
             }
             else
             {
-                comboBox.ItemsSource = Enum.GetValues(en).Cast<Enum>();
-                comboBox.SelectedItem = obj;
+                var enumList = new ArrayList();
+                foreach (Enum item in Enum.GetValues(type))
+                {
+                    var field = type.GetField(item.ToString());
+                    if (null != field)
+                    {
+                        var descriptions = field.GetCustomAttributes(typeof(DescriptionAttribute), true) as DescriptionAttribute[];
+                        if (descriptions.Length > 0)
+                        {
+                            enumList.Add(new
+                            {
+                                Name = descriptions[0].Description,
+                                Enum = item,
+                            });
+                        }
+                        else
+                            enumList.Add(new
+                            {
+                                Name = item.ToString(),
+                                Enum = item,
+                            });
+                    }
+                }
+                comboBox.ItemsSource = enumList;
+                comboBox.DisplayMemberPath = "Name";
+                comboBox.SelectedValuePath = "Enum";
+                comboBox.SelectedValue = obj;
             }
         }
         #endregion

@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Panuon.UI.Silver
 {
@@ -27,6 +18,7 @@ namespace Panuon.UI.Silver
 
         #endregion
 
+        #region Constructor
         public Badge()
         {
             InitializeComponent();
@@ -36,6 +28,7 @@ namespace Panuon.UI.Silver
             Background = "#3E3E3E".ToColor().ToBrush();
             Foreground = Colors.White.ToBrush();
         }
+        #endregion
 
         #region Property
         public string Text
@@ -77,7 +70,7 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("Content", typeof(object), typeof(Badge));
         #endregion
 
-        #region Event
+        #region Event Handler
         private static void OnTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var badge = d as Badge;

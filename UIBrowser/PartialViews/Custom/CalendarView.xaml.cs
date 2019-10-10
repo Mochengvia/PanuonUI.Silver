@@ -26,7 +26,7 @@ namespace UIBrowser.PartialViews.Custom
             Loaded += ButtonView_Loaded;
             UpdateVisualEffect();
             _linearGradientBrush = FindResource("ColorSelectorBrush") as LinearGradientBrush;
-            
+
         }
 
         #region Event
@@ -104,7 +104,7 @@ namespace UIBrowser.PartialViews.Custom
             if (!IsLoaded)
                 return;
 
-            CdrCustom.IsSundayFirst = ChbSundayFirst.IsChecked == true ;
+            CdrCustom.IsSundayFirst = ChbSundayFirst.IsChecked == true;
 
             UpdateCode();
         }

@@ -1,19 +1,8 @@
 ﻿using Caliburn.Micro;
 using Panuon.UI.Silver;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using UIBrowser.Helpers;
 
 namespace UIBrowser.PartialViews
@@ -65,7 +54,7 @@ namespace UIBrowser.PartialViews
 
         public Brush Brush
         {
-            get { return _brush; }
+            get => _brush;
             set { _brush = value; NotifyOfPropertyChange(); }
         }
         private Brush _brush;
@@ -73,14 +62,14 @@ namespace UIBrowser.PartialViews
 
         public Brush LightBrush
         {
-            get { return _lightBrush; }
+            get => _lightBrush;
             set { _lightBrush = value; NotifyOfPropertyChange(); }
         }
         private Brush _lightBrush;
 
         public Brush BrushTran1
         {
-            get { return _brushTran1; }
+            get => _brushTran1;
             set { _brushTran1 = value; NotifyOfPropertyChange(); }
         }
         private Brush _brushTran1;
@@ -88,7 +77,7 @@ namespace UIBrowser.PartialViews
 
         public Brush BrushTran2
         {
-            get { return _brushTran2; }
+            get => _brushTran2;
             set { _brushTran2 = value; NotifyOfPropertyChange(); }
         }
         private Brush _brushTran2;

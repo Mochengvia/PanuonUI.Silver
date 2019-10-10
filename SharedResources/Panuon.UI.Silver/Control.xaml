@@ -19,6 +19,5 @@
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/TabControl.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Menu.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/ContextMenu.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/ListBox.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

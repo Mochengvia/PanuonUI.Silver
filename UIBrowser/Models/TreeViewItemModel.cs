@@ -1,9 +1,4 @@
 ﻿using Caliburn.Micro;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace UIBrowser.Models
@@ -26,21 +21,21 @@ namespace UIBrowser.Models
 
         public Visibility Visibility
         {
-            get { return _visibility; }
+            get => _visibility;
             set { _visibility = value; NotifyOfPropertyChange(); }
         }
         private Visibility _visibility = Visibility.Visible;
 
         public bool IsExpanded
         {
-            get { return _isExpanded; }
+            get => _isExpanded;
             set { _isExpanded = value; NotifyOfPropertyChange(); }
         }
         private bool _isExpanded = true;
 
         public IObservableCollection<TreeViewItemModel> MenuItems
         {
-            get { return _menuItems; }
+            get => _menuItems;
             set { _menuItems = value; NotifyOfPropertyChange(); }
         }
         private IObservableCollection<TreeViewItemModel> _menuItems;

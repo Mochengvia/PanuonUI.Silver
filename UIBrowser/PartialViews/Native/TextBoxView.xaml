@@ -29,7 +29,7 @@
                         <TextBox.ContextMenu>
                             <ContextMenu>
                                 <MenuItem Header="{x:Static localized:Resource.CopyCode}"
-                                          pu:ContextMenuHelper.ItemIcon="&#xf0c5;"
+                                          Icon="&#xf0c5;"
                                           Click="MenuItem_CopyCode"/>
                             </ContextMenu>
                         </TextBox.ContextMenu>
@@ -48,7 +48,7 @@
                                     HorizontalAlignment="Center"
                                     Height="30"
                                     Width="200"
-                                    FontFamily="{DynamicResource FontAwesome}" />
+                                    FontFamily="{StaticResource FontAwesome}" />
                         </Grid>
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -56,6 +56,7 @@
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
+                                <RowDefinition Height="40" />
                                 <RowDefinition Height="40" />
                                 <RowDefinition Height="40" />
                                 <RowDefinition Height="40" />
@@ -128,6 +129,20 @@
                                       VerticalAlignment="Center"
                                       Checked="ChbShowWatermark_CheckChanged"
                                       Unchecked="ChbShowWatermark_CheckChanged" />
+                            <TextBlock Grid.Row="4"
+                                       Text="{x:Static localized:Resource.ClearButton}"
+                                       VerticalAlignment="Center" />
+                            <CheckBox x:Name="ChbShowClearButton"
+                                      pu:CheckBoxHelper.CheckBoxStyle="Switch"
+                                      pu:CheckBoxHelper.BoxHeight="25"
+                                      pu:CheckBoxHelper.BoxWidth="35"
+                                      pu:CheckBoxHelper.CheckedBackground="LightGray"
+                                      Grid.Row="4"
+                                      Grid.Column="1"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      Checked="ChbShowClearButton_CheckChanged"
+                                      Unchecked="ChbShowClearButton_CheckChanged" />
 
                         </Grid>
                     </StackPanel>

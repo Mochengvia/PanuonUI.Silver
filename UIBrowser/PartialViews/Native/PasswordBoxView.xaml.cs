@@ -1,5 +1,4 @@
 ﻿using Panuon.UI.Silver;
-using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -101,7 +100,7 @@ namespace UIBrowser.PartialViews.Native
             if (!IsLoaded)
                 return;
 
-            PasswordBoxHelper.SetIcon(PbCustom, ChbShowIcon.IsChecked == true ? "" : null);
+            PasswordBoxHelper.SetIcon(PbCustom, ChbShowIcon.IsChecked == true ? "\uf11c" : null);
 
             UpdateCode();
         }
@@ -116,6 +115,15 @@ namespace UIBrowser.PartialViews.Native
             UpdateCode();
         }
 
+        private void ChbShowPwdButton_CheckChanged(object sender, RoutedEventArgs e)
+        {
+            if (!IsLoaded)
+                return;
+
+            PasswordBoxHelper.SetIsShowPwdButtonVisible(PbCustom, ChbShowPwdButton.IsChecked == true);
+
+            UpdateCode();
+        }
         #endregion
 
         #region Function
@@ -146,20 +154,23 @@ namespace UIBrowser.PartialViews.Native
             var icon = PasswordBoxHelper.GetIcon(PbCustom);
             var watermark = PasswordBoxHelper.GetWatermark(PbCustom);
             var cornerRadius = SldCornerRadius.Value;
+            var isShowPwdButtonVisible = PasswordBoxHelper.GetIsShowPwdButtonVisible(PbCustom);
 
             TbCode.Text = "<PasswordBox  Height=\"30\"" +
                         $"\nWidth=\"{PbCustom.Width}\"" +
                         (watermark == null ? "" : $"\npu:PasswordBoxHelper.Watermark=\"{watermark}\"") +
-                        (icon == null ? "" : $"\npu:PasswordBoxHelper.Icon=\"{icon}\"") +
+                        (icon == null ? "" : $"\npu:PasswordBoxHelper.Icon=\"&#xf11c;\"") +
                         $"\npu:PasswordBoxHelper.FocusedBorderBrush=\"{PasswordBoxHelper.GetFocusedBorderBrush(PbCustom).ToColor().ToHexString(false)}\"" +
                         $"\npu:PasswordBoxHelper.FocusedShadowColor=\"{PasswordBoxHelper.GetFocusedShadowColor(PbCustom).ToHexString(false)}\"" +
                         (cornerRadius == 0 ? "" : $"\npu:PasswordBoxHelper.CornerRadius=\"{cornerRadius}\"") +
+                        (isShowPwdButtonVisible ? $"\npu:PasswordBoxHelper.IsShowPwdButtonVisible=\"{isShowPwdButtonVisible}\"" : "") +
                         " />";
         }
 
 
+
         #endregion
 
-       
+
     }
 }

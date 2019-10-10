@@ -20,15 +20,15 @@ namespace Panuon.UI.Silver.Converters
                 return values[2];
 
             var result = propertyInfo.GetValue(item, null);
-            if(result is Brush)
+            if (result is Brush)
             {
                 return result;
             }
-            if(result is Color)
+            if (result is Color)
             {
                 return new SolidColorBrush((Color)result);
             }
-            if(result is string)
+            if (result is string)
             {
                 return new SolidColorBrush((Color)ColorConverter.ConvertFromString(result as string));
             }

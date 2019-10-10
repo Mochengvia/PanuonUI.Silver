@@ -14,8 +14,6 @@
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="FontSize"
                 Value="{StaticResource Default_FontSize}" />
-        <Setter Property="FocusVisualStyle"
-                Value="{x:Null}" />
         <Setter Property="local:ListBoxHelper.ItemHeight"
                 Value="30" />
         <Setter Property="local:ListBoxHelper.HoverBackground"
@@ -81,8 +79,6 @@
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="FontSize"
                 Value="{StaticResource Default_FontSize}" />
-        <Setter Property="FocusVisualStyle"
-                Value="{x:Null}" />
         <Setter Property="BorderBrush"
                 Value="Transparent" />
         <Setter Property="BorderThickness"
@@ -152,8 +148,7 @@
                                 <Condition Binding="{Binding Path=(local:ListBoxHelper.HoverForeground), RelativeSource={RelativeSource AncestorType=ListBox},Converter={StaticResource IsNullConverter}}"
                                            Value="False" />
                             </MultiDataTrigger.Conditions>
-                            <Setter 
-                                    Property="Foreground"
+                            <Setter Property="Foreground"
                                     Value="{Binding Path=(local:ListBoxHelper.HoverForeground),RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
                         </MultiDataTrigger>
                         <Trigger Property="IsSelected"
@@ -169,10 +164,8 @@
                                 <Condition Binding="{Binding Path=(local:ListBoxHelper.SelectedForeground), RelativeSource={RelativeSource AncestorType=ListBox},Converter={StaticResource IsNullConverter}}"
                                            Value="False" />
                             </MultiDataTrigger.Conditions>
-                            <Setter 
-                                    Property="Foreground"
+                            <Setter Property="Foreground"
                                     Value="{Binding Path=(local:ListBoxHelper.SelectedForeground),RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
-                           
                         </MultiDataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

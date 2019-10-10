@@ -1,0 +1,63 @@
+﻿<UserControl x:Class="UIBrowser.PartialViews.Custom.PendingBoxView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:UIBrowser.PartialViews.Custom"
+             xmlns:pu="clr-namespace:Panuon.UI.Silver;assembly=Panuon.UI.Silver"
+             xmlns:localized="clr-namespace:UIBrowser.Properties"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <Grid>
+        <Rectangle x:Name="RectBackground" />
+        <GroupBox VerticalAlignment="Center"
+                  Header="PendingBox Examples"
+                  Width="400"
+                  Background="White"
+                  pu:GroupBoxHelper.Effect="{DynamicResource DropShadow}">
+            
+            <ScrollViewer Margin="0,0,0,20"
+                          MaxHeight="300"
+                          VerticalScrollBarVisibility="Auto"
+                          HorizontalScrollBarVisibility="Disabled">
+                <StackPanel>
+                    <TextBlock Text="ULBrowser/PartialViews/Custom/PendingBoxView.xaml"
+                               Margin="0,0,0,20" />
+                    <Button Content="Standard"
+                            Height="30"
+                            HorizontalAlignment="Left"
+                            Padding="50,0"
+                            Click="BtnStandard_Click"
+                            pu:ButtonHelper.ButtonStyle="Outline"
+                            pu:ButtonHelper.HoverBrush="#FF3CBCC9" />
+                    <Button Content="Standard - Cancelable"
+                            Height="30"
+                            HorizontalAlignment="Left"
+                            Margin="0,15,0,0"
+                            Padding="50,0"
+                            Click="BtnStandardCancelable_Click"
+                            pu:ButtonHelper.ButtonStyle="Outline"
+                            pu:ButtonHelper.HoverBrush="#FF3CBCC9" />
+                    <Button Content="Classic"
+                            Height="30"
+                            HorizontalAlignment="Left"
+                            Margin="0,15,0,0"
+                            Padding="50,0"
+                            Click="BtnClassic_Click"
+                            pu:ButtonHelper.ButtonStyle="Outline"
+                            pu:ButtonHelper.HoverBrush="#FF3CBCC9" />
+                    <Button Content="Classic - Cancelable"
+                            Height="30"
+                            HorizontalAlignment="Left"
+                            Margin="0,15,0,0"
+                            Padding="50,0"
+                            Click="BtnClassicCancelable_Click"
+                            pu:ButtonHelper.ButtonStyle="Outline"
+                            pu:ButtonHelper.HoverBrush="#FF3CBCC9" />
+                </StackPanel>
+
+            </ScrollViewer>
+        </GroupBox>
+    </Grid>
+</UserControl>

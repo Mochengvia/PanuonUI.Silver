@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace Panuon.UI.Silver
@@ -21,18 +22,18 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region FocusedShadowColor
-        public static Color GetFocusedShadowColor(DependencyObject obj)
+        public static Color? GetFocusedShadowColor(DependencyObject obj)
         {
-            return (Color)obj.GetValue(FocusedShadowColorProperty);
+            return (Color?)obj.GetValue(FocusedShadowColorProperty);
         }
 
-        public static void SetFocusedShadowColor(DependencyObject obj, Color value)
+        public static void SetFocusedShadowColor(DependencyObject obj, Color? value)
         {
             obj.SetValue(FocusedShadowColorProperty, value);
         }
 
         public static readonly DependencyProperty FocusedShadowColorProperty =
-            DependencyProperty.RegisterAttached("FocusedShadowColor", typeof(Color), typeof(TextBoxHelper));
+            DependencyProperty.RegisterAttached("FocusedShadowColor", typeof(Color?), typeof(TextBoxHelper));
 
         #endregion
 
@@ -71,7 +72,7 @@ namespace Panuon.UI.Silver
         #region Icon
         public static object GetIcon(DependencyObject obj)
         {
-            return (object)obj.GetValue(IconProperty);
+            return obj.GetValue(IconProperty);
         }
 
         public static void SetIcon(DependencyObject obj, object value)
@@ -86,7 +87,7 @@ namespace Panuon.UI.Silver
         #region Header
         public static object GetHeader(DependencyObject obj)
         {
-            return (object)obj.GetValue(HeaderProperty);
+            return obj.GetValue(HeaderProperty);
         }
 
         public static void SetHeader(DependencyObject obj, object value)
@@ -113,5 +114,59 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("HeaderWidth", typeof(string), typeof(TextBoxHelper), new PropertyMetadata("Auto"));
         #endregion
 
+        #region IsClearButtonVisible
+        public static bool GetIsClearButtonVisible(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(IsClearButtonVisibleProperty);
+        }
+
+        public static void SetIsClearButtonVisible(DependencyObject obj, bool value)
+        {
+            obj.SetValue(IsClearButtonVisibleProperty, value);
+        }
+
+        public static readonly DependencyProperty IsClearButtonVisibleProperty =
+            DependencyProperty.RegisterAttached("IsClearButtonVisible", typeof(bool), typeof(TextBoxHelper));
+        #endregion
+
+        #region (Internal) TextBoxHook
+        internal static bool GetTextBoxHook(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(TextBoxHookProperty);
+        }
+
+        internal static void SetTextBoxHook(DependencyObject obj, bool value)
+        {
+            obj.SetValue(TextBoxHookProperty, value);
+        }
+
+        internal static readonly DependencyProperty TextBoxHookProperty =
+            DependencyProperty.RegisterAttached("TextBoxHook", typeof(bool), typeof(TextBoxHelper), new PropertyMetadata(OnTextBoxHookChanged));
+
+
+        private static void OnTextBoxHookChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var textbox = d as TextBox;
+            textbox.RemoveHandler(Button.ClickEvent, new RoutedEventHandler(ClearButtonClicked));
+            textbox.AddHandler(Button.ClickEvent, new RoutedEventHandler(ClearButtonClicked));
+        }
+
+        private static void ClearButtonClicked(object sender, RoutedEventArgs e)
+        {
+            var button = e.OriginalSource as Button;
+
+            if (button == null || button.Name != "PART_BtnClear")
+                return;
+
+            var textbox = sender as TextBox;
+
+            if (textbox == null)
+                return;
+
+            textbox.Text = "";
+        }
+
+
+        #endregion
     }
 }

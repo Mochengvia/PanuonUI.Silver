@@ -28,7 +28,7 @@ namespace UIBrowser.PartialViews.Native
             _linearGradientBrush = FindResource("ColorSelectorBrush") as LinearGradientBrush;
         }
 
-        #region Event
+        #region Event Handler
 
         private void ButtonView_Loaded(object sender, RoutedEventArgs e)
         {
@@ -181,6 +181,6 @@ namespace UIBrowser.PartialViews.Native
         }
         #endregion
 
-      
+
     }
 }

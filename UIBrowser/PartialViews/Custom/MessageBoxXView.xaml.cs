@@ -1,13 +1,7 @@
 ﻿using Panuon.UI.Silver;
 using Panuon.UI.Silver.Core;
-using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Effects;
-using UIBrowser.Examples;
-using UIBrowser.Helpers;
 
 namespace UIBrowser.PartialViews.Custom
 {
@@ -38,7 +32,7 @@ namespace UIBrowser.PartialViews.Custom
             var result = MessageBoxX.Show(_message, "Error", Application.Current.MainWindow, MessageBoxButton.YesNo, new MessageBoxXConfigurations()
             {
                 MessageBoxIcon = MessageBoxIcon.Error,
-                ThemeBrush = "#FF4C4C".ToColor().ToBrush(),
+                ButtonBrush = "#FF4C4C".ToColor().ToBrush(),
             });
         }
 
@@ -47,7 +41,7 @@ namespace UIBrowser.PartialViews.Custom
             var result = MessageBoxX.Show(_message, "Success", Application.Current.MainWindow, MessageBoxButton.YesNo, new MessageBoxXConfigurations()
             {
                 MessageBoxIcon = MessageBoxIcon.Success,
-                ThemeBrush = "#75CD43".ToColor().ToBrush(),
+                ButtonBrush = "#75CD43".ToColor().ToBrush(),
             });
         }
 
@@ -56,13 +50,13 @@ namespace UIBrowser.PartialViews.Custom
             var result = MessageBoxX.Show(_message, "Warning", Application.Current.MainWindow, MessageBoxButton.YesNo, new MessageBoxXConfigurations()
             {
                 MessageBoxIcon = MessageBoxIcon.Warning,
-                ThemeBrush = "#F1C825".ToColor().ToBrush(),
+                ButtonBrush = "#F1C825".ToColor().ToBrush(),
             });
         }
 
         private void BtnModernInfo_Click(object sender, RoutedEventArgs e)
         {
-            var result = MessageBoxX.Show(_message2, "Error", Application.Current.MainWindow, MessageBoxButton.YesNo, new MessageBoxXConfigurations()
+            var result = MessageBoxX.Show(_message2, "Infomation", Application.Current.MainWindow, MessageBoxButton.YesNo, new MessageBoxXConfigurations()
             {
                 MessageBoxStyle = MessageBoxStyle.Modern,
             });
@@ -74,7 +68,7 @@ namespace UIBrowser.PartialViews.Custom
             {
                 MessageBoxStyle = MessageBoxStyle.Modern,
                 MessageBoxIcon = MessageBoxIcon.Success,
-                ThemeBrush = "#75CD43".ToColor().ToBrush(),
+                ButtonBrush = "#75CD43".ToColor().ToBrush(),
             });
         }
 
@@ -84,7 +78,7 @@ namespace UIBrowser.PartialViews.Custom
             {
                 MessageBoxStyle = MessageBoxStyle.Modern,
                 MessageBoxIcon = MessageBoxIcon.Error,
-                ThemeBrush = "#FF4C4C".ToColor().ToBrush(),
+                ButtonBrush = "#FF4C4C".ToColor().ToBrush(),
             });
         }
 
@@ -94,13 +88,13 @@ namespace UIBrowser.PartialViews.Custom
             {
                 MessageBoxStyle = MessageBoxStyle.Modern,
                 MessageBoxIcon = MessageBoxIcon.Warning,
-                ThemeBrush = "#F1C825".ToColor().ToBrush(),
+                ButtonBrush = "#F1C825".ToColor().ToBrush(),
             });
         }
 
         private void BtnClassicInfo_Click(object sender, RoutedEventArgs e)
         {
-            var result = MessageBoxX.Show(_message2, "Error", Application.Current.MainWindow, MessageBoxButton.YesNo, new MessageBoxXConfigurations()
+            var result = MessageBoxX.Show(_message2, "Infomation", Application.Current.MainWindow, MessageBoxButton.YesNo, new MessageBoxXConfigurations()
             {
                 MessageBoxStyle = MessageBoxStyle.Classic,
             });
@@ -112,7 +106,7 @@ namespace UIBrowser.PartialViews.Custom
             {
                 MessageBoxStyle = MessageBoxStyle.Classic,
                 MessageBoxIcon = MessageBoxIcon.Success,
-                ThemeBrush = "#75CD43".ToColor().ToBrush(),
+                ButtonBrush = "#75CD43".ToColor().ToBrush(),
             });
         }
 
@@ -122,7 +116,7 @@ namespace UIBrowser.PartialViews.Custom
             {
                 MessageBoxStyle = MessageBoxStyle.Classic,
                 MessageBoxIcon = MessageBoxIcon.Error,
-                ThemeBrush = "#FF4C4C".ToColor().ToBrush(),
+                ButtonBrush = "#FF4C4C".ToColor().ToBrush(),
             });
         }
 
@@ -132,8 +126,13 @@ namespace UIBrowser.PartialViews.Custom
             {
                 MessageBoxStyle = MessageBoxStyle.Classic,
                 MessageBoxIcon = MessageBoxIcon.Warning,
-                ThemeBrush = "#F1C825".ToColor().ToBrush(),
+                ButtonBrush = "#F1C825".ToColor().ToBrush(),
             });
+        }
+
+        private void BtnLoading_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
 

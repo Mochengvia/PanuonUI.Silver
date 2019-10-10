@@ -38,6 +38,39 @@
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
+                <Rectangle RadiusX="2"
+                           RadiusY="2"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Margin="5,0,1,0"
+                           Height="{Binding ActualHeight,ElementName=picker,Converter={StaticResource Minus10Converter}}"
+                           Width="{Binding ActualHeight,ElementName=picker,Converter={StaticResource Minus10Converter}}">
+                    <Rectangle.Fill>
+                        <DrawingBrush Viewport="0,0,12,12"
+                                      ViewportUnits="Absolute"
+                                      Stretch="None"
+                                      TileMode="Tile">
+                            <DrawingBrush.Drawing>
+                                <DrawingGroup>
+                                    <GeometryDrawing Brush="#D0CEC7">
+                                        <GeometryDrawing.Geometry>
+                                            <GeometryGroup>
+                                                <RectangleGeometry Rect="0,0,6,6" />
+                                                <RectangleGeometry Rect="6,6,6,6" />
+                                            </GeometryGroup>
+                                        </GeometryDrawing.Geometry>
+                                    </GeometryDrawing>
+                                    <GeometryDrawing Brush="#E7E7E2">
+                                        <GeometryDrawing.Geometry>
+                                            <RectangleGeometry Rect="0,6,12,0" />
+                                        </GeometryDrawing.Geometry>
+                                    </GeometryDrawing>
+                                </DrawingGroup>
+                            </DrawingBrush.Drawing>
+                        </DrawingBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+
                 <Border CornerRadius="2"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center"

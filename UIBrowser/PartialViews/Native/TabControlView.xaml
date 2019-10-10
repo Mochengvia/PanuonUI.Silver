@@ -29,7 +29,7 @@
                         <TextBox.ContextMenu>
                             <ContextMenu>
                                 <MenuItem Header="{x:Static localized:Resource.CopyCode}"
-                                          pu:ContextMenuHelper.ItemIcon="&#xf0c5;"
+                                          Icon="&#xf0c5;"
                                           Click="MenuItem_CopyCode"/>
                             </ContextMenu>
                         </TextBox.ContextMenu>
@@ -44,7 +44,6 @@
                     <StackPanel>
                         <Grid Height="100">
                             <TabControl x:Name="TabCustom"
-                                        pu:TabControlHelper.DisableSideButton="True"
                                         VerticalAlignment="Center"
                                         HorizontalAlignment="Center"
                                         Height="30"

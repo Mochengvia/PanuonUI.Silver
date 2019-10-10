@@ -115,7 +115,7 @@ namespace Panuon.UI.Silver
         #region CheckedContent
         public static object GetCheckedContent(DependencyObject obj)
         {
-            return (object)obj.GetValue(CheckedContentProperty);
+            return obj.GetValue(CheckedContentProperty);
         }
 
         public static void SetCheckedContent(DependencyObject obj, object value)
@@ -147,7 +147,7 @@ namespace Panuon.UI.Silver
         #region Header
         public static object GetHeader(DependencyObject obj)
         {
-            return (object)obj.GetValue(HeaderProperty);
+            return obj.GetValue(HeaderProperty);
         }
 
         public static void SetHeader(DependencyObject obj, object value)

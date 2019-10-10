@@ -28,7 +28,7 @@
                         <TextBox.ContextMenu>
                             <ContextMenu>
                                 <MenuItem Header="{x:Static localized:Resource.CopyCode}"
-                                          pu:ContextMenuHelper.ItemIcon="&#xf0c5;"
+                                          Icon="&#xf0c5;"
                                           Click="MenuItem_CopyCode" />
                             </ContextMenu>
                         </TextBox.ContextMenu>
@@ -111,7 +111,7 @@
                                     Minimum="0"
                                     Maximum="100"
                                     IsSnapToTickEnabled="True"
-                                    TickFrequency="20"
+                                    TickFrequency="10"
                                     Value="60"
                                     Margin="5,0"
                                     ValueChanged="SliderProgress_ValueChanged" />

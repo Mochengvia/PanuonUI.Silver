@@ -432,4 +432,13 @@
   <data name="ContextMenu" xml:space="preserve">
     <value>ContextMenu 右键菜单</value>
   </data>
+  <data name="ClearButton" xml:space="preserve">
+    <value>清空按钮</value>
+  </data>
+  <data name="ShowPasswordButton" xml:space="preserve">
+    <value>显示密码按钮</value>
+  </data>
+  <data name="PendingBox" xml:space="preserve">
+    <value>PendingBox 等待框</value>
+  </data>
 </root>

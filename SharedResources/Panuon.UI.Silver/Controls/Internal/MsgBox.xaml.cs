@@ -1,17 +1,6 @@
 ﻿using Panuon.UI.Silver.Core;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Panuon.UI.Silver.Controls.Internal
 {
@@ -25,6 +14,7 @@ namespace Panuon.UI.Silver.Controls.Internal
             InitializeComponent();
 
             Title = title;
+            Owner = owner;
             Text = message;
             MessageBoxStyle = messageBoxXConfigurations.MessageBoxStyle;
             Topmost = messageBoxXConfigurations.Topmost;
@@ -37,7 +27,7 @@ namespace Panuon.UI.Silver.Controls.Internal
             NoButton = messageBoxXConfigurations.NoButton;
             OKButton = messageBoxXConfigurations.OKButton;
             CancelButton = messageBoxXConfigurations.CancelButton;
-            ThemeBrush = messageBoxXConfigurations.ThemeBrush;
+            ThemeBrush = messageBoxXConfigurations.ButtonBrush;
             MinWidth = messageBoxXConfigurations.MinWidth;
             MinHeight = messageBoxXConfigurations.MinHeight;
             DefaultButton = messageBoxXConfigurations.DefaultButton;
@@ -45,7 +35,10 @@ namespace Panuon.UI.Silver.Controls.Internal
             MaxContentWidth = messageBoxXConfigurations.MaxContentWidth;
             ReverseButtonSequence = messageBoxXConfigurations.ReverseButtonSequence;
             FontSize = messageBoxXConfigurations.FontSize;
+
         }
+
+        
 
         #region Property
         public CornerRadius CornerRadius
@@ -123,6 +116,8 @@ namespace Panuon.UI.Silver.Controls.Internal
 
         public static readonly DependencyProperty MaxContentHeightProperty =
             DependencyProperty.Register("MaxContentHeight", typeof(double), typeof(MsgBox));
+
+        public Window Owner { get; }
 
         public string Text
         {
@@ -235,6 +230,11 @@ namespace Panuon.UI.Silver.Controls.Internal
         #endregion
 
         #region EventHandler
+        private void BdrMain_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+
         private static void OnMessageBoxStyleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var msb = d as MsgBox;

@@ -9,10 +9,6 @@
     <Import_RootNamespace>Panuon.UI.Silver</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Global\Attributes\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Global\Statics\" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Badge.xaml.cs">
       <DependentUpon>Badge.xaml</DependentUpon>
     </Compile>
@@ -47,8 +43,12 @@
       <DependentUpon>NoticeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Internal\NotTopMostPopup.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Internal\PendingBox.xaml.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Internal\ResizeContainer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Internal\ResizeThumb.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Internal\ScreenshotWindow.xaml.cs">
+      <DependentUpon>ScreenshotWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Internal\WaterfallPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MessageBoxX.cs" />
@@ -58,6 +58,8 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Notice.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Pagination.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\PendingBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\StateIcon.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TagPanel.xaml.cs">
       <DependentUpon>TagPanel.xaml</DependentUpon>
     </Compile>
@@ -77,6 +79,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DropDownMenuConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\LoadingConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\MemberPathConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\MenuConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\MsbConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\MultiSelectorConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ObjectConvert.cs" />
@@ -112,8 +115,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Control\TreeViewHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Control\WindowXCaption.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Others\AnimationHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Others\IconHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Others\LayoutHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Others\MouseEventHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Others\ScreenshotHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\Cache.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\DelegateCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\GridLengthUtil.cs" />
@@ -156,6 +161,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Controls\Internal\NoticeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\Internal\PendingBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\Internal\ScreenshotWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -255,5 +268,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="C:\Users\panyu\Documents\GitHub\PanuonUI.Silver\SharedResources\Panuon.UI.Silver\Controls\Internal\PendingBox.xaml.cs">
+      <DependentUpon>PendingBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="C:\Users\panyu\Documents\GitHub\PanuonUI.Silver\SharedResources\Panuon.UI.Silver\Controls\Internal\PendingBox1.xaml.cs">
+      <DependentUpon>PendingBox1.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

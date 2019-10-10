@@ -149,7 +149,7 @@
                           Background="Transparent"
                           pu:TreeViewHelper.ItemHeight="40"
                           pu:TreeViewHelper.TreeViewStyle="Modern"
-                          pu:TreeViewHelper.SelectedBrush="#22FFFFFF"
+                          pu:TreeViewHelper.SelectedBackground="#22FFFFFF"
                           BorderBrush="White"
                           Foreground="#AAFFFFFF">
                     <TreeViewItem Header="Home"
@@ -194,7 +194,7 @@
                     <Button HorizontalAlignment="Right"
                             pu:ButtonHelper.ButtonStyle="Link"
                             Content="&#xf002;"
-                            FontFamily="{DynamicResource FontAwesome}"
+                            FontFamily="{StaticResource FontAwesome}"
                             Margin="0,0,15,0"
                             Width="30"
                             Grid.Column="1" />

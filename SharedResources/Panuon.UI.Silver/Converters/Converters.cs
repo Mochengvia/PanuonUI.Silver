@@ -1,10 +1,8 @@
 ﻿using Panuon.UI.Silver.Utils;
 using System;
 using System.Globalization;
-using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Data;
-using System.Windows.Media;
 
 namespace Panuon.UI.Silver.Converters
 {
@@ -117,7 +115,7 @@ namespace Panuon.UI.Silver.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var length = value.ToString();
+            var length = value?.ToString();
             return GridLengthUtil.ConvertToGridLength(length);
         }
 
@@ -139,6 +137,32 @@ namespace Panuon.UI.Silver.Converters
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
         {
             return new object[] { DependencyProperty.UnsetValue, DependencyProperty.UnsetValue };
+        }
+    }
+    #endregion
+
+    #region NotAlignmentCenter
+    internal class NotAlignmentCenterConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value is HorizontalAlignment)
+            {
+                var alignment = (HorizontalAlignment)value;
+                return alignment != HorizontalAlignment.Center;
+            }
+            else if (value is VerticalAlignment)
+            {
+                var alignment = (VerticalAlignment)value;
+                return alignment != VerticalAlignment.Center;
+            }
+            else
+                return true;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return DependencyProperty.UnsetValue;
         }
     }
     #endregion

@@ -151,7 +151,7 @@ namespace Panuon.UI.Silver
                 return;
             }
             var arg = new DoubleClickEventArgs(position, DoubleClickEvent);
-           element.RaiseEvent(arg);
+            element.RaiseEvent(arg);
         }
         #endregion
 

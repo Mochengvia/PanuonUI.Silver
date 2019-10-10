@@ -202,7 +202,9 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("CheckBoxStyle", typeof(Style), typeof(MultiSelector));
 
 
-
+        /// <summary>
+        /// Gets or sets max dropdown height.
+        /// </summary>
         public double MaxDropDownHeight
         {
             get { return (double)GetValue(MaxDropDownHeightProperty); }
@@ -211,6 +213,17 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty MaxDropDownHeightProperty =
             DependencyProperty.Register("MaxDropDownHeight", typeof(double), typeof(MultiSelector), new PropertyMetadata(250.0));
+
+
+
+        public bool StaysOpen
+        {
+            get { return (bool)GetValue(StaysOpenProperty); }
+            set { SetValue(StaysOpenProperty, value); }
+        }
+
+        public static readonly DependencyProperty StaysOpenProperty =
+            DependencyProperty.Register("StaysOpen", typeof(bool), typeof(MultiSelector));
 
 
         #endregion

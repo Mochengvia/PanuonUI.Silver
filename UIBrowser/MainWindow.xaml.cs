@@ -1,11 +1,10 @@
-﻿using System;
+﻿using Panuon.UI.Silver;
+using System;
 using System.Collections.Generic;
-using System.IO;
+using System.Data;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media.Imaging;
-using Panuon.UI.Silver;
 using UIBrowser.Models;
 
 namespace UIBrowser
@@ -21,6 +20,8 @@ namespace UIBrowser
 
         #region Property
         public MainWindowViewModel ViewModel { get; set; }
+
+        public string Text { get; set; }
         #endregion
 
         #region Constructor
@@ -36,7 +37,6 @@ namespace UIBrowser
             InitializeComponent();
             ViewModel = new MainWindowViewModel();
             DataContext = ViewModel;
-
         }
 
         #endregion
@@ -69,9 +69,33 @@ namespace UIBrowser
             Application.Current.Shutdown();
         }
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-           
+            var dataTable = new DataTable();
+            dataTable.Columns.Add("Column1", typeof(int));
+            dataTable.Columns.Add("Column2", typeof(string));
+
+            var row1 = dataTable.NewRow();
+            row1["Column1"] = 1;
+            row1["Column2"] = "1";
+            dataTable.Rows.Add(row1);
+
+            var row2 = dataTable.NewRow();
+            row2["Column1"] = 2;
+            row2["Column2"] = "2";
+            dataTable.Rows.Add(row2);
+
+            DataTable newDataTable;
+                newDataTable = dataTable.Clone();
+                foreach (var row in dataTable.Select("Column1 > 1"))
+                {
+                    var newRow = newDataTable.NewRow();
+                    foreach (DataColumn column in newDataTable.Columns)
+                    {
+                        newRow[column.ColumnName] = row[column.ColumnName];
+                    }
+                    newDataTable.Rows.Add(newRow);
+                }
         }
     }
 }

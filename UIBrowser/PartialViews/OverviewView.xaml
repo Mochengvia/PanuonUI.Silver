@@ -60,13 +60,13 @@
                                     VerticalAlignment="Top">
                             <Button  Height="30"
                                      Content=" Button"
-                                     FontFamily="{DynamicResource FontAwesome}"
+                                     FontFamily="{StaticResource FontAwesome}"
                                      Background="{Binding LightBrush, Mode=OneWay}"
                                      pu:ButtonHelper.HoverBrush="{Binding Brush, Mode=OneWay}" />
                             <Button  Height="30"
                                      Margin="0,5,0,0"
                                      Content=" Button"
-                                     FontFamily="{DynamicResource FontAwesome}"
+                                     FontFamily="{StaticResource FontAwesome}"
                                      pu:ButtonHelper.ButtonStyle="Hollow"
                                      BorderBrush="{Binding Brush, Mode=OneWay}"
                                      Foreground="{Binding Brush, Mode=OneWay}"
@@ -74,7 +74,7 @@
                             <Button  Height="30"
                                      Margin="0,5,0,0"
                                      Content=" Button"
-                                     FontFamily="{DynamicResource FontAwesome}"
+                                     FontFamily="{StaticResource FontAwesome}"
                                      pu:ButtonHelper.ButtonStyle="Outline"
                                      BorderBrush="{Binding LightBrush, Mode=OneWay}"
                                      Foreground="{Binding LightBrush, Mode=OneWay}"
@@ -82,7 +82,7 @@
                             <Button  Height="30"
                                      Margin="0,5,0,0"
                                      Content=" Button"
-                                     FontFamily="{DynamicResource FontAwesome}"
+                                     FontFamily="{StaticResource FontAwesome}"
                                      pu:ButtonHelper.ButtonStyle="Link"
                                      BorderBrush="{Binding LightBrush, Mode=OneWay}"
                                      Foreground="{Binding LightBrush, Mode=OneWay}"
@@ -308,7 +308,7 @@
                                     BorderBrush="LightGray"
                                     BorderThickness="1">
                                 <TreeView pu:TreeViewHelper.ItemHeight="30"
-                                          pu:TreeViewHelper.SelectedBrush="{Binding LightBrush, Mode=OneWay}">
+                                          pu:TreeViewHelper.SelectedBackground="{Binding LightBrush, Mode=OneWay}">
                                     <TreeViewItem Header="Item1"
                                                   IsExpanded="True">
                                         <TreeViewItem Header="Item1-1"
@@ -328,7 +328,7 @@
                                     BorderThickness="1">
                                 <TreeView pu:TreeViewHelper.ItemHeight="30"
                                           pu:TreeViewHelper.TreeViewStyle="Classic"
-                                          pu:TreeViewHelper.SelectedBrush="{Binding BrushTran1, Mode=OneWay}">
+                                          pu:TreeViewHelper.SelectedBackground="{Binding BrushTran1, Mode=OneWay}">
                                     <TreeViewItem Header="Item1"
                                                   IsExpanded="True">
                                         <TreeViewItem Header="Item1-1"
@@ -348,7 +348,7 @@
                                     BorderThickness="1">
                                 <TreeView pu:TreeViewHelper.ItemHeight="30"
                                           pu:TreeViewHelper.TreeViewStyle="Modern"
-                                          pu:TreeViewHelper.SelectedBrush="{Binding BrushTran1, Mode=OneWay}"
+                                          pu:TreeViewHelper.SelectedBackground="{Binding BrushTran1, Mode=OneWay}"
                                           BorderBrush="{Binding Brush}">
                                     <TreeViewItem Header="Item1"
                                                   IsExpanded="True">
@@ -370,7 +370,7 @@
                                     BorderThickness="1">
                                 <TreeView pu:TreeViewHelper.ItemHeight="30"
                                           pu:TreeViewHelper.TreeViewStyle="Chain"
-                                          pu:TreeViewHelper.SelectedBrush="{Binding LightBrush, Mode=OneWay}">
+                                          pu:TreeViewHelper.SelectedBackground="{Binding LightBrush, Mode=OneWay}">
                                     <TreeViewItem Header="Item1"
                                                   IsExpanded="True">
                                         <TreeViewItem Header="Item1-1"

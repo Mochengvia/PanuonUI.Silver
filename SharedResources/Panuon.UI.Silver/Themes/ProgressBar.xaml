@@ -22,8 +22,6 @@
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="FontSize"
                 Value="{StaticResource Default_FontSize}" />
-        <Setter Property="FocusVisualStyle"
-                Value="{x:Null}" />
         <Setter Property="SnapsToDevicePixels"
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="Background"

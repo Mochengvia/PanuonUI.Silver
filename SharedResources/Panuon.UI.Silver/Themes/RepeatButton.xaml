@@ -14,8 +14,6 @@
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="FontSize"
                 Value="{StaticResource Default_FontSize}" />
-        <Setter Property="FocusVisualStyle"
-                Value="{x:Null}" />
         <Setter Property="local:RepeatButtonHelper.WaitingContent"
                 Value="{StaticResource Button_WaitingContent}" />
         <Setter Property="Background"
@@ -80,7 +78,7 @@
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <local:Loading x:Name="Loading"
-                                                   Stroke="{TemplateBinding Foreground}"
+                                                   Foreground="{TemplateBinding Foreground}"
                                                    Width="20"
                                                    Height="20" />
                                     <ContentPresenter Grid.Column="1"
@@ -223,8 +221,8 @@
                                                     Content="{TemplateBinding Content}"
                                                     FontSize="{TemplateBinding FontSize}"
                                                     FontFamily="{TemplateBinding FontFamily}"
-                                                    VerticalAlignment="Center" 
-                                                    Opacity="0"/>
+                                                    VerticalAlignment="Center"
+                                                    Opacity="0" />
                                 </Grid>
                                 <Grid x:Name="GrdWaiting"
                                       Visibility="Collapsed"
@@ -236,7 +234,7 @@
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <local:Loading x:Name="Loading"
-                                                   Stroke="{TemplateBinding Foreground}"
+                                                   Foreground="{TemplateBinding Foreground}"
                                                    Width="20"
                                                    Height="20" />
                                     <ContentPresenter Grid.Column="1"
@@ -443,7 +441,7 @@
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <local:Loading x:Name="Loading"
-                                                   Stroke="{TemplateBinding Foreground}"
+                                                   Foreground="{TemplateBinding Foreground}"
                                                    Width="20"
                                                    Height="20" />
                                     <ContentPresenter Grid.Column="1"
@@ -587,15 +585,15 @@
                                                               ContentSource="Content"
                                                               VerticalAlignment="Center" />
                                             <ContentPresenter x:Name="ContentHover"
-                                                            Content="{TemplateBinding Content}"
-                                                            VerticalAlignment="Center"
-                                                           TextBlock.Foreground="{Binding Path=(local:RepeatButtonHelper.HoverBrush),RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
-                                                            Opacity="0" />
+                                                              Content="{TemplateBinding Content}"
+                                                              VerticalAlignment="Center"
+                                                              TextBlock.Foreground="{Binding Path=(local:RepeatButtonHelper.HoverBrush),RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
+                                                              Opacity="0" />
                                             <ContentPresenter x:Name="ContentClick"
-                                                            Content="{TemplateBinding Content}"
-                                                            VerticalAlignment="Center"
-                                                           TextBlock.Foreground="{Binding Path=(local:RepeatButtonHelper.ClickCoverBrush),RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
-                                                            Visibility="Hidden" />
+                                                              Content="{TemplateBinding Content}"
+                                                              VerticalAlignment="Center"
+                                                              TextBlock.Foreground="{Binding Path=(local:RepeatButtonHelper.ClickCoverBrush),RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
+                                                              Visibility="Hidden" />
                                         </Grid>
 
                                     </Grid>
@@ -608,7 +606,7 @@
                                             <ColumnDefinition Width="Auto" />
                                         </Grid.ColumnDefinitions>
                                         <local:Loading x:Name="Loading"
-                                                       Stroke="{TemplateBinding Foreground}"
+                                                       Foreground="{TemplateBinding Foreground}"
                                                        Width="20"
                                                        Height="20" />
                                         <ContentPresenter Grid.Column="1"

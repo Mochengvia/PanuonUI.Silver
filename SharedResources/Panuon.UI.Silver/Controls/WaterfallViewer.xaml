@@ -29,8 +29,8 @@
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
                            Visibility="{Binding IsLazyLoadingEnabled,ElementName=Container,Converter={StaticResource BoolToVisibleConverter}}"
-                           Stroke="{Binding LoadingStroke,ElementName=Container}"
-                           StrokeCover="{Binding LoadingStrokeCover,ElementName=Container}"
+                           Background="{Binding LoadingBackground,ElementName=Container}"
+                           Foreground="{Binding LoadingForeground,ElementName=Container}"
                            LoadingStyle="{Binding LoadingStyle,ElementName=Container}" />
         </StackPanel>
     </ScrollViewer>

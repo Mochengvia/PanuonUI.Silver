@@ -4,7 +4,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converter.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    
+
     <Style TargetType="{x:Type ScrollBar}">
         <Setter Property="Stylus.IsPressAndHoldEnabled"
                 Value="false" />
@@ -118,7 +118,7 @@
                             <ScrollContentPresenter VirtualizingStackPanel.IsVirtualizing="{Binding Path=(VirtualizingStackPanel.IsVirtualizing),RelativeSource={RelativeSource AncestorType=ScrollViewer}}"
                                                     VirtualizingStackPanel.VirtualizationMode="{Binding Path=(VirtualizingStackPanel.VirtualizationMode),RelativeSource={RelativeSource AncestorType=ScrollViewer}}"
                                                     CanContentScroll="{TemplateBinding CanContentScroll}"
-                                                    Margin="{TemplateBinding Padding}"/>
+                                                    Margin="{TemplateBinding Padding}" />
                             <ScrollBar x:Name="PART_VerticalScrollBar"
                                        Value="{TemplateBinding VerticalOffset}"
                                        Grid.Column="1"

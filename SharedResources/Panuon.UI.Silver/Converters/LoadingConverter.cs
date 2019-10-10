@@ -5,7 +5,7 @@ using System.Windows.Data;
 
 namespace Panuon.UI.Silver.Converters
 {
-    internal class LoadingStrokeThicknessConverter : IValueConverter
+    internal class LoadingBackgroundThicknessConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

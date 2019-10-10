@@ -46,4 +46,18 @@ namespace Panuon.UI.Silver.Converters
         }
     }
 
+    internal class NullableColorToColoConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var color = value as Color?;
+            return color ?? Colors.Transparent;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return DependencyProperty.UnsetValue;
+        }
+    }
+
 }

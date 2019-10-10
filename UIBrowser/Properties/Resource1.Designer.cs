@@ -19,7 +19,7 @@ namespace UIBrowser.Properties {
     // 类通过类似于 ResGen 或 Visual Studio 的工具自动生成的。
     // 若要添加或移除成员，请编辑 .ResX 文件，然后重新运行 ResGen
     // (以 /str 作为命令选项)，或重新生成 VS 项目。
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resource {
@@ -192,6 +192,15 @@ namespace UIBrowser.Properties {
         public static string ChildOnly {
             get {
                 return ResourceManager.GetString("ChildOnly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 ClearButton 的本地化字符串。
+        /// </summary>
+        public static string ClearButton {
+            get {
+                return ResourceManager.GetString("ClearButton", resourceCulture);
             }
         }
         
@@ -682,6 +691,15 @@ namespace UIBrowser.Properties {
         }
         
         /// <summary>
+        ///   查找类似 PendingBox 的本地化字符串。
+        /// </summary>
+        public static string PendingBox {
+            get {
+                return ResourceManager.GetString("PendingBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Progress 的本地化字符串。
         /// </summary>
         public static string Progress {
@@ -750,6 +768,15 @@ namespace UIBrowser.Properties {
         public static string ShowMeasuredValue {
             get {
                 return ResourceManager.GetString("ShowMeasuredValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 ShowPasswordButton 的本地化字符串。
+        /// </summary>
+        public static string ShowPasswordButton {
+            get {
+                return ResourceManager.GetString("ShowPasswordButton", resourceCulture);
             }
         }
         

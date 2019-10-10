@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -47,9 +43,9 @@ namespace Panuon.UI.Silver
         public static DateTime ToDateTime(this long timeStamp, bool withMilliseconds = true)
         {
             if (withMilliseconds)
-                return TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1)).AddMilliseconds((long)timeStamp);
+                return TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1)).AddMilliseconds(timeStamp);
             else
-                return TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1)).AddSeconds((long)timeStamp);
+                return TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1)).AddSeconds(timeStamp);
         }
         #endregion
 
@@ -100,6 +96,18 @@ namespace Panuon.UI.Silver
                 return string.Format("#{0:X2}{1:X2}{2:X2}", color.R, color.G, color.B);
         }
 
+        public static string ToHexString(this Color? color, bool withAlpha = true)
+        {
+            if (color == null)
+                return "";
+
+            var realColor = (Color)color;
+            if (withAlpha)
+                return string.Format("#{0:X2}{1:X2}{2:X2}{3:X2}", realColor.A, realColor.R, realColor.G, realColor.B);
+            else
+                return string.Format("#{0:X2}{1:X2}{2:X2}", realColor.R, realColor.G, realColor.B);
+        }
+
         public static LinearGradientBrush ToBrush(this Color[] colors)
         {
             var lcb = new LinearGradientBrush();
@@ -112,6 +120,12 @@ namespace Panuon.UI.Silver
                 });
             }
             return lcb;
+        }
+
+        public static bool IsEqual(this Color thisColor, Color color)
+        {
+            return thisColor.A == color.A && thisColor.R == color.R && thisColor.G == color.G
+                && thisColor.B == color.B;
         }
         #endregion
 

@@ -5,7 +5,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Panuon.UI.Silver;component/Themes/Generic.Core.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    
+
     <Style TargetType="{x:Type local:WindowX}">
         <Setter Property="FontFamily"
                 Value="{StaticResource Default_FontFamily}" />
@@ -40,8 +40,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:WindowX}">
-                    <Border Grid.RowSpan="2"
-                            Background="{TemplateBinding Background}"
+                    <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
                         <Grid x:Name="GrdMain">
@@ -52,49 +51,52 @@
                             <Grid Background="{Binding Path=(local:WindowXCaption.Background),RelativeSource={RelativeSource AncestorType=Window}}"
                                   Height="{Binding Path=(local:WindowXCaption.Height),RelativeSource={RelativeSource AncestorType=Window}}"
                                   x:Name="GrdCaption">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <StackPanel x:Name="StkTitle"
-                                            Orientation="Horizontal"
-                                            VerticalAlignment="Stretch">
-                                    <Image x:Name="ImgIcon"
-                                           Source="{TemplateBinding Icon}"
-                                           RenderOptions.BitmapScalingMode="HighQuality"
-                                           VerticalAlignment="Center"
-                                           Width="{TemplateBinding FontSize,Converter={StaticResource Add5Converter}}"
-                                           Height="{TemplateBinding FontSize,Converter={StaticResource Add5Converter}}"
-                                           Margin="5,0,0,0" />
-                                    <TextBlock Margin="5,0,0,0"
-                                               Text="{TemplateBinding Title}"
-                                               VerticalAlignment="Center" />
-                                </StackPanel>
-                                <ContentControl x:Name="CpHeader"
-                                                Visibility="Collapsed"
-                                                Content="{Binding Path=(local:WindowXCaption.Header),RelativeSource={RelativeSource AncestorType=Window}}" />
-                                <ContentControl Grid.Column="1"
-                                                x:Name="CcExtend"
-                                                Content="{Binding Path=(local:WindowXCaption.ExtendControl),RelativeSource={RelativeSource AncestorType=Window}}" />
-                                <Button Grid.Column="2"
-                                        x:Name="BtnMinimize"
-                                        Style="{Binding Path=(local:WindowXCaption.MinimizeButtonStyle),RelativeSource={RelativeSource AncestorType=Window}}"
-                                        Command="{TemplateBinding MinCommand}"
-                                        CommandParameter="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}}" />
-                                <Button Grid.Column="3"
-                                        x:Name="BtnMaximize"
-                                        Style="{Binding Path=(local:WindowXCaption.MaximizeButtonStyle),RelativeSource={RelativeSource AncestorType=Window}}"
-                                        Command="{TemplateBinding MaxCommand}"
-                                        CommandParameter="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}}" />
-                                <Button Grid.Column="4"
-                                        x:Name="BtnClose"
-                                        IsEnabled="{Binding Path=(local:WindowXCaption.DisableCloseButton),RelativeSource={RelativeSource AncestorType=Window},Converter={StaticResource BoolInverseConverter}}"
-                                        Style="{Binding Path=(local:WindowXCaption.CloseButtonStyle),RelativeSource={RelativeSource AncestorType=Window}}"
-                                        Command="{TemplateBinding CloseCommand}"
-                                        CommandParameter="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}}" />
+                                <Grid Margin="{Binding Path=(local:WindowXCaption.Padding),RelativeSource={RelativeSource AncestorType=Window}}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel x:Name="StkTitle"
+                                                Orientation="Horizontal"
+                                                VerticalAlignment="Stretch">
+                                        <Image x:Name="ImgIcon"
+                                               Source="{TemplateBinding Icon}"
+                                               RenderOptions.BitmapScalingMode="HighQuality"
+                                               VerticalAlignment="Center"
+                                               Width="{TemplateBinding FontSize,Converter={StaticResource Add5Converter}}"
+                                               Height="{TemplateBinding FontSize,Converter={StaticResource Add5Converter}}"
+                                               Margin="5,0,0,0" />
+                                        <TextBlock Margin="5,0,0,0"
+                                                   Text="{TemplateBinding Title}"
+                                                   VerticalAlignment="Center" />
+                                    </StackPanel>
+                                    <ContentControl x:Name="CpHeader"
+                                                    Visibility="Collapsed"
+                                                    Content="{Binding Path=(local:WindowXCaption.Header),RelativeSource={RelativeSource AncestorType=Window}}" />
+                                    <ContentControl Grid.Column="1"
+                                                    x:Name="CcExtend"
+                                                    Content="{Binding Path=(local:WindowXCaption.ExtendControl),RelativeSource={RelativeSource AncestorType=Window}}" />
+                                    <Button Grid.Column="2"
+                                            x:Name="BtnMinimize"
+                                            Style="{Binding Path=(local:WindowXCaption.MinimizeButtonStyle),RelativeSource={RelativeSource AncestorType=Window}}"
+                                            Command="{TemplateBinding MinCommand}"
+                                            CommandParameter="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}}" />
+                                    <Button Grid.Column="3"
+                                            x:Name="BtnMaximize"
+                                            Style="{Binding Path=(local:WindowXCaption.MaximizeButtonStyle),RelativeSource={RelativeSource AncestorType=Window}}"
+                                            Command="{TemplateBinding MaxCommand}"
+                                            CommandParameter="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}}" />
+                                    <Button Grid.Column="4"
+                                            x:Name="BtnClose"
+                                            IsEnabled="{Binding Path=(local:WindowXCaption.DisableCloseButton),RelativeSource={RelativeSource AncestorType=Window},Converter={StaticResource BoolInverseConverter}}"
+                                            Style="{Binding Path=(local:WindowXCaption.CloseButtonStyle),RelativeSource={RelativeSource AncestorType=Window}}"
+                                            Command="{TemplateBinding CloseCommand}"
+                                            CommandParameter="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}}" />
+                                </Grid>
+
                             </Grid>
                             <AdornerDecorator Grid.Row="1">
                                 <ContentPresenter />

@@ -13,8 +13,6 @@
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="FontSize"
                 Value="{StaticResource Default_FontSize}" />
-        <Setter Property="FocusVisualStyle"
-                Value="{x:Null}" />
         <Setter Property="Foreground"
                 Value="#3E3E3E" />
         <Setter Property="Background"
@@ -41,7 +39,7 @@
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
                             <Border Background="{Binding Path=(local:GroupBoxHelper.HeaderBackground),RelativeSource={RelativeSource AncestorType=GroupBox},Mode=OneWay}"
-                                    CornerRadius="{Binding Path=(local:GroupBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=GroupBox},Mode=OneWay,Converter={StaticResource CornerRadiusToTopHalfConverter}}"/>
+                                    CornerRadius="{Binding Path=(local:GroupBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=GroupBox},Mode=OneWay,Converter={StaticResource CornerRadiusToTopHalfConverter}}" />
                             <Grid  Margin="{TemplateBinding Padding}">
                                 <ContentPresenter x:Name="Header"
                                                   ContentSource="Header"
@@ -51,8 +49,7 @@
                             </Grid>
                             <Grid  Margin="{TemplateBinding Padding}"
                                    Grid.Row="1">
-                                <ContentPresenter 
-                                                  Margin="0,3" />
+                                <ContentPresenter Margin="0,3" />
                             </Grid>
                         </Grid>
                     </Grid>

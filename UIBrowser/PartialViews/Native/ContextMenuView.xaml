@@ -12,30 +12,6 @@
     <Grid>
         <Rectangle x:Name="RectBackground" />
         <Grid VerticalAlignment="Center">
-            <GroupBox x:Name="GrpCode"
-                      HorizontalAlignment="Center"
-                      Width="{Binding ActualWidth,ElementName=GrpPalette}"
-                      VerticalAlignment="Bottom"
-                      >
-                <Grid>
-                    <TextBox x:Name="TbCode"
-                             Height="100"
-                             AcceptsReturn="True"
-                             VerticalContentAlignment="Top"
-                             Padding="5"
-                             VerticalScrollBarVisibility="Auto"
-                             HorizontalScrollBarVisibility="Auto"
-                             IsReadOnly="True">
-                        <TextBox.ContextMenu>
-                            <ContextMenu>
-                                <MenuItem Header="{x:Static localized:Resource.CopyCode}"
-                                          pu:ContextMenuHelper.ItemIcon="&#xf0c5;"
-                                          Click="MenuItem_CopyCode"/>
-                            </ContextMenu>
-                        </TextBox.ContextMenu>
-                    </TextBox>
-                </Grid>
-            </GroupBox>
             <GroupBox x:Name="GrpPalette"
                       HorizontalAlignment="Center"
                       Header="{x:Static localized:Resource.Palette}"
@@ -49,26 +25,205 @@
                                        Margin="20,0,0,0"
                                        Background="Transparent">
                                 <TextBlock.ContextMenu>
-                                    <ContextMenu pu:ContextMenuHelper.ItemIconWidth="45"
-                                                 pu:ContextMenuHelper.CornerRadius="1"
-                                                 Padding="0,3"
-                                                 MinWidth="250">
-                                        <MenuItem Header="Copy">
-                                            <MenuItem.Icon>
-                                                <TextBlock Text="&#xf0c5;"
-                                                           FontFamily="{StaticResource FontAwesome}"/>
-                                            </MenuItem.Icon>
+                                    <ContextMenu pu:IconHelper.Width="45"
+                                                 pu:ContextMenuHelper.CornerRadius="5"
+                                                 Padding="0,5"
+                                                 Width="250"
+                                                 FontSize="12">
+                                        <MenuItem Style="{StaticResource MenuItem_NonStyle}"
+                                                  Height="200">
+                                            <MenuItem.Header>
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition />
+                                                        <RowDefinition />
+                                                        <RowDefinition />
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition />
+                                                        <ColumnDefinition />
+                                                        <ColumnDefinition />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Button Background="Transparent"
+                                                            Foreground="#3E3E3E"
+                                                            pu:ButtonHelper.HoverBrush="#EEEEEE"
+                                                            VerticalAlignment="Stretch"
+                                                            HorizontalAlignment="Stretch">
+                                                        <StackPanel Orientation="Vertical"
+                                                                    VerticalAlignment="Center">
+                                                            <TextBlock Text="&#xf20e;"
+                                                                       FontSize="25"
+                                                                       HorizontalAlignment="Center"
+                                                                       FontFamily="{StaticResource FontAwesome}" />
+                                                            <TextBlock Text="MENU"
+                                                                       FontSize="12"
+                                                                       HorizontalAlignment="Center" />
+                                                        </StackPanel>
+                                                    </Button>
+                                                    <Button Grid.Row="1"
+                                                            Background="Transparent"
+                                                            Foreground="#3E3E3E"
+                                                            pu:ButtonHelper.HoverBrush="#EEEEEE"
+                                                            VerticalAlignment="Stretch"
+                                                            HorizontalAlignment="Stretch">
+                                                        <StackPanel Orientation="Vertical"
+                                                                    VerticalAlignment="Center">
+                                                            <TextBlock Text="&#xf20e;"
+                                                                       FontSize="25"
+                                                                       HorizontalAlignment="Center"
+                                                                       FontFamily="{StaticResource FontAwesome}" />
+                                                            <TextBlock Text="MENU"
+                                                                       FontSize="12"
+                                                                       HorizontalAlignment="Center" />
+                                                        </StackPanel>
+                                                    </Button>
+                                                    <Button Grid.Row="2"
+                                                            Background="Transparent"
+                                                            Foreground="#3E3E3E"
+                                                            pu:ButtonHelper.HoverBrush="#EEEEEE"
+                                                            VerticalAlignment="Stretch"
+                                                            HorizontalAlignment="Stretch">
+                                                        <StackPanel Orientation="Vertical"
+                                                                    VerticalAlignment="Center">
+                                                            <TextBlock Text="&#xf20e;"
+                                                                       FontSize="25"
+                                                                       HorizontalAlignment="Center"
+                                                                       FontFamily="{StaticResource FontAwesome}" />
+                                                            <TextBlock Text="MENU"
+                                                                       FontSize="12"
+                                                                       HorizontalAlignment="Center" />
+                                                        </StackPanel>
+                                                    </Button>
+                                                    <Button Grid.Column="1"
+                                                            Background="Transparent"
+                                                            Foreground="#3E3E3E"
+                                                            pu:ButtonHelper.HoverBrush="#EEEEEE"
+                                                            VerticalAlignment="Stretch"
+                                                            HorizontalAlignment="Stretch">
+                                                        <StackPanel Orientation="Vertical"
+                                                                    VerticalAlignment="Center">
+                                                            <TextBlock Text="&#xf20e;"
+                                                                       FontSize="25"
+                                                                       HorizontalAlignment="Center"
+                                                                       FontFamily="{StaticResource FontAwesome}" />
+                                                            <TextBlock Text="MENU"
+                                                                       FontSize="12"
+                                                                       HorizontalAlignment="Center" />
+                                                        </StackPanel>
+                                                    </Button>
+                                                    <Button Grid.Column="1"
+                                                            Grid.Row="1"
+                                                            Background="Transparent"
+                                                            Foreground="#3E3E3E"
+                                                            pu:ButtonHelper.HoverBrush="#EEEEEE"
+                                                            VerticalAlignment="Stretch"
+                                                            HorizontalAlignment="Stretch">
+                                                        <StackPanel Orientation="Vertical"
+                                                                    VerticalAlignment="Center">
+                                                            <TextBlock Text="&#xf20e;"
+                                                                       FontSize="25"
+                                                                       HorizontalAlignment="Center"
+                                                                       FontFamily="{StaticResource FontAwesome}" />
+                                                            <TextBlock Text="MENU"
+                                                                       FontSize="12"
+                                                                       HorizontalAlignment="Center" />
+                                                        </StackPanel>
+                                                    </Button>
+                                                    <Button Grid.Column="1"
+                                                            Grid.Row="2"
+                                                            Background="Transparent"
+                                                            Foreground="#3E3E3E"
+                                                            pu:ButtonHelper.HoverBrush="#EEEEEE"
+                                                            VerticalAlignment="Stretch"
+                                                            HorizontalAlignment="Stretch">
+                                                        <StackPanel Orientation="Vertical"
+                                                                    VerticalAlignment="Center">
+                                                            <TextBlock Text="&#xf20e;"
+                                                                       FontSize="25"
+                                                                       HorizontalAlignment="Center"
+                                                                       FontFamily="{StaticResource FontAwesome}" />
+                                                            <TextBlock Text="MENU"
+                                                                       FontSize="12"
+                                                                       HorizontalAlignment="Center" />
+                                                        </StackPanel>
+                                                    </Button>
+                                                    <Button Grid.Column="2"
+                                                            Background="Transparent"
+                                                            Foreground="#3E3E3E"
+                                                            pu:ButtonHelper.HoverBrush="#EEEEEE"
+                                                            VerticalAlignment="Stretch"
+                                                            HorizontalAlignment="Stretch">
+                                                        <StackPanel Orientation="Vertical"
+                                                                    VerticalAlignment="Center">
+                                                            <TextBlock Text="&#xf20e;"
+                                                                       FontSize="25"
+                                                                       HorizontalAlignment="Center"
+                                                                       FontFamily="{StaticResource FontAwesome}" />
+                                                            <TextBlock Text="MENU"
+                                                                       FontSize="12"
+                                                                       HorizontalAlignment="Center" />
+                                                        </StackPanel>
+                                                    </Button>
+                                                    <Button Grid.Column="2"
+                                                            Grid.Row="1"
+                                                            Background="Transparent"
+                                                            Foreground="#3E3E3E"
+                                                            pu:ButtonHelper.HoverBrush="#EEEEEE"
+                                                            VerticalAlignment="Stretch"
+                                                            HorizontalAlignment="Stretch">
+                                                        <StackPanel Orientation="Vertical"
+                                                                    VerticalAlignment="Center">
+                                                            <TextBlock Text="&#xf20e;"
+                                                                       FontSize="25"
+                                                                       HorizontalAlignment="Center"
+                                                                       FontFamily="{StaticResource FontAwesome}" />
+                                                            <TextBlock Text="MENU"
+                                                                       HorizontalAlignment="Center" />
+                                                        </StackPanel>
+                                                    </Button>
+                                                    <Button Grid.Column="2"
+                                                            Grid.Row="2"
+                                                            Background="Transparent"
+                                                            Foreground="#3E3E3E"
+                                                            pu:ButtonHelper.HoverBrush="#EEEEEE"
+                                                            VerticalAlignment="Stretch"
+                                                            HorizontalAlignment="Stretch">
+                                                        <StackPanel Orientation="Vertical"
+                                                                    VerticalAlignment="Center">
+                                                            <TextBlock Text="&#xf20e;"
+                                                                       FontSize="25"
+                                                                       HorizontalAlignment="Center"
+                                                                       FontFamily="{StaticResource FontAwesome}" />
+                                                            <TextBlock Text="MENU"
+                                                                       FontSize="12"
+                                                                       HorizontalAlignment="Center" />
+                                                        </StackPanel>
+                                                    </Button>
+                                                </Grid>
+                                            </MenuItem.Header>
                                         </MenuItem>
-                                        <MenuItem Header="Cut" />
-                                        <MenuItem Header="Paste" />
                                         <Separator />
-                                        <MenuItem Header="More Settings">
-                                            <MenuItem.Icon>
-                                                <TextBlock Text="&#xf013;"
-                                                           FontSize="16"
-                                                           FontFamily="{StaticResource FontAwesome}" />
-                                            </MenuItem.Icon>
-                                            <MenuItem Header="Nothing Here"/>
+                                        <MenuItem Header="Link"
+                                                  Icon="&#xf0c1;">
+                                        </MenuItem>
+                                        <MenuItem Header="Rename"
+                                                  Icon="&#xf044;"/>
+                                        <MenuItem Header="Delete"
+                                                  Icon="&#xf1f8;"/>
+                                        <Separator />
+                                        <MenuItem Header="Option1"
+                                                  IsCheckable="True"
+                                                  IsChecked="True">
+                                           
+                                        </MenuItem>
+                                        <MenuItem Header="Option2"
+                                                  IsCheckable="True"/>
+                                        <MenuItem Header="Option3"
+                                                  IsCheckable="True"/>
+                                        <Separator />
+                                        <MenuItem Header="More Settings"
+                                                  Icon="&#xf013;">
+                                            <MenuItem Header="Nothing Here" />
                                             <MenuItem Header="Nothing Here" />
                                             <MenuItem Header="Nothing Here" />
                                         </MenuItem>
@@ -77,19 +232,8 @@
                             </TextBlock>
                         </Grid>
                     </StackPanel>
-                    <Button x:Name="BtnViewCode"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Top"
-                            pu:ButtonHelper.ButtonStyle="Link"
-                            Foreground="#AA57A2E0"
-                            pu:ButtonHelper.HoverBrush="#57A2E0"
-                            Content="{x:Static localized:Resource.ViewCode}"
-                            Margin="0,-40,0,0"
-                            Click="BtnViewCode_Click" />
                 </Grid>
             </GroupBox>
-            
-
         </Grid>
     </Grid>
 </UserControl>

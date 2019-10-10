@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Panuon.UI.Silver.Core;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -22,20 +23,30 @@ namespace Panuon.UI.Silver
         }
         #endregion
 
-        #region Event
-        public static readonly RoutedEvent SelectedDateTimeChangedEvent = EventManager.RegisterRoutedEvent("SelectedDateTimeChanged", RoutingStrategy.Bubble, typeof(RoutedPropertyChangedEventHandler<DateTime>), typeof(DateTimePicker));
-        public event RoutedPropertyChangedEventHandler<DateTime> SelectedDateTimeChanged
+        #region RoutedEvent
+        public static readonly RoutedEvent SelectedDateTimeChangedEvent = EventManager.RegisterRoutedEvent("SelectedDateTimeChanged", RoutingStrategy.Bubble, typeof(SelectedDateTimeChangedEventHandler), typeof(DateTimePicker));
+        public event SelectedDateTimeChangedEventHandler SelectedDateTimeChanged
         {
             add { AddHandler(SelectedDateTimeChangedEvent, value); }
             remove { RemoveHandler(SelectedDateTimeChangedEvent, value); }
         }
-        void RaiseSelectedDateTimeChanged(DateTime oldValue, DateTime newValue)
+        void RaiseSelectedDateTimeChanged(DateTime newValue)
         {
-            var arg = new RoutedPropertyChangedEventArgs<DateTime>(oldValue, newValue, SelectedDateTimeChangedEvent);
+            var arg = new SelectedDateTimeChangedEventArgs(newValue, SelectedDateTimeChangedEvent);
             RaiseEvent(arg);
         }
-        
 
+        public static readonly RoutedEvent SelectedEvent = EventManager.RegisterRoutedEvent("Selected", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(DateTimePicker));
+        public event RoutedEventHandler Selected
+        {
+            add { AddHandler(SelectedEvent, value); }
+            remove { RemoveHandler(SelectedEvent, value); }
+        }
+        void RaiseSelectedEvent()
+        {
+            var arg = new RoutedEventArgs(SelectedEvent);
+            RaiseEvent(arg);
+        }
         #endregion
 
         #region Property
@@ -148,7 +159,7 @@ namespace Panuon.UI.Silver
         {
             var picker = d as DateTimePicker;
             picker.UpdateText();
-            picker.RaiseSelectedDateTimeChanged((DateTime)e.NewValue, (DateTime)e.OldValue);
+            picker.RaiseSelectedDateTimeChanged((DateTime)e.NewValue);
         }
 
         private static void OnDateTimePickerModeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)

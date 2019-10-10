@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Panuon.UI.Silver.Core;
+using System;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
@@ -34,6 +35,7 @@ namespace Panuon.UI.Silver
         private DayMonthYear _currentPosition = DayMonthYear.Day;
         #endregion
 
+        #region Constructor
         public Calendar()
         {
             InitializeComponent();
@@ -44,17 +46,18 @@ namespace Panuon.UI.Silver
             _storyboard_monthtoYear = FindResource("Storyboard_MonthToYear") as Storyboard;
             Loaded += Calendar_Loaded;
         }
+        #endregion
 
         #region RoutedEvent
-        public static readonly RoutedEvent SelectedDateChangedEvent = EventManager.RegisterRoutedEvent("SelectedDateChanged", RoutingStrategy.Bubble, typeof(RoutedPropertyChangedEventHandler<DateTime>), typeof(Calendar));
-        public event RoutedPropertyChangedEventHandler<DateTime> SelectedDateChanged
+        public static readonly RoutedEvent SelectedDateChangedEvent = EventManager.RegisterRoutedEvent("SelectedDateChanged", RoutingStrategy.Bubble, typeof(SelectedDateChangedEventHandler), typeof(Calendar));
+        public event SelectedDateChangedEventHandler SelectedDateChanged
         {
             add { AddHandler(SelectedDateChangedEvent, value); }
             remove { RemoveHandler(SelectedDateChangedEvent, value); }
         }
-        void RaiseSelectedDateChanged(DateTime oldValue, DateTime newValue)
+        void RaiseSelectedDateChanged( DateTime newValue)
         {
-            var arg = new RoutedPropertyChangedEventArgs<DateTime>(oldValue, newValue, SelectedDateChangedEvent);
+            var arg = new SelectedDateChangedEventArgs(newValue, SelectedDateChangedEvent);
             RaiseEvent(arg);
         }
 
@@ -205,7 +208,7 @@ namespace Panuon.UI.Silver
             }
 
             calendar.CheckButtonVisible();
-            calendar.RaiseSelectedDateChanged(oldDate, newDate);
+            calendar.RaiseSelectedDateChanged(newDate);
         }
 
         private static void OnDateTimeLimitChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)

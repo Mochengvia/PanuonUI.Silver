@@ -1,6 +1,5 @@
 ﻿using Panuon.UI.Silver.Utils;
 using System;
-using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -22,12 +21,14 @@ namespace Panuon.UI.Silver
         }
         #endregion
 
+        #region Constructor
         public Clock()
         {
             InitializeComponent();
             Loaded += Clock_Loaded;
         }
-     
+        #endregion
+
         #region Property
         ///// <summary>
         ///// get or set clock style

@@ -2,7 +2,6 @@
 using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
-using System.Windows.Media;
 
 namespace Panuon.UI.Silver.Converters
 {
@@ -153,7 +152,7 @@ namespace Panuon.UI.Silver.Converters
                 default:
                     return Visibility.Visible;
             }
-           
+
 
         }
 
@@ -184,5 +183,5 @@ namespace Panuon.UI.Silver.Converters
             return DependencyProperty.UnsetValue;
         }
     }
-    
+
 }

@@ -16,22 +16,20 @@
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="FontSize"
                 Value="{StaticResource Default_FontSize}" />
-        <Setter Property="FocusVisualStyle"
-                Value="{x:Null}" />
         <Setter Property="MaxDropDownHeight"
                 Value="250" />
         <Setter Property="Foreground"
-                Value="#3E3E3E"></Setter>
+                Value="#3E3E3E" />
         <Setter Property="Background"
-                Value="White"></Setter>
+                Value="White" />
         <Setter Property="BorderBrush"
-                Value="LightGray"></Setter>
+                Value="LightGray" />
         <Setter Property="BorderThickness"
                 Value="1"></Setter>
         <Setter Property="VerticalContentAlignment"
                 Value="Center" />
         <Setter Property="Padding"
-                Value="5,0,0,0"></Setter>
+                Value="5,0,25,0" />
         <Setter Property="local:ComboBoxHelper.ShadowColor"
                 Value="#888888" />
         <Setter Property="local:ComboBoxHelper.ItemHeight"
@@ -48,8 +46,20 @@
                 Value="Auto" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility"
                 Value="Disabled" />
+        <Setter Property="local:ComboBoxHelper.SearchTextBoxWatermark" 
+                Value="Search ..."/>
         <Setter Property="MaxDropDownHeight"
                 Value="150" />
+        <Setter Property="local:IconHelper.FontSize"
+                Value="{Binding FontSize, Converter={StaticResource Add3Converter},RelativeSource={RelativeSource Self},Mode=OneWay}" />
+        <Setter Property="local:IconHelper.Foreground"
+                Value="{Binding Foreground,RelativeSource={RelativeSource Self},Mode=OneWay}" />
+        <Setter Property="local:IconHelper.FontFamily"
+                Value="{StaticResource FontAwesome}" />
+        <Setter Property="local:ScrollViewerHelper.ScrollBarThickness"
+                Value="6" />
+        <Setter Property="local:ScrollViewerHelper.ScrollBarCornerRadius"
+                Value="3" />
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>
@@ -85,8 +95,9 @@
                                        Padding="10,0,2,0"
                                        VerticalContentAlignment="Center"
                                        Content="{Binding Path=(local:ComboBoxHelper.Icon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
-                                       Foreground="{TemplateBinding Foreground}"
-                                       FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"></Label>
+                                       Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
+                                       FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
+                                       FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"></Label>
                                 <ContentPresenter x:Name="ContentSite"
                                                   Grid.Column="1"
                                                   Margin="{TemplateBinding Padding}"
@@ -198,7 +209,7 @@
                                     <MultiBinding Converter="{StaticResource ComboBoxTextMarginConverter}">
                                         <Binding Path="ActualWidth"
                                                  ElementName="LblIcon" />
-                                        <Binding Path="Padding"/>
+                                        <Binding Path="Padding" />
                                     </MultiBinding>
                                 </TextBox.Margin>
                             </TextBox>
@@ -237,15 +248,15 @@
                                                  BorderThickness="0"
                                                  local:TextBoxHelper.FocusedShadowColor="Transparent"
                                                  Foreground="{TemplateBinding Foreground}"
-                                                 local:TextBoxHelper.Watermark="Search ..."
+                                                 local:TextBoxHelper.Watermark="{Binding Path=(local:ComboBoxHelper.SearchTextBoxWatermark),RelativeSource={RelativeSource AncestorType=ComboBox}}"
                                                  Text="{Binding Path=(local:ComboBoxHelper.SearchText),RelativeSource={RelativeSource AncestorType=ComboBox},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                                  Margin="1,5,1,0" />
                                         <ScrollViewer Grid.Row="1"
                                                       VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                                                       HorizontalScrollBarVisibility="{Binding Path=(ScrollViewer.HorizontalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                                                       CanContentScroll="True"
-                                                      local:ScrollViewerHelper.ScrollBarThickness="6"
-                                                      local:ScrollViewerHelper.ScrollBarCornerRadius="3"
+                                                      local:ScrollViewerHelper.ScrollBarThickness="{Binding Path=(local:ScrollViewerHelper.ScrollBarThickness),RelativeSource={RelativeSource AncestorType=ComboBox},Mode=OneWay}"
+                                                      local:ScrollViewerHelper.ScrollBarCornerRadius="{Binding Path=(local:ScrollViewerHelper.ScrollBarCornerRadius),RelativeSource={RelativeSource AncestorType=ComboBox},Mode=OneWay}"
                                                       Margin="1,5,1,15"
                                                       MaxHeight="{TemplateBinding MaxDropDownHeight}">
                                             <ItemsPresenter />
@@ -280,7 +291,7 @@
                                     TargetName="TxtWatermark"
                                     Value="Visible" />
                         </MultiDataTrigger>
-                       
+
                         <Trigger Property="IsEditable"
                                  Value="True">
                             <Setter TargetName="PART_EditableTextBox"
@@ -322,8 +333,6 @@
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="FontSize"
                 Value="{StaticResource Default_FontSize}" />
-        <Setter Property="FocusVisualStyle"
-                Value="{x:Null}" />
         <Setter Property="Foreground"
                 Value="{Binding Foreground,RelativeSource={RelativeSource AncestorType=ComboBox}}" />
         <Setter Property="Height"
@@ -369,7 +378,7 @@
                             <Setter Property="Foreground"
                                     Value="{Binding Path=(local:ComboBoxHelper.SelectedForeground),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
                         </MultiDataTrigger>
-                        
+
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding IsSelected,RelativeSource={RelativeSource Self}}"
@@ -383,7 +392,7 @@
                                     Property="Background"
                                     Value="{Binding Path=(local:ComboBoxHelper.HoverBackground),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
                         </MultiDataTrigger>
-                        
+
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding IsSelected,RelativeSource={RelativeSource Self}}"

@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 
@@ -17,7 +13,7 @@ namespace Panuon.UI.Silver.Converters
             var padding = values[1] as Thickness? ?? new Thickness(0);
 
             return new Thickness(width + padding.Left, padding.Top, padding.Right + 25, padding.Bottom);
-         
+
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)

@@ -218,7 +218,8 @@
                 </Slider>
             </Grid>
         </Grid>
-        <Grid x:Name="GrdMeasuredValue" Grid.Row="2"
+        <Grid x:Name="GrdMeasuredValue"
+              Grid.Row="2"
               Height="50">
             <Grid.RowDefinitions>
                 <RowDefinition />
@@ -233,53 +234,58 @@
             </Grid.ColumnDefinitions>
             <TextBox x:Name="TbHex"
                      local:TextBoxHelper.Watermark="HEX"
-                     Text="{Binding Hex,ElementName=Selector}"
+                     local:TextBoxHelper.FocusedShadowColor="Transparent"
+                     local:TextBoxHelper.FocusedBorderBrush="#47BBC7"
+                     Text="{Binding Hex,ElementName=Selector,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                      Height="30"
                      Margin="5,0"
                      HorizontalContentAlignment="Center"
-                     VerticalAlignment="Bottom" 
-                     KeyUp="TbInfo_Keyup"
-                     LostFocus="TbInfo_LostFocus"/>
+                     VerticalAlignment="Bottom">
+            </TextBox>
             <TextBox x:Name="TbA"
-                     Text="{Binding A,ElementName=Selector}"
+                     MaxLength="3"
+                     Text="{Binding A,ElementName=Selector,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                      Grid.Column="1"
+                     local:TextBoxHelper.FocusedShadowColor="Transparent"
+                     local:TextBoxHelper.FocusedBorderBrush="#47BBC7"
                      local:TextBoxHelper.Watermark="A"
                      Height="30"
                      Margin="5,0"
                      HorizontalContentAlignment="Center"
-                     VerticalAlignment="Bottom"
-                     KeyUp="TbInfo_Keyup"
-                     LostFocus="TbInfo_LostFocus" />
+                     VerticalAlignment="Bottom" />
             <TextBox x:Name="TbR"
-                     Text="{Binding R,ElementName=Selector}"
+                     MaxLength="3"
+                     Text="{Binding R,ElementName=Selector,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                      Grid.Column="2"
+                     local:TextBoxHelper.FocusedShadowColor="Transparent"
+                     local:TextBoxHelper.FocusedBorderBrush="#47BBC7"
                      local:TextBoxHelper.Watermark="R"
                      Height="30"
                      Margin="5,0"
                      HorizontalContentAlignment="Center"
-                     VerticalAlignment="Bottom"
-                     KeyUp="TbInfo_Keyup"
-                     LostFocus="TbInfo_LostFocus" />
+                     VerticalAlignment="Bottom" />
             <TextBox x:Name="TbG"
-                     Text="{Binding G,ElementName=Selector}"
+                     MaxLength="3"
+                     Text="{Binding G,ElementName=Selector,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                      Grid.Column="3"
+                     local:TextBoxHelper.FocusedShadowColor="Transparent"
+                     local:TextBoxHelper.FocusedBorderBrush="#47BBC7"
                      local:TextBoxHelper.Watermark="G"
                      Height="30"
                      Margin="5,0"
                      HorizontalContentAlignment="Center"
-                     VerticalAlignment="Bottom"
-                     KeyUp="TbInfo_Keyup"
-                     LostFocus="TbInfo_LostFocus" />
+                     VerticalAlignment="Bottom" />
             <TextBox x:Name="TbB"
+                     MaxLength="3"
                      Text="{Binding B,ElementName=Selector,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      Grid.Column="4"
+                     local:TextBoxHelper.FocusedShadowColor="Transparent"
+                     local:TextBoxHelper.FocusedBorderBrush="#47BBC7"
                      local:TextBoxHelper.Watermark="B"
                      Height="30"
                      Margin="5,0"
                      HorizontalContentAlignment="Center"
-                     VerticalAlignment="Bottom"
-                     KeyUp="TbInfo_Keyup"
-                     LostFocus="TbInfo_LostFocus" />
+                     VerticalAlignment="Bottom" />
             <TextBlock Text="HEX"
                        Grid.Row="1"
                        FontSize="14"
@@ -315,8 +321,9 @@
                        HorizontalAlignment="Center"
                        Foreground="Gray" />
         </Grid>
-        <Grid x:Name="GrdDefaultColor" Grid.Row="3"
-               Height="70">
+        <Grid x:Name="GrdDefaultColor"
+              Grid.Row="3"
+              Height="70">
             <Grid Height="60"
                   Margin="0,10,0,0">
                 <Grid.RowDefinitions>
@@ -337,8 +344,8 @@
                         Background="#FFFFFF"
                         BorderThickness="1"
                         BorderBrush="LightGray"
-                        CornerRadius="15" 
-                        MouseLeftButtonDown="BdrDefaultColor_MouseLeftButtonDown"/>
+                        CornerRadius="15"
+                        MouseLeftButtonDown="BdrDefaultColor_MouseLeftButtonDown" />
                 <Border Width="25"
                         Height="25"
                         Background="#EFEFEF"
@@ -361,7 +368,8 @@
                         Grid.Column="3"
                         BorderThickness="1"
                         BorderBrush="LightGray"
-                        MouseLeftButtonDown="BdrDefaultColor_MouseLeftButtonDown" CornerRadius="15" />
+                        MouseLeftButtonDown="BdrDefaultColor_MouseLeftButtonDown"
+                        CornerRadius="15" />
                 <Border Width="25"
                         Height="25"
                         Background="#999999"
@@ -392,8 +400,8 @@
                         BorderThickness="1"
                         BorderBrush="LightGray"
                         MouseLeftButtonDown="BdrDefaultColor_MouseLeftButtonDown"
-                        CornerRadius="15" 
-                        Grid.Row="1"/>
+                        CornerRadius="15"
+                        Grid.Row="1" />
                 <Border Width="25"
                         Height="25"
                         Background="#FFF15D26"
@@ -411,7 +419,7 @@
                         BorderBrush="LightGray"
                         MouseLeftButtonDown="BdrDefaultColor_MouseLeftButtonDown"
                         CornerRadius="15"
-                        Grid.Row="1"/>
+                        Grid.Row="1" />
                 <Border Width="25"
                         Height="25"
                         Background="#FF74E041"
@@ -429,7 +437,7 @@
                         BorderBrush="LightGray"
                         MouseLeftButtonDown="BdrDefaultColor_MouseLeftButtonDown"
                         CornerRadius="15"
-                        Grid.Row="1"/>
+                        Grid.Row="1" />
                 <Border Width="25"
                         Height="25"
                         Background="#FF306ACF"
@@ -438,7 +446,7 @@
                         BorderBrush="LightGray"
                         MouseLeftButtonDown="BdrDefaultColor_MouseLeftButtonDown"
                         CornerRadius="15"
-                        Grid.Row="1"/>
+                        Grid.Row="1" />
                 <Border Width="25"
                         Height="25"
                         Background="#FFDB23EE"

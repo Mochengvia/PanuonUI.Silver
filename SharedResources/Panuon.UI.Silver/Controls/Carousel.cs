@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Panuon.UI.Silver.Core;
+using System;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,6 +19,7 @@ namespace Panuon.UI.Silver
         private DispatcherTimer _dtAutoPlay;
         #endregion
 
+        #region Constructor
         static Carousel()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(Carousel), new FrameworkPropertyMetadata(typeof(Carousel)));
@@ -29,33 +31,21 @@ namespace Panuon.UI.Silver
             Loaded += Carousel_Loaded;
             SizeChanged += Carousel_SizeChanged;
         }
+        #endregion
 
-        private void Carousel_SizeChanged(object sender, SizeChangedEventArgs e)
+        #region RoutedEvent
+        public static readonly RoutedEvent IndexChangedEvent = EventManager.RegisterRoutedEvent("IndexChanged", RoutingStrategy.Bubble, typeof(IndexChangedEventHandler), typeof(Carousel));
+        public event IndexChangedEventHandler IndexChanged
         {
-            foreach (FrameworkElement child in Children)
-            {
-                child.Width = ActualWidth;
-                child.Height = ActualHeight;
-            }
+            add { AddHandler(IndexChangedEvent, value); }
+            remove { RemoveHandler(IndexChangedEvent, value); }
         }
-
-        public override void OnApplyTemplate()
+        void RaiseIndexChanged(int newValue)
         {
-            base.OnApplyTemplate();
-            _stkMain = VisualTreeHelper.GetChild(VisualTreeHelper.GetChild(this, 0), 0) as StackPanel;
+            var arg = new IndexChangedEventArgs(newValue, IndexChangedEvent);
+            RaiseEvent(arg);
         }
-
-        private void Carousel_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (Children == null)
-                return;
-
-            foreach (FrameworkElement child in Children)
-            {
-                child.Width = ActualWidth;
-                child.Height = ActualHeight;
-            }
-        }
+        #endregion
 
         #region Property
         /// <summary>
@@ -132,6 +122,33 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Event Handler
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+            _stkMain = VisualTreeHelper.GetChild(VisualTreeHelper.GetChild(this, 0), 0) as StackPanel;
+        }
+
+        private void Carousel_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            foreach (FrameworkElement child in Children)
+            {
+                child.Width = ActualWidth;
+                child.Height = ActualHeight;
+            }
+        }
+
+        private void Carousel_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (Children == null)
+                return;
+
+            foreach (FrameworkElement child in Children)
+            {
+                child.Width = ActualWidth;
+                child.Height = ActualHeight;
+            }
+        }
+
         private static void OnAutoPlayIntervalChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var carousel = d as Carousel;
@@ -180,6 +197,7 @@ namespace Panuon.UI.Silver
                     EasingFunction = new CubicEase() { EasingMode = EasingMode.EaseOut }
                 });
             }
+            carousel.RaiseIndexChanged(targetIndex);
         }
 
         #endregion

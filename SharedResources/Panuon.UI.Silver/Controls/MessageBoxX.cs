@@ -2,17 +2,12 @@
 using Panuon.UI.Silver.Core;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
 
 namespace Panuon.UI.Silver
 {
     public static class MessageBoxX
     {
-        #region Identity
-        public static Dictionary<string, MessageBoxXConfigurations> MessageBoxXConfigurations { get; }
-        #endregion
 
         #region Constructor
         static MessageBoxX()
@@ -21,7 +16,12 @@ namespace Panuon.UI.Silver
         }
         #endregion
 
-        #region Show API
+        #region Property
+        public static IDictionary<string, MessageBoxXConfigurations> MessageBoxXConfigurations { get; }
+        #endregion
+
+
+        #region API
         public static MessageBoxResult Show(string message, string title = null)
         {
             return CallMsgBox(null, message, title, MessageBoxButton.OK, new MessageBoxXConfigurations());

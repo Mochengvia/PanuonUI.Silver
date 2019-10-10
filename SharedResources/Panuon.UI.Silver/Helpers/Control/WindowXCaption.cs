@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows;
 using System.Windows.Media;
 
 namespace Panuon.UI.Silver
@@ -11,6 +6,22 @@ namespace Panuon.UI.Silver
     public class WindowXCaption
     {
         #region Base
+
+
+        public static Thickness GetPadding(DependencyObject obj)
+        {
+            return (Thickness)obj.GetValue(PaddingProperty);
+        }
+
+        public static void SetPadding(DependencyObject obj, Thickness value)
+        {
+            obj.SetValue(PaddingProperty, value);
+        }
+
+        public static readonly DependencyProperty PaddingProperty =
+            DependencyProperty.RegisterAttached("Padding", typeof(Thickness), typeof(WindowXCaption));
+
+
         /// <summary>
         /// Caption Height.
         /// </summary>
@@ -113,7 +124,7 @@ namespace Panuon.UI.Silver
         /// </summary>
         public static object GetHeader(DependencyObject obj)
         {
-            return (object)obj.GetValue(HeaderProperty);
+            return obj.GetValue(HeaderProperty);
         }
 
         public static void SetHeader(DependencyObject obj, object value)

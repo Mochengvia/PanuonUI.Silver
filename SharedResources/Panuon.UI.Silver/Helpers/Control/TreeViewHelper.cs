@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.ComponentModel;
-using System.Reflection;
+﻿using System.Collections;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
-using System.Linq;
 
 namespace Panuon.UI.Silver
 {
@@ -110,7 +106,7 @@ namespace Panuon.UI.Silver
             {
                 return null;
             }
-            
+
         }
         #endregion
 
@@ -170,7 +166,7 @@ namespace Panuon.UI.Silver
 
         #endregion
 
-        #region HoverBrush
+        #region ExpandedBrush
         public static Brush GetExpandedBrush(DependencyObject obj)
         {
             return (Brush)obj.GetValue(ExpandedBrushProperty);
@@ -185,19 +181,19 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("ExpandedBrush", typeof(Brush), typeof(TreeViewHelper));
         #endregion
 
-        #region SelectedBrush
-        public static Brush GetSelectedBrush(DependencyObject obj)
+        #region SelectedBackground
+        public static Brush GetSelectedBackground(DependencyObject obj)
         {
-            return (Brush)obj.GetValue(SelectedBrushProperty);
+            return (Brush)obj.GetValue(SelectedBackgroundProperty);
         }
 
-        public static void SetSelectedBrush(DependencyObject obj, Brush value)
+        public static void SetSelectedBackground(DependencyObject obj, Brush value)
         {
-            obj.SetValue(SelectedBrushProperty, value);
+            obj.SetValue(SelectedBackgroundProperty, value);
         }
 
-        public static readonly DependencyProperty SelectedBrushProperty =
-            DependencyProperty.RegisterAttached("SelectedBrush", typeof(Brush), typeof(TreeViewHelper));
+        public static readonly DependencyProperty SelectedBackgroundProperty =
+            DependencyProperty.RegisterAttached("SelectedBackground", typeof(Brush), typeof(TreeViewHelper));
         #endregion
 
         #region SelectedForeground
@@ -233,7 +229,7 @@ namespace Panuon.UI.Silver
         #region ItemIcon
         public static object GetItemIcon(DependencyObject obj)
         {
-            return (object)obj.GetValue(ItemIconProperty);
+            return obj.GetValue(ItemIconProperty);
         }
 
         public static void SetItemIcon(DependencyObject obj, object value)
@@ -298,7 +294,7 @@ namespace Panuon.UI.Silver
                 {
                     if (selectMode == SelectMode.Disabled)
                         e.Handled = true;
-                    else if(selectMode == SelectMode.ChildOnly)
+                    else if (selectMode == SelectMode.ChildOnly)
                     {
                         if (!(treeView.ItemTemplate is HierarchicalDataTemplate))
                             return;

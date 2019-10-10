@@ -28,13 +28,13 @@ namespace Panuon.UI.Silver.Converters
             var height = (double)values[1];
 
             double radius = 0;
-            if(values[2] is Thickness)
+            if (values[2] is Thickness)
                 radius = ((Thickness)values[2]).Left;
             else if (values[2] is double)
                 radius = ((double)values[2]);
 
             var percent = 0.33;
-            if(values.Length == 6)
+            if (values.Length == 6)
             {
                 var min = (double)values[3];
                 var max = (double)values[4];
@@ -85,7 +85,7 @@ namespace Panuon.UI.Silver.Converters
             var max = (double)values[1];
             var value = (double)values[2];
 
-            return Math.Round((value - min) / (max - min), 2) * 100 + "%"; 
+            return Math.Round((value - min) / (max - min), 2) * 100 + "%";
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)

@@ -16,12 +16,19 @@ QQ Group : 718778191
 Zhihu : @末城via
 
 # News 动态  
-`2019-9-11 v1.0.6-rc`
-`本次更新对一些参数进行了较大的修改。详情请参考下方的发布文档。`
+#### v1.0.7-rc现已发布  
+`2019-10-10 v1.0.7-rc`  
+`为了以后的发展以及规范性，该版本对一些属性命名进行了调整，并增删了一些属性，升级该版本需要对你的项目进行一些调整。同时，该版本中新增了一些控件，并修复了已收到反馈的BUG。请参考下方的发布文档，以便你的项目能快速更新到新的控件库上。另外，全新的帮助文档已经发布（还没写完）。`
 
 # ReleaseNote 发布文档  
 
 https://github.com/Panuon/Panuon.Documents/blob/master/Documents/PanuonUI.Silver/release-note.zh-cn.md
+
+# Document 文档
+
+Chinese document(English document is still being written, you can translate it by google or other translators):  
+中文文档：  
+https://github.com/Panuon/Panuon.Documents/blob/master/Documents/PanuonUI.Silver/zh-cn.md
 
 # Case 案例  
 
@@ -41,11 +48,7 @@ http://www.huanghunxiao.com/
 ![](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/Panuon.UI.Silver/window_1.png)
 
 
-# Document 文档
 
-Chinese document(English document is still being written, you can translate it by google or other translator):  
-中文文档：  
-https://github.com/Panuon/Panuon.Documents/blob/master/Documents/PanuonUI.Silver/zh-cn.md
 
 # Donate  捐赠
 Panuon.UI.Silver is an open source library.Your support will motivate me to continue Panuon.UI.Silver development.    

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Panuon.UI.Silver
+﻿namespace Panuon.UI.Silver
 {
+    #region MessageBoxX
     #region MessageBoxStyle
     public enum MessageBoxStyle
     {
@@ -31,7 +27,17 @@ namespace Panuon.UI.Silver
         CancelOrNo,
     }
     #endregion
+    #endregion
 
+    #region PendingBox
+    public enum PendingBoxStyle
+    {
+        Standard,
+        Classic,
+    }
+    #endregion
+
+    #region Button
     #region ClickMode
     public enum ClickMode
     {
@@ -55,6 +61,7 @@ namespace Panuon.UI.Silver
         Sink,
     }
     #endregion
+    #endregion
 
     #region RepeatButton
     public enum RepeatButtonStyle
@@ -70,8 +77,8 @@ namespace Panuon.UI.Silver
     public enum LoadingStyle
     {
         Standard,
-        Ring,
         Wave,
+        Ring,
         Ring2,
         Classic
     }
@@ -156,7 +163,7 @@ namespace Panuon.UI.Silver
     {
         Standard,
         Classic,
-        
+
     }
     #endregion
 
@@ -269,7 +276,19 @@ namespace Panuon.UI.Silver
     public enum MenuStyle
     {
         Standard,
-        Classic,
+        Modern,
+    }
+    #endregion
+
+    #region StateIcon
+    public enum IconState
+    {
+        Normal,
+        Success,
+        Failed,
+        Warning,
+        Error,
+        Tips,
     }
     #endregion
 }

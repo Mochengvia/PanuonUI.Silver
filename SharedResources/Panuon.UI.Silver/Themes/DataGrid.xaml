@@ -6,8 +6,8 @@
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Resource.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/ScrollViewer.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/ComboBox.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <converter:Add5Converter x:Key="Add5Converter" />
 
     <Style TargetType="{x:Type DataGrid}">
         <Setter Property="local:DataGridHelper.DataGridHook"
@@ -18,8 +18,6 @@
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="FontSize"
                 Value="{StaticResource Default_FontSize}" />
-        <Setter Property="FocusVisualStyle"
-                Value="{x:Null}" />
         <Setter Property="Background"
                 Value="Transparent" />
         <Setter Property="BorderBrush"
@@ -31,9 +29,9 @@
         <Setter Property="VerticalGridLinesBrush"
                 Value="LightGray" />
         <Setter Property="local:DataGridHelper.CellPadding"
-                Value="15,0" />
+                Value="10,0" />
         <Setter Property="local:DataGridHelper.HeaderPadding"
-                Value="15,0" />
+                Value="10,0" />
         <Setter Property="local:DataGridHelper.RowMinHeight"
                 Value="35" />
         <Setter Property="local:DataGridHelper.HeaderMinHeight"
@@ -58,6 +56,21 @@
                 Value="#EAEAEA" />
         <Setter Property="Foreground"
                 Value="#3E3E3E" />
+        <Setter Property="RowValidationErrorTemplate">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid  Background="#EB3941"
+                           ToolTip="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGridRow}}, Path=(Validation.Errors)[0].ErrorContent}">
+                        <TextBlock Text="!"
+                                   FontSize="{TemplateBinding FontSize}"
+                                   FontWeight="Bold"
+                                   Foreground="White"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
         <Style.Resources>
             <Style TargetType="{x:Type ScrollViewer}"
                    BasedOn="{StaticResource {x:Type ScrollViewer}}">
@@ -102,8 +115,6 @@
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="FontSize"
                 Value="{Binding FontSize,RelativeSource={RelativeSource AncestorType=DataGrid}}" />
-        <Setter Property="FocusVisualStyle"
-                Value="{x:Null}" />
         <Setter Property="FontWeight"
                 Value="500" />
         <Setter Property="Background"
@@ -216,39 +227,96 @@
                                     Property="Opacity"
                                     Value="1"></Setter>
                         </Trigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=(local:DataGridHelper.ColumnHorizontalContentAlignment),RelativeSource={RelativeSource AncestorType=DataGrid},Mode=OneWay,Converter={StaticResource NotAlignmentCenterConverter}}"
+                                           Value="False" />
+                                <Condition Binding="{Binding SortDirection,RelativeSource={RelativeSource Self}}"
+                                           Value="{x:Null}" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="PathAsc"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
+                            <Setter TargetName="PathDesc"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=(local:DataGridHelper.ColumnHorizontalContentAlignment),RelativeSource={RelativeSource AncestorType=DataGrid},Mode=OneWay,Converter={StaticResource NotAlignmentCenterConverter}}"
+                                           Value="False" />
+                                <Condition Binding="{Binding SortDirection,RelativeSource={RelativeSource Self}}"
+                                           Value="Descending" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="PathAsc"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
+                            <Setter TargetName="PathDesc"
+                                    Property="Visibility"
+                                    Value="Visible" />
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=(local:DataGridHelper.ColumnHorizontalContentAlignment),RelativeSource={RelativeSource AncestorType=DataGrid},Mode=OneWay,Converter={StaticResource NotAlignmentCenterConverter}}"
+                                           Value="False" />
+                                <Condition Binding="{Binding SortDirection,RelativeSource={RelativeSource Self}}"
+                                           Value="Ascending" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="PathAsc"
+                                    Property="Visibility"
+                                    Value="Visible" />
+                            <Setter TargetName="PathDesc"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
+                        </MultiDataTrigger>
                         <DataTrigger Binding="{Binding CanUserSortColumns,RelativeSource={RelativeSource AncestorType=DataGrid},Mode=OneWay}"
-                                 Value="False">
+                                     Value="False">
                             <Setter TargetName="GrdSort"
                                     Property="Visibility"
                                     Value="Collapsed" />
                         </DataTrigger>
-                        <Trigger Property="SortDirection"
-                                 Value="{x:Null}">
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=(local:DataGridHelper.ColumnHorizontalContentAlignment),RelativeSource={RelativeSource AncestorType=DataGrid},Mode=OneWay,Converter={StaticResource NotAlignmentCenterConverter}}"
+                                           Value="True" />
+                                <Condition Binding="{Binding SortDirection,RelativeSource={RelativeSource Self}}"
+                                           Value="{x:Null}" />
+                            </MultiDataTrigger.Conditions>
                             <Setter TargetName="PathAsc"
                                     Property="Visibility"
                                     Value="Hidden" />
                             <Setter TargetName="PathDesc"
                                     Property="Visibility"
                                     Value="Hidden" />
-                        </Trigger>
-                        <Trigger Property="SortDirection"
-                                 Value="Descending">
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=(local:DataGridHelper.ColumnHorizontalContentAlignment),RelativeSource={RelativeSource AncestorType=DataGrid},Mode=OneWay,Converter={StaticResource NotAlignmentCenterConverter}}"
+                                           Value="True" />
+                                <Condition Binding="{Binding SortDirection,RelativeSource={RelativeSource Self}}"
+                                           Value="Descending" />
+                            </MultiDataTrigger.Conditions>
                             <Setter TargetName="PathAsc"
                                     Property="Visibility"
                                     Value="Hidden" />
                             <Setter TargetName="PathDesc"
                                     Property="Visibility"
                                     Value="Visible" />
-                        </Trigger>
-                        <Trigger Property="SortDirection"
-                                 Value="Ascending">
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=(local:DataGridHelper.ColumnHorizontalContentAlignment),RelativeSource={RelativeSource AncestorType=DataGrid},Mode=OneWay,Converter={StaticResource NotAlignmentCenterConverter}}"
+                                           Value="True" />
+                                <Condition Binding="{Binding SortDirection,RelativeSource={RelativeSource Self}}"
+                                           Value="Ascending" />
+                            </MultiDataTrigger.Conditions>
                             <Setter TargetName="PathAsc"
                                     Property="Visibility"
                                     Value="Visible" />
                             <Setter TargetName="PathDesc"
                                     Property="Visibility"
                                     Value="Hidden" />
-                        </Trigger>
+                        </MultiDataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -262,8 +330,6 @@
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="FontSize"
                 Value="{Binding FontSize,RelativeSource={RelativeSource AncestorType=DataGrid}}" />
-        <Setter Property="FocusVisualStyle"
-                Value="{x:Null}" />
         <Setter Property="Background"
                 Value="White" />
         <Setter Property="local:DataGridHelper.CellPadding"
@@ -280,6 +346,10 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridCell}">
                     <Grid>
+                        <Border x:Name="BdrHover"
+                                Background="{Binding Path=(local:DataGridHelper.HoverBackground),RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                Opacity="0"
+                                SnapsToDevicePixels="True" />
                         <Border x:Name="BdrSelected"
                                 Background="{Binding Path=(local:DataGridHelper.SelectedBackground),RelativeSource={RelativeSource AncestorType=DataGridCell}}"
                                 Opacity="0"
@@ -290,6 +360,62 @@
                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                     </Grid>
                     <ControlTemplate.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsMouseOver,RelativeSource={RelativeSource Self}}"
+                                           Value="True" />
+                                <Condition Binding="{Binding SelectionUnit,RelativeSource={RelativeSource AncestorType=DataGrid},Mode=OneWay}"
+                                           Value="Cell"/>
+                            </MultiDataTrigger.Conditions>
+                            <MultiDataTrigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="BdrHover"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1"
+                                                         Duration="0:0:0.2"></DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiDataTrigger.EnterActions>
+                            <MultiDataTrigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="BdrHover"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0"
+                                                         Duration="0:0:0.2"></DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiDataTrigger.ExitActions>
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsMouseOver,RelativeSource={RelativeSource Self}}"
+                                           Value="True" />
+                                <Condition Binding="{Binding SelectionUnit,RelativeSource={RelativeSource AncestorType=DataGrid},Mode=OneWay}"
+                                           Value="CellOrRowHeader" />
+                            </MultiDataTrigger.Conditions>
+                            <MultiDataTrigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="BdrHover"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1"
+                                                         Duration="0:0:0.2"></DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiDataTrigger.EnterActions>
+                            <MultiDataTrigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="BdrHover"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0"
+                                                         Duration="0:0:0.2"></DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiDataTrigger.ExitActions>
+                        </MultiDataTrigger>
 
                         <Trigger  Property="IsSelected"
                                   Value="True">
@@ -312,8 +438,6 @@
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="FontSize"
                 Value="{Binding FontSize,RelativeSource={RelativeSource AncestorType=DataGrid}}" />
-        <Setter Property="FocusVisualStyle"
-                Value="{x:Null}" />
         <Setter Property="MinHeight"
                 Value="{Binding Path=(local:DataGridHelper.RowMinHeight),RelativeSource={RelativeSource AncestorType=DataGrid}}" />
         <Setter Property="Template">
@@ -346,9 +470,14 @@
                         </SelectiveScrollingGrid>
                     </Grid>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver"
-                                 Value="True">
-                            <Trigger.EnterActions>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsMouseOver,RelativeSource={RelativeSource Self}}"
+                                           Value="True" />
+                                <Condition Binding="{Binding SelectionUnit,RelativeSource={RelativeSource AncestorType=DataGrid},Mode=OneWay}"
+                                           Value="FullRow" />
+                            </MultiDataTrigger.Conditions>
+                            <MultiDataTrigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <DoubleAnimation Storyboard.TargetName="BdrHover"
@@ -357,8 +486,8 @@
                                                          Duration="0:0:0.2"></DoubleAnimation>
                                     </Storyboard>
                                 </BeginStoryboard>
-                            </Trigger.EnterActions>
-                            <Trigger.ExitActions>
+                            </MultiDataTrigger.EnterActions>
+                            <MultiDataTrigger.ExitActions>
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <DoubleAnimation Storyboard.TargetName="BdrHover"
@@ -367,15 +496,13 @@
                                                          Duration="0:0:0.2"></DoubleAnimation>
                                     </Storyboard>
                                 </BeginStoryboard>
-                            </Trigger.ExitActions>
-                        </Trigger>
+                            </MultiDataTrigger.ExitActions>
+                        </MultiDataTrigger>
                     </ControlTemplate.Triggers>
-
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-
 
     <Style TargetType="{x:Type DataGridRowHeader}">
         <Setter Property="Template">
@@ -383,16 +510,11 @@
                 <ControlTemplate TargetType="{x:Type DataGridRowHeader}">
                     <Grid>
                         <Border x:Name="rowHeaderBorder"
-                                Width="7"
                                 BorderThickness="1"
                                 Background="{Binding Path=(local:DataGridHelper.RowHeaderBrush),RelativeSource={RelativeSource AncestorType=DataGrid}}">
-                            <StackPanel Orientation="Horizontal">
-                                <ContentPresenter VerticalAlignment="Center"
-                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                                <Control SnapsToDevicePixels="false"
-                                         Template="{Binding ValidationErrorTemplate, RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}"
-                                         Visibility="{Binding (Validation.HasError), Converter={StaticResource BoolToVisibleConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}" />
-                            </StackPanel>
+                            <Control SnapsToDevicePixels="false"
+                                     Template="{Binding ValidationErrorTemplate, RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}"
+                                     Visibility="{Binding (Validation.HasError), Converter={StaticResource BoolToVisibleConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}" />
                         </Border>
                         <Thumb x:Name="PART_TopHeaderGripper"
                                VerticalAlignment="Top"
@@ -442,4 +564,5 @@
             </Setter.Value>
         </Setter>
     </Style>
+
 </ResourceDictionary>

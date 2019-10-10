@@ -149,7 +149,7 @@ namespace UIBrowser.PartialViews.Native
             var color = Helper.GetColorByOffset(_linearGradientBrush.GradientStops, SldTheme.Value / 7);
             CheckBoxHelper.SetCornerRadius(ChbCustom, SldCornerRadius.Value);
 
-           
+
 
             switch (CheckBoxHelper.GetCheckBoxStyle(ChbCustom))
             {
@@ -199,6 +199,6 @@ namespace UIBrowser.PartialViews.Native
 
         #endregion
 
-       
+
     }
 }

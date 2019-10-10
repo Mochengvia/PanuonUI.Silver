@@ -83,7 +83,7 @@ namespace Panuon.UI.Silver
         #region WaitingContent
         public static object GetWaitingContent(DependencyObject obj)
         {
-            return (object)obj.GetValue(WaitingContentProperty);
+            return obj.GetValue(WaitingContentProperty);
         }
 
         public static void SetWaitingContent(DependencyObject obj, object value)
@@ -98,7 +98,7 @@ namespace Panuon.UI.Silver
         #region Icon
         public static object GetIcon(DependencyObject obj)
         {
-            return (object)obj.GetValue(IconProperty);
+            return obj.GetValue(IconProperty);
         }
 
         public static void SetIcon(DependencyObject obj, object value)

@@ -52,7 +52,7 @@ namespace Panuon.UI.Silver
         #region Property
         public string Content
         {
-            get { return _content; }
+            get => _content;
             set { _content = value; NotifyPropertyChanged("Content"); }
         }
         private string _content;
@@ -60,7 +60,7 @@ namespace Panuon.UI.Silver
 
         public bool Removable
         {
-            get { return _removable; }
+            get => _removable;
             set { _removable = value; NotifyPropertyChanged("Removable"); }
         }
         private bool _removable = true;
@@ -68,7 +68,7 @@ namespace Panuon.UI.Silver
 
         public object Background
         {
-            get { return _background; }
+            get => _background;
             set { _background = value; NotifyPropertyChanged("Background"); }
         }
         private object _background;

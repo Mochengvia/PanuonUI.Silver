@@ -2,7 +2,6 @@
 using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
-using System.Windows.Media;
 
 namespace Panuon.UI.Silver.Converters
 {
@@ -16,7 +15,7 @@ namespace Panuon.UI.Silver.Converters
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
         {
             var objs = new object[targetTypes.Length];
-            for(int i = 0; i < objs.Length; i++)
+            for (int i = 0; i < objs.Length; i++)
             {
                 objs[i] = DependencyProperty.UnsetValue;
             }

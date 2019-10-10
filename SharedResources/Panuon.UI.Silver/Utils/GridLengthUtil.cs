@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -37,7 +35,7 @@ namespace Panuon.UI.Silver.Utils
             {
                 return (DataGridLength)_tcDataGridLength.ConvertFromString(widthOrHeight);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return new DataGridLength(1, DataGridLengthUnitType.Auto);
             }

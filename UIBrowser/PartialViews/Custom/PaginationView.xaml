@@ -29,7 +29,7 @@
                         <TextBox.ContextMenu>
                             <ContextMenu>
                                 <MenuItem Header="{x:Static localized:Resource.CopyCode}"
-                                          pu:ContextMenuHelper.ItemIcon="&#xf0c5;"
+                                          Icon="&#xf0c5;"
                                           Click="MenuItem_CopyCode"/>
                             </ContextMenu>
                         </TextBox.ContextMenu>
@@ -43,7 +43,7 @@
                 <StackPanel>
                     <Grid Height="80">
                         <pu:Pagination x:Name="PgnCustom"
-                                           TotalIndex="2"
+                                           TotalIndex="20"
                                            Height="28"
                                           
                                        HorizontalAlignment="Center"/>

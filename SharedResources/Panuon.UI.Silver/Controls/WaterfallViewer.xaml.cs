@@ -1,19 +1,7 @@
-﻿using Panuon.UI.Silver.Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Panuon.UI.Silver
 {
@@ -131,27 +119,27 @@ namespace Panuon.UI.Silver
         /// <summary>
         /// Loading stroke
         /// </summary>
-        public Brush LoadingStroke
+        public Brush LoadingBackground
         {
-            get { return (Brush)GetValue(LoadingStrokeProperty); }
-            set { SetValue(LoadingStrokeProperty, value); }
+            get { return (Brush)GetValue(LoadingBackgroundProperty); }
+            set { SetValue(LoadingBackgroundProperty, value); }
         }
 
-        public static readonly DependencyProperty LoadingStrokeProperty =
-            DependencyProperty.Register("LoadingStroke", typeof(Brush), typeof(WaterfallViewer), new PropertyMetadata(Brushes.Gray));
+        public static readonly DependencyProperty LoadingBackgroundProperty =
+            DependencyProperty.Register("LoadingBackground", typeof(Brush), typeof(WaterfallViewer), new PropertyMetadata(Brushes.Gray));
 
 
         /// <summary>
         /// Loading stroke cover
         /// </summary>
-        public Brush LoadingStrokeCover
+        public Brush LoadingForeground
         {
-            get { return (Brush)GetValue(LoadingStrokeCoverProperty); }
-            set { SetValue(LoadingStrokeCoverProperty, value); }
+            get { return (Brush)GetValue(LoadingForegroundProperty); }
+            set { SetValue(LoadingForegroundProperty, value); }
         }
 
-        public static readonly DependencyProperty LoadingStrokeCoverProperty =
-            DependencyProperty.Register("LoadingStrokeCover", typeof(Brush), typeof(WaterfallViewer), new PropertyMetadata(Brushes.Gray));
+        public static readonly DependencyProperty LoadingForegroundProperty =
+            DependencyProperty.Register("LoadingForeground", typeof(Brush), typeof(WaterfallViewer), new PropertyMetadata(Brushes.Gray));
 
         /// <summary>
         /// Is loading visible.

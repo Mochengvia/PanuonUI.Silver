@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace Panuon.UI.Silver.Core
@@ -22,17 +18,11 @@ namespace Panuon.UI.Silver.Core
 
         public TimeSpan Duration { get; set; }
 
-        public Size Size
+        public Size Size => new Size()
         {
-            get
-            {
-                return new Size()
-                {
-                    Height = Math.Abs(StartPosition.Y - EndPosition.Y),
-                    Width = Math.Abs(StartPosition.X - EndPosition.X),
-                };
-            }
-        }
+            Height = Math.Abs(StartPosition.Y - EndPosition.Y),
+            Width = Math.Abs(StartPosition.X - EndPosition.X),
+        };
     }
 
     public delegate void DragAreaEventHandler(object sender, DragAreaEventArgs e);

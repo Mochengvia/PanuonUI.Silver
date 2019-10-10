@@ -1,19 +1,12 @@
-﻿using System;
+﻿using Panuon.UI.Silver.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Windows.Threading;
 
 namespace Panuon.UI.Silver
 {
@@ -41,6 +34,7 @@ namespace Panuon.UI.Silver
 
         #endregion
 
+        #region Constructor
         public ColorSelector()
         {
             InitializeComponent();
@@ -51,19 +45,18 @@ namespace Panuon.UI.Silver
         {
             _actualHeight = GetAvailbleAreaHeight();
         }
-
-
+        #endregion
 
         #region RoutedEvent
-        public static readonly RoutedEvent SelectedBrushChangedEvent = EventManager.RegisterRoutedEvent("SelectedBrushChanged", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(ColorSelector));
-        public event RoutedEventHandler SelectedBrushChanged
+        public static readonly RoutedEvent SelectedBrushChangedEvent = EventManager.RegisterRoutedEvent("SelectedBrushChanged", RoutingStrategy.Bubble, typeof(SelectedBrushChangedEventHandler), typeof(ColorSelector));
+        public event SelectedBrushChangedEventHandler SelectedBrushChanged
         {
             add { AddHandler(SelectedBrushChangedEvent, value); }
             remove { RemoveHandler(SelectedBrushChangedEvent, value); }
         }
-        void RaiseSelectedBrushChanged()
+        void RaiseSelectedBrushChanged(Brush brush)
         {
-            var arg = new RoutedEventArgs(SelectedBrushChangedEvent);
+            var arg = new SelectedBrushChangedEventArgs(brush, SelectedBrushChangedEvent);
             RaiseEvent(arg);
         }
         #endregion
@@ -96,7 +89,7 @@ namespace Panuon.UI.Silver
         public static readonly DependencyProperty IsMeasuredValueVisibleProperty =
             DependencyProperty.Register("IsMeasuredValueVisible", typeof(bool), typeof(ColorSelector), new PropertyMetadata(true, OnIsMeasuredValueVisibleChanged));
 
-    
+
         public bool IsDefaultColorPanelVisible
         {
             get { return (bool)GetValue(IsDefaultColorPanelVisibleProperty); }
@@ -124,66 +117,127 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty HexProperty =
-            DependencyProperty.Register("Hex", typeof(string), typeof(ColorSelector), new PropertyMetadata("#FFFFFFFF"));
+            DependencyProperty.Register("Hex", typeof(string), typeof(ColorSelector), new PropertyMetadata("#FFFFFFFF", OnHexChanged));
 
-      
-        public string A
+        public byte A
         {
-            get { return (string)GetValue(AProperty); }
+            get { return (byte)GetValue(AProperty); }
             set { SetValue(AProperty, value); }
         }
 
         public static readonly DependencyProperty AProperty =
-            DependencyProperty.Register("A", typeof(string), typeof(ColorSelector), new PropertyMetadata("255"));
+            DependencyProperty.Register("A", typeof(byte), typeof(ColorSelector), new PropertyMetadata((byte)255, OnAChanged));
 
-        
-        public string R
+
+        public byte R
         {
-            get { return (string)GetValue(RProperty); }
+            get { return (byte)GetValue(RProperty); }
             set { SetValue(RProperty, value); }
         }
 
         public static readonly DependencyProperty RProperty =
-            DependencyProperty.Register("R", typeof(string), typeof(ColorSelector), new PropertyMetadata("255"));
+            DependencyProperty.Register("R", typeof(byte), typeof(ColorSelector), new PropertyMetadata((byte)255, OnRChanged));
 
-      
-        public string G
+
+
+        public byte G
         {
-            get { return (string)GetValue(GProperty); }
+            get { return (byte)GetValue(GProperty); }
             set { SetValue(GProperty, value); }
         }
 
         public static readonly DependencyProperty GProperty =
-            DependencyProperty.Register("G", typeof(string), typeof(ColorSelector), new PropertyMetadata("255"));
+            DependencyProperty.Register("G", typeof(byte), typeof(ColorSelector), new PropertyMetadata((byte)255, OnGChanged));
 
-      
-        public string B
+       
+
+        public byte B
         {
-            get { return (string)GetValue(BProperty); }
+            get { return (byte)GetValue(BProperty); }
             set { SetValue(BProperty, value); }
         }
 
         public static readonly DependencyProperty BProperty =
-            DependencyProperty.Register("B", typeof(string), typeof(ColorSelector), new PropertyMetadata("255"));
+            DependencyProperty.Register("B", typeof(byte), typeof(ColorSelector), new PropertyMetadata((byte)255, OnBChanged));
+
 
 
         #endregion
 
         #region Event Handler
+        private void BdrDefaultColor_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var border = sender as Border;
+            SelectedBrush = border.Background.ToColor().ToBrush();
+        }
+
+        private static void OnHexChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var selector = d as ColorSelector;
+            if (Regex.IsMatch(selector.Hex, "^#[0-9A-Za-z]{6}$|^#[0-9A-Za-z]{8}$"))
+            {
+                try
+                {
+                    var oldColor = selector.SelectedBrush.Color;
+                    var color = selector.Hex.ToColor();
+                    if (!selector.IsOpacityEnabled)
+                        color.A = 255;
+
+                    if (color.IsEqual(selector.SelectedBrush.Color))
+                        return;
+
+                    selector.SelectedBrush = color.ToBrush();
+                }
+                catch { }
+            }
+        }
+
+        private static void OnAChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var selector = d as ColorSelector;
+            var color = selector.SelectedBrush.ToColor();
+            color.A = (byte)selector.A;
+            selector.SelectedBrush = color.ToBrush();
+        }
+
+        private static void OnRChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var selector = d as ColorSelector;
+            var color = selector.SelectedBrush.ToColor();
+            color.R = (byte)selector.R;
+            selector.SelectedBrush = color.ToBrush();
+        }
+
+        private static void OnGChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var selector = d as ColorSelector;
+            var color = selector.SelectedBrush.ToColor();
+            color.G = (byte)selector.G;
+            selector.SelectedBrush = color.ToBrush();
+        }
+
+        private static void OnBChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var selector = d as ColorSelector;
+            var color = selector.SelectedBrush.ToColor();
+            color.B = (byte)selector.B;
+            selector.SelectedBrush = color.ToBrush();
+        }
+
         private static void OnSelectedBrushChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var selector = d as ColorSelector;
-            selector.RaiseSelectedBrushChanged();
+            selector.RaiseSelectedBrushChanged(selector.SelectedBrush);
             var brush = e.NewValue as SolidColorBrush;
 
             var color = brush.ToColor();
 
             selector._updateSelectedBrush = false;
             selector.Hex = color.ToHexString(selector.IsOpacityEnabled);
-            selector.A = color.A.ToString();
-            selector.R = color.R.ToString();
-            selector.G = color.G.ToString();
-            selector.B = color.B.ToString();
+            selector.A = color.A;
+            selector.R = color.R;
+            selector.G = color.G;
+            selector.B = color.B;
 
             selector._updateSelectedBrush = true;
 
@@ -205,14 +259,14 @@ namespace Panuon.UI.Silver
             if (selector.IsOpacityEnabled)
             {
                 selector.ColumnA.Width = new GridLength(1, GridUnitType.Star);
-                selector.SliderOpacity.IsEnabled = true;
-                selector.SliderOpacity.Opacity = 1;
+                selector.RowOpacity.Height = new GridLength(1, GridUnitType.Star);
+                selector.SliderOpacity.Value = 255;
             }
             else
             {
                 selector.ColumnA.Width = new GridLength(0, GridUnitType.Pixel);
-                selector.SliderOpacity.IsEnabled = false;
-                selector.SliderOpacity.Opacity = 0.2;
+                selector.RowOpacity.Height = new GridLength(0);
+                selector.SliderOpacity.Value = 255;
             }
         }
 
@@ -220,12 +274,12 @@ namespace Panuon.UI.Silver
         {
             var selector = d as ColorSelector;
             selector._actualHeight = selector.GetAvailbleAreaHeight();
-            if(selector.IsMeasuredValueVisible)
+            if (selector.IsMeasuredValueVisible)
                 selector.GrdMeasuredValue.Visibility = Visibility.Visible;
             else
                 selector.GrdMeasuredValue.Visibility = Visibility.Collapsed;
         }
-        
+
         private static void OnIsDefaultColorPanelVisibleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var selector = d as ColorSelector;
@@ -250,7 +304,7 @@ namespace Panuon.UI.Silver
                 targetLeft = 0;
             else if (targetLeft > Width)
                 targetLeft = Width;
-            
+
             if (targetTop < 0)
                 targetTop = 0;
             else if (targetTop > _actualHeight)
@@ -307,7 +361,7 @@ namespace Panuon.UI.Silver
 
         private void SliderOpacity_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            if (!IsLoaded)
+            if (_actualHeight == 0)
                 return;
 
             UpdateSelectedBrush();
@@ -315,6 +369,9 @@ namespace Panuon.UI.Silver
 
         private void SliderColor_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
+            if (_actualHeight == 0)
+                return;
+
             var color = GetColorByOffset(Linear.GradientStops, (double)(6 - SliderColor.Value) / 6);
             BackgroundBrush = color.ToBrush();
 
@@ -323,6 +380,11 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Function
+        private double GetAvailbleAreaHeight()
+        {
+            return Height - 50 - (IsMeasuredValueVisible ? GrdMeasuredValue.Height : 0) - (IsDefaultColorPanelVisible ? GrdDefaultColor.Height : 0);
+        }
+
         private void UpdateSelectedBrush()
         {
             if (!_updateSelectedBrush)
@@ -395,7 +457,7 @@ namespace Panuon.UI.Silver
 
                     if (nextBytes[minIndex] > 0)
                     {
-                        SliderColor.Value = (prevBytes[middleIndex] - middleNewValue) / 255.0 + colorIndex - 1 ;
+                        SliderColor.Value = (prevBytes[middleIndex] - middleNewValue) / 255.0 + colorIndex - 1;
                     }
                     else
                     {
@@ -441,132 +503,6 @@ namespace Panuon.UI.Silver
             return Color.FromArgb(a, r, g, b);
         }
         #endregion
-
-        private void TbInfo_LostFocus(object sender, RoutedEventArgs e)
-        {
-            var textbox = sender as TextBox;
-            switch (textbox.Name)
-            {
-                case "TbHex":
-                    if (Regex.IsMatch(TbHex.Text, "^#[0-9A-Za-z]{6}$|^#[0-9A-Za-z]{8}$"))
-                    {
-                        var color = TbHex.Text.ToColor();
-                        if (!IsOpacityEnabled)
-                            color.A = 255;
-                        SelectedBrush = color.ToBrush();
-                    }
-                    break;
-                case "TbA":
-                    byte a = 0;
-                    if (byte.TryParse(TbA.Text, out a))
-                    {
-                        var color = SelectedBrush.ToColor();
-                        color.A = a;
-                        SelectedBrush = color.ToBrush();
-                    }
-                    break;
-                case "TbR":
-                    byte r = 0;
-                    if (byte.TryParse(TbR.Text, out r))
-                    {
-                        var color = SelectedBrush.ToColor();
-                        color.R = r;
-                        SelectedBrush = color.ToBrush();
-                    }
-                    break;
-                case "TbG":
-                    byte g = 0;
-                    if (byte.TryParse(TbG.Text, out g))
-                    {
-                        var color = SelectedBrush.ToColor();
-                        color.G = g;
-                        SelectedBrush = color.ToBrush();
-                    }
-                    break;
-                case "TbB":
-                    byte b = 0;
-                    if (byte.TryParse(TbB.Text, out b))
-                    {
-                        var color = SelectedBrush.ToColor();
-                        color.B = b;
-                        SelectedBrush = color.ToBrush();
-                    }
-                    break;
-            }
-            
-        }
-
-        private void TbInfo_Keyup(object sender, KeyEventArgs e)
-        {
-            if(e.Key == Key.Enter)
-            {
-                var textbox = sender as TextBox;
-                switch (textbox.Name)
-                {
-                    case "TbHex":
-                        if (Regex.IsMatch(TbHex.Text, "^#[0-9A-Za-z]{6}$|^#[0-9A-Za-z]{8}$"))
-                        {
-                            try
-                            {
-                                var color = TbHex.Text.ToColor();
-                                if (!IsOpacityEnabled)
-                                    color.A = 255;
-                                SelectedBrush = color.ToBrush();
-                            }
-                            catch { }
-                           
-                        }
-                        break;
-                    case "TbA":
-                        byte a = 0;
-                        if (byte.TryParse(TbA.Text, out a))
-                        {
-                            var color = SelectedBrush.ToColor();
-                            color.A = a;
-                            SelectedBrush = color.ToBrush();
-                        }
-                        break;
-                    case "TbR":
-                        byte r = 0;
-                        if (byte.TryParse(TbR.Text, out r))
-                        {
-                            var color = SelectedBrush.ToColor();
-                            color.R = r;
-                            SelectedBrush = color.ToBrush();
-                        }
-                        break;
-                    case "TbG":
-                        byte g = 0;
-                        if (byte.TryParse(TbG.Text, out g))
-                        {
-                            var color = SelectedBrush.ToColor();
-                            color.G = g;
-                            SelectedBrush = color.ToBrush();
-                        }
-                        break;
-                    case "TbB":
-                        byte b = 0;
-                        if (byte.TryParse(TbB.Text, out b))
-                        {
-                            var color = SelectedBrush.ToColor();
-                            color.B = b;
-                            SelectedBrush = color.ToBrush();
-                        }
-                        break;
-                }
-
-            }
-        }
-
-        private void BdrDefaultColor_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            var border = sender as Border;
-            SelectedBrush = border.Background.ToColor().ToBrush();
-        }
-
-        private double GetAvailbleAreaHeight()
-        {
-            return Height - 50 - (IsMeasuredValueVisible ? GrdMeasuredValue.Height : 0) - (IsDefaultColorPanelVisible ? GrdDefaultColor.Height : 0);
-        }
+       
     }
 }

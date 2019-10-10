@@ -122,7 +122,7 @@ namespace Panuon.UI.Silver
                 else if (element.RenderTransform.GetType() == typeof(Transform))
                 {
                     var group = new TransformGroup();
-                    group.Children.Add((Transform)element.RenderTransform);
+                    group.Children.Add(element.RenderTransform);
                     group.Children.Add(transform);
                 }
                 else
@@ -184,7 +184,7 @@ namespace Panuon.UI.Silver
                 else if (element.RenderTransform.GetType() == typeof(Transform))
                 {
                     var group = new TransformGroup();
-                    group.Children.Add((Transform)element.RenderTransform);
+                    group.Children.Add(element.RenderTransform);
                     group.Children.Add(transform);
                 }
                 else
@@ -247,7 +247,7 @@ namespace Panuon.UI.Silver
                 else if (element.RenderTransform.GetType() == typeof(Transform))
                 {
                     var group = new TransformGroup();
-                    group.Children.Add((Transform)element.RenderTransform);
+                    group.Children.Add(element.RenderTransform);
                     group.Children.Add(transform);
                 }
                 else
@@ -311,7 +311,7 @@ namespace Panuon.UI.Silver
                 else if (element.RenderTransform.GetType() == typeof(Transform))
                 {
                     var group = new TransformGroup();
-                    group.Children.Add((Transform)element.RenderTransform);
+                    group.Children.Add(element.RenderTransform);
                     group.Children.Add(transform);
                 }
                 else

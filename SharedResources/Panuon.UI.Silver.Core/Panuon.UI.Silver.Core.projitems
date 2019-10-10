@@ -9,18 +9,23 @@
     <Import_RootNamespace>Panuon.UI.Silver.Core</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Interfaces\" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Attributes\ColumnWidthAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Attributes\IgnoreColumnAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Attributes\ReadOnlyColumnAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EventHandler\SearchTextChangedEventHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EventHandler\TabItemRemovedEventHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EventHandler\SelectedBrushChangedEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EventHandler\ClickEventHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EventHandler\IndexChangedEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EventHandler\CurrentIndexChangedEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EventHandler\DoubleClickEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EventHandler\DragAreaEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EventHandler\DragingEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EventHandler\LongPressEventHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EventHandler\SelectedDateTimeChangedEventHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EventHandler\SelectedDateChangedEventHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\IPendingingHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\PendingBoxConfigurations.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\MessageBoxXConfigurations.cs" />
   </ItemGroup>
 </Project>

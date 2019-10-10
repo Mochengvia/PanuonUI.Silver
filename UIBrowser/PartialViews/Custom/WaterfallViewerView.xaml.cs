@@ -144,7 +144,7 @@ namespace UIBrowser.PartialViews.Custom
         #region Function
         private async void AppendItems(bool wait = true)
         {
-            if(wait)
+            if (wait)
                 await Task.Delay(2000);
 
             var random = new Random(DateTime.Now.Millisecond);
@@ -169,7 +169,7 @@ namespace UIBrowser.PartialViews.Custom
                 {
                     WfvCustom.Children.Add(new Rectangle()
                     {
-                        Fill =  Brushes.LightSkyBlue,
+                        Fill = Brushes.LightSkyBlue,
                         Width = i % 2 == 0 ? 150 : 100,
                         RadiusX = 3,
                         RadiusY = 3,
@@ -177,7 +177,7 @@ namespace UIBrowser.PartialViews.Custom
                     });
                 }
             }
-            
+
         }
 
         private void UpdateVisualEffect()

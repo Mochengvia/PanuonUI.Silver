@@ -5,6 +5,7 @@
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Resource.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/ScrollViewer.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/CheckBox.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type ContextMenu}">
@@ -14,8 +15,6 @@
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="FontSize"
                 Value="{StaticResource Default_FontSize}" />
-        <Setter Property="FocusVisualStyle"
-                Value="{x:Null}" />
         <Setter Property="Width"
                 Value="200" />
         <Setter Property="Background"
@@ -30,14 +29,44 @@
                 Value="#DDDDDD" />
         <Setter Property="local:ContextMenuHelper.ItemHeight"
                 Value="35" />
-        <Setter Property="local:ContextMenuHelper.ItemIconWidth"
-                Value="{Binding Path=(local:ContextMenuHelper.ItemHeight),RelativeSource={RelativeSource Self},Mode=OneWay}"/>
-        
+        <Setter Property="Foreground"
+                Value="#3E3E3E" />
+        <Setter Property="local:IconHelper.FontSize"
+                Value="{Binding FontSize, Converter={StaticResource Add3Converter},RelativeSource={RelativeSource Self},Mode=OneWay}" />
+        <Setter Property="local:IconHelper.Foreground"
+                Value="{Binding Foreground,RelativeSource={RelativeSource Self},Mode=OneWay}" />
+        <Setter Property="local:IconHelper.Width"
+                Value="40" />
+        <Setter Property="local:IconHelper.FontFamily"
+                Value="/Panuon.UI.Silver;component/Resources/#fontawesome" />
+        <Setter Property="local:ScrollViewerHelper.ScrollBarThickness"
+                Value="6" />
+        <Setter Property="local:ScrollViewerHelper.ScrollBarCornerRadius"
+                Value="3" />
+        <Setter Property="local:ContextMenuHelper.CheckableCheckboxStyle">
+            <Setter.Value>
+                <Style TargetType="{x:Type CheckBox}"
+                       BasedOn="{StaticResource {x:Type CheckBox}}">
+                    <Setter Property="local:CheckBoxHelper.CheckBoxStyle"
+                            Value="Switch" />
+                    <Setter Property="HorizontalAlignment"
+                            Value="Center" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=(local:CheckBoxHelper.CheckBoxStyle),RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                                     Value="Switch">
+                            <Setter Property="local:CheckBoxHelper.BoxWidth"
+                                    Value="32" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Setter.Value>
+        </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ContextMenu}">
-                    <Grid  Margin="10">
-                        <Border x:Name="Border"
+                    <Grid x:Name="GrdMain"
+                          Margin="10">
+                        <Border x:Name="BdrMain"
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
@@ -46,18 +75,28 @@
                                 <DropShadowEffect ShadowDepth="0"
                                                   BlurRadius="10"
                                                   Opacity="1"
-                                                  Color="{Binding Path=(local:ContextMenuHelper.ShadowColor),RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+                                                  Color="{Binding Path=(local:ContextMenuHelper.ShadowColor),RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay, Converter={StaticResource NullableColorToColoConverter}}" />
                             </Border.Effect>
-
                         </Border>
-                        <ScrollViewer local:ScrollViewerHelper.ScrollBarThickness="6"
-                                      local:ScrollViewerHelper.ScrollBarCornerRadius="3"
-                                      CanContentScroll="True"
-                                      Margin="{TemplateBinding Padding}">
+                        <ScrollViewer  local:ScrollViewerHelper.ScrollBarThickness="{Binding Path=(local:ScrollViewerHelper.ScrollBarThickness),RelativeSource={RelativeSource AncestorType=ContextMenu},Mode=OneWay}"
+                                       local:ScrollViewerHelper.ScrollBarCornerRadius="{Binding Path=(local:ScrollViewerHelper.ScrollBarCornerRadius),RelativeSource={RelativeSource AncestorType=ContextMenu},Mode=OneWay}"
+                                       CanContentScroll="True"
+                                       Margin="{TemplateBinding Padding}">
                             <StackPanel IsItemsHost="True"
                                         KeyboardNavigation.DirectionalNavigation="Cycle" />
                         </ScrollViewer>
                     </Grid>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Path=(local:ContextMenuHelper.ShadowColor),RelativeSource={RelativeSource Self}}"
+                                     Value="{x:Null}">
+                            <Setter TargetName="GrdMain"
+                                    Property="Margin"
+                                    Value="0" />
+                            <Setter TargetName="BdrMain"
+                                    Property="Effect"
+                                    Value="{x:Null}" />
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -69,14 +108,20 @@
                         Value="{StaticResource Default_SnapsToDevicePixels}" />
                 <Setter Property="FontSize"
                         Value="{StaticResource Default_FontSize}" />
-                <Setter Property="FocusVisualStyle"
-                        Value="{x:Null}" />
                 <Setter Property="Height"
                         Value="{Binding Path=(local:ContextMenuHelper.ItemHeight),RelativeSource={RelativeSource AncestorType=ContextMenu},Mode=OneWay}" />
                 <Setter Property="Padding"
                         Value="{Binding Path=(local:ContextMenuHelper.ItemPadding),RelativeSource={RelativeSource AncestorType=ContextMenu},Mode=OneWay}" />
-                <Setter Property="Icon"
-                        Value="{Binding Path=(local:ContextMenuHelper.ItemIcon),RelativeSource={RelativeSource AncestorType=ContextMenu},Mode=OneWay}" />
+                <Setter Property="local:IconHelper.Width"
+                        Value="{Binding Path=(local:IconHelper.Width),RelativeSource={RelativeSource AncestorType=ContextMenu},Mode=OneWay}" />
+                <Setter Property="local:IconHelper.Foreground"
+                        Value="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource AncestorType=ContextMenu},Mode=OneWay}" />
+                <Setter Property="local:IconHelper.FontSize"
+                        Value="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource AncestorType=ContextMenu},Mode=OneWay}" />
+                <Setter Property="local:IconHelper.FontFamily"
+                        Value="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource AncestorType=ContextMenu},Mode=OneWay}" />
+                <Setter Property="local:ContextMenuHelper.CheckableCheckboxStyle"
+                        Value="{Binding Path=(local:ContextMenuHelper.CheckableCheckboxStyle),RelativeSource={RelativeSource AncestorType=ContextMenu},Mode=OneWay}" />
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type MenuItem}">
@@ -91,28 +136,34 @@
                                         Opacity="0" />
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition x:Name="ColumnIcon"
-                                                          Width="{Binding Path=(local:ContextMenuHelper.ItemIconWidth),Converter={StaticResource GridLengthConverter},RelativeSource={RelativeSource AncestorType=ContextMenu}}" />
+                                        <ColumnDefinition Width="{Binding Path=(local:IconHelper.Width),Converter={StaticResource GridLengthConverter} ,RelativeSource={RelativeSource AncestorType=MenuItem}}" />
                                         <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <Label x:Name="LblIcon"
-                                           Content="{TemplateBinding Icon}"
-                                           Foreground="{TemplateBinding Foreground}"
-                                           FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
-                                           VerticalAlignment="Center" 
-                                           HorizontalAlignment="Center"/>
+                                           Content="{Binding Icon,Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=MenuItem}}"
+                                           Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource AncestorType=MenuItem}}"
+                                           FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource AncestorType=MenuItem}}"
+                                           FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource AncestorType=MenuItem}}"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center" />
+                                    <CheckBox x:Name="ChbCheckable"
+                                              VerticalAlignment="Center"
+                                              IsChecked="{Binding IsChecked,RelativeSource={RelativeSource AncestorType=MenuItem},Mode=TwoWay}"
+                                              Style="{Binding Path=(local:ContextMenuHelper.CheckableCheckboxStyle),RelativeSource={RelativeSource AncestorType=MenuItem}}"
+                                              Visibility="Collapsed" />
                                     <ContentPresenter x:Name="Presenter"
                                                       ContentSource="Header"
                                                       Grid.Column="1"
                                                       VerticalAlignment="Center"
-                                                      Margin="{TemplateBinding Padding}"/>
+                                                      Margin="{TemplateBinding Padding}" />
                                     <Path x:Name="Path"
                                           Grid.Column="2"
                                           Width="5"
                                           Height="10"
                                           Data="M0,0 L5,5 L0,10"
-                                          Margin="0,0,10,0"
+                                          Margin="0,0,15,0"
                                           RenderTransformOrigin="0.5,0.5"
                                           HorizontalAlignment="Right"
                                           Stroke="{TemplateBinding Foreground}"
@@ -125,19 +176,31 @@
                                        AllowsTransparency="True"
                                        Focusable="False"
                                        PopupAnimation="Fade">
-                                    <Border x:Name="SubmenuBorder"
-                                            SnapsToDevicePixels="True"
-                                            BorderThickness="{Binding BorderThickness,RelativeSource={RelativeSource AncestorType=ContextMenu}}"
-                                            BorderBrush="{Binding BorderBrush,RelativeSource={RelativeSource AncestorType=ContextMenu}}"
-                                            Background="{Binding Background,RelativeSource={RelativeSource AncestorType=ContextMenu}}"
-                                            Width="{Binding Width,RelativeSource={RelativeSource AncestorType=ContextMenu}}">
+                                    <Grid x:Name="GrdSubmenu"
+                                          Margin="10">
+                                        <Border x:Name="BdrSubmenu"
+                                                SnapsToDevicePixels="True"
+                                                BorderThickness="{Binding BorderThickness,RelativeSource={RelativeSource AncestorType=ContextMenu}}"
+                                                BorderBrush="{Binding BorderBrush,RelativeSource={RelativeSource AncestorType=ContextMenu}}"
+                                                Background="{Binding Background,RelativeSource={RelativeSource AncestorType=ContextMenu}}"
+                                                Width="{Binding Width,RelativeSource={RelativeSource AncestorType=ContextMenu}}"
+                                                CornerRadius="{Binding Path=(local:ContextMenuHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=ContextMenu},Mode=OneWay}">
+                                            <Border.Effect>
+                                                <DropShadowEffect ShadowDepth="0"
+                                                                  BlurRadius="10"
+                                                                  Opacity="1"
+                                                                  Color="{Binding Path=(local:ContextMenuHelper.ShadowColor),RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay, Converter={StaticResource NullableColorToColoConverter}}" />
+                                            </Border.Effect>
+                                        </Border>
                                         <ScrollViewer CanContentScroll="True"
-                                                      local:ScrollViewerHelper.ScrollBarCornerRadius="3"
-                                                      local:ScrollViewerHelper.ScrollBarThickness="6">
+                                                      local:ScrollViewerHelper.ScrollBarThickness="{Binding Path=(local:ScrollViewerHelper.ScrollBarThickness),RelativeSource={RelativeSource AncestorType=Menu},Mode=OneWay}"
+                                                      local:ScrollViewerHelper.ScrollBarCornerRadius="{Binding Path=(local:ScrollViewerHelper.ScrollBarCornerRadius),RelativeSource={RelativeSource AncestorType=Menu},Mode=OneWay}"
+                                                      Margin="{Binding Padding,RelativeSource={RelativeSource AncestorType=ContextMenu},Mode=OneWay}">
                                             <StackPanel IsItemsHost="True"
                                                         KeyboardNavigation.DirectionalNavigation="Cycle" />
                                         </ScrollViewer>
-                                    </Border>
+                                    </Grid>
+
                                 </Popup>
                             </Grid>
                             <ControlTemplate.Triggers>
@@ -186,35 +249,48 @@
                                         </BeginStoryboard>
                                     </Trigger.ExitActions>
                                 </Trigger>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding Path=(local:ContextMenuHelper.CheckableCheckboxStyle),RelativeSource={RelativeSource Self},Converter={StaticResource IsNullConverter}}"
+                                                   Value="False" />
+                                        <Condition Binding="{Binding IsCheckable,RelativeSource={RelativeSource Self}}"
+                                                   Value="True" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter TargetName="ChbCheckable"
+                                            Property="Visibility"
+                                            Value="Visible" />
+                                    <Setter TargetName="LblIcon"
+                                            Property="Visibility"
+                                            Value="Collapsed" />
+                                </MultiDataTrigger>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding Path=(local:MenuHelper.CheckableCheckboxStyle),RelativeSource={RelativeSource Self},Converter={StaticResource IsNullConverter}}"
+                                                   Value="True" />
+                                        <Condition Binding="{Binding IsChecked,RelativeSource={RelativeSource Self}}"
+                                                   Value="True" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter TargetName="LblIcon"
+                                            Property="Content"
+                                            Value="&#xf00c;" />
+                                </MultiDataTrigger>
+
                                 <Trigger Property="HasItems"
                                          Value="True">
                                     <Setter TargetName="Path"
                                             Property="Visibility"
                                             Value="Visible" />
                                 </Trigger>
+                                <DataTrigger Binding="{Binding Path=(local:ContextMenuHelper.ShadowColor),RelativeSource={RelativeSource AncestorType=ContextMenu}}"
+                                             Value="{x:Null}">
+                                    <Setter TargetName="GrdSubmenu"
+                                            Property="Margin"
+                                            Value="0" />
+                                    <Setter TargetName="BdrSubmenu"
+                                            Property="Effect"
+                                            Value="{x:Null}" />
+                                </DataTrigger>
                             </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-            <Style x:Key="{x:Static MenuItem.SeparatorStyleKey}"
-                   TargetType="{x:Type Separator}">
-                <Setter Property="BorderBrush"
-                        Value="#EEEEEE" />
-                <Setter Property="BorderThickness"
-                        Value="0,0,0,1" />
-                <Setter Property="Margin"
-                        Value="1,5" />
-                <Setter Property="Focusable"
-                        Value="false" />
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type Separator}">
-                            <Border Background="{TemplateBinding Background}"
-                                    BorderBrush="{TemplateBinding BorderBrush}"
-                                    BorderThickness="{TemplateBinding BorderThickness}"
-                                    SnapsToDevicePixels="true"
-                                    Height="1" />
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>

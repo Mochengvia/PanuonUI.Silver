@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Panuon.UI.Silver.Utils
+﻿namespace Panuon.UI.Silver.Utils
 {
     internal static class Cache
     {

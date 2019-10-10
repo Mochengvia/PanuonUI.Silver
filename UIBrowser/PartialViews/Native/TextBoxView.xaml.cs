@@ -1,5 +1,4 @@
 ﻿using Panuon.UI.Silver;
-using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -101,7 +100,7 @@ namespace UIBrowser.PartialViews.Native
             if (!IsLoaded)
                 return;
 
-            TextBoxHelper.SetIcon(TbCustom, ChbShowIcon.IsChecked == true ? "" : null);
+            TextBoxHelper.SetIcon(TbCustom, ChbShowIcon.IsChecked == true ? "\uf11c" : null);
 
             UpdateCode();
         }
@@ -116,6 +115,15 @@ namespace UIBrowser.PartialViews.Native
             UpdateCode();
         }
 
+        private void ChbShowClearButton_CheckChanged(object sender, RoutedEventArgs e)
+        {
+            if (!IsLoaded)
+                return;
+
+            TextBoxHelper.SetIsClearButtonVisible(TbCustom, ChbShowClearButton.IsChecked == true);
+
+            UpdateCode();
+        }
         #endregion
 
         #region Function
@@ -146,16 +154,19 @@ namespace UIBrowser.PartialViews.Native
             var icon = TextBoxHelper.GetIcon(TbCustom);
             var watermark = TextBoxHelper.GetWatermark(TbCustom);
             var cornerRadius = SldCornerRadius.Value;
+            var isClearButtonVisible = TextBoxHelper.GetIsClearButtonVisible(TbCustom);
 
             TbCode.Text = "<TextBox  Height=\"30\"" +
                         $"\nWidth=\"{TbCustom.Width}\"" +
                         (watermark == null ? "" : $"\npu:TextBoxHelper.Watermark=\"{watermark}\"") +
-                        (icon == null ? "" : $"\npu:TextBoxHelper.Icon=\"{icon}\"") +
+                        (icon == null ? "" : $"\npu:TextBoxHelper.Icon=\"&#xf11c;\"") +
                         $"\npu:TextBoxHelper.FocusedBorderBrush=\"{TextBoxHelper.GetFocusedBorderBrush(TbCustom).ToColor().ToHexString(false)}\"" +
                         $"\npu:TextBoxHelper.FocusedShadowColor=\"{TextBoxHelper.GetFocusedShadowColor(TbCustom).ToHexString(false)}\"" +
                         (cornerRadius == 0 ? "" : $"\npu:TextBoxHelper.CornerRadius=\"{cornerRadius}\"") +
+                        (isClearButtonVisible ? $"\npu:TextBoxHelper.IsClearButtonVisible=\"{isClearButtonVisible}\"" : "") +
                         " />";
         }
+
 
 
         #endregion

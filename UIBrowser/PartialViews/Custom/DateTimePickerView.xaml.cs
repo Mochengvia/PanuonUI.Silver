@@ -108,7 +108,7 @@ namespace UIBrowser.PartialViews.Custom
             var list = new List<string>();
             list = list.Distinct().ToList();
 
-            DtpCustom.IsSundayFirst = ChbSundayFirst.IsChecked == true ;
+            DtpCustom.IsSundayFirst = ChbSundayFirst.IsChecked == true;
 
             UpdateCode();
         }

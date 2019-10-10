@@ -5,7 +5,7 @@
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Resource.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converter.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    
+
     <Style TargetType="{x:Type Expander}">
         <Setter Property="FontSize"
                 Value="{StaticResource Default_FontSize}" />
@@ -13,8 +13,6 @@
                 Value="{StaticResource Default_FontFamily}" />
         <Setter Property="SnapsToDevicePixels"
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
-        <Setter Property="FocusVisualStyle"
-                Value="{x:Null}" />
         <Setter Property="BorderBrush"
                 Value="LightGray" />
         <Setter Property="BorderThickness"

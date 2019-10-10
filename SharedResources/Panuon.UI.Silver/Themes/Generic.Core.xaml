@@ -2,7 +2,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Panuon.UI.Silver"
                     xmlns:converter="clr-namespace:Panuon.UI.Silver.Converters"
-                    
                     xmlns:internal="clr-namespace:Panuon.UI.Silver.Controls.Internal">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Button.xaml" />
@@ -10,6 +9,82 @@
     </ResourceDictionary.MergedDictionaries>
 
 
+    <Style TargetType="{x:Type local:StateIcon}">
+        <Setter Property="Foreground"
+                Value="LightGray" />
+        <Setter Property="FontFamily"
+                Value="{StaticResource FontAwesome}" />
+        <Setter Property="Icon"
+                Value="&#xf111;" />
+        <Setter Property="VerticalAlignment"
+                Value="Top" />
+        <Setter Property="HorizontalAlignment"
+                Value="Left" />
+        <Setter Property="FontSize"
+                Value="16" />
+        <Setter Property="IconState"
+                Value="Normal" />
+        <Setter Property="FailedBrush"
+                Value="Gray" />
+        <Setter Property="WarningBrush"
+                Value="#F5BD00" />
+        <Setter Property="ErrorBrush"
+                Value="#EB3941" />
+        <Setter Property="SuccessBrush"
+                Value="#6DD200" />
+        <Setter Property="TipsBrush"
+                Value="#3BC1F9" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:StateIcon}">
+                    <Grid Background="{TemplateBinding Background}">
+                        <TextBlock x:Name="TxtIcon"
+                                   Text="{TemplateBinding Icon}"
+                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                   FontFamily="{TemplateBinding FontFamily}"
+                                   FontSize="{TemplateBinding FontSize}"
+                                   FontWeight="{TemplateBinding FontWeight}"
+                                   Foreground="{TemplateBinding Foreground}"
+                                   FontStretch="{TemplateBinding FontStretch}"
+                                   FontStyle="{TemplateBinding FontStyle}" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IconState"
+                                 Value="Failed">
+                            <Setter TargetName="TxtIcon"
+                                    Property="Foreground"
+                                    Value="{Binding FailedBrush, RelativeSource={RelativeSource AncestorType=local:StateIcon}}" />
+                        </Trigger>
+                        <Trigger Property="IconState"
+                                 Value="Warning">
+                            <Setter TargetName="TxtIcon"
+                                    Property="Foreground"
+                                    Value="{Binding WarningBrush, RelativeSource={RelativeSource AncestorType=local:StateIcon}}" />
+                        </Trigger>
+                        <Trigger Property="IconState"
+                                 Value="Error">
+                            <Setter TargetName="TxtIcon"
+                                    Property="Foreground"
+                                    Value="{Binding ErrorBrush, RelativeSource={RelativeSource AncestorType=local:StateIcon}}" />
+                        </Trigger>
+                        <Trigger Property="IconState"
+                                 Value="Success">
+                            <Setter TargetName="TxtIcon"
+                                    Property="Foreground"
+                                    Value="{Binding SuccessBrush, RelativeSource={RelativeSource AncestorType=local:StateIcon}}" />
+                        </Trigger>
+                        <Trigger Property="IconState"
+                                 Value="Tips">
+                            <Setter TargetName="TxtIcon"
+                                    Property="Foreground"
+                                    Value="{Binding TipsBrush, RelativeSource={RelativeSource AncestorType=local:StateIcon}}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
     <Style TargetType="{x:Type local:Pagination}">
         <Setter Property="FontFamily"
                 Value="{StaticResource Default_FontFamily}" />
@@ -17,8 +92,6 @@
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="FontSize"
                 Value="{StaticResource Default_FontSize}" />
-        <Setter Property="FocusVisualStyle"
-                Value="{x:Null}" />
         <Setter Property="Background"
                 Value="#888888" />
         <Setter Property="HoverBrush"
@@ -47,7 +120,7 @@
                                       Foreground="{TemplateBinding Foreground}"
                                       FontSize="{Binding FontSize,RelativeSource={RelativeSource AncestorType=local:Pagination},Converter={StaticResource Add5Converter}}"
                                       FontWeight="{TemplateBinding FontWeight}"
-                                      FontFamily="{DynamicResource FontAwesome}"
+                                      FontFamily="{StaticResource FontAwesome}"
                                       FontStyle="{TemplateBinding FontStyle}"
                                       local:RepeatButtonHelper.HoverBrush="{TemplateBinding HoverBrush}"
                                       local:RepeatButtonHelper.CornerRadius="{TemplateBinding CornerRadius}"
@@ -68,7 +141,7 @@
                                                    Visibility="Collapsed"
                                                    Text="&#xf111; &#xf111; &#xf111;"
                                                    FontSize="3"
-                                                   FontFamily="{DynamicResource FontAwesome}"
+                                                   FontFamily="{StaticResource FontAwesome}"
                                                    VerticalAlignment="Center"
                                                    HorizontalAlignment="Center"
                                                    Foreground="{Binding Background,RelativeSource={RelativeSource AncestorType=local:Pagination}}"
@@ -173,7 +246,7 @@
                                       Foreground="{TemplateBinding Foreground}"
                                       FontSize="{Binding FontSize,RelativeSource={RelativeSource AncestorType=local:Pagination},Converter={StaticResource Add5Converter}}"
                                       FontWeight="{TemplateBinding FontWeight}"
-                                      FontFamily="{DynamicResource FontAwesome}"
+                                      FontFamily="{StaticResource FontAwesome}"
                                       FontStyle="{TemplateBinding FontStyle}"
                                       local:RepeatButtonHelper.HoverBrush="{TemplateBinding HoverBrush}"
                                       local:RepeatButtonHelper.CornerRadius="{TemplateBinding CornerRadius}"
@@ -214,14 +287,13 @@
         </Setter>
     </Style>
 
-
     <Style TargetType="{x:Type local:Loading}">
         <Setter Property="SnapsToDevicePixels"
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Style.Triggers>
             <Trigger Property="LoadingStyle"
                      Value="Standard">
-                <Setter Property="Stroke"
+                <Setter Property="Foreground"
                         Value="#3E3E3E" />
                 <Setter Property="Template">
                     <Setter.Value>
@@ -232,16 +304,16 @@
                                       X2="{Binding ActualWidth, Converter={StaticResource HalfConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
                                       Y1="{Binding ActualWidth, Converter={StaticResource LoadingLineYConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
                                       Y2="0"
-                                      Stroke="{TemplateBinding Stroke}"
-                                      StrokeThickness="{Binding ActualWidth, Converter={StaticResource LoadingStrokeThicknessConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
+                                      Stroke="{TemplateBinding Foreground}"
+                                      StrokeThickness="{Binding ActualWidth, Converter={StaticResource LoadingBackgroundThicknessConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
                                       Opacity="0" />
                                 <Line x:Name="Line2"
                                       X1="{Binding ActualWidth, Converter={StaticResource HalfConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
                                       X2="{Binding ActualWidth, Converter={StaticResource HalfConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
                                       Y1="{Binding ActualWidth, Converter={StaticResource LoadingLineYConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
                                       Y2="0"
-                                      Stroke="{TemplateBinding Stroke}"
-                                      StrokeThickness="{Binding ActualWidth, Converter={StaticResource LoadingStrokeThicknessConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
+                                      Stroke="{TemplateBinding Foreground}"
+                                      StrokeThickness="{Binding ActualWidth, Converter={StaticResource LoadingBackgroundThicknessConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
                                       Opacity="0"
                                       RenderTransformOrigin="0.5,0.5">
                                     <Line.RenderTransform>
@@ -253,8 +325,8 @@
                                       X2="{Binding ActualWidth, Converter={StaticResource HalfConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
                                       Y1="{Binding ActualWidth, Converter={StaticResource LoadingLineYConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
                                       Y2="0"
-                                      Stroke="{TemplateBinding Stroke}"
-                                      StrokeThickness="{Binding ActualWidth, Converter={StaticResource LoadingStrokeThicknessConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
+                                      Stroke="{TemplateBinding Foreground}"
+                                      StrokeThickness="{Binding ActualWidth, Converter={StaticResource LoadingBackgroundThicknessConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
                                       Opacity="0"
                                       RenderTransformOrigin="0.5,0.5">
                                     <Line.RenderTransform>
@@ -266,8 +338,8 @@
                                       X2="{Binding ActualWidth, Converter={StaticResource HalfConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
                                       Y1="{Binding ActualWidth, Converter={StaticResource LoadingLineYConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
                                       Y2="0"
-                                      Stroke="{TemplateBinding Stroke}"
-                                      StrokeThickness="{Binding ActualWidth, Converter={StaticResource LoadingStrokeThicknessConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
+                                      Stroke="{TemplateBinding Foreground}"
+                                      StrokeThickness="{Binding ActualWidth, Converter={StaticResource LoadingBackgroundThicknessConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
                                       Opacity="0"
                                       RenderTransformOrigin="0.5,0.5">
                                     <Line.RenderTransform>
@@ -279,8 +351,8 @@
                                       X2="{Binding ActualWidth, Converter={StaticResource HalfConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
                                       Y1="{Binding ActualWidth, Converter={StaticResource LoadingLineYConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
                                       Y2="0"
-                                      Stroke="{TemplateBinding Stroke}"
-                                      StrokeThickness="{Binding ActualWidth, Converter={StaticResource LoadingStrokeThicknessConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
+                                      Stroke="{TemplateBinding Foreground}"
+                                      StrokeThickness="{Binding ActualWidth, Converter={StaticResource LoadingBackgroundThicknessConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
                                       Opacity="0"
                                       RenderTransformOrigin="0.5,0.5">
                                     <Line.RenderTransform>
@@ -292,8 +364,8 @@
                                       X2="{Binding ActualWidth, Converter={StaticResource HalfConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
                                       Y1="{Binding ActualWidth, Converter={StaticResource LoadingLineYConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
                                       Y2="0"
-                                      Stroke="{TemplateBinding Stroke}"
-                                      StrokeThickness="{Binding ActualWidth, Converter={StaticResource LoadingStrokeThicknessConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
+                                      Stroke="{TemplateBinding Foreground}"
+                                      StrokeThickness="{Binding ActualWidth, Converter={StaticResource LoadingBackgroundThicknessConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
                                       Opacity="0"
                                       RenderTransformOrigin="0.5,0.5">
                                     <Line.RenderTransform>
@@ -305,8 +377,8 @@
                                       X2="{Binding ActualWidth, Converter={StaticResource HalfConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
                                       Y1="{Binding ActualWidth, Converter={StaticResource LoadingLineYConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
                                       Y2="0"
-                                      Stroke="{TemplateBinding Stroke}"
-                                      StrokeThickness="{Binding ActualWidth, Converter={StaticResource LoadingStrokeThicknessConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
+                                      Stroke="{TemplateBinding Foreground}"
+                                      StrokeThickness="{Binding ActualWidth, Converter={StaticResource LoadingBackgroundThicknessConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
                                       Opacity="0"
                                       RenderTransformOrigin="0.5,0.5">
                                     <Line.RenderTransform>
@@ -318,8 +390,8 @@
                                       X2="{Binding ActualWidth, Converter={StaticResource HalfConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
                                       Y1="{Binding ActualWidth, Converter={StaticResource LoadingLineYConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
                                       Y2="0"
-                                      Stroke="{TemplateBinding Stroke}"
-                                      StrokeThickness="{Binding ActualWidth, Converter={StaticResource LoadingStrokeThicknessConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
+                                      Stroke="{TemplateBinding Foreground}"
+                                      StrokeThickness="{Binding ActualWidth, Converter={StaticResource LoadingBackgroundThicknessConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
                                       Opacity="0"
                                       RenderTransformOrigin="0.5,0.5">
                                     <Line.RenderTransform>
@@ -331,8 +403,8 @@
                                       X2="{Binding ActualWidth, Converter={StaticResource HalfConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
                                       Y1="{Binding ActualWidth, Converter={StaticResource LoadingLineYConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
                                       Y2="0"
-                                      Stroke="{TemplateBinding Stroke}"
-                                      StrokeThickness="{Binding ActualWidth, Converter={StaticResource LoadingStrokeThicknessConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
+                                      Stroke="{TemplateBinding Foreground}"
+                                      StrokeThickness="{Binding ActualWidth, Converter={StaticResource LoadingBackgroundThicknessConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
                                       Opacity="0"
                                       RenderTransformOrigin="0.5,0.5">
                                     <Line.RenderTransform>
@@ -344,8 +416,8 @@
                                       X2="{Binding ActualWidth, Converter={StaticResource HalfConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
                                       Y1="{Binding ActualWidth, Converter={StaticResource LoadingLineYConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
                                       Y2="0"
-                                      Stroke="{TemplateBinding Stroke}"
-                                      StrokeThickness="{Binding ActualWidth, Converter={StaticResource LoadingStrokeThicknessConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
+                                      Stroke="{TemplateBinding Foreground}"
+                                      StrokeThickness="{Binding ActualWidth, Converter={StaticResource LoadingBackgroundThicknessConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
                                       Opacity="0"
                                       RenderTransformOrigin="0.5,0.5">
                                     <Line.RenderTransform>
@@ -357,8 +429,8 @@
                                       X2="{Binding ActualWidth, Converter={StaticResource HalfConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
                                       Y1="{Binding ActualWidth, Converter={StaticResource LoadingLineYConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
                                       Y2="0"
-                                      Stroke="{TemplateBinding Stroke}"
-                                      StrokeThickness="{Binding ActualWidth, Converter={StaticResource LoadingStrokeThicknessConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
+                                      Stroke="{TemplateBinding Foreground}"
+                                      StrokeThickness="{Binding ActualWidth, Converter={StaticResource LoadingBackgroundThicknessConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
                                       Opacity="0"
                                       RenderTransformOrigin="0.5,0.5">
                                     <Line.RenderTransform>
@@ -370,8 +442,8 @@
                                       X2="{Binding ActualWidth, Converter={StaticResource HalfConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
                                       Y1="{Binding ActualWidth, Converter={StaticResource LoadingLineYConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
                                       Y2="0"
-                                      Stroke="{TemplateBinding Stroke}"
-                                      StrokeThickness="{Binding ActualWidth, Converter={StaticResource LoadingStrokeThicknessConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
+                                      Stroke="{TemplateBinding Foreground}"
+                                      StrokeThickness="{Binding ActualWidth, Converter={StaticResource LoadingBackgroundThicknessConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
                                       Opacity="0"
                                       RenderTransformOrigin="0.5,0.5">
                                     <Line.RenderTransform>
@@ -557,19 +629,19 @@
             </Trigger>
             <Trigger Property="LoadingStyle"
                      Value="Ring">
-                <Setter Property="Stroke"
+                <Setter Property="Background"
                         Value="#33AAAAAA" />
-                <Setter Property="StrokeCover"
+                <Setter Property="Foreground"
                         Value="#3E3E3E" />
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type local:Loading}">
                             <Grid x:Name="GrdMain"
                                   Visibility="Collapsed">
-                                <Ellipse Stroke="{TemplateBinding Stroke}"
-                                         StrokeThickness="{Binding ActualWidth, Converter={StaticResource LoadingStrokeThicknessConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}" />
-                                <Ellipse Stroke="{TemplateBinding StrokeCover}"
-                                         StrokeThickness="{Binding ActualWidth, Converter={StaticResource LoadingStrokeThicknessConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
+                                <Ellipse Stroke="{TemplateBinding Background}"
+                                         StrokeThickness="{Binding ActualWidth, Converter={StaticResource LoadingBackgroundThicknessConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}" />
+                                <Ellipse Stroke="{TemplateBinding Foreground}"
+                                         StrokeThickness="{Binding ActualWidth, Converter={StaticResource LoadingBackgroundThicknessConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
                                          RenderTransformOrigin="0.5,0.5">
                                     <Ellipse.OpacityMask>
                                         <LinearGradientBrush EndPoint="0.5,1"
@@ -630,7 +702,7 @@
             </Trigger>
             <Trigger Property="LoadingStyle"
                      Value="Wave">
-                <Setter Property="Stroke"
+                <Setter Property="Foreground"
                         Value="#3E3E3E" />
                 <Setter Property="Template">
                     <Setter.Value>
@@ -644,7 +716,7 @@
                                     <ColumnDefinition />
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
-                                <Rectangle Fill="{TemplateBinding Stroke}"
+                                <Rectangle Fill="{TemplateBinding Foreground}"
                                            Margin="1,0"
                                            RenderTransformOrigin="0.5,0.5">
                                     <Rectangle.RenderTransform>
@@ -655,7 +727,7 @@
                                 <Rectangle Grid.Column="1"
                                            Margin="1,0"
                                            RenderTransformOrigin="0.5,0.5"
-                                           Fill="{TemplateBinding Stroke}">
+                                           Fill="{TemplateBinding Foreground}">
                                     <Rectangle.RenderTransform>
                                         <ScaleTransform x:Name="Scale2"
                                                         ScaleY="1" />
@@ -664,7 +736,7 @@
                                 <Rectangle Grid.Column="2"
                                            Margin="1,0"
                                            RenderTransformOrigin="0.5,0.5"
-                                           Fill="{TemplateBinding Stroke}">
+                                           Fill="{TemplateBinding Foreground}">
                                     <Rectangle.RenderTransform>
                                         <ScaleTransform x:Name="Scale3"
                                                         ScaleY="1" />
@@ -673,7 +745,7 @@
                                 <Rectangle Grid.Column="3"
                                            Margin="1,0"
                                            RenderTransformOrigin="0.5,0.5"
-                                           Fill="{TemplateBinding Stroke}">
+                                           Fill="{TemplateBinding Foreground}">
                                     <Rectangle.RenderTransform>
                                         <ScaleTransform x:Name="Scale4"
                                                         ScaleY="1" />
@@ -682,7 +754,7 @@
                                 <Rectangle Grid.Column="4"
                                            Margin="1,0"
                                            RenderTransformOrigin="0.5,0.5"
-                                           Fill="{TemplateBinding Stroke}">
+                                           Fill="{TemplateBinding Foreground}">
                                     <Rectangle.RenderTransform>
                                         <ScaleTransform x:Name="Scale5"
                                                         ScaleY="1" />
@@ -765,20 +837,20 @@
             </Trigger>
             <Trigger Property="LoadingStyle"
                      Value="Ring2">
-                <Setter Property="Stroke"
+                <Setter Property="Background"
                         Value="#33AAAAAA" />
-                <Setter Property="StrokeCover"
+                <Setter Property="Foreground"
                         Value="#3E3E3E" />
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type local:Loading}">
                             <Grid x:Name="GrdMain"
                                   Visibility="Collapsed">
-                                <Ellipse Stroke="{TemplateBinding Stroke}"
-                                         StrokeThickness="{Binding ActualWidth, Converter={StaticResource LoadingStrokeThicknessConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}" />
+                                <Ellipse Stroke="{TemplateBinding Background}"
+                                         StrokeThickness="{Binding ActualWidth, Converter={StaticResource LoadingBackgroundThicknessConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}" />
                                 <Path x:Name="Path"
-                                      Stroke="{TemplateBinding StrokeCover}"
-                                      StrokeThickness="{Binding ActualWidth, Converter={StaticResource LoadingStrokeThicknessConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
+                                      Stroke="{TemplateBinding Foreground}"
+                                      StrokeThickness="{Binding ActualWidth, Converter={StaticResource LoadingBackgroundThicknessConverter}, RelativeSource={RelativeSource AncestorType=local:Loading}}"
                                       StrokeStartLineCap="Round"
                                       StrokeEndLineCap="Round"
                                       RenderTransformOrigin="0.5,0.5">
@@ -789,7 +861,7 @@
                                             <Binding Path="ActualHeight"
                                                      RelativeSource="{RelativeSource AncestorType=local:Loading}"></Binding>
                                             <Binding Path="ActualWidth"
-                                                     Converter="{StaticResource LoadingStrokeThicknessConverter}"
+                                                     Converter="{StaticResource LoadingBackgroundThicknessConverter}"
                                                      RelativeSource="{RelativeSource AncestorType=local:Loading}"></Binding>
                                             <Binding Path="Minimum"
                                                      RelativeSource="{RelativeSource AncestorType=local:Loading}"></Binding>
@@ -852,9 +924,7 @@
             </Trigger>
             <Trigger Property="LoadingStyle"
                      Value="Classic">
-                <Setter Property="Stroke"
-                        Value="#33AAAAAA" />
-                <Setter Property="StrokeCover"
+                <Setter Property="Foreground"
                         Value="#3E3E3E" />
                 <Setter Property="Template">
                     <Setter.Value>
@@ -867,7 +937,7 @@
                                                          Angle="-75" />
                                     </Border.RenderTransform>
                                     <Ellipse x:Name="Ell1"
-                                             Fill="{TemplateBinding Stroke}"
+                                             Fill="{TemplateBinding Foreground}"
                                              Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=local:Loading},Converter={StaticResource LoadingClassicEllipseSizeConverter}}"
                                              Height="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=local:Loading},Converter={StaticResource LoadingClassicEllipseSizeConverter}}"
                                              Opacity="0" />
@@ -878,7 +948,7 @@
                                                          Angle="-75" />
                                     </Border.RenderTransform>
                                     <Ellipse x:Name="Ell2"
-                                             Fill="{TemplateBinding Stroke}"
+                                             Fill="{TemplateBinding Foreground}"
                                              Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=local:Loading},Converter={StaticResource LoadingClassicEllipseSizeConverter}}"
                                              Height="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=local:Loading},Converter={StaticResource LoadingClassicEllipseSizeConverter}}"
                                              Opacity="0" />
@@ -889,7 +959,7 @@
                                                          Angle="-75" />
                                     </Border.RenderTransform>
                                     <Ellipse x:Name="Ell3"
-                                             Fill="{TemplateBinding Stroke}"
+                                             Fill="{TemplateBinding Foreground}"
                                              Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=local:Loading},Converter={StaticResource LoadingClassicEllipseSizeConverter}}"
                                              Height="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=local:Loading},Converter={StaticResource LoadingClassicEllipseSizeConverter}}"
                                              Opacity="0" />
@@ -900,7 +970,7 @@
                                                          Angle="-75" />
                                     </Border.RenderTransform>
                                     <Ellipse x:Name="Ell4"
-                                             Fill="{TemplateBinding Stroke}"
+                                             Fill="{TemplateBinding Foreground}"
                                              Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=local:Loading},Converter={StaticResource LoadingClassicEllipseSizeConverter}}"
                                              Height="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=local:Loading},Converter={StaticResource LoadingClassicEllipseSizeConverter}}"
                                              Opacity="0" />
@@ -911,7 +981,7 @@
                                                          Angle="-75" />
                                     </Border.RenderTransform>
                                     <Ellipse x:Name="Ell5"
-                                             Fill="{TemplateBinding Stroke}"
+                                             Fill="{TemplateBinding Foreground}"
                                              Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=local:Loading},Converter={StaticResource LoadingClassicEllipseSizeConverter}}"
                                              Height="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=local:Loading},Converter={StaticResource LoadingClassicEllipseSizeConverter}}"
                                              Opacity="0" />
@@ -1280,8 +1350,6 @@
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="FontSize"
                 Value="{StaticResource Default_FontSize}" />
-        <Setter Property="FocusVisualStyle"
-                Value="{x:Null}" />
         <Setter Property="Foreground"
                 Value="#3E3E3E"></Setter>
         <Setter Property="Background"
@@ -1420,10 +1488,10 @@
                         <internal:NotTopMostPopup Placement="Bottom"
                                                   x:Name="Popup"
                                                   Focusable="False"
-                                                  StaysOpen="True"
                                                   Tag="{Binding ElementName=ToggleButton}"
                                                   AllowsTransparency="True"
-                                                  PopupAnimation="Slide">
+                                                  PopupAnimation="Slide"
+                                                  StaysOpen="{Binding StaysOpen,RelativeSource={RelativeSource AncestorType=local:MultiSelector}}">
                             <Grid MaxHeight="180"
                                   MinWidth="{TemplateBinding ActualWidth}"
                                   x:Name="DropDown">
@@ -1527,8 +1595,6 @@
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="FontSize"
                 Value="{StaticResource Default_FontSize}" />
-        <Setter Property="FocusVisualStyle"
-                Value="{x:Null}" />
         <Setter Property="Foreground"
                 Value="#3E3E3E"></Setter>
         <Setter Property="Background"
@@ -1744,8 +1810,6 @@
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="FontSize"
                 Value="{StaticResource Default_FontSize}" />
-        <Setter Property="FocusVisualStyle"
-                Value="{x:Null}" />
         <Setter Property="Foreground"
                 Value="#3E3E3E"></Setter>
         <Setter Property="Background"
@@ -1891,7 +1955,8 @@
                                                           Focusable="False"
                                                           Tag="{Binding ElementName=ToggleButton}"
                                                           AllowsTransparency="True"
-                                                          PopupAnimation="Slide">
+                                                          PopupAnimation="Slide"
+                                                          StaysOpen="{Binding StaysOpen,RelativeSource={RelativeSource AncestorType=local:DropDown},Mode=OneWay}">
                                     <Grid x:Name="DropDown"
                                           Margin="1,1,1,10">
                                         <Path x:Name="Path"
@@ -1911,6 +1976,8 @@
                                                     <Binding Path="DropDownPlacement"
                                                              RelativeSource="{RelativeSource AncestorType=local:DropDown}" />
                                                     <Binding Path="CornerRadius"
+                                                             RelativeSource="{RelativeSource AncestorType=local:DropDown}" />
+                                                    <Binding Path="IsAngleVisible"
                                                              RelativeSource="{RelativeSource AncestorType=local:DropDown}" />
                                                 </MultiBinding>
                                             </Path.Data>
@@ -2065,8 +2132,6 @@
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="FontSize"
                 Value="{StaticResource Default_FontSize}" />
-        <Setter Property="FocusVisualStyle"
-                Value="{x:Null}" />
         <Setter Property="ThemeBrush"
                 Value="Gray" />
         <Setter Property="Foreground"
@@ -2179,8 +2244,6 @@
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="FontSize"
                 Value="{StaticResource Default_FontSize}" />
-        <Setter Property="FocusVisualStyle"
-                Value="{x:Null}" />
         <Setter Property="Second"
                 Value="5" />
         <Setter Property="BorderThickness"
@@ -2216,8 +2279,6 @@
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="FontSize"
                 Value="{StaticResource Default_FontSize}" />
-        <Setter Property="FocusVisualStyle"
-                Value="{x:Null}" />
         <Setter Property="BorderBrush"
                 Value="LightGray" />
         <Setter Property="BorderThickness"
@@ -2279,7 +2340,6 @@
                                         Command="{Binding CloseCommand, RelativeSource={RelativeSource AncestorType=internal:NoticeCard}}"
                                         CommandParameter="{Binding Path=.,RelativeSource={RelativeSource AncestorType=internal:NoticeCard}}" />
                             </Grid>
-
                         </Grid>
                     </Grid>
                     <ControlTemplate.Triggers>

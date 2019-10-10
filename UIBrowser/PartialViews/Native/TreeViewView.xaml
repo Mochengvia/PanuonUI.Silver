@@ -28,7 +28,7 @@
                         <TextBox.ContextMenu>
                             <ContextMenu>
                                 <MenuItem Header="{x:Static localized:Resource.CopyCode}"
-                                          pu:ContextMenuHelper.ItemIcon="&#xf0c5;"
+                                          Icon="&#xf0c5;"
                                           Click="MenuItem_CopyCode" />
                             </ContextMenu>
                         </TextBox.ContextMenu>
@@ -39,40 +39,40 @@
                       HorizontalAlignment="Center"
                       Header="{x:Static localized:Resource.Palette}"
                       MinWidth="300">
-                <Grid>
-                    <StackPanel>
-                        <Grid Height="150">
-                            <Border BorderBrush="LightGray"
-                                    BorderThickness="1"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center">
-                                <TreeView x:Name="TvCustom"
-                                          VerticalAlignment="Center"
-                                          HorizontalAlignment="Center"
-                                          Height="140"
-                                          Width="200">
-                                    <TreeViewItem Header="Item1"
-                                                  IsExpanded="True">
-                                        <TreeViewItem Header="Item1-1"
-                                                      IsSelected="True" />
-                                        <TreeViewItem Header="Item1-2" />
-                                        <TreeViewItem Header="Item1-3" />
-                                    </TreeViewItem>
-                                    <TreeViewItem Header="Item2">
-                                        <TreeViewItem Header="Item1-1" />
-                                        <TreeViewItem Header="Item2-2" />
-                                        <TreeViewItem Header="Item2-3" />
-                                    </TreeViewItem>
-                                    <TreeViewItem Header="Item3">
-                                        <TreeViewItem Header="Item3-1" />
-                                        <TreeViewItem Header="Item3-2" />
-                                        <TreeViewItem Header="Item3-3" />
-                                    </TreeViewItem>
-                                </TreeView>
-                            </Border>
-
-                        </Grid>
-                        <Grid>
+                <Grid Width="650">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="270"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Border BorderBrush="LightGray"
+                            BorderThickness="1"
+                            HorizontalAlignment="Center"
+                            Margin="20,0"
+                            Width="200"
+                            MaxHeight="220">
+                        <TreeView x:Name="TvCustom"
+                                  VerticalAlignment="Stretch">
+                            <TreeViewItem Header="Item1"
+                                          IsExpanded="True">
+                                <TreeViewItem Header="Item1-1"
+                                              IsSelected="True" />
+                                <TreeViewItem Header="Item1-2" />
+                                <TreeViewItem Header="Item1-3" />
+                            </TreeViewItem>
+                            <TreeViewItem Header="Item2">
+                                <TreeViewItem Header="Item1-1" />
+                                <TreeViewItem Header="Item2-2" />
+                                <TreeViewItem Header="Item2-3" />
+                            </TreeViewItem>
+                            <TreeViewItem Header="Item3">
+                                <TreeViewItem Header="Item3-1" />
+                                <TreeViewItem Header="Item3-2" />
+                                <TreeViewItem Header="Item3-3" />
+                            </TreeViewItem>
+                        </TreeView>
+                    </Border>
+                    <Grid Grid.Column="1"
+                          >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="Auto" />
@@ -190,8 +190,8 @@
                                       Unchecked="ChbExpandBehaviour_CheckChanged" />
 
                         </Grid>
-                    </StackPanel>
                     <Button x:Name="BtnViewCode"
+                            Grid.ColumnSpan="2"
                             HorizontalAlignment="Right"
                             VerticalAlignment="Top"
                             pu:ButtonHelper.ButtonStyle="Link"

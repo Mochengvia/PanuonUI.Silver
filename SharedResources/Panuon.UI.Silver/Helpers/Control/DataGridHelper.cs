@@ -1,5 +1,4 @@
-﻿using Panuon.UI.Silver.Converters;
-using Panuon.UI.Silver.Core;
+﻿using Panuon.UI.Silver.Core;
 using Panuon.UI.Silver.Utils;
 using System;
 using System.ComponentModel;
@@ -29,6 +28,21 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("HeaderPadding", typeof(Thickness), typeof(DataGridHelper));
         #endregion
 
+        #region CellPadding
+        public static Thickness GetCellPadding(DependencyObject obj)
+        {
+            return (Thickness)obj.GetValue(CellPaddingProperty);
+        }
+
+        public static void SetCellPadding(DependencyObject obj, Thickness value)
+        {
+            obj.SetValue(CellPaddingProperty, value);
+        }
+
+        public static readonly DependencyProperty CellPaddingProperty =
+            DependencyProperty.RegisterAttached("CellPadding", typeof(Thickness), typeof(DataGridHelper));
+        #endregion
+
         #region HeaderMinHeight
         public static double GetHeaderMinHeight(DependencyObject obj)
         {
@@ -42,6 +56,23 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty HeaderMinHeightProperty =
             DependencyProperty.RegisterAttached("HeaderMinHeight", typeof(double), typeof(DataGridHelper));
+        #endregion
+
+        #region RowMinHeight
+        public static double GetRowMinHeight(DependencyObject obj)
+        {
+            return (double)obj.GetValue(RowMinHeightProperty);
+        }
+
+        public static void SetRowMinHeight(DependencyObject obj, double value)
+        {
+            obj.SetValue(RowMinHeightProperty, value);
+        }
+
+        public static readonly DependencyProperty RowMinHeightProperty =
+            DependencyProperty.RegisterAttached("RowMinHeight", typeof(double), typeof(DataGridHelper));
+
+
         #endregion
 
         #region HeaderBackground
@@ -103,53 +134,6 @@ namespace Panuon.UI.Silver
         public static readonly DependencyProperty ResizeThumbBrushProperty =
             DependencyProperty.RegisterAttached("ResizeThumbBrush", typeof(Brush), typeof(DataGridHelper));
         #endregion
-
-        #region CellPadding
-        public static Thickness GetCellPadding(DependencyObject obj)
-        {
-            return (Thickness)obj.GetValue(CellPaddingProperty);
-        }
-
-        public static void SetCellPadding(DependencyObject obj, Thickness value)
-        {
-            obj.SetValue(CellPaddingProperty, value);
-        }
-
-        public static readonly DependencyProperty CellPaddingProperty =
-            DependencyProperty.RegisterAttached("CellPadding", typeof(Thickness), typeof(DataGridHelper));
-        #endregion
-
-        #region RowMinHeight
-        public static double GetRowMinHeight(DependencyObject obj)
-        {
-            return (double)obj.GetValue(RowMinHeightProperty);
-        }
-
-        public static void SetRowMinHeight(DependencyObject obj, double value)
-        {
-            obj.SetValue(RowMinHeightProperty, value);
-        }
-
-        public static readonly DependencyProperty RowMinHeightProperty =
-            DependencyProperty.RegisterAttached("RowMinHeight", typeof(double), typeof(DataGridHelper));
-
-
-        #endregion
-
-        //#region ColumnStyle
-        //public static ColumnStyle GetColumnStyle(DependencyObject obj)
-        //{
-        //    return (ColumnStyle)obj.GetValue(ColumnStyleProperty);
-        //}
-
-        //public static void SetColumnStyle(DependencyObject obj, ColumnStyle value)
-        //{
-        //    obj.SetValue(ColumnStyleProperty, value);
-        //}
-
-        //public static readonly DependencyProperty ColumnStyleProperty =
-        //    DependencyProperty.RegisterAttached("ColumnStyle", typeof(ColumnStyle), typeof(DataGridHelper));
-        //#endregion
 
         #region ColumnVerticalContentAlignment
         public static VerticalAlignment GetColumnVerticalContentAlignment(DependencyObject obj)
@@ -228,7 +212,7 @@ namespace Panuon.UI.Silver
 
         #endregion
 
-        #region CheckBoxStyle
+        #region AutoGenerateCheckBoxStyle
         public static Style GetAutoGenerateCheckBoxStyle(DependencyObject obj)
         {
             return (Style)obj.GetValue(AutoGenerateCheckBoxStyleProperty);
@@ -298,15 +282,15 @@ namespace Panuon.UI.Silver
                 {
                     visibility = Visibility.Collapsed;
                 }
-                if(attribute is ColumnWidthAttribute)
+                if (attribute is ColumnWidthAttribute)
                 {
                     width = GridLengthUtil.ConvertToDataGridLength((attribute as ColumnWidthAttribute).Width);
                 }
-                if(attribute is DisplayNameAttribute)
+                if (attribute is DisplayNameAttribute)
                 {
                     header = (attribute as DisplayNameAttribute).DisplayName;
                 }
-                if(attribute is ReadOnlyColumnAttribute)
+                if (attribute is ReadOnlyColumnAttribute)
                 {
                     readOnly = true;
                 }

@@ -12,7 +12,7 @@
     <Grid>
         <Rectangle x:Name="RectBackground" />
         <GroupBox VerticalAlignment="Center"
-                  Header="WindowX Examples"
+                  Header="MessageBoxX Examples"
                   Width="400"
                   Background="White"
                   pu:GroupBoxHelper.Effect="{DynamicResource DropShadow}">
@@ -115,6 +115,15 @@
                             Padding="50,0"
                             Content="Classic - Warning"
                             Click="BtnClassicWarning_Click"
+                            pu:ButtonHelper.ButtonStyle="Outline"
+                            pu:ButtonHelper.HoverBrush="#FF3CBCC9" />
+
+                    <Button Margin="0,15,0,0"
+                            Height="30"
+                            HorizontalAlignment="Left"
+                            Padding="50,0"
+                            Content="Loading"
+                            Click="BtnLoading_Click"
                             pu:ButtonHelper.ButtonStyle="Outline"
                             pu:ButtonHelper.HoverBrush="#FF3CBCC9" />
                 </StackPanel>

@@ -12,7 +12,7 @@
     <converter:SwitchToggleMarginConverter x:Key="SwitchToggleMarginConverter" />
     <converter:Minus2Converter x:Key="Minus2Converter" />
 
-    
+
     <Style TargetType="{x:Type RadioButton}">
         <Setter Property="FontFamily"
                 Value="{StaticResource Default_FontFamily}" />
@@ -20,8 +20,6 @@
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="FontSize"
                 Value="{StaticResource Default_FontSize}" />
-        <Setter Property="FocusVisualStyle"
-                Value="{x:Null}" />
         <Setter Property="local:RadioButtonHelper.GlyphBrush"
                 Value="#FFFFFF" />
         <Setter Property="local:RadioButtonHelper.CheckedGlyphBrush"
@@ -551,11 +549,11 @@
                                         CornerRadius="{Binding Path=(local:RadioButtonHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
                                         Visibility="Collapsed" />
                                 <ContentPresenter x:Name="Content"
-                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                Margin="{TemplateBinding Padding}"
-                                                Content="{TemplateBinding Content}"
-                                                TextBlock.Foreground="{TemplateBinding Foreground}" />
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  Margin="{TemplateBinding Padding}"
+                                                  Content="{TemplateBinding Content}"
+                                                  TextBlock.Foreground="{TemplateBinding Foreground}" />
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <MultiDataTrigger>

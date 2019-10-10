@@ -14,7 +14,7 @@
             Closing="WindowX_Closing">
     <pu:WindowXCaption.ExtendControl>
         <Button Content="&#xf09b;"
-                FontFamily="{DynamicResource FontAwesome}"
+                FontFamily="{StaticResource FontAwesome}"
                 pu:ButtonHelper.ButtonStyle="Hollow"
                 pu:ButtonHelper.HoverBrush="#99999999"
                 Width="40"
@@ -44,7 +44,7 @@
                     Click="BtnClear_Click" />
             <TreeView x:Name="TvMenu"
                       Grid.Row="1"
-                      pu:TreeViewHelper.SelectedBrush="#49A9C0"
+                      pu:TreeViewHelper.SelectedBackground="#49A9C0"
                       pu:TreeViewHelper.ExpandMode="SingleClick"
                       pu:TreeViewHelper.SelectMode="ChildOnly"
                       SelectedValuePath="Value"
@@ -75,9 +75,11 @@
         <ContentControl x:Name="ContentControl"
                         Grid.Column="1"
                         Margin="20,0" />
-        <!--<Button Grid.Column="1"
+        <Button Grid.Column="1"
                 Height="30"
                 Width="200"
-                Click="Button_Click" />-->
+                Click="Button_Click"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"/>
     </Grid>
 </pu:WindowX>

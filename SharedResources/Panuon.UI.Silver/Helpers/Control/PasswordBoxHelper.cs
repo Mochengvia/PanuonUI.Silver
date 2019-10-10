@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Media;
 
 namespace Panuon.UI.Silver
@@ -22,18 +21,18 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region FocusedShadowColor
-        public static Color GetFocusedShadowColor(DependencyObject obj)
+        public static Color? GetFocusedShadowColor(DependencyObject obj)
         {
-            return (Color)obj.GetValue(FocusedShadowColorProperty);
+            return (Color?)obj.GetValue(FocusedShadowColorProperty);
         }
 
-        public static void SetFocusedShadowColor(DependencyObject obj, Color value)
+        public static void SetFocusedShadowColor(DependencyObject obj, Color? value)
         {
             obj.SetValue(FocusedShadowColorProperty, value);
         }
 
         public static readonly DependencyProperty FocusedShadowColorProperty =
-            DependencyProperty.RegisterAttached("FocusedShadowColor", typeof(Color), typeof(PasswordBoxHelper));
+            DependencyProperty.RegisterAttached("FocusedShadowColor", typeof(Color?), typeof(PasswordBoxHelper));
 
         #endregion
 
@@ -55,7 +54,7 @@ namespace Panuon.UI.Silver
         #region Icon
         public static object GetIcon(DependencyObject obj)
         {
-            return (object)obj.GetValue(IconProperty);
+            return obj.GetValue(IconProperty);
         }
 
         public static void SetIcon(DependencyObject obj, object value)
@@ -114,7 +113,7 @@ namespace Panuon.UI.Silver
         #region Header
         public static object GetHeader(DependencyObject obj)
         {
-            return (object)obj.GetValue(HeaderProperty);
+            return obj.GetValue(HeaderProperty);
         }
 
         public static void SetHeader(DependencyObject obj, object value)
@@ -139,6 +138,21 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty HeaderWidthProperty =
             DependencyProperty.RegisterAttached("HeaderWidth", typeof(string), typeof(PasswordBoxHelper), new PropertyMetadata("Auto"));
+        #endregion
+
+        #region IsShowPwdButtonVisible
+        public static bool GetIsShowPwdButtonVisible(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(IsShowPwdButtonVisibleProperty);
+        }
+
+        public static void SetIsShowPwdButtonVisible(DependencyObject obj, bool value)
+        {
+            obj.SetValue(IsShowPwdButtonVisibleProperty, value);
+        }
+
+        public static readonly DependencyProperty IsShowPwdButtonVisibleProperty =
+            DependencyProperty.RegisterAttached("IsShowPwdButtonVisible", typeof(bool), typeof(PasswordBoxHelper));
         #endregion
 
         #region (Internal) PasswordHook (Default is true)
