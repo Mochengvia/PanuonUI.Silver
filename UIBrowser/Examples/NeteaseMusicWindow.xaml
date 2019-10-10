@@ -23,21 +23,39 @@
             <TextBlock FontSize="18"
                        FontWeight="Light"
                        VerticalAlignment="Center"
-                       Margin="15,0,0,0"
+                       Margin="15,0,30,0"
                        Foreground="White"
                        Text="NETEASE MUSIC" />
             <StackPanel Grid.Column="1"
                         Orientation="Horizontal">
+                <Button Background="Transparent"
+                        Content="&#xe627;"
+                        Height="25"
+                        Width="30"
+                        pu:ButtonHelper.CornerRadius="3,0,0,3"
+                        BorderBrush="#B12323"
+                        BorderThickness="1"
+                        FontFamily="/Resources/NeteaseExample/#iconfont"
+                        pu:ButtonHelper.HoverBrush="#1A3E3E3E"/>
+                <Button Background="Transparent"
+                        Content="&#xe649;"
+                        Height="25"
+                        Width="30"
+                        pu:ButtonHelper.CornerRadius="0,3,3,0"
+                        BorderBrush="#B12323"
+                        BorderThickness="1"
+                        FontFamily="/Resources/NeteaseExample/#iconfont"
+                        pu:ButtonHelper.HoverBrush="#1A3E3E3E" />
             </StackPanel>
             <Grid Grid.Column="2"
-                  Margin="30,0,0,0">
+                  Margin="10,0,0,0">
                 <TextBox pu:TextBoxHelper.CornerRadius="13"
                          Height="26"
                          Width="220"
                          FontSize="12"
                          Background="#B12323"
                          BorderThickness="0"
-                         pu:TextBoxHelper.Watermark="Search music, vedio, radio"
+                         pu:TextBoxHelper.Watermark="Search musics, vedios, radios"
                          pu:TextBoxHelper.FocusedShadowColor="#C62F2F"
                          Foreground="White"
                          CaretBrush="White"
@@ -52,9 +70,35 @@
                         HorizontalAlignment="Right"
                         Margin="0,0,7,0" />
             </Grid>
+            
             <StackPanel Grid.Column="4"
                         Orientation="Horizontal"
                         VerticalAlignment="Center">
+                <pu:DropDown Grid.Column="3"
+                             Margin="0,0,20,0">
+                    <StackPanel VerticalAlignment="Center"
+                                Orientation="Horizontal"
+                                >
+                        <Border CornerRadius="12"
+                                Height="24"
+                                Width="24">
+                            <Border.Background>
+                                <ImageBrush ImageSource="/UIBrowser;component/Resources/head.jpg" />
+                            </Border.Background>
+                        </Border>
+                        <TextBlock Text="Zeoun's"
+                                   FontWeight="Light"
+                                   VerticalAlignment="Center"
+                                   Foreground="White"
+                                   Margin="5,0,0,0" />
+                        <TextBlock Text="&#xe651;"
+                                   FontSize="12"
+                                   Foreground="White"
+                                   VerticalAlignment="Center"
+                                   FontFamily="/Resources/NeteaseExample/#iconfont"
+                                   Margin="10,0,0,0"/>
+                    </StackPanel>
+                </pu:DropDown>
                 <Button FontSize="19"
                         Width="28"
                         Height="28"
@@ -111,9 +155,34 @@
             </StackPanel>
         </Grid>
     </pu:WindowXCaption.Header>
-    <Window.Resources>
-    </Window.Resources>
     <Grid>
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="250"
+                              Width="250"
+                              MaxWidth="300"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="6">
+            <TextBlock Text="Newest"
+                       Margin="0,0,0,5"/>
+            <TreeView pu:TreeViewHelper.TreeViewStyle="Modern"
+                      pu:TreeViewHelper.SelectedBackground="#EEEEEE"
+                      BorderBrush="#C62F2F"
+                      pu:TreeViewHelper.ItemHeight="30">
+                <TreeViewItem Header="FindMusic"
+                              Background="Transparent"
+                              pu:TreeViewHelper.ItemIcon=""/>
+                <TreeViewItem Header="Personnal FM"
+                              Background="Transparent"
+                              pu:TreeViewHelper.ItemIcon="" />
+                <TreeViewItem Header="Vedios"
+                              Background="Transparent"
+                              pu:TreeViewHelper.ItemIcon="" />
+                <TreeViewItem Header="Friends"
+                              Background="Transparent"
+                              pu:TreeViewHelper.ItemIcon="" />
+            </TreeView>
+        </StackPanel>
+        <GridSplitter Width="1"/>
     </Grid>
 </pu:WindowX>

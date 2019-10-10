@@ -447,14 +447,14 @@
             </DataTrigger>
             <DataTrigger Binding="{Binding Path=(local:TreeViewHelper.TreeViewStyle),RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}"
                          Value="Modern">
+                <Setter Property="Background"
+                        Value="#E0E0E0" />
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type TreeViewItem}">
                             <Grid>
                                 <Border x:Name="BdrMain"
-                                        BorderThickness="0"
-                                        Background="{TemplateBinding Background}" />
-
+                                        BorderThickness="0" />
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="{Binding Path=(local:TreeViewHelper.ItemHeight),RelativeSource={RelativeSource AncestorType=TreeViewItem},Mode=OneWay,Converter={StaticResource GridLengthConverter}}" />
@@ -472,7 +472,7 @@
                                             Grid.ColumnSpan="2">
                                     </Border>
                                     <Rectangle x:Name="Rect"
-                                               Fill="#E0E0E0" />
+                                               Fill="{TemplateBinding Background}" />
                                     <Grid x:Name="GrdContent"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
