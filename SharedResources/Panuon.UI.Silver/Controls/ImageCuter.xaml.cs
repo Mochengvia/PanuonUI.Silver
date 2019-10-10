@@ -97,7 +97,6 @@ namespace Panuon.UI.Silver
 
             var widthScale = ImageSource.PixelWidth / CvaMain.ActualWidth;
             var heightScale = ImageSource.PixelHeight / CvaMain.ActualHeight;
-
             return new CroppedBitmap(BitmapFrame.Create(ImageSource), new Int32Rect((int)(Canvas.GetLeft(ResizeContainer) * widthScale), (int)(Canvas.GetTop(ResizeContainer) * heightScale), (int)(ResizeContainer.ActualWidth * widthScale), (int)(ResizeContainer.ActualHeight * heightScale)));
 
         }
