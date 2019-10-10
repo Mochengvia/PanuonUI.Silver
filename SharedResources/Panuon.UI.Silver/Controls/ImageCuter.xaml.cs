@@ -90,7 +90,7 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region APIs
-        public BitmapSource GetCutedImage()
+        public BitmapSource GetCutImage()
         {
             if (ImageSource == null)
                 return null;
