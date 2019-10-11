@@ -159,147 +159,225 @@
         </Grid>
     </pu:WindowXCaption.Header>
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition MinWidth="250"
-                              Width="250"
-                              MaxWidth="300" />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <StackPanel Background="#FFF5F5F7">
-            <TreeView pu:TreeViewHelper.TreeViewStyle="Modern"
-                      pu:TreeViewHelper.SelectedBackground="#E8E8E8"
-                      pu:TreeViewHelper.ItemPadding="3,0,0,0"
-                      pu:IconHelper.FontFamily="/Resources/NeteaseExample/#iconfont"
-                      BorderBrush="#C62F2F"
-                      Background="Transparent"
-                      pu:TreeViewHelper.ItemHeight="32">
-                <TreeViewItem Style="{StaticResource TreeViewItem_NonStyle}"
-                              Header="Recommend"
-                              Padding="10,0,0,0"
-                              Margin="0,10,0,5" />
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MinWidth="250"
+                                  Width="250"
+                                  MaxWidth="300" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <StackPanel Background="#FFF5F5F7">
+                <TreeView pu:TreeViewHelper.TreeViewStyle="Modern"
+                          pu:TreeViewHelper.SelectedBackground="#E8E8E8"
+                          pu:TreeViewHelper.ItemPadding="3,0,0,0"
+                          pu:IconHelper.FontFamily="/Resources/NeteaseExample/#iconfont"
+                          BorderBrush="#C62F2F"
+                          Background="Transparent"
+                          pu:TreeViewHelper.ItemHeight="32">
+                    <TreeViewItem Style="{StaticResource TreeViewItem_NonStyle}"
+                                  Header="Recommend"
+                                  Padding="10,0,0,0"
+                                  Margin="0,10,0,5" />
 
-                <TreeViewItem Header="Find"
-                              Margin="0,2"
-                              IsSelected="True"
-                              Background="Transparent"
-                              pu:TreeViewHelper.ItemIcon="&#xe680;" />
-                <TreeViewItem Header="Personnal FM"
-                              Margin="0,2"
-                              Background="Transparent"
-                              pu:TreeViewHelper.ItemIcon="&#xe600;" />
-                <TreeViewItem Header="Vedios"
-                              Margin="0,2"
-                              Background="Transparent"
-                              pu:TreeViewHelper.ItemIcon="&#xe6d3;" />
-                <TreeViewItem Header="Friends"
-                              Margin="0,2"
-                              Background="Transparent"
-                              pu:TreeViewHelper.ItemIcon="&#xe6d7;" />
+                    <TreeViewItem Header="Find"
+                                  Margin="0,2"
+                                  IsSelected="True"
+                                  Background="Transparent"
+                                  pu:TreeViewHelper.ItemIcon="&#xe680;" />
+                    <TreeViewItem Header="Personnal FM"
+                                  Margin="0,2"
+                                  Background="Transparent"
+                                  pu:TreeViewHelper.ItemIcon="&#xe600;" />
+                    <TreeViewItem Header="Vedios"
+                                  Margin="0,2"
+                                  Background="Transparent"
+                                  pu:TreeViewHelper.ItemIcon="&#xe6d3;" />
+                    <TreeViewItem Header="Friends"
+                                  Margin="0,2"
+                                  Background="Transparent"
+                                  pu:TreeViewHelper.ItemIcon="&#xe6d7;" />
 
-                <TreeViewItem Style="{StaticResource TreeViewItem_NonStyle}"
-                              Padding="10,0,0,0"
-                              Header="Mine"
-                              Margin="0,15,0,5" />
+                    <TreeViewItem Style="{StaticResource TreeViewItem_NonStyle}"
+                                  Padding="10,0,0,0"
+                                  Header="Mine"
+                                  Margin="0,15,0,5" />
 
-                <TreeViewItem Header="Local"
-                              Margin="0,2"
-                              Background="Transparent"
-                              pu:TreeViewHelper.ItemIcon="&#xe62b;" />
-                <TreeViewItem Header="Download"
-                              Margin="0,2"
-                              Background="Transparent"
-                              pu:TreeViewHelper.ItemIcon="&#xe615;" />
+                    <TreeViewItem Header="Local"
+                                  Margin="0,2"
+                                  Background="Transparent"
+                                  pu:TreeViewHelper.ItemIcon="&#xe62b;" />
+                    <TreeViewItem Header="Download"
+                                  Margin="0,2"
+                                  Background="Transparent"
+                                  pu:TreeViewHelper.ItemIcon="&#xe615;" />
 
-                <TreeViewItem Style="{StaticResource TreeViewItem_NonStyle}"
-                              Padding="10,0,0,0"
-                              Header="List"
-                              Margin="0,15,0,5" />
+                    <TreeViewItem Style="{StaticResource TreeViewItem_NonStyle}"
+                                  Padding="10,0,0,0"
+                                  Header="List"
+                                  Margin="0,15,0,5" />
 
-                <TreeViewItem Header="Favorites"
-                              Margin="0,2"
-                              Padding="10,0,0,0"
-                              Background="Transparent"
-                              pu:TreeViewHelper.ItemIcon="&#xecaa;" />
-            </TreeView>
-        </StackPanel>
-        <GridSplitter Width="1" />
-        <TabControl Grid.Column="1"
-                    VerticalAlignment="Stretch"
-                    Margin="10,0"
-                    pu:TabControlHelper.ItemHeight="50"
-                    pu:TabControlHelper.ItemPadding="20,0"
-                    pu:TabControlHelper.SelectedForeground="#C62F2F"
-                    pu:TabControlHelper.ItemsAlignment="Center">
-            <TabItem Header="Recommend">
-                <ScrollViewer VerticalScrollBarVisibility="Hidden"
-                              HorizontalScrollBarVisibility="Disabled">
-                    <StackPanel>
-                        <pu:Carousel Margin="0,10,0,0"
-                                     Height="200"
-                                     AutoPlayInterval="0:0:3"
-                                     Recyclable="True">
-                            <Grid Background="#DDDDDD" />
-                            <Grid Background="#EEEEEE" />
-                        </pu:Carousel>
-                        <TextBlock Text="Recommend"
-                                   FontSize="23"
-                                   Margin="0,20,0,0" />
-                        <Border Height="1"
-                                BorderBrush="LightGray"
-                                BorderThickness="0,0,0,1"
-                                Margin="0,5,0,0" />
-                        <pu:WaterfallPanel Margin="0,10,0,0"
-                                            Groups="5"
-                                            HorizontalSpacing="10"
-                                            VerticalSpacing="20"
-                                            ChildrenShape="Square">
-                            <Grid Background="#EEEEEE" />
-                            <Grid Background="#EEEEEE" />
-                            <Grid Background="#EEEEEE" />
-                            <Grid Background="#EEEEEE" />
-                            <Grid Background="#EEEEEE" />
+                    <TreeViewItem Header="Favorites"
+                                  Margin="0,2"
+                                  Padding="10,0,0,0"
+                                  Background="Transparent"
+                                  pu:TreeViewHelper.ItemIcon="&#xecaa;" />
+                </TreeView>
+            </StackPanel>
+            <GridSplitter Width="1" />
+            <TabControl Grid.Column="1"
+                        VerticalAlignment="Stretch"
+                        Margin="10,0"
+                        pu:TabControlHelper.ItemHeight="50"
+                        pu:TabControlHelper.ItemPadding="20,0"
+                        pu:TabControlHelper.SelectedForeground="#C62F2F"
+                        pu:TabControlHelper.ItemsAlignment="Center">
+                <TabItem Header="Recommend">
+                    <ScrollViewer VerticalScrollBarVisibility="Hidden"
+                                  HorizontalScrollBarVisibility="Disabled">
+                        <StackPanel>
+                            <pu:Carousel Margin="0,10,0,0"
+                                         Height="200"
+                                         AutoPlayInterval="0:0:3"
+                                         Recyclable="True">
+                                <Grid Background="#DDDDDD" />
+                                <Grid Background="#EEEEEE" />
+                            </pu:Carousel>
+                            <TextBlock Text="Recommend"
+                                       FontSize="23"
+                                       Margin="0,20,0,0" />
+                            <Border Height="1"
+                                    BorderBrush="LightGray"
+                                    BorderThickness="0,0,0,1"
+                                    Margin="0,5,0,0" />
+                            <pu:WaterfallPanel Margin="0,10,0,0"
+                                               Groups="5"
+                                               HorizontalSpacing="10"
+                                               VerticalSpacing="20"
+                                               ChildrenShape="Square">
+                                <Grid Background="#EEEEEE" />
+                                <Grid Background="#DDDDDD" />
+                                <Grid Background="#EEEEEE" />
+                                <Grid Background="#DDDDDD" />
+                                <Grid Background="#EEEEEE" />
 
-                            <Grid Background="#EEEEEE" />
-                            <Grid Background="#EEEEEE" />
-                            <Grid Background="#EEEEEE" />
-                            <Grid Background="#EEEEEE" />
-                            <Grid Background="#EEEEEE" />
-                        </pu:WaterfallPanel>
+                                <Grid Background="#DDDDDD" />
+                                <Grid Background="#EEEEEE" />
+                                <Grid Background="#DDDDDD" />
+                                <Grid Background="#EEEEEE" />
+                                <Grid Background="#DDDDDD" />
+                            </pu:WaterfallPanel>
 
-                        <TextBlock Text="Newest"
-                                   FontSize="23"
-                                   Margin="0,20,0,0" />
-                        <Border Height="1"
-                                BorderBrush="LightGray"
-                                BorderThickness="0,0,0,1"
-                                Margin="0,5,0,0" />
-                        <pu:WaterfallPanel Margin="0,10,0,0"
-                                           Groups="4"
-                                           HorizontalSpacing="10"
-                                           VerticalSpacing="20">
-                            <Grid Background="#EEEEEE"
-                                  Height="120" />
-                            <Grid Background="#EEEEEE"
-                                  Height="120" />
-                            <Grid Background="#EEEEEE"
-                                  Height="120" />
-                            <Grid Background="#EEEEEE"
-                                  Height="120" />
-                        </pu:WaterfallPanel>
+                            <TextBlock Text="Newest"
+                                       FontSize="23"
+                                       Margin="0,20,0,0" />
+                            <Border Height="1"
+                                    BorderBrush="LightGray"
+                                    BorderThickness="0,0,0,1"
+                                    Margin="0,5,0,0" />
+                            <pu:WaterfallPanel Margin="0,10,0,0"
+                                               Groups="4"
+                                               HorizontalSpacing="10"
+                                               VerticalSpacing="20">
+                                <Grid Background="#EEEEEE"
+                                      Height="120" />
+                                <Grid Background="#EEEEEE"
+                                      Height="120" />
+                                <Grid Background="#EEEEEE"
+                                      Height="120" />
+                                <Grid Background="#EEEEEE"
+                                      Height="120" />
+                            </pu:WaterfallPanel>
 
-                        <TextBlock Text="- End -"
-                                   Margin="0,50,0,10"
-                                   HorizontalAlignment="Center"
-                                   Foreground="#DDDDDD"/>
-                    </StackPanel>
+                            <TextBlock Text="- End -"
+                                       Margin="0,50,0,10"
+                                       HorizontalAlignment="Center"
+                                       Foreground="#DDDDDD" />
+                        </StackPanel>
 
-                </ScrollViewer>
-            </TabItem>
-            <TabItem Header="List" />
-            <TabItem Header="Radio" />
-            <TabItem Header="Charts" />
-            <TabItem Header="Singer" />
-            <TabItem Header="Newest" />
-        </TabControl>
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem Header="List" />
+                <TabItem Header="Radio" />
+                <TabItem Header="Charts" />
+                <TabItem Header="Singer" />
+                <TabItem Header="Newest" />
+            </TabControl>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Button Content="&#xe648;"
+                    FontFamily="/Resources/NeteaseExample/#iconfont"
+                    Height="36"
+                    FontSize="16"
+                    Width="36"
+                    Padding="2,0,0,0"
+                    pu:ButtonHelper.CornerRadius="18"
+                    Background="#D33D3D"
+                    pu:ButtonHelper.HoverBrush="#C62F2F"
+                    Margin="20,0" />
+            <Button Grid.Column="1"
+                    Content="&#xe613;"
+                    FontFamily="/Resources/NeteaseExample/#iconfont"
+                    Height="30"
+                    FontSize="14"
+                    Width="30"
+                    Padding="2,0,0,0"
+                    pu:ButtonHelper.CornerRadius="15"
+                    Background="#D33D3D"
+                    pu:ButtonHelper.HoverBrush="#C62F2F"
+                    Margin="0,0,40,0" />
+            <TextBlock Grid.Column="2"
+                       VerticalAlignment="Center"
+                       Foreground="Gray"
+                       Text="00:00" />
+            <Slider Grid.Column="3"
+                    Margin="5,0"
+                    VerticalAlignment="Center"
+                    Background="#44D33D3D"
+                    pu:SliderHelper.IsTickValueVisible="False"
+                    pu:SliderHelper.ThemeBrush="#D33D3D"/>
+            <TextBlock Grid.Column="4"
+                       VerticalAlignment="Center"
+                       Foreground="Gray"
+                       Text="04:20" />
+            <TextBlock Grid.Column="5"
+                       Margin="20,0,0,0"
+                       VerticalAlignment="Center"
+                       FontFamily="/Resources/NeteaseExample/#iconfont"
+                       Foreground="Gray"
+                       Text="&#xe603;"
+                       FontSize="20"/>
+            <Slider Grid.Column="6"
+                    Width="100"
+                    Margin="5,0"
+                    VerticalAlignment="Center"
+                    Background="#44D33D3D"
+                    pu:SliderHelper.SliderStyle="Classic"
+                    pu:SliderHelper.IsTickValueVisible="False"
+                    pu:SliderHelper.ThumbSize="10"
+                    pu:SliderHelper.ThemeBrush="#D33D3D" />
+            <Button Grid.Column="7"
+                    Content="&#xe6c8;"
+                    FontFamily="/Resources/NeteaseExample/#iconfont"
+                    Padding="2,0,0,0"
+                    VerticalAlignment="Center"
+                    pu:ButtonHelper.ButtonStyle="Link"
+                    pu:ButtonHelper.HoverBrush="#C62F2F"
+                    Margin="15,0,20,0" />
+
+        </Grid>
     </Grid>
 </pu:WindowX>
