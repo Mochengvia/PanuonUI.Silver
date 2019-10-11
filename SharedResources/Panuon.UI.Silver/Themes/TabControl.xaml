@@ -231,6 +231,12 @@
                                 </Grid>
                             </Grid>
                             <ControlTemplate.Triggers>
+                                <DataTrigger Binding="{Binding Path=(local:TabControlHelper.ItemsAlignment),RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                                             Value="Center">
+                                    <Setter TargetName="ColumnLeft"
+                                            Property="Width"
+                                            Value="*" />
+                                </DataTrigger>
                                 <DataTrigger Binding="{Binding Path=(local:TabControlHelper.TabControlStyle),RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                              Value="Card">
                                     <Setter TargetName="BdrLineRight"
