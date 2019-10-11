@@ -1,4 +1,5 @@
 ﻿using Panuon.UI.Silver;
+using Panuon.UI.Silver.Core;
 
 namespace UIBrowser.Examples
 {
@@ -10,6 +11,11 @@ namespace UIBrowser.Examples
         public NeteaseMusicWindow()
         {
             InitializeComponent();
+        }
+
+        private void WfvMusics_ComputedSizeChanged(object sender, ComputedSizeChangedEventArgs e)
+        {
+            var s = e.Size;
         }
     }
 }

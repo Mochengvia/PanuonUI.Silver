@@ -12,6 +12,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Attributes\ColumnWidthAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Attributes\IgnoreColumnAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Attributes\ReadOnlyColumnAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EventHandler\ComputedSizeChangedEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EventHandler\SearchTextChangedEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EventHandler\TabItemRemovedEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EventHandler\SelectedBrushChangedEventHandler.cs" />

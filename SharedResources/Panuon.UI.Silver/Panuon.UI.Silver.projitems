@@ -49,7 +49,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Internal\ScreenshotWindow.xaml.cs">
       <DependentUpon>ScreenshotWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Internal\WaterfallPanel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\WaterfallPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MessageBoxX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiSelector.cs" />

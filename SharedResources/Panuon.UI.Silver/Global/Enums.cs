@@ -29,6 +29,14 @@
     #endregion
     #endregion
 
+    #region Waterfall
+    public enum ChildrenShape
+    {
+        Custom,
+        Square,
+    }
+    #endregion
+
     #region PendingBox
     public enum PendingBoxStyle
     {

@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using Panuon.UI.Silver.Core;
+using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Markup;
 using System.Windows.Media;
@@ -24,6 +26,7 @@ namespace Panuon.UI.Silver
             Children = WaterfallPanel.Children;
         }
 
+        
         #region RoutedEvent
         /// <summary>
         /// LazyLoading.
@@ -153,10 +156,35 @@ namespace Panuon.UI.Silver
         public static readonly DependencyProperty IsLazyLoadingEnabledProperty =
             DependencyProperty.Register("IsLazyLoadingEnabled", typeof(bool), typeof(WaterfallViewer), new PropertyMetadata(OnIsLazyLoadingEnabledChanged));
 
-      
+
+        /// <summary>
+        /// Gets or sets is children square.
+        /// </summary>
+        public ChildrenShape ChildrenShape
+        {
+            get { return (ChildrenShape)GetValue(ChildrenShapeProperty); }
+            set { SetValue(ChildrenShapeProperty, value); }
+        }
+
+        public static readonly DependencyProperty ChildrenShapeProperty =
+            DependencyProperty.Register("ChildrenShape", typeof(ChildrenShape), typeof(WaterfallViewer));
+
+
+
+        public double ChildrenShapeSizeDelta
+        {
+            get { return (double)GetValue(ChildrenShapeSizeDeltaProperty); }
+            set { SetValue(ChildrenShapeSizeDeltaProperty, value); }
+        }
+
+        public static readonly DependencyProperty ChildrenShapeSizeDeltaProperty =
+            DependencyProperty.Register("ChildrenShapeSizeDelta", typeof(double), typeof(WaterfallViewer));
+
+
         #endregion
 
         #region EventHandler
+
         private static void OnOrientationChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var waterFall = d as WaterfallViewer;

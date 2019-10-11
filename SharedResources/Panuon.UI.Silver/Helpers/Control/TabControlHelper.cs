@@ -118,6 +118,36 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("ItemIcon", typeof(object), typeof(TabControlHelper));
         #endregion
 
+        #region ItemPadding
+        public static Thickness GetItemPadding(DependencyObject obj)
+        {
+            return (Thickness)obj.GetValue(ItemPaddingProperty);
+        }
+
+        public static void SetItemPadding(DependencyObject obj, Thickness value)
+        {
+            obj.SetValue(ItemPaddingProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemPaddingProperty =
+            DependencyProperty.RegisterAttached("ItemPadding", typeof(Thickness), typeof(TabControlHelper));
+        #endregion
+
+        #region HorizontalItemsAlignment
+        public static HorizontalAlignment GetHorizontalItemsAlignment(DependencyObject obj)
+        {
+            return (HorizontalAlignment)obj.GetValue(HorizontalItemsAlignmentProperty);
+        }
+
+        public static void SetHorizontalItemsAlignment(DependencyObject obj, HorizontalAlignment value)
+        {
+            obj.SetValue(HorizontalItemsAlignmentProperty, value);
+        }
+
+        public static readonly DependencyProperty HorizontalItemsAlignmentProperty =
+            DependencyProperty.RegisterAttached("HorizontalItemsAlignment", typeof(HorizontalAlignment), typeof(TabControlHelper));
+        #endregion
+
         #region (Event) Removed
         public static readonly RoutedEvent RemovedEvent = EventManager.RegisterRoutedEvent("Removed", RoutingStrategy.Bubble, typeof(TabItemRemovedEventHandler), typeof(TabControlHelper));
         public static void AddRemovedHandler(DependencyObject d, TabItemRemovedEventHandler handler)

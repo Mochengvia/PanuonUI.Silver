@@ -241,6 +241,21 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("ItemIcon", typeof(object), typeof(TreeViewHelper));
         #endregion
 
+        #region ItemPadding
+        public static Thickness GetItemPadding(DependencyObject obj)
+        {
+            return (Thickness)obj.GetValue(ItemPaddingProperty);
+        }
+
+        public static void SetItemPadding(DependencyObject obj, Thickness value)
+        {
+            obj.SetValue(ItemPaddingProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemPaddingProperty =
+            DependencyProperty.RegisterAttached("ItemPadding", typeof(Thickness), typeof(TreeViewHelper));
+        #endregion
+
         #region (Internal) LastSelectedItem
         internal static TreeViewItem GetLastSelectedItem(DependencyObject obj)
         {

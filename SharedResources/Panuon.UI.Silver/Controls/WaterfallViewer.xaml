@@ -14,15 +14,16 @@
                   HorizontalScrollBarVisibility="Disabled"
                   local:ScrollViewerHelper.ScrollBarThickness="6"
                   local:ScrollViewerHelper.ScrollBarCornerRadius="3">
-        <StackPanel Orientation="{Binding Orientation,ElementName=Container}"
-                   >
-            <internal:WaterfallPanel x:Name="WaterfallPanel"
-                                     Orientation="{Binding Orientation,ElementName=Container}"
-                                     Groups="{Binding Groups,ElementName=Container}"
-                                     VerticalSpacing="{Binding VerticalSpacing,ElementName=Container}"
-                                     HorizontalSpacing="{Binding HorizontalSpacing,ElementName=Container}" />
-            <local:Loading 
-                           Width="25"
+        <StackPanel Orientation="{Binding Orientation,ElementName=Container}">
+            <local:WaterfallPanel x:Name="WaterfallPanel"
+                                  Orientation="{Binding Orientation,ElementName=Container}"
+                                  Groups="{Binding Groups,ElementName=Container}"
+                                  VerticalSpacing="{Binding VerticalSpacing,ElementName=Container}"
+                                  HorizontalSpacing="{Binding HorizontalSpacing,ElementName=Container}"
+                                  Width="{Binding ActualWidth ,ElementName=Container}"
+                                  ChildrenShape="{Binding ChildrenShape,ElementName=Container}"
+                                  ChildrenShapeSizeDelta="{Binding ChildrenShapeSizeDelta,ElementName=Container}" />
+            <local:Loading Width="25"
                            Height="25"
                            Margin="25"
                            IsRunning="True"

@@ -55,10 +55,12 @@
     <Style x:Key="NeteaseMusicWindow"
            TargetType="{x:Type pu:WindowX}"
            BasedOn="{StaticResource {x:Type pu:WindowX}}">
+        <Setter Property="FontSize"
+                Value="14" />
         <Setter Property="BorderThickness"
                 Value="0" />
         <Setter Property="pu:WindowXCaption.Height"
-                Value="40" />
+                Value="50" />
         <Setter Property="pu:WindowXCaption.Background"
                 Value="#C62F2F" />
         <Setter Property="pu:WindowXCaption.MinimizeButtonStyle">
