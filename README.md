@@ -47,7 +47,7 @@ http://www.huanghunxiao.com/
 
 ![](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/Panuon.UI.Silver/window_1.png)
 
-![](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/Panuon.UI.Silver/window_2.png)
+![](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/Panuon.UI.Silver/window_3.png)
 
 # Donate  捐赠
 Panuon.UI.Silver is an open source library.Your support will motivate me to continue Panuon.UI.Silver development.    
