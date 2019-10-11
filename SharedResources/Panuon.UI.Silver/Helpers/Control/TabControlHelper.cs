@@ -133,19 +133,19 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("ItemPadding", typeof(Thickness), typeof(TabControlHelper));
         #endregion
 
-        #region HorizontalItemsAlignment
-        public static HorizontalAlignment GetHorizontalItemsAlignment(DependencyObject obj)
+        #region ItemsAlignment
+        public static HorizontalAlignment GetItemsAlignment(DependencyObject obj)
         {
-            return (HorizontalAlignment)obj.GetValue(HorizontalItemsAlignmentProperty);
+            return (HorizontalAlignment)obj.GetValue(ItemsAlignmentProperty);
         }
 
-        public static void SetHorizontalItemsAlignment(DependencyObject obj, HorizontalAlignment value)
+        public static void SetItemsAlignment(DependencyObject obj, HorizontalAlignment value)
         {
-            obj.SetValue(HorizontalItemsAlignmentProperty, value);
+            obj.SetValue(ItemsAlignmentProperty, value);
         }
 
-        public static readonly DependencyProperty HorizontalItemsAlignmentProperty =
-            DependencyProperty.RegisterAttached("HorizontalItemsAlignment", typeof(HorizontalAlignment), typeof(TabControlHelper));
+        public static readonly DependencyProperty ItemsAlignmentProperty =
+            DependencyProperty.RegisterAttached("ItemsAlignment", typeof(HorizontalAlignment), typeof(TabControlHelper));
         #endregion
 
         #region (Event) Removed

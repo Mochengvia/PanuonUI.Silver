@@ -125,7 +125,7 @@
                         </Border>
                     </Grid>
                     <ControlTemplate.Triggers>
-                        <DataTrigger Binding="{Binding Path=(local:TabControlHelper.HorizontalItemsAlignment),RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                        <DataTrigger Binding="{Binding Path=(local:TabControlHelper.ItemsAlignment),RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                      Value="Center">
                             <Setter TargetName="ColumnLeft"
                                     Property="Width"
@@ -332,7 +332,7 @@
                                 </Border>
                             </Grid>
                             <ControlTemplate.Triggers>
-                                <DataTrigger Binding="{Binding Path=(local:TabControlHelper.HorizontalItemsAlignment),RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                                <DataTrigger Binding="{Binding Path=(local:TabControlHelper.ItemsAlignment),RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                              Value="Center">
                                     <Setter TargetName="RowLeft"
                                             Property="Height"
@@ -438,7 +438,7 @@
                                 </Grid>
                             </Grid>
                             <ControlTemplate.Triggers>
-                                <DataTrigger Binding="{Binding Path=(local:TabControlHelper.HorizontalItemsAlignment),RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                                <DataTrigger Binding="{Binding Path=(local:TabControlHelper.ItemsAlignment),RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                              Value="Center">
                                     <Setter TargetName="RowLeft"
                                             Property="Height"

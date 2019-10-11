@@ -12,10 +12,5 @@ namespace UIBrowser.Examples
         {
             InitializeComponent();
         }
-
-        private void WfvMusics_ComputedSizeChanged(object sender, ComputedSizeChangedEventArgs e)
-        {
-            var s = e.Size;
-        }
     }
 }

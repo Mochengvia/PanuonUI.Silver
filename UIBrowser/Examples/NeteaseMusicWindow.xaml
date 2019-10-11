@@ -229,7 +229,7 @@
                     pu:TabControlHelper.ItemHeight="50"
                     pu:TabControlHelper.ItemPadding="20,0"
                     pu:TabControlHelper.SelectedForeground="#C62F2F"
-                    pu:TabControlHelper.HorizontalItemsAlignment="Center">
+                    pu:TabControlHelper.ItemsAlignment="Center">
             <TabItem Header="Recommend">
                 <ScrollViewer VerticalScrollBarVisibility="Hidden"
                               HorizontalScrollBarVisibility="Disabled">
