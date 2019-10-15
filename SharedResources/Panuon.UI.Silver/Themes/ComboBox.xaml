@@ -10,8 +10,6 @@
     <converter:ComboBoxTextMarginConverter x:Key="ComboBoxTextMarginConverter" />
 
     <Style TargetType="{x:Type ComboBox}">
-        <Setter Property="FontFamily"
-                Value="{StaticResource Default_FontFamily}" />
         <Setter Property="SnapsToDevicePixels"
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="FontSize"
@@ -327,8 +325,6 @@
     </Style>
 
     <Style TargetType="{x:Type ComboBoxItem}">
-        <Setter Property="FontFamily"
-                Value="{StaticResource Default_FontFamily}" />
         <Setter Property="SnapsToDevicePixels"
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="FontSize"

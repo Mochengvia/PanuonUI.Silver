@@ -9,8 +9,6 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type Menu}">
-        <Setter Property="FontFamily"
-                Value="{StaticResource Default_FontFamily}" />
         <Setter Property="SnapsToDevicePixels"
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="FontSize"
@@ -90,8 +88,6 @@
     </Style>
 
     <Style TargetType="{x:Type MenuItem}">
-        <Setter Property="FontFamily"
-                Value="{StaticResource Default_FontFamily}" />
         <Setter Property="SnapsToDevicePixels"
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="FontSize"
@@ -1096,13 +1092,10 @@
 
     <Style x:Key="MenuItem_NonStyle"
            TargetType="{x:Type MenuItem}">
-        <Setter Property="FontFamily"
-                Value="{StaticResource Default_FontFamily}" />
         <Setter Property="SnapsToDevicePixels"
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="FontSize"
                 Value="{StaticResource Default_FontSize}" />
-
         <Setter Property="Padding"
                 Value="{Binding Path=(local:MenuHelper.ItemPadding),RelativeSource={RelativeSource AncestorType=Menu},Mode=OneWay}" />
         <Setter Property="Height"

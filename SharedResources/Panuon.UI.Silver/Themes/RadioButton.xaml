@@ -14,8 +14,6 @@
 
 
     <Style TargetType="{x:Type RadioButton}">
-        <Setter Property="FontFamily"
-                Value="{StaticResource Default_FontFamily}" />
         <Setter Property="SnapsToDevicePixels"
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="FontSize"

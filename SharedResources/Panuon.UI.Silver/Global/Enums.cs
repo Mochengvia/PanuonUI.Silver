@@ -199,6 +199,12 @@
         Classic,
         Card,
     }
+
+    public enum ItemsAlignment
+    {
+        LeftOrTop,
+        Center,
+    }
     #endregion
 
     #region ImageCuter

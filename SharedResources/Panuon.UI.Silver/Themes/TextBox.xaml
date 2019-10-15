@@ -26,8 +26,6 @@
                 Value="Hidden" />
         <Setter Property="Padding"
                 Value="5,0,0,0"></Setter>
-        <Setter Property="FontFamily"
-                Value="{StaticResource Default_FontFamily}" />
         <Setter Property="FontSize"
                 Value="{StaticResource Default_FontSize}" />
         <Setter Property="SnapsToDevicePixels"

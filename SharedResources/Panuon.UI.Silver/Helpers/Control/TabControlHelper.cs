@@ -134,18 +134,33 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region ItemsAlignment
-        public static HorizontalAlignment GetItemsAlignment(DependencyObject obj)
+        public static ItemsAlignment GetItemsAlignment(DependencyObject obj)
         {
-            return (HorizontalAlignment)obj.GetValue(ItemsAlignmentProperty);
+            return (ItemsAlignment)obj.GetValue(ItemsAlignmentProperty);
         }
 
-        public static void SetItemsAlignment(DependencyObject obj, HorizontalAlignment value)
+        public static void SetItemsAlignment(DependencyObject obj, ItemsAlignment value)
         {
             obj.SetValue(ItemsAlignmentProperty, value);
         }
 
         public static readonly DependencyProperty ItemsAlignmentProperty =
-            DependencyProperty.RegisterAttached("ItemsAlignment", typeof(HorizontalAlignment), typeof(TabControlHelper));
+            DependencyProperty.RegisterAttached("ItemsAlignment", typeof(ItemsAlignment), typeof(TabControlHelper));
+        #endregion
+
+        #region DisableScrollButton
+        public static bool GetDisableScrollButton(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(DisableScrollButtonProperty);
+        }
+
+        public static void SetDisableScrollButton(DependencyObject obj, bool value)
+        {
+            obj.SetValue(DisableScrollButtonProperty, value);
+        }
+
+        public static readonly DependencyProperty DisableScrollButtonProperty =
+            DependencyProperty.RegisterAttached("DisableScrollButton", typeof(bool), typeof(TabControlHelper));
         #endregion
 
         #region (Event) Removed
@@ -273,6 +288,7 @@ namespace Panuon.UI.Silver
 
 
         #endregion
+
     }
 
     internal class ScrollLeftCommand : ICommand
@@ -377,11 +393,13 @@ namespace Panuon.UI.Silver
 
             if (tabItem != null && tabControl != null)
             {
+                var isVertical = tabItem.TabStripPlacement == Dock.Top || tabItem.TabStripPlacement == Dock.Bottom;
+
                 tabItem.IsSelected = false;
 
                 var anima1 = new DoubleAnimation()
                 {
-                    From = tabItem.ActualWidth,
+                    From = isVertical ? tabItem.ActualWidth : tabItem.ActualHeight,
                     To = 0,
                     Duration = TimeSpan.FromSeconds(0.3),
                     EasingFunction = new CubicEase() { EasingMode = EasingMode.EaseOut },
@@ -401,7 +419,7 @@ namespace Panuon.UI.Silver
                     To = 0,
                     Duration = TimeSpan.FromSeconds(0.3),
                 };
-                tabItem.BeginAnimation(TabItem.WidthProperty, anima1);
+                tabItem.BeginAnimation(isVertical ? TabItem.WidthProperty : TabItem.HeightProperty, anima1);
                 tabItem.BeginAnimation(TabItem.OpacityProperty, anima2);
             }
         }

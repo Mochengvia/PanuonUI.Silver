@@ -202,19 +202,19 @@ namespace Panuon.UI.Silver
         }
         #endregion
 
-        #region (Internal) SearchText
+        #region SearchText
 
-        internal static string GetSearchText(DependencyObject obj)
+        public static string GetSearchText(DependencyObject obj)
         {
             return (string)obj.GetValue(SearchTextProperty);
         }
 
-        internal static void SetSearchText(DependencyObject obj, string value)
+        public static void SetSearchText(DependencyObject obj, string value)
         {
             obj.SetValue(SearchTextProperty, value);
         }
 
-        internal static readonly DependencyProperty SearchTextProperty =
+        public static readonly DependencyProperty SearchTextProperty =
             DependencyProperty.RegisterAttached("SearchText", typeof(string), typeof(ComboBoxHelper), new PropertyMetadata(OnSearchTextChanged));
 
         private static void OnSearchTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)

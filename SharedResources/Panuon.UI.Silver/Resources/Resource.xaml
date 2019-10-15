@@ -6,7 +6,6 @@
                     xmlns:windows2="clr-namespace:System.Windows;assembly=PresentationFramework">
 
     <!--===========Default===========-->
-    <FontFamily x:Key="Default_FontFamily">Microsoft YaHei</FontFamily>
     <sys:Double x:Key="Default_FontSize">14</sys:Double>
     <sys:Boolean x:Key="Default_SnapsToDevicePixels">False</sys:Boolean>
     <FontFamily x:Key="FontAwesome">/Panuon.UI.Silver;component/Resources/#fontawesome</FontFamily>

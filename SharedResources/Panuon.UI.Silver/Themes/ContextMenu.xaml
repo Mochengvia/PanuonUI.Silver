@@ -9,8 +9,6 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type ContextMenu}">
-        <Setter Property="FontFamily"
-                Value="{StaticResource Default_FontFamily}" />
         <Setter Property="SnapsToDevicePixels"
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="FontSize"
@@ -102,8 +100,6 @@
         </Setter>
         <Style.Resources>
             <Style TargetType="{x:Type MenuItem}">
-                <Setter Property="FontFamily"
-                        Value="{StaticResource Default_FontFamily}" />
                 <Setter Property="SnapsToDevicePixels"
                         Value="{StaticResource Default_SnapsToDevicePixels}" />
                 <Setter Property="FontSize"

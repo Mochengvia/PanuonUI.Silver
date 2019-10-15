@@ -12,8 +12,6 @@
     <converter:Minus2Converter x:Key="Minus2Converter" />
 
     <Style TargetType="{x:Type CheckBox}">
-        <Setter Property="FontFamily"
-                Value="{StaticResource Default_FontFamily}" />
         <Setter Property="SnapsToDevicePixels"
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="FontSize"

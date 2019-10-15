@@ -8,8 +8,6 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type ListBox}">
-        <Setter Property="FontFamily"
-                Value="{StaticResource Default_FontFamily}" />
         <Setter Property="SnapsToDevicePixels"
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="FontSize"
@@ -73,8 +71,6 @@
     </Style>
 
     <Style TargetType="{x:Type ListBoxItem}">
-        <Setter Property="FontFamily"
-                Value="{StaticResource Default_FontFamily}" />
         <Setter Property="SnapsToDevicePixels"
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="FontSize"

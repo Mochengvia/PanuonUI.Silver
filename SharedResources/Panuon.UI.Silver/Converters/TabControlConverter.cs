@@ -48,4 +48,23 @@ namespace Panuon.UI.Silver.Converters
         }
     }
 
+    internal class TabControlScrollViewerMaxWidthConverter : IMultiValueConverter
+    {
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        {
+            var actualwidth = (double)values[0];
+            var leftsidebuttonwidth = (double)values[1];
+            leftsidebuttonwidth = leftsidebuttonwidth == 0 ? leftsidebuttonwidth : (leftsidebuttonwidth + 7);
+            var rightsidebuttonwidth = (double)values[2];
+            rightsidebuttonwidth = rightsidebuttonwidth == 0 ? rightsidebuttonwidth : (rightsidebuttonwidth + 7);
+
+            return actualwidth - leftsidebuttonwidth - rightsidebuttonwidth;
+        }
+
+        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        {
+            return new object[] { DependencyProperty.UnsetValue, DependencyProperty.UnsetValue };
+        }
+    }
+
 }

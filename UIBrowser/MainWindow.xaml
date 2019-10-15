@@ -33,7 +33,8 @@
                 <RowDefinition Height="34" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <TextBox pu:TextBoxHelper.Watermark="Search ..."
+            <TextBox pu:TextBoxHelper.Icon="&#xf002;"
+                     pu:TextBoxHelper.Watermark="Search ..."
                      Margin="5,2,8,2"
                      Text="{Binding SearchText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,Delay=300}" />
             <Button HorizontalAlignment="Right"
@@ -75,12 +76,11 @@
         <ContentControl x:Name="ContentControl"
                         Grid.Column="1"
                         Margin="20,0" />
-
-
         <Button Grid.Column="1"
                 Height="30"
                 Width="200"
                 Click="Button_Click"
+                Visibility="Collapsed"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Bottom"/>
     </Grid>
