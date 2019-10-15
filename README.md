@@ -5,9 +5,6 @@
 Panuon.UI optimized version. A beautiful wpf ui library using templates &amp; attached properties.  
 Panuon.UI的优化版本。一个漂亮的、使用样式与附加属性的WPF UI控件库。
 
-This is a developing program.   
-这是一个正在开发的项目。  
-
 You can download Panuon.UI.Silver (pre-release) from nuget now. Check "include pre-release" option before query.  
 Panuon.UI.Silver(预发行版)现已加入Nuget平台。在搜索"Panuon.UI.Silver"前，请在Nuget包管理器中勾选“包括预发行版”。  
 
@@ -18,6 +15,9 @@ Zhihu : @末城via
 # News 动态  
 #### v1.0.8.1 修复 
 `2019-10-15 修复了TabControl的显示问题，新增了TabControlHelper的DisableScrollButton属性。移除了默认的微软雅黑UI字体设定。`  
+
+#### v1.0.8 release
+进行了一些细节修复。  
 
 #### v1.0.7-rc现已发布  
 `2019-10-10 v1.0.7-rc`  
