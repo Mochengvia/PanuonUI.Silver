@@ -45,6 +45,7 @@
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                     <DataGrid x:Name="DgCustom"
+                              ItemsSource="{Binding TestDataList,Mode=TwoWay}"
                               BorderBrush="LightGray"
                               BorderThickness="1"
                               Height="300"

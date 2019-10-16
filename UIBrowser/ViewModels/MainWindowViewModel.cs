@@ -1,6 +1,7 @@
 ﻿using Caliburn.Micro;
+using UIBrowser.Models;
 
-namespace UIBrowser.Models
+namespace UIBrowser.ViewModels
 {
     public class MainWindowViewModel : PropertyChangedBase
     {
@@ -39,6 +40,7 @@ namespace UIBrowser.Models
                          new TreeViewItemModel(Properties.Resource.WindowX,"WindowX"),
                          new TreeViewItemModel(Properties.Resource.MessageBoxX,"MessageBoxX"),
                          new TreeViewItemModel(Properties.Resource.PendingBox,"PendingBox"),
+                         new TreeViewItemModel(Properties.Resource.MultiComboBox,"MultiComboBox"),
                          new TreeViewItemModel(Properties.Resource.Notice,"Notice"),
                          new TreeViewItemModel(Properties.Resource.Badge,"Badge"),
                          new TreeViewItemModel(Properties.Resource.Calendar,"Calendar"),
@@ -52,7 +54,6 @@ namespace UIBrowser.Models
                          new TreeViewItemModel(Properties.Resource.Countdown,"Countdown"),
                          new TreeViewItemModel(Properties.Resource.Clock,"Clock"),
                          new TreeViewItemModel(Properties.Resource.ImageCuter,"ImageCuter"),
-                         new TreeViewItemModel(Properties.Resource.MultiSelector,"MultiSelector"),
                          new TreeViewItemModel(Properties.Resource.NeonLabel,"NeonLabel"),
                          new TreeViewItemModel(Properties.Resource.Pagination,"Pagination"),
                          new TreeViewItemModel(Properties.Resource.Timeline,"Timeline"),

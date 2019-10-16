@@ -41,8 +41,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>References\Caliburn.Micro.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Windows.Shell">
-      <HintPath>..\Output\Net40\Microsoft.Windows.Shell.dll</HintPath>
+    <Reference Include="Microsoft.Windows.Shell, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Windows.Shell.3.0.1.0\lib\net40\Microsoft.Windows.Shell.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -98,6 +98,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PartialViews\Custom\MultiComboBoxView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="PartialViews\Custom\PendingBoxView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -220,8 +224,11 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Models\TreeViewItemModel.cs" />
+    <Compile Include="PartialViews\Custom\MultiComboBoxView.xaml.cs">
+      <DependentUpon>MultiComboBoxView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PartialViews\Custom\PendingBoxView.xaml.cs">
       <DependentUpon>PendingBoxView.xaml</DependentUpon>
     </Compile>
@@ -332,6 +339,7 @@
       <LastGenOutput>Resource.zh-CN.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <Resource Include="Resources\NeteaseExample\iconfont.ttf" />
   </ItemGroup>
   <ItemGroup>
@@ -344,8 +352,8 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Net45\Panuon.UI.Silver\Panuon.UI.Silver.csproj">
-      <Project>{461fe59d-57b8-4599-8e7d-439e27a2bbb2}</Project>
+    <ProjectReference Include="..\Net40\Panuon.UI.Silver\Panuon.UI.Silver.csproj">
+      <Project>{527ff1e2-a99c-40c2-b589-69b5bad77f5a}</Project>
       <Name>Panuon.UI.Silver</Name>
     </ProjectReference>
   </ItemGroup>

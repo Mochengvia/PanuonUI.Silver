@@ -221,7 +221,7 @@
                                  Value="True">
                             <Setter TargetName="BdrPress"
                                     Property="Opacity"
-                                    Value="1"></Setter>
+                                    Value="1"/>
                         </Trigger>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
@@ -417,7 +417,7 @@
                                     Value="{Binding Path=(local:DataGridHelper.SelectedForeground),RelativeSource={RelativeSource AncestorType=DataGridCell}}" />
                             <Setter TargetName="BdrSelected"
                                     Property="Opacity"
-                                    Value="1"></Setter>
+                                    Value="1"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

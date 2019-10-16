@@ -26,6 +26,7 @@ namespace UIBrowser.PartialViews.Native
         public DataGridView()
         {
             InitializeComponent();
+            DataContext = this;
             Loaded += ButtonView_Loaded;
             UpdateVisualEffect();
             _linearGradientBrush = FindResource("ColorSelectorBrush") as LinearGradientBrush;
@@ -44,7 +45,6 @@ namespace UIBrowser.PartialViews.Native
                 new DataGridTestModel(){ Name = "Jack", IsEnabled = true, Score = 100,  },
                 new DataGridTestModel(){ Name = "Mario", IsEnabled = true, Score = 100,  },
             };
-            DgCustom.ItemsSource = TestDataList;
         }
 
         #region Property
@@ -100,6 +100,7 @@ namespace UIBrowser.PartialViews.Native
 
         private void BtnViewCode_Click(object sender, RoutedEventArgs e)
         {
+            MessageBoxX.Show(TestDataList[0].IsEnabled.ToString(), "Title");
             if (_isCodeViewing)
             {
                 if (Helper.Tier == 2)

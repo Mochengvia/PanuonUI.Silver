@@ -1339,23 +1339,51 @@
         </Setter>
     </Style>
 
-    <Style TargetType="{x:Type local:MultiSelector}">
+    <Style TargetType="{x:Type local:MultiComboBox}">
         <Setter Property="SnapsToDevicePixels"
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="FontSize"
                 Value="{StaticResource Default_FontSize}" />
         <Setter Property="Foreground"
-                Value="#3E3E3E"></Setter>
+                Value="#3E3E3E" />
         <Setter Property="Background"
-                Value="White"></Setter>
+                Value="White" />
         <Setter Property="BorderBrush"
-                Value="LightGray"></Setter>
+                Value="LightGray" />
         <Setter Property="BorderThickness"
-                Value="1"></Setter>
+                Value="1" />
         <Setter Property="VerticalContentAlignment"
                 Value="Center" />
         <Setter Property="Padding"
-                Value="5,0,0,0"></Setter>
+                Value="5,0,0,0" />
+        <Setter Property="ItemPadding"
+                Value="5,0,0,0" />
+        <Setter Property="ShadowColor"
+                Value="#888888" />
+        <Setter Property="MaxDropDownHeight"
+                Value="150" />
+        <Setter Property="ItemHeight"
+                Value="30" />
+        <Setter Property="VirtualizingStackPanel.IsVirtualizing"
+                Value="True" />
+        <Setter Property="VirtualizingStackPanel.VirtualizationMode"
+                Value="Recycling" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility"
+                Value="Auto" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility"
+                Value="Disabled" />
+        <Setter Property="SearchTextBoxWatermark"
+                Value="Search ..." />
+        <Setter Property="local:IconHelper.FontSize"
+                Value="{Binding FontSize, Converter={StaticResource Add3Converter},RelativeSource={RelativeSource Self},Mode=OneWay}" />
+        <Setter Property="local:IconHelper.Foreground"
+                Value="{Binding Foreground,RelativeSource={RelativeSource Self},Mode=OneWay}" />
+        <Setter Property="local:IconHelper.FontFamily"
+                Value="{StaticResource FontAwesome}" />
+        <Setter Property="local:ScrollViewerHelper.ScrollBarThickness"
+                Value="6" />
+        <Setter Property="local:ScrollViewerHelper.ScrollBarCornerRadius"
+                Value="3" />
         <Setter Property="ShadowColor"
                 Value="#888888" />
         <Setter Property="CheckBoxStyle">
@@ -1371,9 +1399,16 @@
                 </Style>
             </Setter.Value>
         </Setter>
+        <Setter Property="ItemContainerStyle">
+            <Setter.Value>
+                <Style>
+
+                </Style>
+            </Setter.Value>
+        </Setter>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type local:MultiSelector}">
+                <ControlTemplate TargetType="{x:Type local:MultiComboBox}">
                     <Grid>
                         <Border x:Name="Border"
                                 Background="{TemplateBinding Background}"
@@ -1382,6 +1417,17 @@
                                 CornerRadius="{TemplateBinding CornerRadius}">
                         </Border>
                         <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label x:Name="LblIcon"
+                                   Padding="10,0,2,0"
+                                   VerticalContentAlignment="Center"
+                                   Content="{Binding Icon,Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
+                                   Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
+                                   FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
+                                   FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"></Label>
                             <ContentPresenter x:Name="ContentSite"
                                               Grid.Column="1"
                                               Margin="{TemplateBinding Padding}"
@@ -1395,6 +1441,7 @@
                                         TextWrapping="Wrap"
                                         Focusable="False"
                                         IsHitTestVisible="False"
+                                        Visibility="Collapsed"
                                         Text="{TemplateBinding Watermark}"
                                         VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                         HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -1485,96 +1532,86 @@
                                                   Tag="{Binding ElementName=ToggleButton}"
                                                   AllowsTransparency="True"
                                                   PopupAnimation="Slide"
-                                                  StaysOpen="{Binding StaysOpen,RelativeSource={RelativeSource AncestorType=local:MultiSelector}}">
-                            <Grid MaxHeight="180"
-                                  MinWidth="{TemplateBinding ActualWidth}"
+                                                  IsOpen="{Binding IsDropDownOpen,RelativeSource={RelativeSource AncestorType=local:MultiComboBox}}"
+                                                  StaysOpen="{Binding StaysOpen,RelativeSource={RelativeSource AncestorType=local:MultiComboBox}}">
+                            <Grid MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                                  MinWidth="{Binding ActualWidth,ElementName=ToggleButton}"
                                   x:Name="DropDown">
                                 <Border x:Name="DropDownBorder"
                                         Margin="0,0,0,10"
                                         Background="{TemplateBinding Background}"
                                         BorderBrush="{TemplateBinding BorderBrush}"
                                         BorderThickness="{TemplateBinding BorderThickness}"
-                                        CornerRadius="{Binding CornerRadius,RelativeSource={RelativeSource AncestorType=Control}}">
+                                        CornerRadius="2">
                                     <Border.Effect>
                                         <DropShadowEffect ShadowDepth="0"
                                                           BlurRadius="10"
                                                           Opacity="1"
-                                                          Color="{Binding ShadowColor,RelativeSource={RelativeSource AncestorType=Control}}"></DropShadowEffect>
+                                                          Color="{Binding Path=ShadowColor,RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"></DropShadowEffect>
                                     </Border.Effect>
                                 </Border>
-                                <ScrollViewer VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=local:MultiSelector}, Mode=OneWay}"
-                                              HorizontalScrollBarVisibility="{Binding Path=(ScrollViewer.HorizontalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=local:MultiSelector}, Mode=OneWay}"
-                                              CanContentScroll="True"
-                                              local:ScrollViewerHelper.ScrollBarThickness="6"
-                                              local:ScrollViewerHelper.ScrollBarCornerRadius="3"
-                                              Margin="1,5,1,15"
-                                              MaxHeight="{TemplateBinding MaxDropDownHeight}">
-                                    <ItemsControl ItemsSource="{Binding ItemsSource,RelativeSource={RelativeSource AncestorType=local:MultiSelector},Mode=OneWay}">
-                                        <ItemsControl.ItemsPanel>
-                                            <ItemsPanelTemplate>
-                                                <StackPanel />
-                                            </ItemsPanelTemplate>
-                                        </ItemsControl.ItemsPanel>
-                                        <ItemsControl.ItemTemplate>
-                                            <DataTemplate>
-                                                <Grid Height="30">
-                                                    <CheckBox x:Name="CheckBox"
-                                                              VerticalContentAlignment="Center"
-                                                              HorizontalContentAlignment="Left"
-                                                              VerticalAlignment="Stretch"
-                                                              HorizontalAlignment="Stretch"
-                                                              Margin="10,0,0,0"
-                                                              Padding="10,0,0,0"
-                                                              Cursor="Hand"
-                                                              Tag="{Binding}"
-                                                              Style="{Binding CheckBoxStyle,RelativeSource={RelativeSource AncestorType=local:MultiSelector}}">
-                                                        <CheckBox.Content>
-                                                            <MultiBinding Converter="{StaticResource ObjectMemberPathConverter}">
-                                                                <Binding Path="." />
-                                                                <Binding Path="DisplayMemberPath"
-                                                                         RelativeSource="{RelativeSource AncestorType=local:MultiSelector}"
-                                                                         Mode="OneWay" />
-                                                            </MultiBinding>
-                                                        </CheckBox.Content>
-                                                        <CheckBox.IsChecked>
-                                                            <MultiBinding Converter="{StaticResource MultiSelectorIsCheckedConverter}"
-                                                                          Mode="OneTime">
-                                                                <Binding Path="." />
-                                                                <Binding Path="SelectedMemberPath"
-                                                                         RelativeSource="{RelativeSource AncestorType=local:MultiSelector}"
-                                                                         Mode="OneWay" />
-                                                            </MultiBinding>
-                                                        </CheckBox.IsChecked>
-                                                    </CheckBox>
-                                                </Grid>
-                                            </DataTemplate>
-                                        </ItemsControl.ItemTemplate>
-                                    </ItemsControl>
-                                </ScrollViewer>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <TextBox x:Name="TbSearch"
+                                             Visibility="Collapsed"
+                                             Height="30"
+                                             Padding="5,0,0,0"
+                                             BorderBrush="Transparent"
+                                             BorderThickness="0"
+                                             local:TextBoxHelper.FocusedShadowColor="Transparent"
+                                             Foreground="{TemplateBinding Foreground}"
+                                             local:TextBoxHelper.Watermark="{Binding SearchTextBoxWatermark,RelativeSource={RelativeSource AncestorType=local:MultiComboBox}}"
+                                             Text="{Binding SearchText,RelativeSource={RelativeSource AncestorType=local:MultiComboBox},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                             Margin="1,5,1,0" />
+                                    <ScrollViewer Grid.Row="1"
+                                                  VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
+                                                  HorizontalScrollBarVisibility="{Binding Path=(ScrollViewer.HorizontalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
+                                                  CanContentScroll="True"
+                                                  local:ScrollViewerHelper.ScrollBarThickness="{Binding Path=(local:ScrollViewerHelper.ScrollBarThickness),RelativeSource={RelativeSource AncestorType=local:MultiComboBox},Mode=OneWay}"
+                                                  local:ScrollViewerHelper.ScrollBarCornerRadius="{Binding Path=(local:ScrollViewerHelper.ScrollBarCornerRadius),RelativeSource={RelativeSource AncestorType=local:MultiComboBox},Mode=OneWay}"
+                                                  Margin="1,5,1,15">
+                                        <ItemsPresenter />
+                                    </ScrollViewer>
+                                </Grid>
                             </Grid>
                         </internal:NotTopMostPopup>
                     </Grid>
                     <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Icon,Converter={StaticResource IsNullConverter},RelativeSource={RelativeSource Self}}"
+                                     Value="True">
+                            <Setter TargetName="LblIcon"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
+                        </DataTrigger>
+                        <Trigger Property="IsSearchTextBoxVisible"
+                                 Value="True">
+                            <Setter TargetName="TbSearch"
+                                    Property="Visibility"
+                                    Value="Visible" />
+                        </Trigger>
                         <DataTrigger Binding="{Binding Text,Converter={StaticResource IsNullOrEmptyConverter},RelativeSource={RelativeSource Self}}"
-                                     Value="False">
+                                     Value="True">
                             <Setter Property="Visibility"
                                     TargetName="TxtWatermark"
-                                    Value="Collapsed" />
+                                    Value="Visible" />
                         </DataTrigger>
                         <Trigger Property="IsMouseOver"
                                  Value="True">
                             <Setter Property="Opacity"
-                                    Value="1"></Setter>
+                                    Value="1" />
                         </Trigger>
                         <Trigger Property="IsMouseOver"
                                  Value="False">
                             <Setter Property="Opacity"
-                                    Value="0.9"></Setter>
+                                    Value="0.9" />
                         </Trigger>
                         <Trigger Property="IsFocused"
                                  Value="True">
                             <Setter Property="Opacity"
-                                    Value="1"></Setter>
+                                    Value="1" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -1582,21 +1619,60 @@
         </Setter>
     </Style>
 
+    <Style TargetType="{x:Type local:MultiComboBoxItem}">
+        <Setter Property="SnapsToDevicePixels"
+                Value="{StaticResource Default_SnapsToDevicePixels}" />
+        <Setter Property="FontSize"
+                Value="{StaticResource Default_FontSize}" />
+        <Setter Property="Foreground"
+                Value="#3E3E3E" />
+        <Setter Property="Background"
+                Value="Transparent" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="CheckBoxStyle"
+                Value="{Binding CheckBoxStyle,RelativeSource={RelativeSource AncestorType=local:MultiComboBox}}" />
+        <Setter Property="Padding"
+                Value="{Binding ItemPadding,RelativeSource={RelativeSource AncestorType=local:MultiComboBox}}" />
+        <Setter Property="Height"
+                Value="{Binding ItemHeight,RelativeSource={RelativeSource AncestorType=local:MultiComboBox}}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:MultiComboBoxItem}">
+                    <Grid>
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}" />
+
+                        <CheckBox Style="{TemplateBinding CheckBoxStyle}"
+                                  IsChecked="{Binding IsSelected, RelativeSource={RelativeSource AncestorType={x:Type local:MultiComboBoxItem}}, Mode=TwoWay}"
+                                  VerticalAlignment="Stretch"
+                                  HorizontalAlignment="Stretch"
+                                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                  Margin="{TemplateBinding Padding}"
+                                  Content="{TemplateBinding Content}" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
     <Style TargetType="{x:Type local:DateTimePicker}">
         <Setter Property="SnapsToDevicePixels"
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
         <Setter Property="FontSize"
                 Value="{StaticResource Default_FontSize}" />
         <Setter Property="Foreground"
-                Value="#3E3E3E"></Setter>
+                Value="#3E3E3E" />
         <Setter Property="Background"
-                Value="White"></Setter>
+                Value="White" />
         <Setter Property="BorderBrush"
-                Value="LightGray"></Setter>
+                Value="LightGray" />
         <Setter Property="BorderThickness"
-                Value="1"></Setter>
+                Value="1" />
         <Setter Property="Padding"
-                Value="5,0,0,0"></Setter>
+                Value="5,0,0,0" />
         <Setter Property="ShadowColor"
                 Value="#888888" />
         <Setter Property="CornerRadius"
@@ -1801,15 +1877,15 @@
         <Setter Property="FontSize"
                 Value="{StaticResource Default_FontSize}" />
         <Setter Property="Foreground"
-                Value="#3E3E3E"></Setter>
+                Value="#3E3E3E" />
         <Setter Property="Background"
-                Value="White"></Setter>
+                Value="White" />
         <Setter Property="BorderBrush"
-                Value="Transparent"></Setter>
+                Value="Transparent" />
         <Setter Property="BorderThickness"
-                Value="1"></Setter>
+                Value="1" />
         <Setter Property="Padding"
-                Value="5,0,0,0"></Setter>
+                Value="5,0,0,0" />
         <Setter Property="ShadowColor"
                 Value="#DDDDDD" />
         <Setter Property="VerticalContentAlignment"

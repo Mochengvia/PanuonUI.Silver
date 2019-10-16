@@ -41,7 +41,7 @@
     <converter:InverseOrientationConverter x:Key="InverseOrientationConverter" />
     <converter:CloneConverter x:Key="CloneConverter" />
     
-    <converter:MultiSelectorIsCheckedConverter x:Key="MultiSelectorIsCheckedConverter" />
+    <converter:MultiComboBoxIsCheckedConverter x:Key="MultiComboBoxIsCheckedConverter" />
     <converter:DropDownBorderPathConverter x:Key="DropDownBorderPathConverter" />
     <converter:RingProgressBarConverter x:Key="RingProgressBarConverter" />
     <converter:LoadingBackgroundThicknessConverter x:Key="LoadingBackgroundThicknessConverter" />

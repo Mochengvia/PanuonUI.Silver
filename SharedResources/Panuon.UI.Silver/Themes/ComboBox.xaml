@@ -15,7 +15,7 @@
         <Setter Property="FontSize"
                 Value="{StaticResource Default_FontSize}" />
         <Setter Property="MaxDropDownHeight"
-                Value="250" />
+                Value="150" />
         <Setter Property="Foreground"
                 Value="#3E3E3E" />
         <Setter Property="Background"
@@ -23,7 +23,7 @@
         <Setter Property="BorderBrush"
                 Value="LightGray" />
         <Setter Property="BorderThickness"
-                Value="1"></Setter>
+                Value="1"/>
         <Setter Property="VerticalContentAlignment"
                 Value="Center" />
         <Setter Property="Padding"
@@ -46,8 +46,6 @@
                 Value="Disabled" />
         <Setter Property="local:ComboBoxHelper.SearchTextBoxWatermark" 
                 Value="Search ..."/>
-        <Setter Property="MaxDropDownHeight"
-                Value="150" />
         <Setter Property="local:IconHelper.FontSize"
                 Value="{Binding FontSize, Converter={StaticResource Add3Converter},RelativeSource={RelativeSource Self},Mode=OneWay}" />
         <Setter Property="local:IconHelper.Foreground"
@@ -255,8 +253,7 @@
                                                       CanContentScroll="True"
                                                       local:ScrollViewerHelper.ScrollBarThickness="{Binding Path=(local:ScrollViewerHelper.ScrollBarThickness),RelativeSource={RelativeSource AncestorType=ComboBox},Mode=OneWay}"
                                                       local:ScrollViewerHelper.ScrollBarCornerRadius="{Binding Path=(local:ScrollViewerHelper.ScrollBarCornerRadius),RelativeSource={RelativeSource AncestorType=ComboBox},Mode=OneWay}"
-                                                      Margin="1,5,1,15"
-                                                      MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                                      Margin="1,5,1,15">
                                             <ItemsPresenter />
                                         </ScrollViewer>
                                     </Grid>
@@ -299,17 +296,17 @@
                         <Trigger Property="IsMouseOver"
                                  Value="True">
                             <Setter Property="Opacity"
-                                    Value="1"></Setter>
+                                    Value="1"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver"
                                  Value="False">
                             <Setter Property="Opacity"
-                                    Value="0.9"></Setter>
+                                    Value="0.9"/>
                         </Trigger>
                         <Trigger Property="IsFocused"
                                  Value="True">
                             <Setter Property="Opacity"
-                                    Value="1"></Setter>
+                                    Value="1"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -319,7 +316,7 @@
             <Trigger  Property="IsEnabled"
                       Value="False">
                 <Setter Property="Opacity"
-                        Value="0.4"></Setter>
+                        Value="0.4"/>
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -410,7 +407,7 @@
             <Trigger  Property="IsEnabled"
                       Value="False">
                 <Setter Property="Opacity"
-                        Value="0.4"></Setter>
+                        Value="0.4"/>
             </Trigger>
         </Style.Triggers>
     </Style>

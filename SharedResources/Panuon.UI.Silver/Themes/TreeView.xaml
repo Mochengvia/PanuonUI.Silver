@@ -69,7 +69,7 @@
         <Style.Triggers>
             <DataTrigger Binding="{Binding Path=(local:TreeViewHelper.TreeViewStyle),RelativeSource={RelativeSource Self}, Mode=OneWay}"
                          Value="Classic">
-                <Setter Property="Padding"
+                <Setter Property="local:TreeViewHelper.ItemPadding"
                         Value="10,0,0,0" />
                 <Setter Property="local:TreeViewHelper.SelectedBackground"
                         Value="#DDDDDD" />
@@ -78,7 +78,7 @@
                          Value="Modern">
                 <Setter Property="BorderBrush"
                         Value="#3E3E3E" />
-                <Setter Property="Padding"
+                <Setter Property="local:TreeViewHelper.ItemPadding"
                         Value="10,0,0,0" />
                 <Setter Property="local:TreeViewHelper.SelectedBackground"
                         Value="#DDDDDD" />
@@ -215,6 +215,12 @@
                                 </Grid>
                             </Border>
                             <ControlTemplate.Triggers>
+                                <DataTrigger Binding="{Binding Path=(local:TreeViewHelper.ExpandMode), RelativeSource={RelativeSource AncestorType=TreeView}}"
+                                             Value="SingleClick">
+                                    <Setter TargetName="Toggle"
+                                            Property="IsEnabled"
+                                            Value="False" />
+                                </DataTrigger>
                                 <DataTrigger Binding="{Binding Path=(local:TreeViewHelper.ItemIcon), RelativeSource={RelativeSource Self}}"
                                              Value="{x:Null}">
                                     <Setter TargetName="LblIcon"
@@ -355,6 +361,12 @@
                                 </Grid>
                             </Grid>
                             <ControlTemplate.Triggers>
+                                <DataTrigger Binding="{Binding Path=(local:TreeViewHelper.ExpandMode), RelativeSource={RelativeSource AncestorType=TreeView}}"
+                                             Value="SingleClick">
+                                    <Setter TargetName="Toggle"
+                                            Property="IsEnabled"
+                                            Value="False" />
+                                </DataTrigger>
                                 <DataTrigger Binding="{Binding Path=(local:TreeViewHelper.ItemIcon), RelativeSource={RelativeSource Self}}"
                                              Value="{x:Null}">
                                     <Setter TargetName="LblIcon"
@@ -450,6 +462,7 @@
                         <ControlTemplate TargetType="{x:Type TreeViewItem}">
                             <Grid>
                                 <Border x:Name="BdrMain"
+                                        Background="Transparent"
                                         BorderThickness="0" />
                                 <Grid>
                                     <Grid.RowDefinitions>
@@ -649,6 +662,12 @@
                                 </Grid>
                             </Border>
                             <ControlTemplate.Triggers>
+                                <DataTrigger Binding="{Binding Path=(local:TreeViewHelper.ExpandMode), RelativeSource={RelativeSource AncestorType=TreeView}}"
+                                             Value="SingleClick">
+                                    <Setter TargetName="Toggle"
+                                            Property="IsEnabled"
+                                            Value="False" />
+                                </DataTrigger>
                                 <DataTrigger Binding="{Binding Path=(local:TreeViewHelper.ItemIcon), RelativeSource={RelativeSource Self}}"
                                              Value="{x:Null}">
                                     <Setter TargetName="LblIcon"

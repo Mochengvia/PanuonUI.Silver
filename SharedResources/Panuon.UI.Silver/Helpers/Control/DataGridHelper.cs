@@ -274,6 +274,8 @@ namespace Panuon.UI.Silver
             var width = e.Column.Width;
             var header = e.Column.Header;
             var readOnly = e.Column.IsReadOnly;
+            var bindingMode = BindingMode.TwoWay;
+            var updateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
 
             var descriptor = e.PropertyDescriptor as PropertyDescriptor;
             foreach (Attribute attribute in descriptor.Attributes)
@@ -294,6 +296,12 @@ namespace Panuon.UI.Silver
                 {
                     readOnly = true;
                 }
+                if(attribute is ColumnBindingAttribute)
+                {
+                    var binding = attribute as ColumnBindingAttribute;
+                    bindingMode = binding.BindingMode;
+                    updateSourceTrigger = binding.UpdateSourceTrigger;
+                }
             }
             #endregion
 
@@ -308,7 +316,7 @@ namespace Panuon.UI.Silver
                 };
 
                 newColumn.ItemsSource = Enum.GetValues(e.PropertyType).Cast<Enum>();
-                newColumn.SelectedItemBinding = new Binding(e.PropertyName) { Mode = BindingMode.TwoWay };
+                newColumn.SelectedItemBinding = new Binding(e.PropertyName) { Mode = bindingMode, UpdateSourceTrigger = updateSourceTrigger };
                 newColumn.EditingElementStyle = new Style(typeof(ComboBox))
                 {
                     BasedOn = (Style)dataGrid.FindResource(typeof(ComboBox))
@@ -328,7 +336,7 @@ namespace Panuon.UI.Silver
                     Visibility = visibility,
                 };
 
-                newColumn.Binding = new Binding(e.PropertyName) { Mode = BindingMode.TwoWay };
+                newColumn.Binding = new Binding(e.PropertyName) { Mode = bindingMode, UpdateSourceTrigger = updateSourceTrigger };
 
                 var userStyle = GetAutoGenerateCheckBoxStyle(dataGrid);
                 if (userStyle == null)
@@ -379,7 +387,7 @@ namespace Panuon.UI.Silver
                     Visibility = visibility,
                 };
 
-                newColumn.Binding = new Binding(e.PropertyName) { Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
+                newColumn.Binding = new Binding(e.PropertyName) { Mode = bindingMode, UpdateSourceTrigger = updateSourceTrigger };
 
                 newColumn.ElementStyle = new Style(typeof(TextBlock))
                 {

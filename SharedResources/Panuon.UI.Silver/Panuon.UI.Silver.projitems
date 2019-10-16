@@ -49,10 +49,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Internal\ScreenshotWindow.xaml.cs">
       <DependentUpon>ScreenshotWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiComboBoxItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\WaterfallPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MessageBoxX.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiSelector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiComboBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NeonLabel.xaml.cs">
       <DependentUpon>NeonLabel.xaml</DependentUpon>
     </Compile>
@@ -81,7 +82,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\MemberPathConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\MenuConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\MsbConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\MultiSelectorConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\MultiComboBoxConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ObjectConvert.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\OrientationConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ProgressBarConverter.cs" />

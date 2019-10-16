@@ -13,11 +13,11 @@
         <Setter Property="Background"
                 Value="Transparent" />
         <Setter Property="MinWidth"
-                Value="0"></Setter>
+                Value="0"/>
         <Setter Property="Height"
-                Value="Auto"></Setter>
+                Value="Auto"/>
         <Setter Property="Cursor"
-                Value="Arrow"></Setter>
+                Value="Arrow"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ScrollBar}">
@@ -49,7 +49,7 @@
                 <Setter Property="Margin"
                         Value="1,0,1,1" />
                 <Setter Property="MinHeight"
-                        Value="0"></Setter>
+                        Value="0"/>
                 <Setter Property="Width"
                         Value="Auto" />
                 <Setter Property="Template">

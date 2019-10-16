@@ -35,14 +35,9 @@
             </Grid.RowDefinitions>
             <TextBox pu:TextBoxHelper.Icon="&#xf002;"
                      pu:TextBoxHelper.Watermark="Search ..."
+                     pu:TextBoxHelper.IsClearButtonVisible="True"
                      Margin="5,2,8,2"
                      Text="{Binding SearchText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,Delay=300}" />
-            <Button HorizontalAlignment="Right"
-                    Margin="0,2,10,2"
-                    Width="20"
-                    Content="×"
-                    pu:ButtonHelper.ButtonStyle="Link"
-                    Click="BtnClear_Click" />
             <TreeView x:Name="TvMenu"
                       Grid.Row="1"
                       pu:TreeViewHelper.SelectedBackground="#49A9C0"

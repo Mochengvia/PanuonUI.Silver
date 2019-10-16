@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using UIBrowser.Models;
+using UIBrowser.ViewModels;
 
 namespace UIBrowser
 {
@@ -58,11 +59,6 @@ namespace UIBrowser
                 ContentControl.Content = null;
         }
         #endregion
-
-        private void BtnClear_Click(object sender, RoutedEventArgs e)
-        {
-            ViewModel.SearchText = "";
-        }
 
         private void WindowX_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {

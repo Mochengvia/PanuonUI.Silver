@@ -198,8 +198,8 @@
   <data name="Loading" xml:space="preserve">
     <value>Loading</value>
   </data>
-  <data name="MultiSelector" xml:space="preserve">
-    <value>MultiSelector</value>
+  <data name="MultiComboBox" xml:space="preserve">
+    <value>MultiComboBox</value>
   </data>
   <data name="NativeControls" xml:space="preserve">
     <value>Native Controls</value>

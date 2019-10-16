@@ -9,6 +9,7 @@
     <Import_RootNamespace>Panuon.UI.Silver.Core</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Attributes\ColumnBindingAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Attributes\ColumnWidthAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Attributes\IgnoreColumnAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Attributes\ReadOnlyColumnAttribute.cs" />

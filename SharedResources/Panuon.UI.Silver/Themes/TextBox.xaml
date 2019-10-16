@@ -9,23 +9,23 @@
 
     <Style TargetType="{x:Type TextBox}">
         <Setter Property="BorderBrush"
-                Value="LightGray"></Setter>
+                Value="LightGray"/>
         <Setter Property="BorderThickness"
-                Value="1"></Setter>
+                Value="1"/>
         <Setter Property="Foreground"
                 Value="#3E3E3E" />
         <Setter Property="Background"
-                Value="White"></Setter>
+                Value="White"/>
         <Setter Property="VerticalContentAlignment"
-                Value="Center"></Setter>
+                Value="Center"/>
         <Setter Property="HorizontalContentAlignment"
-                Value="Left"></Setter>
+                Value="Left"/>
         <Setter Property="VerticalScrollBarVisibility"
                 Value="Disabled" />
         <Setter Property="HorizontalScrollBarVisibility"
                 Value="Hidden" />
         <Setter Property="Padding"
-                Value="5,0,0,0"></Setter>
+                Value="5,0,0,0"/>
         <Setter Property="FontSize"
                 Value="{StaticResource Default_FontSize}" />
         <Setter Property="SnapsToDevicePixels"
@@ -161,7 +161,7 @@
                         <Trigger  Property="IsEnabled"
                                   Value="False">
                             <Setter Property="Opacity"
-                                    Value="0.4"></Setter>
+                                    Value="0.4"/>
                         </Trigger>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>

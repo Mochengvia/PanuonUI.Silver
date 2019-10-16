@@ -145,7 +145,7 @@
     <value>关闭源码</value>
   </data>
   <data name="ComboBox" xml:space="preserve">
-    <value>ComboBox 组合框</value>
+    <value>ComboBox 下拉单选框</value>
   </data>
   <data name="CopyCode" xml:space="preserve">
     <value>复制源码</value>
@@ -198,8 +198,8 @@
   <data name="Loading" xml:space="preserve">
     <value>Loading 等待</value>
   </data>
-  <data name="MultiSelector" xml:space="preserve">
-    <value>MultiSelector 多选组合框</value>
+  <data name="MultiComboBox" xml:space="preserve">
+    <value>MultiComboBox 下拉多选框</value>
   </data>
   <data name="NativeControls" xml:space="preserve">
     <value>原生控件</value>

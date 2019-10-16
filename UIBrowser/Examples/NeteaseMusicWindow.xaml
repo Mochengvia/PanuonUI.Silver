@@ -98,6 +98,10 @@
                                    FontFamily="/Resources/NeteaseExample/#iconfont"
                                    Margin="10,0,0,0" />
                     </StackPanel>
+                    <pu:DropDown.Child>
+                        <TextBlock Margin="10,40"
+                                   Text="Add some controls here !"/>
+                    </pu:DropDown.Child>
                 </pu:DropDown>
                 <Border BorderBrush="#FF9B1C1C"
                         BorderThickness="0,0,1,0"
@@ -236,8 +240,11 @@
                         pu:TabControlHelper.SelectedForeground="#C62F2F"
                         pu:TabControlHelper.ItemsAlignment="Center">
                 <TabItem Header="Recommend">
-                    <ScrollViewer VerticalScrollBarVisibility="Hidden"
-                                  HorizontalScrollBarVisibility="Disabled">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                                  HorizontalScrollBarVisibility="Disabled"
+                                  pu:ScrollViewerHelper.ScrollBarThickness="6"
+                                  pu:ScrollViewerHelper.ScrollBarCornerRadius="3"
+                                  Padding="0,0,3,0">
                         <StackPanel>
                             <pu:Carousel Margin="0,10,0,0"
                                          Height="200"

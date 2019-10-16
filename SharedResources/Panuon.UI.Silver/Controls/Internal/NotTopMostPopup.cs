@@ -37,7 +37,8 @@ namespace Panuon.UI.Silver.Controls.Internal
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
-            _window.PreviewMouseDown -= Window_PreviewMouseDown;
+            if(_window != null)
+                _window.PreviewMouseDown -= Window_PreviewMouseDown;
         }
 
 

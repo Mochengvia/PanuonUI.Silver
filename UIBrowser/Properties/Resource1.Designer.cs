@@ -610,11 +610,11 @@ namespace UIBrowser.Properties {
         }
         
         /// <summary>
-        ///   查找类似 MultiSelector 的本地化字符串。
+        ///   查找类似 MultiComboBox 的本地化字符串。
         /// </summary>
-        public static string MultiSelector {
+        public static string MultiComboBox {
             get {
-                return ResourceManager.GetString("MultiSelector", resourceCulture);
+                return ResourceManager.GetString("MultiComboBox", resourceCulture);
             }
         }
         

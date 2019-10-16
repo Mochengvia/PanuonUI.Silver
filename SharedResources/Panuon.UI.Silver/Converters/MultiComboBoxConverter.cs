@@ -6,7 +6,7 @@ using System.Windows.Data;
 namespace Panuon.UI.Silver.Converters
 {
 
-    internal class MultiSelectorIsCheckedConverter : IMultiValueConverter
+    internal class MultiComboBoxIsCheckedConverter : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
