@@ -15,8 +15,9 @@ Zhihu : @末城via
 # News 动态  
 #### 2019-10-16 v1.0.8.2
 `删除了MultiSelector控件。新增了MultiComboBox、MultiComboBoxItem控件。  
-有关该控件的用法，请参考 https://github.com/Panuon/Panuon.Documents/blob/master/Documents/PanuonUI.Silver/zh-cn.md#multicombobox-%E4%B8%8B%E6%8B%89%E5%A4%9A%E9%80%89%E6%A1%86   
-开放了ComboBoxHelper中的SearchText属性。  
+有关该控件的用法，请参考`
+https://github.com/Panuon/Panuon.Documents/blob/master/Documents/PanuonUI.Silver/zh-cn.md#multicombobox-%E4%B8%8B%E6%8B%89%E5%A4%9A%E9%80%89%E6%A1%86 
+`开放了ComboBoxHelper中的SearchText属性。  
 新增了ColumnBindingAttribute，可使用此标记设置DataGrid自动生成列时的数据绑定方式。默认值调整为TwoWay、PropertyChanged。`
 
 #### v1.0.8.1 修复 
