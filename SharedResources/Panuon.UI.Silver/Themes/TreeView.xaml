@@ -58,6 +58,7 @@
                                       VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}"
                                       HorizontalScrollBarVisibility="{Binding Path=(ScrollViewer.HorizontalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}"
                                       CanContentScroll="True"
+                                      Padding="{TemplateBinding Padding}"
                                       local:ScrollViewerHelper.ScrollBarCornerRadius="{Binding Path=(local:ScrollViewerHelper.ScrollBarCornerRadius),RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}"
                                       local:ScrollViewerHelper.ScrollBarThickness="{Binding Path=(local:ScrollViewerHelper.ScrollBarThickness),RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}">
                             <ItemsPresenter />
