@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29306.81
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.852
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIBrowser", "UIBrowser\UIBrowser.csproj", "{F8A6F19C-B283-46F1-8576-7A2B1F4EB8A7}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -22,6 +22,8 @@ EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Panuon.UI.Silver.Core", "SharedResources\Panuon.UI.Silver.Core\Panuon.UI.Silver.Core.shproj", "{DC698B56-EA97-4D48-9E82-E261324EC475}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Panuon.UI.Silver", "SharedResources\Panuon.UI.Silver\Panuon.UI.Silver.shproj", "{2F11D2D6-B0CC-49F6-944B-2AD8CD905644}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NetCore3.0", "NetCore3.0", "{0ECFA8D0-C1CC-4938-802D-C7FE01A91FF7}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution

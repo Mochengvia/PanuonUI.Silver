@@ -47,7 +47,6 @@
                             BorderBrush="{TemplateBinding BorderBrush}">
                         <ScrollViewer VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}"
                                       HorizontalScrollBarVisibility="{Binding Path=(ScrollViewer.HorizontalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}"
-                                      CanContentScroll="True"
                                       local:ScrollViewerHelper.ScrollBarCornerRadius="{Binding Path=(local:ScrollViewerHelper.ScrollBarCornerRadius),RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}"
                                       local:ScrollViewerHelper.ScrollBarThickness="{Binding Path=(local:ScrollViewerHelper.ScrollBarThickness),RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}">
                             <ItemsPresenter />
@@ -171,7 +170,7 @@
             <Trigger  Property="IsEnabled"
                       Value="False">
                 <Setter Property="Opacity"
-                        Value="0.4"/>
+                        Value="0.4" />
             </Trigger>
         </Style.Triggers>
     </Style>

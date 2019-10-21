@@ -68,8 +68,7 @@
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}" />
                         <ScrollViewer local:ScrollViewerHelper.ScrollBarThickness="{Binding Path=(local:ScrollViewerHelper.ScrollBarThickness),RelativeSource={RelativeSource Self},Mode=OneWay}"
-                                      local:ScrollViewerHelper.ScrollBarCornerRadius="{Binding Path=(local:ScrollViewerHelper.ScrollBarCornerRadius),RelativeSource={RelativeSource Self},Mode=OneWay}"
-                                      CanContentScroll="True">
+                                      local:ScrollViewerHelper.ScrollBarCornerRadius="{Binding Path=(local:ScrollViewerHelper.ScrollBarCornerRadius),RelativeSource={RelativeSource Self},Mode=OneWay}">
                             <StackPanel IsItemsHost="True"
                                         Orientation="{Binding Path=(local:MenuHelper.Orientation),RelativeSource={RelativeSource AncestorType=Menu},Mode=OneWay}"
                                         KeyboardNavigation.DirectionalNavigation="Cycle" />
@@ -185,8 +184,7 @@
                                                                   Color="{Binding Path=(local:MenuHelper.ShadowColor),RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay, Converter={StaticResource NullableColorToColoConverter}}" />
                                             </Border.Effect>
                                         </Border>
-                                        <ScrollViewer CanContentScroll="True"
-                                                      local:ScrollViewerHelper.ScrollBarThickness="{Binding Path=(local:ScrollViewerHelper.ScrollBarThickness),RelativeSource={RelativeSource AncestorType=Menu},Mode=OneWay}"
+                                        <ScrollViewer local:ScrollViewerHelper.ScrollBarThickness="{Binding Path=(local:ScrollViewerHelper.ScrollBarThickness),RelativeSource={RelativeSource AncestorType=Menu},Mode=OneWay}"
                                                       local:ScrollViewerHelper.ScrollBarCornerRadius="{Binding Path=(local:ScrollViewerHelper.ScrollBarCornerRadius),RelativeSource={RelativeSource AncestorType=Menu},Mode=OneWay}"
                                                       Margin="{Binding Padding,RelativeSource={RelativeSource AncestorType=Menu}}">
                                             <StackPanel IsItemsHost="True"
@@ -477,8 +475,7 @@
                                                                   Color="{Binding Path=(local:MenuHelper.ShadowColor),RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay, Converter={StaticResource NullableColorToColoConverter}}" />
                                             </Border.Effect>
                                         </Border>
-                                        <ScrollViewer CanContentScroll="True"
-                                                      local:ScrollViewerHelper.ScrollBarThickness="{Binding Path=(local:ScrollViewerHelper.ScrollBarThickness),RelativeSource={RelativeSource AncestorType=Menu},Mode=OneWay}"
+                                        <ScrollViewer local:ScrollViewerHelper.ScrollBarThickness="{Binding Path=(local:ScrollViewerHelper.ScrollBarThickness),RelativeSource={RelativeSource AncestorType=Menu},Mode=OneWay}"
                                                       local:ScrollViewerHelper.ScrollBarCornerRadius="{Binding Path=(local:ScrollViewerHelper.ScrollBarCornerRadius),RelativeSource={RelativeSource AncestorType=Menu},Mode=OneWay}"
                                                       Margin="{Binding Padding,RelativeSource={RelativeSource AncestorType=Menu}}">
                                             <StackPanel IsItemsHost="True"
@@ -770,8 +767,7 @@
                                                                   Color="{Binding Path=(local:MenuHelper.ShadowColor),RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay, Converter={StaticResource NullableColorToColoConverter}}" />
                                             </Border.Effect>
                                         </Border>
-                                        <ScrollViewer CanContentScroll="True"
-                                                      local:ScrollViewerHelper.ScrollBarThickness="{Binding Path=(local:ScrollViewerHelper.ScrollBarThickness),RelativeSource={RelativeSource AncestorType=Menu},Mode=OneWay}"
+                                        <ScrollViewer local:ScrollViewerHelper.ScrollBarThickness="{Binding Path=(local:ScrollViewerHelper.ScrollBarThickness),RelativeSource={RelativeSource AncestorType=Menu},Mode=OneWay}"
                                                       local:ScrollViewerHelper.ScrollBarCornerRadius="{Binding Path=(local:ScrollViewerHelper.ScrollBarCornerRadius),RelativeSource={RelativeSource AncestorType=Menu},Mode=OneWay}"
                                                       Margin="{Binding Padding,RelativeSource={RelativeSource AncestorType=Menu},Mode=OneWay}">
                                             <StackPanel IsItemsHost="True"
@@ -1018,8 +1014,7 @@
                                                                   Color="{Binding Path=(local:MenuHelper.ShadowColor),RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay, Converter={StaticResource NullableColorToColoConverter}}" />
                                             </Border.Effect>
                                         </Border>
-                                        <ScrollViewer CanContentScroll="True"
-                                                      local:ScrollViewerHelper.ScrollBarThickness="{Binding Path=(local:ScrollViewerHelper.ScrollBarThickness),RelativeSource={RelativeSource AncestorType=Menu},Mode=OneWay}"
+                                        <ScrollViewer local:ScrollViewerHelper.ScrollBarThickness="{Binding Path=(local:ScrollViewerHelper.ScrollBarThickness),RelativeSource={RelativeSource AncestorType=Menu},Mode=OneWay}"
                                                       local:ScrollViewerHelper.ScrollBarCornerRadius="{Binding Path=(local:ScrollViewerHelper.ScrollBarCornerRadius),RelativeSource={RelativeSource AncestorType=Menu},Mode=OneWay}"
                                                       Margin="{Binding Padding,RelativeSource={RelativeSource AncestorType=Menu}}">
                                             <StackPanel IsItemsHost="True"

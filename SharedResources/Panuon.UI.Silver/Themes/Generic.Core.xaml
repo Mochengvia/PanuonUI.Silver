@@ -1569,7 +1569,6 @@
                                     <ScrollViewer Grid.Row="1"
                                                   VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
                                                   HorizontalScrollBarVisibility="{Binding Path=(ScrollViewer.HorizontalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
-                                                  CanContentScroll="True"
                                                   local:ScrollViewerHelper.ScrollBarThickness="{Binding Path=(local:ScrollViewerHelper.ScrollBarThickness),RelativeSource={RelativeSource AncestorType=local:MultiComboBox},Mode=OneWay}"
                                                   local:ScrollViewerHelper.ScrollBarCornerRadius="{Binding Path=(local:ScrollViewerHelper.ScrollBarCornerRadius),RelativeSource={RelativeSource AncestorType=local:MultiComboBox},Mode=OneWay}"
                                                   Margin="1,5,1,15">

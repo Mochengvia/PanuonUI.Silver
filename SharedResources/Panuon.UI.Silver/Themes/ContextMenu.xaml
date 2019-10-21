@@ -78,7 +78,6 @@
                         </Border>
                         <ScrollViewer  local:ScrollViewerHelper.ScrollBarThickness="{Binding Path=(local:ScrollViewerHelper.ScrollBarThickness),RelativeSource={RelativeSource AncestorType=ContextMenu},Mode=OneWay}"
                                        local:ScrollViewerHelper.ScrollBarCornerRadius="{Binding Path=(local:ScrollViewerHelper.ScrollBarCornerRadius),RelativeSource={RelativeSource AncestorType=ContextMenu},Mode=OneWay}"
-                                       CanContentScroll="True"
                                        Margin="{TemplateBinding Padding}">
                             <StackPanel IsItemsHost="True"
                                         KeyboardNavigation.DirectionalNavigation="Cycle" />
@@ -188,8 +187,7 @@
                                                                   Color="{Binding Path=(local:ContextMenuHelper.ShadowColor),RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay, Converter={StaticResource NullableColorToColoConverter}}" />
                                             </Border.Effect>
                                         </Border>
-                                        <ScrollViewer CanContentScroll="True"
-                                                      local:ScrollViewerHelper.ScrollBarThickness="{Binding Path=(local:ScrollViewerHelper.ScrollBarThickness),RelativeSource={RelativeSource AncestorType=Menu},Mode=OneWay}"
+                                        <ScrollViewer local:ScrollViewerHelper.ScrollBarThickness="{Binding Path=(local:ScrollViewerHelper.ScrollBarThickness),RelativeSource={RelativeSource AncestorType=Menu},Mode=OneWay}"
                                                       local:ScrollViewerHelper.ScrollBarCornerRadius="{Binding Path=(local:ScrollViewerHelper.ScrollBarCornerRadius),RelativeSource={RelativeSource AncestorType=Menu},Mode=OneWay}"
                                                       Margin="{Binding Padding,RelativeSource={RelativeSource AncestorType=ContextMenu},Mode=OneWay}">
                                             <StackPanel IsItemsHost="True"

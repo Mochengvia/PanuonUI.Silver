@@ -31,7 +31,7 @@
                                 CornerRadius="{Binding Path=(local:GroupBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=GroupBox},Mode=OneWay}"
                                 Effect="{Binding Path=(local:GroupBoxHelper.Effect),RelativeSource={RelativeSource AncestorType=GroupBox},Mode=OneWay}">
                         </Border>
-                        <Grid>
+                        <Grid Margin="{TemplateBinding BorderThickness}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="*" />
@@ -42,12 +42,10 @@
                                 <ContentPresenter x:Name="Header"
                                                   ContentSource="Header"
                                                   VerticalAlignment="Center"
-                                                  HorizontalAlignment="Left"
-                                                  Margin="0,5" />
+                                                  HorizontalAlignment="Left" />
                             </Grid>
-                            <Grid  Margin="{TemplateBinding Padding}"
-                                   Grid.Row="1">
-                                <ContentPresenter Margin="0,3" />
+                            <Grid Grid.Row="1">
+                                <ContentPresenter />
                             </Grid>
                         </Grid>
                     </Grid>
