@@ -76,7 +76,6 @@
                                 <RowDefinition Height="40" />
                                 <RowDefinition Height="40" />
                                 <RowDefinition Height="40" />
-                                <RowDefinition Height="40" />
                             </Grid.RowDefinitions>
                             <TextBlock Text="{x:Static localized:Resource.BaseStyle}"
                                        VerticalAlignment="Center" />
@@ -141,20 +140,6 @@
                                       Checked="ChbShowIcon_CheckChanged"
                                       Unchecked="ChbShowIcon_CheckChanged" />
                             <TextBlock Grid.Row="4"
-                                       Text="{x:Static localized:Resource.ShowSplitLine}"
-                                       VerticalAlignment="Center" />
-                            <CheckBox x:Name="ChbShowSplitLine"
-                                      pu:CheckBoxHelper.CheckBoxStyle="Switch"
-                                      pu:CheckBoxHelper.BoxHeight="25"
-                                      pu:CheckBoxHelper.BoxWidth="35"
-                                      pu:CheckBoxHelper.CheckedBackground="LightGray"
-                                      Grid.Row="4"
-                                      Grid.Column="1"
-                                      HorizontalAlignment="Center"
-                                      VerticalAlignment="Center"
-                                      Checked="ChbShowSplitLine_CheckChanged"
-                                      Unchecked="ChbShowSplitLine_CheckChanged" />
-                            <TextBlock Grid.Row="5"
                                        Text="{x:Static localized:Resource.IsShadowVisible}"
                                        VerticalAlignment="Center" />
                             <CheckBox x:Name="ChbShowShadow"
@@ -162,7 +147,7 @@
                                       pu:CheckBoxHelper.BoxHeight="25"
                                       pu:CheckBoxHelper.BoxWidth="35"
                                       pu:CheckBoxHelper.CheckedBackground="LightGray"
-                                      Grid.Row="5"
+                                      Grid.Row="4"
                                       Grid.Column="1"
                                       HorizontalAlignment="Center"
                                       VerticalAlignment="Center"
