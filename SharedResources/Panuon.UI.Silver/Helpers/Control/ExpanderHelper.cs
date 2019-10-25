@@ -36,23 +36,6 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("Icon", typeof(object), typeof(ExpanderHelper));
         #endregion
 
-        #region HeaderHeight
-        public static double GetHeaderHeight(DependencyObject obj)
-        {
-            return (double)obj.GetValue(HeaderHeightProperty);
-        }
-
-        public static void SetHeaderHeight(DependencyObject obj, double value)
-        {
-            obj.SetValue(HeaderHeightProperty, value);
-        }
-
-        public static readonly DependencyProperty HeaderHeightProperty =
-            DependencyProperty.RegisterAttached("HeaderHeight", typeof(double), typeof(ExpanderHelper));
-
-
-        #endregion
-
         #region CornerRadius
         public static CornerRadius GetCornerRadius(DependencyObject obj)
         {
@@ -71,6 +54,21 @@ namespace Panuon.UI.Silver
 
         #endregion
 
+        #region HeaderPadding
+        public static Thickness GetHeaderPadding(DependencyObject obj)
+        {
+            return (Thickness)obj.GetValue(HeaderPaddingProperty);
+        }
+
+        public static void SetHeaderPadding(DependencyObject obj, Thickness value)
+        {
+            obj.SetValue(HeaderPaddingProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderPaddingProperty =
+            DependencyProperty.RegisterAttached("HeaderPadding", typeof(Thickness), typeof(ExpanderHelper));
+        #endregion
+
         #region HeaderForeground
         public static Brush GetHeaderForeground(DependencyObject obj)
         {
@@ -84,6 +82,36 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty HeaderForegroundProperty =
             DependencyProperty.RegisterAttached("HeaderForeground", typeof(Brush), typeof(ExpanderHelper));
+        #endregion
+
+        #region HeaderBackground
+        public static Brush GetHeaderBackground(DependencyObject obj)
+        {
+            return (Brush)obj.GetValue(HeaderBackgroundProperty);
+        }
+
+        public static void SetHeaderBackground(DependencyObject obj, Brush value)
+        {
+            obj.SetValue(HeaderBackgroundProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderBackgroundProperty =
+            DependencyProperty.RegisterAttached("HeaderBackground", typeof(Brush), typeof(ExpanderHelper));
+        #endregion
+
+        #region ShadowColor
+        public static Color? GetShadowColor(DependencyObject obj)
+        {
+            return (Color?)obj.GetValue(ShadowColorProperty);
+        }
+
+        public static void SetShadowColor(DependencyObject obj, Color? value)
+        {
+            obj.SetValue(ShadowColorProperty, value);
+        }
+
+        public static readonly DependencyProperty ShadowColorProperty =
+            DependencyProperty.RegisterAttached("ShadowColor", typeof(Color?), typeof(ExpanderHelper));
         #endregion
     }
 }

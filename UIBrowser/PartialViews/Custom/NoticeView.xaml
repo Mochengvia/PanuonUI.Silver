@@ -15,7 +15,7 @@
                   Header="Notice Examples"
                   Width="400"
                   Background="White"
-                  pu:GroupBoxHelper.Effect="{DynamicResource DropShadow}">
+                  pu:GroupBoxHelper.ShadowColor="Gray">
             <StackPanel Margin="0,20">
                 <Button Content="No - Icon"
                         Height="30"

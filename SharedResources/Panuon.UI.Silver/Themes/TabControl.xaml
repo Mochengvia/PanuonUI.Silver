@@ -31,6 +31,8 @@
                 Value="/Panuon.UI.Silver;component/Resources/#fontawesome" />
         <Setter Property="local:TabControlHelper.ItemPadding"
                 Value="10,0" />
+        <Setter Property="local:TabControlHelper.HeaderPanelBackground"
+                Value="Transparent" />
         <Setter Property="local:IconHelper.FontSize"
                 Value="{Binding FontSize, Converter={StaticResource Add3Converter},RelativeSource={RelativeSource Self},Mode=OneWay}" />
         <Setter Property="local:IconHelper.Foreground"
@@ -46,7 +48,7 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
-                        <Grid>
+                        <Grid Background="{Binding Path=(local:TabControlHelper.HeaderPanelBackground),RelativeSource={RelativeSource AncestorType=TabControl},Mode=OneWay}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition x:Name="ColumnLeft"
                                                   Width="Auto" />
@@ -576,13 +578,15 @@
         <Setter Property="BorderThickness"
                 Value="{Binding Path=BorderThickness,RelativeSource={RelativeSource AncestorType=TabControl},Mode=OneWay}" />
         <Setter Property="Background"
-                Value="Transparent" />
+                Value="{Binding Path=(local:TabControlHelper.ItemBackground),RelativeSource={RelativeSource AncestorType=TabControl},Mode=OneWay}" />
         <Setter Property="Foreground"
                 Value="{Binding Path=Foreground,RelativeSource={RelativeSource AncestorType=TabControl},Mode=OneWay}" />
         <Setter Property="Padding"
                 Value="{Binding Path=(local:TabControlHelper.ItemPadding),RelativeSource={RelativeSource AncestorType=TabControl},Mode=OneWay}" />
         <Setter Property="local:TabControlHelper.CanRemove"
                 Value="{Binding Path=(local:TabControlHelper.CanRemove),RelativeSource={RelativeSource AncestorType=TabControl},Mode=OneWay}" />
+        <Setter Property="local:TabControlHelper.ItemCornerRadius"
+                Value="{Binding Path=(local:TabControlHelper.ItemCornerRadius),RelativeSource={RelativeSource AncestorType=TabControl},Mode=OneWay}" />
         <Setter Property="local:IconHelper.Width"
                 Value="{Binding Path=(local:IconHelper.Width),RelativeSource={RelativeSource AncestorType=TabControl},Mode=OneWay}" />
         <Setter Property="local:IconHelper.Foreground"
@@ -599,6 +603,7 @@
                         <ControlTemplate TargetType="{x:Type TabItem}">
                             <Grid>
                                 <Border x:Name="Border"
+                                        CornerRadius="{Binding Path=(local:TabControlHelper.ItemCornerRadius),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=TabItem}, Mode=OneWay}"
                                         BorderBrush="{TemplateBinding BorderBrush}"
                                         BorderThickness="0,0,0,1"
                                         Background="{TemplateBinding Background}" />
@@ -621,8 +626,9 @@
                                            Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
                                            FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
                                            FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
-                                           VerticalAlignment="Center"
-                                           Margin="5,0,0,0" />
+                                           VerticalContentAlignment="Center"
+                                           HorizontalContentAlignment="Center"
+                                           Padding="10,0,7,0"/>
                                     <ContentPresenter x:Name="Presenter"
                                                       Grid.Column="1"
                                                       ContentSource="Header"
@@ -753,6 +759,7 @@
                         <ControlTemplate TargetType="{x:Type TabItem}">
                             <Grid>
                                 <Border x:Name="Border"
+                                        CornerRadius="{Binding Path=(local:TabControlHelper.ItemCornerRadius),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=TabItem}, Mode=OneWay}"
                                         BorderBrush="{TemplateBinding BorderBrush}"
                                         BorderThickness="0,0,0,1"
                                         Background="{TemplateBinding Background}" />
@@ -775,8 +782,9 @@
                                            Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
                                            FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
                                            FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
-                                           VerticalAlignment="Center"
-                                           Margin="5,0,0,0" />
+                                           VerticalContentAlignment="Center"
+                                           HorizontalContentAlignment="Center"
+                                           Padding="10,0,7,0" />
                                     <ContentPresenter x:Name="Presenter"
                                                       Grid.Column="1"
                                                       ContentSource="Header"
@@ -824,7 +832,7 @@
                                             Property="BorderThickness"
                                             Value="1,0,0,0" />
                                 </Trigger>
-                                
+
                                 <DataTrigger Binding="{Binding Path=(local:TabControlHelper.ItemIcon), RelativeSource={RelativeSource Self}}"
                                              Value="{x:Null}">
                                     <Setter TargetName="LblIcon"
@@ -914,6 +922,7 @@
                         <ControlTemplate TargetType="{x:Type TabItem}">
                             <Grid>
                                 <Border x:Name="Border"
+                                        CornerRadius="{Binding Path=(local:TabControlHelper.ItemCornerRadius),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=TabItem}, Mode=OneWay}"
                                         BorderBrush="{TemplateBinding BorderBrush}"
                                         BorderThickness="{TemplateBinding BorderThickness}"
                                         Background="{TemplateBinding Background}" />
@@ -936,8 +945,9 @@
                                            Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
                                            FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
                                            FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
-                                           VerticalAlignment="Center"
-                                           Margin="5,0,0,0" />
+                                           VerticalContentAlignment="Center"
+                                           HorizontalContentAlignment="Center"
+                                           Padding="10,0,7,0" />
                                     <ContentPresenter x:Name="Presenter"
                                                       Grid.Column="1"
                                                       ContentSource="Header"
@@ -1004,7 +1014,6 @@
                     </Setter.Value>
                 </Setter>
             </DataTrigger>
-
         </Style.Triggers>
     </Style>
 </ResourceDictionary>

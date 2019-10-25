@@ -1,4 +1,5 @@
 ﻿using Panuon.UI.Silver;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -9,9 +10,9 @@ using UIBrowser.Helpers;
 namespace UIBrowser.PartialViews.Native
 {
     /// <summary>
-    /// PasswordBoxView.xaml 的交互逻辑
+    /// GroupBoxView.xaml 的交互逻辑
     /// </summary>
-    public partial class PasswordBoxView : UserControl
+    public partial class ExpanderView : UserControl
     {
         #region Identity
         private bool _isCodeViewing;
@@ -19,7 +20,7 @@ namespace UIBrowser.PartialViews.Native
         private LinearGradientBrush _linearGradientBrush;
         #endregion
 
-        public PasswordBoxView()
+        public ExpanderView()
         {
             InitializeComponent();
             Loaded += ButtonView_Loaded;
@@ -27,7 +28,7 @@ namespace UIBrowser.PartialViews.Native
             _linearGradientBrush = FindResource("ColorSelectorBrush") as LinearGradientBrush;
         }
 
-        #region Event
+        #region Event Handler
 
         private void ButtonView_Loaded(object sender, RoutedEventArgs e)
         {
@@ -45,6 +46,15 @@ namespace UIBrowser.PartialViews.Native
         }
 
         private void SldCornerRadius_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (!IsLoaded)
+                return;
+
+            UpdateTemplate();
+            UpdateCode();
+        }
+
+        private void SldHeaderPadding_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (!IsLoaded)
                 return;
@@ -100,28 +110,44 @@ namespace UIBrowser.PartialViews.Native
             if (!IsLoaded)
                 return;
 
-            PasswordBoxHelper.SetIcon(PbCustom, ChbShowIcon.IsChecked == true ? "\uf11c" : null);
+            ExpanderHelper.SetIcon(EpdCustom, ChbShowIcon.IsChecked == true ? "\uf11c" : null);
 
+            UpdateTemplate();
             UpdateCode();
         }
 
-        private void ChbShowWatermark_CheckChanged(object sender, RoutedEventArgs e)
+        private void ChbShowSplitLine_CheckChanged(object sender, RoutedEventArgs e)
         {
             if (!IsLoaded)
                 return;
 
-            PasswordBoxHelper.SetWatermark(PbCustom, ChbShowWatermark.IsChecked == true ? "Watermark" : null);
 
             UpdateCode();
         }
 
-        private void ChbShowPwdButton_CheckChanged(object sender, RoutedEventArgs e)
+        private void ChbShowClearButton_CheckChanged(object sender, RoutedEventArgs e)
         {
             if (!IsLoaded)
                 return;
 
-            PasswordBoxHelper.SetIsShowPwdButtonVisible(PbCustom, ChbShowPwdButton.IsChecked == true);
 
+            UpdateCode();
+        }
+
+        private void ChbShowShadow_CheckChanged(object sender, RoutedEventArgs e)
+        {
+            ExpanderHelper.SetShadowColor(EpdCustom, ChbShowShadow.IsChecked == true ? Colors.LightGray : (Color?)null);
+        }
+
+        private void RdbBaseStyle_CheckChanged(object sender, RoutedEventArgs e)
+        {
+            if (!IsLoaded)
+                return;
+            var rdb = sender as RadioButton;
+
+            ExpanderHelper.SetExpanderStyle(EpdCustom, (ExpanderStyle)Enum.Parse(typeof(ExpanderStyle), rdb.Content.ToString()));
+
+            UpdateTemplate();
             UpdateCode();
         }
         #endregion
@@ -135,42 +161,39 @@ namespace UIBrowser.PartialViews.Native
                 case 2:
                     AnimationHelper.SetSlideInFromBottom(GrpPalette, true);
                     RectBackground.Fill = FindResource("GridBrush") as Brush;
-                    GroupBoxHelper.SetShadowColor(GrpPalette, Colors.LightGray);
-                    GroupBoxHelper.SetShadowColor(GrpCode, Colors.LightGray);
+                    ExpanderHelper.SetShadowColor(GrpPalette, Colors.LightGray);
+                    ExpanderHelper.SetShadowColor(GrpCode, Colors.LightGray);
                     break;
             }
         }
         private void UpdateTemplate()
         {
-            var color = Helper.GetColorByOffset(_linearGradientBrush.GradientStops, SldTheme.Value / 7);
-            PasswordBoxHelper.SetCornerRadius(PbCustom, new CornerRadius(SldCornerRadius.Value));
-
-            PasswordBoxHelper.SetFocusedBorderBrush(PbCustom, color.ToBrush());
-            PasswordBoxHelper.SetFocusedShadowColor(PbCustom, color);
+            if (ExpanderHelper.GetIcon(EpdCustom) == null)
+                ExpanderHelper.SetHeaderPadding(EpdCustom, new Thickness(5, SldHeaderPadding.Value, 0, SldHeaderPadding.Value));
+            else
+                ExpanderHelper.SetHeaderPadding(EpdCustom, new Thickness(0, SldHeaderPadding.Value, 0, SldHeaderPadding.Value));
+            ExpanderHelper.SetCornerRadius(EpdCustom, new CornerRadius(SldCornerRadius.Value));
         }
 
         private void UpdateCode()
         {
-            var icon = PasswordBoxHelper.GetIcon(PbCustom);
-            var watermark = PasswordBoxHelper.GetWatermark(PbCustom);
+            var icon = ExpanderHelper.GetIcon(EpdCustom);
             var cornerRadius = SldCornerRadius.Value;
-            var isShowPwdButtonVisible = PasswordBoxHelper.GetIsShowPwdButtonVisible(PbCustom);
+            var headerPadding = SldHeaderPadding.Value;
+            var shadow = ExpanderHelper.GetShadowColor(EpdCustom);
 
-            TbCode.Text = "<PasswordBox  Height=\"30\"" +
-                        $"\nWidth=\"{PbCustom.Width}\"" +
-                        (watermark == null ? "" : $"\npu:PasswordBoxHelper.Watermark=\"{watermark}\"") +
-                        (icon == null ? "" : $"\npu:PasswordBoxHelper.Icon=\"&#xf11c;\"") +
-                        $"\npu:PasswordBoxHelper.FocusedBorderBrush=\"{PasswordBoxHelper.GetFocusedBorderBrush(PbCustom).ToColor().ToHexString(false)}\"" +
-                        $"\npu:PasswordBoxHelper.FocusedShadowColor=\"{PasswordBoxHelper.GetFocusedShadowColor(PbCustom).ToHexString(false)}\"" +
-                        (cornerRadius == 0 ? "" : $"\npu:PasswordBoxHelper.CornerRadius=\"{cornerRadius}\"") +
-                        (isShowPwdButtonVisible ? $"\npu:PasswordBoxHelper.IsShowPwdButtonVisible=\"{isShowPwdButtonVisible}\"" : "") +
+            TbCode.Text = $"<Expander Width=\"{EpdCustom.Width}\"" +
+                        $"\nHeader=\"{EpdCustom.Header}\"" +
+                        $"\nVerticalAlignment=\"Center\"" +
+                        $"\nHorizontalAlignment=\"Center\"" +
+                        (icon == null ? "" : $"\npu:ExpanderHelper.Icon=\"&#xf11c;\"") +
+                        (cornerRadius == 0 ? "" : $"\npu:ExpanderHelper.CornerRadius=\"{cornerRadius}\"") +
+                        (headerPadding == 5 ? "" : $"\npu:ExpanderHelper.HeaderPadding=\"10,{headerPadding}\"") +
+                        (shadow == null ? "" : $"\npu:ExpanderHelper.ShadowColor=\"LightGray\"") +
                         " />";
         }
-
-
-
         #endregion
 
-
+        
     }
 }

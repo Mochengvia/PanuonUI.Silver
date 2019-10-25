@@ -42,7 +42,7 @@ namespace UIBrowser.PartialViews.Native
                 case 2:
                     AnimationHelper.SetSlideInFromBottom(GrpPalette, true);
                     RectBackground.Fill = FindResource("GridBrush") as Brush;
-                    GroupBoxHelper.SetEffect(GrpPalette, FindResource("DropShadow") as Effect);
+                    GroupBoxHelper.SetShadowColor(GrpPalette, Colors.LightGray);
                     break;
             }
         }

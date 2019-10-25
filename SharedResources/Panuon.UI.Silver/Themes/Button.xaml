@@ -67,7 +67,9 @@
                                            Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
                                            FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
                                            FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
-                                           VerticalAlignment="Center" />
+                                           VerticalContentAlignment="Center"
+                                           HorizontalContentAlignment="Center"
+                                           Padding="10,0,7,0"/>
                                     <ContentPresenter x:Name="Content"
                                                       Grid.Column="1"
                                                       ContentSource="Content"
@@ -216,7 +218,9 @@
                                            Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
                                            FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
                                            FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
-                                           VerticalAlignment="Center" />
+                                           VerticalContentAlignment="Center"
+                                           HorizontalContentAlignment="Center"
+                                           Padding="10,0,7,0"/>
                                     <ContentPresenter Grid.Column="1"
                                                       x:Name="Content"
                                                       ContentSource="Content"
@@ -385,7 +389,9 @@
                                                Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
                                                FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
                                                FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
-                                               VerticalAlignment="Center" />
+                                               VerticalContentAlignment="Center"
+                                               HorizontalContentAlignment="Center"
+                                               Padding="10,0,7,0"/>
                                         <Grid Grid.Column="1">
                                             <ContentPresenter x:Name="Content"
                                                               Content="{Binding Content,RelativeSource={RelativeSource AncestorType=Button},Mode=OneWay}"
@@ -539,7 +545,8 @@
                                                Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
                                                FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
                                                FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
-                                               VerticalAlignment="Center" />
+                                               VerticalAlignment="Center"
+                                               Padding="10,0,7,0" />
                                         <Grid Grid.Column="1">
                                             <ContentPresenter x:Name="Content"
                                                               Content="{Binding Content,RelativeSource={RelativeSource AncestorType=Button},Mode=OneWay}"

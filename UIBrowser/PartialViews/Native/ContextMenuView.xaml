@@ -16,6 +16,7 @@
                       HorizontalAlignment="Center"
                       Header="{x:Static localized:Resource.Palette}"
                       MinWidth="300">
+
                 <Grid>
                     <StackPanel>
                         <Grid Height="80">

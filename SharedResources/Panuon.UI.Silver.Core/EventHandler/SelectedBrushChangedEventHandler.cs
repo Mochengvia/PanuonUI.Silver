@@ -13,5 +13,5 @@ namespace Panuon.UI.Silver.Core
         public Brush SelectedBrush { get; set; }
     }
 
-    public delegate void SelectedBrushChangedEventHandler(object sender, ClickEventArgs e);
+    public delegate void SelectedBrushChangedEventHandler(object sender, SelectedBrushChangedEventArgs e);
 }

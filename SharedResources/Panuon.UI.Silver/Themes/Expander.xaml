@@ -17,8 +17,10 @@
                 Value="1" />
         <Setter Property="Background"
                 Value="White" />
-        <Setter Property="local:ExpanderHelper.HeaderHeight"
-                Value="30" />
+        <Setter Property="local:ExpanderHelper.HeaderPadding"
+                Value="5,5,0,5" />
+        <Setter Property="Padding"
+                Value="5,5,0,5" />
         <Setter Property="local:ExpanderHelper.CornerRadius"
                 Value="0" />
         <Setter Property="local:ExpanderHelper.HeaderForeground"
@@ -33,23 +35,33 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type Expander}">
-                            <Border BorderBrush="{TemplateBinding BorderBrush}"
-                                    BorderThickness="{TemplateBinding BorderThickness}"
-                                    Background="{TemplateBinding Background}"
-                                    CornerRadius="{Binding Path=(local:ExpanderHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=Expander}}">
-                                <Grid>
+                            <Grid>
+                                <Border x:Name="BdrMain"
+                                        Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="{Binding Path=(local:ExpanderHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=Expander},Mode=OneWay}">
+                                    <Border.Effect>
+                                        <DropShadowEffect ShadowDepth="0"
+                                                          BlurRadius="5"
+                                                          Color="{Binding Path=(local:ExpanderHelper.ShadowColor),RelativeSource={RelativeSource AncestorType=Expander},Mode=OneWay,Converter={StaticResource NullableColorToColoConverter}}" />
+                                    </Border.Effect>
+                                </Border>
+                                <Grid Margin="{TemplateBinding BorderThickness}">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition x:Name="ContentRow"
                                                        Height="0" />
                                     </Grid.RowDefinitions>
+                                    <Border Background="{Binding Path=(local:ExpanderHelper.HeaderBackground),RelativeSource={RelativeSource AncestorType=Expander},Mode=OneWay}"
+                                            CornerRadius="{Binding Path=(local:ExpanderHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=Expander},Mode=OneWay,Converter={StaticResource CornerRadiusToTopHalfConverter}}" />
                                     <ToggleButton x:Name="ToggleButton"
                                                   OverridesDefaultStyle="True"
+                                                  Background="Transparent"
                                                   Content="{TemplateBinding Header}"
                                                   IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
                                                   Foreground="{Binding Path=(local:ExpanderHelper.HeaderForeground),RelativeSource={RelativeSource AncestorType=Expander},Mode=OneWay}"
-                                                  Height="{Binding Path=(local:ExpanderHelper.HeaderHeight),RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"
-                                                  Padding="{TemplateBinding Padding}"
+                                                  Padding="{Binding Path=(local:ExpanderHelper.HeaderPadding),RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"
                                                   FontWeight="Bold"
                                                   Cursor="Hand">
                                         <ToggleButton.Template>
@@ -64,37 +76,39 @@
                                                             <ColumnDefinition Width="Auto" />
                                                         </Grid.ColumnDefinitions>
                                                         <Label x:Name="LblIcon"
+                                                               Padding="10,0,7,0"
                                                                Content="{Binding Path=(local:ExpanderHelper.Icon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=Expander},Mode=OneWay}"
                                                                Foreground="{TemplateBinding Foreground}"
                                                                FontWeight="{TemplateBinding FontWeight}"
-                                                               VerticalAlignment="Center"
+                                                               VerticalContentAlignment="Center"
+                                                               HorizontalContentAlignment="Center"
                                                                FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome" />
                                                         <ContentPresenter x:Name="Content"
                                                                           Grid.Column="1"
                                                                           ContentSource="Content"
                                                                           VerticalAlignment="Center" />
                                                     </Grid>
-                                                    <Path x:Name="Path1"
+                                                    <Path x:Name="Path2"
                                                           Width="5"
                                                           Height="10"
                                                           Data="M5,0 L0,5 L5,10"
                                                           Margin="0,0,10,0"
                                                           RenderTransformOrigin="0.5,0.5"
                                                           HorizontalAlignment="Right"
-                                                          Stroke="{TemplateBinding Foreground}">
+                                                          Stroke="{TemplateBinding Foreground}"
+                                                          Opacity="0">
                                                         <Path.RenderTransform>
                                                             <RotateTransform Angle="90" />
                                                         </Path.RenderTransform>
                                                     </Path>
-                                                    <Path x:Name="Path2"
+                                                    <Path x:Name="Path1"
                                                           Width="5"
                                                           Height="10"
                                                           Data="M5,0 L0,5 L5,10"
                                                           Stroke="{TemplateBinding Foreground}"
                                                           HorizontalAlignment="Right"
                                                           Margin="0,0,10,0"
-                                                          RenderTransformOrigin="0.5,0.5"
-                                                          Opacity="0">
+                                                          RenderTransformOrigin="0.5,0.5">
                                                         <Path.RenderTransform>
                                                             <RotateTransform Angle="-90" />
                                                         </Path.RenderTransform>
@@ -141,10 +155,18 @@
                                         </ToggleButton.Template>
                                     </ToggleButton>
                                     <ContentPresenter ContentSource="Content"
+                                                      Margin="{TemplateBinding Padding}"
                                                       Grid.Row="1" />
                                 </Grid>
-                            </Border>
+
+                            </Grid>
                             <ControlTemplate.Triggers>
+                                <DataTrigger Binding="{Binding Path=(local:ExpanderHelper.ShadowColor),RelativeSource={RelativeSource Self}}"
+                                             Value="{x:Null}">
+                                    <Setter TargetName="BdrMain"
+                                            Property="Effect"
+                                            Value="{x:Null}" />
+                                </DataTrigger>
                                 <Trigger Property="IsExpanded"
                                          Value="True">
                                     <Setter TargetName="ContentRow"
@@ -159,39 +181,37 @@
             </DataTrigger>
             <DataTrigger Binding="{Binding Path=(local:ExpanderHelper.ExpanderStyle),RelativeSource={RelativeSource Self}, Mode=OneWay}"
                          Value="Classic">
-                <Setter Property="BorderBrush"
-                        Value="LightGray" />
-                <Setter Property="BorderThickness"
-                        Value="1" />
-                <Setter Property="Background"
-                        Value="White" />
-                <Setter Property="local:ExpanderHelper.HeaderHeight"
-                        Value="30" />
-                <Setter Property="local:ExpanderHelper.CornerRadius"
-                        Value="0" />
-                <Setter Property="Padding"
-                        Value="5,0,0,0" />
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type Expander}">
-                            <Border BorderBrush="{TemplateBinding BorderBrush}"
-                                    BorderThickness="{TemplateBinding BorderThickness}"
-                                    Background="{TemplateBinding Background}"
-                                    CornerRadius="{Binding Path=(local:ExpanderHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=Expander}}">
+                            <Grid>
+                                <Border x:Name="BdrMain"
+                                        Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="{Binding Path=(local:ExpanderHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=Expander},Mode=OneWay}">
+                                    <Border.Effect>
+                                        <DropShadowEffect ShadowDepth="0"
+                                                          BlurRadius="5"
+                                                          Color="{Binding Path=(local:ExpanderHelper.ShadowColor),RelativeSource={RelativeSource AncestorType=Expander},Mode=OneWay,Converter={StaticResource NullableColorToColoConverter}}" />
+                                    </Border.Effect>
+                                </Border>
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition x:Name="ContentRow"
                                                        Height="0" />
                                     </Grid.RowDefinitions>
+                                    <Border Background="{Binding Path=(local:ExpanderHelper.HeaderBackground),RelativeSource={RelativeSource AncestorType=Expander},Mode=OneWay}"
+                                            CornerRadius="{Binding Path=(local:ExpanderHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=Expander},Mode=OneWay,Converter={StaticResource CornerRadiusToTopHalfConverter}}" />
                                     <ToggleButton x:Name="ToggleButton"
                                                   OverridesDefaultStyle="True"
+                                                  Background="Transparent"
                                                   Content="{TemplateBinding Header}"
                                                   IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
                                                   Cursor="Hand"
                                                   Foreground="{Binding Path=(local:ExpanderHelper.HeaderForeground),RelativeSource={RelativeSource AncestorType=Expander},Mode=OneWay}"
-                                                  Height="{Binding Path=(local:ExpanderHelper.HeaderHeight),RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"
-                                                  Padding="{TemplateBinding Padding}">
+                                                  Padding="{Binding Path=(local:ExpanderHelper.HeaderPadding),RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}">
                                         <ToggleButton.Template>
                                             <ControlTemplate TargetType="ToggleButton">
                                                 <Grid Background="Transparent">
@@ -204,9 +224,11 @@
                                                             <ColumnDefinition Width="Auto" />
                                                         </Grid.ColumnDefinitions>
                                                         <Label x:Name="LblIcon"
+                                                               Padding="10,0,7,0"
                                                                Content="{Binding Path=(local:ExpanderHelper.Icon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=Expander},Mode=OneWay}"
                                                                Foreground="{TemplateBinding Foreground}"
-                                                               VerticalAlignment="Center"
+                                                               VerticalContentAlignment="Center"
+                                                               HorizontalContentAlignment="Center"
                                                                FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome" />
                                                         <ContentPresenter x:Name="Content"
                                                                           Grid.Column="1"
@@ -277,11 +299,18 @@
                                     <Border Grid.Row="1"
                                             BorderThickness="0,1,0,0"
                                             BorderBrush="{TemplateBinding BorderBrush}">
-                                        <ContentPresenter ContentSource="Content" />
+                                        <ContentPresenter ContentSource="Content"
+                                                          Margin="{TemplateBinding Padding}" />
                                     </Border>
                                 </Grid>
-                            </Border>
+                            </Grid>
                             <ControlTemplate.Triggers>
+                                <DataTrigger Binding="{Binding Path=(local:ExpanderHelper.ShadowColor),RelativeSource={RelativeSource Self}}"
+                                             Value="{x:Null}">
+                                    <Setter TargetName="BdrMain"
+                                            Property="Effect"
+                                            Value="{x:Null}" />
+                                </DataTrigger>
                                 <Trigger Property="IsExpanded"
                                          Value="True">
                                     <Setter TargetName="ContentRow"

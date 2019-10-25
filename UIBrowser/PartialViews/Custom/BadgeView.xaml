@@ -15,8 +15,7 @@
             <GroupBox x:Name="GrpCode"
                       HorizontalAlignment="Center"
                       Width="{Binding ActualWidth,ElementName=GrpPalette}"
-                      VerticalAlignment="Bottom"
-                      >
+                      VerticalAlignment="Bottom">
                 <Grid>
                     <TextBox x:Name="TbCode"
                              Height="100"
@@ -30,7 +29,7 @@
                             <ContextMenu>
                                 <MenuItem Header="{x:Static localized:Resource.CopyCode}"
                                           Icon="&#xf0c5;"
-                                          Click="MenuItem_CopyCode"/>
+                                          Click="MenuItem_CopyCode" />
                             </ContextMenu>
                         </TextBox.ContextMenu>
                     </TextBox>
@@ -40,6 +39,16 @@
                       HorizontalAlignment="Center"
                       Header="{x:Static localized:Resource.Palette}"
                       MinWidth="300">
+                <pu:GroupBoxHelper.ExtendControl>
+                    <Button x:Name="BtnViewCode"
+                            Margin="0,0,5,0"
+                            VerticalAlignment="Center"
+                            pu:ButtonHelper.ButtonStyle="Link"
+                            Foreground="#AA57A2E0"
+                            pu:ButtonHelper.HoverBrush="#57A2E0"
+                            Content="{x:Static localized:Resource.ViewCode}"
+                            Click="BtnViewCode_Click" />
+                </pu:GroupBoxHelper.ExtendControl>
                 <Grid>
                     <StackPanel>
                         <Grid Height="80">
@@ -118,20 +127,8 @@
                                      TextChanged="TbText_TextChanged" />
                         </Grid>
                     </StackPanel>
-                    <Button x:Name="BtnViewCode"
-                            Grid.ColumnSpan="2"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Top"
-                            pu:ButtonHelper.ButtonStyle="Link"
-                            Foreground="#AA57A2E0"
-                            pu:ButtonHelper.HoverBrush="#57A2E0"
-                            Content="{x:Static localized:Resource.ViewCode}"
-                            Margin="0,-40,0,0"
-                            Click="BtnViewCode_Click" />
                 </Grid>
             </GroupBox>
-            
-
         </Grid>
     </Grid>
 </UserControl>

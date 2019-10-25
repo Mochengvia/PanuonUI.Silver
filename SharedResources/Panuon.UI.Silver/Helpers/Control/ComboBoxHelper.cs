@@ -175,6 +175,36 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("SearchTextBoxWatermark", typeof(string), typeof(ComboBoxHelper));
         #endregion
 
+        #region DropDownCornerRadius
+        public static CornerRadius GetDropDownCornerRadius(DependencyObject obj)
+        {
+            return (CornerRadius)obj.GetValue(DropDownCornerRadiusProperty);
+        }
+
+        public static void SetDropDownCornerRadius(DependencyObject obj, CornerRadius value)
+        {
+            obj.SetValue(DropDownCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty DropDownCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("DropDownCornerRadius", typeof(CornerRadius), typeof(ComboBoxHelper));
+        #endregion
+
+        #region DropDownPadding
+        public static Thickness GetDropDownPadding(DependencyObject obj)
+        {
+            return (Thickness)obj.GetValue(DropDownPaddingProperty);
+        }
+
+        public static void SetDropDownPadding(DependencyObject obj, Thickness value)
+        {
+            obj.SetValue(DropDownPaddingProperty, value);
+        }
+
+        public static readonly DependencyProperty DropDownPaddingProperty =
+            DependencyProperty.RegisterAttached("DropDownPadding", typeof(Thickness), typeof(ComboBoxHelper));
+        #endregion
+
         #region (Event) SearchTextChanged
 
         public static readonly RoutedEvent SearchTextChangedEvent = EventManager.RegisterRoutedEvent("SearchTextChanged", RoutingStrategy.Bubble, typeof(SearchTextChangedEventHandler), typeof(ComboBoxHelper));

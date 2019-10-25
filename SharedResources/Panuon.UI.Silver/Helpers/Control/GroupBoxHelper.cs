@@ -6,6 +6,21 @@ namespace Panuon.UI.Silver
 {
     public class GroupBoxHelper
     {
+        #region Icon
+        public static object GetIcon(DependencyObject obj)
+        {
+            return (object)obj.GetValue(IconProperty);
+        }
+
+        public static void SetIcon(DependencyObject obj, object value)
+        {
+            obj.SetValue(IconProperty, value);
+        }
+
+        public static readonly DependencyProperty IconProperty =
+            DependencyProperty.RegisterAttached("Icon", typeof(object), typeof(GroupBoxHelper));
+        #endregion
+
         #region CornerRadius
         public static CornerRadius GetCornerRadius(DependencyObject obj)
         {
@@ -36,19 +51,79 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("HeaderBackground", typeof(Brush), typeof(GroupBoxHelper));
         #endregion
 
-        #region Effect
-        public static Effect GetEffect(DependencyObject obj)
+        #region HeaderForeground
+        public static Brush GetHeaderForeground(DependencyObject obj)
         {
-            return (Effect)obj.GetValue(EffectProperty);
+            return (Brush)obj.GetValue(HeaderForegroundProperty);
         }
 
-        public static void SetEffect(DependencyObject obj, Effect value)
+        public static void SetHeaderForeground(DependencyObject obj, Brush value)
         {
-            obj.SetValue(EffectProperty, value);
+            obj.SetValue(HeaderForegroundProperty, value);
         }
 
-        public static readonly DependencyProperty EffectProperty =
-            DependencyProperty.RegisterAttached("Effect", typeof(Effect), typeof(GroupBoxHelper));
+        public static readonly DependencyProperty HeaderForegroundProperty =
+            DependencyProperty.RegisterAttached("HeaderForeground", typeof(Brush), typeof(GroupBoxHelper));
+        #endregion
+
+        #region HeaderPadding
+        public static Thickness GetHeaderPadding(DependencyObject obj)
+        {
+            return (Thickness)obj.GetValue(HeaderPaddingProperty);
+        }
+
+        public static void SetHeaderPadding(DependencyObject obj, Thickness value)
+        {
+            obj.SetValue(HeaderPaddingProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderPaddingProperty =
+            DependencyProperty.RegisterAttached("HeaderPadding", typeof(Thickness), typeof(GroupBoxHelper));
+        #endregion
+
+        #region ExtendControl
+        public static UIElement GetExtendControl(DependencyObject obj)
+        {
+            return (UIElement)obj.GetValue(ExtendControlProperty);
+        }
+
+        public static void SetExtendControl(DependencyObject obj, UIElement value)
+        {
+            obj.SetValue(ExtendControlProperty, value);
+        }
+
+        public static readonly DependencyProperty ExtendControlProperty =
+            DependencyProperty.RegisterAttached("ExtendControl", typeof(UIElement), typeof(GroupBoxHelper));
+        #endregion
+
+        #region ShadowColor
+        public static Color? GetShadowColor(DependencyObject obj)
+        {
+            return (Color?)obj.GetValue(ShadowColorProperty);
+        }
+
+        public static void SetShadowColor(DependencyObject obj, Color? value)
+        {
+            obj.SetValue(ShadowColorProperty, value);
+        }
+
+        public static readonly DependencyProperty ShadowColorProperty =
+            DependencyProperty.RegisterAttached("ShadowColor", typeof(Color?), typeof(GroupBoxHelper));
+        #endregion
+
+        #region IsSplitLineVisible
+        public static bool GetIsSplitLineVisible(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(IsSplitLineVisibleProperty);
+        }
+
+        public static void SetIsSplitLineVisible(DependencyObject obj, bool value)
+        {
+            obj.SetValue(IsSplitLineVisibleProperty, value);
+        }
+
+        public static readonly DependencyProperty IsSplitLineVisibleProperty =
+            DependencyProperty.RegisterAttached("IsSplitLineVisible", typeof(bool), typeof(GroupBoxHelper));
         #endregion
     }
 }

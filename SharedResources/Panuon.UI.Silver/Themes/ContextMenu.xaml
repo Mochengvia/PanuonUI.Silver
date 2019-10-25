@@ -137,12 +137,13 @@
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <Label x:Name="LblIcon"
+                                           Padding="10,0,7,0"
                                            Content="{Binding Icon,Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=MenuItem}}"
                                            Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource AncestorType=MenuItem}}"
                                            FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource AncestorType=MenuItem}}"
                                            FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource AncestorType=MenuItem}}"
-                                           VerticalAlignment="Center"
-                                           HorizontalAlignment="Center" />
+                                           VerticalContentAlignment="Center"
+                                           HorizontalContentAlignment="Center" />
                                     <CheckBox x:Name="ChbCheckable"
                                               VerticalAlignment="Center"
                                               IsChecked="{Binding IsChecked,RelativeSource={RelativeSource AncestorType=MenuItem},Mode=TwoWay}"

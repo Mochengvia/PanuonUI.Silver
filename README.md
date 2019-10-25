@@ -13,17 +13,30 @@ QQ Group : 718778191
 Zhihu : @末城via
 
 # News 动态  
+#### 2019-10-25 v1.0.8.5
+修复了Calendar和DateTimePicker在选择月份时，若已选中了该月不存在的天数将引发崩溃的问题。  
+修复了Calendar和DateTimePicker无法处理SelectedDateTimeChanged事件的问题。  
+修复了Calendar和DateTimePicker无法处理SelectedDateTimeChanged事件的问题。  
+新增了DateTimePicker的Header和HeaderWidth属性。  
+修复了IconHelper.Width对TextBox不生效的问题。  
+
+TabControl增强：  
+新增ItemCornerRadius属性，用于设置选项卡子项的统一圆角大小。该属性也可直接对TabItem控件生效。  
+新增ItemBackground属性，用于设置选项卡子项的统一背景色。  
+新增HeaderPanelBackground属性，用于设置选项卡标题栏的背景色。   
+
+Expander增强：  
+移除了HeaderHeight属性，新增HeaderPadding（默认值5,5,0,5）、HeaderBackground、ShadowColor（默认值为Null）属性。  
+调整默认Padding属性值为5,5,0,5。  
+
+GroupBox增强：  
+移除了Effect属性，新增Icon、HeaderPadding（默认值5,5,0,5）、HeaderBackground、ShadowColor（默认值为Null）属性。  
+调整默认Padding属性值为5,5,0,5。  
+
 #### 2019-10-21 v1.0.8.4
 修复了ScrollViewer.CanContentScroll在多个控件中不生效的问题。  
 移除了GroupBox默认内部间距为0,3,0,3的设置。  
 [严重]修复了ListBox样式没有应用到项目的问题。   
-
-#### 2019-10-16 v1.0.8.2
-`删除了MultiSelector控件。新增了MultiComboBox、MultiComboBoxItem控件。  
-有关该控件的用法，请参考`
-https://github.com/Panuon/Panuon.Documents/blob/master/Documents/PanuonUI.Silver/zh-cn.md#multicombobox-%E4%B8%8B%E6%8B%89%E5%A4%9A%E9%80%89%E6%A1%86 
-`开放了ComboBoxHelper中的SearchText属性。  
-新增了ColumnBindingAttribute，可使用此标记设置DataGrid自动生成列时的数据绑定方式。默认值调整为TwoWay、PropertyChanged。`   
 
 # ReleaseNote 发布文档  
 

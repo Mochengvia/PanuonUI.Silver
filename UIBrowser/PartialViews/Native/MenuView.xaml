@@ -9,6 +9,13 @@
              mc:Ignorable="d"
              d:DesignHeight="450"
              d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source='pack://application:,,,/Panuon.UI.Silver;component/Themes/PasswordBox.xaml' />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
         <Rectangle x:Name="RectBackground" />
         <Grid VerticalAlignment="Center">

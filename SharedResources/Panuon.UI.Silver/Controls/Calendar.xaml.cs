@@ -55,7 +55,7 @@ namespace Panuon.UI.Silver
             add { AddHandler(SelectedDateChangedEvent, value); }
             remove { RemoveHandler(SelectedDateChangedEvent, value); }
         }
-        void RaiseSelectedDateChanged( DateTime newValue)
+        void RaiseSelectedDateChanged(DateTime newValue)
         {
             var arg = new SelectedDateChangedEventArgs(newValue, SelectedDateChangedEvent);
             RaiseEvent(arg);
@@ -312,7 +312,7 @@ namespace Panuon.UI.Silver
         {
             var radioButton = sender as RadioButton;
             var currentDate = (DateTime)radioButton.Tag;
-            SelectedDate = new DateTime(currentDate.Year, currentDate.Month, currentDate.Day, SelectedDate.Hour, SelectedDate.Minute, SelectedDate.Second);
+            SelectedDate = GetNewDateTime(currentDate.Year, currentDate.Month, currentDate.Day, SelectedDate.Hour, SelectedDate.Minute, SelectedDate.Second);
             if (CalendarMode == CalendarMode.Date)
                 RaiseSelectedEvent();
         }
@@ -321,7 +321,7 @@ namespace Panuon.UI.Silver
         {
             var radioButton = sender as RadioButton;
             var currentDate = (DateTime)radioButton.Tag;
-            SelectedDate = new DateTime(currentDate.Year, currentDate.Month, SelectedDate.Day, SelectedDate.Hour, SelectedDate.Minute, SelectedDate.Second);
+            SelectedDate = GetNewDateTime(currentDate.Year, currentDate.Month, SelectedDate.Day, SelectedDate.Hour, SelectedDate.Minute, SelectedDate.Second);
             if (CalendarMode == CalendarMode.Date)
                 ChangePanel(DayMonthYear.Day);
             if (CalendarMode == CalendarMode.YearMonth)
@@ -332,7 +332,7 @@ namespace Panuon.UI.Silver
         {
             var radioButton = sender as RadioButton;
             var currentDate = (DateTime)radioButton.Tag;
-            SelectedDate = new DateTime(currentDate.Year, SelectedDate.Month, SelectedDate.Day, SelectedDate.Hour, SelectedDate.Minute, SelectedDate.Second);
+            SelectedDate = GetNewDateTime(currentDate.Year, SelectedDate.Month, SelectedDate.Day, SelectedDate.Hour, SelectedDate.Minute, SelectedDate.Second);
             if (CalendarMode != CalendarMode.Year)
                 ChangePanel(DayMonthYear.Month);
             if (CalendarMode == CalendarMode.Year)
@@ -380,6 +380,12 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Function
+        private DateTime GetNewDateTime(int year, int month, int day, int hour, int minute, int second)
+        {
+            var maxDay = DateTime.DaysInMonth(year, month);
+            return new DateTime(year, month, day > maxDay ? maxDay : day, hour, minute, second);
+        }
+
         private void ChangePanel(DayMonthYear dayMonthYear)
         {
             switch (dayMonthYear)

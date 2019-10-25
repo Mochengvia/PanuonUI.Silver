@@ -57,10 +57,12 @@
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <Label x:Name="LblIcon"
+                                           Padding="10,0,7,0"
                                            Content="{Binding Path=(local:RepeatButtonHelper.Icon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
                                            Foreground="{TemplateBinding Foreground}"
                                            FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
-                                           VerticalAlignment="Center" />
+                                           VerticalContentAlignment="Center"
+                                           HorizontalContentAlignment="Center" />
                                     <ContentPresenter x:Name="Content"
                                                       Grid.Column="1"
                                                       ContentSource="Content"
@@ -205,10 +207,12 @@
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <Label x:Name="LblIcon"
+                                           Padding="10,0,7,0"
                                            Content="{Binding Path=(local:RepeatButtonHelper.Icon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
                                            Foreground="{TemplateBinding Foreground}"
                                            FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
-                                           VerticalAlignment="Center" />
+                                           VerticalContentAlignment="Center"
+                                           HorizontalContentAlignment="Center"/>
                                     <ContentPresenter Grid.Column="1"
                                                       x:Name="Content"
                                                       ContentSource="Content"
@@ -375,10 +379,12 @@
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <Label x:Name="LblIcon"
+                                           Padding="10,0,7,0"
                                            Content="{Binding Path=(local:RepeatButtonHelper.Icon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
                                            Foreground="{TemplateBinding Foreground}"
                                            FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
-                                           VerticalAlignment="Center" />
+                                           VerticalContentAlignment="Center"
+                                           HorizontalContentAlignment="Center" />
                                     <ContentPresenter Grid.Column="1"
                                                       x:Name="Content"
                                                       ContentSource="Content"
@@ -574,10 +580,12 @@
                                             <ColumnDefinition Width="Auto" />
                                         </Grid.ColumnDefinitions>
                                         <Label x:Name="LblIcon"
+                                               Padding="10,0,7,0"
                                                Content="{Binding Path=(local:RepeatButtonHelper.Icon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
                                                Foreground="{TemplateBinding Foreground}"
                                                FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
-                                               VerticalAlignment="Center" />
+                                               VerticalContentAlignment="Center"
+                                               HorizontalContentAlignment="Center" />
                                         <Grid Grid.Column="1">
                                             <ContentPresenter x:Name="Content"
                                                               ContentSource="Content"

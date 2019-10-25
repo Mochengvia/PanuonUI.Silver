@@ -15,7 +15,7 @@
                   Header="PendingBox Examples"
                   Width="400"
                   Background="White"
-                  pu:GroupBoxHelper.Effect="{DynamicResource DropShadow}">
+                  pu:GroupBoxHelper.ShadowColor="Gray">
             
             <ScrollViewer Margin="0,0,0,20"
                           MaxHeight="300"

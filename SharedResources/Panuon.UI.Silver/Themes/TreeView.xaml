@@ -200,8 +200,9 @@
                                                Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
                                                FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
                                                FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
-                                               VerticalAlignment="Center"
-                                               Margin="5,0,0,0" />
+                                               VerticalContentAlignment="Center"
+                                               HorizontalContentAlignment="Center"
+                                               Padding="10,0,7,0" />
                                         <ContentPresenter x:Name="PART_Header"
                                                           Grid.Column="1"
                                                           ContentSource="Header"
@@ -304,8 +305,9 @@
                                                Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
                                                FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
                                                FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
-                                               VerticalAlignment="Center"
-                                               Margin="5,0,0,0" />
+                                               VerticalContentAlignment="Center"
+                                               HorizontalContentAlignment="Center"
+                                               Padding="10,0,7,0" />
                                         <ContentPresenter x:Name="PART_Header"
                                                           Grid.Column="1"
                                                           Margin="{TemplateBinding Padding}"
@@ -495,8 +497,9 @@
                                                Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
                                                FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
                                                FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
-                                               VerticalAlignment="Center"
-                                               Margin="5,0,0,0" />
+                                               VerticalContentAlignment="Center"
+                                               HorizontalContentAlignment="Center"
+                                               Padding="10,0,7,0"/>
                                         <ContentPresenter x:Name="PART_Header"
                                                           Grid.Column="1"
                                                           ContentSource="Header"
@@ -638,8 +641,9 @@
                                                Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
                                                FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
                                                FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
-                                               VerticalAlignment="Center"
-                                               Margin="5,0,0,0" />
+                                               VerticalContentAlignment="Center"
+                                               HorizontalContentAlignment="Center"
+                                               Padding="10,0,7,0" />
                                         <ContentPresenter x:Name="PART_Header"
                                                           Grid.Column="1"
                                                           ContentSource="Header"

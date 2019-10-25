@@ -39,13 +39,23 @@
                       HorizontalAlignment="Center"
                       Header="{x:Static localized:Resource.Palette}"
                       MinWidth="300">
+                <pu:GroupBoxHelper.ExtendControl>
+                    <Button x:Name="BtnViewCode"
+                            Margin="0,0,5,0"
+                            VerticalAlignment="Center"
+                            pu:ButtonHelper.ButtonStyle="Link"
+                            Foreground="#AA57A2E0"
+                            pu:ButtonHelper.HoverBrush="#57A2E0"
+                            Content="{x:Static localized:Resource.ViewCode}"
+                            Click="BtnViewCode_Click" />
+                </pu:GroupBoxHelper.ExtendControl>
+
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <Grid 
-                          Width="300">
+                    <Grid Width="300">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto" />
@@ -63,22 +73,27 @@
                         <StackPanel Grid.Row="1"
                                     Grid.Column="1"
                                     HorizontalAlignment="Center">
-                            <CheckBox x:Name="ChbFadeIn" 
+                            <CheckBox x:Name="ChbFadeIn"
                                       Content="{x:Static localized:Resource.FadeIn}"
                                       pu:CheckBoxHelper.CheckBoxStyle="Switch" />
-                            <CheckBox x:Name="ChbFadeOut" Content="{x:Static localized:Resource.FadeOut}"
+                            <CheckBox x:Name="ChbFadeOut"
+                                      Content="{x:Static localized:Resource.FadeOut}"
                                       pu:CheckBoxHelper.CheckBoxStyle="Switch"
                                       Margin="0,5,0,0" />
-                            <CheckBox x:Name="ChbSlideFromTop" Content="{x:Static localized:Resource.SlideFromTop}"
+                            <CheckBox x:Name="ChbSlideFromTop"
+                                      Content="{x:Static localized:Resource.SlideFromTop}"
                                       pu:CheckBoxHelper.CheckBoxStyle="Switch"
                                       Margin="0,5,0,0" />
-                            <CheckBox x:Name="ChbSlideFromLeft" Content="{x:Static localized:Resource.SlideFromLeft}"
+                            <CheckBox x:Name="ChbSlideFromLeft"
+                                      Content="{x:Static localized:Resource.SlideFromLeft}"
                                       pu:CheckBoxHelper.CheckBoxStyle="Switch"
                                       Margin="0,5,0,0" />
-                            <CheckBox x:Name="ChbSlideFromRight" Content="{x:Static localized:Resource.SlideFromRight}"
+                            <CheckBox x:Name="ChbSlideFromRight"
+                                      Content="{x:Static localized:Resource.SlideFromRight}"
                                       pu:CheckBoxHelper.CheckBoxStyle="Switch"
                                       Margin="0,5,0,0" />
-                            <CheckBox x:Name="ChbSlideFromBottom" Content="{x:Static localized:Resource.SlideFromBottom}"
+                            <CheckBox x:Name="ChbSlideFromBottom"
+                                      Content="{x:Static localized:Resource.SlideFromBottom}"
                                       pu:CheckBoxHelper.CheckBoxStyle="Switch"
                                       Margin="0,5,0,0" />
                             <!--<CheckBox x:Name="ChbMarginTo"
@@ -141,28 +156,16 @@
                                 Height="35"
                                 Grid.ColumnSpan="2"
                                 Content="Execute"
-                                Click="BtnExecute_Click"/>
+                                Click="BtnExecute_Click" />
                     </Grid>
                     <Grid x:Name="GrdContainer"
                           Grid.Column="1"
-                            Margin="10,0,0,0"
+                          Margin="10,0,0,0"
                           Width="300">
-                      
+
                     </Grid>
-                    <Button x:Name="BtnViewCode"
-                            Grid.ColumnSpan="2"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Top"
-                            pu:ButtonHelper.ButtonStyle="Link"
-                            Foreground="#AA57A2E0"
-                            pu:ButtonHelper.HoverBrush="#57A2E0"
-                            Content="{x:Static localized:Resource.ViewCode}"
-                            Margin="0,-40,0,0"
-                            Click="BtnViewCode_Click" />
                 </Grid>
             </GroupBox>
-
-
         </Grid>
     </Grid>
 </UserControl>

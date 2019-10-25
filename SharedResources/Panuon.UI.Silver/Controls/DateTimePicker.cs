@@ -124,6 +124,9 @@ namespace Panuon.UI.Silver
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(DateTimePicker));
 
+        /// <summary>
+        /// Gets or sets icon.
+        /// </summary>
         public object Icon
         {
             get { return (object)GetValue(IconProperty); }
@@ -133,6 +136,9 @@ namespace Panuon.UI.Silver
         public static readonly DependencyProperty IconProperty =
             DependencyProperty.Register("Icon", typeof(object), typeof(DateTimePicker));
 
+        /// <summary>
+        /// Gets or sets is sunday first.
+        /// </summary>
         public bool IsSundayFirst
         {
             get { return (bool)GetValue(IsSundayFirstProperty); }
@@ -142,6 +148,9 @@ namespace Panuon.UI.Silver
         public static readonly DependencyProperty IsSundayFirstProperty =
             DependencyProperty.Register("IsSundayFirst", typeof(bool), typeof(DateTimePicker), new PropertyMetadata(true));
 
+        /// <summary>
+        /// Gets or sets stays open.
+        /// </summary>
         public bool StaysOpen
         {
             get { return (bool)GetValue(StaysOpenProperty); }
@@ -150,6 +159,30 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty StaysOpenProperty =
             DependencyProperty.Register("StaysOpen", typeof(bool), typeof(DateTimePicker), new PropertyMetadata(false));
+
+        /// <summary>
+        /// Gets or sets header.
+        /// </summary>
+        public object Header
+        {
+            get { return (object)GetValue(HeaderProperty); }
+            set { SetValue(HeaderProperty, value); }
+        }
+
+        public static readonly DependencyProperty HeaderProperty =
+            DependencyProperty.Register("Header", typeof(object), typeof(DateTimePicker));
+
+        /// <summary>
+        /// Gets or sets header width.
+        /// </summary>
+        public string HeaderWidth
+        {
+            get { return (string)GetValue(HeaderWidthProperty); }
+            set { SetValue(HeaderWidthProperty, value); }
+        }
+
+        public static readonly DependencyProperty HeaderWidthProperty =
+            DependencyProperty.Register("HeaderWidth", typeof(string), typeof(DateTimePicker));
 
 
         #endregion

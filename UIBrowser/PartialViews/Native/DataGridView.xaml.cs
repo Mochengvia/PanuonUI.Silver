@@ -100,7 +100,6 @@ namespace UIBrowser.PartialViews.Native
 
         private void BtnViewCode_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxX.Show(TestDataList[0].IsEnabled.ToString(), "Title");
             if (_isCodeViewing)
             {
                 if (Helper.Tier == 2)
@@ -152,8 +151,8 @@ namespace UIBrowser.PartialViews.Native
                 case 2:
                     AnimationHelper.SetSlideInFromBottom(GrpPalette, true);
                     RectBackground.Fill = FindResource("GridBrush") as Brush;
-                    GroupBoxHelper.SetEffect(GrpPalette, FindResource("DropShadow") as Effect);
-                    GroupBoxHelper.SetEffect(GrpCode, FindResource("DropShadow") as Effect);
+                    GroupBoxHelper.SetShadowColor(GrpPalette, Colors.LightGray);
+                    GroupBoxHelper.SetShadowColor(GrpCode, Colors.LightGray);
                     break;
             }
         }

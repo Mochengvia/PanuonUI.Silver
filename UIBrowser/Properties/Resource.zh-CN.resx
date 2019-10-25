@@ -441,4 +441,19 @@
   <data name="PendingBox" xml:space="preserve">
     <value>PendingBox 等待框</value>
   </data>
+  <data name="ShowSplitLine" xml:space="preserve">
+    <value>显示分割线</value>
+  </data>
+  <data name="IsShadowVisible" xml:space="preserve">
+    <value>显示阴影</value>
+  </data>
+  <data name="ExtendControl" xml:space="preserve">
+    <value>附加控件</value>
+  </data>
+  <data name="HeaderHeight" xml:space="preserve">
+    <value>标题高度</value>
+  </data>
+  <data name="HeaderPadding" xml:space="preserve">
+    <value>标题间距</value>
+  </data>
 </root>

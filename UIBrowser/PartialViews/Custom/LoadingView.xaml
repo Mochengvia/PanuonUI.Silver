@@ -15,8 +15,7 @@
             <GroupBox x:Name="GrpCode"
                       HorizontalAlignment="Center"
                       Width="{Binding ActualWidth,ElementName=GrpPalette}"
-                      VerticalAlignment="Bottom"
-                      >
+                      VerticalAlignment="Bottom">
                 <Grid>
                     <TextBox x:Name="TbCode"
                              Height="100"
@@ -30,7 +29,7 @@
                             <ContextMenu>
                                 <MenuItem Header="{x:Static localized:Resource.CopyCode}"
                                           Icon="&#xf0c5;"
-                                          Click="MenuItem_CopyCode"/>
+                                          Click="MenuItem_CopyCode" />
                             </ContextMenu>
                         </TextBox.ContextMenu>
                     </TextBox>
@@ -40,13 +39,24 @@
                       HorizontalAlignment="Center"
                       Header="{x:Static localized:Resource.Palette}"
                       MinWidth="300">
+                <pu:GroupBoxHelper.ExtendControl>
+                    <Button x:Name="BtnViewCode"
+                            Margin="0,0,5,0"
+                            VerticalAlignment="Center"
+                            pu:ButtonHelper.ButtonStyle="Link"
+                            Foreground="#AA57A2E0"
+                            pu:ButtonHelper.HoverBrush="#57A2E0"
+                            Content="{x:Static localized:Resource.ViewCode}"
+                            Click="BtnViewCode_Click" />
+                </pu:GroupBoxHelper.ExtendControl>
+
                 <Grid>
                     <StackPanel>
                         <Grid Height="80">
                             <pu:Loading x:Name="LdCustom"
-                                         Width="40"
+                                        Width="40"
                                         Height="40"
-                                        IsRunning="True"/>
+                                        IsRunning="True" />
                         </Grid>
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -105,7 +115,7 @@
                                        Text="{x:Static localized:Resource.IsRunning}"
                                        VerticalAlignment="Center" />
                             <CheckBox x:Name="ChbIsRunning"
-                                     IsChecked="True"
+                                      IsChecked="True"
                                       pu:CheckBoxHelper.CheckBoxStyle="Switch"
                                       pu:CheckBoxHelper.BoxHeight="25"
                                       pu:CheckBoxHelper.BoxWidth="35"
@@ -118,19 +128,8 @@
                                       Unchecked="ChbIsRunning_CheckChanged" />
                         </Grid>
                     </StackPanel>
-                    <Button x:Name="BtnViewCode"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Top"
-                            pu:ButtonHelper.ButtonStyle="Link"
-                            Foreground="#AA57A2E0"
-                            pu:ButtonHelper.HoverBrush="#57A2E0"
-                            Content="{x:Static localized:Resource.ViewCode}"
-                            Margin="0,-40,0,0"
-                            Click="BtnViewCode_Click" />
                 </Grid>
             </GroupBox>
-            
-
         </Grid>
     </Grid>
 </UserControl>

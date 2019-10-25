@@ -13,5 +13,5 @@ namespace Panuon.UI.Silver.Core
         public DateTime Date { get; set; }
     }
 
-    public delegate void SelectedDateChangedEventHandler(object sender, ClickEventArgs e);
+    public delegate void SelectedDateChangedEventHandler(object sender, SelectedDateChangedEventArgs e);
 }

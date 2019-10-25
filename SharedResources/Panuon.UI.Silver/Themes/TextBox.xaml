@@ -76,14 +76,15 @@
                         </Border>
                         <Grid Grid.Column="1">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="{Binding Path=(local:IconHelper.Width),Converter={StaticResource GridLengthConverter} ,RelativeSource={RelativeSource AncestorType=TextBox}}"></ColumnDefinition>
-                                <ColumnDefinition Width="*"></ColumnDefinition>
-                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="{Binding Path=(local:IconHelper.Width),Converter={StaticResource GridLengthConverter} ,RelativeSource={RelativeSource AncestorType=TextBox}}" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <Label x:Name="LblIcon"
                                    Visibility="Collapsed"
                                    Padding="10,0,7,0"
                                    VerticalContentAlignment="Center"
+                                   HorizontalContentAlignment="Center"
                                    Content="{Binding Path=(local:TextBoxHelper.Icon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=TextBox}, Mode=OneWay}"
                                    Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource AncestorType=TextBox}, Mode=OneWay}"
                                    FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource AncestorType=TextBox}, Mode=OneWay}"

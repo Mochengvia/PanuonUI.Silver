@@ -9,9 +9,9 @@ using UIBrowser.Helpers;
 namespace UIBrowser.PartialViews.Native
 {
     /// <summary>
-    /// PasswordBoxView.xaml 的交互逻辑
+    /// GroupBoxView.xaml 的交互逻辑
     /// </summary>
-    public partial class PasswordBoxView : UserControl
+    public partial class GroupBoxView : UserControl
     {
         #region Identity
         private bool _isCodeViewing;
@@ -19,7 +19,7 @@ namespace UIBrowser.PartialViews.Native
         private LinearGradientBrush _linearGradientBrush;
         #endregion
 
-        public PasswordBoxView()
+        public GroupBoxView()
         {
             InitializeComponent();
             Loaded += ButtonView_Loaded;
@@ -27,7 +27,7 @@ namespace UIBrowser.PartialViews.Native
             _linearGradientBrush = FindResource("ColorSelectorBrush") as LinearGradientBrush;
         }
 
-        #region Event
+        #region Event Handler
 
         private void ButtonView_Loaded(object sender, RoutedEventArgs e)
         {
@@ -45,6 +45,15 @@ namespace UIBrowser.PartialViews.Native
         }
 
         private void SldCornerRadius_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (!IsLoaded)
+                return;
+
+            UpdateTemplate();
+            UpdateCode();
+        }
+
+        private void SldHeaderPadding_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (!IsLoaded)
                 return;
@@ -100,29 +109,52 @@ namespace UIBrowser.PartialViews.Native
             if (!IsLoaded)
                 return;
 
-            PasswordBoxHelper.SetIcon(PbCustom, ChbShowIcon.IsChecked == true ? "\uf11c" : null);
+            GroupBoxHelper.SetIcon(GrpCustom, ChbShowIcon.IsChecked == true ? "\uf11c" : null);
 
+            UpdateTemplate();
             UpdateCode();
         }
 
-        private void ChbShowWatermark_CheckChanged(object sender, RoutedEventArgs e)
+        private void ChbShowSplitLine_CheckChanged(object sender, RoutedEventArgs e)
         {
             if (!IsLoaded)
                 return;
 
-            PasswordBoxHelper.SetWatermark(PbCustom, ChbShowWatermark.IsChecked == true ? "Watermark" : null);
+            GroupBoxHelper.SetIsSplitLineVisible(GrpCustom, ChbShowSplitLine.IsChecked == true);
 
             UpdateCode();
         }
 
-        private void ChbShowPwdButton_CheckChanged(object sender, RoutedEventArgs e)
+        private void ChbShowClearButton_CheckChanged(object sender, RoutedEventArgs e)
         {
             if (!IsLoaded)
                 return;
 
-            PasswordBoxHelper.SetIsShowPwdButtonVisible(PbCustom, ChbShowPwdButton.IsChecked == true);
 
             UpdateCode();
+        }
+
+        private void ChbShowShadow_CheckChanged(object sender, RoutedEventArgs e)
+        {
+            GroupBoxHelper.SetShadowColor(GrpCustom, ChbShowShadow.IsChecked == true ? Colors.LightGray : (Color?)null);
+        }
+
+        private void ChbExtendControl_CheckChanged(object sender, RoutedEventArgs e)
+        {
+            if(ChbExtendControl.IsChecked != true)
+                GroupBoxHelper.SetExtendControl(GrpCustom, null);
+            else
+            {
+                var button = new Button()
+                {
+                    Content = "details >",
+                    Margin = new Thickness(0,0,5,0),
+                    Foreground = "#AA57A2E0".ToColor().ToBrush()
+                };
+                ButtonHelper.SetButtonStyle(button, ButtonStyle.Link);
+                ButtonHelper.SetHoverBrush(button, "#57A2E0".ToColor().ToBrush());
+                GroupBoxHelper.SetExtendControl(GrpCustom, button);
+            }
         }
         #endregion
 
@@ -142,30 +174,36 @@ namespace UIBrowser.PartialViews.Native
         }
         private void UpdateTemplate()
         {
-            var color = Helper.GetColorByOffset(_linearGradientBrush.GradientStops, SldTheme.Value / 7);
-            PasswordBoxHelper.SetCornerRadius(PbCustom, new CornerRadius(SldCornerRadius.Value));
+            if(GroupBoxHelper.GetIcon(GrpCustom) == null)
+                GroupBoxHelper.SetHeaderPadding(GrpCustom, new Thickness(5, SldHeaderPadding.Value, 0, SldHeaderPadding.Value));
+            else
+                GroupBoxHelper.SetHeaderPadding(GrpCustom, new Thickness(0, SldHeaderPadding.Value, 0, SldHeaderPadding.Value));
 
-            PasswordBoxHelper.SetFocusedBorderBrush(PbCustom, color.ToBrush());
-            PasswordBoxHelper.SetFocusedShadowColor(PbCustom, color);
+            GroupBoxHelper.SetCornerRadius(GrpCustom, new CornerRadius(SldCornerRadius.Value));
         }
 
         private void UpdateCode()
         {
-            var icon = PasswordBoxHelper.GetIcon(PbCustom);
-            var watermark = PasswordBoxHelper.GetWatermark(PbCustom);
+            var icon = GroupBoxHelper.GetIcon(GrpCustom);
             var cornerRadius = SldCornerRadius.Value;
-            var isShowPwdButtonVisible = PasswordBoxHelper.GetIsShowPwdButtonVisible(PbCustom);
+            var headerPadding = SldHeaderPadding.Value;
+            var splitLine = GroupBoxHelper.GetIsSplitLineVisible(GrpCustom);
+            var shadow = GroupBoxHelper.GetShadowColor(GrpCustom);
 
-            TbCode.Text = "<PasswordBox  Height=\"30\"" +
-                        $"\nWidth=\"{PbCustom.Width}\"" +
-                        (watermark == null ? "" : $"\npu:PasswordBoxHelper.Watermark=\"{watermark}\"") +
-                        (icon == null ? "" : $"\npu:PasswordBoxHelper.Icon=\"&#xf11c;\"") +
-                        $"\npu:PasswordBoxHelper.FocusedBorderBrush=\"{PasswordBoxHelper.GetFocusedBorderBrush(PbCustom).ToColor().ToHexString(false)}\"" +
-                        $"\npu:PasswordBoxHelper.FocusedShadowColor=\"{PasswordBoxHelper.GetFocusedShadowColor(PbCustom).ToHexString(false)}\"" +
-                        (cornerRadius == 0 ? "" : $"\npu:PasswordBoxHelper.CornerRadius=\"{cornerRadius}\"") +
-                        (isShowPwdButtonVisible ? $"\npu:PasswordBoxHelper.IsShowPwdButtonVisible=\"{isShowPwdButtonVisible}\"" : "") +
+            TbCode.Text = $"<GroupBox Width=\"{GrpCustom.Width}\"" +
+                        $"\nHeader=\"{GrpCustom.Header}\"" +
+                        $"\nVerticalAlignment=\"Center\"" +
+                        $"\nHorizontalAlignment=\"Center\"" +
+                        (icon == null ? "" : $"\npu:GroupBoxHelper.Icon=\"&#xf11c;\"") +
+                        (cornerRadius == 0 ? "" : $"\npu:GroupBoxHelper.CornerRadius=\"{cornerRadius}\"") +
+                        (headerPadding == 5 ? "" : $"\npu:GroupBoxHelper.HeaderPadding=\"{GroupBoxHelper.GetHeaderPadding(GrpCustom)}\"") +
+                        (splitLine ? $"\npu:GroupBoxHelper.IsSplitLineVisible=\"True\"" : "") +
+                        (shadow == null ? "" : $"\npu:GroupBoxHelper.ShadowColor=\"LightGray\"") +
                         " />";
         }
+
+
+
 
 
 

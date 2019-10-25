@@ -441,4 +441,19 @@
   <data name="PendingBox" xml:space="preserve">
     <value>PendingBox</value>
   </data>
+  <data name="ShowSplitLine" xml:space="preserve">
+    <value>ShowSplitLine</value>
+  </data>
+  <data name="IsShadowVisible" xml:space="preserve">
+    <value>IsShadowVisible</value>
+  </data>
+  <data name="ExtendControl" xml:space="preserve">
+    <value>ExtendControl</value>
+  </data>
+  <data name="HeaderHeight" xml:space="preserve">
+    <value>HeaderHeight</value>
+  </data>
+  <data name="HeaderPadding" xml:space="preserve">
+    <value>HeaderPadding</value>
+  </data>
 </root>

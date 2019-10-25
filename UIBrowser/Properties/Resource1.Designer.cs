@@ -358,6 +358,15 @@ namespace UIBrowser.Properties {
         }
         
         /// <summary>
+        ///   查找类似 ExtendControl 的本地化字符串。
+        /// </summary>
+        public static string ExtendControl {
+            get {
+                return ResourceManager.GetString("ExtendControl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Extra Helpers 的本地化字符串。
         /// </summary>
         public static string ExtraHelpers {
@@ -399,6 +408,24 @@ namespace UIBrowser.Properties {
         public static string Groups {
             get {
                 return ResourceManager.GetString("Groups", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 HeaderHeight 的本地化字符串。
+        /// </summary>
+        public static string HeaderHeight {
+            get {
+                return ResourceManager.GetString("HeaderHeight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 HeaderPadding 的本地化字符串。
+        /// </summary>
+        public static string HeaderPadding {
+            get {
+                return ResourceManager.GetString("HeaderPadding", resourceCulture);
             }
         }
         
@@ -471,6 +498,15 @@ namespace UIBrowser.Properties {
         public static string IsRunning {
             get {
                 return ResourceManager.GetString("IsRunning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 IsShadowVisible 的本地化字符串。
+        /// </summary>
+        public static string IsShadowVisible {
+            get {
+                return ResourceManager.GetString("IsShadowVisible", resourceCulture);
             }
         }
         
@@ -795,6 +831,15 @@ namespace UIBrowser.Properties {
         public static string ShowSearchBox {
             get {
                 return ResourceManager.GetString("ShowSearchBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 ShowSplitLine 的本地化字符串。
+        /// </summary>
+        public static string ShowSplitLine {
+            get {
+                return ResourceManager.GetString("ShowSplitLine", resourceCulture);
             }
         }
         

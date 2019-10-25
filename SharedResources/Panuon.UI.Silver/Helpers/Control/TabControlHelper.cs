@@ -41,6 +41,96 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("ItemHeight", typeof(double), typeof(TabControlHelper));
         #endregion
 
+        #region ItemIcon
+        public static object GetItemIcon(DependencyObject obj)
+        {
+            return obj.GetValue(ItemIconProperty);
+        }
+
+        public static void SetItemIcon(DependencyObject obj, object value)
+        {
+            obj.SetValue(ItemIconProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemIconProperty =
+            DependencyProperty.RegisterAttached("ItemIcon", typeof(object), typeof(TabControlHelper));
+        #endregion
+
+        #region ItemPadding
+        public static Thickness GetItemPadding(DependencyObject obj)
+        {
+            return (Thickness)obj.GetValue(ItemPaddingProperty);
+        }
+
+        public static void SetItemPadding(DependencyObject obj, Thickness value)
+        {
+            obj.SetValue(ItemPaddingProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemPaddingProperty =
+            DependencyProperty.RegisterAttached("ItemPadding", typeof(Thickness), typeof(TabControlHelper));
+        #endregion
+
+        #region ItemCornerRadius
+        public static CornerRadius GetItemCornerRadius(DependencyObject obj)
+        {
+            return (CornerRadius)obj.GetValue(ItemCornerRadiusProperty);
+        }
+
+        public static void SetItemCornerRadius(DependencyObject obj, CornerRadius value)
+        {
+            obj.SetValue(ItemCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("ItemCornerRadius", typeof(CornerRadius), typeof(TabControlHelper));
+        #endregion
+
+        #region ItemsAlignment
+        public static ItemsAlignment GetItemsAlignment(DependencyObject obj)
+        {
+            return (ItemsAlignment)obj.GetValue(ItemsAlignmentProperty);
+        }
+
+        public static void SetItemsAlignment(DependencyObject obj, ItemsAlignment value)
+        {
+            obj.SetValue(ItemsAlignmentProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsAlignmentProperty =
+            DependencyProperty.RegisterAttached("ItemsAlignment", typeof(ItemsAlignment), typeof(TabControlHelper));
+        #endregion
+
+        #region ItemBackground
+        public static Brush GetItemBackground(DependencyObject obj)
+        {
+            return (Brush)obj.GetValue(ItemBackgroundProperty);
+        }
+
+        public static void SetItemBackground(DependencyObject obj, Brush value)
+        {
+            obj.SetValue(ItemBackgroundProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemBackgroundProperty =
+            DependencyProperty.RegisterAttached("ItemBackground", typeof(Brush), typeof(TabControlHelper));
+        #endregion
+
+        #region HeaderPanelBackground
+        public static Brush GetHeaderPanelBackground(DependencyObject obj)
+        {
+            return (Brush)obj.GetValue(HeaderPanelBackgroundProperty);
+        }
+
+        public static void SetHeaderPanelBackground(DependencyObject obj, Brush value)
+        {
+            obj.SetValue(HeaderPanelBackgroundProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderPanelBackgroundProperty =
+            DependencyProperty.RegisterAttached("HeaderPanelBackground", typeof(Brush), typeof(TabControlHelper));
+        #endregion
+
         #region SelectedForeground
         public static Brush GetSelectedForeground(DependencyObject obj)
         {
@@ -101,51 +191,6 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty CanRemoveProperty =
             DependencyProperty.RegisterAttached("CanRemove", typeof(bool), typeof(TabControlHelper));
-        #endregion
-
-        #region ItemIcon
-        public static object GetItemIcon(DependencyObject obj)
-        {
-            return obj.GetValue(ItemIconProperty);
-        }
-
-        public static void SetItemIcon(DependencyObject obj, object value)
-        {
-            obj.SetValue(ItemIconProperty, value);
-        }
-
-        public static readonly DependencyProperty ItemIconProperty =
-            DependencyProperty.RegisterAttached("ItemIcon", typeof(object), typeof(TabControlHelper));
-        #endregion
-
-        #region ItemPadding
-        public static Thickness GetItemPadding(DependencyObject obj)
-        {
-            return (Thickness)obj.GetValue(ItemPaddingProperty);
-        }
-
-        public static void SetItemPadding(DependencyObject obj, Thickness value)
-        {
-            obj.SetValue(ItemPaddingProperty, value);
-        }
-
-        public static readonly DependencyProperty ItemPaddingProperty =
-            DependencyProperty.RegisterAttached("ItemPadding", typeof(Thickness), typeof(TabControlHelper));
-        #endregion
-
-        #region ItemsAlignment
-        public static ItemsAlignment GetItemsAlignment(DependencyObject obj)
-        {
-            return (ItemsAlignment)obj.GetValue(ItemsAlignmentProperty);
-        }
-
-        public static void SetItemsAlignment(DependencyObject obj, ItemsAlignment value)
-        {
-            obj.SetValue(ItemsAlignmentProperty, value);
-        }
-
-        public static readonly DependencyProperty ItemsAlignmentProperty =
-            DependencyProperty.RegisterAttached("ItemsAlignment", typeof(ItemsAlignment), typeof(TabControlHelper));
         #endregion
 
         #region DisableScrollButton
@@ -271,19 +316,17 @@ namespace Panuon.UI.Silver
         internal static readonly DependencyProperty ScrollDownCommandProperty =
             DependencyProperty.RegisterAttached("ScrollDownCommand", typeof(ICommand), typeof(TabControlHelper), new PropertyMetadata(new ScrollDownCommand()));
 
-
-
-        public static ICommand GetRemoveCommand(DependencyObject obj)
+        internal static ICommand GetRemoveCommand(DependencyObject obj)
         {
             return (ICommand)obj.GetValue(RemoveCommandProperty);
         }
 
-        public static void SetRemoveCommand(DependencyObject obj, ICommand value)
+        internal static void SetRemoveCommand(DependencyObject obj, ICommand value)
         {
             obj.SetValue(RemoveCommandProperty, value);
         }
 
-        public static readonly DependencyProperty RemoveCommandProperty =
+        internal static readonly DependencyProperty RemoveCommandProperty =
             DependencyProperty.RegisterAttached("RemoveCommand", typeof(ICommand), typeof(TabControlHelper), new PropertyMetadata(new RemoveCommand()));
 
 

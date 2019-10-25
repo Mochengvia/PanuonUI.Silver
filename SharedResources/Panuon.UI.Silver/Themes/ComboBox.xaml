@@ -56,6 +56,8 @@
                 Value="6" />
         <Setter Property="local:ScrollViewerHelper.ScrollBarCornerRadius"
                 Value="3" />
+        <Setter Property="local:ComboBoxHelper.DropDownCornerRadius"
+                Value="{Binding Path=(local:ComboBoxHelper.CornerRadius),RelativeSource={RelativeSource Self},Mode=OneWay}" />
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>
@@ -84,12 +86,13 @@
                             </Border>
                             <Grid>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="{Binding Path=(local:IconHelper.Width),Converter={StaticResource GridLengthConverter} ,RelativeSource={RelativeSource AncestorType=ComboBox}}" />
+                                    <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label x:Name="LblIcon"
-                                       Padding="10,0,2,0"
+                                       Padding="10,0,7,0"
                                        VerticalContentAlignment="Center"
+                                       HorizontalContentAlignment="Center"
                                        Content="{Binding Path=(local:ComboBoxHelper.Icon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                                        Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                                        FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
@@ -222,8 +225,8 @@
                                             Margin="0,0,0,10"
                                             Background="{TemplateBinding Background}"
                                             BorderBrush="{TemplateBinding BorderBrush}"
-                                            BorderThickness="{TemplateBinding BorderThickness}"
-                                            CornerRadius="2">
+                                            CornerRadius="{Binding Path=(local:ComboBoxHelper.DropDownCornerRadius),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
+                                            BorderThickness="{TemplateBinding BorderThickness}">
                                         <Border.Effect>
                                             <DropShadowEffect ShadowDepth="0"
                                                               BlurRadius="10"
@@ -231,7 +234,7 @@
                                                               Color="{Binding Path=(local:ComboBoxHelper.ShadowColor),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"></DropShadowEffect>
                                         </Border.Effect>
                                     </Border>
-                                    <Grid>
+                                    <Grid  Margin="{Binding Path=(local:ComboBoxHelper.DropDownPadding),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto" />
                                             <RowDefinition Height="*" />

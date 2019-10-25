@@ -1422,8 +1422,9 @@
                                 <ColumnDefinition Width="*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Label x:Name="LblIcon"
-                                   Padding="10,0,2,0"
+                                   Padding="10,0,7,0"
                                    VerticalContentAlignment="Center"
+                                   HorizontalContentAlignment="Center"
                                    Content="{Binding Icon,Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
                                    Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
                                    FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
@@ -1686,157 +1687,168 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:DateTimePicker}">
                     <Grid>
-                        <Border x:Name="Border"
-                                Background="{TemplateBinding Background}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                CornerRadius="{TemplateBinding CornerRadius}">
-                        </Border>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                <ColumnDefinition Width="*"></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <Label x:Name="LblIcon"
-                                   Padding="10,0,2,0"
-                                   VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                   Content="{Binding Icon,RelativeSource={RelativeSource AncestorType=local:DateTimePicker},Converter={StaticResource IconConverter}}"
-                                   Foreground="{TemplateBinding Foreground}"
-                                   FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"></Label>
-                            <ContentPresenter x:Name="ContentSite"
-                                              Grid.Column="1"
-                                              Margin="{TemplateBinding Padding}"
-                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                              ContentSource="Text"
-                                              IsHitTestVisible="False" />
-                        </Grid>
-                        <ToggleButton x:Name="ToggleButton"
-                                      Focusable="false"
-                                      IsChecked="{Binding Path=IsOpen, Mode=TwoWay, ElementName=Popup}"
-                                      ClickMode="Press"
-                                      Foreground="{TemplateBinding Foreground}"
-                                      Background="Transparent"
-                                      BorderBrush="Transparent"
-                                      BorderThickness="0">
-                            <ToggleButton.Style>
-                                <Style TargetType="ToggleButton">
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="ToggleButton">
-                                                <Grid Background="Transparent">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="*" />
-                                                        <ColumnDefinition Width="30" />
-                                                    </Grid.ColumnDefinitions>
-                                                    <Path x:Name="arrow1"
-                                                          Opacity="1"
-                                                          VerticalAlignment="Center"
-                                                          Grid.Column="1"
-                                                          HorizontalAlignment="Center"
-                                                          Data="M5,4 H14 L9.5,10 Z"
-                                                          Width="15"
-                                                          Height="15"
-                                                          Fill="{TemplateBinding Foreground}"
-                                                          RenderTransformOrigin="0.5,0.5" />
-                                                    <Path x:Name="arrow2"
-                                                          Opacity="0"
-                                                          VerticalAlignment="Center"
-                                                          Grid.Column="1"
-                                                          HorizontalAlignment="Center"
-                                                          Data="M5,10 H14 L9.5,4.5 Z"
-                                                          Width="15"
-                                                          Height="15"
-                                                          Fill="{TemplateBinding Foreground}"
-                                                          RenderTransformOrigin="0.5,0.5" />
-                                                </Grid>
-                                                <ControlTemplate.Triggers>
-                                                    <Trigger Property="IsChecked"
-                                                             Value="True">
-                                                        <Trigger.EnterActions>
-                                                            <BeginStoryboard>
-                                                                <Storyboard>
-                                                                    <DoubleAnimation Storyboard.TargetName="arrow1"
-                                                                                     Storyboard.TargetProperty="Opacity"
-                                                                                     To="0"
-                                                                                     Duration="0:0:0.2"></DoubleAnimation>
-                                                                    <DoubleAnimation Storyboard.TargetName="arrow2"
-                                                                                     Storyboard.TargetProperty="Opacity"
-                                                                                     To="1"
-                                                                                     Duration="0:0:0.2"></DoubleAnimation>
-                                                                </Storyboard>
-                                                            </BeginStoryboard>
-                                                        </Trigger.EnterActions>
-                                                        <Trigger.ExitActions>
-                                                            <BeginStoryboard>
-                                                                <Storyboard>
-                                                                    <DoubleAnimation Storyboard.TargetName="arrow1"
-                                                                                     Storyboard.TargetProperty="Opacity"
-                                                                                     To="1"
-                                                                                     Duration="0:0:0.2"></DoubleAnimation>
-                                                                    <DoubleAnimation Storyboard.TargetName="arrow2"
-                                                                                     Storyboard.TargetProperty="Opacity"
-                                                                                     To="0"
-                                                                                     Duration="0:0:0.2"></DoubleAnimation>
-                                                                </Storyboard>
-                                                            </BeginStoryboard>
-                                                        </Trigger.ExitActions>
-                                                    </Trigger>
-
-                                                </ControlTemplate.Triggers>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Style>
-                            </ToggleButton.Style>
-                        </ToggleButton>
-                        <internal:NotTopMostPopup Placement="Bottom"
-                                                  x:Name="Popup"
-                                                  Focusable="False"
-                                                  StaysOpen="{TemplateBinding StaysOpen}"
-                                                  Tag="{Binding ElementName=ToggleButton}"
-                                                  AllowsTransparency="True"
-                                                  PopupAnimation="Slide">
-                            <Grid x:Name="DropDown">
-                                <Border x:Name="DropDownBorder"
-                                        Margin="0,0,0,10"
-                                        Background="{TemplateBinding Background}"
-                                        BorderBrush="{TemplateBinding BorderBrush}"
-                                        BorderThickness="{TemplateBinding BorderThickness}"
-                                        CornerRadius="{Binding CornerRadius,RelativeSource={RelativeSource AncestorType=local:DateTimePicker}}">
-                                    <Border.Effect>
-                                        <DropShadowEffect ShadowDepth="0"
-                                                          BlurRadius="10"
-                                                          Opacity="1"
-                                                          Color="{Binding ShadowColor,RelativeSource={RelativeSource AncestorType=local:DateTimePicker}}"></DropShadowEffect>
-                                    </Border.Effect>
-                                </Border>
-                                <Grid Margin="1,1,1,10">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-                                    <local:Calendar x:Name="Calendar"
-                                                    ThemeBrush="{Binding ThemeBrush,RelativeSource={RelativeSource AncestorType=local:DateTimePicker},Mode=OneWay}"
-                                                    MaxDate="{Binding MaxDate,RelativeSource={RelativeSource AncestorType=local:DateTimePicker},Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
-                                                    MinDate="{Binding MinDate,RelativeSource={RelativeSource AncestorType=local:DateTimePicker},Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
-                                                    SelectedDate="{Binding SelectedDateTime,RelativeSource={RelativeSource AncestorType=local:DateTimePicker},Mode=TwoWay}"
-                                                    IsSundayFirst="{Binding IsSundayFirst,RelativeSource={RelativeSource AncestorType=local:DateTimePicker},Mode=OneWay}"
-                                                    Width="300"
-                                                    Height="300" />
-                                    <Border HorizontalAlignment="Right"
-                                            BorderThickness="0,0,1,0"
-                                            BorderBrush="LightGray"
-                                            Margin="0,10" />
-                                    <local:Clock x:Name="Clock"
-                                                 ThemeBrush="{Binding ThemeBrush,RelativeSource={RelativeSource AncestorType=local:DateTimePicker},Mode=OneWay}"
-                                                 SelectedTime="{Binding SelectedDateTime,RelativeSource={RelativeSource AncestorType=local:DateTimePicker},Mode=TwoWay}"
-                                                 Grid.Column="1"
-                                                 Width="300"
-                                                 Height="300" />
-                                </Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="{Binding HeaderWidth,RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Converter={StaticResource GridLengthConverter}}" />
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <ContentControl x:Name="ContentHeader"
+                                        VerticalAlignment="Center"
+                                        Content="{TemplateBinding Header}" />
+                        <Grid Grid.Column="1">
+                            <Border x:Name="Border"
+                                    Background="{TemplateBinding Background}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    CornerRadius="{TemplateBinding CornerRadius}">
+                            </Border>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label x:Name="LblIcon"
+                                       Padding="10,0,7,0"
+                                       VerticalContentAlignment="Center"
+                                       HorizontalContentAlignment="Center"
+                                       Content="{Binding Icon,RelativeSource={RelativeSource AncestorType=local:DateTimePicker},Converter={StaticResource IconConverter}}"
+                                       Foreground="{TemplateBinding Foreground}"
+                                       FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"></Label>
+                                <ContentPresenter x:Name="ContentSite"
+                                                  Grid.Column="1"
+                                                  Margin="{TemplateBinding Padding}"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  ContentSource="Text"
+                                                  IsHitTestVisible="False" />
                             </Grid>
-                        </internal:NotTopMostPopup>
+                            <ToggleButton x:Name="ToggleButton"
+                                          Focusable="false"
+                                          IsChecked="{Binding Path=IsOpen, Mode=TwoWay, ElementName=Popup}"
+                                          ClickMode="Press"
+                                          Foreground="{TemplateBinding Foreground}"
+                                          Background="Transparent"
+                                          BorderBrush="Transparent"
+                                          BorderThickness="0">
+                                <ToggleButton.Style>
+                                    <Style TargetType="ToggleButton">
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="ToggleButton">
+                                                    <Grid Background="Transparent">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="30" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Path x:Name="arrow1"
+                                                              Opacity="1"
+                                                              VerticalAlignment="Center"
+                                                              Grid.Column="1"
+                                                              HorizontalAlignment="Center"
+                                                              Data="M5,4 H14 L9.5,10 Z"
+                                                              Width="15"
+                                                              Height="15"
+                                                              Fill="{TemplateBinding Foreground}"
+                                                              RenderTransformOrigin="0.5,0.5" />
+                                                        <Path x:Name="arrow2"
+                                                              Opacity="0"
+                                                              VerticalAlignment="Center"
+                                                              Grid.Column="1"
+                                                              HorizontalAlignment="Center"
+                                                              Data="M5,10 H14 L9.5,4.5 Z"
+                                                              Width="15"
+                                                              Height="15"
+                                                              Fill="{TemplateBinding Foreground}"
+                                                              RenderTransformOrigin="0.5,0.5" />
+                                                    </Grid>
+                                                    <ControlTemplate.Triggers>
+                                                        <Trigger Property="IsChecked"
+                                                                 Value="True">
+                                                            <Trigger.EnterActions>
+                                                                <BeginStoryboard>
+                                                                    <Storyboard>
+                                                                        <DoubleAnimation Storyboard.TargetName="arrow1"
+                                                                                         Storyboard.TargetProperty="Opacity"
+                                                                                         To="0"
+                                                                                         Duration="0:0:0.2"></DoubleAnimation>
+                                                                        <DoubleAnimation Storyboard.TargetName="arrow2"
+                                                                                         Storyboard.TargetProperty="Opacity"
+                                                                                         To="1"
+                                                                                         Duration="0:0:0.2"></DoubleAnimation>
+                                                                    </Storyboard>
+                                                                </BeginStoryboard>
+                                                            </Trigger.EnterActions>
+                                                            <Trigger.ExitActions>
+                                                                <BeginStoryboard>
+                                                                    <Storyboard>
+                                                                        <DoubleAnimation Storyboard.TargetName="arrow1"
+                                                                                         Storyboard.TargetProperty="Opacity"
+                                                                                         To="1"
+                                                                                         Duration="0:0:0.2"></DoubleAnimation>
+                                                                        <DoubleAnimation Storyboard.TargetName="arrow2"
+                                                                                         Storyboard.TargetProperty="Opacity"
+                                                                                         To="0"
+                                                                                         Duration="0:0:0.2"></DoubleAnimation>
+                                                                    </Storyboard>
+                                                                </BeginStoryboard>
+                                                            </Trigger.ExitActions>
+                                                        </Trigger>
+
+                                                    </ControlTemplate.Triggers>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </ToggleButton.Style>
+                            </ToggleButton>
+                            <internal:NotTopMostPopup Placement="Bottom"
+                                                      x:Name="Popup"
+                                                      Focusable="False"
+                                                      StaysOpen="{TemplateBinding StaysOpen}"
+                                                      Tag="{Binding ElementName=ToggleButton}"
+                                                      AllowsTransparency="True"
+                                                      PopupAnimation="Slide">
+                                <Grid x:Name="DropDown">
+                                    <Border x:Name="DropDownBorder"
+                                            Margin="0,0,0,10"
+                                            Background="{TemplateBinding Background}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                            CornerRadius="{Binding CornerRadius,RelativeSource={RelativeSource AncestorType=local:DateTimePicker}}">
+                                        <Border.Effect>
+                                            <DropShadowEffect ShadowDepth="0"
+                                                              BlurRadius="10"
+                                                              Opacity="1"
+                                                              Color="{Binding ShadowColor,RelativeSource={RelativeSource AncestorType=local:DateTimePicker}}"></DropShadowEffect>
+                                        </Border.Effect>
+                                    </Border>
+                                    <Grid Margin="1,1,1,10">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <local:Calendar x:Name="Calendar"
+                                                        ThemeBrush="{Binding ThemeBrush,RelativeSource={RelativeSource AncestorType=local:DateTimePicker},Mode=OneWay}"
+                                                        MaxDate="{Binding MaxDate,RelativeSource={RelativeSource AncestorType=local:DateTimePicker},Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
+                                                        MinDate="{Binding MinDate,RelativeSource={RelativeSource AncestorType=local:DateTimePicker},Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
+                                                        SelectedDate="{Binding SelectedDateTime,RelativeSource={RelativeSource AncestorType=local:DateTimePicker},Mode=TwoWay}"
+                                                        IsSundayFirst="{Binding IsSundayFirst,RelativeSource={RelativeSource AncestorType=local:DateTimePicker},Mode=OneWay}"
+                                                        Width="300"
+                                                        Height="300" />
+                                        <Border HorizontalAlignment="Right"
+                                                BorderThickness="0,0,1,0"
+                                                BorderBrush="LightGray"
+                                                Margin="0,10" />
+                                        <local:Clock x:Name="Clock"
+                                                     ThemeBrush="{Binding ThemeBrush,RelativeSource={RelativeSource AncestorType=local:DateTimePicker},Mode=OneWay}"
+                                                     SelectedTime="{Binding SelectedDateTime,RelativeSource={RelativeSource AncestorType=local:DateTimePicker},Mode=TwoWay}"
+                                                     Grid.Column="1"
+                                                     Width="300"
+                                                     Height="300" />
+                                    </Grid>
+                                </Grid>
+                            </internal:NotTopMostPopup>
+                        </Grid>
+
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="DateTimePickerMode"

@@ -162,6 +162,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="PartialViews\Native\ExpanderView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="PartialViews\Native\MenuView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -198,6 +202,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="PartialViews\Native\GroupBoxView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="PartialViews\Native\TextBoxView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -224,6 +232,12 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PartialViews\Native\ExpanderView.xaml.cs">
+      <DependentUpon>ExpanderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PartialViews\Native\GroupBoxView.xaml.cs">
+      <DependentUpon>GroupBoxView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Models\TreeViewItemModel.cs" />
     <Compile Include="PartialViews\Custom\MultiComboBoxView.xaml.cs">
@@ -352,8 +366,8 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Net40\Panuon.UI.Silver\Panuon.UI.Silver.csproj">
-      <Project>{527ff1e2-a99c-40c2-b589-69b5bad77f5a}</Project>
+    <ProjectReference Include="..\Net45\Panuon.UI.Silver\Panuon.UI.Silver.csproj">
+      <Project>{461fe59d-57b8-4599-8e7d-439e27a2bbb2}</Project>
       <Name>Panuon.UI.Silver</Name>
     </ProjectReference>
   </ItemGroup>

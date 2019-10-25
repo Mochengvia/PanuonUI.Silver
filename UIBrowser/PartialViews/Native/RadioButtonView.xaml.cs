@@ -146,8 +146,8 @@ namespace UIBrowser.PartialViews.Native
                 case 2:
                     AnimationHelper.SetSlideInFromBottom(GrpPalette, true);
                     RectBackground.Fill = FindResource("GridBrush") as Brush;
-                    GroupBoxHelper.SetEffect(GrpPalette, FindResource("DropShadow") as Effect);
-                    GroupBoxHelper.SetEffect(GrpCode, FindResource("DropShadow") as Effect);
+                    GroupBoxHelper.SetShadowColor(GrpPalette, Colors.LightGray);
+                    GroupBoxHelper.SetShadowColor(GrpCode, Colors.LightGray);
                     break;
             }
         }
@@ -214,7 +214,7 @@ namespace UIBrowser.PartialViews.Native
             var cornerRadius = SldCornerRadius.Value;
             var checkedContent = RadioButtonHelper.GetCheckedContent(RdbCustom1);
 
-            TbCode.Text = "<CheckBox  Height=\"30\"" +
+            TbCode.Text = "<RadioButton  Height=\"30\"" +
                         $"\nContent=\"{RdbCustom1.Content}\"" +
                         (radioButtonStyle == RadioButtonStyle.Standard ? "" : $"\npu:RadioButtonHelper.RadioButtonStyle=\"{radioButtonStyle}\"") +
                         (radioButtonStyle == RadioButtonStyle.Standard ? $"\nBackground=\"{RdbCustom1.Background.ToColor().ToHexString(true)}\"" : "") +
