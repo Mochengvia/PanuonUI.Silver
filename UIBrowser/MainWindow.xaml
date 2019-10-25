@@ -78,12 +78,5 @@
                 Visibility="Collapsed"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Bottom"/>
-        <Button Name="btn_UpdateEmployee"
-                Content="同步员工"
-                Grid.Column="1"
-                Height="30"
-                Width="200"
-                pu:ButtonHelper.Icon="&#xf007;"
-                pu:ButtonHelper.ButtonStyle="Standard" />
     </Grid>
 </pu:WindowX>
