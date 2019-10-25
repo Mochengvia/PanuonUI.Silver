@@ -16,7 +16,6 @@ Zhihu : @末城via
 #### 2019-10-25 v1.0.8.5
 修复了Calendar和DateTimePicker在选择月份时，若已选中了该月不存在的天数将引发崩溃的问题。  
 修复了Calendar和DateTimePicker无法处理SelectedDateTimeChanged事件的问题。  
-修复了Calendar和DateTimePicker无法处理SelectedDateTimeChanged事件的问题。  
 新增了DateTimePicker的Header和HeaderWidth属性。  
 修复了IconHelper.Width对TextBox不生效的问题。  
 
