@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <EnableDefaultPageItems>false</EnableDefaultPageItems>
+    <Version>1.0.8.6</Version>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <Resource Include="Resources\fontawesome.ttf" />
+    <!--<Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>-->
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="System.Drawing.Common" Version="4.6.0" />
+  </ItemGroup>
+
+  <Import Project="..\..\SharedResources\Panuon.UI.Silver\Panuon.UI.Silver.projitems" Label="Shared" />
+  <Import Project="..\..\SharedResources\Panuon.UI.Silver.Core\Panuon.UI.Silver.Core.projitems" Label="Shared" />
+</Project>
