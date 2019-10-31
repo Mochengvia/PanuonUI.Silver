@@ -53,12 +53,11 @@ https://github.com/Panuon/Panuon.Documents/blob/master/Documents/PanuonUI.Silver
 
 http://www.huanghunxiao.com/  
   
-![](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/Panuon.UI.Silver/case_morin_3.png)  
+![](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/Panuon.UI.Silver/case_morin_4.png)  
 
-![](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/Panuon.UI.Silver/case_morin_2.png)  
+### Collector 
 
-
-
+![](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/Panuon.UI.Silver/case_collector_1.png)  
 
 # Examples 示例  
 
