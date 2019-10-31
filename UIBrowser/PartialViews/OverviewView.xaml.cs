@@ -1,5 +1,5 @@
-﻿using Caliburn.Micro;
-using Panuon.UI.Silver;
+﻿using Panuon.UI.Silver;
+using Panuon.UI.Silver.Core;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -55,7 +55,7 @@ namespace UIBrowser.PartialViews
         public Brush Brush
         {
             get => _brush;
-            set { _brush = value; NotifyOfPropertyChange(); }
+            set { _brush = value; NotifyPropertyChanged(); }
         }
         private Brush _brush;
 
@@ -63,14 +63,14 @@ namespace UIBrowser.PartialViews
         public Brush LightBrush
         {
             get => _lightBrush;
-            set { _lightBrush = value; NotifyOfPropertyChange(); }
+            set { _lightBrush = value; NotifyPropertyChanged(); }
         }
         private Brush _lightBrush;
 
         public Brush BrushTran1
         {
             get => _brushTran1;
-            set { _brushTran1 = value; NotifyOfPropertyChange(); }
+            set { _brushTran1 = value; NotifyPropertyChanged(); }
         }
         private Brush _brushTran1;
 
@@ -78,7 +78,7 @@ namespace UIBrowser.PartialViews
         public Brush BrushTran2
         {
             get => _brushTran2;
-            set { _brushTran2 = value; NotifyOfPropertyChange(); }
+            set { _brushTran2 = value; NotifyPropertyChanged(); }
         }
         private Brush _brushTran2;
 

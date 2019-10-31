@@ -471,7 +471,7 @@ namespace Panuon.UI.Silver
                     HorizontalContentAlignment = HorizontalAlignment.Center,
                 };
                 RadioButtonHelper.SetRadioButtonStyle(radioButton, RadioButtonStyle.Button);
-                RadioButtonHelper.SetCornerRadius(radioButton, 0);
+                RadioButtonHelper.SetCornerRadius(radioButton, new CornerRadius(0));
                 radioButton.Click += RdbDay_Click;
 
                 SetBinding("Foreground", radioButton, ForegroundProperty);
@@ -517,7 +517,7 @@ namespace Panuon.UI.Silver
                     HorizontalContentAlignment = HorizontalAlignment.Center,
                 };
                 RadioButtonHelper.SetRadioButtonStyle(radioButton, RadioButtonStyle.Button);
-                RadioButtonHelper.SetCornerRadius(radioButton, 0);
+                RadioButtonHelper.SetCornerRadius(radioButton, new CornerRadius(0));
                 radioButton.Click += RdbMonth_Click;
 
                 SetBinding("Foreground", radioButton, ForegroundProperty);
@@ -563,7 +563,7 @@ namespace Panuon.UI.Silver
                     HorizontalContentAlignment = HorizontalAlignment.Center,
                 };
                 RadioButtonHelper.SetRadioButtonStyle(radioButton, RadioButtonStyle.Button);
-                RadioButtonHelper.SetCornerRadius(radioButton, 0);
+                RadioButtonHelper.SetCornerRadius(radioButton, new CornerRadius(0));
                 radioButton.Click += RdbYear_Click;
 
                 SetBinding("Foreground", radioButton, ForegroundProperty);

@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Markup;
 using UIBrowser.Models;
 using UIBrowser.ViewModels;
 
@@ -13,7 +14,7 @@ namespace UIBrowser
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : WindowX
+    public partial class MainWindow : WindowX, IComponentConnector
     {
         #region Identity
         private static IDictionary<string, Type> _partialViewDic;
@@ -67,31 +68,7 @@ namespace UIBrowser
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var dataTable = new DataTable();
-            dataTable.Columns.Add("Column1", typeof(int));
-            dataTable.Columns.Add("Column2", typeof(string));
-
-            var row1 = dataTable.NewRow();
-            row1["Column1"] = 1;
-            row1["Column2"] = "1";
-            dataTable.Rows.Add(row1);
-
-            var row2 = dataTable.NewRow();
-            row2["Column1"] = 2;
-            row2["Column2"] = "2";
-            dataTable.Rows.Add(row2);
-
-            DataTable newDataTable;
-                newDataTable = dataTable.Clone();
-                foreach (var row in dataTable.Select("Column1 > 1"))
-                {
-                    var newRow = newDataTable.NewRow();
-                    foreach (DataColumn column in newDataTable.Columns)
-                    {
-                        newRow[column.ColumnName] = row[column.ColumnName];
-                    }
-                    newDataTable.Rows.Add(newRow);
-                }
+            
         }
     }
 }

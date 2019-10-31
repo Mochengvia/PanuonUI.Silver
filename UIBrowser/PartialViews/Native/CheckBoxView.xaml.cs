@@ -147,7 +147,7 @@ namespace UIBrowser.PartialViews.Native
         private void UpdateTemplate()
         {
             var color = Helper.GetColorByOffset(_linearGradientBrush.GradientStops, SldTheme.Value / 7);
-            CheckBoxHelper.SetCornerRadius(ChbCustom, SldCornerRadius.Value);
+            CheckBoxHelper.SetCornerRadius(ChbCustom, new CornerRadius(SldCornerRadius.Value));
 
 
 

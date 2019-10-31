@@ -46,12 +46,12 @@
                 Value="#22DDDDDD" />
         <Setter Property="local:DataGridHelper.SelectedBackground"
                 Value="#44DDDDDD" />
+        <Setter Property="local:DataGridHelper.SelectedForeground"
+                Value="{x:Null}" />
         <Setter Property="local:DataGridHelper.HeaderBackground"
                 Value="#FAFAFA" />
         <Setter Property="local:DataGridHelper.HeaderForeground"
                 Value="DimGray" />
-        <Setter Property="local:DataGridHelper.RowHeaderBrush"
-                Value="#EAEAEA" />
         <Setter Property="Foreground"
                 Value="#3E3E3E" />
         <Setter Property="RowValidationErrorTemplate">
@@ -221,7 +221,7 @@
                                  Value="True">
                             <Setter TargetName="BdrPress"
                                     Property="Opacity"
-                                    Value="1"/>
+                                    Value="1" />
                         </Trigger>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
@@ -348,7 +348,8 @@
                                 Background="{Binding Path=(local:DataGridHelper.SelectedBackground),RelativeSource={RelativeSource AncestorType=DataGridCell}}"
                                 Opacity="0"
                                 SnapsToDevicePixels="True" />
-                        <ContentPresenter HorizontalAlignment="{Binding Path=(local:DataGridHelper.ColumnHorizontalContentAlignment),RelativeSource={RelativeSource AncestorType=DataGridCell}}"
+                        <ContentPresenter x:Name="Presenter"
+                                          HorizontalAlignment="{Binding Path=(local:DataGridHelper.ColumnHorizontalContentAlignment),RelativeSource={RelativeSource AncestorType=DataGridCell}}"
                                           VerticalAlignment="{Binding Path=(local:DataGridHelper.ColumnVerticalContentAlignment),RelativeSource={RelativeSource AncestorType=DataGridCell}}"
                                           Margin="{Binding Path=(local:DataGridHelper.CellPadding),RelativeSource={RelativeSource AncestorType=DataGridCell}}"
                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
@@ -359,7 +360,7 @@
                                 <Condition Binding="{Binding IsMouseOver,RelativeSource={RelativeSource Self}}"
                                            Value="True" />
                                 <Condition Binding="{Binding SelectionUnit,RelativeSource={RelativeSource AncestorType=DataGrid},Mode=OneWay}"
-                                           Value="Cell"/>
+                                           Value="Cell" />
                             </MultiDataTrigger.Conditions>
                             <MultiDataTrigger.EnterActions>
                                 <BeginStoryboard>
@@ -410,14 +411,21 @@
                                 </BeginStoryboard>
                             </MultiDataTrigger.ExitActions>
                         </MultiDataTrigger>
-
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsSelected,RelativeSource={RelativeSource Self}}"
+                                           Value="True"/>
+                                <Condition Binding="{Binding Path=(local:DataGridHelper.SelectedForeground),RelativeSource={RelativeSource Self},Converter={StaticResource IsNotNullConverter}}"
+                                           Value="True"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Foreground"
+                                    Value="{Binding Path=(local:DataGridHelper.SelectedForeground),RelativeSource={RelativeSource AncestorType=DataGrid}}" />
+                        </MultiDataTrigger>
                         <Trigger  Property="IsSelected"
                                   Value="True">
-                            <Setter Property="Foreground"
-                                    Value="{Binding Path=(local:DataGridHelper.SelectedForeground),RelativeSource={RelativeSource AncestorType=DataGridCell}}" />
                             <Setter TargetName="BdrSelected"
                                     Property="Opacity"
-                                    Value="1"/>
+                                    Value="1" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -501,13 +509,12 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridRowHeader}">
                     <Grid>
-                        <Border x:Name="rowHeaderBorder"
-                                BorderThickness="1"
-                                Background="{Binding Path=(local:DataGridHelper.RowHeaderBrush),RelativeSource={RelativeSource AncestorType=DataGrid}}">
+                        <Grid>
+                            <ContentPresenter />
                             <Control SnapsToDevicePixels="false"
                                      Template="{Binding ValidationErrorTemplate, RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}"
                                      Visibility="{Binding (Validation.HasError), Converter={StaticResource BoolToVisibleConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}" />
-                        </Border>
+                        </Grid>
                         <Thumb x:Name="PART_TopHeaderGripper"
                                VerticalAlignment="Top"
                                Background="{Binding Path=(local:DataGridHelper.ResizeThumbBrush),RelativeSource={RelativeSource AncestorType=DataGrid}}"

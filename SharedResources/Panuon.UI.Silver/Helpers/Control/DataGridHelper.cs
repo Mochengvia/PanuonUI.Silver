@@ -229,21 +229,6 @@ namespace Panuon.UI.Silver
 
         #endregion
 
-        #region RowHeaderBrush
-        public static Brush GetRowHeaderBrush(DependencyObject obj)
-        {
-            return (Brush)obj.GetValue(RowHeaderBrushProperty);
-        }
-
-        public static void SetRowHeaderBrush(DependencyObject obj, Brush value)
-        {
-            obj.SetValue(RowHeaderBrushProperty, value);
-        }
-
-        public static readonly DependencyProperty RowHeaderBrushProperty =
-            DependencyProperty.RegisterAttached("RowHeaderBrush", typeof(Brush), typeof(DataGridHelper));
-        #endregion
-
         #region (Internal) DataGridHook
         internal static bool GetDataGridHook(DependencyObject obj)
         {

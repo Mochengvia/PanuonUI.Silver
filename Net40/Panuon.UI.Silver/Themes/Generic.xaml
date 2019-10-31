@@ -68,11 +68,14 @@
                                                Height="{TemplateBinding FontSize,Converter={StaticResource Add5Converter}}"
                                                Margin="5,0,0,0" />
                                         <TextBlock Margin="5,0,0,0"
+                                                   Foreground="{Binding Path=(local:WindowXCaption.Foreground),RelativeSource={RelativeSource AncestorType=Window}}"
                                                    Text="{TemplateBinding Title}"
                                                    VerticalAlignment="Center" />
                                     </StackPanel>
                                     <ContentControl x:Name="CpHeader"
                                                     Visibility="Collapsed"
+                                                    TextBlock.Foreground="{Binding Path=(local:WindowXCaption.Foreground),RelativeSource={RelativeSource AncestorType=Window}}"
+                                                    TextElement.Foreground="{Binding Path=(local:WindowXCaption.Foreground),RelativeSource={RelativeSource AncestorType=Window}}"
                                                     Content="{Binding Path=(local:WindowXCaption.Header),RelativeSource={RelativeSource AncestorType=Window}}" />
                                     <ContentControl Grid.Column="1"
                                                     x:Name="CcExtend"

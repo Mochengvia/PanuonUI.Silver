@@ -368,59 +368,55 @@
                                     <Grid x:Name="Grid"
                                           Width="{Binding Path=(local:RadioButtonHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
                                           Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}">
-                                        <Rectangle x:Name="RectChecked"
-                                                   Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                                                   Width="{Binding Path=(local:RadioButtonHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                                                   Fill="{Binding Path=(local:RadioButtonHelper.CheckedBackground),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                                                   Stroke="{TemplateBinding BorderBrush}"
-                                                   StrokeThickness="{TemplateBinding BorderThickness, Converter={StaticResource ThicknessToDoubleConverter}}"
-                                                   RadiusX="{Binding Path=(local:RadioButtonHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                                                   RadiusY="{Binding Path=(local:RadioButtonHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}" />
-                                        <Rectangle x:Name="Rect"
-                                                   Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                                                   Width="{Binding Path=(local:RadioButtonHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                                                   Fill="{TemplateBinding Background}"
-                                                   Stroke="{TemplateBinding BorderBrush}"
-                                                   StrokeThickness="{TemplateBinding BorderThickness, Converter={StaticResource ThicknessToDoubleConverter}}"
-                                                   RadiusX="{Binding Path=(local:RadioButtonHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                                                   RadiusY="{Binding Path=(local:RadioButtonHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                                                   RenderTransformOrigin="0.5,0.5">
-                                            <Rectangle.RenderTransform>
+                                        <Border x:Name="RectChecked"
+                                                Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                                                Width="{Binding Path=(local:RadioButtonHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                                                Background="{Binding Path=(local:RadioButtonHelper.CheckedBackground),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                                                BorderBrush="{TemplateBinding BorderBrush}"
+                                                BorderThickness="{TemplateBinding BorderThickness}"
+                                                CornerRadius="{Binding Path=(local:RadioButtonHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}" />
+                                        <Border x:Name="Rect"
+                                                Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                                                Width="{Binding Path=(local:RadioButtonHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                                                Background="{TemplateBinding Background}"
+                                                BorderBrush="{TemplateBinding BorderBrush}"
+                                                BorderThickness="{TemplateBinding BorderThickness}"
+                                                CornerRadius="{Binding Path=(local:RadioButtonHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                                                RenderTransformOrigin="0.5,0.5">
+                                            <Border.RenderTransform>
                                                 <ScaleTransform x:Name="scale"
                                                                 ScaleX="1"
                                                                 ScaleY="1"></ScaleTransform>
-                                            </Rectangle.RenderTransform>
-                                        </Rectangle>
+                                            </Border.RenderTransform>
+                                        </Border>
                                         <Rectangle HorizontalAlignment="Left"
                                                    Fill="White"
                                                    Width="3"
                                                    Margin="5,5,0,5" />
-                                        <Rectangle x:Name="RectToggle"
-                                                   Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),Converter={StaticResource Minus2Converter},RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                                                   Width="{Binding Path=(local:RadioButtonHelper.BoxHeight),Converter={StaticResource Minus2Converter},RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                                                   StrokeThickness="{TemplateBinding BorderThickness, Converter={StaticResource ThicknessToDoubleConverter}}"
-                                                   HorizontalAlignment="Right"
-                                                   VerticalAlignment="Center"
-                                                   Fill="{Binding Path=(local:RadioButtonHelper.GlyphBrush),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                                                   RadiusX="{Binding Path=(local:RadioButtonHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                                                   RadiusY="{Binding Path=(local:RadioButtonHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}">
-                                            <Rectangle.Margin>
+                                        <Border x:Name="RectToggle"
+                                                Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),Converter={StaticResource Minus2Converter},RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                                                Width="{Binding Path=(local:RadioButtonHelper.BoxHeight),Converter={StaticResource Minus2Converter},RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                                                HorizontalAlignment="Right"
+                                                VerticalAlignment="Center"
+                                                Background="{Binding Path=(local:RadioButtonHelper.GlyphBrush),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                                                CornerRadius="{Binding Path=(local:RadioButtonHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}">
+                                            <Border.Margin>
                                                 <MultiBinding Converter="{StaticResource SwitchToggleMarginConverter}">
                                                     <Binding Path="Width"
                                                              ElementName="Rect" />
                                                     <Binding Path="Height"
                                                              ElementName="Rect" />
                                                 </MultiBinding>
-                                            </Rectangle.Margin>
-                                            <Rectangle.Effect>
+                                            </Border.Margin>
+                                            <Border.Effect>
                                                 <DropShadowEffect x:Name="effect"
                                                                   Color="DimGray"
                                                                   Opacity="0.4"
                                                                   BlurRadius="3"
                                                                   ShadowDepth="1"
                                                                   Direction="275" />
-                                            </Rectangle.Effect>
-                                        </Rectangle>
+                                            </Border.Effect>
+                                        </Border>
                                     </Grid>
                                     <ContentPresenter x:Name="Presenter"
                                                       Grid.Column="1"
@@ -610,7 +606,7 @@
             <Trigger  Property="IsEnabled"
                       Value="False">
                 <Setter Property="Opacity"
-                        Value="0.4"/>
+                        Value="0.4" />
             </Trigger>
         </Style.Triggers>
     </Style>

@@ -138,7 +138,7 @@ namespace Panuon.UI.Silver
                     GroupName = "CLOCK_HOUR",
                 };
                 RadioButtonHelper.SetRadioButtonStyle(radioButton, RadioButtonStyle.Button);
-                RadioButtonHelper.SetCornerRadius(radioButton, 0);
+                RadioButtonHelper.SetCornerRadius(radioButton, new CornerRadius(0));
                 radioButton.Click += RdbHour_Click;
 
                 SetBinding("Foreground", radioButton, ForegroundProperty);
@@ -175,7 +175,7 @@ namespace Panuon.UI.Silver
                     GroupName = "CLOCK_MINUTE",
                 };
                 RadioButtonHelper.SetRadioButtonStyle(radioButton, RadioButtonStyle.Button);
-                RadioButtonHelper.SetCornerRadius(radioButton, 0);
+                RadioButtonHelper.SetCornerRadius(radioButton, new CornerRadius(0));
                 radioButton.Click += RdbMinute_Click;
 
                 SetBinding("Foreground", radioButton, ForegroundProperty);
@@ -211,7 +211,7 @@ namespace Panuon.UI.Silver
                     GroupName = "CLOCK_SECOND",
                 };
                 RadioButtonHelper.SetRadioButtonStyle(radioButton, RadioButtonStyle.Button);
-                RadioButtonHelper.SetCornerRadius(radioButton, 0);
+                RadioButtonHelper.SetCornerRadius(radioButton, new CornerRadius(0));
                 radioButton.Click += RdbSecond_Click;
 
                 SetBinding("Foreground", radioButton, ForegroundProperty);
@@ -250,7 +250,7 @@ namespace Panuon.UI.Silver
                     GroupName = "CLOCK_HOUR",
                 };
                 RadioButtonHelper.SetRadioButtonStyle(radioButton, RadioButtonStyle.Button);
-                RadioButtonHelper.SetCornerRadius(radioButton, 15);
+                RadioButtonHelper.SetCornerRadius(radioButton, new CornerRadius(15));
                 radioButton.Click += RdbHour_Click;
 
                 SetBinding("Foreground", radioButton, ForegroundProperty);

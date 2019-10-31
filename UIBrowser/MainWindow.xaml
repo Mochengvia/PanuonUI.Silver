@@ -64,7 +64,6 @@
                     </HierarchicalDataTemplate>
                 </TreeView.ItemTemplate>
             </TreeView>
-
         </Grid>
         <GridSplitter Width="2"
                       VerticalAlignment="Stretch" />

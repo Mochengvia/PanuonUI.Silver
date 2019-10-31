@@ -338,10 +338,10 @@
                     <Grid Background="Transparent">
                         <Border x:Name="BdrMain"
                                 Background="Transparent" />
-                        <ContentPresenter Margin="{TemplateBinding Padding}"
+                        <ContentPresenter x:Name="Presenter"
+                                          Margin="{TemplateBinding Padding}"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                          x:Name="Presenter"
                                           Opacity="0.8"
                                           ContentSource="Content" />
                     </Grid>
@@ -370,7 +370,11 @@
                                 <Condition Binding="{Binding Path=(local:ComboBoxHelper.SelectedForeground), RelativeSource={RelativeSource AncestorType=ComboBox},Converter={StaticResource IsNullConverter}}"
                                            Value="False" />
                             </MultiDataTrigger.Conditions>
-                            <Setter Property="Foreground"
+                            <Setter TargetName="Presenter"
+                                    Property="TextBlock.Foreground"
+                                    Value="{Binding Path=(local:ComboBoxHelper.SelectedForeground),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
+                            <Setter TargetName="Presenter"
+                                    Property="TextElement.Foreground"
                                     Value="{Binding Path=(local:ComboBoxHelper.SelectedForeground),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
                         </MultiDataTrigger>
 
