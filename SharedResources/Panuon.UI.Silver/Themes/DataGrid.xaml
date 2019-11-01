@@ -47,7 +47,7 @@
         <Setter Property="local:DataGridHelper.SelectedBackground"
                 Value="#44DDDDDD" />
         <Setter Property="local:DataGridHelper.SelectedForeground"
-                Value="{x:Null}" />
+                Value="{Binding Foreground,RelativeSource={RelativeSource Self}}" />
         <Setter Property="local:DataGridHelper.HeaderBackground"
                 Value="#FAFAFA" />
         <Setter Property="local:DataGridHelper.HeaderForeground"
@@ -332,8 +332,6 @@
                 Value="{Binding Path=(local:DataGridHelper.ColumnVerticalContentAlignment),RelativeSource={RelativeSource AncestorType=DataGrid}}" />
         <Setter Property="local:DataGridHelper.ColumnHorizontalContentAlignment"
                 Value="{Binding Path=(local:DataGridHelper.ColumnHorizontalContentAlignment),RelativeSource={RelativeSource AncestorType=DataGrid}}" />
-        <Setter Property="local:DataGridHelper.SelectedForeground"
-                Value="{Binding Foreground,RelativeSource={RelativeSource AncestorType=DataGrid}}" />
         <Setter Property="local:DataGridHelper.SelectedBackground"
                 Value="{Binding Path=(local:DataGridHelper.SelectedBackground),RelativeSource={RelativeSource AncestorType=DataGrid}}" />
         <Setter Property="Template">
@@ -415,7 +413,7 @@
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding IsSelected,RelativeSource={RelativeSource Self}}"
                                            Value="True"/>
-                                <Condition Binding="{Binding Path=(local:DataGridHelper.SelectedForeground),RelativeSource={RelativeSource Self},Converter={StaticResource IsNotNullConverter}}"
+                                <Condition Binding="{Binding Path=(local:DataGridHelper.SelectedForeground),RelativeSource={RelativeSource AncestorType=DataGrid},Converter={StaticResource IsNotNullConverter}}"
                                            Value="True"/>
                             </MultiDataTrigger.Conditions>
                             <Setter Property="Foreground"

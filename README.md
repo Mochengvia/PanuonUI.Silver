@@ -13,6 +13,10 @@ QQ Group : 718778191
 Zhihu : @末城via
 
 # News 动态  
+
+## 2019-11-1 v1.0.8.7
+[严重]修复DataGrid在选中时前景色变灰的问题。    
+
 ## 2019-10-31 v1.0.8.6
 修复WindowXCaption的Foreground属性未对标题和Header生效的问题。  
 修复IconHelper.Width对除了Standard外的Button样式无效的问题。  
