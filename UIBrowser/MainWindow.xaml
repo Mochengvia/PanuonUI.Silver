@@ -75,7 +75,6 @@
                 Width="200"
                 Visibility="Collapsed"
                 Click="Button_Click"
-                Visibility="Visible"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Bottom"/>
     </Grid>
