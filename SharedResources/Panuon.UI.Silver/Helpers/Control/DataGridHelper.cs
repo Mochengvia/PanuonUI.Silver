@@ -1,6 +1,7 @@
 ﻿using Panuon.UI.Silver.Core;
 using Panuon.UI.Silver.Utils;
 using System;
+using System.Collections;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
@@ -229,19 +230,19 @@ namespace Panuon.UI.Silver
 
         #endregion
 
-        #region RowHeaderBrush
-        public static Brush GetRowHeaderBrush(DependencyObject obj)
+        #region SelectedItems
+        public static IList GetSelectedItems(DependencyObject obj)
         {
-            return (Brush)obj.GetValue(RowHeaderBrushProperty);
+            return (IList)obj.GetValue(SelectedItemsProperty);
         }
 
-        public static void SetRowHeaderBrush(DependencyObject obj, Brush value)
+        public static void SetSelectedItems(DependencyObject obj, IList value)
         {
-            obj.SetValue(RowHeaderBrushProperty, value);
+            obj.SetValue(SelectedItemsProperty, value);
         }
 
-        public static readonly DependencyProperty RowHeaderBrushProperty =
-            DependencyProperty.RegisterAttached("RowHeaderBrush", typeof(Brush), typeof(DataGridHelper));
+        public static readonly DependencyProperty SelectedItemsProperty =
+            DependencyProperty.RegisterAttached("SelectedItems", typeof(IList), typeof(DataGridHelper));
         #endregion
 
         #region (Internal) DataGridHook
@@ -262,6 +263,7 @@ namespace Panuon.UI.Silver
         {
             var dataGrid = d as DataGrid;
             dataGrid.AutoGeneratingColumn += DataGrid_AutoGeneratingColumn;
+            SetSelectedItems(dataGrid, dataGrid.SelectedItems);
         }
 
         private static void DataGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)

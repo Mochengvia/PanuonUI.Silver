@@ -24,6 +24,12 @@
                 Value="#3E3E3E" />
         <Setter Property="local:RepeatButtonHelper.ClickCoverBrush"
                 Value="#22FFFFFF" />
+        <Setter Property="local:IconHelper.FontFamily"
+                Value="/Panuon.UI.Silver;component/Resources/#fontawesome" />
+        <Setter Property="local:IconHelper.FontSize"
+                Value="{Binding FontSize, Converter={StaticResource Add3Converter},RelativeSource={RelativeSource Self},Mode=OneWay}" />
+        <Setter Property="local:IconHelper.Foreground"
+                Value="{Binding Foreground,RelativeSource={RelativeSource Self},Mode=OneWay}" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding Path=(local:RepeatButtonHelper.RepeatButtonStyle),RelativeSource={RelativeSource Self}, Mode=OneWay}"
                          Value="Standard">
@@ -53,16 +59,17 @@
                                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                       Margin="{TemplateBinding Padding}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="{Binding Path=(local:IconHelper.Width),Converter={StaticResource GridLengthConverter} ,RelativeSource={RelativeSource AncestorType=RepeatButton}}" />
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <Label x:Name="LblIcon"
-                                           Padding="10,0,7,0"
                                            Content="{Binding Path=(local:RepeatButtonHelper.Icon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
-                                           Foreground="{TemplateBinding Foreground}"
-                                           FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
+                                           Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
+                                           FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
+                                           FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
                                            VerticalContentAlignment="Center"
-                                           HorizontalContentAlignment="Center" />
+                                           HorizontalContentAlignment="Center"
+                                           Padding="10,0,7,0" />
                                     <ContentPresenter x:Name="Content"
                                                       Grid.Column="1"
                                                       ContentSource="Content"
@@ -81,9 +88,9 @@
                                                    Foreground="{TemplateBinding Foreground}"
                                                    Width="20"
                                                    Height="20" />
-                                    <ContentPresenter Grid.Column="1"
-                                                      Content="{Binding Path=(local:RepeatButtonHelper.WaitingContent),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
-                                                      VerticalAlignment="Center" />
+                                    <ContentControl Grid.Column="1"
+                                                    Content="{Binding Path=(local:RepeatButtonHelper.WaitingContent),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
+                                                    VerticalAlignment="Center" />
 
                                 </Grid>
                             </Grid>
@@ -168,11 +175,11 @@
                 <Setter Property="Background"
                         Value="Transparent" />
                 <Setter Property="BorderBrush"
-                        Value="#555555" />
+                        Value="#3E3E3E" />
                 <Setter Property="BorderThickness"
                         Value="1" />
                 <Setter Property="Foreground"
-                        Value="#888888" />
+                        Value="#3E3E3E" />
                 <Setter Property="local:RepeatButtonHelper.HoverBrush"
                         Value="#3E3E3E" />
                 <Setter Property="local:RepeatButtonHelper.ClickCoverBrush"
@@ -203,28 +210,27 @@
                                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                       Margin="{TemplateBinding Padding}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="{Binding Path=(local:IconHelper.Width),Converter={StaticResource GridLengthConverter} ,RelativeSource={RelativeSource AncestorType=RepeatButton}}" />
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <Label x:Name="LblIcon"
-                                           Padding="10,0,7,0"
                                            Content="{Binding Path=(local:RepeatButtonHelper.Icon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
-                                           Foreground="{TemplateBinding Foreground}"
-                                           FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
+                                           Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
+                                           FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
+                                           FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
                                            VerticalContentAlignment="Center"
-                                           HorizontalContentAlignment="Center"/>
+                                           HorizontalContentAlignment="Center"
+                                           Padding="10,0,7,0" />
                                     <ContentPresenter Grid.Column="1"
                                                       x:Name="Content"
                                                       ContentSource="Content"
                                                       VerticalAlignment="Center" />
-                                    <ContentControl Grid.Column="1"
-                                                    x:Name="ContentHover"
-                                                    Foreground="#FFFFFF"
-                                                    Content="{TemplateBinding Content}"
-                                                    FontSize="{TemplateBinding FontSize}"
-                                                    FontFamily="{TemplateBinding FontFamily}"
-                                                    VerticalAlignment="Center"
-                                                    Opacity="0" />
+                                    <ContentPresenter Grid.Column="1"
+                                                      x:Name="ContentHover"
+                                                      TextBlock.Foreground="#FFFFFF"
+                                                      Content="{TemplateBinding Content}"
+                                                      VerticalAlignment="Center"
+                                                      Opacity="0" />
                                 </Grid>
                                 <Grid x:Name="GrdWaiting"
                                       Visibility="Collapsed"
@@ -239,9 +245,9 @@
                                                    Foreground="{TemplateBinding Foreground}"
                                                    Width="20"
                                                    Height="20" />
-                                    <ContentPresenter Grid.Column="1"
-                                                      Content="{Binding Path=(local:RepeatButtonHelper.WaitingContent),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
-                                                      VerticalAlignment="Center" />
+                                    <ContentControl Grid.Column="1"
+                                                    Content="{Binding Path=(local:RepeatButtonHelper.WaitingContent),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
+                                                    VerticalAlignment="Center" />
 
                                 </Grid>
                             </Grid>
@@ -370,88 +376,54 @@
                                         Background="{TemplateBinding Background}"
                                         CornerRadius="{Binding Path=(local:RepeatButtonHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
                                         Visibility="Hidden" />
-                                <Grid x:Name="GrdContent"
-                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                <Grid VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                       Margin="{TemplateBinding Padding}">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-                                    <Label x:Name="LblIcon"
-                                           Padding="10,0,7,0"
-                                           Content="{Binding Path=(local:RepeatButtonHelper.Icon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
-                                           Foreground="{TemplateBinding Foreground}"
-                                           FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
-                                           VerticalContentAlignment="Center"
-                                           HorizontalContentAlignment="Center" />
-                                    <ContentPresenter Grid.Column="1"
-                                                      x:Name="Content"
-                                                      ContentSource="Content"
-                                                      VerticalAlignment="Center" />
-                                </Grid>
-                                <Grid x:Name="GrdContentHover"
-                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                      Opacity="0"
-                                      Margin="{TemplateBinding Padding}">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-                                    <Label x:Name="LblIconHover"
-                                           Content="{Binding Path=(local:RepeatButtonHelper.Icon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
-                                           Foreground="{TemplateBinding Foreground}"
-                                           FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
-                                           FontSize="{TemplateBinding FontSize}"
-                                           VerticalAlignment="Center" />
-                                    <ContentControl Grid.Column="1"
-                                                    x:Name="ContentHover"
-                                                    Foreground="{Binding Path=(local:RepeatButtonHelper.HoverBrush),RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
-                                                    Content="{TemplateBinding Content}"
-                                                    FontSize="{TemplateBinding FontSize}"
-                                                    FontFamily="{TemplateBinding FontFamily}"
-                                                    VerticalAlignment="Center" />
-                                </Grid>
-                                <Grid x:Name="GrdContentClick"
-                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                      Visibility="Hidden"
-                                      Margin="{TemplateBinding Padding}">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-                                    <Label x:Name="LblIconClick"
-                                           Content="{Binding Path=(local:RepeatButtonHelper.Icon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
-                                           Foreground="{TemplateBinding Foreground}"
-                                           FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
-                                           VerticalAlignment="Center" />
-                                    <ContentControl Grid.Column="1"
-                                                    x:Name="ContentClick"
-                                                    Foreground="{Binding Path=(local:RepeatButtonHelper.ClickCoverBrush),RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
-                                                    Content="{TemplateBinding Content}"
-                                                    FontSize="{TemplateBinding FontSize}"
-                                                    FontFamily="{TemplateBinding FontFamily}"
-                                                    VerticalAlignment="Center" />
-                                </Grid>
-                                <Grid x:Name="GrdWaiting"
-                                      Visibility="Collapsed"
-                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                      Margin="{TemplateBinding Padding}">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-                                    <local:Loading x:Name="Loading"
-                                                   Foreground="{TemplateBinding Foreground}"
-                                                   Width="20"
-                                                   Height="20" />
-                                    <ContentPresenter Grid.Column="1"
-                                                      Content="{Binding Path=(local:RepeatButtonHelper.WaitingContent),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
-                                                      VerticalAlignment="Center" />
+                                    <Grid x:Name="GrdContent">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="{Binding Path=(local:IconHelper.Width),Converter={StaticResource GridLengthConverter} ,RelativeSource={RelativeSource AncestorType=RepeatButton}}" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label x:Name="LblIcon"
+                                               Content="{Binding Path=(local:RepeatButtonHelper.Icon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
+                                               Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
+                                               FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
+                                               FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
+                                               VerticalContentAlignment="Center"
+                                               HorizontalContentAlignment="Center"
+                                               Padding="10,0,7,0" />
+                                        <Grid Grid.Column="1">
+                                            <ContentPresenter x:Name="Content"
+                                                              Content="{Binding Content,RelativeSource={RelativeSource AncestorType=RepeatButton},Mode=OneWay}"
+                                                              VerticalAlignment="Center"
+                                                              TextBlock.Foreground="{TemplateBinding Foreground}" />
+                                            <ContentPresenter x:Name="ContentHover"
+                                                              Content="{Binding Content,RelativeSource={RelativeSource AncestorType=RepeatButton},Mode=OneWay}"
+                                                              VerticalAlignment="Center"
+                                                              TextBlock.Foreground="{Binding Path=(local:RepeatButtonHelper.HoverBrush),RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
+                                                              Opacity="0" />
+                                            <ContentPresenter x:Name="ContentClick"
+                                                              Content="{Binding Content,RelativeSource={RelativeSource AncestorType=RepeatButton},Mode=OneWay}"
+                                                              VerticalAlignment="Center"
+                                                              TextBlock.Foreground="{Binding Path=(local:RepeatButtonHelper.ClickCoverBrush),RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
+                                                              Visibility="Hidden" />
+                                        </Grid>
+                                    </Grid>
+                                    <Grid x:Name="GrdWaiting"
+                                          Visibility="Collapsed">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <local:Loading x:Name="Loading"
+                                                       Foreground="{TemplateBinding Foreground}"
+                                                       Width="20"
+                                                       Height="20" />
+                                        <ContentControl Grid.Column="1"
+                                                        Content="{Binding Path=(local:RepeatButtonHelper.WaitingContent),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
+                                                        VerticalAlignment="Center" />
 
+                                    </Grid>
                                 </Grid>
                             </Grid>
                             <ControlTemplate.Triggers>
@@ -464,7 +436,7 @@
                                                                  Storyboard.TargetProperty="Opacity"
                                                                  To="1"
                                                                  Duration="{StaticResource Button_ShadeDuration}" />
-                                                <DoubleAnimation Storyboard.TargetName="GrdContentHover"
+                                                <DoubleAnimation Storyboard.TargetName="ContentHover"
                                                                  Storyboard.TargetProperty="Opacity"
                                                                  To="1"
                                                                  Duration="{StaticResource Button_ShadeDuration}" />
@@ -477,7 +449,7 @@
                                                 <DoubleAnimation Storyboard.TargetName="BdrHover"
                                                                  Storyboard.TargetProperty="Opacity"
                                                                  Duration="{StaticResource Button_ShadeDuration}" />
-                                                <DoubleAnimation Storyboard.TargetName="GrdContentHover"
+                                                <DoubleAnimation Storyboard.TargetName="ContentHover"
                                                                  Storyboard.TargetProperty="Opacity"
                                                                  Duration="{StaticResource Button_ShadeDuration}" />
                                             </Storyboard>
@@ -487,7 +459,7 @@
                                 </Trigger>
                                 <Trigger Property="IsPressed"
                                          Value="True">
-                                    <Setter TargetName="GrdContentClick"
+                                    <Setter TargetName="ContentClick"
                                             Property="Visibility"
                                             Value="Visible" />
                                     <Setter TargetName="BdrClick"
@@ -510,12 +482,7 @@
                                     <Setter TargetName="LblIcon"
                                             Property="Visibility"
                                             Value="Collapsed" />
-                                    <Setter TargetName="LblIconHover"
-                                            Property="Visibility"
-                                            Value="Collapsed" />
-                                    <Setter TargetName="LblIconClick"
-                                            Property="Visibility"
-                                            Value="Collapsed" />
+
                                 </DataTrigger>
                                 <DataTrigger Binding="{Binding Path=(local:RepeatButtonHelper.IsWaiting), RelativeSource={RelativeSource Self}}"
                                              Value="True">
@@ -523,12 +490,6 @@
                                             Property="Visibility"
                                             Value="Visible" />
                                     <Setter TargetName="GrdContent"
-                                            Property="Visibility"
-                                            Value="Collapsed" />
-                                    <Setter TargetName="GrdContentHover"
-                                            Property="Visibility"
-                                            Value="Collapsed" />
-                                    <Setter TargetName="GrdContentClick"
                                             Property="Visibility"
                                             Value="Collapsed" />
                                     <Setter TargetName="Loading"
@@ -576,27 +537,28 @@
                                       Margin="{TemplateBinding Padding}">
                                     <Grid x:Name="GrdContent">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="{Binding Path=(local:IconHelper.Width),Converter={StaticResource GridLengthConverter} ,RelativeSource={RelativeSource AncestorType=RepeatButton}}" />
                                             <ColumnDefinition Width="Auto" />
                                         </Grid.ColumnDefinitions>
                                         <Label x:Name="LblIcon"
-                                               Padding="10,0,7,0"
                                                Content="{Binding Path=(local:RepeatButtonHelper.Icon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
-                                               Foreground="{TemplateBinding Foreground}"
-                                               FontFamily="/Panuon.UI.Silver;component/Resources/#fontawesome"
-                                               VerticalContentAlignment="Center"
-                                               HorizontalContentAlignment="Center" />
+                                               Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
+                                               FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
+                                               FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
+                                               VerticalAlignment="Center"
+                                               Padding="10,0,7,0" />
                                         <Grid Grid.Column="1">
                                             <ContentPresenter x:Name="Content"
-                                                              ContentSource="Content"
-                                                              VerticalAlignment="Center" />
+                                                              Content="{Binding Content,RelativeSource={RelativeSource AncestorType=RepeatButton},Mode=OneWay}"
+                                                              VerticalAlignment="Center"
+                                                              TextBlock.Foreground="{TemplateBinding Foreground}" />
                                             <ContentPresenter x:Name="ContentHover"
-                                                              Content="{TemplateBinding Content}"
+                                                              Content="{Binding Content,RelativeSource={RelativeSource AncestorType=RepeatButton},Mode=OneWay}"
                                                               VerticalAlignment="Center"
                                                               TextBlock.Foreground="{Binding Path=(local:RepeatButtonHelper.HoverBrush),RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
                                                               Opacity="0" />
                                             <ContentPresenter x:Name="ContentClick"
-                                                              Content="{TemplateBinding Content}"
+                                                              Content="{Binding Content,RelativeSource={RelativeSource AncestorType=RepeatButton},Mode=OneWay}"
                                                               VerticalAlignment="Center"
                                                               TextBlock.Foreground="{Binding Path=(local:RepeatButtonHelper.ClickCoverBrush),RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
                                                               Visibility="Hidden" />
@@ -615,9 +577,9 @@
                                                        Foreground="{TemplateBinding Foreground}"
                                                        Width="20"
                                                        Height="20" />
-                                        <ContentPresenter Grid.Column="1"
-                                                          Content="{Binding Path=(local:RepeatButtonHelper.WaitingContent),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
-                                                          VerticalAlignment="Center" />
+                                        <ContentControl Grid.Column="1"
+                                                        Content="{Binding Path=(local:RepeatButtonHelper.WaitingContent),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
+                                                        VerticalAlignment="Center" />
 
                                     </Grid>
                                 </Grid>

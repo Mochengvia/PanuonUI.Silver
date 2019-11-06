@@ -66,12 +66,11 @@
                                           Width="{Binding Path=(local:CheckBoxHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
                                           Height="{Binding Path=(local:CheckBoxHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
                                           Opacity="0.8">
-                                        <Rectangle x:Name="Rect"
-                                                   Fill="{TemplateBinding Background}"
-                                                   Stroke="{TemplateBinding BorderBrush}"
-                                                   StrokeThickness="{TemplateBinding BorderThickness, Converter={StaticResource ThicknessToDoubleConverter}}"
-                                                   RadiusX="{Binding Path=(local:CheckBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
-                                                   RadiusY="{Binding Path=(local:CheckBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}" />
+                                        <Border x:Name="Rect"
+                                                Background="{TemplateBinding Background}"
+                                                BorderBrush="{TemplateBinding BorderBrush}"
+                                                BorderThickness="{TemplateBinding BorderThickness, Converter={StaticResource ThicknessToDoubleConverter}}"
+                                                CornerRadius="{Binding Path=(local:CheckBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}" />
                                         <Path x:Name="Path"
                                               Width="{Binding Path=(local:CheckBoxHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
                                               Height="{Binding Path=(local:CheckBoxHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
@@ -87,17 +86,16 @@
                                                 </MultiBinding>
                                             </Path.Data>
                                         </Path>
-                                        <Rectangle x:Name="RectNull"
-                                                   Visibility="Collapsed"
-                                                   Fill="{Binding Path=(local:CheckBoxHelper.NullGlyphBrush),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
-                                                   RadiusX="{Binding Path=(local:CheckBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
-                                                   RadiusY="{Binding Path=(local:CheckBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
-                                                   RenderTransformOrigin="0.5,0.5">
-                                            <Rectangle.RenderTransform>
+                                        <Border x:Name="RectNull"
+                                                Visibility="Collapsed"
+                                                Background="{Binding Path=(local:CheckBoxHelper.NullGlyphBrush),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
+                                                CornerRadius="{Binding Path=(local:CheckBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
+                                                RenderTransformOrigin="0.5,0.5">
+                                            <Border.RenderTransform>
                                                 <ScaleTransform ScaleX="0.5"
                                                                 ScaleY="0.5" />
-                                            </Rectangle.RenderTransform>
-                                        </Rectangle>
+                                            </Border.RenderTransform>
+                                        </Border>
                                     </Grid>
                                     <ContentPresenter x:Name="Presenter"
                                                       Grid.Column="1"
@@ -138,7 +136,7 @@
                                 <Trigger Property="IsChecked"
                                          Value="True">
                                     <Setter TargetName="Rect"
-                                            Property="Fill"
+                                            Property="Background"
                                             Value="{Binding Path=(local:CheckBoxHelper.CheckedBackground),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}" />
                                     <Setter TargetName="Path"
                                             Property="Stroke"
@@ -357,59 +355,55 @@
                                     <Grid x:Name="Grid"
                                           Width="{Binding Path=(local:CheckBoxHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
                                           Height="{Binding Path=(local:CheckBoxHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}">
-                                        <Rectangle x:Name="RectChecked"
-                                                   Height="{Binding Path=(local:CheckBoxHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
-                                                   Width="{Binding Path=(local:CheckBoxHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
-                                                   Fill="{Binding Path=(local:CheckBoxHelper.CheckedBackground),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
-                                                   Stroke="{TemplateBinding BorderBrush}"
-                                                   StrokeThickness="{TemplateBinding BorderThickness, Converter={StaticResource ThicknessToDoubleConverter}}"
-                                                   RadiusX="{Binding Path=(local:CheckBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
-                                                   RadiusY="{Binding Path=(local:CheckBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}" />
-                                        <Rectangle x:Name="Rect"
-                                                   Height="{Binding Path=(local:CheckBoxHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
-                                                   Width="{Binding Path=(local:CheckBoxHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
-                                                   Fill="{TemplateBinding Background}"
-                                                   Stroke="{TemplateBinding BorderBrush}"
-                                                   StrokeThickness="{TemplateBinding BorderThickness, Converter={StaticResource ThicknessToDoubleConverter}}"
-                                                   RadiusX="{Binding Path=(local:CheckBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
-                                                   RadiusY="{Binding Path=(local:CheckBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
-                                                   RenderTransformOrigin="0.5,0.5">
-                                            <Rectangle.RenderTransform>
+                                        <Border x:Name="RectChecked"
+                                                Height="{Binding Path=(local:CheckBoxHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
+                                                Width="{Binding Path=(local:CheckBoxHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
+                                                Background="{Binding Path=(local:CheckBoxHelper.CheckedBackground),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
+                                                BorderBrush="{TemplateBinding BorderBrush}"
+                                                BorderThickness="{TemplateBinding BorderThickness}"
+                                                CornerRadius="{Binding Path=(local:CheckBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}" />
+                                        <Border x:Name="Rect"
+                                                Height="{Binding Path=(local:CheckBoxHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
+                                                Width="{Binding Path=(local:CheckBoxHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
+                                                Background="{TemplateBinding Background}"
+                                                BorderBrush="{TemplateBinding BorderBrush}"
+                                                BorderThickness="{TemplateBinding BorderThickness}"
+                                                CornerRadius="{Binding Path=(local:CheckBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
+                                                RenderTransformOrigin="0.5,0.5">
+                                            <Border.RenderTransform>
                                                 <ScaleTransform x:Name="scale"
                                                                 ScaleX="1"
                                                                 ScaleY="1"></ScaleTransform>
-                                            </Rectangle.RenderTransform>
-                                        </Rectangle>
+                                            </Border.RenderTransform>
+                                        </Border>
                                         <Rectangle HorizontalAlignment="Left"
                                                    Fill="White"
                                                    Width="3"
                                                    Margin="5,5,0,5" />
-                                        <Rectangle x:Name="RectToggle"
-                                                   Height="{Binding Path=(local:CheckBoxHelper.BoxHeight),Converter={StaticResource Minus2Converter},RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
-                                                   Width="{Binding Path=(local:CheckBoxHelper.BoxHeight),Converter={StaticResource Minus2Converter},RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
-                                                   StrokeThickness="{TemplateBinding BorderThickness, Converter={StaticResource ThicknessToDoubleConverter}}"
-                                                   HorizontalAlignment="Right"
-                                                   VerticalAlignment="Center"
-                                                   Fill="{Binding Path=(local:CheckBoxHelper.GlyphBrush),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
-                                                   RadiusX="{Binding Path=(local:CheckBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
-                                                   RadiusY="{Binding Path=(local:CheckBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}">
-                                            <Rectangle.Margin>
+                                        <Border x:Name="RectToggle"
+                                                Height="{Binding Path=(local:CheckBoxHelper.BoxHeight),Converter={StaticResource Minus2Converter},RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
+                                                Width="{Binding Path=(local:CheckBoxHelper.BoxHeight),Converter={StaticResource Minus2Converter},RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
+                                                Background="{Binding Path=(local:CheckBoxHelper.GlyphBrush),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
+                                                CornerRadius="{Binding Path=(local:CheckBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
+                                                HorizontalAlignment="Right"
+                                                VerticalAlignment="Center">
+                                            <Border.Margin>
                                                 <MultiBinding Converter="{StaticResource SwitchToggleMarginConverter}">
                                                     <Binding Path="Width"
                                                              ElementName="Rect" />
                                                     <Binding Path="Height"
                                                              ElementName="Rect" />
                                                 </MultiBinding>
-                                            </Rectangle.Margin>
-                                            <Rectangle.Effect>
+                                            </Border.Margin>
+                                            <Border.Effect>
                                                 <DropShadowEffect x:Name="effect"
                                                                   Color="DimGray"
                                                                   Opacity="0.4"
                                                                   BlurRadius="3"
                                                                   ShadowDepth="1"
                                                                   Direction="275" />
-                                            </Rectangle.Effect>
-                                        </Rectangle>
+                                            </Border.Effect>
+                                        </Border>
                                     </Grid>
                                     <ContentPresenter x:Name="Presenter"
                                                       Grid.Column="1"
@@ -608,7 +602,7 @@
             <Trigger  Property="IsEnabled"
                       Value="False">
                 <Setter Property="Opacity"
-                        Value="0.4"/>
+                        Value="0.4" />
             </Trigger>
         </Style.Triggers>
     </Style>

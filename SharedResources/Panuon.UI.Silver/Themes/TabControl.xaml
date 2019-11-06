@@ -183,7 +183,8 @@
                                     <ContentPresenter x:Name="PART_SelectedContentHost"
                                                       ContentSource="SelectedContent" />
                                 </Border>
-                                <Grid Grid.Row="1">
+                                <Grid Grid.Row="1"
+                                      Background="{Binding Path=(local:TabControlHelper.HeaderPanelBackground),RelativeSource={RelativeSource AncestorType=TabControl},Mode=OneWay}">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition x:Name="ColumnLeft"
                                                           Width="Auto" />
@@ -303,7 +304,7 @@
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <Grid>
+                                <Grid Background="{Binding Path=(local:TabControlHelper.HeaderPanelBackground),RelativeSource={RelativeSource AncestorType=TabControl},Mode=OneWay}">
                                     <Grid.RowDefinitions>
                                         <RowDefinition x:Name="RowLeft"
                                                        Height="Auto" />
@@ -437,7 +438,8 @@
                                     <ContentPresenter x:Name="PART_SelectedContentHost"
                                                       ContentSource="SelectedContent" />
                                 </Border>
-                                <Grid Grid.Column="1">
+                                <Grid Grid.Column="1"
+                                      Background="{Binding Path=(local:TabControlHelper.HeaderPanelBackground),RelativeSource={RelativeSource AncestorType=TabControl},Mode=OneWay}">
                                     <Grid.RowDefinitions>
                                         <RowDefinition x:Name="RowLeft"
                                                        Height="Auto" />

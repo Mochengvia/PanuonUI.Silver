@@ -1,4 +1,5 @@
-﻿using Caliburn.Micro;
+﻿using Panuon.UI.Silver.Core;
+using System.Collections.ObjectModel;
 using UIBrowser.Models;
 
 namespace UIBrowser.ViewModels
@@ -7,13 +8,13 @@ namespace UIBrowser.ViewModels
     {
         public MainWindowViewModel()
         {
-            MenuItems = new BindableCollection<TreeViewItemModel>()
+            MenuItems = new ObservableCollection<TreeViewItemModel>()
             {
                 new TreeViewItemModel(Properties.Resource.Introduction,"Introduction", "\uf05a"),
                 new TreeViewItemModel(Properties.Resource.Overview,"Overview", "\uf0eb"),
                 new TreeViewItemModel(Properties.Resource.NativeControls,"NativeControls", "\uf17a")
                 {
-                     MenuItems = new BindableCollection<TreeViewItemModel>()
+                     MenuItems = new ObservableCollection<TreeViewItemModel>()
                      {
                          new TreeViewItemModel(Properties.Resource.Button,"Button"),
                          new TreeViewItemModel(Properties.Resource.TextBox,"TextBox"),
@@ -35,7 +36,7 @@ namespace UIBrowser.ViewModels
                 },
                 new TreeViewItemModel(Properties.Resource.CustomControls,"CustomControls", "\uf040")
                 {
-                     MenuItems = new BindableCollection<TreeViewItemModel>()
+                     MenuItems = new ObservableCollection<TreeViewItemModel>()
                      {
                          new TreeViewItemModel(Properties.Resource.WindowX,"WindowX"),
                          new TreeViewItemModel(Properties.Resource.MessageBoxX,"MessageBoxX"),
@@ -61,7 +62,7 @@ namespace UIBrowser.ViewModels
                 },
                 new TreeViewItemModel(Properties.Resource.ExtraHelpers,"ExtraHelpers", "\uf06b")
                 {
-                     MenuItems = new BindableCollection<TreeViewItemModel>()
+                     MenuItems = new ObservableCollection<TreeViewItemModel>()
                      {
                          new TreeViewItemModel(Properties.Resource.AnimationHelper,"AnimationHelper"),
                          new TreeViewItemModel(Properties.Resource.LayoutHelper,"LayoutHelper"),
@@ -72,19 +73,14 @@ namespace UIBrowser.ViewModels
 
         public string SearchText
         {
-            get => _searchText;
-            set { _searchText = value; NotifyOfPropertyChange(); OnSearchTextChanged(); }
+            get { return _searchText; }
+            set { _searchText = value; NotifyPropertyChanged(); OnSearchTextChanged(); }
         }
 
 
         private string _searchText;
 
-        public IObservableCollection<TreeViewItemModel> MenuItems
-        {
-            get => _menuItems;
-            set { _menuItems = value; NotifyOfPropertyChange(); }
-        }
-        private IObservableCollection<TreeViewItemModel> _menuItems;
+        public ObservableCollection<TreeViewItemModel> MenuItems { get; } = new ObservableCollection<TreeViewItemModel>();
 
         #region Event
         private void OnSearchTextChanged()

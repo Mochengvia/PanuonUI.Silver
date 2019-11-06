@@ -175,8 +175,8 @@ namespace UIBrowser.PartialViews.Native
                         $"\nWidth=\"{CmbCustom.Width}\"" +
                         (watermark == null ? "" : $"\npu:ComboBoxHelper.Watermark=\"{watermark}\"") +
                         (icon == null ? "" : $"\npu:ComboBoxHelper.Icon=\"&#xf11c;\"") +
-                        $"\npu:ComboBoxHelper.HoverBrush=\"{ComboBoxHelper.GetHoverBackground(CmbCustom).ToColor().ToHexString()}\"" +
-                        $"\npu:ComboBoxHelper.SelectedBrush=\"{ComboBoxHelper.GetSelectedBackground(CmbCustom).ToColor().ToHexString()}\"" +
+                        $"\npu:ComboBoxHelper.HoverBackground=\"{ComboBoxHelper.GetHoverBackground(CmbCustom).ToColor().ToHexString()}\"" +
+                        $"\npu:ComboBoxHelper.SelectedBackground=\"{ComboBoxHelper.GetSelectedBackground(CmbCustom).ToColor().ToHexString()}\"" +
                         (cornerRadius == 0 ? "" : $"\npu:ComboBoxHelper.CornerRadius=\"{cornerRadius}\"") +
                         (searchBoxVisible ? "\npu:ComboBoxHelper.IsSearchTextBoxVisible=\"True\"" : "") +
                         (searchBoxVisible ? "\npu:ComboBoxHelper.SearchTextChanged=\"...\"" : "") +

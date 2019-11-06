@@ -13,29 +13,22 @@ QQ Group : 718778191
 Zhihu : @末城via
 
 # News 动态  
-#### 2019-10-25 v1.0.8.5
-修复了Calendar和DateTimePicker在选择月份时，若已选中了该月不存在的天数将引发崩溃的问题。  
-修复了Calendar和DateTimePicker无法处理SelectedDateTimeChanged事件的问题。  
-新增了DateTimePicker的Header和HeaderWidth属性。  
-修复了IconHelper.Width对TextBox不生效的问题。  
 
-TabControl增强：  
-新增ItemCornerRadius属性，用于设置选项卡子项的统一圆角大小。该属性也可直接对TabItem控件生效。  
-新增ItemBackground属性，用于设置选项卡子项的统一背景色。  
-新增HeaderPanelBackground属性，用于设置选项卡标题栏的背景色。   
+#### 2019-11-6 v1.0.8.8
+修复ComboBox的IsEditable属性设置为True时，Padding属性未对输入框生效的问题。  
+修复ComboBox的BindToEnum属性在某些特定条件下可能报空指针异常，以及在使用BindToEnum属性时SelectedValue属性初始值无效的问题。  
+新增了DataGridHelper中的SelectedItems属性。请注意，对该属性赋值是无效的。  
 
-Expander增强：  
-移除了HeaderHeight属性，新增HeaderPadding（默认值5,5,0,5）、HeaderBackground、ShadowColor（默认值为Null）属性。  
-调整默认Padding属性值为5,5,0,5。  
+#### 2019-11-1 v1.0.8.7
+[严重]修复DataGrid在选中时前景色变灰的问题。    
 
-GroupBox增强：  
-移除了Effect属性，新增Icon、HeaderPadding（默认值5,5,0,5）、HeaderBackground、ShadowColor（默认值为Null）属性。  
-调整默认Padding属性值为5,5,0,5。  
-
-#### 2019-10-21 v1.0.8.4
-修复了ScrollViewer.CanContentScroll在多个控件中不生效的问题。  
-移除了GroupBox默认内部间距为0,3,0,3的设置。  
-[严重]修复了ListBox样式没有应用到项目的问题。   
+#### 2019-10-31 v1.0.8.6
+修复WindowXCaption的Foreground属性未对标题和Header生效的问题。  
+修复IconHelper.Width对除了Standard外的Button样式无效的问题。  
+[重要]将CheckBox和RadioButton的CornerRadius属性由double类型调整为CornerRadius类型。  
+修复ComboBox的SelectedForeground可能会显示异常的问题。  
+移除了DataGridHelper多余的RowHeaderBrush属性。您可通过DataGrid的RowHeaderTemplate属性自由设置Header样式。同时，修复了DataGrid的Header没有显示的问题。  
+修复了TabControlHelper.HeaderPanelBackground在TabStripPlacement不为Top时不生效的问题。  
 
 # ReleaseNote 发布文档  
 
@@ -53,18 +46,17 @@ https://github.com/Panuon/Panuon.Documents/blob/master/Documents/PanuonUI.Silver
 
 http://www.huanghunxiao.com/  
   
-![](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/Panuon.UI.Silver/case_morin_3.png)  
+![](https://panuonui-silver-1252047526.cos.ap-chengdu.myqcloud.com/case_morin_4.png)  
 
-![](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/Panuon.UI.Silver/case_morin_2.png)  
+### Collector 
 
-
-
+![](https://panuonui-silver-1252047526.cos.ap-chengdu.myqcloud.com/case_collector_1.png)  
 
 # Examples 示例  
 
-![](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/Panuon.UI.Silver/window_1.png)
+![](https://panuonui-silver-1252047526.cos.ap-chengdu.myqcloud.com/window_1.png)
 
-![](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/Panuon.UI.Silver/window_2.png)
+![](https://panuonui-silver-1252047526.cos.ap-chengdu.myqcloud.com/window_2.png)
 
 # Donate  捐赠
 Panuon.UI.Silver is an open source library.Your support will motivate me to continue Panuon.UI.Silver development.    
@@ -73,7 +65,7 @@ Panuon.UI.Silver是一个完全开源的控件库。您的支持是项目得以�
 Zhifubao:  
 支付宝：
 
-![](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/Global/zhifubao.jpg)
+![](https://panuonui-silver-1252047526.cos.ap-chengdu.myqcloud.com/zhifubao.jpg)
 
 Paypal:  
 paypal.me/Zeoun  
@@ -83,9 +75,9 @@ paypal.me/Zeoun
 After downloading this repository, launch "Panuon.UI.Silver.Browser" project , and you will find it .  
 当您下载该仓库后，只需启动"Panuon.UI.Silver.Browser"项目，即可看到示例。
 
-![](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/Panuon.UI.Silver/step1.png)
+![](https://panuonui-silver-1252047526.cos.ap-chengdu.myqcloud.com/step1.png)
 
-![](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/Panuon.UI.Silver/temp.jpg)
+![](https://panuonui-silver-1252047526.cos.ap-chengdu.myqcloud.com/temp.jpg)
 ### Work with helper （需要使用Helper的控件）:
 Button / CheckBox / RadioButton / TextBox / PasswordBox / ComboBox / Expander / GroupBox / Expander
 
@@ -97,16 +89,16 @@ DataGrid / ScrollViewer (MiniScrollViewer)
 
 # Button 
 
-![](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/Panuon.UI.Silver/button.jpg)
+![](https://panuonui-silver-1252047526.cos.ap-chengdu.myqcloud.com/button.jpg)
 
 # TextBox / PasswordBox
 
-![](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/Panuon.UI.Silver/textbox.jpg)
+![](https://panuonui-silver-1252047526.cos.ap-chengdu.myqcloud.com/textbox.jpg)
 
 # CheckBox
 
-![](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/Panuon.UI.Silver/checkbox.jpg)
+![](https://panuonui-silver-1252047526.cos.ap-chengdu.myqcloud.com/checkbox.jpg)
 
 # RadioButton
 
-![](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/Panuon.UI.Silver/radiobutton.jpg)
+![](https://panuonui-silver-1252047526.cos.ap-chengdu.myqcloud.com/radiobutton.jpg)

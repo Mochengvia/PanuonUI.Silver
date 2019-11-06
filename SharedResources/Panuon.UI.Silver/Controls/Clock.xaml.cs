@@ -117,7 +117,7 @@ namespace Panuon.UI.Silver
             GrdTime.Children.Clear();
             int count = 0;
 
-            var isChinese = Cache.Language == "zh-CN";
+            var isChinese = System.Threading.Thread.CurrentThread.CurrentUICulture.IetfLanguageTag == "zh-CN";
             GrdTime.Children.Add(GetWeekTitleTextBlock(isChinese ? "时" : "Hour", count++));
             GrdTime.Children.Add(GetWeekTitleTextBlock(isChinese ? "分" : "Minute", count++));
             GrdTime.Children.Add(GetWeekTitleTextBlock(isChinese ? "秒" : "Second", count++));
@@ -138,7 +138,7 @@ namespace Panuon.UI.Silver
                     GroupName = "CLOCK_HOUR",
                 };
                 RadioButtonHelper.SetRadioButtonStyle(radioButton, RadioButtonStyle.Button);
-                RadioButtonHelper.SetCornerRadius(radioButton, 0);
+                RadioButtonHelper.SetCornerRadius(radioButton, new CornerRadius(0));
                 radioButton.Click += RdbHour_Click;
 
                 SetBinding("Foreground", radioButton, ForegroundProperty);
@@ -175,7 +175,7 @@ namespace Panuon.UI.Silver
                     GroupName = "CLOCK_MINUTE",
                 };
                 RadioButtonHelper.SetRadioButtonStyle(radioButton, RadioButtonStyle.Button);
-                RadioButtonHelper.SetCornerRadius(radioButton, 0);
+                RadioButtonHelper.SetCornerRadius(radioButton, new CornerRadius(0));
                 radioButton.Click += RdbMinute_Click;
 
                 SetBinding("Foreground", radioButton, ForegroundProperty);
@@ -211,7 +211,7 @@ namespace Panuon.UI.Silver
                     GroupName = "CLOCK_SECOND",
                 };
                 RadioButtonHelper.SetRadioButtonStyle(radioButton, RadioButtonStyle.Button);
-                RadioButtonHelper.SetCornerRadius(radioButton, 0);
+                RadioButtonHelper.SetCornerRadius(radioButton, new CornerRadius(0));
                 radioButton.Click += RdbSecond_Click;
 
                 SetBinding("Foreground", radioButton, ForegroundProperty);
@@ -250,7 +250,7 @@ namespace Panuon.UI.Silver
                     GroupName = "CLOCK_HOUR",
                 };
                 RadioButtonHelper.SetRadioButtonStyle(radioButton, RadioButtonStyle.Button);
-                RadioButtonHelper.SetCornerRadius(radioButton, 15);
+                RadioButtonHelper.SetCornerRadius(radioButton, new CornerRadius(15));
                 radioButton.Click += RdbHour_Click;
 
                 SetBinding("Foreground", radioButton, ForegroundProperty);

@@ -98,18 +98,18 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region CornerRadius
-        public static double GetCornerRadius(DependencyObject obj)
+        public static CornerRadius GetCornerRadius(DependencyObject obj)
         {
-            return (double)obj.GetValue(CornerRadiusProperty);
+            return (CornerRadius)obj.GetValue(CornerRadiusProperty);
         }
 
-        public static void SetCornerRadius(DependencyObject obj, double value)
+        public static void SetCornerRadius(DependencyObject obj, CornerRadius value)
         {
             obj.SetValue(CornerRadiusProperty, value);
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.RegisterAttached("CornerRadius", typeof(double), typeof(RadioButtonHelper));
+            DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(RadioButtonHelper));
         #endregion
 
         #region CheckedContent

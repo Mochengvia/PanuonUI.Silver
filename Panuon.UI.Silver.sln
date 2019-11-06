@@ -22,8 +22,6 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Panuon.UI.Silver.Core", "Sh
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Panuon.UI.Silver", "SharedResources\Panuon.UI.Silver\Panuon.UI.Silver.shproj", "{2F11D2D6-B0CC-49F6-944B-2AD8CD905644}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NetCore3.0", "NetCore3.0", "{0ECFA8D0-C1CC-4938-802D-C7FE01A91FF7}"
-EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		SharedResources\Panuon.UI.Silver\Panuon.UI.Silver.projitems*{2f11d2d6-b0cc-49f6-944b-2ad8cd905644}*SharedItemsImports = 13

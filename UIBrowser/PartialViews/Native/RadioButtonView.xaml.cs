@@ -154,8 +154,8 @@ namespace UIBrowser.PartialViews.Native
         private void UpdateTemplate()
         {
             var color = Helper.GetColorByOffset(_linearGradientBrush.GradientStops, SldTheme.Value / 7);
-            RadioButtonHelper.SetCornerRadius(RdbCustom1, SldCornerRadius.Value);
-            RadioButtonHelper.SetCornerRadius(RdbCustom2, SldCornerRadius.Value);
+            RadioButtonHelper.SetCornerRadius(RdbCustom1, new CornerRadius(SldCornerRadius.Value));
+            RadioButtonHelper.SetCornerRadius(RdbCustom2, new CornerRadius(SldCornerRadius.Value));
 
 
 

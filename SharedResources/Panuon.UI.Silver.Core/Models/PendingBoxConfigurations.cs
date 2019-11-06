@@ -8,7 +8,7 @@ namespace Panuon.UI.Silver.Core
     {
         public PendingBoxConfigurations()
         {
-            switch (Cache.Language)
+            switch (System.Threading.Thread.CurrentThread.CurrentUICulture.IetfLanguageTag)
             {
                 case "zh-CN":
                     CancelButton = "取 消";

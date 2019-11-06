@@ -64,7 +64,6 @@
                     </HierarchicalDataTemplate>
                 </TreeView.ItemTemplate>
             </TreeView>
-
         </Grid>
         <GridSplitter Width="2"
                       VerticalAlignment="Stretch" />
@@ -74,8 +73,8 @@
         <Button Grid.Column="1"
                 Height="30"
                 Width="200"
-                Click="Button_Click"
                 Visibility="Collapsed"
+                Click="Button_Click"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Bottom"/>
     </Grid>

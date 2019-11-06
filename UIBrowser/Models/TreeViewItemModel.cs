@@ -1,4 +1,5 @@
-﻿using Caliburn.Micro;
+﻿using Panuon.UI.Silver.Core;
+using System.Collections.ObjectModel;
 using System.Windows;
 
 namespace UIBrowser.Models
@@ -10,7 +11,7 @@ namespace UIBrowser.Models
             Header = header;
             Tag = tag;
             Icon = icon;
-            MenuItems = new BindableCollection<TreeViewItemModel>();
+            MenuItems = new ObservableCollection<TreeViewItemModel>();
         }
 
         public string Icon { get; set; }
@@ -22,23 +23,23 @@ namespace UIBrowser.Models
         public Visibility Visibility
         {
             get => _visibility;
-            set { _visibility = value; NotifyOfPropertyChange(); }
+            set { _visibility = value; NotifyPropertyChanged(); }
         }
         private Visibility _visibility = Visibility.Visible;
 
         public bool IsExpanded
         {
             get => _isExpanded;
-            set { _isExpanded = value; NotifyOfPropertyChange(); }
+            set { _isExpanded = value; NotifyPropertyChanged(); }
         }
         private bool _isExpanded = true;
 
-        public IObservableCollection<TreeViewItemModel> MenuItems
+        public ObservableCollection<TreeViewItemModel> MenuItems
         {
             get => _menuItems;
-            set { _menuItems = value; NotifyOfPropertyChange(); }
+            set { _menuItems = value; NotifyPropertyChanged(); }
         }
-        private IObservableCollection<TreeViewItemModel> _menuItems;
+        private ObservableCollection<TreeViewItemModel> _menuItems;
 
     }
 }
