@@ -8,7 +8,7 @@ namespace Panuon.UI.Silver.Core
     {
         public MessageBoxXConfigurations()
         {
-            switch (Cache.Language)
+            switch (System.Threading.Thread.CurrentThread.CurrentUICulture.IetfLanguageTag)
             {
                 case "zh-CN":
                     YesButton = "是 的";

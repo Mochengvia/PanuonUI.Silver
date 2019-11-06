@@ -117,7 +117,7 @@ namespace Panuon.UI.Silver
             GrdTime.Children.Clear();
             int count = 0;
 
-            var isChinese = Cache.Language == "zh-CN";
+            var isChinese = System.Threading.Thread.CurrentThread.CurrentUICulture.IetfLanguageTag == "zh-CN";
             GrdTime.Children.Add(GetWeekTitleTextBlock(isChinese ? "时" : "Hour", count++));
             GrdTime.Children.Add(GetWeekTitleTextBlock(isChinese ? "分" : "Minute", count++));
             GrdTime.Children.Add(GetWeekTitleTextBlock(isChinese ? "秒" : "Second", count++));

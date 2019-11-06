@@ -293,9 +293,9 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region BindToEnum
-        public static object GetBindToEnum(DependencyObject obj)
+        public static Enum GetBindToEnum(DependencyObject obj)
         {
-            return obj.GetValue(BindToEnumProperty);
+            return (Enum)obj.GetValue(BindToEnumProperty);
         }
 
         public static void SetBindToEnum(DependencyObject obj, Enum value)
@@ -304,12 +304,15 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty BindToEnumProperty =
-            DependencyProperty.RegisterAttached("BindToEnum", typeof(object), typeof(ComboBoxHelper), new PropertyMetadata(OnBindToEnumChanged));
+            DependencyProperty.RegisterAttached("BindToEnum", typeof(Enum), typeof(ComboBoxHelper), new PropertyMetadata(OnBindToEnumChanged));
 
         private static void OnBindToEnumChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var comboBox = d as ComboBox;
-            var obj = e.NewValue as object;
+            var obj = comboBox.SelectedValue ?? e.NewValue as object;
+            if (obj == null)
+                return;
+
             var type = obj.GetType();
             if (!type.IsEnum)
                 throw new Exception($"\"{type.Name}\" is not enum type.");

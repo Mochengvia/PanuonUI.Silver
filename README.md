@@ -14,6 +14,11 @@ Zhihu : @末城via
 
 # News 动态  
 
+#### 2019-11-6 v1.0.8.8
+修复ComboBox的IsEditable属性设置为True时，Padding属性未对输入框生效的问题。  
+修复ComboBox的BindToEnum属性在某些特定条件下可能报空指针异常，以及在使用BindToEnum属性时SelectedValue属性初始值无效的问题。  
+新增了DataGridHelper中的SelectedItems属性。请注意，对该属性赋值是无效的。  
+
 #### 2019-11-1 v1.0.8.7
 [严重]修复DataGrid在选中时前景色变灰的问题。    
 

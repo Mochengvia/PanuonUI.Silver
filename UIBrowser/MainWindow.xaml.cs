@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Markup;
@@ -11,6 +12,14 @@ using UIBrowser.ViewModels;
 
 namespace UIBrowser
 {
+
+    public enum Language
+    {
+        Chinese = 0,
+        English = 1,
+        Japanese = 3,
+    }
+
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
@@ -68,7 +77,8 @@ namespace UIBrowser
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
+
     }
 }

@@ -50,6 +50,9 @@
       <DependentUpon>ScreenshotWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiComboBoxItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\TagPanel.xaml.cs">
+      <DependentUpon>TagPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Controls\WaterfallPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MessageBoxX.cs" />
@@ -61,9 +64,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Pagination.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PendingBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\StateIcon.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\TagPanel.xaml.cs">
-      <DependentUpon>TagPanel.xaml</DependentUpon>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Timeline.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\WaterfallViewer.xaml.cs">
       <DependentUpon>WaterfallViewer.xaml</DependentUpon>
@@ -120,8 +120,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Others\LayoutHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Others\MouseEventHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Others\ScreenshotHelper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Utils\Cache.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Utils\DelegateCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tools\TemporaryDirectory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tools\TemporaryFile.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\GridLengthUtil.cs" />
   </ItemGroup>
   <ItemGroup>

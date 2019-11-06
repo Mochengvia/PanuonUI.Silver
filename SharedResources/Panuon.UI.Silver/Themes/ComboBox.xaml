@@ -197,6 +197,7 @@
                             </ToggleButton>
                             <TextBox x:Name="PART_EditableTextBox"
                                      BorderThickness="0"
+                                     Padding="{TemplateBinding Padding}"
                                      VerticalAlignment="Center"
                                      Visibility="Hidden"
                                      Background="Transparent"
