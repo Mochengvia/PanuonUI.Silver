@@ -12,14 +12,6 @@ using UIBrowser.ViewModels;
 
 namespace UIBrowser
 {
-
-    public enum Language
-    {
-        Chinese = 0,
-        English = 1,
-        Japanese = 3,
-    }
-
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>

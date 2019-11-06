@@ -70,19 +70,10 @@
         <ContentControl x:Name="ContentControl"
                         Grid.Column="1"
                         Margin="20,0" />
-        <ComboBox Grid.Column="1"
-                  VerticalAlignment="Center"
-                  Height="30"
-                  Padding="0,0"
-                  IsEditable="True"
-                  Width="200"
-                  HorizontalAlignment="Left">
-            <ComboBoxItem Content="Header1"
-                          IsSelected="True"/>
-        </ComboBox>
         <Button Grid.Column="1"
                 Height="30"
                 Width="200"
+                Visibility="Collapsed"
                 Click="Button_Click"
                 Visibility="Visible"
                 HorizontalAlignment="Right"
