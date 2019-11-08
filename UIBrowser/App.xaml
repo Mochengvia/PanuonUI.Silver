@@ -2,10 +2,13 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:UIBrowser"
-             StartupUri="MainWindow.xaml">
+             StartupUri="/Views/MainView.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+                    <FontFamily x:Key="IconFont">pack://application:,,,/UIBrowser;component/Resources/Fonts/#iconfont</FontFamily>
+                </ResourceDictionary>
                 <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Control.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/UIBrowser;component/Resources/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>

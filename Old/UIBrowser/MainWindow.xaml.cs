@@ -72,5 +72,17 @@ namespace UIBrowser
 
         }
 
+        private void TagItem_Removed(object sender, RoutedEventArgs e)
+        {
+            var tagItem = sender as TagItem;
+            var tagModel = tagItem.DataContext as TagModel;
+
+            ViewModel.Tags.Remove(tagModel);
+        }
+
+        private void TagItem_Removing(object sender, Panuon.UI.Silver.Core.CancelableEventArgs e)
+        {
+            e.Cancel = true;
+        }
     }
 }

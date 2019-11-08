@@ -1,0 +1,379 @@
+﻿<UserControl x:Class="UIBrowser.Views.Partials.Native.ButtonView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:UIBrowser.Views.Partials.Native"
+             xmlns:base="clr-namespace:UIBrowser"
+             xmlns:vm="clr-namespace:UIBrowser.ViewModels.Partials.Native"
+             xmlns:pu="clr-namespace:Panuon.UI.Silver;assembly=Panuon.UI.Silver"
+             xmlns:localize="clr-namespace:UIBrowser.Properties"
+             xmlns:uc="clr-namespace:UIBrowser.UserControls"
+             xmlns:editor="http://icsharpcode.net/sharpdevelop/avalonedit"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <UserControl.DataContext>
+        <vm:ButtonViewModel Background="#4D4D4D"
+                            HoverBrush="#3E3E3E"
+                            Foreground="#FFFFFF"
+                            Content="Button"/>
+    </UserControl.DataContext>
+    <pu:Carousel Index="{Binding CarouselIndex,Mode=TwoWay}">
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                      Padding="5,0">
+            <StackPanel>
+                <Button Content="{x:Static localize:Resource.GoToPalette}"
+                        Cursor="Hand"
+                        HorizontalAlignment="Left"
+                        FontSize="20"
+                        pu:ButtonHelper.HoverBrush="{StaticResource CandyBlue}"
+                        pu:ButtonHelper.ButtonStyle="Link"
+                        FontFamily="{StaticResource FontAwesome}"
+                        Command="{Binding IncreaseCarouselIndexCommand}"
+                        CommandParameter="{Binding}" />
+                <GroupBox Header="Generic"
+                          Margin="0,20,0,0">
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0,5,0,10">
+                        <Button Height="30"
+                                Width="120"
+                                Content="Standard"
+                                Margin="0,0,10,0"
+                                base:HelpHelper.DataContext="{Binding}"/>
+                        <Button Height="30"
+                                Width="120"
+                                pu:ButtonHelper.ButtonStyle="Outline"
+                                Content="Outline"
+                                Margin="0,0,10,0"
+                                base:HelpHelper.DataContext="{Binding}" />
+                        <Button Height="30"
+                                Width="120"
+                                pu:ButtonHelper.ButtonStyle="Hollow"
+                                Content="Hollow"
+                                Margin="0,0,10,0"
+                                base:HelpHelper.DataContext="{Binding}" />
+                        <Button Height="30"
+                                Width="120"
+                                pu:ButtonHelper.ButtonStyle="Link"
+                                Content="Link"
+                                Margin="0,0,10,0"
+                                base:HelpHelper.DataContext="{Binding}"/>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="Custom"
+                          Margin="0,10,0,0">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="0,15,0,0">
+                            <Button Height="30"
+                                    Width="120"
+                                    Background="{StaticResource CandyOrange}"
+                                    pu:ButtonHelper.HoverBrush="{StaticResource LightCandyOrange}"
+                                    pu:ButtonHelper.CornerRadius="2"
+                                    Content="Standard"
+                                    Margin="0,0,10,0"
+                                    base:HelpHelper.DataContext="{Binding}" />
+                            <Button Height="30"
+                                    Width="120"
+                                    BorderBrush="{StaticResource CandyOrange}"
+                                    Foreground="{StaticResource CandyOrange}"
+                                    pu:ButtonHelper.HoverBrush="{StaticResource LightCandyOrange}"
+                                    pu:ButtonHelper.CornerRadius="2"
+                                    pu:ButtonHelper.ButtonStyle="Outline"
+                                    Content="Outline"
+                                    Margin="0,0,10,0"
+                                    base:HelpHelper.DataContext="{Binding}" />
+                            <Button Height="30"
+                                    Width="120"
+                                    BorderBrush="{StaticResource CandyOrange}"
+                                    Foreground="{StaticResource CandyOrange}"
+                                    pu:ButtonHelper.HoverBrush="{StaticResource LightCandyOrange}"
+                                    pu:ButtonHelper.CornerRadius="2"
+                                    pu:ButtonHelper.ButtonStyle="Hollow"
+                                    Content="Hollow"
+                                    Margin="0,0,10,0"
+                                    base:HelpHelper.DataContext="{Binding}" />
+                            <Button Height="30"
+                                    Width="120"
+                                    Foreground="{StaticResource CandyOrange}"
+                                    pu:ButtonHelper.HoverBrush="{StaticResource LightCandyOrange}"
+                                    pu:ButtonHelper.CornerRadius="2"
+                                    pu:ButtonHelper.ButtonStyle="Link"
+                                    Content="Link"
+                                    Margin="0,0,10,0"
+                                    base:HelpHelper.DataContext="{Binding}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="0,15,0,0">
+                            <Button Height="30"
+                                    Width="120"
+                                    Background="{StaticResource LightCandyPink}"
+                                    pu:ButtonHelper.HoverBrush="{StaticResource CandyPink}"
+                                    pu:ButtonHelper.CornerRadius="15"
+                                    Content="&#xf05e; Standard"
+                                    FontFamily="{StaticResource FontAwesome}"
+                                    Margin="0,0,10,0"
+                                    base:HelpHelper.DataContext="{Binding}" />
+                            <Button Height="30"
+                                    Width="120"
+                                    BorderBrush="{StaticResource LightCandyPink}"
+                                    Foreground="{StaticResource LightCandyPink}"
+                                    pu:ButtonHelper.HoverBrush="{StaticResource CandyPink}"
+                                    pu:ButtonHelper.CornerRadius="15"
+                                    pu:ButtonHelper.ButtonStyle="Outline"
+                                    Content="&#xf0f3; Outline"
+                                    FontFamily="{StaticResource FontAwesome}"
+                                    Margin="0,0,10,0"
+                                    base:HelpHelper.DataContext="{Binding}" />
+                            <Button Height="30"
+                                    Width="120"
+                                    BorderBrush="{StaticResource LightCandyPink}"
+                                    Foreground="{StaticResource LightCandyPink}"
+                                    pu:ButtonHelper.HoverBrush="{StaticResource CandyPink}"
+                                    pu:ButtonHelper.CornerRadius="15"
+                                    pu:ButtonHelper.ButtonStyle="Hollow"
+                                    Content="&#xf044; Hollow"
+                                    FontFamily="{StaticResource FontAwesome}"
+                                    Margin="0,0,10,0"
+                                    base:HelpHelper.DataContext="{Binding}"/>
+                            <Button Height="30"
+                                    Width="120"
+                                    Foreground="{StaticResource LightCandyPink}"
+                                    pu:ButtonHelper.HoverBrush="{StaticResource CandyPink}"
+                                    pu:ButtonHelper.CornerRadius="15"
+                                    pu:ButtonHelper.ButtonStyle="Link"
+                                    Content="&#xf108; Link"
+                                    FontFamily="{StaticResource FontAwesome}"
+                                    Margin="0,0,10,0"
+                                    base:HelpHelper.DataContext="{Binding}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="0,15,0,0">
+                            <Button Height="30"
+                                    Width="30"
+                                    Background="{StaticResource LightCandyGreen}"
+                                    pu:ButtonHelper.HoverBrush="{StaticResource CandyGreen}"
+                                    pu:ButtonHelper.CornerRadius="15"
+                                    Content="&#xf05e;"
+                                    FontFamily="{StaticResource FontAwesome}"
+                                    Margin="0,0,10,0"
+                                    base:HelpHelper.DataContext="{Binding}"/>
+                            <Button Height="30"
+                                    Width="30"
+                                    BorderBrush="{StaticResource LightCandyGreen}"
+                                    Foreground="{StaticResource LightCandyGreen}"
+                                    pu:ButtonHelper.HoverBrush="{StaticResource CandyGreen}"
+                                    pu:ButtonHelper.CornerRadius="15"
+                                    pu:ButtonHelper.ButtonStyle="Outline"
+                                    Content="&#xf0f3;"
+                                    FontFamily="{StaticResource FontAwesome}"
+                                    Margin="0,0,10,0"
+                                    base:HelpHelper.DataContext="{Binding}"/>
+                            <Button Height="30"
+                                    Width="30"
+                                    BorderBrush="{StaticResource LightCandyGreen}"
+                                    Foreground="{StaticResource LightCandyGreen}"
+                                    pu:ButtonHelper.HoverBrush="{StaticResource CandyGreen}"
+                                    pu:ButtonHelper.CornerRadius="15"
+                                    pu:ButtonHelper.ButtonStyle="Hollow"
+                                    Content="&#xf044;"
+                                    FontFamily="{StaticResource FontAwesome}"
+                                    Margin="0,0,10,0"
+                                    base:HelpHelper.DataContext="{Binding}" />
+                            <Button Height="30"
+                                    Width="30"
+                                    Foreground="{StaticResource LightCandyGreen}"
+                                    pu:ButtonHelper.HoverBrush="{StaticResource CandyGreen}"
+                                    pu:ButtonHelper.CornerRadius="15"
+                                    pu:ButtonHelper.ButtonStyle="Link"
+                                    Content="&#xf108;"
+                                    FontFamily="{StaticResource FontAwesome}"
+                                    Margin="0,0,10,0"
+                                    base:HelpHelper.DataContext="{Binding}" />
+                            <Button Height="30"
+                                    Width="30"
+                                    Background="{StaticResource LightCandyYellow}"
+                                    pu:ButtonHelper.HoverBrush="{StaticResource CandyYellow}"
+                                    pu:ButtonHelper.CornerRadius="2"
+                                    Content="&#xf05e;"
+                                    FontFamily="{StaticResource FontAwesome}"
+                                    Margin="0,0,10,0"
+                                    base:HelpHelper.DataContext="{Binding}" />
+                            <Button Height="30"
+                                    Width="30"
+                                    BorderBrush="{StaticResource LightCandyYellow}"
+                                    Foreground="{StaticResource LightCandyYellow}"
+                                    pu:ButtonHelper.HoverBrush="{StaticResource CandyYellow}"
+                                    pu:ButtonHelper.CornerRadius="2"
+                                    pu:ButtonHelper.ButtonStyle="Outline"
+                                    Content="&#xf0f3;"
+                                    FontFamily="{StaticResource FontAwesome}"
+                                    Margin="0,0,10,0"
+                                    base:HelpHelper.DataContext="{Binding}"/>
+                            <Button Height="30"
+                                    Width="30"
+                                    BorderBrush="{StaticResource LightCandyYellow}"
+                                    Foreground="{StaticResource LightCandyYellow}"
+                                    pu:ButtonHelper.HoverBrush="{StaticResource CandyYellow}"
+                                    pu:ButtonHelper.CornerRadius="2"
+                                    pu:ButtonHelper.ButtonStyle="Hollow"
+                                    Content="&#xf044;"
+                                    FontFamily="{StaticResource FontAwesome}"
+                                    Margin="0,0,10,0"
+                                    base:HelpHelper.DataContext="{Binding}" />
+                            <Button Height="30"
+                                    Width="30"
+                                    Foreground="{StaticResource LightCandyYellow}"
+                                    pu:ButtonHelper.HoverBrush="{StaticResource CandyYellow}"
+                                    pu:ButtonHelper.CornerRadius="2"
+                                    pu:ButtonHelper.ButtonStyle="Link"
+                                    Content="&#xf108;"
+                                    FontFamily="{StaticResource FontAwesome}"
+                                    Margin="0,0,10,0"
+                                    base:HelpHelper.DataContext="{Binding}" />
+
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="0,15,0,0">
+                            <Button Height="30"
+                                    Width="150"
+                                    Background="{StaticResource LightCandyBlue}"
+                                    pu:ButtonHelper.IsWaiting="True"
+                                    pu:ButtonHelper.HoverBrush="{StaticResource CandyBlue}"
+                                    Content="Standard"
+                                    Margin="0,0,10,0" />
+                            <Button Height="30"
+                                    Width="150"
+                                    BorderBrush="{StaticResource LightCandyBlue}"
+                                    Foreground="{StaticResource LightCandyBlue}"
+                                    pu:ButtonHelper.IsWaiting="True"
+                                    pu:ButtonHelper.HoverBrush="{StaticResource CandyBlue}"
+                                    pu:ButtonHelper.ButtonStyle="Outline"
+                                    Content="Outline"
+                                    Margin="0,0,10,0" />
+                            <Button Height="30"
+                                    Width="150"
+                                    BorderBrush="{StaticResource LightCandyBlue}"
+                                    Foreground="{StaticResource LightCandyBlue}"
+                                    pu:ButtonHelper.IsWaiting="True"
+                                    pu:ButtonHelper.HoverBrush="{StaticResource CandyBlue}"
+                                    pu:ButtonHelper.ButtonStyle="Hollow"
+                                    Content="Hollow"
+                                    Margin="0,0,10,0" />
+                            <Button Height="30"
+                                    Width="150"
+                                    Foreground="{StaticResource LightCandyBlue}"
+                                    pu:ButtonHelper.IsWaiting="True"
+                                    pu:ButtonHelper.HoverBrush="{StaticResource CandyBlue}"
+                                    pu:ButtonHelper.ButtonStyle="Link"
+                                    Content="Link"
+                                    Margin="0,0,10,0" />
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+                <TextBlock Foreground="Gray"
+                           FontSize="16"
+                           Margin="0,20,0,0">
+                    <Run>*</Run>
+                    <Run Text="{x:Static localize:Resource.HelpTips}"></Run>
+                </TextBlock>
+            </StackPanel>
+        </ScrollViewer>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Button HorizontalAlignment="Left"
+                    Cursor="Hand"
+                    pu:ButtonHelper.ButtonStyle="Link"
+                    FontSize="20"
+                    pu:ButtonHelper.HoverBrush="{StaticResource CandyBlue}"
+                    Command="{Binding DecreaseCarouselIndexCommand}"
+                    CommandParameter="{Binding}"
+                    FontFamily="{StaticResource FontAwesome}"
+                    Content="{x:Static localize:Resource.BackToExamples}"
+                    Margin="0,0,0,20" />
+            <TabControl Grid.Row="1"
+                        Style="{StaticResource PaletteTabControlStyle}">
+                <TabItem Header="{x:Static localize:Resource.Palette}">
+                    <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                                  Margin="5,10,5,0">
+                        <StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid>
+                                    <uc:DefaultThemeSelector Header="{x:Static localize:Resource.PresetTheme}"
+                                                             Style="{StaticResource DefaultThemeSelector}"
+                                                             PresetTheme="{Binding PresetTheme, Mode=OneWayToSource}"/>
+                                    <ComboBox Style="{StaticResource PaletteComboBoxStyle}"
+                                             pu:ComboBoxHelper.Header="{x:Static localize:Resource.BaseStyle}"
+                                              pu:ComboBoxHelper.BindToEnum="{x:Static pu:ButtonStyle.Standard}"
+                                             SelectedValue="{Binding ButtonStyle, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                                    <TextBox Style="{StaticResource PaletteTextBoxStyle}"
+                                             pu:TextBoxHelper.Header="{x:Static localize:Resource.Content}"
+                                             Text="{Binding Content,UpdateSourceTrigger=PropertyChanged}"/>
+                                    <pu:ColorPicker Style="{StaticResource BrushPicker}"
+                                                    Header="{x:Static localize:Resource.Background}"
+                                                    SelectedBrush="{Binding Background, Mode=TwoWay}" />
+                                    <pu:ColorPicker Style="{StaticResource BrushPicker}"
+                                                    Header="{x:Static localize:Resource.HoverBrush}"
+                                                    SelectedBrush="{Binding HoverBrush, Mode=TwoWay}" />
+                                    <pu:ColorPicker Style="{StaticResource BrushPicker}"
+                                                    Header="{x:Static localize:Resource.Foreground}"
+                                                    SelectedBrush="{Binding Foreground, Mode=TwoWay}" />
+                                    <pu:ColorPicker Style="{StaticResource BrushPicker}"
+                                                    Header="{x:Static localize:Resource.BorderBrush}"
+                                                    SelectedBrush="{Binding BorderBrush, Mode=TwoWay}" />
+                                    <Slider Style="{StaticResource PaletteSliderStyle}"
+                                            pu:SliderHelper.Header="{x:Static localize:Resource.Width}"
+                                            Minimum="35"
+                                            Maximum="200"
+                                            TickFrequency="1"
+                                            Value="{Binding Width, Mode=TwoWay}" />
+                                    <Slider Style="{StaticResource PaletteSliderStyle}"
+                                            pu:SliderHelper.Header="{x:Static localize:Resource.CornerRadius}"
+                                            Minimum="0"
+                                            Maximum="17.5"
+                                            Value="{Binding CornerRadius, Mode=TwoWay}" />
+                                    <CheckBox Style="{StaticResource PaletteCheckBoxStyle}"
+                                              pu:CheckBoxHelper.Header="{x:Static localize:Resource.SinkWhenClick}"
+                                              IsChecked="{Binding SinkWhenClick, Mode=TwoWay}" />
+                                    <CheckBox Style="{StaticResource PaletteCheckBoxStyle}"
+                                              pu:CheckBoxHelper.Header="{x:Static localize:Resource.IsWaiting}"
+                                              IsChecked="{Binding IsWaiting, Mode=TwoWay}" />
+                                </Grid>
+                                <Button Grid.Column="1"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        Height="35"
+                                        Content="{Binding Content}"
+                                        Width="{Binding Width}"
+                                        Background="{Binding Background}"
+                                        Foreground="{Binding Foreground}"
+                                        BorderBrush="{Binding BorderBrush}"
+                                        pu:ButtonHelper.HoverBrush="{Binding HoverBrush, Mode=TwoWay}"
+                                        pu:ButtonHelper.CornerRadius="{Binding CornerRadius, Mode=TwoWay}"
+                                        pu:ButtonHelper.ClickStyle="{Binding ClickStyle, Mode=TwoWay}"
+                                        pu:ButtonHelper.IsWaiting="{Binding IsWaiting, Mode=TwoWay}"
+                                        pu:ButtonHelper.ButtonStyle="{Binding ButtonStyle, Mode=TwoWay}"/>
+                            </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem Header="{x:Static localize:Resource.SourceCode}">
+                    <uc:CodeEditor Style="{StaticResource PaletteSourceCodeEditorStyle}"
+                             Code="{Binding SourceCode}" />
+                </TabItem>
+                <TabItem Header="{x:Static localize:Resource.Style}">
+                    <uc:CodeEditor Style="{StaticResource PaletteSourceCodeEditorStyle}"
+                             Code="{Binding StyleCode}" />
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </pu:Carousel>
+</UserControl>

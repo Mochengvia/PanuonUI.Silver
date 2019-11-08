@@ -62,6 +62,11 @@
                               Height="300"
                               Width="450"
                               CanUserAddRows="False">
+                        <DataGrid.RowHeaderTemplate>
+                            <DataTemplate>
+                                
+                            </DataTemplate>
+                        </DataGrid.RowHeaderTemplate>
                         <pu:DataGridHelper.AutoGenerateCheckBoxStyle>
                             <Style TargetType="CheckBox"
                                    BasedOn="{StaticResource {x:Type CheckBox}}">

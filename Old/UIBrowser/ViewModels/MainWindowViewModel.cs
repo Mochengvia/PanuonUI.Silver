@@ -69,6 +69,23 @@ namespace UIBrowser.ViewModels
                      }
                 }
             };
+
+            Tags.Add(new TagModel() { DisplayName = "Admin", Removable = false});
+            Tags.Add(new TagModel() { DisplayName = "Jack1" });
+            Tags.Add(new TagModel() { DisplayName = "Jack2" });
+            Tags.Add(new TagModel() { DisplayName = "Jack3" });
+            Tags.Add(new TagModel() { DisplayName = "Jack4" });
+            Tags.Add(new TagModel() { DisplayName = "Jack5" });
+            Tags.Add(new TagModel() { DisplayName = "Jack6" });
+            Tags.Add(new TagModel() { DisplayName = "Jack7" });
+            Tags.Add(new TagModel() { DisplayName = "Jack7" });
+            Tags.Add(new TagModel() { DisplayName = "Jack7" });
+            Tags.Add(new TagModel() { DisplayName = "Jack7" });
+            Tags.Add(new TagModel() { DisplayName = "Jack7" });
+            Tags.Add(new TagModel() { DisplayName = "Jack7" });
+            Tags.Add(new TagModel() { DisplayName = "Jack7" });
+            Tags.Add(new TagModel() { DisplayName = "Jack7" });
+            Tags.Add(new TagModel() { DisplayName = "Jack7" });
         }
 
         public string SearchText
@@ -79,6 +96,8 @@ namespace UIBrowser.ViewModels
 
 
         private string _searchText;
+
+        public ObservableCollection<TagModel> Tags { get; set; } = new ObservableCollection<TagModel>();
 
         public ObservableCollection<TreeViewItemModel> MenuItems { get; } = new ObservableCollection<TreeViewItemModel>();
 
@@ -115,4 +134,26 @@ namespace UIBrowser.ViewModels
         #endregion
 
     }
+
+    public class TagModel : PropertyChangedBase
+    {
+
+        public string DisplayName
+        {
+            get { return _displayName; }
+            set { _displayName = value; NotifyPropertyChanged(); }
+        }
+        private string _displayName;
+
+
+        public bool Removable
+        {
+            get { return _removable; }
+            set { _removable = value; NotifyPropertyChanged(); }
+        }
+        private bool _removable = true;
+
+
+    }
+
 }

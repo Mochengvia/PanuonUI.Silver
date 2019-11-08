@@ -599,6 +599,82 @@
                     </Setter.Value>
                 </Setter>
             </DataTrigger>
+            <DataTrigger Binding="{Binding Path=(local:CheckBoxHelper.CheckBoxStyle),RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                         Value="Selector">
+                <Setter Property="local:CheckBoxHelper.CheckedBackground"
+                        Value="#3E3E3E" />
+                <Setter Property="local:CheckBoxHelper.CheckedGlyphBrush"
+                        Value="#FFFFFF" />
+                <Setter Property="VerticalContentAlignment"
+                        Value="Stretch" />
+                <Setter Property="HorizontalContentAlignment"
+                        Value="Stretch" />
+                <Setter Property="Background"
+                        Value="Transparent" />
+                <Setter Property="BorderThickness"
+                        Value="2" />
+                <Setter Property="Padding"
+                        Value="0" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type CheckBox}">
+                            <Grid>
+                                <ContentPresenter x:Name="Content"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  Margin="{TemplateBinding Padding}"
+                                                  Content="{TemplateBinding Content}"
+                                                  TextBlock.Foreground="{TemplateBinding Foreground}" />
+                                <Border x:Name="BdrChecked"
+                                        BorderBrush="{Binding Path=(local:CheckBoxHelper.CheckedBackground),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
+                                        BorderThickness="{TemplateBinding BorderThickness}" 
+                                        Visibility="Collapsed"/>
+                                <Grid Height="{Binding Path=(local:CheckBoxHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
+                                      Width="{Binding Path=(local:CheckBoxHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
+                                      Background="{Binding Path=(local:CheckBoxHelper.CheckedBackground),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
+                                      VerticalAlignment="Bottom"
+                                      HorizontalAlignment="Right">
+                                    <Path x:Name="Path"
+                                          Width="{Binding Path=(local:CheckBoxHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
+                                          Height="{Binding Path=(local:CheckBoxHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
+                                          Stroke="{Binding Path=(local:CheckBoxHelper.GlyphBrush),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
+                                          StrokeThickness="1.5"
+                                          StrokeDashCap="Round">
+                                        <Path.Data>
+                                            <MultiBinding Converter="{StaticResource CheckBoxGlyphPathConverter}">
+                                                <Binding Path="ActualWidth"
+                                                         ElementName="Path" />
+                                                <Binding Path="ActualHeight"
+                                                         ElementName="Path" />
+                                            </MultiBinding>
+                                        </Path.Data>
+                                    </Path>
+                                </Grid>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
+                                                   Value="True" />
+                                        <Condition Binding="{Binding Path=(local:CheckBoxHelper.CheckedContent),Converter={StaticResource IsNotNullConverter}, RelativeSource={RelativeSource Self}}"
+                                                   Value="True" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter TargetName="Content"
+                                            Property="Content"
+                                            Value="{Binding Path=(local:CheckBoxHelper.CheckedContent), RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}" />
+                                </MultiDataTrigger>
+                                <Trigger Property="IsChecked"
+                                         Value="True">
+                                    <Setter TargetName="BdrChecked"
+                                            Property="Visibility"
+                                            Value="Visible" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
             <Trigger  Property="IsEnabled"
                       Value="False">
                 <Setter Property="Opacity"

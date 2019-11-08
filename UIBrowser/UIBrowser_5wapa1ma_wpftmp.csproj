@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{21574503-7B21-41D6-96B1-4EC0CDA7E15D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>UIBrowser</RootNamespace>
+    <AssemblyName>UIBrowser</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\Attributes\LocalizedDisplayNameAttribute.cs" />
+    <Compile Include="Components\Extension\LocalizationManager.cs" />
+    <Compile Include="Models\ControlUIBase.cs" />
+    <Compile Include="Models\MainViewPageItem.cs" />
+    <Compile Include="Models\TreeViewItemBase.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\Partials\ControlUIViewModel.cs" />
+    <Compile Include="ViewModels\Partials\Native\WindowXViewModel.cs" />
+    <Compile Include="Views\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Partials\IntroductionView.xaml.cs">
+      <DependentUpon>IntroductionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Partials\Native\ButtonView.xaml.cs">
+      <DependentUpon>ButtonView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Partials\Native\WindowXView.xaml.cs">
+      <DependentUpon>WindowXView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Partials\OverviewView.xaml.cs">
+      <DependentUpon>OverviewView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resource.zh-CN.resx" />
+    <EmbeddedResource Include="Properties\Resource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Net45\Panuon.UI.Silver\Panuon.UI.Silver.csproj">
+      <Project>{461fe59d-57b8-4599-8e7d-439e27a2bbb2}</Project>
+      <Name>Panuon.UI.Silver</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Components\Converters\" />
+    <Folder Include="UserControls\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Microsoft.CSharp.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" />
+    <ReferencePath Include="C:\Users\panyu\Documents\GitHub\PanuonUI.Silver\Net45\Panuon.UI.Silver\bin\Debug\Panuon.UI.Silver.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\PresentationCore.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\PresentationFramework.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Core.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.DataSetExtensions.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Net.Http.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xaml.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.Linq.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\WindowsBase.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="C:\Users\panyu\Documents\GitHub\PanuonUI.Silver\UIBrowser\obj\Debug\Views\MainView.g.cs" />
+    <Compile Include="C:\Users\panyu\Documents\GitHub\PanuonUI.Silver\UIBrowser\obj\Debug\Views\Partials\IntroductionView.g.cs" />
+    <Compile Include="C:\Users\panyu\Documents\GitHub\PanuonUI.Silver\UIBrowser\obj\Debug\Views\Partials\Native\ButtonView.g.cs" />
+    <Compile Include="C:\Users\panyu\Documents\GitHub\PanuonUI.Silver\UIBrowser\obj\Debug\Views\Partials\Native\WindowXView.g.cs" />
+    <Compile Include="C:\Users\panyu\Documents\GitHub\PanuonUI.Silver\UIBrowser\obj\Debug\Views\Partials\OverviewView.g.cs" />
+    <Compile Include="C:\Users\panyu\Documents\GitHub\PanuonUI.Silver\UIBrowser\obj\Debug\App.g.cs" />
+    <Compile Include="C:\Users\panyu\Documents\GitHub\PanuonUI.Silver\UIBrowser\obj\Debug\GeneratedInternalTypeHelper.g.cs" />
+  </ItemGroup>
+</Project>

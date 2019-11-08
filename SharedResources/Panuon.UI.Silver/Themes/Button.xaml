@@ -548,16 +548,16 @@
                                                VerticalAlignment="Center"
                                                Padding="10,0,7,0" />
                                         <Grid Grid.Column="1">
-                                            <ContentPresenter x:Name="Content"
+                                            <ContentControl x:Name="Content"
                                                               Content="{Binding Content,RelativeSource={RelativeSource AncestorType=Button},Mode=OneWay}"
                                                               VerticalAlignment="Center"
                                                               TextBlock.Foreground="{TemplateBinding Foreground}" />
-                                            <ContentPresenter x:Name="ContentHover"
+                                            <ContentControl x:Name="ContentHover"
                                                               Content="{Binding Content,RelativeSource={RelativeSource AncestorType=Button},Mode=OneWay}"
                                                               VerticalAlignment="Center"
                                                               TextBlock.Foreground="{Binding Path=(local:ButtonHelper.HoverBrush),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
                                                               Opacity="0" />
-                                            <ContentPresenter x:Name="ContentClick"
+                                            <ContentControl x:Name="ContentClick"
                                                               Content="{Binding Content,RelativeSource={RelativeSource AncestorType=Button},Mode=OneWay}"
                                                               VerticalAlignment="Center"
                                                               TextBlock.Foreground="{Binding Path=(local:ButtonHelper.ClickCoverBrush),RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"

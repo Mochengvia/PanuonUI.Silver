@@ -49,10 +49,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Internal\ScreenshotWindow.xaml.cs">
       <DependentUpon>ScreenshotWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\MatchTextBlock.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiComboBoxItem.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\TagPanel.xaml.cs">
-      <DependentUpon>TagPanel.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\TagItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AnimateWrapPanel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\TagPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\WaterfallPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MessageBoxX.cs" />
@@ -92,7 +93,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\TreeViewConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\WidthAndHeightConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Global\Enums.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Global\Extend.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Global\Extension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Global\Models\TagItemModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\BubbleHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Control\ButtonHelper.cs" />
@@ -174,10 +175,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Controls\NeonLabel.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Controls\TagPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

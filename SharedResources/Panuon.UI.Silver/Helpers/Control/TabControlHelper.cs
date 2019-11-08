@@ -327,7 +327,7 @@ namespace Panuon.UI.Silver
         }
 
         internal static readonly DependencyProperty RemoveCommandProperty =
-            DependencyProperty.RegisterAttached("RemoveCommand", typeof(ICommand), typeof(TabControlHelper), new PropertyMetadata(new RemoveCommand()));
+            DependencyProperty.RegisterAttached("RemoveCommand", typeof(ICommand), typeof(TabControlHelper), new PropertyMetadata(new TabItemRemoveCommand()));
 
 
         #endregion
@@ -414,7 +414,7 @@ namespace Panuon.UI.Silver
         }
     }
 
-    internal class RemoveCommand : ICommand
+    internal class TabItemRemoveCommand : ICommand
     {
         event EventHandler ICommand.CanExecuteChanged
         {

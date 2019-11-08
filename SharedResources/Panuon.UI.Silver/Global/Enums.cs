@@ -135,7 +135,8 @@
         Standard,
         Switch,
         Switch2,
-        Button
+        Button,
+        Selector,
     }
     #endregion
 
@@ -145,7 +146,8 @@
         Standard,
         Switch,
         Switch2,
-        Button
+        Button,
+        Selector,
     }
     #endregion
 

@@ -5,7 +5,7 @@ using System.Windows.Media.Imaging;
 
 namespace Panuon.UI.Silver
 {
-    public static class Extend
+    public static class Extension
     {
         #region String
         /// <summary>
@@ -71,6 +71,8 @@ namespace Panuon.UI.Silver
 
         public static Color ToColor(this SolidColorBrush brush)
         {
+            if (brush == null)
+                return Colors.Transparent;
             return brush.Color;
         }
 

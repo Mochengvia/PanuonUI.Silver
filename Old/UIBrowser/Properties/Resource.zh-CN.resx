@@ -1,0 +1,459 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BaseStyle" xml:space="preserve">
+    <value>基础样式</value>
+  </data>
+  <data name="Button" xml:space="preserve">
+    <value>Button 按钮</value>
+  </data>
+  <data name="Calendar" xml:space="preserve">
+    <value>Calendar 日历</value>
+  </data>
+  <data name="Carousel" xml:space="preserve">
+    <value>Carousel 轮播</value>
+  </data>
+  <data name="ChangeContentWhenChecked" xml:space="preserve">
+    <value>选中时变内容</value>
+  </data>
+  <data name="CheckBox" xml:space="preserve">
+    <value>CheckBox 复选框</value>
+  </data>
+  <data name="ChildOnly" xml:space="preserve">
+    <value>仅Child</value>
+  </data>
+  <data name="Clock" xml:space="preserve">
+    <value>Clock 时钟</value>
+  </data>
+  <data name="CloseCodeViewer" xml:space="preserve">
+    <value>关闭源码</value>
+  </data>
+  <data name="ComboBox" xml:space="preserve">
+    <value>ComboBox 下拉单选框</value>
+  </data>
+  <data name="CopyCode" xml:space="preserve">
+    <value>复制源码</value>
+  </data>
+  <data name="CornerRadius" xml:space="preserve">
+    <value>圆角</value>
+  </data>
+  <data name="Countdown" xml:space="preserve">
+    <value>Countdown 倒计时</value>
+  </data>
+  <data name="CustomControls" xml:space="preserve">
+    <value>自定义控件</value>
+  </data>
+  <data name="DateTimePicker" xml:space="preserve">
+    <value>DateTimePicker 日期时间选择器</value>
+  </data>
+  <data name="DropDown" xml:space="preserve">
+    <value>DropDown 下拉菜单</value>
+  </data>
+  <data name="ExpandBehaviour" xml:space="preserve">
+    <value>展开行为</value>
+  </data>
+  <data name="Expander" xml:space="preserve">
+    <value>Expander 折叠面板</value>
+  </data>
+  <data name="ExpandMode" xml:space="preserve">
+    <value>展开模式</value>
+  </data>
+  <data name="GroupBox" xml:space="preserve">
+    <value>GroupBox 组</value>
+  </data>
+  <data name="ImageCuter" xml:space="preserve">
+    <value>ImageCuter 图片裁剪器</value>
+  </data>
+  <data name="Indeterminate" xml:space="preserve">
+    <value>不确定进度</value>
+  </data>
+  <data name="Introduction" xml:space="preserve">
+    <value>Introduction 概述</value>
+  </data>
+  <data name="IsWaiting" xml:space="preserve">
+    <value>等待模式</value>
+  </data>
+  <data name="ItemHeight" xml:space="preserve">
+    <value>子项高度</value>
+  </data>
+  <data name="ListBox" xml:space="preserve">
+    <value>ListBox 列表</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Loading 等待</value>
+  </data>
+  <data name="MultiComboBox" xml:space="preserve">
+    <value>MultiComboBox 下拉多选框</value>
+  </data>
+  <data name="NativeControls" xml:space="preserve">
+    <value>原生控件</value>
+  </data>
+  <data name="NeonLabel" xml:space="preserve">
+    <value>NeonLabel 霓虹标签</value>
+  </data>
+  <data name="OnlyOne" xml:space="preserve">
+    <value>仅一个</value>
+  </data>
+  <data name="Overview" xml:space="preserve">
+    <value>Overview 总览</value>
+  </data>
+  <data name="Pagination" xml:space="preserve">
+    <value>Pagination 分页</value>
+  </data>
+  <data name="Palette" xml:space="preserve">
+    <value>Palette 调色板</value>
+  </data>
+  <data name="PasswordBox" xml:space="preserve">
+    <value>PasswordBox 密码框</value>
+  </data>
+  <data name="Progress" xml:space="preserve">
+    <value>进度</value>
+  </data>
+  <data name="ProgressBar" xml:space="preserve">
+    <value>ProgressBar 进度条</value>
+  </data>
+  <data name="RadioButton" xml:space="preserve">
+    <value>RadioButton 单选框</value>
+  </data>
+  <data name="SelectMode" xml:space="preserve">
+    <value>选择模式</value>
+  </data>
+  <data name="ShowIcon" xml:space="preserve">
+    <value>显示Icon</value>
+  </data>
+  <data name="ShowPercent" xml:space="preserve">
+    <value>显示百分比</value>
+  </data>
+  <data name="ShowSearchBox" xml:space="preserve">
+    <value>显示搜索</value>
+  </data>
+  <data name="ShowTickBar" xml:space="preserve">
+    <value>显示标尺</value>
+  </data>
+  <data name="ShowValue" xml:space="preserve">
+    <value>显示值</value>
+  </data>
+  <data name="ShowWatermark" xml:space="preserve">
+    <value>显示水印</value>
+  </data>
+  <data name="SingleClick" xml:space="preserve">
+    <value>单击</value>
+  </data>
+  <data name="SinkWhenClick" xml:space="preserve">
+    <value>点击时下沉</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>大小</value>
+  </data>
+  <data name="Slider" xml:space="preserve">
+    <value>Slider 滑块</value>
+  </data>
+  <data name="TabControl" xml:space="preserve">
+    <value>TabControl 选项卡</value>
+  </data>
+  <data name="TextBox" xml:space="preserve">
+    <value>TextBox 输入框</value>
+  </data>
+  <data name="ThemeBrush" xml:space="preserve">
+    <value>主题颜色</value>
+  </data>
+  <data name="ThumbSize" xml:space="preserve">
+    <value>滑块大小</value>
+  </data>
+  <data name="Timeline" xml:space="preserve">
+    <value>Timeline 时间轴</value>
+  </data>
+  <data name="TrackThickness" xml:space="preserve">
+    <value>轨道粗细</value>
+  </data>
+  <data name="TreeView" xml:space="preserve">
+    <value>TreeView 树视图</value>
+  </data>
+  <data name="UsingAnimation" xml:space="preserve">
+    <value>使用动画</value>
+  </data>
+  <data name="ViewCode" xml:space="preserve">
+    <value>查看源码</value>
+  </data>
+  <data name="Width" xml:space="preserve">
+    <value>宽度</value>
+  </data>
+  <data name="CalendarMode" xml:space="preserve">
+    <value>日历模式</value>
+  </data>
+  <data name="IsSundayFirst" xml:space="preserve">
+    <value>周日置首</value>
+  </data>
+  <data name="LimitMaxDateTime" xml:space="preserve">
+    <value>限制最大日期</value>
+  </data>
+  <data name="LimitMinDateTime" xml:space="preserve">
+    <value>限制最小日期</value>
+  </data>
+  <data name="IsRunning" xml:space="preserve">
+    <value>正在运行</value>
+  </data>
+  <data name="Animation" xml:space="preserve">
+    <value>动画</value>
+  </data>
+  <data name="AnimationHelper" xml:space="preserve">
+    <value>AnimationHelper 动画辅助</value>
+  </data>
+  <data name="BeginTime" xml:space="preserve">
+    <value>开始时间</value>
+  </data>
+  <data name="Duration" xml:space="preserve">
+    <value>持续时间</value>
+  </data>
+  <data name="ExtraHelpers" xml:space="preserve">
+    <value>辅助类</value>
+  </data>
+  <data name="FadeIn" xml:space="preserve">
+    <value>淡入</value>
+  </data>
+  <data name="FadeOut" xml:space="preserve">
+    <value>淡出</value>
+  </data>
+  <data name="LayoutHelper" xml:space="preserve">
+    <value>LayoutHelper 布局辅助</value>
+  </data>
+  <data name="MarginTo" xml:space="preserve">
+    <value>移动到指定位置</value>
+  </data>
+  <data name="SlideFromBottom" xml:space="preserve">
+    <value>从底部滑入</value>
+  </data>
+  <data name="SlideFromLeft" xml:space="preserve">
+    <value>从左侧滑入</value>
+  </data>
+  <data name="SlideFromRight" xml:space="preserve">
+    <value>从右侧滑入</value>
+  </data>
+  <data name="SlideFromTop" xml:space="preserve">
+    <value>从顶部滑入</value>
+  </data>
+  <data name="CanRemove" xml:space="preserve">
+    <value>可以移除</value>
+  </data>
+  <data name="IsOpacityEnabled" xml:space="preserve">
+    <value>允许透明度</value>
+  </data>
+  <data name="ShowDefaultColorPanel" xml:space="preserve">
+    <value>显示默认色板</value>
+  </data>
+  <data name="ShowMeasuredValue" xml:space="preserve">
+    <value>显示数值板</value>
+  </data>
+  <data name="ColorPicker" xml:space="preserve">
+    <value>ColorPicker 颜色组合框</value>
+  </data>
+  <data name="ColorSelector" xml:space="preserve">
+    <value>ColorSelector 颜色选择器</value>
+  </data>
+  <data name="IsWaving" xml:space="preserve">
+    <value>波纹</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>文字</value>
+  </data>
+  <data name="Badge" xml:space="preserve">
+    <value>Badge 徽章</value>
+  </data>
+  <data name="WindowX" xml:space="preserve">
+    <value>WindowX 窗体X</value>
+  </data>
+  <data name="MessageBoxX" xml:space="preserve">
+    <value>MessageBoxX 消息框X</value>
+  </data>
+  <data name="Index" xml:space="preserve">
+    <value>索引</value>
+  </data>
+  <data name="Recyclable" xml:space="preserve">
+    <value>可循环的</value>
+  </data>
+  <data name="CenterColumnContent" xml:space="preserve">
+    <value>列内容居中</value>
+  </data>
+  <data name="DataGrid" xml:space="preserve">
+    <value>DataGrid 数据表格</value>
+  </data>
+  <data name="MinHeaderHeight" xml:space="preserve">
+    <value>最小标题高度</value>
+  </data>
+  <data name="MinRowHeight" xml:space="preserve">
+    <value>最小行高度</value>
+  </data>
+  <data name="Notice" xml:space="preserve">
+    <value>Notice 通知</value>
+  </data>
+  <data name="Groups" xml:space="preserve">
+    <value>行/列数</value>
+  </data>
+  <data name="Horizontal" xml:space="preserve">
+    <value>横向的</value>
+  </data>
+  <data name="HorizontalSpacing" xml:space="preserve">
+    <value>水平间距</value>
+  </data>
+  <data name="LazyLoading" xml:space="preserve">
+    <value>懒加载</value>
+  </data>
+  <data name="VerticalSpacing" xml:space="preserve">
+    <value>垂直间距</value>
+  </data>
+  <data name="WaterfallViewer" xml:space="preserve">
+    <value>WaterfallViewer 瀑布流</value>
+  </data>
+  <data name="Spacing" xml:space="preserve">
+    <value>间距</value>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>Menu 菜单</value>
+  </data>
+  <data name="AutoPlay" xml:space="preserve">
+    <value>自动播放</value>
+  </data>
+  <data name="ContextMenu" xml:space="preserve">
+    <value>ContextMenu 右键菜单</value>
+  </data>
+  <data name="ClearButton" xml:space="preserve">
+    <value>清空按钮</value>
+  </data>
+  <data name="ShowPasswordButton" xml:space="preserve">
+    <value>显示密码按钮</value>
+  </data>
+  <data name="PendingBox" xml:space="preserve">
+    <value>PendingBox 等待框</value>
+  </data>
+  <data name="ShowSplitLine" xml:space="preserve">
+    <value>显示分割线</value>
+  </data>
+  <data name="IsShadowVisible" xml:space="preserve">
+    <value>显示阴影</value>
+  </data>
+  <data name="ExtendControl" xml:space="preserve">
+    <value>附加控件</value>
+  </data>
+  <data name="HeaderHeight" xml:space="preserve">
+    <value>标题高度</value>
+  </data>
+  <data name="HeaderPadding" xml:space="preserve">
+    <value>标题间距</value>
+  </data>
+</root>

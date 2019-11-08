@@ -117,8 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Animation" xml:space="preserve">
+    <value>动画</value>
+  </data>
+  <data name="AnimationHelper" xml:space="preserve">
+    <value>AnimationHelper 动画辅助</value>
+  </data>
+  <data name="AutoPlay" xml:space="preserve">
+    <value>自动播放</value>
+  </data>
+  <data name="Badge" xml:space="preserve">
+    <value>Badge 徽章</value>
+  </data>
   <data name="BaseStyle" xml:space="preserve">
     <value>基础样式</value>
+  </data>
+  <data name="BeginTime" xml:space="preserve">
+    <value>开始时间</value>
   </data>
   <data name="Button" xml:space="preserve">
     <value>Button 按钮</value>
@@ -126,8 +141,17 @@
   <data name="Calendar" xml:space="preserve">
     <value>Calendar 日历</value>
   </data>
+  <data name="CalendarMode" xml:space="preserve">
+    <value>日历模式</value>
+  </data>
+  <data name="CanRemove" xml:space="preserve">
+    <value>可以移除</value>
+  </data>
   <data name="Carousel" xml:space="preserve">
     <value>Carousel 轮播</value>
+  </data>
+  <data name="CenterColumnContent" xml:space="preserve">
+    <value>列内容居中</value>
   </data>
   <data name="ChangeContentWhenChecked" xml:space="preserve">
     <value>选中时变内容</value>
@@ -138,14 +162,26 @@
   <data name="ChildOnly" xml:space="preserve">
     <value>仅Child</value>
   </data>
+  <data name="ClearButton" xml:space="preserve">
+    <value>清空按钮</value>
+  </data>
   <data name="Clock" xml:space="preserve">
     <value>Clock 时钟</value>
   </data>
   <data name="CloseCodeViewer" xml:space="preserve">
     <value>关闭源码</value>
   </data>
+  <data name="ColorPicker" xml:space="preserve">
+    <value>ColorPicker 颜色组合框</value>
+  </data>
+  <data name="ColorSelector" xml:space="preserve">
+    <value>ColorSelector 颜色选择器</value>
+  </data>
   <data name="ComboBox" xml:space="preserve">
     <value>ComboBox 下拉单选框</value>
+  </data>
+  <data name="ContextMenu" xml:space="preserve">
+    <value>ContextMenu 右键菜单</value>
   </data>
   <data name="CopyCode" xml:space="preserve">
     <value>复制源码</value>
@@ -159,11 +195,17 @@
   <data name="CustomControls" xml:space="preserve">
     <value>自定义控件</value>
   </data>
+  <data name="DataGrid" xml:space="preserve">
+    <value>DataGrid 数据表格</value>
+  </data>
   <data name="DateTimePicker" xml:space="preserve">
     <value>DateTimePicker 日期时间选择器</value>
   </data>
   <data name="DropDown" xml:space="preserve">
     <value>DropDown 下拉菜单</value>
+  </data>
+  <data name="Duration" xml:space="preserve">
+    <value>持续时间</value>
   </data>
   <data name="ExpandBehaviour" xml:space="preserve">
     <value>展开行为</value>
@@ -174,8 +216,35 @@
   <data name="ExpandMode" xml:space="preserve">
     <value>展开模式</value>
   </data>
+  <data name="ExtendControl" xml:space="preserve">
+    <value>附加控件</value>
+  </data>
+  <data name="ExtraHelpers" xml:space="preserve">
+    <value>辅助类</value>
+  </data>
+  <data name="FadeIn" xml:space="preserve">
+    <value>淡入</value>
+  </data>
+  <data name="FadeOut" xml:space="preserve">
+    <value>淡出</value>
+  </data>
   <data name="GroupBox" xml:space="preserve">
     <value>GroupBox 组</value>
+  </data>
+  <data name="Groups" xml:space="preserve">
+    <value>行/列数</value>
+  </data>
+  <data name="HeaderHeight" xml:space="preserve">
+    <value>标题高度</value>
+  </data>
+  <data name="HeaderPadding" xml:space="preserve">
+    <value>标题间距</value>
+  </data>
+  <data name="Horizontal" xml:space="preserve">
+    <value>横向的</value>
+  </data>
+  <data name="HorizontalSpacing" xml:space="preserve">
+    <value>水平间距</value>
   </data>
   <data name="ImageCuter" xml:space="preserve">
     <value>ImageCuter 图片裁剪器</value>
@@ -183,20 +252,65 @@
   <data name="Indeterminate" xml:space="preserve">
     <value>不确定进度</value>
   </data>
+  <data name="Index" xml:space="preserve">
+    <value>索引</value>
+  </data>
   <data name="Introduction" xml:space="preserve">
     <value>Introduction 概述</value>
+  </data>
+  <data name="IsOpacityEnabled" xml:space="preserve">
+    <value>允许透明度</value>
+  </data>
+  <data name="IsRunning" xml:space="preserve">
+    <value>正在运行</value>
+  </data>
+  <data name="IsShadowVisible" xml:space="preserve">
+    <value>显示阴影</value>
+  </data>
+  <data name="IsSundayFirst" xml:space="preserve">
+    <value>周日置首</value>
   </data>
   <data name="IsWaiting" xml:space="preserve">
     <value>等待模式</value>
   </data>
+  <data name="IsWaving" xml:space="preserve">
+    <value>波纹</value>
+  </data>
   <data name="ItemHeight" xml:space="preserve">
     <value>子项高度</value>
+  </data>
+  <data name="LayoutHelper" xml:space="preserve">
+    <value>LayoutHelper 布局辅助</value>
+  </data>
+  <data name="LazyLoading" xml:space="preserve">
+    <value>懒加载</value>
+  </data>
+  <data name="LimitMaxDateTime" xml:space="preserve">
+    <value>限制最大日期</value>
+  </data>
+  <data name="LimitMinDateTime" xml:space="preserve">
+    <value>限制最小日期</value>
   </data>
   <data name="ListBox" xml:space="preserve">
     <value>ListBox 列表</value>
   </data>
   <data name="Loading" xml:space="preserve">
     <value>Loading 等待</value>
+  </data>
+  <data name="MarginTo" xml:space="preserve">
+    <value>移动到指定位置</value>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>Menu 菜单</value>
+  </data>
+  <data name="MessageBoxX" xml:space="preserve">
+    <value>MessageBoxX 消息框X</value>
+  </data>
+  <data name="MinHeaderHeight" xml:space="preserve">
+    <value>最小标题高度</value>
+  </data>
+  <data name="MinRowHeight" xml:space="preserve">
+    <value>最小行高度</value>
   </data>
   <data name="MultiComboBox" xml:space="preserve">
     <value>MultiComboBox 下拉多选框</value>
@@ -206,6 +320,9 @@
   </data>
   <data name="NeonLabel" xml:space="preserve">
     <value>NeonLabel 霓虹标签</value>
+  </data>
+  <data name="Notice" xml:space="preserve">
+    <value>Notice 通知</value>
   </data>
   <data name="OnlyOne" xml:space="preserve">
     <value>仅一个</value>
@@ -222,6 +339,9 @@
   <data name="PasswordBox" xml:space="preserve">
     <value>PasswordBox 密码框</value>
   </data>
+  <data name="PendingBox" xml:space="preserve">
+    <value>PendingBox 等待框</value>
+  </data>
   <data name="Progress" xml:space="preserve">
     <value>进度</value>
   </data>
@@ -231,17 +351,32 @@
   <data name="RadioButton" xml:space="preserve">
     <value>RadioButton 单选框</value>
   </data>
+  <data name="Recyclable" xml:space="preserve">
+    <value>可循环的</value>
+  </data>
   <data name="SelectMode" xml:space="preserve">
     <value>选择模式</value>
   </data>
+  <data name="ShowDefaultColorPanel" xml:space="preserve">
+    <value>显示默认色板</value>
+  </data>
   <data name="ShowIcon" xml:space="preserve">
     <value>显示Icon</value>
+  </data>
+  <data name="ShowMeasuredValue" xml:space="preserve">
+    <value>显示数值板</value>
+  </data>
+  <data name="ShowPasswordButton" xml:space="preserve">
+    <value>显示密码按钮</value>
   </data>
   <data name="ShowPercent" xml:space="preserve">
     <value>显示百分比</value>
   </data>
   <data name="ShowSearchBox" xml:space="preserve">
     <value>显示搜索</value>
+  </data>
+  <data name="ShowSplitLine" xml:space="preserve">
+    <value>显示分割线</value>
   </data>
   <data name="ShowTickBar" xml:space="preserve">
     <value>显示标尺</value>
@@ -261,11 +396,29 @@
   <data name="Size" xml:space="preserve">
     <value>大小</value>
   </data>
+  <data name="SlideFromBottom" xml:space="preserve">
+    <value>从底部滑入</value>
+  </data>
+  <data name="SlideFromLeft" xml:space="preserve">
+    <value>从左侧滑入</value>
+  </data>
+  <data name="SlideFromRight" xml:space="preserve">
+    <value>从右侧滑入</value>
+  </data>
+  <data name="SlideFromTop" xml:space="preserve">
+    <value>从顶部滑入</value>
+  </data>
   <data name="Slider" xml:space="preserve">
     <value>Slider 滑块</value>
   </data>
+  <data name="Spacing" xml:space="preserve">
+    <value>间距</value>
+  </data>
   <data name="TabControl" xml:space="preserve">
     <value>TabControl 选项卡</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>文字</value>
   </data>
   <data name="TextBox" xml:space="preserve">
     <value>TextBox 输入框</value>
@@ -288,172 +441,94 @@
   <data name="UsingAnimation" xml:space="preserve">
     <value>使用动画</value>
   </data>
-  <data name="ViewCode" xml:space="preserve">
-    <value>查看源码</value>
-  </data>
-  <data name="Width" xml:space="preserve">
-    <value>宽度</value>
-  </data>
-  <data name="CalendarMode" xml:space="preserve">
-    <value>日历模式</value>
-  </data>
-  <data name="IsSundayFirst" xml:space="preserve">
-    <value>周日置首</value>
-  </data>
-  <data name="LimitMaxDateTime" xml:space="preserve">
-    <value>限制最大日期</value>
-  </data>
-  <data name="LimitMinDateTime" xml:space="preserve">
-    <value>限制最小日期</value>
-  </data>
-  <data name="IsRunning" xml:space="preserve">
-    <value>正在运行</value>
-  </data>
-  <data name="Animation" xml:space="preserve">
-    <value>动画</value>
-  </data>
-  <data name="AnimationHelper" xml:space="preserve">
-    <value>AnimationHelper 动画辅助</value>
-  </data>
-  <data name="BeginTime" xml:space="preserve">
-    <value>开始时间</value>
-  </data>
-  <data name="Duration" xml:space="preserve">
-    <value>持续时间</value>
-  </data>
-  <data name="ExtraHelpers" xml:space="preserve">
-    <value>辅助类</value>
-  </data>
-  <data name="FadeIn" xml:space="preserve">
-    <value>淡入</value>
-  </data>
-  <data name="FadeOut" xml:space="preserve">
-    <value>淡出</value>
-  </data>
-  <data name="LayoutHelper" xml:space="preserve">
-    <value>LayoutHelper 布局辅助</value>
-  </data>
-  <data name="MarginTo" xml:space="preserve">
-    <value>移动到指定位置</value>
-  </data>
-  <data name="SlideFromBottom" xml:space="preserve">
-    <value>从底部滑入</value>
-  </data>
-  <data name="SlideFromLeft" xml:space="preserve">
-    <value>从左侧滑入</value>
-  </data>
-  <data name="SlideFromRight" xml:space="preserve">
-    <value>从右侧滑入</value>
-  </data>
-  <data name="SlideFromTop" xml:space="preserve">
-    <value>从顶部滑入</value>
-  </data>
-  <data name="CanRemove" xml:space="preserve">
-    <value>可以移除</value>
-  </data>
-  <data name="IsOpacityEnabled" xml:space="preserve">
-    <value>允许透明度</value>
-  </data>
-  <data name="ShowDefaultColorPanel" xml:space="preserve">
-    <value>显示默认色板</value>
-  </data>
-  <data name="ShowMeasuredValue" xml:space="preserve">
-    <value>显示数值板</value>
-  </data>
-  <data name="ColorPicker" xml:space="preserve">
-    <value>ColorPicker 颜色组合框</value>
-  </data>
-  <data name="ColorSelector" xml:space="preserve">
-    <value>ColorSelector 颜色选择器</value>
-  </data>
-  <data name="IsWaving" xml:space="preserve">
-    <value>波纹</value>
-  </data>
-  <data name="Text" xml:space="preserve">
-    <value>文字</value>
-  </data>
-  <data name="Badge" xml:space="preserve">
-    <value>Badge 徽章</value>
-  </data>
-  <data name="WindowX" xml:space="preserve">
-    <value>WindowX 窗体X</value>
-  </data>
-  <data name="MessageBoxX" xml:space="preserve">
-    <value>MessageBoxX 消息框X</value>
-  </data>
-  <data name="Index" xml:space="preserve">
-    <value>索引</value>
-  </data>
-  <data name="Recyclable" xml:space="preserve">
-    <value>可循环的</value>
-  </data>
-  <data name="CenterColumnContent" xml:space="preserve">
-    <value>列内容居中</value>
-  </data>
-  <data name="DataGrid" xml:space="preserve">
-    <value>DataGrid 数据表格</value>
-  </data>
-  <data name="MinHeaderHeight" xml:space="preserve">
-    <value>最小标题高度</value>
-  </data>
-  <data name="MinRowHeight" xml:space="preserve">
-    <value>最小行高度</value>
-  </data>
-  <data name="Notice" xml:space="preserve">
-    <value>Notice 通知</value>
-  </data>
-  <data name="Groups" xml:space="preserve">
-    <value>行/列数</value>
-  </data>
-  <data name="Horizontal" xml:space="preserve">
-    <value>横向的</value>
-  </data>
-  <data name="HorizontalSpacing" xml:space="preserve">
-    <value>水平间距</value>
-  </data>
-  <data name="LazyLoading" xml:space="preserve">
-    <value>懒加载</value>
-  </data>
   <data name="VerticalSpacing" xml:space="preserve">
     <value>垂直间距</value>
+  </data>
+  <data name="ViewCode" xml:space="preserve">
+    <value>查看源码</value>
   </data>
   <data name="WaterfallViewer" xml:space="preserve">
     <value>WaterfallViewer 瀑布流</value>
   </data>
-  <data name="Spacing" xml:space="preserve">
-    <value>间距</value>
+  <data name="Width" xml:space="preserve">
+    <value>宽度</value>
   </data>
-  <data name="Menu" xml:space="preserve">
-    <value>Menu 菜单</value>
+  <data name="WindowX" xml:space="preserve">
+    <value>WindowX 窗体X</value>
   </data>
-  <data name="AutoPlay" xml:space="preserve">
-    <value>自动播放</value>
+  <data name="BussinessBlue" xml:space="preserve">
+    <value>商务蓝</value>
   </data>
-  <data name="ContextMenu" xml:space="preserve">
-    <value>ContextMenu 右键菜单</value>
+  <data name="CandyBlue" xml:space="preserve">
+    <value>天空</value>
   </data>
-  <data name="ClearButton" xml:space="preserve">
-    <value>清空按钮</value>
+  <data name="CandyPink" xml:space="preserve">
+    <value>荡漾</value>
   </data>
-  <data name="ShowPasswordButton" xml:space="preserve">
-    <value>显示密码按钮</value>
+  <data name="Dark" xml:space="preserve">
+    <value>深色</value>
   </data>
-  <data name="PendingBox" xml:space="preserve">
-    <value>PendingBox 等待框</value>
+  <data name="DeepGreen" xml:space="preserve">
+    <value>深绿</value>
   </data>
-  <data name="ShowSplitLine" xml:space="preserve">
-    <value>显示分割线</value>
+  <data name="Light" xml:space="preserve">
+    <value>浅色</value>
   </data>
-  <data name="IsShadowVisible" xml:space="preserve">
-    <value>显示阴影</value>
+  <data name="DefaultValue" xml:space="preserve">
+    <value>默认值</value>
   </data>
-  <data name="ExtendControl" xml:space="preserve">
-    <value>附加控件</value>
+  <data name="Description" xml:space="preserve">
+    <value>描述</value>
   </data>
-  <data name="HeaderHeight" xml:space="preserve">
-    <value>标题高度</value>
+  <data name="PropertyName" xml:space="preserve">
+    <value>属性名称</value>
   </data>
-  <data name="HeaderPadding" xml:space="preserve">
-    <value>标题间距</value>
+  <data name="PropertyType" xml:space="preserve">
+    <value>属性类型</value>
+  </data>
+  <data name="GoToPalette" xml:space="preserve">
+    <value>前往调色板 </value>
+  </data>
+  <data name="BackToExamples" xml:space="preserve">
+    <value> 返回示例页面</value>
+  </data>
+  <data name="Background" xml:space="preserve">
+    <value>背景色</value>
+  </data>
+  <data name="Foreground" xml:space="preserve">
+    <value>前景色</value>
+  </data>
+  <data name="HoverBackground" xml:space="preserve">
+    <value>悬浮背景色</value>
+  </data>
+  <data name="HoverBrush" xml:space="preserve">
+    <value>悬浮颜色</value>
+  </data>
+  <data name="HoverForeground" xml:space="preserve">
+    <value>悬浮前景色</value>
+  </data>
+  <data name="SelectedBackground" xml:space="preserve">
+    <value>选中背景色</value>
+  </data>
+  <data name="SelectedForeground" xml:space="preserve">
+    <value>选中前景色</value>
+  </data>
+  <data name="SourceCode" xml:space="preserve">
+    <value>源码</value>
+  </data>
+  <data name="PresetTheme" xml:space="preserve">
+    <value>预设样式</value>
+  </data>
+  <data name="Style" xml:space="preserve">
+    <value>样式</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>内容</value>
+  </data>
+  <data name="BorderBrush" xml:space="preserve">
+    <value>边框颜色</value>
+  </data>
+  <data name="HelpTips" xml:space="preserve">
+    <value>按住Ctrl键并点击上方的示例元素，将自动跳转到该样式的调色板页面。</value>
   </data>
 </root>

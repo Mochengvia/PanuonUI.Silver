@@ -70,12 +70,60 @@
         <ContentControl x:Name="ContentControl"
                         Grid.Column="1"
                         Margin="20,0" />
+
+        <pu:TagPanel Grid.Column="1"
+                     Width="500"
+                     Height="200"
+                     ItemCornerRadius="15"
+                     ItemsSource="{Binding Tags}"
+                     AlternationCount="4">
+            <pu:TagPanel.ItemContainerStyle>
+                <Style TargetType="{x:Type pu:TagItem}">
+                    <Setter Property="Content"
+                            Value="{Binding DisplayName}" />
+                    <Setter Property="Removable"
+                            Value="{Binding Removable}" />
+                    <EventSetter Event="Removed"
+                                 Handler="TagItem_Removed" />
+                    <Style.Triggers>
+                        <Trigger Property="ItemsControl.AlternationIndex"
+                                 Value="0">
+                            <Setter Property="pu:TagItem.Background"
+                                    Value="#AAFF4A82"></Setter>
+                            <Setter Property="pu:TagItem.HoverBrush"
+                                    Value="#FF4A82"></Setter>
+                        </Trigger>
+                        <Trigger Property="ItemsControl.AlternationIndex"
+                                 Value="1">
+                            <Setter Property="pu:TagItem.Background"
+                                    Value="#AAFF9A64"></Setter>
+                            <Setter Property="pu:TagItem.HoverBrush"
+                                    Value="#FF9A64"></Setter>
+                        </Trigger>
+                        <Trigger Property="ItemsControl.AlternationIndex"
+                                 Value="2">
+                            <Setter Property="pu:TagItem.Background"
+                                    Value="#AA2F88FF"></Setter>
+                            <Setter Property="pu:TagItem.HoverBrush"
+                                    Value="#2F88FF"></Setter>
+                        </Trigger>
+                        <Trigger Property="ItemsControl.AlternationIndex"
+                                 Value="3">
+                            <Setter Property="pu:TagItem.Background"
+                                    Value="#AA3DE7FF"></Setter>
+                            <Setter Property="pu:TagItem.HoverBrush"
+                                    Value="#3DE7FF"></Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </pu:TagPanel.ItemContainerStyle>
+        </pu:TagPanel>
         <Button Grid.Column="1"
                 Height="30"
                 Width="200"
                 Visibility="Collapsed"
                 Click="Button_Click"
                 HorizontalAlignment="Right"
-                VerticalAlignment="Bottom"/>
+                VerticalAlignment="Bottom" />
     </Grid>
 </pu:WindowX>

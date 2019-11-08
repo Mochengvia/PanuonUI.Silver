@@ -230,6 +230,9 @@ namespace Panuon.UI.Silver
             selector.RaiseSelectedBrushChanged(selector.SelectedBrush);
             var brush = e.NewValue as SolidColorBrush;
 
+            if (brush == null)
+                return;
+
             var color = brush.ToColor();
 
             selector._updateSelectedBrush = false;

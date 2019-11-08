@@ -1,0 +1,98 @@
+﻿<UserControl x:Class="UIBrowser.UserControls.DefaultThemeSelector"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:UIBrowser.UserControls"
+             xmlns:pu="clr-namespace:Panuon.UI.Silver;assembly=Panuon.UI.Silver"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             x:Name="this">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converter.xaml" />
+                <ResourceDictionary>
+                    <Style TargetType="{x:Type RadioButton}"
+                           BasedOn="{StaticResource {x:Type RadioButton}}">
+                        <Setter Property="pu:RadioButtonHelper.RadioButtonStyle"
+                                Value="Selector" />
+                        <Setter Property="Height"
+                                Value="25" />
+                        <Setter Property="Width"
+                                Value="25" />
+                        <Setter Property="Margin"
+                                Value="0,0,5,0" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=(pu:RadioButtonHelper.RadioButtonStyle),RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                                         Value="Selector">
+                                <Setter Property="pu:RadioButtonHelper.CheckedBackground"
+                                        Value="#74C178" />
+                                <Setter Property="pu:RadioButtonHelper.BoxHeight"
+                                        Value="10" />
+                                <Setter Property="pu:RadioButtonHelper.BoxWidth"
+                                        Value="10" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="{Binding HeaderWidth, Converter={StaticResource GridLengthConverter},ElementName=this,Mode=OneWay}" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <ContentControl x:Name="ContentHeader"
+                        VerticalAlignment="Center"
+                        Content="{Binding Header,ElementName=this,Mode=OneWay}" />
+        <WrapPanel Grid.Column="1"
+                    Orientation="Horizontal">
+            <RadioButton x:Name="RdbPresetTheme"
+                         IsChecked="True"
+                         Tag="Custom"
+                         Checked="RdbPresetTheme_Checked">
+                <Grid Background="{Binding Background}">
+                    <TextBlock Text="&#xf040;"
+                               FontFamily="{StaticResource FontAwesome}"
+                               Foreground="White"
+                               FontSize="10"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"/>
+                </Grid>
+            </RadioButton>
+            <RadioButton Tag="CandyOrange"
+                         Checked="RdbPresetTheme_Checked">
+                <Grid Background="{StaticResource CandyOrange}" />
+            </RadioButton>
+            <RadioButton Tag="CandyPink"
+                         Checked="RdbPresetTheme_Checked">
+                <Grid Background="{StaticResource CandyPink}" />
+            </RadioButton>
+            <RadioButton Tag="CandyYellow"
+                         Checked="RdbPresetTheme_Checked">
+                <Grid Background="{StaticResource CandyYellow}" />
+            </RadioButton>
+            <RadioButton Tag="CandyGreen"
+                         Checked="RdbPresetTheme_Checked"
+                         pu:RadioButtonHelper.CheckedBackground="{StaticResource CandyPink}">
+                <Grid Background="{StaticResource CandyGreen}" />
+            </RadioButton>
+            <RadioButton Tag="CandyBlue"
+                         Checked="RdbPresetTheme_Checked">
+                <Grid Background="{StaticResource CandyBlue}" />
+            </RadioButton>
+
+            <Button Width="25"
+                    Height="25"
+                    pu:ButtonHelper.ButtonStyle="Link"
+                    FontFamily="{StaticResource FontAwesome}"
+                    Content="&#xf0e2;"
+                    Command="{Binding ResetCommand}"
+                    CommandParameter="{Binding}"
+                    Click="BtnReset_Click"/>
+        </WrapPanel>
+    </Grid>
+</UserControl>

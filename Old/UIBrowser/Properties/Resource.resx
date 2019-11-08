@@ -1,0 +1,459 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BaseStyle" xml:space="preserve">
+    <value>BaseStyle</value>
+  </data>
+  <data name="Button" xml:space="preserve">
+    <value>Button</value>
+  </data>
+  <data name="Calendar" xml:space="preserve">
+    <value>Calendar</value>
+  </data>
+  <data name="Carousel" xml:space="preserve">
+    <value>Carousel</value>
+  </data>
+  <data name="ChangeContentWhenChecked" xml:space="preserve">
+    <value>Change If Checked</value>
+  </data>
+  <data name="CheckBox" xml:space="preserve">
+    <value>CheckBox</value>
+  </data>
+  <data name="ChildOnly" xml:space="preserve">
+    <value>ChildOnly</value>
+  </data>
+  <data name="Clock" xml:space="preserve">
+    <value>Clock</value>
+  </data>
+  <data name="CloseCodeViewer" xml:space="preserve">
+    <value>Close Code Viewer</value>
+  </data>
+  <data name="ComboBox" xml:space="preserve">
+    <value>ComboBox</value>
+  </data>
+  <data name="CopyCode" xml:space="preserve">
+    <value>Copy Code</value>
+  </data>
+  <data name="CornerRadius" xml:space="preserve">
+    <value>CornerRadius</value>
+  </data>
+  <data name="Countdown" xml:space="preserve">
+    <value>Countdown</value>
+  </data>
+  <data name="CustomControls" xml:space="preserve">
+    <value>Custom Controls</value>
+  </data>
+  <data name="DateTimePicker" xml:space="preserve">
+    <value>DateTimePicker</value>
+  </data>
+  <data name="DropDown" xml:space="preserve">
+    <value>DropDown</value>
+  </data>
+  <data name="ExpandBehaviour" xml:space="preserve">
+    <value>ExpandBehaviour</value>
+  </data>
+  <data name="Expander" xml:space="preserve">
+    <value>Expander</value>
+  </data>
+  <data name="ExpandMode" xml:space="preserve">
+    <value>ExpandMode</value>
+  </data>
+  <data name="GroupBox" xml:space="preserve">
+    <value>GroupBox</value>
+  </data>
+  <data name="ImageCuter" xml:space="preserve">
+    <value>ImageCuter</value>
+  </data>
+  <data name="Indeterminate" xml:space="preserve">
+    <value>Indeterminate</value>
+  </data>
+  <data name="Introduction" xml:space="preserve">
+    <value>Introduction</value>
+  </data>
+  <data name="IsWaiting" xml:space="preserve">
+    <value>IsWaiting</value>
+  </data>
+  <data name="ItemHeight" xml:space="preserve">
+    <value>Item Height</value>
+  </data>
+  <data name="ListBox" xml:space="preserve">
+    <value>ListBox</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Loading</value>
+  </data>
+  <data name="MultiComboBox" xml:space="preserve">
+    <value>MultiComboBox</value>
+  </data>
+  <data name="NativeControls" xml:space="preserve">
+    <value>Native Controls</value>
+  </data>
+  <data name="NeonLabel" xml:space="preserve">
+    <value>NeonLabel</value>
+  </data>
+  <data name="OnlyOne" xml:space="preserve">
+    <value>OnlyOne</value>
+  </data>
+  <data name="Overview" xml:space="preserve">
+    <value>Overview</value>
+  </data>
+  <data name="Pagination" xml:space="preserve">
+    <value>Pagination</value>
+  </data>
+  <data name="Palette" xml:space="preserve">
+    <value>Palette</value>
+  </data>
+  <data name="PasswordBox" xml:space="preserve">
+    <value>PasswordBox</value>
+  </data>
+  <data name="Progress" xml:space="preserve">
+    <value>Progress</value>
+  </data>
+  <data name="ProgressBar" xml:space="preserve">
+    <value>ProgressBar</value>
+  </data>
+  <data name="RadioButton" xml:space="preserve">
+    <value>RadioButton</value>
+  </data>
+  <data name="SelectMode" xml:space="preserve">
+    <value>SelectMode</value>
+  </data>
+  <data name="ShowIcon" xml:space="preserve">
+    <value>Show Icon</value>
+  </data>
+  <data name="ShowPercent" xml:space="preserve">
+    <value>Show Percent</value>
+  </data>
+  <data name="ShowSearchBox" xml:space="preserve">
+    <value>Show Search Box</value>
+  </data>
+  <data name="ShowTickBar" xml:space="preserve">
+    <value>ShowTickBar</value>
+  </data>
+  <data name="ShowValue" xml:space="preserve">
+    <value>ShowValue</value>
+  </data>
+  <data name="ShowWatermark" xml:space="preserve">
+    <value>Show Watermark</value>
+  </data>
+  <data name="SingleClick" xml:space="preserve">
+    <value>SingleClick</value>
+  </data>
+  <data name="SinkWhenClick" xml:space="preserve">
+    <value>SinkWhenClick</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="Slider" xml:space="preserve">
+    <value>Slider</value>
+  </data>
+  <data name="TabControl" xml:space="preserve">
+    <value>TabControl</value>
+  </data>
+  <data name="TextBox" xml:space="preserve">
+    <value>TextBox</value>
+  </data>
+  <data name="ThemeBrush" xml:space="preserve">
+    <value>ThemeBrush</value>
+  </data>
+  <data name="ThumbSize" xml:space="preserve">
+    <value>ThumbSize</value>
+  </data>
+  <data name="Timeline" xml:space="preserve">
+    <value>Timeline</value>
+  </data>
+  <data name="TrackThickness" xml:space="preserve">
+    <value>TrackThickness</value>
+  </data>
+  <data name="TreeView" xml:space="preserve">
+    <value>TreeView</value>
+  </data>
+  <data name="UsingAnimation" xml:space="preserve">
+    <value>Using Animation</value>
+  </data>
+  <data name="ViewCode" xml:space="preserve">
+    <value>View Code</value>
+  </data>
+  <data name="Width" xml:space="preserve">
+    <value>Width</value>
+  </data>
+  <data name="CalendarMode" xml:space="preserve">
+    <value>CalendarMode</value>
+  </data>
+  <data name="IsSundayFirst" xml:space="preserve">
+    <value>IsSundayFirst</value>
+  </data>
+  <data name="LimitMaxDateTime" xml:space="preserve">
+    <value>LimitMaxDateTime</value>
+  </data>
+  <data name="LimitMinDateTime" xml:space="preserve">
+    <value>LimitMinDateTime</value>
+  </data>
+  <data name="IsRunning" xml:space="preserve">
+    <value>IsRunning</value>
+  </data>
+  <data name="Animation" xml:space="preserve">
+    <value>Animation</value>
+  </data>
+  <data name="AnimationHelper" xml:space="preserve">
+    <value>AnimationHelper</value>
+  </data>
+  <data name="BeginTime" xml:space="preserve">
+    <value>BeginTime</value>
+  </data>
+  <data name="Duration" xml:space="preserve">
+    <value>Duration</value>
+  </data>
+  <data name="ExtraHelpers" xml:space="preserve">
+    <value>Extra Helpers</value>
+  </data>
+  <data name="FadeIn" xml:space="preserve">
+    <value>FadeIn</value>
+  </data>
+  <data name="FadeOut" xml:space="preserve">
+    <value>FadeOut</value>
+  </data>
+  <data name="LayoutHelper" xml:space="preserve">
+    <value>LayoutHelper</value>
+  </data>
+  <data name="MarginTo" xml:space="preserve">
+    <value>MarginTo</value>
+  </data>
+  <data name="SlideFromBottom" xml:space="preserve">
+    <value>SlideFromBottom</value>
+  </data>
+  <data name="SlideFromLeft" xml:space="preserve">
+    <value>SlideFromLeft</value>
+  </data>
+  <data name="SlideFromRight" xml:space="preserve">
+    <value>SlideFromRight</value>
+  </data>
+  <data name="SlideFromTop" xml:space="preserve">
+    <value>SlideFromTop</value>
+  </data>
+  <data name="CanRemove" xml:space="preserve">
+    <value>CanRemove</value>
+  </data>
+  <data name="IsOpacityEnabled" xml:space="preserve">
+    <value>IsOpacityEnabled</value>
+  </data>
+  <data name="ShowDefaultColorPanel" xml:space="preserve">
+    <value>ShowDefaultColorPanel</value>
+  </data>
+  <data name="ShowMeasuredValue" xml:space="preserve">
+    <value>ShowMeasuredValue</value>
+  </data>
+  <data name="ColorPicker" xml:space="preserve">
+    <value>ColorPicker</value>
+  </data>
+  <data name="ColorSelector" xml:space="preserve">
+    <value>ColorSelector</value>
+  </data>
+  <data name="IsWaving" xml:space="preserve">
+    <value>IsWaving</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="Badge" xml:space="preserve">
+    <value>Badge</value>
+  </data>
+  <data name="WindowX" xml:space="preserve">
+    <value>WindowX</value>
+  </data>
+  <data name="MessageBoxX" xml:space="preserve">
+    <value>MessageBoxX</value>
+  </data>
+  <data name="Index" xml:space="preserve">
+    <value>Index</value>
+  </data>
+  <data name="Recyclable" xml:space="preserve">
+    <value>Recyclable</value>
+  </data>
+  <data name="CenterColumnContent" xml:space="preserve">
+    <value>CenterColumnContent</value>
+  </data>
+  <data name="DataGrid" xml:space="preserve">
+    <value>DataGrid</value>
+  </data>
+  <data name="MinHeaderHeight" xml:space="preserve">
+    <value>MinHeaderHeight</value>
+  </data>
+  <data name="MinRowHeight" xml:space="preserve">
+    <value>MinRowHeight</value>
+  </data>
+  <data name="Notice" xml:space="preserve">
+    <value>Notice</value>
+  </data>
+  <data name="Groups" xml:space="preserve">
+    <value>Groups</value>
+  </data>
+  <data name="Horizontal" xml:space="preserve">
+    <value>Horizontal</value>
+  </data>
+  <data name="HorizontalSpacing" xml:space="preserve">
+    <value>HorizontalSpacing</value>
+  </data>
+  <data name="LazyLoading" xml:space="preserve">
+    <value>LazyLoading</value>
+  </data>
+  <data name="VerticalSpacing" xml:space="preserve">
+    <value>VerticalSpacing</value>
+  </data>
+  <data name="WaterfallViewer" xml:space="preserve">
+    <value>WaterfallViewer</value>
+  </data>
+  <data name="Spacing" xml:space="preserve">
+    <value>Spacing</value>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>Menu</value>
+  </data>
+  <data name="AutoPlay" xml:space="preserve">
+    <value>AutoPlay</value>
+  </data>
+  <data name="ContextMenu" xml:space="preserve">
+    <value>ContextMenu</value>
+  </data>
+  <data name="ClearButton" xml:space="preserve">
+    <value>ClearButton</value>
+  </data>
+  <data name="ShowPasswordButton" xml:space="preserve">
+    <value>ShowPasswordButton</value>
+  </data>
+  <data name="PendingBox" xml:space="preserve">
+    <value>PendingBox</value>
+  </data>
+  <data name="ShowSplitLine" xml:space="preserve">
+    <value>ShowSplitLine</value>
+  </data>
+  <data name="IsShadowVisible" xml:space="preserve">
+    <value>IsShadowVisible</value>
+  </data>
+  <data name="ExtendControl" xml:space="preserve">
+    <value>ExtendControl</value>
+  </data>
+  <data name="HeaderHeight" xml:space="preserve">
+    <value>HeaderHeight</value>
+  </data>
+  <data name="HeaderPadding" xml:space="preserve">
+    <value>HeaderPadding</value>
+  </data>
+</root>

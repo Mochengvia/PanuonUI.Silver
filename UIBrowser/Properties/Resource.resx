@@ -117,8 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Animation" xml:space="preserve">
+    <value>Animation</value>
+  </data>
+  <data name="AnimationHelper" xml:space="preserve">
+    <value>AnimationHelper</value>
+  </data>
+  <data name="AutoPlay" xml:space="preserve">
+    <value>AutoPlay</value>
+  </data>
+  <data name="Badge" xml:space="preserve">
+    <value>Badge</value>
+  </data>
   <data name="BaseStyle" xml:space="preserve">
     <value>BaseStyle</value>
+  </data>
+  <data name="BeginTime" xml:space="preserve">
+    <value>BeginTime</value>
   </data>
   <data name="Button" xml:space="preserve">
     <value>Button</value>
@@ -126,8 +141,17 @@
   <data name="Calendar" xml:space="preserve">
     <value>Calendar</value>
   </data>
+  <data name="CalendarMode" xml:space="preserve">
+    <value>CalendarMode</value>
+  </data>
+  <data name="CanRemove" xml:space="preserve">
+    <value>CanRemove</value>
+  </data>
   <data name="Carousel" xml:space="preserve">
     <value>Carousel</value>
+  </data>
+  <data name="CenterColumnContent" xml:space="preserve">
+    <value>CenterColumnContent</value>
   </data>
   <data name="ChangeContentWhenChecked" xml:space="preserve">
     <value>Change If Checked</value>
@@ -138,14 +162,26 @@
   <data name="ChildOnly" xml:space="preserve">
     <value>ChildOnly</value>
   </data>
+  <data name="ClearButton" xml:space="preserve">
+    <value>ClearButton</value>
+  </data>
   <data name="Clock" xml:space="preserve">
     <value>Clock</value>
   </data>
   <data name="CloseCodeViewer" xml:space="preserve">
     <value>Close Code Viewer</value>
   </data>
+  <data name="ColorPicker" xml:space="preserve">
+    <value>ColorPicker</value>
+  </data>
+  <data name="ColorSelector" xml:space="preserve">
+    <value>ColorSelector</value>
+  </data>
   <data name="ComboBox" xml:space="preserve">
     <value>ComboBox</value>
+  </data>
+  <data name="ContextMenu" xml:space="preserve">
+    <value>ContextMenu</value>
   </data>
   <data name="CopyCode" xml:space="preserve">
     <value>Copy Code</value>
@@ -159,11 +195,17 @@
   <data name="CustomControls" xml:space="preserve">
     <value>Custom Controls</value>
   </data>
+  <data name="DataGrid" xml:space="preserve">
+    <value>DataGrid</value>
+  </data>
   <data name="DateTimePicker" xml:space="preserve">
     <value>DateTimePicker</value>
   </data>
   <data name="DropDown" xml:space="preserve">
     <value>DropDown</value>
+  </data>
+  <data name="Duration" xml:space="preserve">
+    <value>Duration</value>
   </data>
   <data name="ExpandBehaviour" xml:space="preserve">
     <value>ExpandBehaviour</value>
@@ -174,8 +216,35 @@
   <data name="ExpandMode" xml:space="preserve">
     <value>ExpandMode</value>
   </data>
+  <data name="ExtendControl" xml:space="preserve">
+    <value>ExtendControl</value>
+  </data>
+  <data name="ExtraHelpers" xml:space="preserve">
+    <value>Extra Helpers</value>
+  </data>
+  <data name="FadeIn" xml:space="preserve">
+    <value>FadeIn</value>
+  </data>
+  <data name="FadeOut" xml:space="preserve">
+    <value>FadeOut</value>
+  </data>
   <data name="GroupBox" xml:space="preserve">
     <value>GroupBox</value>
+  </data>
+  <data name="Groups" xml:space="preserve">
+    <value>Groups</value>
+  </data>
+  <data name="HeaderHeight" xml:space="preserve">
+    <value>HeaderHeight</value>
+  </data>
+  <data name="HeaderPadding" xml:space="preserve">
+    <value>HeaderPadding</value>
+  </data>
+  <data name="Horizontal" xml:space="preserve">
+    <value>Horizontal</value>
+  </data>
+  <data name="HorizontalSpacing" xml:space="preserve">
+    <value>HorizontalSpacing</value>
   </data>
   <data name="ImageCuter" xml:space="preserve">
     <value>ImageCuter</value>
@@ -183,20 +252,65 @@
   <data name="Indeterminate" xml:space="preserve">
     <value>Indeterminate</value>
   </data>
+  <data name="Index" xml:space="preserve">
+    <value>Index</value>
+  </data>
   <data name="Introduction" xml:space="preserve">
     <value>Introduction</value>
+  </data>
+  <data name="IsOpacityEnabled" xml:space="preserve">
+    <value>IsOpacityEnabled</value>
+  </data>
+  <data name="IsRunning" xml:space="preserve">
+    <value>IsRunning</value>
+  </data>
+  <data name="IsShadowVisible" xml:space="preserve">
+    <value>IsShadowVisible</value>
+  </data>
+  <data name="IsSundayFirst" xml:space="preserve">
+    <value>IsSundayFirst</value>
   </data>
   <data name="IsWaiting" xml:space="preserve">
     <value>IsWaiting</value>
   </data>
+  <data name="IsWaving" xml:space="preserve">
+    <value>IsWaving</value>
+  </data>
   <data name="ItemHeight" xml:space="preserve">
     <value>Item Height</value>
+  </data>
+  <data name="LayoutHelper" xml:space="preserve">
+    <value>LayoutHelper</value>
+  </data>
+  <data name="LazyLoading" xml:space="preserve">
+    <value>LazyLoading</value>
+  </data>
+  <data name="LimitMaxDateTime" xml:space="preserve">
+    <value>LimitMaxDateTime</value>
+  </data>
+  <data name="LimitMinDateTime" xml:space="preserve">
+    <value>LimitMinDateTime</value>
   </data>
   <data name="ListBox" xml:space="preserve">
     <value>ListBox</value>
   </data>
   <data name="Loading" xml:space="preserve">
     <value>Loading</value>
+  </data>
+  <data name="MarginTo" xml:space="preserve">
+    <value>MarginTo</value>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>Menu</value>
+  </data>
+  <data name="MessageBoxX" xml:space="preserve">
+    <value>MessageBoxX</value>
+  </data>
+  <data name="MinHeaderHeight" xml:space="preserve">
+    <value>MinHeaderHeight</value>
+  </data>
+  <data name="MinRowHeight" xml:space="preserve">
+    <value>MinRowHeight</value>
   </data>
   <data name="MultiComboBox" xml:space="preserve">
     <value>MultiComboBox</value>
@@ -206,6 +320,9 @@
   </data>
   <data name="NeonLabel" xml:space="preserve">
     <value>NeonLabel</value>
+  </data>
+  <data name="Notice" xml:space="preserve">
+    <value>Notice</value>
   </data>
   <data name="OnlyOne" xml:space="preserve">
     <value>OnlyOne</value>
@@ -222,6 +339,9 @@
   <data name="PasswordBox" xml:space="preserve">
     <value>PasswordBox</value>
   </data>
+  <data name="PendingBox" xml:space="preserve">
+    <value>PendingBox</value>
+  </data>
   <data name="Progress" xml:space="preserve">
     <value>Progress</value>
   </data>
@@ -231,17 +351,32 @@
   <data name="RadioButton" xml:space="preserve">
     <value>RadioButton</value>
   </data>
+  <data name="Recyclable" xml:space="preserve">
+    <value>Recyclable</value>
+  </data>
   <data name="SelectMode" xml:space="preserve">
     <value>SelectMode</value>
   </data>
+  <data name="ShowDefaultColorPanel" xml:space="preserve">
+    <value>ShowDefaultColorPanel</value>
+  </data>
   <data name="ShowIcon" xml:space="preserve">
     <value>Show Icon</value>
+  </data>
+  <data name="ShowMeasuredValue" xml:space="preserve">
+    <value>ShowMeasuredValue</value>
+  </data>
+  <data name="ShowPasswordButton" xml:space="preserve">
+    <value>ShowPasswordButton</value>
   </data>
   <data name="ShowPercent" xml:space="preserve">
     <value>Show Percent</value>
   </data>
   <data name="ShowSearchBox" xml:space="preserve">
     <value>Show Search Box</value>
+  </data>
+  <data name="ShowSplitLine" xml:space="preserve">
+    <value>ShowSplitLine</value>
   </data>
   <data name="ShowTickBar" xml:space="preserve">
     <value>ShowTickBar</value>
@@ -261,11 +396,29 @@
   <data name="Size" xml:space="preserve">
     <value>Size</value>
   </data>
+  <data name="SlideFromBottom" xml:space="preserve">
+    <value>SlideFromBottom</value>
+  </data>
+  <data name="SlideFromLeft" xml:space="preserve">
+    <value>SlideFromLeft</value>
+  </data>
+  <data name="SlideFromRight" xml:space="preserve">
+    <value>SlideFromRight</value>
+  </data>
+  <data name="SlideFromTop" xml:space="preserve">
+    <value>SlideFromTop</value>
+  </data>
   <data name="Slider" xml:space="preserve">
     <value>Slider</value>
   </data>
+  <data name="Spacing" xml:space="preserve">
+    <value>Spacing</value>
+  </data>
   <data name="TabControl" xml:space="preserve">
     <value>TabControl</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Text</value>
   </data>
   <data name="TextBox" xml:space="preserve">
     <value>TextBox</value>
@@ -288,172 +441,94 @@
   <data name="UsingAnimation" xml:space="preserve">
     <value>Using Animation</value>
   </data>
-  <data name="ViewCode" xml:space="preserve">
-    <value>View Code</value>
-  </data>
-  <data name="Width" xml:space="preserve">
-    <value>Width</value>
-  </data>
-  <data name="CalendarMode" xml:space="preserve">
-    <value>CalendarMode</value>
-  </data>
-  <data name="IsSundayFirst" xml:space="preserve">
-    <value>IsSundayFirst</value>
-  </data>
-  <data name="LimitMaxDateTime" xml:space="preserve">
-    <value>LimitMaxDateTime</value>
-  </data>
-  <data name="LimitMinDateTime" xml:space="preserve">
-    <value>LimitMinDateTime</value>
-  </data>
-  <data name="IsRunning" xml:space="preserve">
-    <value>IsRunning</value>
-  </data>
-  <data name="Animation" xml:space="preserve">
-    <value>Animation</value>
-  </data>
-  <data name="AnimationHelper" xml:space="preserve">
-    <value>AnimationHelper</value>
-  </data>
-  <data name="BeginTime" xml:space="preserve">
-    <value>BeginTime</value>
-  </data>
-  <data name="Duration" xml:space="preserve">
-    <value>Duration</value>
-  </data>
-  <data name="ExtraHelpers" xml:space="preserve">
-    <value>Extra Helpers</value>
-  </data>
-  <data name="FadeIn" xml:space="preserve">
-    <value>FadeIn</value>
-  </data>
-  <data name="FadeOut" xml:space="preserve">
-    <value>FadeOut</value>
-  </data>
-  <data name="LayoutHelper" xml:space="preserve">
-    <value>LayoutHelper</value>
-  </data>
-  <data name="MarginTo" xml:space="preserve">
-    <value>MarginTo</value>
-  </data>
-  <data name="SlideFromBottom" xml:space="preserve">
-    <value>SlideFromBottom</value>
-  </data>
-  <data name="SlideFromLeft" xml:space="preserve">
-    <value>SlideFromLeft</value>
-  </data>
-  <data name="SlideFromRight" xml:space="preserve">
-    <value>SlideFromRight</value>
-  </data>
-  <data name="SlideFromTop" xml:space="preserve">
-    <value>SlideFromTop</value>
-  </data>
-  <data name="CanRemove" xml:space="preserve">
-    <value>CanRemove</value>
-  </data>
-  <data name="IsOpacityEnabled" xml:space="preserve">
-    <value>IsOpacityEnabled</value>
-  </data>
-  <data name="ShowDefaultColorPanel" xml:space="preserve">
-    <value>ShowDefaultColorPanel</value>
-  </data>
-  <data name="ShowMeasuredValue" xml:space="preserve">
-    <value>ShowMeasuredValue</value>
-  </data>
-  <data name="ColorPicker" xml:space="preserve">
-    <value>ColorPicker</value>
-  </data>
-  <data name="ColorSelector" xml:space="preserve">
-    <value>ColorSelector</value>
-  </data>
-  <data name="IsWaving" xml:space="preserve">
-    <value>IsWaving</value>
-  </data>
-  <data name="Text" xml:space="preserve">
-    <value>Text</value>
-  </data>
-  <data name="Badge" xml:space="preserve">
-    <value>Badge</value>
-  </data>
-  <data name="WindowX" xml:space="preserve">
-    <value>WindowX</value>
-  </data>
-  <data name="MessageBoxX" xml:space="preserve">
-    <value>MessageBoxX</value>
-  </data>
-  <data name="Index" xml:space="preserve">
-    <value>Index</value>
-  </data>
-  <data name="Recyclable" xml:space="preserve">
-    <value>Recyclable</value>
-  </data>
-  <data name="CenterColumnContent" xml:space="preserve">
-    <value>CenterColumnContent</value>
-  </data>
-  <data name="DataGrid" xml:space="preserve">
-    <value>DataGrid</value>
-  </data>
-  <data name="MinHeaderHeight" xml:space="preserve">
-    <value>MinHeaderHeight</value>
-  </data>
-  <data name="MinRowHeight" xml:space="preserve">
-    <value>MinRowHeight</value>
-  </data>
-  <data name="Notice" xml:space="preserve">
-    <value>Notice</value>
-  </data>
-  <data name="Groups" xml:space="preserve">
-    <value>Groups</value>
-  </data>
-  <data name="Horizontal" xml:space="preserve">
-    <value>Horizontal</value>
-  </data>
-  <data name="HorizontalSpacing" xml:space="preserve">
-    <value>HorizontalSpacing</value>
-  </data>
-  <data name="LazyLoading" xml:space="preserve">
-    <value>LazyLoading</value>
-  </data>
   <data name="VerticalSpacing" xml:space="preserve">
     <value>VerticalSpacing</value>
+  </data>
+  <data name="ViewCode" xml:space="preserve">
+    <value>View Code</value>
   </data>
   <data name="WaterfallViewer" xml:space="preserve">
     <value>WaterfallViewer</value>
   </data>
-  <data name="Spacing" xml:space="preserve">
-    <value>Spacing</value>
+  <data name="Width" xml:space="preserve">
+    <value>Width</value>
   </data>
-  <data name="Menu" xml:space="preserve">
-    <value>Menu</value>
+  <data name="WindowX" xml:space="preserve">
+    <value>WindowX</value>
   </data>
-  <data name="AutoPlay" xml:space="preserve">
-    <value>AutoPlay</value>
+  <data name="BussinessBlue" xml:space="preserve">
+    <value>Bussiness Blue</value>
   </data>
-  <data name="ContextMenu" xml:space="preserve">
-    <value>ContextMenu</value>
+  <data name="CandyBlue" xml:space="preserve">
+    <value>Candy Blue</value>
   </data>
-  <data name="ClearButton" xml:space="preserve">
-    <value>ClearButton</value>
+  <data name="CandyPink" xml:space="preserve">
+    <value>Candy Pink</value>
   </data>
-  <data name="ShowPasswordButton" xml:space="preserve">
-    <value>ShowPasswordButton</value>
+  <data name="Dark" xml:space="preserve">
+    <value>Dark</value>
   </data>
-  <data name="PendingBox" xml:space="preserve">
-    <value>PendingBox</value>
+  <data name="DeepGreen" xml:space="preserve">
+    <value>DeepGreen</value>
   </data>
-  <data name="ShowSplitLine" xml:space="preserve">
-    <value>ShowSplitLine</value>
+  <data name="Light" xml:space="preserve">
+    <value>Light</value>
   </data>
-  <data name="IsShadowVisible" xml:space="preserve">
-    <value>IsShadowVisible</value>
+  <data name="DefaultValue" xml:space="preserve">
+    <value>Default Value</value>
   </data>
-  <data name="ExtendControl" xml:space="preserve">
-    <value>ExtendControl</value>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
   </data>
-  <data name="HeaderHeight" xml:space="preserve">
-    <value>HeaderHeight</value>
+  <data name="PropertyName" xml:space="preserve">
+    <value>Property Name</value>
   </data>
-  <data name="HeaderPadding" xml:space="preserve">
-    <value>HeaderPadding</value>
+  <data name="PropertyType" xml:space="preserve">
+    <value>Property Type</value>
+  </data>
+  <data name="GoToPalette" xml:space="preserve">
+    <value>Go To Palette </value>
+  </data>
+  <data name="BackToExamples" xml:space="preserve">
+    <value> Back To Examples</value>
+  </data>
+  <data name="Background" xml:space="preserve">
+    <value>Background</value>
+  </data>
+  <data name="Foreground" xml:space="preserve">
+    <value>Foreground</value>
+  </data>
+  <data name="HoverBackground" xml:space="preserve">
+    <value>Hover Background</value>
+  </data>
+  <data name="HoverBrush" xml:space="preserve">
+    <value>Hover Brush</value>
+  </data>
+  <data name="HoverForeground" xml:space="preserve">
+    <value>Hover Foreground</value>
+  </data>
+  <data name="SelectedBackground" xml:space="preserve">
+    <value>Selected Background</value>
+  </data>
+  <data name="SelectedForeground" xml:space="preserve">
+    <value>Selected Foreground</value>
+  </data>
+  <data name="SourceCode" xml:space="preserve">
+    <value>Source Code</value>
+  </data>
+  <data name="PresetTheme" xml:space="preserve">
+    <value>Preset Theme</value>
+  </data>
+  <data name="Style" xml:space="preserve">
+    <value>Style</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Content</value>
+  </data>
+  <data name="BorderBrush" xml:space="preserve">
+    <value>BorderBrush</value>
+  </data>
+  <data name="HelpTips" xml:space="preserve">
+    <value>Page will navigate to palette view ,if you hold left or right ctrl key and click elements upon .</value>
   </data>
 </root>
