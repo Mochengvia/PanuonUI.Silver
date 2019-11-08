@@ -2,9 +2,12 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:pu="clr-namespace:Panuon.UI.Silver;assembly=Panuon.UI.Silver"
                     xmlns:local="clr-namespace:UIBrowser.Resources"
-                    xmlns:cvt="clr-namespace:UIBrowser.Components.Converters"
+                    xmlns:cvt="clr-namespace:UIBrowser.Resources.Converters"
                     xmlns:uc="clr-namespace:UIBrowser.UserControls">
-    
+
+    <cvt:DoubleToCornerRadiusConverter x:Key="DoubleToCornerRadiusConverter" />
+    <cvt:CornerRadiusToDoubleConverter x:Key="CornerRadiusToDoubleConverter" />
+
     <SolidColorBrush x:Key="ThemeBrush"
                      Color="#68D450" />
 

@@ -9,7 +9,7 @@ namespace UIBrowser.Models
     public class AttachedPropertyItem : DependencyPropertyItem
     {
         #region Ctor
-        public AttachedPropertyItem(Type attachedPropertyClassType, string propertyName, object propertyValue) : base(propertyName, propertyValue)
+        public AttachedPropertyItem(Type attachedPropertyClassType, string propertyName, object propertyValue, object defaultValue) : base(propertyName, propertyValue, defaultValue)
         {
             AttachedPropertyClassType = attachedPropertyClassType;
         }

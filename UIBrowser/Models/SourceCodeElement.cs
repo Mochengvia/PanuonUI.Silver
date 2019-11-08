@@ -11,14 +11,17 @@ namespace UIBrowser.Models
     public class SourceElementCore
     {
         #region Ctor
-        public SourceElementCore(string elementName)
+        public SourceElementCore(string elementName, string baseStylePropertyName)
         {
             ElementName = elementName;
+            BaseStylePropertyName = baseStylePropertyName;
         }
         #endregion
 
         #region Property
         public string ElementName { get; set; }
+
+        public string BaseStylePropertyName { get; set; }
 
         public IList<DependencyPropertyItem> DependencyProperties { get; } = new List<DependencyPropertyItem>();
 
@@ -34,11 +37,13 @@ namespace UIBrowser.Models
 
             foreach (var property in DependencyProperties)
             {
-                properties.Add(property.ToSourceCode());
+                if(property.PropertyValue != property.DefaultValue)
+                    properties.Add(property.ToSourceCode());
             }
             foreach (var property in AttachedProperties)
             {
-                properties.Add(property.ToSourceCode());
+                if(property.PropertyValue != property.DefaultValue)
+                    properties.Add(property.ToSourceCode());
             }
 
             result += string.Join("\n", properties);
@@ -48,9 +53,9 @@ namespace UIBrowser.Models
             return result;
         }
 
-        public string ToStyleCode(string baseStylePropertyName = null)
+        public string ToStyleCode()
         {
-            var baseStyleAttachedProperty = AttachedProperties.FirstOrDefault(x => x.PropertyName == baseStylePropertyName);
+            var baseStyleAttachedProperty = AttachedProperties.FirstOrDefault(x => x.PropertyName == BaseStylePropertyName);
 
             var result = $"<Style TargetType=\"{{x:Type {ElementName}}}\"\nBasedOn=\"{{StaticResource {{x:Type {ElementName}}}}}\" >\n";
 
@@ -58,16 +63,18 @@ namespace UIBrowser.Models
 
             foreach (var property in DependencyProperties)
             {
-                properties.Add(property.ToStyleCode());
+                if(property.PropertyValue != property.DefaultValue)
+                    properties.Add(property.ToStyleCode());
             }
             foreach (var property in AttachedProperties)
             {
-                if (property.PropertyName == baseStylePropertyName)
+                if (property.PropertyName == BaseStylePropertyName)
                     continue;
-                properties.Add(property.ToStyleCode());
+                if(property.PropertyValue != property.DefaultValue)
+                    properties.Add(property.ToStyleCode());
             }
 
-            if (baseStyleAttachedProperty != null)
+            if (baseStyleAttachedProperty != null && baseStyleAttachedProperty.PropertyValue != baseStyleAttachedProperty.DefaultValue)
             {
                 result += $"{baseStyleAttachedProperty.ToStyleCode()}\n";
                 result += $"<Style.Triggers>\n<DataTrigger Binding=\"{{Binding Path=(pu:{baseStyleAttachedProperty.AttachedPropertyClassType.Name}.{baseStyleAttachedProperty.PropertyName}),RelativeSource={{RelativeSource Self}}, Mode=OneWay}}\"\nValue=\"{baseStyleAttachedProperty.PropertyValue}\">\n";
@@ -75,15 +82,13 @@ namespace UIBrowser.Models
 
             result += string.Join("\n", properties);
 
-            if (baseStyleAttachedProperty != null)
+            if (baseStyleAttachedProperty != null && baseStyleAttachedProperty.PropertyValue != baseStyleAttachedProperty.DefaultValue)
                 result += $"\n</DataTrigger>\n</Style.Triggers>\n";
 
             result += "</Style>";
 
             return result;
         }
-
-       
         #endregion
     }
 

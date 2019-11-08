@@ -63,6 +63,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Components\Attributes\LocalizedDisplayNameAttribute.cs" />
+    <Compile Include="Resources\Converters\CornerRadiusToDoubleConverter.cs" />
+    <Compile Include="Resources\Converters\DoubleToCornerRadiusConverter.cs" />
     <Compile Include="Components\Enums\PresetTheme.cs" />
     <Compile Include="Components\Extension\LocalizationManager.cs" />
     <Compile Include="Components\Extension\SourceCodeGenerator.cs" />
@@ -169,8 +171,6 @@
       <Name>Panuon.UI.Silver</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Components\Converters\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

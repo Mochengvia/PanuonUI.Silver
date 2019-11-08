@@ -1,5 +1,6 @@
 ﻿using Panuon.UI.Silver.Core;
 using System;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using UIBrowser.Models;
@@ -154,12 +155,12 @@ namespace UIBrowser.ViewModels
         // <summary>
         /// Gets or sets hover cornerRadius.
         /// </summary>
-        public double CornerRadius
+        public CornerRadius CornerRadius
         {
             get { return _cornerRadius; }
             set { _cornerRadius = value; NotifyPropertyChanged(); }
         }
-        private double _cornerRadius;
+        private CornerRadius _cornerRadius;
 
         // <summary>
         /// Gets or sets hover border brush.

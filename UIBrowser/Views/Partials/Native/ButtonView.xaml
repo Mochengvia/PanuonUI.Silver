@@ -331,15 +331,15 @@
                                                     SelectedBrush="{Binding BorderBrush, Mode=TwoWay}" />
                                     <Slider Style="{StaticResource PaletteSliderStyle}"
                                             pu:SliderHelper.Header="{x:Static localize:Resource.Width}"
-                                            Minimum="35"
+                                            Minimum="30"
                                             Maximum="200"
                                             TickFrequency="1"
                                             Value="{Binding Width, Mode=TwoWay}" />
                                     <Slider Style="{StaticResource PaletteSliderStyle}"
                                             pu:SliderHelper.Header="{x:Static localize:Resource.CornerRadius}"
                                             Minimum="0"
-                                            Maximum="17.5"
-                                            Value="{Binding CornerRadius, Mode=TwoWay}" />
+                                            Maximum="15"
+                                            Value="{Binding CornerRadius, Mode=TwoWay, Converter={StaticResource CornerRadiusToDoubleConverter}}" />
                                     <CheckBox Style="{StaticResource PaletteCheckBoxStyle}"
                                               pu:CheckBoxHelper.Header="{x:Static localize:Resource.SinkWhenClick}"
                                               IsChecked="{Binding SinkWhenClick, Mode=TwoWay}" />
@@ -350,7 +350,7 @@
                                 <Button Grid.Column="1"
                                         VerticalAlignment="Center"
                                         HorizontalAlignment="Center"
-                                        Height="35"
+                                        Height="30"
                                         Content="{Binding Content}"
                                         Width="{Binding Width}"
                                         Background="{Binding Background}"

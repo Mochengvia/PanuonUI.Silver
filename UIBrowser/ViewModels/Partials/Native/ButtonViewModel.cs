@@ -18,19 +18,21 @@ namespace UIBrowser.ViewModels.Partials.Native
             if (e.PropertyName == "SourceCode" || e.PropertyName == "StyleCode")
                 return;
 
-            SourceElementCore = SourceCodeGenerator.NewElement("Button")
-                .AddDependencyProperty(nameof(Width), Width)
-                .AddDependencyProperty(nameof(Height), 35)
-                .AddDependencyProperty(nameof(Background), Background)
-                .AddDependencyProperty(nameof(Foreground), Foreground)
-                .AddAttachedProperty(typeof(ButtonHelper), nameof(ButtonStyle), ButtonStyle)
-                .AddAttachedProperty(typeof(ButtonHelper), nameof(HoverBrush), HoverBrush)
-                .AddAttachedPropertyIf(typeof(ButtonHelper), nameof(IsWaiting), IsWaiting, IsWaiting)
-                .AddAttachedPropertyIf(typeof(ButtonHelper), nameof(ClickStyle), ClickStyle, ClickStyle == ClickStyle.Sink)
-                .AddAttachedPropertyIf(typeof(ButtonHelper), nameof(CornerRadius), CornerRadius, CornerRadius != 0);
+            SourceElementCore = SourceCodeGenerator.NewElement("Button", nameof(ButtonStyle))
+                .AddDependencyProperty(nameof(Content), Content, null)
+                .AddDependencyProperty(nameof(Width), Width, null)
+                .AddDependencyProperty(nameof(Height), 30, null)
+                .AddDependencyProperty(nameof(Background), Background, null)
+                .AddDependencyProperty(nameof(Foreground), Foreground, null)
+                .AddDependencyProperty(nameof(BorderBrush), BorderBrush, null)
+                .AddAttachedProperty(typeof(ButtonHelper), nameof(ButtonStyle), ButtonStyle, ButtonStyle.Standard)
+                .AddAttachedProperty(typeof(ButtonHelper), nameof(HoverBrush), HoverBrush, null)
+                .AddAttachedProperty(typeof(ButtonHelper), nameof(IsWaiting), IsWaiting,  false)
+                .AddAttachedProperty(typeof(ButtonHelper), nameof(ClickStyle), ClickStyle, ClickStyle.None)
+                .AddAttachedProperty(typeof(ButtonHelper), nameof(CornerRadius), CornerRadius, 0);
 
             SourceCode = SourceElementCore.ToSourceCode();
-            StyleCode = SourceElementCore.ToStyleCode(nameof(ButtonStyle));
+            StyleCode = SourceElementCore.ToStyleCode();
         }
 
         protected override void OnPresetThemeChanged(object sender, EventArgs e)
@@ -71,7 +73,7 @@ namespace UIBrowser.ViewModels.Partials.Native
             HoverBrush = "#3E3E3E".ToColor().ToBrush();
             Foreground = "#FFFFFF".ToColor().ToBrush();
             Content = "Button";
-            CornerRadius = 0;
+            CornerRadius = new System.Windows.CornerRadius(0);
             Width = 150;
             SinkWhenClick = false;
             IsWaiting = false;

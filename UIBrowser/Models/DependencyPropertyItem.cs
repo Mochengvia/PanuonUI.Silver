@@ -9,10 +9,11 @@ namespace UIBrowser.Models
     public class DependencyPropertyItem
     {
         #region Ctor
-        public DependencyPropertyItem(string propertyName, object propertyValue)
+        public DependencyPropertyItem(string propertyName, object propertyValue, object defaultValue)
         {
             PropertyName = propertyName;
             PropertyValue = propertyValue;
+            DefaultValue = defaultValue;
         }
         #endregion
 
@@ -20,6 +21,8 @@ namespace UIBrowser.Models
         public string PropertyName { get; set; }
 
         public object PropertyValue { get; set; }
+
+        public object DefaultValue { get; set; }
         #endregion
 
         #region Methods
