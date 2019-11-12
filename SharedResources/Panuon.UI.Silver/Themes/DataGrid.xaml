@@ -131,9 +131,11 @@
                     <Grid Background="{TemplateBinding Background}">
                         <Border x:Name="BdrHover"
                                 Background="{Binding Path=(local:DataGridHelper.HoverBackground),RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                BorderThickness="0"
                                 Opacity="0"
                                 SnapsToDevicePixels="True" />
                         <Border x:Name="BdrPress"
+                                BorderThickness="0"
                                 Background="{Binding Path=(local:DataGridHelper.SelectedBackground),RelativeSource={RelativeSource AncestorType=DataGrid}}"
                                 Opacity="0"
                                 SnapsToDevicePixels="True" />
@@ -339,10 +341,12 @@
                 <ControlTemplate TargetType="{x:Type DataGridCell}">
                     <Grid>
                         <Border x:Name="BdrHover"
+                                BorderThickness="0"
                                 Background="{Binding Path=(local:DataGridHelper.HoverBackground),RelativeSource={RelativeSource AncestorType=DataGrid}}"
                                 Opacity="0"
                                 SnapsToDevicePixels="True" />
                         <Border x:Name="BdrSelected"
+                                BorderThickness="0"
                                 Background="{Binding Path=(local:DataGridHelper.SelectedBackground),RelativeSource={RelativeSource AncestorType=DataGridCell}}"
                                 Opacity="0"
                                 SnapsToDevicePixels="True" />

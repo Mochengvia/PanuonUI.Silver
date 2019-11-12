@@ -23,7 +23,6 @@ namespace Panuon.UI.Silver
             
         }
       
-
         #region RoutedEvent
         public static readonly RoutedEvent TimeChangedEvent = EventManager.RegisterRoutedEvent("TimeChanged", RoutingStrategy.Bubble, typeof(RoutedPropertyChangedEventHandler<int>), typeof(Countdown));
         public event RoutedPropertyChangedEventHandler<int> TimeChanged

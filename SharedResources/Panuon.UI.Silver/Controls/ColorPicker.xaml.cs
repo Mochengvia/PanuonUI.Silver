@@ -141,6 +141,18 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("Header", typeof(object), typeof(ColorPicker));
 
         /// <summary>
+        /// Gets or sets header width.
+        /// </summary>
+        public string HeaderWidth
+        {
+            get { return (string)GetValue(HeaderWidthProperty); }
+            set { SetValue(HeaderWidthProperty, value); }
+        }
+
+        public static readonly DependencyProperty HeaderWidthProperty =
+            DependencyProperty.Register("HeaderWidth", typeof(string), typeof(ColorPicker));
+
+        /// <summary>
         /// Gets or sets is measured value visible.
         /// </summary>
         public bool IsMeasuredValueVisible

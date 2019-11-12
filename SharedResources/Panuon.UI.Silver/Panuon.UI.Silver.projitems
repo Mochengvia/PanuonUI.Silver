@@ -50,9 +50,14 @@
       <DependentUpon>ScreenshotWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiComboBoxItem.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\TagPanel.xaml.cs">
-      <DependentUpon>TagPanel.xaml</DependentUpon>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\TagItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AnimateWrapPanel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\TagControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\TextBlock.xaml.cs">
+      <DependentUpon>TextBlock.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\TimelineItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Timeline.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\WaterfallPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MessageBoxX.cs" />
@@ -64,7 +69,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Pagination.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PendingBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\StateIcon.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Timeline.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\WaterfallViewer.xaml.cs">
       <DependentUpon>WaterfallViewer.xaml</DependentUpon>
     </Compile>
@@ -79,7 +83,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DirtyConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DropDownMenuConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\LoadingConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\MemberPathConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\MenuConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\MsbConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\MultiComboBoxConverter.cs" />
@@ -89,10 +92,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\TabControlConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\TagPanelConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ThicknessConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\TimelineConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\TreeViewConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\WidthAndHeightConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Global\Enums.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Global\Extend.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Global\Extension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Global\Models\TagItemModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\BubbleHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Control\ButtonHelper.cs" />
@@ -177,7 +181,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Controls\TagPanel.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Controls\TextBlock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -5,7 +5,7 @@ using System.Windows.Data;
 
 namespace Panuon.UI.Silver.Converters
 {
-    public class CloneConverter : IMultiValueConverter
+    internal class CloneConverter : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {

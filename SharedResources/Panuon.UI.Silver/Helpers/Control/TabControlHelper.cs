@@ -234,35 +234,6 @@ namespace Panuon.UI.Silver
         }
         #endregion
 
-        #region (Internal) TabControlHook
-        internal static bool GetTabControlHook(DependencyObject obj)
-        {
-            return (bool)obj.GetValue(TabControlHookProperty);
-        }
-
-        internal static void SetTabControlHook(DependencyObject obj, bool value)
-        {
-            obj.SetValue(TabControlHookProperty, value);
-        }
-
-        internal static readonly DependencyProperty TabControlHookProperty =
-            DependencyProperty.RegisterAttached("TabControlHook", typeof(bool), typeof(TabControlHelper), new PropertyMetadata(OnTabControlHookChanged));
-
-        private static void OnTabControlHookChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var tabControl = d as TabControl;
-            tabControl.AddHandler(Button.ClickEvent, new EventHandler(OnRemoveButtonClicked));
-        }
-
-        private static void OnRemoveButtonClicked(object sender, EventArgs e)
-        {
-            var BtnRemove = sender as Button;
-            if (BtnRemove.Name != "PART_RemoveButton")
-                return;
-        }
-
-        #endregion
-
         #region (Internal Command)
         internal static ICommand GetScrollLeftCommand(DependencyObject obj)
         {
@@ -327,7 +298,7 @@ namespace Panuon.UI.Silver
         }
 
         internal static readonly DependencyProperty RemoveCommandProperty =
-            DependencyProperty.RegisterAttached("RemoveCommand", typeof(ICommand), typeof(TabControlHelper), new PropertyMetadata(new RemoveCommand()));
+            DependencyProperty.RegisterAttached("RemoveCommand", typeof(ICommand), typeof(TabControlHelper), new PropertyMetadata(new TabItemRemoveCommand()));
 
 
         #endregion
@@ -414,7 +385,7 @@ namespace Panuon.UI.Silver
         }
     }
 
-    internal class RemoveCommand : ICommand
+    internal class TabItemRemoveCommand : ICommand
     {
         event EventHandler ICommand.CanExecuteChanged
         {
