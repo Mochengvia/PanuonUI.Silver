@@ -22,7 +22,7 @@ Zhihu : @末城via
 新增了CheckBox和RadioButton的Selector样式。  
 新增了TextBlock控件。MatchText和MatchedForeground属性可以用来高亮指定的文字，AutoAdaptation和ExceededTextFiller属性可以将超出显示边界的文本显示为省略号或其他文字。[详见文档](
 https://github.com/Panuon/Panuon.Documents/blob/master/Documents/PanuonUI.Silver/zh-cn.md#textblock-%E6%96%87%E6%9C%AC%E6%8E%A7%E4%BB%B6)。  
-新增了AnimateWrapPanel控件，该控件继承自WrapPanel。当其Children发生变化时，将产生一个重新排列的动画效果。[详见文档](  
+新增了AnimateWrapPanel控件，该控件继承自Panel。当其Children发生变化时，将产生一个重新排列的动画效果。[详见文档](  
 https://github.com/Panuon/Panuon.Documents/blob/master/Documents/PanuonUI.Silver/zh-cn.md#animatewrappanel-%E5%8A%A8%E7%94%BB%E6%8D%A2%E8%A1%8C%E9%9D%A2%E6%9D%BF)。  
 Timeline控件重做，新增TimelineItem控件。该控件默认启用虚拟化。[详见文档](  
 https://github.com/Panuon/Panuon.Documents/blob/master/Documents/PanuonUI.Silver/zh-cn.md#timeline-%E6%97%B6%E9%97%B4%E8%BD%B4)。  
