@@ -15,9 +15,9 @@ using System.Windows.Media;
 namespace Panuon.UI.Silver
 {
     [ContentProperty(nameof(Text))]
-    public sealed partial class TextBlock : UserControl
+    public sealed partial class PUTextBlock : UserControl
     {
-        public TextBlock()
+        public PUTextBlock()
         {
             this.InitializeComponent();
         }
@@ -33,7 +33,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty TextProperty =
-            DependencyProperty.Register("Text", typeof(string), typeof(TextBlock), new PropertyMetadata(OnTextChanged));
+            DependencyProperty.Register("Text", typeof(string), typeof(PUTextBlock), new PropertyMetadata(OnTextChanged));
 
         /// <summary>
         /// Gets or sets match text.
@@ -45,7 +45,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty MatchTextProperty =
-            DependencyProperty.Register("MatchText", typeof(string), typeof(TextBlock), new PropertyMetadata(OnTextChanged));
+            DependencyProperty.Register("MatchText", typeof(string), typeof(PUTextBlock), new PropertyMetadata(OnTextChanged));
 
         /// <summary>
         /// Gets or sets matched text foreground/
@@ -57,7 +57,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty MatchedForegroundProperty =
-            DependencyProperty.Register("MatchedForeground", typeof(Brush), typeof(TextBlock), new PropertyMetadata("#FF3C3C".ToColor().ToBrush()));
+            DependencyProperty.Register("MatchedForeground", typeof(Brush), typeof(PUTextBlock), new PropertyMetadata("#FF3C3C".ToColor().ToBrush()));
 
         /// <summary>
         /// Gets or sets auto adaptation.
@@ -69,7 +69,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty AutoAdaptationProperty =
-            DependencyProperty.Register("AutoAdaptation", typeof(bool), typeof(TextBlock));
+            DependencyProperty.Register("AutoAdaptation", typeof(bool), typeof(PUTextBlock));
 
         /// <summary>
         /// Gets or sets exceeded text filler.
@@ -81,7 +81,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty ExceededTextFillerProperty =
-            DependencyProperty.Register("ExceededTextFiller", typeof(string), typeof(TextBlock), new PropertyMetadata("..."));
+            DependencyProperty.Register("ExceededTextFiller", typeof(string), typeof(PUTextBlock), new PropertyMetadata("..."));
 
         /// <summary>
         /// Gets or sets text wrapping.
@@ -93,7 +93,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty TextWrappingProperty =
-            DependencyProperty.Register("TextWrapping", typeof(TextWrapping), typeof(TextBlock));
+            DependencyProperty.Register("TextWrapping", typeof(TextWrapping), typeof(PUTextBlock));
 
         /// <summary>
         /// Gets or sets text alignment.
@@ -105,7 +105,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty TextAlignmentProperty =
-            DependencyProperty.Register("TextAlignment", typeof(TextAlignment), typeof(TextBlock));
+            DependencyProperty.Register("TextAlignment", typeof(TextAlignment), typeof(PUTextBlock));
 
         /// <summary>
         /// Gets or sets text effects.
@@ -117,7 +117,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty TextEffectsProperty =
-            DependencyProperty.Register("TextEffects", typeof(TextEffectCollection), typeof(TextBlock));
+            DependencyProperty.Register("TextEffects", typeof(TextEffectCollection), typeof(PUTextBlock));
 
         /// <summary>
         /// Gets or sets match rule.
@@ -129,7 +129,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty MatchRuleProperty =
-            DependencyProperty.Register("MatchRule", typeof(MatchRule), typeof(TextBlock));
+            DependencyProperty.Register("MatchRule", typeof(MatchRule), typeof(PUTextBlock));
 
         /// <summary>
         /// Gets or sets text decorations.
@@ -141,13 +141,13 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty TextDecorationsProperty =
-            DependencyProperty.Register("TextDecorations", typeof(TextDecorationCollection), typeof(TextBlock));
+            DependencyProperty.Register("TextDecorations", typeof(TextDecorationCollection), typeof(PUTextBlock));
         #endregion
 
         #region Event Handler
         private static void OnTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var textBlock = d as TextBlock;
+            var textBlock = d as PUTextBlock;
             textBlock.AdaptText();
         }
 

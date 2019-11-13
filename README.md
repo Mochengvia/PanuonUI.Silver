@@ -13,6 +13,9 @@ QQ Group : 718778191
 Zhihu : @末城via
 
 # News 动态  
+#### 2019-11-13 v1.0.9.1 / v1.0.9.2
+出于命名空间的重叠原因，TextBlock控件已重命名为PUTextBlock。  
+
 #### 2019-11-12 v1.0.9
 修复ColorPicker点击控件外区域时不能自动关闭的问题，新增了HeaderWidth属性。  
 修复ColorSelector的SelectedBrush赋值为null时崩溃的问题。  
