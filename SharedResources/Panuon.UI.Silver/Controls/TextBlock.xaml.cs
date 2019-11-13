@@ -213,7 +213,7 @@ namespace Panuon.UI.Silver
         {
             bool isAnyChanged = false;
 
-            var textBlock = new TextBlock
+            var textBlock = new System.Windows.Controls.TextBlock
             {
                 Text = text,
                 TextWrapping = TxtContent.TextWrapping,
@@ -232,7 +232,7 @@ namespace Panuon.UI.Silver
                 isAnyChanged = true;
 
                 text = text.Remove(text.Length - 1);
-                textBlock = new TextBlock
+                textBlock = new System.Windows.Controls.TextBlock
                 {
                     Text = text + filler,
                     TextWrapping = TextWrapping,
