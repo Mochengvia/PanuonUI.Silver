@@ -255,11 +255,6 @@
                                             Property="Visibility"
                                             Value="Hidden" />
                                 </Trigger>
-                                <Trigger Property="IsSelected"
-                                         Value="True">
-                                    <Setter Property="Foreground"
-                                            Value="{Binding Path=(local:TreeViewHelper.SelectedForeground),RelativeSource={RelativeSource  AncestorType=TreeView},Mode=OneWay}" />
-                                </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Setter.Value>
@@ -704,22 +699,21 @@
                                     <Setter Property="Foreground"
                                             Value="{Binding Path=(local:TreeViewHelper.SelectedBackground),RelativeSource={RelativeSource  AncestorType=TreeView},Mode=OneWay}" />
                                 </Trigger>
-                                <MultiDataTrigger>
-                                    <MultiDataTrigger.Conditions>
-                                        <Condition Binding="{Binding Path=(local:TreeViewHelper.SelectedForeground),RelativeSource={RelativeSource AncestorType=TreeView},Converter={StaticResource IsNotNullConverter}}"
-                                                   Value="True" />
-                                        <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}"
-                                                   Value="True" />
-                                    </MultiDataTrigger.Conditions>
-                                    <Setter Property="Foreground"
-                                            Value="{Binding Path=(local:TreeViewHelper.SelectedForeground),RelativeSource={RelativeSource AncestorType=TreeView},Mode=OneWay}" />
-                                </MultiDataTrigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
             </DataTrigger>
-           
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=(local:TreeViewHelper.SelectedForeground),RelativeSource={RelativeSource AncestorType=TreeView},Converter={StaticResource IsNotNullConverter}}"
+                               Value="True" />
+                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Foreground"
+                        Value="{Binding Path=(local:TreeViewHelper.SelectedForeground),RelativeSource={RelativeSource AncestorType=TreeView},Mode=OneWay}" />
+            </MultiDataTrigger>
         </Style.Triggers>
     </Style>
 

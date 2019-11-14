@@ -185,16 +185,20 @@ namespace UIBrowser.PartialViews.Native
             {
                 case TreeViewStyle.Standard:
                     TreeViewHelper.SetSelectedForeground(TvCustom, color.ToBrush());
+                    TreeViewHelper.SetSelectedBackground(TvCustom, null);
                     break;
                 case TreeViewStyle.Classic:
+                    TreeViewHelper.SetSelectedForeground(TvCustom, null);
                     TreeViewHelper.SetSelectedBackground(TvCustom, new Color() { A = 34, R = color.R, G = color.G, B = color.B }.ToBrush());
                     break;
                 case TreeViewStyle.Modern:
+                    TreeViewHelper.SetSelectedForeground(TvCustom, null);
                     TreeViewHelper.SetSelectedBackground(TvCustom, new Color() { A = 34, R = color.R, G = color.G, B = color.B }.ToBrush());
                     TvCustom.BorderBrush = color.ToBrush();
                     break;
                 case TreeViewStyle.Chain:
-                    TreeViewHelper.SetSelectedBackground(TvCustom, color.ToBrush());
+                    TreeViewHelper.SetSelectedForeground(TvCustom, color.ToBrush());
+                    TreeViewHelper.SetSelectedBackground(TvCustom, null);
                     break;
             }
         }
@@ -214,7 +218,8 @@ namespace UIBrowser.PartialViews.Native
                         (expandMode == ExpandMode.DoubleClick ? "" : $"\npu:TreeViewHelper.SelectMode=\"{expandMode}\"") +
                         (expandBehaviour == ExpandBehaviour.Any ? "" : $"\npu:TreeViewHelper.SelectMode=\"{expandBehaviour}\"") +
                         (itemHeight == 40 ? "" : $"\npu:TreeViewHelper.ItemHeight=\"{itemHeight}\"") +
-                        $"\npu:TreeViewHelper.SelectedBackground=\"{TreeViewHelper.GetSelectedBackground(TvCustom).ToColor().ToHexString()}\"" +
+                        ((treeStyle == TreeViewStyle.Standard || treeStyle == TreeViewStyle.Chain) ? "" : $"\npu:TreeViewHelper.SelectedBackground=\"{TreeViewHelper.GetSelectedBackground(TvCustom).ToColor().ToHexString()}\"") + 
+                        ((treeStyle == TreeViewStyle.Standard || treeStyle == TreeViewStyle.Chain) ? $"\npu:TreeViewHelper.SelectedForeground=\"{TreeViewHelper.GetSelectedForeground(TvCustom).ToColor().ToHexString()}\"" : "") + 
                         " >" +
                         "\n<TreeViewItem Header=\"Item1\"/>" +
                         "\n<TreeViewItem Header=\"Item2\"/>" +
