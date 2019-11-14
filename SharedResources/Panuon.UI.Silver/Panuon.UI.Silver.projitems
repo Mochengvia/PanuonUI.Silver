@@ -126,6 +126,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Others\ScreenshotHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\TemporaryDirectory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\TemporaryFile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\AnimationUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\BrushUtils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\GridLengthUtil.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -281,5 +283,8 @@
     <Compile Update="C:\Users\panyu\Documents\GitHub\PanuonUI.Silver\SharedResources\Panuon.UI.Silver\Controls\Internal\PendingBox1.xaml.cs">
       <DependentUpon>PendingBox1.xaml</DependentUpon>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Extensions\" />
   </ItemGroup>
 </Project>

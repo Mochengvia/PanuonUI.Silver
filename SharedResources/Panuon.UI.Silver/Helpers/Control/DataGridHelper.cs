@@ -391,9 +391,9 @@ namespace Panuon.UI.Silver
 
                 newColumn.Binding = new Binding(e.PropertyName) { Mode = bindingMode, UpdateSourceTrigger = updateSourceTrigger };
 
-                newColumn.ElementStyle = new Style(typeof(System.Windows.Controls.TextBlock))
+                newColumn.ElementStyle = new Style(typeof(TextBlock))
                 {
-                    BasedOn = (Style)dataGrid.FindResource(typeof(System.Windows.Controls.TextBlock))
+                    BasedOn = (Style)dataGrid.FindResource(typeof(TextBlock))
                 };
 
                 newColumn.ElementStyle.Setters.Add(new Setter(TextBox.MaxHeightProperty, 100.0));

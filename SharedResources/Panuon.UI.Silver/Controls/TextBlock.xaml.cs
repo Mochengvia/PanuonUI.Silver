@@ -162,6 +162,11 @@ namespace Panuon.UI.Silver
         private void AdaptText()
         {
             TxtContent.Inlines.Clear();
+            if (Text == null)
+            {
+                TxtContent.Text = null;
+                return;
+            }
 
             var text = Text;
 

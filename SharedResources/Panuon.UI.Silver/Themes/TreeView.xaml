@@ -258,7 +258,7 @@
                                 <Trigger Property="IsSelected"
                                          Value="True">
                                     <Setter Property="Foreground"
-                                            Value="{Binding Path=(local:TreeViewHelper.SelectedBackground),RelativeSource={RelativeSource  AncestorType=TreeView},Mode=OneWay}" />
+                                            Value="{Binding Path=(local:TreeViewHelper.SelectedForeground),RelativeSource={RelativeSource  AncestorType=TreeView},Mode=OneWay}" />
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -711,11 +711,7 @@
                                         <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}"
                                                    Value="True" />
                                     </MultiDataTrigger.Conditions>
-                                    <Setter TargetName="PART_Header"
-                                            Property="TextBlock.Foreground"
-                                            Value="{Binding Path=(local:TreeViewHelper.SelectedForeground),RelativeSource={RelativeSource AncestorType=TreeView},Mode=OneWay}" />
-                                    <Setter TargetName="PART_Header"
-                                            Property="TextElement.Foreground"
+                                    <Setter Property="Foreground"
                                             Value="{Binding Path=(local:TreeViewHelper.SelectedForeground),RelativeSource={RelativeSource AncestorType=TreeView},Mode=OneWay}" />
                                 </MultiDataTrigger>
                             </ControlTemplate.Triggers>

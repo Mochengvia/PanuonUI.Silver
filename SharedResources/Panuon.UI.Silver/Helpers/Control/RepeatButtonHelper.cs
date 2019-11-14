@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using Panuon.UI.Silver.Utils;
+using System.Windows;
+using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 
 namespace Panuon.UI.Silver
@@ -65,6 +67,21 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(RepeatButtonHelper));
         #endregion
 
+        #region ClickCoverOpacity
+        public static double GetClickCoverOpacity(DependencyObject obj)
+        {
+            return (double)obj.GetValue(ClickCoverOpacityProperty);
+        }
+
+        public static void SetClickCoverOpacity(DependencyObject obj, double value)
+        {
+            obj.SetValue(ClickCoverOpacityProperty, value);
+        }
+
+        public static readonly DependencyProperty ClickCoverOpacityProperty =
+            DependencyProperty.RegisterAttached("ClickCoverOpacity", typeof(double), typeof(RepeatButtonHelper));
+        #endregion
+
         #region IsWaiting
         public static bool GetIsWaiting(DependencyObject obj)
         {
@@ -112,23 +129,115 @@ namespace Panuon.UI.Silver
 
         #endregion
 
-        #region ClickCoverBrush
-        public static Brush GetClickCoverBrush(DependencyObject obj)
+        #region (Internal) HoverBrushPercent
+        internal static double GetHoverBrushPercent(DependencyObject obj)
         {
-            return (Brush)obj.GetValue(ClickCoverBrushProperty);
+            return (double)obj.GetValue(HoverBrushPercentProperty);
         }
 
-        public static void SetClickCoverBrush(DependencyObject obj, Brush value)
+        internal static void SetHoverBrushPercent(DependencyObject obj, double value)
         {
-            obj.SetValue(ClickCoverBrushProperty, value);
+            obj.SetValue(HoverBrushPercentProperty, value);
         }
 
-        public static readonly DependencyProperty ClickCoverBrushProperty =
-            DependencyProperty.RegisterAttached("ClickCoverBrush", typeof(Brush), typeof(RepeatButtonHelper));
+        public static readonly DependencyProperty HoverBrushPercentProperty =
+            DependencyProperty.RegisterAttached("HoverBrushPercent", typeof(double), typeof(RepeatButtonHelper), new PropertyMetadata(OnHoverBrushPercentChanged));
 
+        private static void OnHoverBrushPercentChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var button = (RepeatButton)d;
 
+            if (button == null)
+                return;
+
+            var buttonStyle = GetRepeatButtonStyle(button);
+
+            var oldValue = (double)e.OldValue;
+            var newValue = (double)e.NewValue;
+
+            var previousForeground = GetPreviousForeground(button);
+            var previousBorderBrush = GetPreviousBorderBrush(button);
+            var previousBackground = GetPreviousBackground(button);
+
+            var hoverBrush = GetHoverBrush(button);
+
+            if (newValue == 0)
+            {
+                if (buttonStyle != RepeatButtonStyle.Standard)
+                    button.Foreground = previousForeground;
+
+                if (buttonStyle == RepeatButtonStyle.Standard || buttonStyle == RepeatButtonStyle.Hollow)
+                    button.Background = previousBackground;
+
+                button.BorderBrush = previousBorderBrush;
+                return;
+            }
+            if (oldValue == 0)
+            {
+                previousForeground = button.Foreground;
+                previousBorderBrush = button.BorderBrush;
+                previousBackground = button.Background;
+
+                SetPreviousForeground(button, previousForeground);
+                SetPreviousBorderBrush(button, previousBorderBrush);
+                SetPreviousBackground(button, previousBackground);
+            }
+
+            if (buttonStyle == RepeatButtonStyle.Standard || buttonStyle == RepeatButtonStyle.Hollow)
+                button.Background = BrushUtils.GetBrush(newValue, previousBackground, hoverBrush);
+
+            if (buttonStyle == RepeatButtonStyle.Hollow)
+                button.Foreground = BrushUtils.GetBrush(newValue, previousForeground, Brushes.White);
+            else if (buttonStyle != RepeatButtonStyle.Standard)
+                button.Foreground = BrushUtils.GetBrush(newValue, previousForeground, hoverBrush);
+
+            button.BorderBrush = BrushUtils.GetBrush(newValue, previousBorderBrush, hoverBrush);
+        }
         #endregion
 
+        #region (Internal) PreviousForeground
+        internal static Brush GetPreviousForeground(DependencyObject obj)
+        {
+            return (Brush)obj.GetValue(PreviousForegroundProperty);
+        }
 
+        internal static void SetPreviousForeground(DependencyObject obj, Brush value)
+        {
+            obj.SetValue(PreviousForegroundProperty, value);
+        }
+
+        internal static readonly DependencyProperty PreviousForegroundProperty =
+            DependencyProperty.RegisterAttached("PreviousForeground", typeof(Brush), typeof(RepeatButtonHelper));
+        #endregion
+
+        #region (Internal) PreviousForeground
+        public static Brush GetPreviousBorderBrush(DependencyObject obj)
+        {
+            return (Brush)obj.GetValue(PreviousBorderBrushProperty);
+        }
+
+        public static void SetPreviousBorderBrush(DependencyObject obj, Brush value)
+        {
+            obj.SetValue(PreviousBorderBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty PreviousBorderBrushProperty =
+            DependencyProperty.RegisterAttached("PreviousBorderBrush", typeof(Brush), typeof(RepeatButtonHelper));
+        #endregion
+
+        #region (Internal) PreviousBackground
+        public static Brush GetPreviousBackground(DependencyObject obj)
+        {
+            return (Brush)obj.GetValue(PreviousBackgroundProperty);
+        }
+
+        public static void SetPreviousBackground(DependencyObject obj, Brush value)
+        {
+            obj.SetValue(PreviousBackgroundProperty, value);
+        }
+
+        public static readonly DependencyProperty PreviousBackgroundProperty =
+            DependencyProperty.RegisterAttached("PreviousBackground", typeof(Brush), typeof(RepeatButtonHelper));
+        #endregion
     }
 }

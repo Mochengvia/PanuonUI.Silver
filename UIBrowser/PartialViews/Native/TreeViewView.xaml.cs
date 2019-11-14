@@ -184,7 +184,7 @@ namespace UIBrowser.PartialViews.Native
             switch (TreeViewHelper.GetTreeViewStyle(TvCustom))
             {
                 case TreeViewStyle.Standard:
-                    TreeViewHelper.SetSelectedBackground(TvCustom, color.ToBrush());
+                    TreeViewHelper.SetSelectedForeground(TvCustom, color.ToBrush());
                     break;
                 case TreeViewStyle.Classic:
                     TreeViewHelper.SetSelectedBackground(TvCustom, new Color() { A = 34, R = color.R, G = color.G, B = color.B }.ToBrush());
