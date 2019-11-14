@@ -17,7 +17,7 @@ Zhihu : @末城via
 #### 2019-11-14 v1.0.9.3
 [重要]Button / RepeatButton 的重大优化：  
 解决了无法使用AccessKey的问题；解决了除Standard外的样式无法使用UI控件作为Content的问题；优化了悬浮效果，不会再与Foreground和BorderBrush重叠显示。  
-删除了ClickHoverBrush属性，新增了ClickCoverOpacity属性，默认值为0.8。    
+删除了ClickCoverBrush属性，新增了ClickCoverOpacity属性，默认值为0.8。    
 
 [重要]关于TreeView的问题修复：  
 目前Standard样式下，子项选中的前景色是与SelectedBackground属性关联的。新版本中，已调整为SelectedForeground属性。  
