@@ -277,9 +277,9 @@ namespace Panuon.UI.Silver
             BindingOperations.SetBinding(target, targetProperty, binding);
         }
 
-        private TextBlock GetWeekTitleTextBlock(string time, int column)
+        private System.Windows.Controls.TextBlock GetWeekTitleTextBlock(string time, int column)
         {
-            var textBlock = new TextBlock()
+            var textBlock = new System.Windows.Controls.TextBlock()
             {
                 Text = time,
                 VerticalAlignment = VerticalAlignment.Center,

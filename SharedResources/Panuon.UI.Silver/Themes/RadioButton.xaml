@@ -506,7 +506,6 @@
                     </Setter.Value>
                 </Setter>
             </DataTrigger>
-
             <DataTrigger Binding="{Binding Path=(local:RadioButtonHelper.RadioButtonStyle),RelativeSource={RelativeSource Self}, Mode=OneWay}"
                          Value="Button">
                 <Setter Property="VerticalContentAlignment"
@@ -603,6 +602,87 @@
                     </Setter.Value>
                 </Setter>
             </DataTrigger>
+            <DataTrigger Binding="{Binding Path=(local:RadioButtonHelper.RadioButtonStyle),RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                         Value="Selector">
+                <Setter Property="local:RadioButtonHelper.CheckedBackground"
+                        Value="#3E3E3E" />
+                <Setter Property="local:RadioButtonHelper.CheckedGlyphBrush"
+                        Value="#FFFFFF" />
+                <Setter Property="VerticalContentAlignment"
+                        Value="Stretch" />
+                <Setter Property="HorizontalContentAlignment"
+                        Value="Stretch" />
+                <Setter Property="Background"
+                        Value="Transparent" />
+                <Setter Property="BorderThickness"
+                        Value="2" />
+                <Setter Property="Padding"
+                        Value="0" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type RadioButton}">
+                            <Grid>
+                                <ContentPresenter x:Name="Content"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  Margin="{TemplateBinding Padding}"
+                                                  Content="{TemplateBinding Content}"
+                                                  TextBlock.Foreground="{TemplateBinding Foreground}" />
+                                <Border x:Name="BdrChecked"
+                                        BorderBrush="{Binding Path=(local:RadioButtonHelper.CheckedBackground),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        Visibility="Collapsed" />
+                                <Grid x:Name="GrdChecked" Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                                      Width="{Binding Path=(local:RadioButtonHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                                      Background="{Binding Path=(local:RadioButtonHelper.CheckedBackground),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                                      VerticalAlignment="Bottom"
+                                      HorizontalAlignment="Right"
+                                      Visibility="Collapsed">
+                                    <Path x:Name="Path"
+                                          Width="{Binding Path=(local:RadioButtonHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                                          Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                                          Stroke="{Binding Path=(local:RadioButtonHelper.CheckedGlyphBrush),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                                          StrokeThickness="1.5"
+                                          StrokeDashCap="Round">
+                                        <Path.Data>
+                                            <MultiBinding Converter="{StaticResource CheckBoxGlyphPathConverter}">
+                                                <Binding Path="ActualWidth"
+                                                         ElementName="Path" />
+                                                <Binding Path="ActualHeight"
+                                                         ElementName="Path" />
+                                            </MultiBinding>
+                                        </Path.Data>
+                                    </Path>
+                                </Grid>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
+                                                   Value="True" />
+                                        <Condition Binding="{Binding Path=(local:RadioButtonHelper.CheckedContent),Converter={StaticResource IsNotNullConverter}, RelativeSource={RelativeSource Self}}"
+                                                   Value="True" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter TargetName="Content"
+                                            Property="Content"
+                                            Value="{Binding Path=(local:RadioButtonHelper.CheckedContent), RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}" />
+                                </MultiDataTrigger>
+                                <Trigger Property="IsChecked"
+                                         Value="True">
+                                    <Setter TargetName="BdrChecked"
+                                            Property="Visibility"
+                                            Value="Visible" />
+                                    <Setter TargetName="GrdChecked"
+                                            Property="Visibility"
+                                            Value="Visible" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+
             <Trigger  Property="IsEnabled"
                       Value="False">
                 <Setter Property="Opacity"

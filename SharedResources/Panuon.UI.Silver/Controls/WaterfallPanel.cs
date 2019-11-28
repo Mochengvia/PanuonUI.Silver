@@ -13,7 +13,7 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Constructor
-
+       
         #endregion
 
         #region Property
@@ -112,12 +112,12 @@ namespace Panuon.UI.Silver
 
                 foreach (UIElement child in InternalChildren)
                 {
+                    child.Measure(availableSize);
+
                     var height = ChildrenShape == ChildrenShape.Square ? (width + ChildrenShapeSizeDelta) : child.DesiredSize.Height;
 
                     var minHeight = heights.Min();
                     var minHeightIndex = heights.IndexOf(minHeight);
-
-                    child.Measure(availableSize);
 
                     child.Arrange(new Rect(new Point((width + HorizontalSpacing) * minHeightIndex, minHeight + VerticalSpacing), new Size(width, height)));
 

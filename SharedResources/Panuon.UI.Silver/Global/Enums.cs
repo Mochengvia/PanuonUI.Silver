@@ -135,7 +135,8 @@
         Standard,
         Switch,
         Switch2,
-        Button
+        Button,
+        Selector,
     }
     #endregion
 
@@ -145,7 +146,8 @@
         Standard,
         Switch,
         Switch2,
-        Button
+        Button,
+        Selector,
     }
     #endregion
 
@@ -305,4 +307,22 @@
         Tips,
     }
     #endregion
-}
+
+    #region MatchRule
+    public enum MatchRule
+    {
+        First,
+        All,
+    }
+    #endregion
+
+    #region TimelimeStripPlacement
+    public enum TimelimeStripPlacement
+    {
+        Left,
+        Right,
+        Top,
+        Bottom,
+    }
+    #endregion
+    }

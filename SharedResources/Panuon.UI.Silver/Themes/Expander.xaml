@@ -123,11 +123,11 @@
                                                                     <DoubleAnimation Storyboard.TargetName="Path1"
                                                                                      Storyboard.TargetProperty="Opacity"
                                                                                      To="0"
-                                                                                     Duration="{StaticResource Button_ShadeDuration}" />
+                                                                                     Duration="0:0:0.3" />
                                                                     <DoubleAnimation Storyboard.TargetName="Path2"
                                                                                      Storyboard.TargetProperty="Opacity"
                                                                                      To="1"
-                                                                                     Duration="{StaticResource Button_ShadeDuration}" />
+                                                                                     Duration="0:0:0.3" />
                                                                 </Storyboard>
                                                             </BeginStoryboard>
                                                         </Trigger.EnterActions>
@@ -136,10 +136,10 @@
                                                                 <Storyboard>
                                                                     <DoubleAnimation Storyboard.TargetName="Path1"
                                                                                      Storyboard.TargetProperty="Opacity"
-                                                                                     Duration="{StaticResource Button_ShadeDuration}" />
+                                                                                     Duration="0:0:0.3" />
                                                                     <DoubleAnimation Storyboard.TargetName="Path2"
                                                                                      Storyboard.TargetProperty="Opacity"
-                                                                                     Duration="{StaticResource Button_ShadeDuration}" />
+                                                                                     Duration="0:0:0.3" />
                                                                 </Storyboard>
                                                             </BeginStoryboard>
                                                         </Trigger.ExitActions>
@@ -265,11 +265,11 @@
                                                                     <DoubleAnimation Storyboard.TargetName="Path1"
                                                                                      Storyboard.TargetProperty="Opacity"
                                                                                      To="0"
-                                                                                     Duration="{StaticResource Button_ShadeDuration}" />
+                                                                                     Duration="0:0:0.3" />
                                                                     <DoubleAnimation Storyboard.TargetName="Path2"
                                                                                      Storyboard.TargetProperty="Opacity"
                                                                                      To="1"
-                                                                                     Duration="{StaticResource Button_ShadeDuration}" />
+                                                                                     Duration="0:0:0.3" />
                                                                 </Storyboard>
                                                             </BeginStoryboard>
                                                         </Trigger.EnterActions>
@@ -278,10 +278,10 @@
                                                                 <Storyboard>
                                                                     <DoubleAnimation Storyboard.TargetName="Path1"
                                                                                      Storyboard.TargetProperty="Opacity"
-                                                                                     Duration="{StaticResource Button_ShadeDuration}" />
+                                                                                     Duration="0:0:0.3" />
                                                                     <DoubleAnimation Storyboard.TargetName="Path2"
                                                                                      Storyboard.TargetProperty="Opacity"
-                                                                                     Duration="{StaticResource Button_ShadeDuration}" />
+                                                                                     Duration="0:0:0.3" />
                                                                 </Storyboard>
                                                             </BeginStoryboard>
                                                         </Trigger.ExitActions>

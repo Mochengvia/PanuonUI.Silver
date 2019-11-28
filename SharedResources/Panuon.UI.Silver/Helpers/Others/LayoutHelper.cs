@@ -31,10 +31,8 @@ namespace Panuon.UI.Silver
 
             Grid.SetRow(element, parentGrid.RowDefinitions.Count);
 
-            parentGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLengthUtil.ConvertToGridLength(row) });
+            parentGrid.RowDefinitions.Add(new RowDefinition() { Height = GridLengthUtil.ConvertToGridLength(row) });
         }
-
-
         #endregion
 
         #region ColumnDefinition

@@ -255,11 +255,6 @@
                                             Property="Visibility"
                                             Value="Hidden" />
                                 </Trigger>
-                                <Trigger Property="IsSelected"
-                                         Value="True">
-                                    <Setter Property="Foreground"
-                                            Value="{Binding Path=(local:TreeViewHelper.SelectedBackground),RelativeSource={RelativeSource  AncestorType=TreeView},Mode=OneWay}" />
-                                </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Setter.Value>

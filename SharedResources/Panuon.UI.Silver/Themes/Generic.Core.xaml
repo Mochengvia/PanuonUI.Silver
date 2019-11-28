@@ -8,6 +8,611 @@
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/CheckBox.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
+    <Style TargetType="{x:Type local:Timeline}">
+        <Setter Property="SnapsToDevicePixels"
+                Value="{StaticResource Default_SnapsToDevicePixels}" />
+        <Setter Property="FontSize"
+                Value="{StaticResource Default_FontSize}" />
+        <Setter Property="VirtualizingStackPanel.IsVirtualizing"
+                Value="True" />
+        <Setter Property="VirtualizingStackPanel.VirtualizationMode"
+                Value="Recycling" />
+        <Setter Property="ScrollViewer.CanContentScroll"
+                Value="True" />
+        <Setter Property="HeaderTemplateSelector"
+                Value="{StaticResource HeaderTemplateSelector}" />
+        <Setter Property="VerticalScrollBarVisibility"
+                Value="Auto" />
+        <Setter Property="HorizontalScrollBarVisibility"
+                Value="Disabled" />
+        <Setter Property="local:ScrollViewerHelper.ScrollBarThickness"
+                Value="6" />
+        <Setter Property="local:ScrollViewerHelper.ScrollBarCornerRadius"
+                Value="3" />
+        <Setter Property="ItemLineBrush"
+                Value="LightGray" />
+        <Setter Property="ItemLineThickness"
+                Value="1" />
+        <Setter Property="ItemLineMargin"
+                Value="0" />
+        <Setter Property="ItemToggleSize"
+                Value="20" />
+        <Setter Property="ItemToggleStroke"
+                Value="DimGray" />
+        <Setter Property="ItemToggleMargin"
+                Value="5" />
+        <Setter Property="ItemToggleStrokeThickness"
+                Value="1" />
+        <Setter Property="ItemToggleFill"
+                Value="White" />
+        <Setter Property="ItemToggleShadowColor"
+                Value="LightGray" />
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel Orientation="{Binding TimelimeStripPlacement,RelativeSource={RelativeSource AncestorType=local:Timeline},Converter={StaticResource TimelimeStripPlacementToOrientationConverter}}" />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:Timeline}">
+                    <Border Name="Border"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}">
+                        <ScrollViewer VerticalScrollBarVisibility="{TemplateBinding VerticalScrollBarVisibility}"
+                                      HorizontalScrollBarVisibility="{TemplateBinding HorizontalScrollBarVisibility}"
+                                      local:ScrollViewerHelper.ScrollBarCornerRadius="{Binding Path=(local:ScrollViewerHelper.ScrollBarCornerRadius),RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}"
+                                      local:ScrollViewerHelper.ScrollBarThickness="{Binding Path=(local:ScrollViewerHelper.ScrollBarThickness),RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}"
+                                      Padding="{TemplateBinding Padding}">
+                            <ItemsPresenter />
+                        </ScrollViewer>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled"
+                                 Value="False">
+                            <Setter Property="Opacity"
+                                    Value="0.4" />
+                        </Trigger>
+                        <Trigger Property="IsGrouping"
+                                 Value="True">
+                            <Setter Property="ScrollViewer.CanContentScroll"
+                                    Value="false" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="TimelimeStripPlacement"
+                     Value="Top">
+                <Setter Property="VerticalScrollBarVisibility"
+                        Value="Disabled" />
+                <Setter Property="HorizontalScrollBarVisibility"
+                        Value="Visible" />
+            </Trigger>
+            <Trigger Property="TimelimeStripPlacement"
+                     Value="Bottom">
+                <Setter Property="VerticalScrollBarVisibility"
+                        Value="Disabled" />
+                <Setter Property="HorizontalScrollBarVisibility"
+                        Value="Visible" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="{x:Type local:TimelineItem}"
+           BasedOn="{StaticResource {x:Type ContentControl}}">
+        <Setter Property="SnapsToDevicePixels"
+                Value="{StaticResource Default_SnapsToDevicePixels}" />
+        <Setter Property="FontSize"
+                Value="{StaticResource Default_FontSize}" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Top" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Left" />
+        <Setter Property="Foreground"
+                Value="#3E3E3E" />
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="TimelimeStripPlacement"
+                Value="{Binding TimelimeStripPlacement,RelativeSource={RelativeSource AncestorType=local:Timeline}}" />
+        <Setter Property="LineBrush"
+                Value="{Binding ItemLineBrush,RelativeSource={RelativeSource AncestorType=local:Timeline}}" />
+        <Setter Property="LineThickness"
+                Value="{Binding ItemLineThickness,RelativeSource={RelativeSource AncestorType=local:Timeline}}" />
+        <Setter Property="LineMargin"
+                Value="{Binding ItemLineMargin,RelativeSource={RelativeSource AncestorType=local:Timeline}}" />
+        <Setter Property="ToggleSize"
+                Value="{Binding ItemToggleSize,RelativeSource={RelativeSource AncestorType=local:Timeline}}" />
+        <Setter Property="ToggleMargin"
+                Value="{Binding ItemToggleMargin,RelativeSource={RelativeSource AncestorType=local:Timeline}}" />
+        <Setter Property="ToggleStroke"
+                Value="{Binding ItemToggleStroke,RelativeSource={RelativeSource AncestorType=local:Timeline}}" />
+        <Setter Property="ToggleStrokeThickness"
+                Value="{Binding ItemToggleStrokeThickness,RelativeSource={RelativeSource AncestorType=local:Timeline}}" />
+        <Setter Property="ToggleShadowColor"
+                Value="{Binding ItemToggleShadowColor,RelativeSource={RelativeSource AncestorType=local:Timeline}}" /> 
+        <Setter Property="ToggleFill"
+                Value="{Binding ItemToggleFill,RelativeSource={RelativeSource AncestorType=local:Timeline}}" />
+        <Setter Property="local:IconHelper.FontSize"
+                Value="{Binding FontSize, Converter={StaticResource Add3Converter},RelativeSource={RelativeSource Self},Mode=OneWay}" />
+        <Setter Property="local:IconHelper.Foreground"
+                Value="{Binding Foreground,RelativeSource={RelativeSource Self},Mode=OneWay}" />
+        <Setter Property="local:IconHelper.FontFamily"
+                Value="{StaticResource FontAwesome}" />
+        <Style.Triggers>
+            <Trigger Property="IsCreateByItemsControl"
+                     Value="True">
+                <Setter Property="Header"
+                        Value="{Binding}" />
+            </Trigger>
+            <Trigger Property="TimelimeStripPlacement"
+                     Value="Left">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type local:TimelineItem}">
+                            <Grid Background="{TemplateBinding Background}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Ellipse x:Name="EllToggle"
+                                         Width="{TemplateBinding ToggleSize}"
+                                         Height="{TemplateBinding ToggleSize}"
+                                         Margin="{TemplateBinding ToggleMargin}"
+                                         Stroke="{TemplateBinding ToggleStroke}"
+                                         StrokeThickness="{TemplateBinding ToggleStrokeThickness}"
+                                         Fill="{TemplateBinding ToggleFill}">
+                                    <Ellipse.Effect>
+                                        <DropShadowEffect ShadowDepth="0"
+                                                          BlurRadius="5"
+                                                          Color="{TemplateBinding ToggleShadowColor}"></DropShadowEffect>
+                                    </Ellipse.Effect>
+                                </Ellipse>
+                                <Label x:Name="LblIcon"
+                                       Content="{Binding Icon,Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}"
+                                       Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}"
+                                       FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}"
+                                       FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}"
+                                       VerticalContentAlignment="Center"
+                                       HorizontalContentAlignment="Center" />
+                                <Rectangle Grid.Row="1"
+                                           Margin="{TemplateBinding LineMargin}"
+                                           Width="{TemplateBinding LineThickness}"
+                                           Fill="{TemplateBinding LineBrush}"
+                                           HorizontalAlignment="Center" />
+                                <ContentPresenter Grid.Column="1"
+                                                  ContentSource="Header"
+                                                  ContentTemplate="{Binding HeaderTemplate,RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}"
+                                                  ContentTemplateSelector="{Binding HeaderTemplateSelector,RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}"
+                                                  TextBlock.Foreground="{TemplateBinding Foreground}"
+                                                  TextElement.Foreground="{TemplateBinding Foreground}"
+                                                  VerticalAlignment="Center"
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+                                </ContentPresenter>
+                                <ContentPresenter Grid.Column="1"
+                                                  Grid.Row="1"
+                                                  Margin="{TemplateBinding Padding}"
+                                                  TextBlock.Foreground="{TemplateBinding Foreground}"
+                                                  TextElement.Foreground="{TemplateBinding Foreground}"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="ToggleShadowColor"
+                                             Value="{x:Null}">
+                                    <Setter TargetName="EllToggle"
+                                            Property="Effect"
+                                            Value="{x:Null}" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="TimelimeStripPlacement"
+                     Value="Right">
+                <Setter Property="VerticalContentAlignment"
+                        Value="Top" />
+                <Setter Property="HorizontalContentAlignment"
+                        Value="Right" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type local:TimelineItem}">
+                            <Grid Background="{TemplateBinding Background}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <ContentPresenter ContentSource="Header"
+                                                  ContentTemplate="{Binding HeaderTemplate,RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}"
+                                                  ContentTemplateSelector="{Binding HeaderTemplateSelector,RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}"
+                                                  TextBlock.Foreground="{TemplateBinding Foreground}"
+                                                  TextElement.Foreground="{TemplateBinding Foreground}"
+                                                  VerticalAlignment="Center"
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                                <ContentPresenter Grid.Row="1"
+                                                  Margin="{TemplateBinding Padding}"
+                                                  TextBlock.Foreground="{TemplateBinding Foreground}"
+                                                  TextElement.Foreground="{TemplateBinding Foreground}"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                                <Ellipse Grid.Column="1"
+                                         x:Name="EllToggle"
+                                         Width="{TemplateBinding ToggleSize}"
+                                         Height="{TemplateBinding ToggleSize}"
+                                         Margin="{TemplateBinding ToggleMargin}"
+                                         Stroke="{TemplateBinding ToggleStroke}"
+                                         StrokeThickness="{TemplateBinding ToggleStrokeThickness}"
+                                         Fill="{TemplateBinding ToggleFill}">
+                                    <Ellipse.Effect>
+                                        <DropShadowEffect ShadowDepth="0"
+                                                          BlurRadius="5"
+                                                          Color="{TemplateBinding ToggleShadowColor}"></DropShadowEffect>
+                                    </Ellipse.Effect>
+                                </Ellipse>
+                                <Label x:Name="LblIcon"
+                                       Grid.Column="1"
+                                       Content="{Binding Icon,Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}"
+                                       Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}"
+                                       FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}"
+                                       FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}"
+                                       VerticalContentAlignment="Center"
+                                       HorizontalContentAlignment="Center" />
+                                <Rectangle Grid.Row="1"
+                                           Grid.Column="1"
+                                           Margin="{TemplateBinding LineMargin}"
+                                           Width="{TemplateBinding LineThickness}"
+                                           Fill="{TemplateBinding LineBrush}"
+                                           HorizontalAlignment="Center" />
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="ToggleShadowColor"
+                                         Value="{x:Null}">
+                                    <Setter TargetName="EllToggle"
+                                            Property="Effect"
+                                            Value="{x:Null}" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="TimelimeStripPlacement"
+                     Value="Top">
+                <Setter Property="VerticalContentAlignment"
+                        Value="Top" />
+                <Setter Property="HorizontalContentAlignment"
+                        Value="Stretch" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type local:TimelineItem}">
+                            <Grid Background="{TemplateBinding Background}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Rectangle VerticalAlignment="Center"
+                                           Margin="{TemplateBinding LineMargin}"
+                                           Height="{TemplateBinding LineThickness}"
+                                           Fill="{TemplateBinding LineBrush}"
+                                           HorizontalAlignment="Stretch" />
+                                <Grid HorizontalAlignment="Center">
+                                    <Ellipse x:Name="EllToggle"
+                                             Width="{TemplateBinding ToggleSize}"
+                                             Height="{TemplateBinding ToggleSize}"
+                                             Margin="{TemplateBinding ToggleMargin}"
+                                             Stroke="{TemplateBinding ToggleStroke}"
+                                             StrokeThickness="{TemplateBinding ToggleStrokeThickness}"
+                                             Fill="{TemplateBinding ToggleFill}">
+                                        <Ellipse.Effect>
+                                            <DropShadowEffect ShadowDepth="0"
+                                                              BlurRadius="5"
+                                                              Color="Gray"></DropShadowEffect>
+                                        </Ellipse.Effect>
+                                    </Ellipse>
+                                    <Label x:Name="LblIcon"
+                                           Content="{Binding Icon,Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}"
+                                           Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}"
+                                           FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}"
+                                           FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}"
+                                           VerticalContentAlignment="Center"
+                                           HorizontalContentAlignment="Center" />
+                                </Grid>
+                                <ContentPresenter Grid.Row="1"
+                                                  ContentSource="Header"
+                                                  ContentTemplate="{Binding HeaderTemplate,RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}"
+                                                  ContentTemplateSelector="{Binding HeaderTemplateSelector,RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}"
+                                                  TextBlock.Foreground="{TemplateBinding Foreground}"
+                                                  TextElement.Foreground="{TemplateBinding Foreground}"
+                                                  HorizontalAlignment="Center"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                <ContentPresenter Grid.Row="2"
+                                                  Margin="{TemplateBinding Padding}"
+                                                  TextBlock.Foreground="{TemplateBinding Foreground}"
+                                                  TextElement.Foreground="{TemplateBinding Foreground}"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="ToggleShadowColor"
+                                         Value="{x:Null}">
+                                    <Setter TargetName="EllToggle"
+                                            Property="Effect"
+                                            Value="{x:Null}" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="TimelimeStripPlacement"
+                     Value="Bottom">
+                <Setter Property="VerticalContentAlignment"
+                        Value="Bottom" />
+                <Setter Property="HorizontalContentAlignment"
+                        Value="Stretch" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type local:TimelineItem}">
+                            <Grid Background="{TemplateBinding Background}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <ContentPresenter Margin="{TemplateBinding Padding}"
+                                                  TextBlock.Foreground="{TemplateBinding Foreground}"
+                                                  TextElement.Foreground="{TemplateBinding Foreground}"
+                                                  HorizontalAlignment="Center"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                <ContentPresenter Grid.Row="1"
+                                                  ContentSource="Header"
+                                                  ContentTemplate="{Binding HeaderTemplate,RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}"
+                                                  ContentTemplateSelector="{Binding HeaderTemplateSelector,RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}"
+                                                  TextBlock.Foreground="{TemplateBinding Foreground}"
+                                                  TextElement.Foreground="{TemplateBinding Foreground}"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                                <Rectangle Grid.Row="2"
+                                           VerticalAlignment="Center"
+                                           Margin="{TemplateBinding LineMargin}"
+                                           Height="{TemplateBinding LineThickness}"
+                                           Fill="{TemplateBinding LineBrush}"
+                                           HorizontalAlignment="Stretch" />
+                                <Grid HorizontalAlignment="Center"
+                                      Grid.Row="2">
+                                    <Ellipse x:Name="EllToggle"
+                                             Width="{TemplateBinding ToggleSize}"
+                                             Height="{TemplateBinding ToggleSize}"
+                                             Margin="{TemplateBinding ToggleMargin}"
+                                             Stroke="{TemplateBinding ToggleStroke}"
+                                             StrokeThickness="{TemplateBinding ToggleStrokeThickness}"
+                                             Fill="{TemplateBinding ToggleFill}">
+                                        <Ellipse.Effect>
+                                            <DropShadowEffect ShadowDepth="0"
+                                                              BlurRadius="5"
+                                                              Color="{TemplateBinding ToggleShadowColor}"></DropShadowEffect>
+                                        </Ellipse.Effect>
+                                    </Ellipse>
+                                    <Label x:Name="LblIcon"
+                                           Content="{Binding Icon,Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}"
+                                           Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}"
+                                           FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}"
+                                           FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}"
+                                           VerticalContentAlignment="Center"
+                                           HorizontalContentAlignment="Center" />
+                                </Grid>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="ToggleShadowColor"
+                                         Value="{x:Null}">
+                                    <Setter TargetName="EllToggle"
+                                            Property="Effect"
+                                            Value="{x:Null}" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="{x:Type local:TagControl}">
+        <Setter Property="SnapsToDevicePixels"
+                Value="{StaticResource Default_SnapsToDevicePixels}" />
+        <Setter Property="FontSize"
+                Value="{StaticResource Default_FontSize}" />
+        <Setter Property="VerticalScrollBarVisibility"
+                Value="Auto" />
+        <Setter Property="HorizontalScrollBarVisibility"
+                Value="Disabled" />
+        <Setter Property="ItemRemovable"
+                Value="True" />
+        <Setter Property="ItemHeight"
+                Value="30" />
+        <Setter Property="ItemCornerRadius"
+                Value="15" />
+        <Setter Property="local:ScrollViewerHelper.ScrollBarThickness"
+                Value="6" />
+        <Setter Property="local:ScrollViewerHelper.ScrollBarCornerRadius"
+                Value="3" />
+        <Setter Property="VerticalSpacing"
+                Value="10" />
+        <Setter Property="HorizontalSpacing"
+                Value="10" />
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <local:AnimateWrapPanel Orientation="Horizontal"
+                                            HorizontalSpacing="{Binding HorizontalSpacing,RelativeSource={RelativeSource AncestorType=local:TagControl},Mode=OneWay}"
+                                            VerticalSpacing="{Binding VerticalSpacing,RelativeSource={RelativeSource AncestorType=local:TagControl},Mode=OneWay}"
+                                            ItemWidth="{Binding ItemWidth,RelativeSource={RelativeSource AncestorType=local:TagControl},Mode=OneWay}"
+                                            ItemHeight="{Binding ItemHeight,RelativeSource={RelativeSource AncestorType=local:TagControl},Mode=OneWay}" />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:TagControl}">
+                    <Border Name="Border"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}">
+                        <ScrollViewer VerticalScrollBarVisibility="{TemplateBinding VerticalScrollBarVisibility}"
+                                      HorizontalScrollBarVisibility="{TemplateBinding HorizontalScrollBarVisibility}"
+                                      local:ScrollViewerHelper.ScrollBarCornerRadius="{Binding Path=(local:ScrollViewerHelper.ScrollBarCornerRadius),RelativeSource={RelativeSource AncestorType=local:TagControl}, Mode=OneWay}"
+                                      local:ScrollViewerHelper.ScrollBarThickness="{Binding Path=(local:ScrollViewerHelper.ScrollBarThickness),RelativeSource={RelativeSource AncestorType=local:TagControl}, Mode=OneWay}"
+                                      Padding="{TemplateBinding Padding}">
+                            <ItemsPresenter />
+                        </ScrollViewer>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled"
+                                 Value="False">
+                            <Setter Property="Opacity"
+                                    Value="0.4" />
+                        </Trigger>
+                        <Trigger Property="IsGrouping"
+                                 Value="True">
+                            <Setter Property="ScrollViewer.CanContentScroll"
+                                    Value="false" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type local:TagItem}"
+           BasedOn="{StaticResource {x:Type ContentControl}}">
+        <Setter Property="SnapsToDevicePixels"
+                Value="{StaticResource Default_SnapsToDevicePixels}" />
+        <Setter Property="FontSize"
+                Value="{StaticResource Default_FontSize}" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="Height"
+                Value="30" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Center" />
+        <Setter Property="Background"
+                Value="#666666" />
+        <Setter Property="HoverBrush"
+                Value="#3E3E3E" />
+        <Setter Property="Foreground"
+                Value="White" />
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="Padding"
+                Value="10,0" />
+        <Setter Property="CornerRadius"
+                Value="{Binding ItemCornerRadius,RelativeSource={RelativeSource AncestorType=local:TagControl}}" />
+        <Setter Property="Removable"
+                Value="{Binding ItemRemovable,RelativeSource={RelativeSource AncestorType=local:TagControl}}" />
+        <Setter Property="RemoveButtonStyle">
+            <Setter.Value>
+                <Style TargetType="{x:Type Button}"
+                       BasedOn="{StaticResource {x:Type Button}}">
+                    <Setter Property="local:ButtonHelper.ButtonStyle"
+                            Value="Link" />
+                    <Setter Property="Content"
+                            Value="×" />
+                    <Setter Property="FontSize"
+                            Value="{Binding FontSize,RelativeSource={RelativeSource AncestorType=local:TagItem}}" />
+                    <Setter Property="Margin"
+                            Value="5,0,0,0" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=(local:ButtonHelper.ButtonStyle),RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                                     Value="Link">
+                            <Setter Property="Foreground"
+                                    Value="{Binding Foreground,RelativeSource={RelativeSource AncestorType=local:TagItem}}" />
+                            <Setter Property="local:ButtonHelper.HoverBrush"
+                                    Value="{Binding Foreground,RelativeSource={RelativeSource AncestorType=local:TagItem}}" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:TagItem}">
+                    <Grid>
+                        <Border x:Name="BdrMain"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{TemplateBinding CornerRadius}" />
+                        <Border x:Name="BdrHover"
+                                Opacity="0"
+                                Background="{TemplateBinding HoverBrush}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{TemplateBinding CornerRadius}" />
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="{TemplateBinding Padding}">
+                            <ContentPresenter Grid.Column="1"
+                                              Grid.Row="1"
+                                              Margin="{TemplateBinding Padding}"
+                                              TextBlock.Foreground="{TemplateBinding Foreground}"
+                                              TextElement.Foreground="{TemplateBinding Foreground}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                            <Button x:Name="PART_RemoveButton"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    Style="{TemplateBinding RemoveButtonStyle}"/>
+                        </StackPanel>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver"
+                                 Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="BdrHover"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1"
+                                                         Duration="0:0:0.3" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="BdrHover"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         Duration="0:0:0.3" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger Property="Removable"
+                                 Value="False">
+                            <Setter TargetName="PART_RemoveButton"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        
+    </Style>
 
     <Style TargetType="{x:Type local:StateIcon}">
         <Setter Property="Foreground"
@@ -85,6 +690,7 @@
             </Setter.Value>
         </Setter>
     </Style>
+
     <Style TargetType="{x:Type local:Pagination}">
         <Setter Property="SnapsToDevicePixels"
                 Value="{StaticResource Default_SnapsToDevicePixels}" />
@@ -2197,116 +2803,6 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type internal:DragableThumb}">
                     <Border Background="{TemplateBinding Background}" />
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style TargetType="{x:Type local:Timeline}">
-        <Setter Property="SnapsToDevicePixels"
-                Value="{StaticResource Default_SnapsToDevicePixels}" />
-        <Setter Property="FontSize"
-                Value="{StaticResource Default_FontSize}" />
-        <Setter Property="ThemeBrush"
-                Value="Gray" />
-        <Setter Property="Foreground"
-                Value="#3E3E3E" />
-        <Setter Property="HeaderForeground"
-                Value="#3E3E3E" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type local:Timeline}">
-                    <ScrollViewer VerticalScrollBarVisibility="Auto"
-                                  HorizontalScrollBarVisibility="Disabled"
-                                  local:ScrollViewerHelper.ScrollBarCornerRadius="3"
-                                  local:ScrollViewerHelper.ScrollBarThickness="6">
-                        <ItemsControl ItemsSource="{TemplateBinding ItemsSource}"
-                                      Margin="0,0,5,0">
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel />
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="30" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="20" />
-                                            <RowDefinition Height="Auto" />
-                                        </Grid.RowDefinitions>
-                                        <Ellipse Height="16"
-                                                 Width="16"
-                                                 Fill="White"
-                                                 HorizontalAlignment="Center"
-                                                 VerticalAlignment="Center"
-                                                 Stroke="{Binding ThemeBrush,RelativeSource={RelativeSource AncestorType=local:Timeline}}"
-                                                 StrokeThickness="1">
-                                            <Ellipse.Effect>
-                                                <DropShadowEffect ShadowDepth="0"
-                                                                  Color="{Binding ThemeBrush,RelativeSource={RelativeSource AncestorType=local:Timeline},Converter={StaticResource BrushToColorConverter}}" />
-                                            </Ellipse.Effect>
-                                        </Ellipse>
-                                        <TextBlock x:Name="TxtHeader"
-                                                   Grid.Column="1"
-                                                   VerticalAlignment="Center"
-                                                   Foreground="{Binding HeaderForeground,RelativeSource={RelativeSource AncestorType=local:Timeline}}"
-                                                   FontSize="{Binding FontSize,Converter={StaticResource Add5Converter},RelativeSource={RelativeSource AncestorType=local:Timeline}}"
-                                                   FontFamily="{Binding FontFamily,RelativeSource={RelativeSource AncestorType=local:Timeline}}"
-                                                   Margin="0,-2,0,0">
-                                            <TextBlock.Text>
-                                                <MultiBinding Converter="{StaticResource ObjectMemberPathConverter}">
-                                                    <Binding Path="." />
-                                                    <Binding Path="HeaderMemberPath"
-                                                             RelativeSource="{RelativeSource AncestorType=local:Timeline}"
-                                                             Mode="OneWay" />
-                                                </MultiBinding>
-                                            </TextBlock.Text>
-                                        </TextBlock>
-                                        <Border HorizontalAlignment="Center"
-                                                Grid.Row="1"
-                                                Margin="0,2"
-                                                BorderBrush="LightGray"
-                                                BorderThickness="0,0,1,0" />
-                                        <TextBlock x:Name="TxtContent"
-                                                   Grid.Column="1"
-                                                   Grid.Row="1"
-                                                   FontSize="{Binding FontSize,RelativeSource={RelativeSource AncestorType=local:Timeline}}"
-                                                   FontFamily="{Binding FontFamily,RelativeSource={RelativeSource AncestorType=local:Timeline}}"
-                                                   TextWrapping="Wrap"
-                                                   Margin="0,10">
-                                            <TextBlock.Text>
-                                                <MultiBinding Converter="{StaticResource ObjectMemberPathConverter}">
-                                                    <Binding Path="." />
-                                                    <Binding Path="ContentMemberPath"
-                                                             RelativeSource="{RelativeSource AncestorType=local:Timeline}"
-                                                             Mode="OneWay" />
-                                                </MultiBinding>
-                                            </TextBlock.Text>
-                                        </TextBlock>
-                                    </Grid>
-                                    <DataTemplate.Triggers>
-                                        <DataTrigger Value="{x:Null}">
-                                            <DataTrigger.Binding>
-                                                <MultiBinding Converter="{StaticResource ObjectMemberPathConverter}">
-                                                    <Binding Path="." />
-                                                    <Binding Path="ContentMemberPath"
-                                                             RelativeSource="{RelativeSource AncestorType=local:Timeline}"
-                                                             Mode="OneWay" />
-                                                </MultiBinding>
-                                            </DataTrigger.Binding>
-                                            <Setter TargetName="TxtContent"
-                                                    Property="Visibility"
-                                                    Value="Collapsed" />
-                                        </DataTrigger>
-                                    </DataTemplate.Triggers>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
-                    </ScrollViewer>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

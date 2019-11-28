@@ -14,21 +14,37 @@ Zhihu : @末城via
 
 # News 动态  
 
+#### 2019-11-14 v1.0.9.3 / v1.0.9.4
+[重要]Button / RepeatButton 的重大优化：  
+解决了无法使用AccessKey的问题；解决了除Standard外的样式无法使用UI控件作为Content的问题；优化了悬浮效果，不会再与Foreground和BorderBrush重叠显示。  
+删除了ClickCoverBrush属性，新增了ClickCoverOpacity属性，默认值为0.8。    
+
+[重要]关于TreeView的问题修复：  
+目前Standard样式下，子项选中的前景色是与SelectedBackground属性关联的。新版本中，已调整为SelectedForeground属性。为所有的TreeView样式应用了SelectedForeground效果。  
+
+#### 2019-11-13 v1.0.9.1 / v1.0.9.2
+出于命名空间的重叠原因，TextBlock控件已重命名为PUTextBlock。  
+
+#### 2019-11-12 v1.0.9
+修复ColorPicker点击控件外区域时不能自动关闭的问题，新增了HeaderWidth属性。  
+修复ColorSelector的SelectedBrush赋值为null时崩溃的问题。  
+修复了LayoutHelper的RowDefinition无效的问题。  
+修复了WaterfallPanel中的控件设置高度无效的问题。  
+为Slider控件新增了Header和HeaderWidth属性。  
+新增了CheckBox和RadioButton的Selector样式。  
+新增了TextBlock控件。MatchText和MatchedForeground属性可以用来高亮指定的文字，AutoAdaptation和ExceededTextFiller属性可以将超出显示边界的文本显示为省略号或其他文字。[详见文档](
+https://github.com/Panuon/Panuon.Documents/blob/master/Documents/PanuonUI.Silver/zh-cn.md#textblock-%E6%96%87%E6%9C%AC%E6%8E%A7%E4%BB%B6)。  
+新增了AnimateWrapPanel控件，该控件继承自Panel。当其Children发生变化时，将产生一个重新排列的动画效果。[详见文档](  
+https://github.com/Panuon/Panuon.Documents/blob/master/Documents/PanuonUI.Silver/zh-cn.md#animatewrappanel-%E5%8A%A8%E7%94%BB%E6%8D%A2%E8%A1%8C%E9%9D%A2%E6%9D%BF)。  
+Timeline控件重做，新增TimelineItem控件。该控件默认启用虚拟化。[详见文档](  
+https://github.com/Panuon/Panuon.Documents/blob/master/Documents/PanuonUI.Silver/zh-cn.md#timeline-%E6%97%B6%E9%97%B4%E8%BD%B4)。  
+移除了TagPanel控件，新增了TagControl和TagItem控件。该控件不支持虚拟化。[详见文档](https://github.com/Panuon/Panuon.Documents/blob/master/Documents/PanuonUI.Silver/zh-cn.md#tagcontrol-%E6%A0%87%E7%AD%BE%E6%9D%BF)。   
+  
+
 #### 2019-11-6 v1.0.8.8
 修复ComboBox的IsEditable属性设置为True时，Padding属性未对输入框生效的问题。  
 修复ComboBox的BindToEnum属性在某些特定条件下可能报空指针异常，以及在使用BindToEnum属性时SelectedValue属性初始值无效的问题。  
 新增了DataGridHelper中的SelectedItems属性。请注意，对该属性赋值是无效的。  
-
-#### 2019-11-1 v1.0.8.7
-[严重]修复DataGrid在选中时前景色变灰的问题。    
-
-#### 2019-10-31 v1.0.8.6
-修复WindowXCaption的Foreground属性未对标题和Header生效的问题。  
-修复IconHelper.Width对除了Standard外的Button样式无效的问题。  
-[重要]将CheckBox和RadioButton的CornerRadius属性由double类型调整为CornerRadius类型。  
-修复ComboBox的SelectedForeground可能会显示异常的问题。  
-移除了DataGridHelper多余的RowHeaderBrush属性。您可通过DataGrid的RowHeaderTemplate属性自由设置Header样式。同时，修复了DataGrid的Header没有显示的问题。  
-修复了TabControlHelper.HeaderPanelBackground在TabStripPlacement不为Top时不生效的问题。  
 
 # ReleaseNote 发布文档  
 

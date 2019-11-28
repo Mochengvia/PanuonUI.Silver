@@ -39,7 +39,7 @@ namespace Panuon.UI.Silver
             if ((grid.ColumnDefinitions?.Count ?? 0) != 0)
                 Grid.SetColumnSpan(border, grid.ColumnDefinitions.Count);
 
-            var textBlock = new TextBlock()
+            var textBlock = new System.Windows.Controls.TextBlock()
             {
                 Text = content,
                 Foreground = new SolidColorBrush(Colors.White),

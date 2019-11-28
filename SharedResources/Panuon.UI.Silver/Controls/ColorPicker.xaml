@@ -20,7 +20,7 @@
     </ContentControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="{Binding HeaderWidth, Converter={StaticResource GridLengthConverter},ElementName=picker,Mode=OneWay}" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <ContentControl x:Name="ContentHeader"
@@ -70,7 +70,6 @@
                         </DrawingBrush>
                     </Rectangle.Fill>
                 </Rectangle>
-
                 <Border CornerRadius="2"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center"
@@ -169,12 +168,12 @@
                 </ToggleButton.Style>
             </ToggleButton>
             <internal:NotTopMostPopup Placement="Bottom"
-                                      StaysOpen="{Binding StaysOpen,ElementName=picker}"
-                                x:Name="Popup"
-                                Focusable="False"
-                                Tag="{Binding ElementName=ToggleButton}"
-                                AllowsTransparency="True"
-                                PopupAnimation="Slide">
+                                      StaysOpen="False"
+                                      x:Name="Popup"
+                                      Focusable="False"
+                                      Tag="{Binding ElementName=ToggleButton}"
+                                      AllowsTransparency="True"
+                                      PopupAnimation="Slide">
                 <Grid x:Name="DropDown">
                     <Border x:Name="DropDownBorder"
                             Margin="0,0,0,10"

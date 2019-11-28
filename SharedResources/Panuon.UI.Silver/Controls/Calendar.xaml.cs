@@ -588,9 +588,9 @@ namespace Panuon.UI.Silver
             }
         }
 
-        private TextBlock GetWeekTitleTextBlock(string week, int column)
+        private System.Windows.Controls.TextBlock GetWeekTitleTextBlock(string week, int column)
         {
-            var textBlock = new TextBlock()
+            var textBlock = new System.Windows.Controls.TextBlock()
             {
                 Text = week,
                 VerticalAlignment = VerticalAlignment.Center,

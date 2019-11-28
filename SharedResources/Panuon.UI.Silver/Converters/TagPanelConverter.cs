@@ -6,7 +6,7 @@ using System.Windows.Media;
 
 namespace Panuon.UI.Silver.Converters
 {
-    internal class TagPanelBackgroundConverter : IMultiValueConverter
+    internal class TagControlBackgroundConverter : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
@@ -41,7 +41,7 @@ namespace Panuon.UI.Silver.Converters
         }
     }
 
-    internal class TagPanelRemovableConverter : IMultiValueConverter
+    internal class TagControlRemovableConverter : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {

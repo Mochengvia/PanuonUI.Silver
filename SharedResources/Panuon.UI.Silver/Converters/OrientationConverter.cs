@@ -6,7 +6,7 @@ using System.Windows.Data;
 
 namespace Panuon.UI.Silver.Converters
 {
-    public class InverseOrientationConverter : IValueConverter
+    internal class InverseOrientationConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

@@ -40,7 +40,7 @@
                      Text="{Binding SearchText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,Delay=300}" />
             <TreeView x:Name="TvMenu"
                       Grid.Row="1"
-                      pu:TreeViewHelper.SelectedBackground="#49A9C0"
+                      pu:TreeViewHelper.SelectedForeground="#49A9C0"
                       pu:TreeViewHelper.ExpandMode="SingleClick"
                       pu:TreeViewHelper.SelectMode="ChildOnly"
                       SelectedValuePath="Value"
