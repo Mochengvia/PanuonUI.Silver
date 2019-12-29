@@ -19,7 +19,6 @@ namespace Panuon.UI.Silver.Controls.Internal
             MessageBoxStyle = messageBoxXConfigurations.MessageBoxStyle;
             Topmost = messageBoxXConfigurations.Topmost;
             ShowInTaskbar = messageBoxXConfigurations.ShowInTaskbar;
-            base.Owner = owner;//change here or delete Owner Property
             MessageBoxIcon = messageBoxXConfigurations.MessageBoxIcon;
             MessageBoxButton = messageBoxButton;
             WindowStartupLocation = messageBoxXConfigurations.WindowStartupLocation;
@@ -116,8 +115,6 @@ namespace Panuon.UI.Silver.Controls.Internal
 
         public static readonly DependencyProperty MaxContentHeightProperty =
             DependencyProperty.Register("MaxContentHeight", typeof(double), typeof(MsgBox));
-
-        public Window Owner { get; }//can be deleted
 
         public string Text
         {

@@ -1,7 +1,9 @@
-﻿using Panuon.UI.Silver.Core;
+﻿using Panuon.UI.Silver.Controls.Internal;
+using Panuon.UI.Silver.Core;
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 
 namespace Panuon.UI.Silver
@@ -16,6 +18,7 @@ namespace Panuon.UI.Silver
 
         public DateTimePicker()
         {
+            AddHandler(Calendar.SelectedEvent, new RoutedEventHandler(OnCalendarSelected));
             Loaded += delegate
             {
                 UpdateText();
@@ -188,6 +191,16 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Event Handler
+        private void OnCalendarSelected(object sender, RoutedEventArgs e)
+        {
+            if (!StaysOpen)
+            {
+                var popup = VisualTreeHelper.GetChild(VisualTreeHelper.GetChild(VisualTreeHelper.GetChild(this, 0), 1), 3) as NotTopMostPopup;
+                popup.IsOpen = false;
+            }
+            RaiseSelectedEvent();
+        }
+
         private static void OnSelectedDateSelectedDateTimeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var picker = d as DateTimePicker;

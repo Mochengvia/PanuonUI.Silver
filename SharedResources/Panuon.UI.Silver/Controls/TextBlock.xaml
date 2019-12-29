@@ -17,6 +17,6 @@
                    TextWrapping="{Binding TextWrapping,ElementName=this}"
                    TextAlignment="{Binding TextAlignment,ElementName=this}"
                    VerticalAlignment="{Binding VerticalContentAlignment,ElementName=this}"
-                   HorizontalAlignment="{Binding VerticalContentAlignment,ElementName=this}"></TextBlock>
+                   HorizontalAlignment="{Binding HorizontalContentAlignment,ElementName=this}"></TextBlock>
     </Grid>
 </UserControl>

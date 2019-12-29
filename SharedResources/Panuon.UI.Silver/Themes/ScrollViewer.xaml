@@ -136,7 +136,6 @@
                                        Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"
                                        Height="{Binding Path=(local:ScrollViewerHelper.ScrollBarThickness),RelativeSource={RelativeSource AncestorType=ScrollViewer}}"
                                        Opacity="0.5" />
-
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>

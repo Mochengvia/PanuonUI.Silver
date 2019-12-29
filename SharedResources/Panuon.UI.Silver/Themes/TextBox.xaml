@@ -100,7 +100,7 @@
                                               HorizontalScrollBarVisibility="{TemplateBinding HorizontalScrollBarVisibility}">
                                 </ScrollViewer>
                                 <TextBlock  x:Name="tbWatermark"
-                                            Padding="2,0,0,0"
+                                            Padding="2,0"
                                             Margin="{TemplateBinding Padding}"
                                             TextWrapping="Wrap"
                                             Focusable="False"
