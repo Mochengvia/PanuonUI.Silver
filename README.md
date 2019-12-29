@@ -75,17 +75,17 @@ https://github.com/Panuon/Panuon.Documents/blob/master/Documents/PanuonUI.Silver
 
 http://www.huanghunxiao.com/  
   
-![](https://panuonui-silver-1252047526.file.myqcloud.com/case_morin_4.png)  
+![](https://panuonui-silver-1252047526.cos.ap-chengdu.myqcloud.com/case_morin_4.png)  
 
 ### Collector 
 
-![](https://panuonui-silver-1252047526.file.myqcloud.com/case_collector_1.png)  
+![](https://panuonui-silver-1252047526.cos.ap-chengdu.myqcloud.com/case_collector_1.png)  
 
 # Examples 示例  
 
-![](https://panuonui-silver-1252047526.file.myqcloud.com/window_1.png)
+![](https://panuonui-silver-1252047526.cos.ap-chengdu.myqcloud.com/window_1.png)
 
-![](https://panuonui-silver-1252047526.file.myqcloud.com/window_2.png)
+![](https://panuonui-silver-1252047526.cos.ap-chengdu.myqcloud.com/window_2.png)
 
 # Donate  捐赠
 Panuon.UI.Silver is an open source library.Your support will motivate me to continue Panuon.UI.Silver development.    
@@ -94,7 +94,7 @@ Panuon.UI.Silver是一个完全开源的控件库。您的支持是项目得以�
 Zhifubao:  
 支付宝：
 
-![](https://panuonui-silver-1252047526.file.myqcloud.com/zhifubao.jpg)
+![](https://panuonui-silver-1252047526.cos.ap-chengdu.myqcloud.com/zhifubao.jpg)
 
 Paypal:  
 paypal.me/Zeoun  
@@ -104,9 +104,9 @@ paypal.me/Zeoun
 After downloading this repository, launch "Panuon.UI.Silver.Browser" project , and you will find it .  
 当您下载该仓库后，只需启动"Panuon.UI.Silver.Browser"项目，即可看到示例。
 
-![](https://panuonui-silver-1252047526.file.myqcloud.com/step1.png)
+![](https://panuonui-silver-1252047526.cos.ap-chengdu.myqcloud.com/step1.png)
 
-![](https://panuonui-silver-1252047526.file.myqcloud.com/temp.jpg)
+![](https://panuonui-silver-1252047526.cos.ap-chengdu.myqcloud.com/temp.jpg)
 ### Work with helper （需要使用Helper的控件）:
 Button / CheckBox / RadioButton / TextBox / PasswordBox / ComboBox / Expander / GroupBox / Expander
 
@@ -118,16 +118,16 @@ DataGrid / ScrollViewer (MiniScrollViewer)
 
 # Button 
 
-![](https://panuonui-silver-1252047526.file.myqcloud.com/button.jpg)
+![](https://panuonui-silver-1252047526.cos.ap-chengdu.myqcloud.com/button.jpg)
 
 # TextBox / PasswordBox
 
-![](https://panuonui-silver-1252047526.file.myqcloud.com/textbox.jpg)
+![](https://panuonui-silver-1252047526.cos.ap-chengdu.myqcloud.com/textbox.jpg)
 
 # CheckBox
 
-![](https://panuonui-silver-1252047526.file.myqcloud.com/checkbox.jpg)
+![](https://panuonui-silver-1252047526.cos.ap-chengdu.myqcloud.com/checkbox.jpg)
 
 # RadioButton
 
-![](https://panuonui-silver-1252047526.file.myqcloud.com/radiobutton.jpg)
+![](https://panuonui-silver-1252047526.cos.ap-chengdu.myqcloud.com/radiobutton.jpg)
