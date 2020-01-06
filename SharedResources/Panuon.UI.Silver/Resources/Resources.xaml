@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:win="clr-namespace:System.Windows;assembly=PresentationCore"
+                    xmlns:win2="clr-namespace:System.Windows;assembly=PresentationFramework"
+                    xmlns:i="clr-namespace:Panuon.UI.Silver.Internal"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver"
+                    xmlns:icv="clr-namespace:Panuon.UI.Silver.Internal.Converters"
+                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources">
+
+    <sys:Double x:Key="{x:Static rs:ResourceKeys.CardDropShadowBlurRadius}">10</sys:Double>
+    <sys:Double x:Key="{x:Static rs:ResourceKeys.DisabledOpacity}">0.4</sys:Double>
+    <SolidColorBrush x:Key="{x:Static rs:ResourceKeys.TextBoxValidationErrorBrush}"
+                     Color="Red" />
+    <SolidColorBrush x:Key="{x:Static rs:ResourceKeys.PasswordBoxValidationErrorBrush}"
+                     Color="Red" />
+</ResourceDictionary>

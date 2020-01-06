@@ -1,6 +1,4 @@
-﻿using Panuon.UI.Silver.Core;
-using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -8,30 +6,9 @@ namespace Panuon.UI.Silver
 {
     public class WaterfallPanel : Panel
     {
-        #region Identity
-
-        #endregion
-
-        #region Constructor
-       
-        #endregion
-
         #region Property
-        /// <summary>
-        /// Groups
-        /// </summary>
-        public int Groups
-        {
-            get { return (int)GetValue(GroupsProperty); }
-            set { SetValue(GroupsProperty, value); }
-        }
 
-        public static readonly DependencyProperty GroupsProperty =
-            DependencyProperty.Register("Groups", typeof(int), typeof(WaterfallPanel), new FrameworkPropertyMetadata(2, FrameworkPropertyMetadataOptions.AffectsMeasure));
-
-        /// <summary>
-        /// Orientation
-        /// </summary>
+        #region Orientation
         public Orientation Orientation
         {
             get { return (Orientation)GetValue(OrientationProperty); }
@@ -39,11 +16,23 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty OrientationProperty =
-            DependencyProperty.Register("Orientation", typeof(Orientation), typeof(WaterfallPanel), new FrameworkPropertyMetadata(Orientation.Vertical, FrameworkPropertyMetadataOptions.AffectsMeasure));
+            DependencyProperty.Register("Orientation", typeof(Orientation), typeof(WaterfallPanel));
+        #endregion
 
-        /// <summary>
-        /// Vertical spacing.
-        /// </summary>
+        #region Groups
+        public int Groups
+        {
+            get { return (int)GetValue(GroupsProperty); }
+            set { SetValue(GroupsProperty, value); }
+        }
+
+        public static readonly DependencyProperty GroupsProperty =
+            DependencyProperty.Register("Groups", typeof(int), typeof(WaterfallPanel));
+        #endregion
+
+        #region VerticalSpacing
+
+
         public double VerticalSpacing
         {
             get { return (double)GetValue(VerticalSpacingProperty); }
@@ -51,11 +40,13 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty VerticalSpacingProperty =
-            DependencyProperty.Register("VerticalSpacing", typeof(double), typeof(WaterfallPanel), new FrameworkPropertyMetadata(10.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
+            DependencyProperty.Register("VerticalSpacing", typeof(double), typeof(WaterfallPanel));
 
-        /// <summary>
-        /// Horizontal spacing.
-        /// </summary>
+        #endregion
+
+        #region HorizontalSpacing
+
+
         public double HorizontalSpacing
         {
             get { return (double)GetValue(HorizontalSpacingProperty); }
@@ -63,95 +54,100 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty HorizontalSpacingProperty =
-            DependencyProperty.Register("HorizontalSpacing", typeof(double), typeof(WaterfallPanel), new FrameworkPropertyMetadata(10.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
-
-        /// <summary>
-        /// Gets or sets children shape.
-        /// </summary>
-        public ChildrenShape ChildrenShape
-        {
-            get { return (ChildrenShape)GetValue(ChildrenShapeProperty); }
-            set { SetValue(ChildrenShapeProperty, value); }
-        }
-
-        public static readonly DependencyProperty ChildrenShapeProperty =
-            DependencyProperty.Register("ChildrenShape", typeof(ChildrenShape), typeof(WaterfallPanel));
-
-
-        /// <summary>
-        /// Gets or sets children shape size delta.
-        /// </summary>
-        public double ChildrenShapeSizeDelta
-        {
-            get { return (double)GetValue(ChildrenShapeSizeDeltaProperty); }
-            set { SetValue(ChildrenShapeSizeDeltaProperty, value); }
-        }
-
-        public static readonly DependencyProperty ChildrenShapeSizeDeltaProperty =
-            DependencyProperty.Register("ChildrenShapeSizeDelta", typeof(double), typeof(WaterfallPanel));
+            DependencyProperty.Register("HorizontalSpacing", typeof(double), typeof(WaterfallPanel));
 
 
         #endregion
 
-        #region EventHandler
+        #region ItemWidth
+        public double ItemWidth
+        {
+            get { return (double)GetValue(ItemWidthProperty); }
+            set { SetValue(ItemWidthProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemWidthProperty =
+            DependencyProperty.Register("ItemWidth", typeof(double), typeof(WaterfallPanel), new PropertyMetadata(double.NaN, null, OnItemWidthOrHeightCoerceValue));
+        #endregion
+
+        #region ItemHeight
+        public double ItemHeight
+        {
+            get { return (double)GetValue(ItemHeightProperty); }
+            set { SetValue(ItemHeightProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemHeightProperty =
+            DependencyProperty.Register("ItemHeight", typeof(double), typeof(WaterfallPanel), new PropertyMetadata(double.NaN, null, OnItemWidthOrHeightCoerceValue));
+        #endregion
+
+        #endregion
+
+        #region Event Handler
+        private static object OnItemWidthOrHeightCoerceValue(DependencyObject d, object baseValue)
+        {
+            var value = (double)baseValue;
+            if (double.IsInfinity(value))
+                return double.NaN;
+            else if (value < 0)
+                return 0;
+            else
+                return value;
+
+        }
+        #endregion
+
+        #region Override
         protected override Size MeasureOverride(Size availableSize)
         {
-            var panelDesiredSize = new Size();
+            Size panelDesiredSize;
+
+            var panelWidth = availableSize.Width;
+            var panelHeight = availableSize.Height;
 
             if (Orientation == Orientation.Vertical)
             {
-                var width = (availableSize.Width - (Groups - 1) * HorizontalSpacing) / Groups;
-                width = width < 0 ? 0 : width;
-
-                var heights = new double[Groups].ToList();
-
-                for (int i = 0; i < Groups; i ++)
-                {
-                    heights[i] = -VerticalSpacing;
-                }
+                var columnHeights = new double[Groups].ToList();
+                columnHeights.ForEach(x => x = -VerticalSpacing);
 
                 foreach (UIElement child in InternalChildren)
                 {
                     child.Measure(availableSize);
 
-                    var height = ChildrenShape == ChildrenShape.Square ? (width + ChildrenShapeSizeDelta) : child.DesiredSize.Height;
+                    var width = (panelWidth - (Groups - 1) * HorizontalSpacing) / Groups;
+                    var height = child.DesiredSize.Height;
+                    if (!double.IsNaN(ItemHeight))
+                        height = ItemHeight;
 
-                    var minHeight = heights.Min();
-                    var minHeightIndex = heights.IndexOf(minHeight);
+                    var minColumnHeight = columnHeights.Min();
+                    var minColumnIndex = columnHeights.IndexOf(minColumnHeight);
 
-                    child.Arrange(new Rect(new Point((width + HorizontalSpacing) * minHeightIndex, minHeight + VerticalSpacing), new Size(width, height)));
-
-                    heights[minHeightIndex] = heights[minHeightIndex] + height + VerticalSpacing;
-
-                    panelDesiredSize = new Size(availableSize.Width, heights.Max());
+                    child.Arrange(new Rect(new Point((width + HorizontalSpacing) * minColumnIndex, minColumnHeight + VerticalSpacing), new Size(width, height)));
+                    columnHeights[minColumnIndex] = columnHeights[minColumnIndex] + height + VerticalSpacing;
                 }
+                panelDesiredSize = new Size(panelWidth, columnHeights.Max());
             }
             else
             {
-                var height = (availableSize.Height - (Groups - 1) * VerticalSpacing) / Groups;
-                height = height < 0 ? 0 : height;
-                var widths = new double[Groups].ToList();
-
-                for (int i = 0; i < Groups; i++)
-                {
-                    widths[i] = -HorizontalSpacing;
-                }
+                var rowWidths = new double[Groups].ToList();
+                rowWidths.ForEach(x => x = -HorizontalSpacing);
 
                 foreach (UIElement child in InternalChildren)
                 {
-                    var width = ChildrenShape == ChildrenShape.Square ? (height + ChildrenShapeSizeDelta) : child.DesiredSize.Width;
-
-                    var minWidth = widths.Min();
-                    var minWidthIndex = widths.IndexOf(minWidth);
-
                     child.Measure(availableSize);
 
-                    child.Arrange(new Rect(new Point(minWidth + HorizontalSpacing ,(height + VerticalSpacing) * minWidthIndex), new Size(width, height)));
+                    var height = (panelHeight - (Groups - 1) * VerticalSpacing) / Groups;
+                    var width = child.DesiredSize.Width;
+                    if (!double.IsNaN(ItemWidth))
+                        width = ItemWidth;
 
-                    widths[minWidthIndex] = widths[minWidthIndex] + width + HorizontalSpacing;
+                    var minRowWidth = rowWidths.Min();
+                    var minRowIndex = rowWidths.IndexOf(minRowWidth);
 
-                    panelDesiredSize = new Size(widths.Max(), availableSize.Height);
+                    child.Arrange(new Rect(new Point(minRowWidth + HorizontalSpacing, (height + VerticalSpacing) * minRowIndex), new Size(width, height)));
+                    rowWidths[minRowIndex] = rowWidths[minRowIndex] + width + HorizontalSpacing;
                 }
+                panelDesiredSize = new Size(rowWidths.Max(), panelHeight);
             }
 
             return panelDesiredSize;

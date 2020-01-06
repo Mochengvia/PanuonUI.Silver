@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>818bd6a9-4ae2-4749-9219-9329be7626bd</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Panuon.UI.Silver.Internal</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Compenets\DisposableTimer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\IconControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\CheckBoxConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ColorConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\CombineConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\DropDownConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ThicknessConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\GridLengthConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\IconConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\LoadingConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\MathConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\NullConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\PathConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\TreeViewConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\CornerRadiusConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\VisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\NeonNext.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ResourceKeys.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TemplateSelectors\IconControlDataTemplateSelector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\GridLengthUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\ImageUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\StoryboardUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\TextUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Win32\User32.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Resources\InternalResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Constracts\" />
+  </ItemGroup>
+</Project>

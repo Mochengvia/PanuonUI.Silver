@@ -1,0 +1,196 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver"
+                    xmlns:i="clr-namespace:Panuon.UI.Silver.Internal"
+                    xmlns:ic="clr-namespace:Panuon.UI.Silver.Internal.Controls"
+                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/InternalResources.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Resources.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="{x:Static i:ResourceKeys.TreeViewVerticalToggleButtonStyle}"
+           TargetType="{x:Type ToggleButton}">
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="Margin"
+                Value="0,0,3,0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Border Background="Transparent">
+                        <TextBlock x:Name="TxtToggle"
+                                   Foreground="{Binding Path=(local:TreeViewHelper.ToggleBrush),RelativeSource={RelativeSource AncestorType=TreeView},Mode=OneWay}"
+                                   Text="&#xe699;"
+                                   FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#iconfont" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked"
+                                 Value="True">
+                            <Setter TargetName="TxtToggle"
+                                    Property="Text"
+                                    Value="&#xe698;" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver"
+                                 Value="True">
+                            <Setter TargetName="TxtToggle"
+                                    Property="Foreground"
+                                    Value="{Binding Path=(local:TreeViewHelper.HoverToggleBrush),RelativeSource={RelativeSource AncestorType=TreeView},Mode=OneWay}" />
+                        </Trigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsSelected,RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
+                                           Value="True" />
+                                <Condition Binding="{Binding Path=(local:TreeViewHelper.SelectedToggleBrush),Converter={StaticResource {x:Static i:ResourceKeys.IsNotNullConverter}},RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}"
+                                           Value="True" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="TxtToggle"
+                                    Property="Foreground"
+                                    Value="{Binding Path=(local:TreeViewHelper.SelectedToggleBrush),RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+                        </MultiDataTrigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <ControlTemplate x:Key="{x:Static i:ResourceKeys.TreeViewItemStandardTemplate}"
+                     TargetType="{x:Type TreeViewItem}">
+        <Grid HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Rectangle x:Name="RectBack"
+                       Fill="{TemplateBinding Background}" />
+            <Grid x:Name="GrdHeader"
+                  Height="{Binding Path=(local:TreeViewHelper.ItemHeight),RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}"
+                  Background="Transparent"
+                  Margin="{TemplateBinding Padding}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <ToggleButton x:Name="TbtnToggle"
+                              IsChecked="{Binding IsExpanded,RelativeSource={RelativeSource AncestorType=TreeViewItem},Mode=TwoWay}"
+                              Style="{StaticResource {x:Static i:ResourceKeys.TreeViewVerticalToggleButtonStyle}}" />
+                <ic:IconControl x:Name="IcIcon"
+                                Grid.Column="1"
+                                Width="{Binding Path=(local:IconHelper.Width),RelativeSource={RelativeSource AncestorType=TreeViewItem},Mode=OneWay}"
+                                Height="{Binding Path=(local:IconHelper.Height),RelativeSource={RelativeSource AncestorType=TreeViewItem},Mode=OneWay}"
+                                MinWidth="{Binding Path=(local:IconHelper.MinWidth),RelativeSource={RelativeSource AncestorType=TreeViewItem},Mode=OneWay}"
+                                MinHeight="{Binding Path=(local:IconHelper.MinHeight),RelativeSource={RelativeSource AncestorType=TreeViewItem},Mode=OneWay}"
+                                MaxWidth="{Binding Path=(local:IconHelper.MaxWidth),RelativeSource={RelativeSource AncestorType=TreeViewItem},Mode=OneWay}"
+                                MaxHeight="{Binding Path=(local:IconHelper.MaxHeight),RelativeSource={RelativeSource AncestorType=TreeViewItem},Mode=OneWay}"
+                                Margin="{Binding Path=(local:IconHelper.Margin),RelativeSource={RelativeSource AncestorType=TreeViewItem},Mode=OneWay}"
+                                Visibility="{Binding Path=(local:TreeViewHelper.ItemIcon),Converter={StaticResource {x:Static i:ResourceKeys.NullToCollapseConverter}},RelativeSource={RelativeSource AncestorType=TreeViewItem},Mode=OneWay}"
+                                Content="{Binding Path=(local:TreeViewHelper.ItemIcon),RelativeSource={RelativeSource AncestorType=TreeViewItem},Mode=OneWay}"
+                                Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource AncestorType=TreeViewItem},Mode=OneWay}"
+                                FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource AncestorType=TreeViewItem},Mode=OneWay}"
+                                FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource AncestorType=TreeViewItem},Mode=OneWay}"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center" />
+                <ContentPresenter Grid.Column="2"
+                                  ContentSource="Header"
+                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+            </Grid>
+            <ItemsPresenter x:Name="ItemsHost"
+                            Grid.Row="1"
+                            Visibility="{Binding IsExpanded,Converter={StaticResource {x:Static i:ResourceKeys.BoolToVisibleConverter}},RelativeSource={RelativeSource AncestorType=TreeViewItem},Mode=OneWay}" />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger SourceName="GrdHeader"
+                     Property="IsMouseOver"
+                     Value="True">
+                <Setter Property="local:TreeViewHelper.IsMouseOver"
+                        Value="True" />
+            </Trigger>
+            <Trigger SourceName="GrdHeader"
+                     Property="IsMouseOver"
+                     Value="False">
+                <Setter Property="local:TreeViewHelper.IsMouseOver"
+                        Value="False" />
+            </Trigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=(local:TreeViewHelper.IsMouseOver), RelativeSource={RelativeSource Self}}"
+                               Value="True" />
+                    <Condition Binding="{Binding IsSelected,RelativeSource={RelativeSource Self}}"
+                               Value="False" />
+                    <Condition Binding="{Binding Path=(local:TreeViewHelper.HoverBackground),Converter={StaticResource {x:Static i:ResourceKeys.IsNotNullConverter}},RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="RectBack"
+                        Property="Fill"
+                        Value="{Binding Path=(local:TreeViewHelper.HoverBackground),RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsSelected,RelativeSource={RelativeSource Self}}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:TreeViewHelper.SelectedBackground),Converter={StaticResource {x:Static i:ResourceKeys.IsNotNullConverter}},RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter  TargetName="RectBack"
+                         Property="Fill"
+                         Value="{Binding Path=(local:TreeViewHelper.SelectedBackground),RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <Trigger Property="HasItems"
+                     Value="False">
+                <Setter TargetName="TbtnToggle"
+                        Property="Visibility"
+                        Value="Hidden" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style TargetType="TreeViewItem">
+        <Setter Property="Background"
+                Value="Transparent" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Stretch" />
+        <Setter Property="Template"
+                Value="{StaticResource {x:Static i:ResourceKeys.TreeViewItemStandardTemplate}}" />
+        <Setter Property="Padding">
+            <Setter.Value>
+                <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.TreeViewPaddingConverter}}">
+                    <Binding Path="Padding"
+                             RelativeSource="{RelativeSource AncestorType=TreeViewItem}"
+                             Mode="OneWay" />
+                    <Binding Path="(local:TreeViewHelper.ItemPadding)"
+                             RelativeSource="{RelativeSource AncestorType=TreeView}"
+                             Mode="OneWay" />
+                </MultiBinding>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=(local:TreeViewHelper.IsMouseOver), RelativeSource={RelativeSource Self}}"
+                               Value="True" />
+                    <Condition Binding="{Binding IsSelected,RelativeSource={RelativeSource Self}}"
+                               Value="False" />
+                    <Condition Binding="{Binding Path=(local:TreeViewHelper.HoverForeground),Converter={StaticResource {x:Static i:ResourceKeys.IsNotNullConverter}},RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Foreground"
+                        Value="{Binding Path=(local:TreeViewHelper.HoverForeground),RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsSelected,RelativeSource={RelativeSource Self}}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:TreeViewHelper.SelectedForeground),Converter={StaticResource {x:Static i:ResourceKeys.IsNotNullConverter}},RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Foreground"
+                        Value="{Binding Path=(local:TreeViewHelper.SelectedForeground),RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+            </MultiDataTrigger>
+
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

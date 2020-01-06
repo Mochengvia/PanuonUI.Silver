@@ -1,13 +1,12 @@
 ﻿using Panuon.UI.Silver.Core;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 
 namespace Panuon.UI.Silver
 {
     public class Loading : Control
     {
-        #region Constructor
+        #region Ctor
         static Loading()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(Loading), new FrameworkPropertyMetadata(typeof(Loading)));
@@ -16,7 +15,7 @@ namespace Panuon.UI.Silver
 
         #region Property
         /// <summary>
-        /// 获取或设置加载控件的状态。默认为False。
+        /// Gets or sets is loading control running.
         /// </summary>
         public bool IsRunning
         {
@@ -28,7 +27,7 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("IsRunning", typeof(bool), typeof(Loading));
 
         /// <summary>
-        /// 获取或设置加载控件的基础样式。默认为Standard。
+        /// Gets or sets base style of loading control.
         /// </summary>
         public LoadingStyle LoadingStyle
         {
@@ -37,43 +36,64 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty LoadingStyleProperty =
-            DependencyProperty.Register("LoadingStyle", typeof(LoadingStyle), typeof(Loading), new PropertyMetadata(LoadingStyle.Standard));
-        #endregion
+            DependencyProperty.Register("LoadingStyle", typeof(LoadingStyle), typeof(Loading));
 
-        #region Internal Property
-        internal double Minimum
+
+        /// <summary>
+        /// Gets or sets thickness of loading control.
+        /// </summary>
+        public double Thickness
         {
-            get { return (double)GetValue(MinimumProperty); }
-            set { SetValue(MinimumProperty, value); }
+            get { return (double)GetValue(ThicknessProperty); }
+            set { SetValue(ThicknessProperty, value); }
         }
 
-        internal static readonly DependencyProperty MinimumProperty =
-            DependencyProperty.Register("Minimum", typeof(double), typeof(Loading), new PropertyMetadata(0.0));
+        public static readonly DependencyProperty ThicknessProperty =
+            DependencyProperty.Register("Thickness", typeof(double), typeof(Loading));
 
-        internal double Maximum
+
+        /// <summary>
+        /// Gets or sets corner radius of loading control. Only works in standard and wave style.
+        /// </summary>
+        public double CornerRadius
         {
-            get { return (double)GetValue(MaximumProperty); }
-            set { SetValue(MaximumProperty, value); }
+            get { return (double)GetValue(CornerRadiusProperty); }
+            set { SetValue(CornerRadiusProperty, value); }
         }
 
-        internal static readonly DependencyProperty MaximumProperty =
-            DependencyProperty.Register("Maximum", typeof(double), typeof(Loading), new PropertyMetadata(100.0));
+        public static readonly DependencyProperty CornerRadiusProperty =
+            DependencyProperty.Register("CornerRadius", typeof(double), typeof(Loading));
 
-        internal double Value
+
+        /// <summary>
+        /// Gets or sets running speed of loading control.
+        /// </summary>
+        public LoadingRunningSpeed Speed
         {
-            get { return (double)GetValue(ValueProperty); }
-            set { SetValue(ValueProperty, value); }
+            get { return (LoadingRunningSpeed)GetValue(SpeedProperty); }
+            set { SetValue(SpeedProperty, value); }
         }
 
-        internal static readonly DependencyProperty ValueProperty =
-            DependencyProperty.Register("Value", typeof(double), typeof(Loading), new PropertyMetadata(0.0));
+        public static readonly DependencyProperty SpeedProperty =
+            DependencyProperty.Register("Speed", typeof(LoadingRunningSpeed), typeof(Loading));
+
+
         #endregion
 
-        #region Calling Methods
-        //public ILoadingHandler Show(string message, string title = null)
-        //{
-            
-        //}
+        #region (Internal) Property
+        internal static double GetPercent(DependencyObject obj)
+        {
+            return (double)obj.GetValue(PercentProperty);
+        }
+
+        internal static void SetPercent(DependencyObject obj, double value)
+        {
+            obj.SetValue(PercentProperty, value);
+        }
+
+        internal static readonly DependencyProperty PercentProperty =
+            DependencyProperty.RegisterAttached("Percent", typeof(double), typeof(Loading));
         #endregion
+
     }
 }

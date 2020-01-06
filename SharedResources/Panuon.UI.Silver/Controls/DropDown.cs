@@ -1,68 +1,41 @@
-﻿using System.Windows;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 
 namespace Panuon.UI.Silver
 {
     public class DropDown : ContentControl
     {
-        static DropDown()
+        #region Properties
+
+        #region ContentContainerStyle
+        public Style ContentContainerStyle
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(DropDown), new FrameworkPropertyMetadata(typeof(DropDown)));
+            get { return (Style)GetValue(ContentContainerStyleProperty); }
+            set { SetValue(ContentContainerStyleProperty, value); }
         }
 
-        #region Property
-        /// <summary>
-        /// Gets or sets shadow color.
-        /// </summary>
-        public Color ShadowColor
+        public static readonly DependencyProperty ContentContainerStyleProperty =
+            DependencyProperty.Register("ContentContainerStyle", typeof(Style), typeof(DropDown));
+
+        #endregion
+
+        #region DropDownStyle
+        public DropDownStyle DropDownStyle
         {
-            get { return (Color)GetValue(ShadowColorProperty); }
-            set { SetValue(ShadowColorProperty, value); }
+            get { return (DropDownStyle)GetValue(DropDownStyleProperty); }
+            set { SetValue(DropDownStyleProperty, value); }
         }
 
-        public static readonly DependencyProperty ShadowColorProperty =
-            DependencyProperty.Register("ShadowColor", typeof(Color), typeof(DropDown));
+        public static readonly DependencyProperty DropDownStyleProperty =
+            DependencyProperty.Register("DropDownStyle", typeof(DropDownStyle), typeof(DropDown));
+        #endregion
 
-        /// <summary>
-        /// Gets or sets child
-        /// </summary>
-        public UIElement Child
-        {
-            get { return (UIElement)GetValue(ChildProperty); }
-            set { SetValue(ChildProperty, value); }
-        }
-
-        public static readonly DependencyProperty ChildProperty =
-            DependencyProperty.Register("Child", typeof(UIElement), typeof(DropDown));
-
-        /// <summary>
-        /// Gets or sets drop down placement.
-        /// </summary>
-        public DropDownPlacement DropDownPlacement
-        {
-            get { return (DropDownPlacement)GetValue(DropDownPlacementProperty); }
-            set { SetValue(DropDownPlacementProperty, value); }
-        }
-
-        public static readonly DependencyProperty DropDownPlacementProperty =
-            DependencyProperty.Register("DropDownPlacement", typeof(DropDownPlacement), typeof(DropDown), new PropertyMetadata(DropDownPlacement.LeftBottom));
-
-        /// <summary>
-        /// Gets or sets corner radius.
-        /// </summary>
-        public double CornerRadius
-        {
-            get { return (double)GetValue(CornerRadiusProperty); }
-            set { SetValue(CornerRadiusProperty, value); }
-        }
-
-        public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register("CornerRadius", typeof(double), typeof(DropDown));
-
-        /// <summary>
-        /// Gets or sets is open.
-        /// </summary>
+        #region IsOpen
         public bool IsOpen
         {
             get { return (bool)GetValue(IsOpenProperty); }
@@ -71,22 +44,11 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty IsOpenProperty =
             DependencyProperty.Register("IsOpen", typeof(bool), typeof(DropDown));
+        #endregion
 
-        /// <summary>
-        /// Gets or sets is angle visible.
-        /// </summary>
-        public bool IsAngleVisible
-        {
-            get { return (bool)GetValue(IsAngleVisibleProperty); }
-            set { SetValue(IsAngleVisibleProperty, value); }
-        }
+        #region StaysOpen
 
-        public static readonly DependencyProperty IsAngleVisibleProperty =
-            DependencyProperty.Register("IsAngleVisible", typeof(bool), typeof(DropDown));
 
-        /// <summary>
-        /// Gets or sets stays open.
-        /// </summary>
         public bool StaysOpen
         {
             get { return (bool)GetValue(StaysOpenProperty); }
@@ -96,6 +58,78 @@ namespace Panuon.UI.Silver
         public static readonly DependencyProperty StaysOpenProperty =
             DependencyProperty.Register("StaysOpen", typeof(bool), typeof(DropDown));
 
+
+        #endregion
+
+        #region Child
+        public UIElement Child
+        {
+            get { return (UIElement)GetValue(ChildProperty); }
+            set { SetValue(ChildProperty, value); }
+        }
+
+        public static readonly DependencyProperty ChildProperty =
+            DependencyProperty.Register("Child", typeof(UIElement), typeof(DropDown));
+        #endregion
+
+        #region ChildTemplate
+        public DataTemplate ChildTemplate
+        {
+            get { return (DataTemplate)GetValue(ChildTemplateProperty); }
+            set { SetValue(ChildTemplateProperty, value); }
+        }
+
+        public static readonly DependencyProperty ChildTemplateProperty =
+            DependencyProperty.Register("ChildTemplate", typeof(DataTemplate), typeof(DropDown));
+        #endregion
+
+        #region ChildTemplateSelector
+        public DataTemplateSelector ChildTemplateSelector
+        {
+            get { return (DataTemplateSelector)GetValue(ChildTemplateSelectorProperty); }
+            set { SetValue(ChildTemplateSelectorProperty, value); }
+        }
+
+        public static readonly DependencyProperty ChildTemplateSelectorProperty =
+            DependencyProperty.Register("ChildTemplateSelector", typeof(DataTemplateSelector), typeof(DropDown));
+        #endregion
+
+        #region ShadowColor
+        public static Color? GetShadowColor(DependencyObject obj)
+        {
+            return (Color?)obj.GetValue(ShadowColorProperty);
+        }
+
+        public static void SetShadowColor(DependencyObject obj, Color? value)
+        {
+            obj.SetValue(ShadowColorProperty, value);
+        }
+
+        public static readonly DependencyProperty ShadowColorProperty =
+            DependencyProperty.RegisterAttached("ShadowColor", typeof(Color?), typeof(DropDown));
+        #endregion
+
+        #region CornerRadius
+        public CornerRadius CornerRadius
+        {
+            get { return (CornerRadius)GetValue(CornerRadiusProperty); }
+            set { SetValue(CornerRadiusProperty, value); }
+        }
+
+        public static readonly DependencyProperty CornerRadiusProperty =
+            DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(DropDown));
+        #endregion
+
+        #region Placement
+        public DropDownPlacement Placement
+        {
+            get { return (DropDownPlacement)GetValue(PlacementProperty); }
+            set { SetValue(PlacementProperty, value); }
+        }
+
+        public static readonly DependencyProperty PlacementProperty =
+            DependencyProperty.Register("Placement", typeof(DropDownPlacement), typeof(DropDown));
+        #endregion
 
         #endregion
     }

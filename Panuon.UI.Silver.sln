@@ -1,64 +1,79 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.852
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.87
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIBrowser", "UIBrowser\UIBrowser.csproj", "{F8A6F19C-B283-46F1-8576-7A2B1F4EB8A7}"
-	ProjectSection(ProjectDependencies) = postProject
-		{461FE59D-57B8-4599-8E7D-439E27A2BBB2} = {461FE59D-57B8-4599-8E7D-439E27A2BBB2}
-	EndProjectSection
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SharedResources", "SharedResources", "{8E8FEFEB-F6DA-47F0-8BBC-230EA64FA59F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Net4.0", "Net4.0", "{D380FB9B-6461-4F58-B8EF-96C2FDA2A856}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Net40", "Net40", "{5B78A1FA-DE15-4D82-ABC6-98F3336C3C85}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panuon.UI.Silver", "Net40\Panuon.UI.Silver\Panuon.UI.Silver.csproj", "{527FF1E2-A99C-40C2-B589-69B5BAD77F5A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Net45", "Net45", "{3C03EE0A-6244-4B51-808A-B5E0F732FFB9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Net4.5", "Net4.5", "{218C15E8-B6A4-4CF1-8D5F-EB567F9AF8C8}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core30", "Core30", "{E0C3D5B5-93EF-4752-9FAA-244487B10111}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panuon.UI.Silver", "Net45\Panuon.UI.Silver\Panuon.UI.Silver.csproj", "{461FE59D-57B8-4599-8E7D-439E27A2BBB2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panuon.UI.Silver", "Net40\Panuon.UI.Silver\Panuon.UI.Silver.csproj", "{7823DA22-6993-4B67-B989-AF9C8B61C9B8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SharedResources", "SharedResources", "{637442C4-FAFA-457B-B379-696A0185B624}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panuon.UI.Silver", "Net45\Panuon.UI.Silver\Panuon.UI.Silver.csproj", "{9CE564BA-AE91-4350-8B91-EC21D4752B69}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Panuon.UI.Silver.Core", "SharedResources\Panuon.UI.Silver.Core\Panuon.UI.Silver.Core.shproj", "{DC698B56-EA97-4D48-9E82-E261324EC475}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Panuon.UI.Silver", "SharedResources\Panuon.UI.Silver\Panuon.UI.Silver.shproj", "{8025EBD9-C57D-47F5-A4D0-6A93C7D656FC}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Panuon.UI.Silver", "SharedResources\Panuon.UI.Silver\Panuon.UI.Silver.shproj", "{2F11D2D6-B0CC-49F6-944B-2AD8CD905644}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Panuon.UI.Silver.Core", "SharedResources\Panuon.UI.Silver.Core\Panuon.UI.Silver.Core.shproj", "{66A3CB31-AC17-4FB7-885C-95FC1AE2CDDD}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Panuon.UI.Silver.Internal", "SharedResources\Panuon.UI.Silver.Internal\Panuon.UI.Silver.Internal.shproj", "{818BD6A9-4AE2-4749-9219-9329BE7626BD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UIBrowser", "UIBrowser", "{BF6CE5CA-D026-47DB-BCCC-DBCE793CF60F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Panuon.UI.Silver", "Core30\Panuon.UI.Silver\Panuon.UI.Silver.csproj", "{9BFCEABC-A354-443A-92B5-B4ADF74E8FC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIBrowser", "UIBrowser\UIBrowser\UIBrowser.csproj", "{917E7151-2034-4189-95AC-2F7C53A9017F}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		SharedResources\Panuon.UI.Silver\Panuon.UI.Silver.projitems*{2f11d2d6-b0cc-49f6-944b-2ad8cd905644}*SharedItemsImports = 13
-		SharedResources\Panuon.UI.Silver.Core\Panuon.UI.Silver.Core.projitems*{461fe59d-57b8-4599-8e7d-439e27a2bbb2}*SharedItemsImports = 4
-		SharedResources\Panuon.UI.Silver\Panuon.UI.Silver.projitems*{461fe59d-57b8-4599-8e7d-439e27a2bbb2}*SharedItemsImports = 4
-		SharedResources\Panuon.UI.Silver.Core\Panuon.UI.Silver.Core.projitems*{527ff1e2-a99c-40c2-b589-69b5bad77f5a}*SharedItemsImports = 4
-		SharedResources\Panuon.UI.Silver\Panuon.UI.Silver.projitems*{527ff1e2-a99c-40c2-b589-69b5bad77f5a}*SharedItemsImports = 4
-		SharedResources\Panuon.UI.Silver.Core\Panuon.UI.Silver.Core.projitems*{dc698b56-ea97-4d48-9e82-e261324ec475}*SharedItemsImports = 13
+		SharedResources\Panuon.UI.Silver.Core\Panuon.UI.Silver.Core.projitems*{66a3cb31-ac17-4fb7-885c-95fc1ae2cddd}*SharedItemsImports = 13
+		SharedResources\Panuon.UI.Silver.Core\Panuon.UI.Silver.Core.projitems*{7823da22-6993-4b67-b989-af9c8b61c9b8}*SharedItemsImports = 4
+		SharedResources\Panuon.UI.Silver.Internal\Panuon.UI.Silver.Internal.projitems*{7823da22-6993-4b67-b989-af9c8b61c9b8}*SharedItemsImports = 4
+		SharedResources\Panuon.UI.Silver\Panuon.UI.Silver.projitems*{7823da22-6993-4b67-b989-af9c8b61c9b8}*SharedItemsImports = 4
+		SharedResources\Panuon.UI.Silver\Panuon.UI.Silver.projitems*{8025ebd9-c57d-47f5-a4d0-6a93c7d656fc}*SharedItemsImports = 13
+		SharedResources\Panuon.UI.Silver.Internal\Panuon.UI.Silver.Internal.projitems*{818bd6a9-4ae2-4749-9219-9329be7626bd}*SharedItemsImports = 13
+		SharedResources\Panuon.UI.Silver.Core\Panuon.UI.Silver.Core.projitems*{9ce564ba-ae91-4350-8b91-ec21d4752b69}*SharedItemsImports = 4
+		SharedResources\Panuon.UI.Silver.Internal\Panuon.UI.Silver.Internal.projitems*{9ce564ba-ae91-4350-8b91-ec21d4752b69}*SharedItemsImports = 4
+		SharedResources\Panuon.UI.Silver\Panuon.UI.Silver.projitems*{9ce564ba-ae91-4350-8b91-ec21d4752b69}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F8A6F19C-B283-46F1-8576-7A2B1F4EB8A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F8A6F19C-B283-46F1-8576-7A2B1F4EB8A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F8A6F19C-B283-46F1-8576-7A2B1F4EB8A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F8A6F19C-B283-46F1-8576-7A2B1F4EB8A7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{527FF1E2-A99C-40C2-B589-69B5BAD77F5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{527FF1E2-A99C-40C2-B589-69B5BAD77F5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{527FF1E2-A99C-40C2-B589-69B5BAD77F5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{527FF1E2-A99C-40C2-B589-69B5BAD77F5A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{461FE59D-57B8-4599-8E7D-439E27A2BBB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{461FE59D-57B8-4599-8E7D-439E27A2BBB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{461FE59D-57B8-4599-8E7D-439E27A2BBB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{461FE59D-57B8-4599-8E7D-439E27A2BBB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7823DA22-6993-4B67-B989-AF9C8B61C9B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7823DA22-6993-4B67-B989-AF9C8B61C9B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7823DA22-6993-4B67-B989-AF9C8B61C9B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7823DA22-6993-4B67-B989-AF9C8B61C9B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CE564BA-AE91-4350-8B91-EC21D4752B69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CE564BA-AE91-4350-8B91-EC21D4752B69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CE564BA-AE91-4350-8B91-EC21D4752B69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CE564BA-AE91-4350-8B91-EC21D4752B69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BFCEABC-A354-443A-92B5-B4ADF74E8FC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BFCEABC-A354-443A-92B5-B4ADF74E8FC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BFCEABC-A354-443A-92B5-B4ADF74E8FC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BFCEABC-A354-443A-92B5-B4ADF74E8FC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{917E7151-2034-4189-95AC-2F7C53A9017F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{917E7151-2034-4189-95AC-2F7C53A9017F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{917E7151-2034-4189-95AC-2F7C53A9017F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{917E7151-2034-4189-95AC-2F7C53A9017F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{527FF1E2-A99C-40C2-B589-69B5BAD77F5A} = {D380FB9B-6461-4F58-B8EF-96C2FDA2A856}
-		{461FE59D-57B8-4599-8E7D-439E27A2BBB2} = {218C15E8-B6A4-4CF1-8D5F-EB567F9AF8C8}
-		{DC698B56-EA97-4D48-9E82-E261324EC475} = {637442C4-FAFA-457B-B379-696A0185B624}
-		{2F11D2D6-B0CC-49F6-944B-2AD8CD905644} = {637442C4-FAFA-457B-B379-696A0185B624}
+		{7823DA22-6993-4B67-B989-AF9C8B61C9B8} = {5B78A1FA-DE15-4D82-ABC6-98F3336C3C85}
+		{9CE564BA-AE91-4350-8B91-EC21D4752B69} = {3C03EE0A-6244-4B51-808A-B5E0F732FFB9}
+		{8025EBD9-C57D-47F5-A4D0-6A93C7D656FC} = {8E8FEFEB-F6DA-47F0-8BBC-230EA64FA59F}
+		{66A3CB31-AC17-4FB7-885C-95FC1AE2CDDD} = {8E8FEFEB-F6DA-47F0-8BBC-230EA64FA59F}
+		{818BD6A9-4AE2-4749-9219-9329BE7626BD} = {8E8FEFEB-F6DA-47F0-8BBC-230EA64FA59F}
+		{9BFCEABC-A354-443A-92B5-B4ADF74E8FC6} = {E0C3D5B5-93EF-4752-9FAA-244487B10111}
+		{917E7151-2034-4189-95AC-2F7C53A9017F} = {BF6CE5CA-D026-47DB-BCCC-DBCE793CF60F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {9B3F19A6-8D38-45CA-945A-A2D448FD75DB}
+		SolutionGuid = {A8CBAEF7-FF0D-4212-BC6A-A2E32BC26469}
 	EndGlobalSection
 EndGlobal
