@@ -214,6 +214,11 @@ namespace Panuon.UI.Silver
 
             if (AutoAdaptation)
             {
+                if(!(width > 0 && height > 0))
+                {
+                    throw new Exception($"Exception in TextBlockX : width or height value of arrange bounds must greater then 0 when using the AutoAdaption property. If you are using TextBlockX in DataTemplate, you must explicitly specify its width and height property value. ArrageBoundsSize:{width},{height}.");
+                }
+
                 var filler = ExceededTextFiller;
                 var fillerLength = filler?.Length ?? 0;
 

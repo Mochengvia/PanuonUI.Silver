@@ -6,6 +6,8 @@ namespace Panuon.UI.Silver
 {
     public static class TabControlHelper
     {
+        #region Properties
+
         #region TabControlStyle
         public static TabControlStyle GetTabControlStyle(DependencyObject obj)
         {
@@ -49,6 +51,21 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty HeaderPanelBackgroundProperty =
             DependencyProperty.RegisterAttached("HeaderPanelBackground", typeof(Brush), typeof(TabControlHelper));
+        #endregion
+
+        #region ItemForeground
+        public static Brush GetItemForeground(DependencyObject obj)
+        {
+            return (Brush)obj.GetValue(ItemForegroundProperty);
+        }
+
+        public static void SetItemForeground(DependencyObject obj, Brush value)
+        {
+            obj.SetValue(ItemForegroundProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemForegroundProperty =
+            DependencyProperty.RegisterAttached("ItemForeground", typeof(Brush), typeof(TabControlHelper));
         #endregion
 
         #region ItemSelectedForeground
@@ -189,5 +206,6 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("EndControl", typeof(object), typeof(TabControlHelper));
         #endregion
 
+        #endregion
     }
 }

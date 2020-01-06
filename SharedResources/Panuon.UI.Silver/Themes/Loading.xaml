@@ -864,13 +864,13 @@
 
                 </MultiTrigger.ExitActions>
             </MultiTrigger>
-            <!--Qucik-->
+            <!--Quick-->
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="IsRunning"
                                Value="True" />
                     <Condition Property="Speed"
-                               Value="Qucik" />
+                               Value="Quick" />
                 </MultiTrigger.Conditions>
                 <MultiTrigger.EnterActions>
                     <BeginStoryboard>

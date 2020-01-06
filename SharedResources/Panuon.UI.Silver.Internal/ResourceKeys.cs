@@ -805,6 +805,8 @@ namespace Panuon.UI.Silver.Internal
 
         public static readonly string TabControlBorderThickness = nameof(TabControlBorderThickness);
 
+        public static readonly string TabControlPadding = nameof(TabControlPadding);
+        
         public static readonly string TabControlBackground = nameof(TabControlBackground);
 
         public static readonly string TabControlStandardTopTemplate = nameof(TabControlStandardTopTemplate);

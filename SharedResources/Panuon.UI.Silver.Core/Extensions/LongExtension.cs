@@ -12,9 +12,9 @@ namespace Panuon.UI.Silver.Core
         public static DateTime ToDateTime(this long timeStamp, bool withMilliseconds = true)
         {
             if (withMilliseconds)
-                return TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1)).AddMilliseconds(timeStamp);
+                return TimeZoneInfo.ConvertTimeToUtc(new DateTime(1970, 1, 1)).AddMilliseconds(timeStamp);
             else
-                return TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1)).AddSeconds(timeStamp);
+                return TimeZoneInfo.ConvertTimeToUtc(new DateTime(1970, 1, 1)).AddSeconds(timeStamp);
         }
         #endregion
     }

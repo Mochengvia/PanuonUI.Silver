@@ -192,6 +192,20 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("ValidationErrorTips", typeof(string), typeof(PasswordBoxHelper));
         #endregion
 
+        #region CanPlain
+        public static bool GetCanPlain(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(CanPlainProperty);
+        }
+
+        public static void SetCanPlain(DependencyObject obj, bool value)
+        {
+            obj.SetValue(CanPlainProperty, value);
+        }
+
+        public static readonly DependencyProperty CanPlainProperty =
+            DependencyProperty.RegisterAttached("CanPlain", typeof(bool), typeof(PasswordBoxHelper));
+        #endregion
         #endregion
 
         #region Internal Properties

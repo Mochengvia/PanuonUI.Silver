@@ -47,6 +47,8 @@
 
         public static readonly string PasswordBoxClearButtonStyle = nameof(PasswordBoxClearButtonStyle);
 
+        public static readonly string PasswordBoxPlainButtonStyle = nameof(PasswordBoxPlainButtonStyle);
+
         public static readonly string PasswordBoxValidationErrorBrush = nameof(PasswordBoxValidationErrorBrush);
         #endregion
 

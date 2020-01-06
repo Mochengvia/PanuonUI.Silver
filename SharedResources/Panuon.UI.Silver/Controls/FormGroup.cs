@@ -13,9 +13,8 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Property
-        /// <summary>
-        /// Gets or sets header.
-        /// </summary>
+
+        #region Header
         public object Header
         {
             get { return (object)GetValue(HeaderProperty); }
@@ -24,8 +23,9 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty HeaderProperty =
             DependencyProperty.Register("Header", typeof(object), typeof(FormGroup));
+        #endregion
 
-
+        #region HeaderTemplate
         public static DataTemplate GetHeaderTemplate(DependencyObject obj)
         {
             return (DataTemplate)obj.GetValue(HeaderTemplateProperty);
@@ -38,9 +38,9 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty HeaderTemplateProperty =
             DependencyProperty.RegisterAttached("HeaderTemplate", typeof(DataTemplate), typeof(FormGroup));
+        #endregion
 
-
-
+        #region HeaderTemplateSelector
         public static DataTemplateSelector GetHeaderTemplateSelector(DependencyObject obj)
         {
             return (DataTemplateSelector)obj.GetValue(HeaderTemplateSelectorProperty);
@@ -53,7 +53,9 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty HeaderTemplateSelectorProperty =
             DependencyProperty.RegisterAttached("HeaderTemplateSelector", typeof(DataTemplateSelector), typeof(FormGroup));
+        #endregion
 
+        #region HeaderWidth
         public string HeaderWidth
         {
             get { return (string)GetValue(HeaderWidthProperty); }
@@ -62,9 +64,9 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty HeaderWidthProperty =
             DependencyProperty.Register("HeaderWidth", typeof(string), typeof(FormGroup));
+        #endregion
 
-
-
+        #region HeaderHeight
         public string HeaderHeight
         {
             get { return (string)GetValue(HeaderHeightProperty); }
@@ -73,11 +75,9 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty HeaderHeightProperty =
             DependencyProperty.Register("HeaderHeight", typeof(string), typeof(FormGroup));
+        #endregion
 
-
-        /// <summary>
-        /// Gets or sets orientation.
-        /// </summary>
+        #region Orientation
         public Orientation Orientation
         {
             get { return (Orientation)GetValue(OrientationProperty); }
@@ -86,10 +86,9 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty OrientationProperty =
             DependencyProperty.Register("Orientation", typeof(Orientation), typeof(FormGroup));
+        #endregion
 
-        /// <summary>
-        /// Gets or sets is required.
-        /// </summary>
+        #region IsRequired
         public bool IsRequired
         {
             get { return (bool)GetValue(IsRequiredProperty); }
@@ -100,6 +99,17 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("IsRequired", typeof(bool), typeof(FormGroup));
         #endregion
 
+        #region Icon
+        public object Icon
+        {
+            get { return (object)GetValue(IconProperty); }
+            set { SetValue(IconProperty, value); }
+        }
 
+        public static readonly DependencyProperty IconProperty =
+            DependencyProperty.Register("Icon", typeof(object), typeof(FormGroup));
+        #endregion
+
+        #endregion
     }
 }

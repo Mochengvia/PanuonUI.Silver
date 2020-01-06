@@ -19,6 +19,7 @@
                             CornerRadius="{Binding Path=(local:LabelHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=Label}, Mode=OneWay}">
                         <ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          Margin="{TemplateBinding Padding}"
                                           RecognizesAccessKey="True" />
                     </Border>
                 </ControlTemplate>

@@ -37,6 +37,11 @@
         </pu:DropDown>
         <StackPanel Orientation="Horizontal"
                     Margin="0,0,0,5">
+            <Grid Width="100"
+                  Height="100">
+                <pu:TextBlockX AutoAdaptation="True"
+                               Text="123123123123"/>
+            </Grid>
             <Button Content="Standard"
                     Height="30"
                     Width="120"
@@ -153,7 +158,7 @@
                          pu:IconHelper.Width="20"
                          pu:IconHelper.Height="20"
                          pu:PasswordBoxHelper.Icon="/UIBrowser;component/Resources/test.jpg"
-                         pu:PasswordBoxHelper.CanClear="True"
+                         pu:PasswordBoxHelper.CanPlain="True"
                          pu:PasswordBoxHelper.Watermark="尝试在此输入123"
                          PasswordChanged="PasswordBox_PasswordChanged" />
         </StackPanel>

@@ -1,7 +1,9 @@
 ﻿using Panuon.UI.Silver.Core;
 using Panuon.UI.Silver.Internal.Utils;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -393,10 +395,8 @@ namespace Panuon.UI.Silver
             obj.SetValue(BindToEnumProperty, value);
         }
 
-        // Using a DependencyProperty as the backing store for BindToEnum.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty BindToEnumProperty =
-            DependencyProperty.RegisterAttached("BindToEnum", typeof(Enum), typeof(ComboBoxHelper));
-
+            DependencyProperty.RegisterAttached("BindToEnum", typeof(Enum), typeof(ComboBoxHelper), new PropertyMetadata(OnBindToEnumChanged));
 
         #endregion
 
@@ -474,6 +474,55 @@ namespace Panuon.UI.Silver
                 ComboBoxHelper.RaiseItemRemoved(comboBox, dataObject, hasRemovedFromSource);
             }
         }
+
+        private static void OnBindToEnumChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var comboBox = d as ComboBox;
+            var selectedValue = comboBox.SelectedValue ?? e.NewValue as object;
+            if (selectedValue == null)
+                return;
+
+            var type = selectedValue.GetType();
+            if (!type.IsEnum)
+                throw new Exception($"\"{type.FullName}\" is not an enumeration type.");
+
+            if (type == null)
+            {
+                comboBox.ItemsSource = null;
+                comboBox.SelectedItem = null;
+            }
+            else
+            {
+                var enumList = new ArrayList();
+                foreach (Enum item in Enum.GetValues(type))
+                {
+                    var field = type.GetField(item.ToString());
+                    if (null != field)
+                    {
+                        var descriptions = field.GetCustomAttributes(typeof(DescriptionAttribute), true) as DescriptionAttribute[];
+                        if (descriptions.Length > 0)
+                        {
+                            enumList.Add(new
+                            {
+                                Name = descriptions[0].Description,
+                                Enum = item,
+                            });
+                        }
+                        else
+                            enumList.Add(new
+                            {
+                                Name = item.ToString(),
+                                Enum = item,
+                            });
+                    }
+                }
+                comboBox.ItemsSource = enumList;
+                comboBox.DisplayMemberPath = "Name";
+                comboBox.SelectedValuePath = "Enum";
+                comboBox.SelectedValue = selectedValue;
+            }
+        }
+
         #endregion
     }
 

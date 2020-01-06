@@ -24,9 +24,9 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <Rectangle  Grid.ColumnSpan="3" 
-                            Fill="{Binding Path=(local:TabControlHelper.HeaderPanelBackground),RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}"/>
-                <ContentControl Content="{Binding Path=(local:TabControlHelper.FrontControl),RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+                <Rectangle  Grid.ColumnSpan="3"
+                            Fill="{Binding Path=(local:TabControlHelper.HeaderPanelBackground),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <ContentControl Content="{Binding Path=(local:TabControlHelper.FrontControl),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 <TabPanel Grid.Column="1"
                           IsItemsHost="True"
                           Background="Transparent"
@@ -37,8 +37,9 @@
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="0,0,0,1" />
                 <ContentControl Grid.Column="2"
-                                Content="{Binding Path=(local:TabControlHelper.EndControl),RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+                                Content="{Binding Path=(local:TabControlHelper.EndControl),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 <ContentPresenter x:Name="PART_SelectedContentHost"
+                                  Margin="{TemplateBinding Padding}"
                                   ContentSource="SelectedContent"
                                   Grid.Row="1"
                                   Grid.ColumnSpan="3" />
@@ -71,8 +72,8 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Rectangle  Grid.RowSpan="3"
-                            Fill="{Binding Path=(local:TabControlHelper.HeaderPanelBackground),RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
-                <ContentControl Content="{Binding Path=(local:TabControlHelper.FrontControl),RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+                            Fill="{Binding Path=(local:TabControlHelper.HeaderPanelBackground),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <ContentControl Content="{Binding Path=(local:TabControlHelper.FrontControl),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 <TabPanel Grid.Row="1"
                           IsItemsHost="True"
                           Background="Transparent"
@@ -83,8 +84,9 @@
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="0,0,1,0" />
                 <ContentControl Grid.Row="2"
-                                Content="{Binding Path=(local:TabControlHelper.EndControl),RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+                                Content="{Binding Path=(local:TabControlHelper.EndControl),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 <ContentPresenter x:Name="PART_SelectedContentHost"
+                                  Margin="{TemplateBinding Padding}"
                                   ContentSource="SelectedContent"
                                   Grid.Column="1"
                                   Grid.RowSpan="3" />
@@ -112,7 +114,11 @@
 
     <Style TargetType="TabControl">
         <!--TabControlHelper-->
+        <Setter Property="local:TabControlHelper.ItemForeground"
+                Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
         <!--Properties-->
+        <Setter Property="Padding"
+                Value="{StaticResource {x:Static i:ResourceKeys.TabControlPadding}}" />
         <Setter Property="BorderBrush"
                 Value="{StaticResource {x:Static i:ResourceKeys.TabControlBorderBrush}}" />
         <Setter Property="Background"
