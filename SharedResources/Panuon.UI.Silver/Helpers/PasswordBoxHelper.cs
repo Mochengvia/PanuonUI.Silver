@@ -21,14 +21,14 @@ namespace Panuon.UI.Silver
 
         #region Properties
         #region Icon
-        public static object GetIcon(DependencyObject obj)
+        public static object GetIcon(PasswordBox passwordBox)
         {
-            return (object)obj.GetValue(IconProperty);
+            return (object)passwordBox.GetValue(IconProperty);
         }
 
-        public static void SetIcon(DependencyObject obj, object value)
+        public static void SetIcon(PasswordBox passwordBox, object value)
         {
-            obj.SetValue(IconProperty, value);
+            passwordBox.SetValue(IconProperty, value);
         }
 
         public static readonly DependencyProperty IconProperty =
@@ -36,14 +36,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Password
-        public static string GetPassword(DependencyObject obj)
+        public static string GetPassword(PasswordBox passwordBox)
         {
-            return (string)obj.GetValue(PasswordProperty);
+            return (string)passwordBox.GetValue(PasswordProperty);
         }
 
-        public static void SetPassword(DependencyObject obj, string value)
+        public static void SetPassword(PasswordBox passwordBox, string value)
         {
-            obj.SetValue(PasswordProperty, value);
+            passwordBox.SetValue(PasswordProperty, value);
         }
 
         public static readonly DependencyProperty PasswordProperty =
@@ -59,14 +59,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region FocusedBorderBrush
-        public static Brush GetFocusedBorderBrush(DependencyObject obj)
+        public static Brush GetFocusedBorderBrush(PasswordBox passwordBox)
         {
-            return (Brush)obj.GetValue(FocusedBorderBrushProperty);
+            return (Brush)passwordBox.GetValue(FocusedBorderBrushProperty);
         }
 
-        public static void SetFocusedBorderBrush(DependencyObject obj, Brush value)
+        public static void SetFocusedBorderBrush(PasswordBox passwordBox, Brush value)
         {
-            obj.SetValue(FocusedBorderBrushProperty, value);
+            passwordBox.SetValue(FocusedBorderBrushProperty, value);
         }
 
         public static readonly DependencyProperty FocusedBorderBrushProperty =
@@ -74,28 +74,28 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region FocusedShadowColor
-        public static Color? GetFocusedShadowColor(DependencyObject obj)
+        public static Color? GetFocusedShadowColor(PasswordBox passwordBox)
         {
-            return (Color?)obj.GetValue(FocusedShadowColorProperty);
+            return (Color?)passwordBox.GetValue(FocusedShadowColorProperty);
         }
 
-        public static void SetFocusedShadowColor(DependencyObject obj, Color? value)
+        public static void SetFocusedShadowColor(PasswordBox passwordBox, Color? value)
         {
-            obj.SetValue(FocusedShadowColorProperty, value);
+            passwordBox.SetValue(FocusedShadowColorProperty, value);
         }
         public static readonly DependencyProperty FocusedShadowColorProperty =
             DependencyProperty.RegisterAttached("FocusedShadowColor", typeof(Color?), typeof(PasswordBoxHelper));
         #endregion
 
         #region FocusedCaretBrush
-        public static Brush GetFocusedCaretBrush(DependencyObject obj)
+        public static Brush GetFocusedCaretBrush(PasswordBox passwordBox)
         {
-            return (Brush)obj.GetValue(FocusedCaretBrushProperty);
+            return (Brush)passwordBox.GetValue(FocusedCaretBrushProperty);
         }
 
-        public static void SetFocusedCaretBrush(DependencyObject obj, Brush value)
+        public static void SetFocusedCaretBrush(PasswordBox passwordBox, Brush value)
         {
-            obj.SetValue(FocusedCaretBrushProperty, value);
+            passwordBox.SetValue(FocusedCaretBrushProperty, value);
         }
 
         public static readonly DependencyProperty FocusedCaretBrushProperty =
@@ -103,14 +103,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region FocusedForeground
-        public static Brush GetFocusedForeground(DependencyObject obj)
+        public static Brush GetFocusedForeground(PasswordBox passwordBox)
         {
-            return (Brush)obj.GetValue(FocusedForegroundProperty);
+            return (Brush)passwordBox.GetValue(FocusedForegroundProperty);
         }
 
-        public static void SetFocusedForeground(DependencyObject obj, Brush value)
+        public static void SetFocusedForeground(PasswordBox passwordBox, Brush value)
         {
-            obj.SetValue(FocusedForegroundProperty, value);
+            passwordBox.SetValue(FocusedForegroundProperty, value);
         }
 
         public static readonly DependencyProperty FocusedForegroundProperty =
@@ -118,14 +118,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Watermark
-        public static string GetWatermark(DependencyObject obj)
+        public static string GetWatermark(PasswordBox passwordBox)
         {
-            return (string)obj.GetValue(WatermarkProperty);
+            return (string)passwordBox.GetValue(WatermarkProperty);
         }
 
-        public static void SetWatermark(DependencyObject obj, string value)
+        public static void SetWatermark(PasswordBox passwordBox, string value)
         {
-            obj.SetValue(WatermarkProperty, value);
+            passwordBox.SetValue(WatermarkProperty, value);
         }
 
         public static readonly DependencyProperty WatermarkProperty =
@@ -133,14 +133,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region CornerRadius
-        public static CornerRadius GetCornerRadius(DependencyObject obj)
+        public static CornerRadius GetCornerRadius(PasswordBox passwordBox)
         {
-            return (CornerRadius)obj.GetValue(CornerRadiusProperty);
+            return (CornerRadius)passwordBox.GetValue(CornerRadiusProperty);
         }
 
-        public static void SetCornerRadius(DependencyObject obj, CornerRadius value)
+        public static void SetCornerRadius(PasswordBox passwordBox, CornerRadius value)
         {
-            obj.SetValue(CornerRadiusProperty, value);
+            passwordBox.SetValue(CornerRadiusProperty, value);
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
@@ -148,14 +148,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region CanClear
-        public static bool GetCanClear(DependencyObject obj)
+        public static bool GetCanClear(PasswordBox passwordBox)
         {
-            return (bool)obj.GetValue(CanClearProperty);
+            return (bool)passwordBox.GetValue(CanClearProperty);
         }
 
-        public static void SetCanClear(DependencyObject obj, bool value)
+        public static void SetCanClear(PasswordBox passwordBox, bool value)
         {
-            obj.SetValue(CanClearProperty, value);
+            passwordBox.SetValue(CanClearProperty, value);
         }
 
         public static readonly DependencyProperty CanClearProperty =
@@ -163,14 +163,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region IsWaiting
-        public static bool GetIsWaiting(DependencyObject obj)
+        public static bool GetIsWaiting(PasswordBox passwordBox)
         {
-            return (bool)obj.GetValue(IsWaitingProperty);
+            return (bool)passwordBox.GetValue(IsWaitingProperty);
         }
 
-        public static void SetIsWaiting(DependencyObject obj, bool value)
+        public static void SetIsWaiting(PasswordBox passwordBox, bool value)
         {
-            obj.SetValue(IsWaitingProperty, value);
+            passwordBox.SetValue(IsWaitingProperty, value);
         }
 
         public static readonly DependencyProperty IsWaitingProperty =
@@ -178,14 +178,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region ValidationErrorTips
-        public static string GetValidationErrorTips(DependencyObject obj)
+        public static string GetValidationErrorTips(PasswordBox passwordBox)
         {
-            return (string)obj.GetValue(ValidationErrorTipsProperty);
+            return (string)passwordBox.GetValue(ValidationErrorTipsProperty);
         }
 
-        public static void SetValidationErrorTips(DependencyObject obj, string value)
+        public static void SetValidationErrorTips(PasswordBox passwordBox, string value)
         {
-            obj.SetValue(ValidationErrorTipsProperty, value);
+            passwordBox.SetValue(ValidationErrorTipsProperty, value);
         }
 
         public static readonly DependencyProperty ValidationErrorTipsProperty =
@@ -193,14 +193,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region CanPlain
-        public static bool GetCanPlain(DependencyObject obj)
+        public static bool GetCanPlain(PasswordBox passwordBox)
         {
-            return (bool)obj.GetValue(CanPlainProperty);
+            return (bool)passwordBox.GetValue(CanPlainProperty);
         }
 
-        public static void SetCanPlain(DependencyObject obj, bool value)
+        public static void SetCanPlain(PasswordBox passwordBox, bool value)
         {
-            obj.SetValue(CanPlainProperty, value);
+            passwordBox.SetValue(CanPlainProperty, value);
         }
 
         public static readonly DependencyProperty CanPlainProperty =
@@ -211,14 +211,14 @@ namespace Panuon.UI.Silver
         #region Internal Properties
 
         #region (Internal) ClearPasswordBoxCommand
-        internal static ICommand GetClearPasswordBoxCommand(DependencyObject obj)
+        internal static ICommand GetClearPasswordBoxCommand(PasswordBox passwordBox)
         {
-            return (ICommand)obj.GetValue(ClearPasswordBoxCommandProperty);
+            return (ICommand)passwordBox.GetValue(ClearPasswordBoxCommandProperty);
         }
 
-        internal static void SetClearPasswordBoxCommand(DependencyObject obj, ICommand value)
+        internal static void SetClearPasswordBoxCommand(PasswordBox passwordBox, ICommand value)
         {
-            obj.SetValue(ClearPasswordBoxCommandProperty, value);
+            passwordBox.SetValue(ClearPasswordBoxCommandProperty, value);
         }
 
         internal static readonly DependencyProperty ClearPasswordBoxCommandProperty =
@@ -227,14 +227,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region (Internal) PasswordBoxHook
-        public static bool GetPasswordBoxHook(DependencyObject obj)
+        public static bool GetPasswordBoxHook(PasswordBox passwordBox)
         {
-            return (bool)obj.GetValue(PasswordBoxHookProperty);
+            return (bool)passwordBox.GetValue(PasswordBoxHookProperty);
         }
 
-        public static void SetPasswordBoxHook(DependencyObject obj, bool value)
+        public static void SetPasswordBoxHook(PasswordBox passwordBox, bool value)
         {
-            obj.SetValue(PasswordBoxHookProperty, value);
+            passwordBox.SetValue(PasswordBoxHookProperty, value);
         }
 
         public static readonly DependencyProperty PasswordBoxHookProperty =

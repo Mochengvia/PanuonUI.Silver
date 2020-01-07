@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace Panuon.UI.Silver
@@ -8,14 +9,14 @@ namespace Panuon.UI.Silver
         #region Properties
 
         #region CheckBoxStyle
-        public static CheckBoxStyle GetCheckBoxStyle(DependencyObject obj)
+        public static CheckBoxStyle GetCheckBoxStyle(CheckBox checkBox)
         {
-            return (CheckBoxStyle)obj.GetValue(CheckBoxStyleProperty);
+            return (CheckBoxStyle)checkBox.GetValue(CheckBoxStyleProperty);
         }
 
-        public static void SetCheckBoxStyle(DependencyObject obj, CheckBoxStyle value)
+        public static void SetCheckBoxStyle(CheckBox checkBox, CheckBoxStyle value)
         {
-            obj.SetValue(CheckBoxStyleProperty, value);
+            checkBox.SetValue(CheckBoxStyleProperty, value);
         }
 
         public static readonly DependencyProperty CheckBoxStyleProperty =
@@ -23,14 +24,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region CheckedBackground
-        public static Brush GetCheckedBackground(DependencyObject obj)
+        public static Brush GetCheckedBackground(CheckBox checkBox)
         {
-            return (Brush)obj.GetValue(CheckedBackgroundProperty);
+            return (Brush)checkBox.GetValue(CheckedBackgroundProperty);
         }
 
-        public static void SetCheckedBackground(DependencyObject obj, Brush value)
+        public static void SetCheckedBackground(CheckBox checkBox, Brush value)
         {
-            obj.SetValue(CheckedBackgroundProperty, value);
+            checkBox.SetValue(CheckedBackgroundProperty, value);
         }
 
         public static readonly DependencyProperty CheckedBackgroundProperty =
@@ -38,14 +39,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region GlyphBrush
-        public static Brush GetGlyphBrush(DependencyObject obj)
+        public static Brush GetGlyphBrush(CheckBox checkBox)
         {
-            return (Brush)obj.GetValue(GlyphBrushProperty);
+            return (Brush)checkBox.GetValue(GlyphBrushProperty);
         }
 
-        public static void SetGlyphBrush(DependencyObject obj, Brush value)
+        public static void SetGlyphBrush(CheckBox checkBox, Brush value)
         {
-            obj.SetValue(GlyphBrushProperty, value);
+            checkBox.SetValue(GlyphBrushProperty, value);
         }
 
         public static readonly DependencyProperty GlyphBrushProperty =
@@ -53,14 +54,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region CheckedGlyphBrush
-        public static Brush GetCheckedGlyphBrush(DependencyObject obj)
+        public static Brush GetCheckedGlyphBrush(CheckBox checkBox)
         {
-            return (Brush)obj.GetValue(CheckedGlyphBrushProperty);
+            return (Brush)checkBox.GetValue(CheckedGlyphBrushProperty);
         }
 
-        public static void SetCheckedGlyphBrush(DependencyObject obj, Brush value)
+        public static void SetCheckedGlyphBrush(CheckBox checkBox, Brush value)
         {
-            obj.SetValue(CheckedGlyphBrushProperty, value);
+            checkBox.SetValue(CheckedGlyphBrushProperty, value);
         }
 
         public static readonly DependencyProperty CheckedGlyphBrushProperty =
@@ -68,14 +69,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region CheckedBorderBrush
-        public static Brush GetCheckedBorderBrush(DependencyObject obj)
+        public static Brush GetCheckedBorderBrush(CheckBox checkBox)
         {
-            return (Brush)obj.GetValue(CheckedBorderBrushProperty);
+            return (Brush)checkBox.GetValue(CheckedBorderBrushProperty);
         }
 
-        public static void SetCheckedBorderBrush(DependencyObject obj, Brush value)
+        public static void SetCheckedBorderBrush(CheckBox checkBox, Brush value)
         {
-            obj.SetValue(CheckedBorderBrushProperty, value);
+            checkBox.SetValue(CheckedBorderBrushProperty, value);
         }
 
         public static readonly DependencyProperty CheckedBorderBrushProperty =
@@ -83,14 +84,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region BoxHeight
-        public static double GetBoxHeight(DependencyObject obj)
+        public static double GetBoxHeight(CheckBox checkBox)
         {
-            return (double)obj.GetValue(BoxHeightProperty);
+            return (double)checkBox.GetValue(BoxHeightProperty);
         }
 
-        public static void SetBoxHeight(DependencyObject obj, double value)
+        public static void SetBoxHeight(CheckBox checkBox, double value)
         {
-            obj.SetValue(BoxHeightProperty, value);
+            checkBox.SetValue(BoxHeightProperty, value);
         }
 
         public static readonly DependencyProperty BoxHeightProperty =
@@ -98,14 +99,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region BoxWidth
-        public static double GetBoxWidth(DependencyObject obj)
+        public static double GetBoxWidth(CheckBox checkBox)
         {
-            return (double)obj.GetValue(BoxWidthProperty);
+            return (double)checkBox.GetValue(BoxWidthProperty);
         }
 
-        public static void SetBoxWidth(DependencyObject obj, double value)
+        public static void SetBoxWidth(CheckBox checkBox, double value)
         {
-            obj.SetValue(BoxWidthProperty, value);
+            checkBox.SetValue(BoxWidthProperty, value);
         }
 
         public static readonly DependencyProperty BoxWidthProperty =
@@ -113,14 +114,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region CornerRadius
-        public static CornerRadius GetCornerRadius(DependencyObject obj)
+        public static CornerRadius GetCornerRadius(CheckBox checkBox)
         {
-            return (CornerRadius)obj.GetValue(CornerRadiusProperty);
+            return (CornerRadius)checkBox.GetValue(CornerRadiusProperty);
         }
 
-        public static void SetCornerRadius(DependencyObject obj, CornerRadius value)
+        public static void SetCornerRadius(CheckBox checkBox, CornerRadius value)
         {
-            obj.SetValue(CornerRadiusProperty, value);
+            checkBox.SetValue(CornerRadiusProperty, value);
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
@@ -128,14 +129,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region CheckedContent
-        public static object GetCheckedContent(DependencyObject obj)
+        public static object GetCheckedContent(CheckBox checkBox)
         {
-            return (object)obj.GetValue(CheckedContentProperty);
+            return (object)checkBox.GetValue(CheckedContentProperty);
         }
 
-        public static void SetCheckedContent(DependencyObject obj, object value)
+        public static void SetCheckedContent(CheckBox checkBox, object value)
         {
-            obj.SetValue(CheckedContentProperty, value);
+            checkBox.SetValue(CheckedContentProperty, value);
         }
 
         public static readonly DependencyProperty CheckedContentProperty =

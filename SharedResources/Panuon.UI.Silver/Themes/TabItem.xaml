@@ -213,23 +213,25 @@
 
     <Style TargetType="TabItem">
         <!--TabControlHelper-->
-        <Setter Property="local:TabControlHelper.ItemSelectedForeground"
-                Value="{Binding Path=(local:TabControlHelper.ItemSelectedForeground), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <Setter Property="local:TabControlHelper.ItemForeground"
-                Value="{Binding Path=(local:TabControlHelper.ItemForeground), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+                Value="{Binding Path=(local:TabControlHelper.ItemsForeground), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabControlHelper.ItemSelectedForeground"
+                Value="{Binding Path=(local:TabControlHelper.ItemsSelectedForeground), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <Setter Property="local:TabControlHelper.ItemSelectedBackground"
-                Value="{Binding Path=(local:TabControlHelper.ItemSelectedBackground), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+                Value="{Binding Path=(local:TabControlHelper.ItemsSelectedBackground), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabControlHelper.ItemSelectedRibbonBrush"
+                Value="{Binding Path=(local:TabControlHelper.ItemsSelectedRibbonBrush), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <Setter Property="local:TabControlHelper.ItemRemovable"
-                Value="{Binding Path=(local:TabControlHelper.ItemRemovable), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+                Value="{Binding Path=(local:TabControlHelper.ItemsRemovable), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <Setter Property="local:TabControlHelper.ItemIcon"
-                Value="{Binding Path=(local:TabControlHelper.ItemIcon), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+                Value="{Binding Path=(local:TabControlHelper.ItemsIcon), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <!--IconHelper-->
         <Setter Property="local:IconHelper.Foreground"
                 Value="{Binding Path=(local:TabControlHelper.ItemForeground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="Height"
-                Value="{Binding Path=(local:TabControlHelper.ItemHeight), RelativeSource={RelativeSource Self}}" />
+                Value="{Binding Path=(local:TabControlHelper.ItemsHeight), RelativeSource={RelativeSource AncestorType=TabControl}}" />
         <Setter Property="Width"
-                Value="{Binding Path=(local:TabControlHelper.ItemWidth), RelativeSource={RelativeSource Self}}" />
+                Value="{Binding Path=(local:TabControlHelper.ItemsWidth), RelativeSource={RelativeSource AncestorType=TabControl}}" />
         <Setter Property="Background"
                 Value="Transparent" />
         <Setter Property="Padding"

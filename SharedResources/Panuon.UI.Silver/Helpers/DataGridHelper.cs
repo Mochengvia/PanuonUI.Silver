@@ -13,20 +13,21 @@ namespace Panuon.UI.Silver
         #region Ctor
         static DataGridHelper()
         {
+            
         }
         #endregion
 
         #region Properties
 
         #region HeaderPadding
-        public static Thickness GetHeaderPadding(DependencyObject obj)
+        public static Thickness GetHeaderPadding(DataGrid dataGrid)
         {
-            return (Thickness)obj.GetValue(HeaderPaddingProperty);
+            return (Thickness)dataGrid.GetValue(HeaderPaddingProperty);
         }
 
-        public static void SetHeaderPadding(DependencyObject obj, Thickness value)
+        public static void SetHeaderPadding(DataGrid dataGrid, Thickness value)
         {
-            obj.SetValue(HeaderPaddingProperty, value);
+            dataGrid.SetValue(HeaderPaddingProperty, value);
         }
 
         public static readonly DependencyProperty HeaderPaddingProperty =
@@ -36,14 +37,14 @@ namespace Panuon.UI.Silver
         #region CellPadding
 
 
-        public static Thickness GetCellPadding(DependencyObject obj)
+        public static Thickness GetCellPadding(DataGrid dataGrid)
         {
-            return (Thickness)obj.GetValue(CellPaddingProperty);
+            return (Thickness)dataGrid.GetValue(CellPaddingProperty);
         }
 
-        public static void SetCellPadding(DependencyObject obj, Thickness value)
+        public static void SetCellPadding(DataGrid dataGrid, Thickness value)
         {
-            obj.SetValue(CellPaddingProperty, value);
+            dataGrid.SetValue(CellPaddingProperty, value);
         }
 
         public static readonly DependencyProperty CellPaddingProperty =
@@ -55,14 +56,14 @@ namespace Panuon.UI.Silver
         #region MinHeaderHeight
 
 
-        public static double GetMinHeaderHeight(DependencyObject obj)
+        public static double GetMinHeaderHeight(DataGrid dataGrid)
         {
-            return (double)obj.GetValue(MinHeaderHeightProperty);
+            return (double)dataGrid.GetValue(MinHeaderHeightProperty);
         }
 
-        public static void SetMinHeaderHeight(DependencyObject obj, double value)
+        public static void SetMinHeaderHeight(DataGrid dataGrid, double value)
         {
-            obj.SetValue(MinHeaderHeightProperty, value);
+            dataGrid.SetValue(MinHeaderHeightProperty, value);
         }
 
         public static readonly DependencyProperty MinHeaderHeightProperty =
@@ -73,14 +74,14 @@ namespace Panuon.UI.Silver
         #region HeaderBackground
 
 
-        public static Brush GetHeaderBackground(DependencyObject obj)
+        public static Brush GetHeaderBackground(DataGrid dataGrid)
         {
-            return (Brush)obj.GetValue(HeaderBackgroundProperty);
+            return (Brush)dataGrid.GetValue(HeaderBackgroundProperty);
         }
 
-        public static void SetHeaderBackground(DependencyObject obj, Brush value)
+        public static void SetHeaderBackground(DataGrid dataGrid, Brush value)
         {
-            obj.SetValue(HeaderBackgroundProperty, value);
+            dataGrid.SetValue(HeaderBackgroundProperty, value);
         }
 
         public static readonly DependencyProperty HeaderBackgroundProperty =
@@ -92,14 +93,14 @@ namespace Panuon.UI.Silver
         #region HeaderForeground
 
 
-        public static Brush GetHeaderForeground(DependencyObject obj)
+        public static Brush GetHeaderForeground(DataGrid dataGrid)
         {
-            return (Brush)obj.GetValue(HeaderForegroundProperty);
+            return (Brush)dataGrid.GetValue(HeaderForegroundProperty);
         }
 
-        public static void SetHeaderForeground(DependencyObject obj, Brush value)
+        public static void SetHeaderForeground(DataGrid dataGrid, Brush value)
         {
-            obj.SetValue(HeaderForegroundProperty, value);
+            dataGrid.SetValue(HeaderForegroundProperty, value);
         }
 
         public static readonly DependencyProperty HeaderForegroundProperty =
@@ -107,14 +108,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region ResizeThumbThickness
-        public static double GetResizeThumbThickness(DependencyObject obj)
+        public static double GetResizeThumbThickness(DataGrid dataGrid)
         {
-            return (double)obj.GetValue(ResizeThumbThicknessProperty);
+            return (double)dataGrid.GetValue(ResizeThumbThicknessProperty);
         }
 
-        public static void SetResizeThumbThickness(DependencyObject obj, double value)
+        public static void SetResizeThumbThickness(DataGrid dataGrid, double value)
         {
-            obj.SetValue(ResizeThumbThicknessProperty, value);
+            dataGrid.SetValue(ResizeThumbThicknessProperty, value);
         }
 
         public static readonly DependencyProperty ResizeThumbThicknessProperty =
@@ -122,14 +123,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region ResizeThumbBrush
-        public static Brush GetResizeThumbBrush(DependencyObject obj)
+        public static Brush GetResizeThumbBrush(DataGrid dataGrid)
         {
-            return (Brush)obj.GetValue(ResizeThumbBrushProperty);
+            return (Brush)dataGrid.GetValue(ResizeThumbBrushProperty);
         }
 
-        public static void SetResizeThumbBrush(DependencyObject obj, Brush value)
+        public static void SetResizeThumbBrush(DataGrid dataGrid, Brush value)
         {
-            obj.SetValue(ResizeThumbBrushProperty, value);
+            dataGrid.SetValue(ResizeThumbBrushProperty, value);
         }
 
         public static readonly DependencyProperty ResizeThumbBrushProperty =
@@ -137,14 +138,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region HoverBackground
-        public static Brush GetHoverBackground(DependencyObject obj)
+        public static Brush GetHoverBackground(DataGrid dataGrid)
         {
-            return (Brush)obj.GetValue(HoverBackgroundProperty);
+            return (Brush)dataGrid.GetValue(HoverBackgroundProperty);
         }
 
-        public static void SetHoverBackground(DependencyObject obj, Brush value)
+        public static void SetHoverBackground(DataGrid dataGrid, Brush value)
         {
-            obj.SetValue(HoverBackgroundProperty, value);
+            dataGrid.SetValue(HoverBackgroundProperty, value);
         }
 
         public static readonly DependencyProperty HoverBackgroundProperty =
@@ -152,14 +153,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region SelectedBackground
-        public static Brush GetSelectedBackground(DependencyObject obj)
+        public static Brush GetSelectedBackground(DataGrid dataGrid)
         {
-            return (Brush)obj.GetValue(SelectedBackgroundProperty);
+            return (Brush)dataGrid.GetValue(SelectedBackgroundProperty);
         }
 
-        public static void SetSelectedBackground(DependencyObject obj, Brush value)
+        public static void SetSelectedBackground(DataGrid dataGrid, Brush value)
         {
-            obj.SetValue(SelectedBackgroundProperty, value);
+            dataGrid.SetValue(SelectedBackgroundProperty, value);
         }
 
         public static readonly DependencyProperty SelectedBackgroundProperty =
@@ -167,14 +168,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region SelectedForeground
-        public static Brush GetSelectedForeground(DependencyObject obj)
+        public static Brush GetSelectedForeground(DataGrid dataGrid)
         {
-            return (Brush)obj.GetValue(SelectedForegroundProperty);
+            return (Brush)dataGrid.GetValue(SelectedForegroundProperty);
         }
 
-        public static void SetSelectedForeground(DependencyObject obj, Brush value)
+        public static void SetSelectedForeground(DataGrid dataGrid, Brush value)
         {
-            obj.SetValue(SelectedForegroundProperty, value);
+            dataGrid.SetValue(SelectedForegroundProperty, value);
         }
 
         public static readonly DependencyProperty SelectedForegroundProperty =
@@ -182,14 +183,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region AutoGenerateCheckBoxStyle
-        public static Style GetAutoGenerateCheckBoxStyle(DependencyObject obj)
+        public static Style GetAutoGenerateCheckBoxStyle(DataGrid dataGrid)
         {
-            return (Style)obj.GetValue(AutoGenerateCheckBoxStyleProperty);
+            return (Style)dataGrid.GetValue(AutoGenerateCheckBoxStyleProperty);
         }
 
-        public static void SetAutoGenerateCheckBoxStyle(DependencyObject obj, Style value)
+        public static void SetAutoGenerateCheckBoxStyle(DataGrid dataGrid, Style value)
         {
-            obj.SetValue(AutoGenerateCheckBoxStyleProperty, value);
+            dataGrid.SetValue(AutoGenerateCheckBoxStyleProperty, value);
         }
 
         public static readonly DependencyProperty AutoGenerateCheckBoxStyleProperty =
@@ -197,14 +198,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region SelectedItems
-        public static IList GetSelectedItems(DependencyObject obj)
+        public static IList GetSelectedItems(DataGrid dataGrid)
         {
-            return (IList)obj.GetValue(SelectedItemsProperty);
+            return (IList)dataGrid.GetValue(SelectedItemsProperty);
         }
 
-        public static void SetSelectedItems(DependencyObject obj, IList value)
+        public static void SetSelectedItems(DataGrid dataGrid, IList value)
         {
-            obj.SetValue(SelectedItemsProperty, value);
+            dataGrid.SetValue(SelectedItemsProperty, value);
         }
 
         public static readonly DependencyProperty SelectedItemsProperty =
@@ -216,14 +217,14 @@ namespace Panuon.UI.Silver
         #region Internal Properties
 
         #region DataGridHook
-        public static bool GetDataGridHook(DependencyObject obj)
+        public static bool GetDataGridHook(DataGrid dataGrid)
         {
-            return (bool)obj.GetValue(DataGridHookProperty);
+            return (bool)dataGrid.GetValue(DataGridHookProperty);
         }
 
-        public static void SetDataGridHook(DependencyObject obj, bool value)
+        public static void SetDataGridHook(DataGrid dataGrid, bool value)
         {
-            obj.SetValue(DataGridHookProperty, value);
+            dataGrid.SetValue(DataGridHookProperty, value);
         }
 
         public static readonly DependencyProperty DataGridHookProperty =

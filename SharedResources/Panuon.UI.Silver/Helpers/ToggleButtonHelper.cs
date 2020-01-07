@@ -22,14 +22,14 @@ namespace Panuon.UI.Silver
         #region Properties
 
         #region Icon
-        public static object GetIcon(DependencyObject obj)
+        public static object GetIcon(ToggleButton toggleButton)
         {
-            return (object)obj.GetValue(IconProperty);
+            return (object)toggleButton.GetValue(IconProperty);
         }
 
-        public static void SetIcon(DependencyObject obj, object value)
+        public static void SetIcon(ToggleButton toggleButton, object value)
         {
-            obj.SetValue(IconProperty, value);
+            toggleButton.SetValue(IconProperty, value);
         }
 
         public static readonly DependencyProperty IconProperty =
@@ -37,14 +37,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region IconPosition
-        public static IconPosition GetIconPosition(DependencyObject obj)
+        public static IconPosition GetIconPosition(ToggleButton toggleButton)
         {
-            return (IconPosition)obj.GetValue(IconPositionProperty);
+            return (IconPosition)toggleButton.GetValue(IconPositionProperty);
         }
 
-        public static void SetIconPosition(DependencyObject obj, IconPosition value)
+        public static void SetIconPosition(ToggleButton toggleButton, IconPosition value)
         {
-            obj.SetValue(IconPositionProperty, value);
+            toggleButton.SetValue(IconPositionProperty, value);
         }
 
         public static readonly DependencyProperty IconPositionProperty =
@@ -52,14 +52,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region ToggleButtonStyle
-        public static ToggleButtonStyle GetToggleButtonStyle(DependencyObject obj)
+        public static ToggleButtonStyle GetToggleButtonStyle(ToggleButton toggleButton)
         {
-            return (ToggleButtonStyle)obj.GetValue(ToggleButtonStyleProperty);
+            return (ToggleButtonStyle)toggleButton.GetValue(ToggleButtonStyleProperty);
         }
 
-        public static void SetToggleButtonStyle(DependencyObject obj, ToggleButtonStyle value)
+        public static void SetToggleButtonStyle(ToggleButton toggleButton, ToggleButtonStyle value)
         {
-            obj.SetValue(ToggleButtonStyleProperty, value);
+            toggleButton.SetValue(ToggleButtonStyleProperty, value);
         }
 
         public static readonly DependencyProperty ToggleButtonStyleProperty =
@@ -67,14 +67,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region ClickStyle
-        public static ClickStyle GetClickStyle(DependencyObject obj)
+        public static ClickStyle GetClickStyle(ToggleButton toggleButton)
         {
-            return (ClickStyle)obj.GetValue(ClickStyleProperty);
+            return (ClickStyle)toggleButton.GetValue(ClickStyleProperty);
         }
 
-        public static void SetClickStyle(DependencyObject obj, ClickStyle value)
+        public static void SetClickStyle(ToggleButton toggleButton, ClickStyle value)
         {
-            obj.SetValue(ClickStyleProperty, value);
+            toggleButton.SetValue(ClickStyleProperty, value);
         }
 
         public static readonly DependencyProperty ClickStyleProperty =
@@ -82,14 +82,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region HoverBrush
-        public static Brush GetHoverBrush(DependencyObject obj)
+        public static Brush GetHoverBrush(ToggleButton toggleButton)
         {
-            return (Brush)obj.GetValue(HoverBrushProperty);
+            return (Brush)toggleButton.GetValue(HoverBrushProperty);
         }
 
-        public static void SetHoverBrush(DependencyObject obj, Brush value)
+        public static void SetHoverBrush(ToggleButton toggleButton, Brush value)
         {
-            obj.SetValue(HoverBrushProperty, value);
+            toggleButton.SetValue(HoverBrushProperty, value);
         }
 
         public static readonly DependencyProperty HoverBrushProperty =
@@ -97,14 +97,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region CheckedBrush
-        public static Brush GetCheckedBrush(DependencyObject obj)
+        public static Brush GetCheckedBrush(ToggleButton toggleButton)
         {
-            return (Brush)obj.GetValue(CheckedBrushProperty);
+            return (Brush)toggleButton.GetValue(CheckedBrushProperty);
         }
 
-        public static void SetCheckedBrush(DependencyObject obj, Brush value)
+        public static void SetCheckedBrush(ToggleButton toggleButton, Brush value)
         {
-            obj.SetValue(CheckedBrushProperty, value);
+            toggleButton.SetValue(CheckedBrushProperty, value);
         }
 
         public static readonly DependencyProperty CheckedBrushProperty =
@@ -112,14 +112,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region CornerRadius
-        public static CornerRadius GetCornerRadius(DependencyObject obj)
+        public static CornerRadius GetCornerRadius(ToggleButton toggleButton)
         {
-            return (CornerRadius)obj.GetValue(CornerRadiusProperty);
+            return (CornerRadius)toggleButton.GetValue(CornerRadiusProperty);
         }
 
-        public static void SetCornerRadius(DependencyObject obj, CornerRadius value)
+        public static void SetCornerRadius(ToggleButton toggleButton, CornerRadius value)
         {
-            obj.SetValue(CornerRadiusProperty, value);
+            toggleButton.SetValue(CornerRadiusProperty, value);
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
@@ -127,14 +127,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region IsWaiting
-        public static bool GetIsWaiting(DependencyObject obj)
+        public static bool GetIsWaiting(ToggleButton toggleButton)
         {
-            return (bool)obj.GetValue(IsWaitingProperty);
+            return (bool)toggleButton.GetValue(IsWaitingProperty);
         }
 
-        public static void SetIsWaiting(DependencyObject obj, bool value)
+        public static void SetIsWaiting(ToggleButton toggleButton, bool value)
         {
-            obj.SetValue(IsWaitingProperty, value);
+            toggleButton.SetValue(IsWaitingProperty, value);
         }
 
         public static readonly DependencyProperty IsWaitingProperty =
@@ -142,14 +142,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region WaitingContent
-        public static object GetWaitingContent(DependencyObject obj)
+        public static object GetWaitingContent(ToggleButton toggleButton)
         {
-            return (object)obj.GetValue(WaitingContentProperty);
+            return (object)toggleButton.GetValue(WaitingContentProperty);
         }
 
-        public static void SetWaitingContent(DependencyObject obj, object value)
+        public static void SetWaitingContent(ToggleButton toggleButton, object value)
         {
-            obj.SetValue(WaitingContentProperty, value);
+            toggleButton.SetValue(WaitingContentProperty, value);
         }
 
         public static readonly DependencyProperty WaitingContentProperty =

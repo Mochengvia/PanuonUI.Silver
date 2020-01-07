@@ -435,23 +435,24 @@
     <sys:Double x:Key="{x:Static i:ResourceKeys.ComboBoxMaxDropDownHeight}">180</sys:Double>
     <CornerRadius x:Key="{x:Static i:ResourceKeys.ComboBoxDropDownCornerRadius}">0</CornerRadius>
     <Thickness x:Key="{x:Static i:ResourceKeys.ComboBoxDropDownPadding}">0</Thickness>
-    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.ComboBoxItemHoverBackground}" 
+    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.ComboBoxItemsHoverBackground}" 
                      Color="#EEEEEE"/>
-    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.ComboBoxItemSelectedBackground}"
+    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.ComboBoxItemsSelectedBackground}"
                      Color="#DDDDDD" />
+    <sys:Double x:Key="{x:Static i:ResourceKeys.ComboBoxItemsHeight}">30</sys:Double>
 
     <!--TreeView-->
     <SolidColorBrush x:Key="{x:Static i:ResourceKeys.TreeViewBackground}" />
     <SolidColorBrush x:Key="{x:Static i:ResourceKeys.TreeViewBorderBrush}" />
     <Thickness x:Key="{x:Static i:ResourceKeys.TreeViewBorderThickness}">0</Thickness>
 
-    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.TreeViewStandardHoverBackground}"
-                     Color="#EEEEEE" />
-    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.TreeViewStandardSelectedBackground}"
-                     Color="#DDDDDD" />
-    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.TreeViewStandardToggleBrush}"
+    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.TreeViewStandardItemsHoverBackground}"
+                     Color="#FAFAFA" />
+    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.TreeViewStandardItemsSelectedBackground}"
+                     Color="#F1F1F1" />
+    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.TreeViewStandardItemsToggleBrush}"
                      Color="Gray" />
-    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.TreeViewStandardHoverToggleBrush}"
+    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.TreeViewStandardItemsHoverToggleBrush}"
                      Color="#3E3E3E" />
     <sys:Double x:Key="{x:Static i:ResourceKeys.TreeViewStandardItemHeight}">30</sys:Double>
     <Thickness x:Key="{x:Static i:ResourceKeys.TreeViewStandardItemPadding}">15,0,0,0</Thickness>
@@ -463,4 +464,15 @@
     <Thickness x:Key="{x:Static i:ResourceKeys.TabControlBorderThickness}">0</Thickness>
     <Thickness x:Key="{x:Static i:ResourceKeys.TabControlPadding}">0</Thickness>
     
+    <!--DataGrid-->
+    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.DataGridBorderBrush}"
+                     Color="LightGray" />
+    <Thickness x:Key="{x:Static i:ResourceKeys.DataGridBorderThickness}">1</Thickness>
+    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.DataGridHorizontalGridLinesBrush}" 
+                     Color="LightGray" />
+    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.DataGridBackground}"
+                     Color="Transparent" />
+    <sys:Double x:Key="{x:Static i:ResourceKeys.DataGridMinRowHeight}">30</sys:Double>
+    <sys:Double x:Key="{x:Static i:ResourceKeys.DataGridColumnHeaderHeight}">25</sys:Double>
+
 </ResourceDictionary>

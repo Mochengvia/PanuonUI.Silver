@@ -87,14 +87,14 @@ namespace Panuon.UI.Silver
         #region ComboBoxStyle
 
 
-        public static ComboBoxStyle GetComboBoxStyle(DependencyObject obj)
+        public static ComboBoxStyle GetComboBoxStyle(ComboBox comboBox)
         {
-            return (ComboBoxStyle)obj.GetValue(ComboBoxStyleProperty);
+            return (ComboBoxStyle)comboBox.GetValue(ComboBoxStyleProperty);
         }
 
-        public static void SetComboBoxStyle(DependencyObject obj, ComboBoxStyle value)
+        public static void SetComboBoxStyle(ComboBox comboBox, ComboBoxStyle value)
         {
-            obj.SetValue(ComboBoxStyleProperty, value);
+            comboBox.SetValue(ComboBoxStyleProperty, value);
         }
 
         public static readonly DependencyProperty ComboBoxStyleProperty =
@@ -102,150 +102,236 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region ItemHeight
-        public static double GetItemHeight(DependencyObject obj)
+        public static double GetItemsHeight(ComboBox comboBox)
         {
-            return (double)obj.GetValue(ItemHeightProperty);
+            return (double)comboBox.GetValue(ItemsHeightProperty);
         }
 
-        public static void SetItemHeight(DependencyObject obj, double value)
+        public static void SetItemsHeight(ComboBox comboBox, double value)
         {
-            obj.SetValue(ItemHeightProperty, value);
+            comboBox.SetValue(ItemsHeightProperty, value);
         }
 
-        public static readonly DependencyProperty ItemHeightProperty =
-            DependencyProperty.RegisterAttached("ItemHeight", typeof(double), typeof(ComboBoxHelper), new FrameworkPropertyMetadata(30.0, FrameworkPropertyMetadataOptions.Inherits));
+        public static readonly DependencyProperty ItemsHeightProperty =
+            DependencyProperty.RegisterAttached("ItemsHeight", typeof(double), typeof(ComboBoxHelper), new FrameworkPropertyMetadata(30.0, FrameworkPropertyMetadataOptions.Inherits));
         #endregion
 
         #region ItemRemovable
-        public static bool GetItemRemovable(DependencyObject obj)
+        public static bool GetItemsRemovable(ComboBox comboBox)
         {
-            return (bool)obj.GetValue(ItemRemovableProperty);
+            return (bool)comboBox.GetValue(ItemsRemovableProperty);
         }
 
-        public static void SetItemRemovable(DependencyObject obj, bool value)
+        public static void SetItemsRemovable(ComboBox comboBox, bool value)
         {
-            obj.SetValue(ItemRemovableProperty, value);
+            comboBox.SetValue(ItemsRemovableProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsRemovableProperty =
+            DependencyProperty.RegisterAttached("ItemsRemovable", typeof(bool), typeof(ComboBoxHelper));
+
+        public static bool GetItemRemovable(ComboBox comboBoxItem)
+        {
+            return (bool)comboBoxItem.GetValue(ItemRemovableProperty);
+        }
+
+        public static void SetItemRemovable(ComboBox comboBoxItem, bool value)
+        {
+            comboBoxItem.SetValue(ItemRemovableProperty, value);
         }
 
         public static readonly DependencyProperty ItemRemovableProperty =
-            DependencyProperty.RegisterAttached("ItemRemovable", typeof(bool), typeof(ComboBoxHelper), new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.Inherits));
+            DependencyProperty.RegisterAttached("ItemRemovable", typeof(bool), typeof(ComboBoxHelper));
         #endregion
 
         #region ItemHoverBackground
-
-        public static Brush GetItemHoverBackground(DependencyObject obj)
+        public static Brush GetItemsHoverBackground(ComboBox comboBox)
         {
-            return (Brush)obj.GetValue(ItemHoverBackgroundProperty);
+            return (Brush)comboBox.GetValue(ItemHoverBackgroundProperty);
         }
 
-        public static void SetItemHoverBackground(DependencyObject obj, Brush value)
+        public static void SetItemsHoverBackground(ComboBox comboBox, Brush value)
         {
-            obj.SetValue(ItemHoverBackgroundProperty, value);
+            comboBox.SetValue(ItemsHoverBackgroundProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsHoverBackgroundProperty =
+            DependencyProperty.RegisterAttached("ItemsHoverBackground", typeof(Brush), typeof(ComboBoxHelper));
+
+        public static Brush GetItemHoverBackground(ComboBoxItem comboBoxItem)
+        {
+            return (Brush)comboBoxItem.GetValue(ItemHoverBackgroundProperty);
+        }
+
+        public static void SetItemHoverBackground(ComboBoxItem comboBoxItem, Brush value)
+        {
+            comboBoxItem.SetValue(ItemHoverBackgroundProperty, value);
         }
 
         public static readonly DependencyProperty ItemHoverBackgroundProperty =
-            DependencyProperty.RegisterAttached("ItemHoverBackground", typeof(Brush), typeof(ComboBoxHelper), new FrameworkPropertyMetadata("#EEEEEE".ToColor().ToBrush(), FrameworkPropertyMetadataOptions.Inherits));
+            DependencyProperty.RegisterAttached("ItemHoverBackground", typeof(Brush), typeof(ComboBoxHelper));
 
 
         #endregion
 
         #region ItemHoverForeground
-
-
-        public static Brush GetItemHoverForeground(DependencyObject obj)
+        public static Brush GetItemsHoverForeground(ComboBox comboBox)
         {
-            return (Brush)obj.GetValue(ItemHoverForegroundProperty);
+            return (Brush)comboBox.GetValue(ItemsHoverForegroundProperty);
         }
 
-        public static void SetItemHoverForeground(DependencyObject obj, Brush value)
+        public static void SetItemsHoverForeground(ComboBox comboBox, Brush value)
         {
-            obj.SetValue(ItemHoverForegroundProperty, value);
+            comboBox.SetValue(ItemsHoverForegroundProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsHoverForegroundProperty =
+            DependencyProperty.RegisterAttached("ItemsHoverForeground", typeof(Brush), typeof(ComboBoxHelper));
+
+
+
+        public static Brush GetItemHoverForeground(ComboBoxItem comboBoxItem)
+        {
+            return (Brush)comboBoxItem.GetValue(ItemHoverForegroundProperty);
+        }
+
+        public static void SetItemHoverForeground(ComboBoxItem comboBoxItem, Brush value)
+        {
+            comboBoxItem.SetValue(ItemHoverForegroundProperty, value);
         }
 
         public static readonly DependencyProperty ItemHoverForegroundProperty =
-            DependencyProperty.RegisterAttached("ItemHoverForeground", typeof(Brush), typeof(ComboBoxHelper), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits));
+            DependencyProperty.RegisterAttached("ItemHoverForeground", typeof(Brush), typeof(ComboBoxHelper));
 
 
         #endregion
 
         #region ItemHoverBorderBrush
-        public static Brush GetItemHoverBorderBrush(DependencyObject obj)
+        public static Brush GetItemsHoverBorderBrush(ComboBox comboBox)
         {
-            return (Brush)obj.GetValue(ItemHoverBorderBrushProperty);
+            return (Brush)comboBox.GetValue(ItemsHoverBorderBrushProperty);
         }
 
-        public static void SetItemHoverBorderBrush(DependencyObject obj, Brush value)
+        public static void SetItemsHoverBorderBrush(ComboBox comboBox, Brush value)
         {
-            obj.SetValue(ItemHoverBorderBrushProperty, value);
+            comboBox.SetValue(ItemsHoverBorderBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsHoverBorderBrushProperty =
+            DependencyProperty.RegisterAttached("ItemsHoverBorderBrush", typeof(Brush), typeof(ComboBoxHelper));
+
+        public static Brush GetItemHoverBorderBrush(ComboBoxItem comboBoxItem)
+        {
+            return (Brush)comboBoxItem.GetValue(ItemHoverBorderBrushProperty);
+        }
+
+        public static void SetItemHoverBorderBrush(ComboBoxItem comboBoxItem, Brush value)
+        {
+            comboBoxItem.SetValue(ItemHoverBorderBrushProperty, value);
         }
 
         public static readonly DependencyProperty ItemHoverBorderBrushProperty =
-            DependencyProperty.RegisterAttached("ItemHoverBorderBrush", typeof(Brush), typeof(ComboBoxHelper), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits));
+            DependencyProperty.RegisterAttached("ItemHoverBorderBrush", typeof(Brush), typeof(ComboBoxHelper));
         #endregion
 
         #region ItemSelectedBackground
-
-        public static Brush GetItemSelectedBackground(DependencyObject obj)
+        public static Brush GetItemsSelectedBackground(ComboBox comboBox)
         {
-            return (Brush)obj.GetValue(ItemSelectedBackgroundProperty);
+            return (Brush)comboBox.GetValue(ItemsSelectedBackgroundProperty);
         }
 
-        public static void SetItemSelectedBackground(DependencyObject obj, Brush value)
+        public static void SetItemsSelectedBackground(ComboBox comboBox, Brush value)
         {
-            obj.SetValue(ItemSelectedBackgroundProperty, value);
+            comboBox.SetValue(ItemsSelectedBackgroundProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsSelectedBackgroundProperty =
+            DependencyProperty.RegisterAttached("ItemsSelectedBackground", typeof(Brush), typeof(ComboBoxHelper));
+
+        public static Brush GetItemSelectedBackground(ComboBoxItem comboBoxItem)
+        {
+            return (Brush)comboBoxItem.GetValue(ItemSelectedBackgroundProperty);
+        }
+
+        public static void SetItemSelectedBackground(ComboBoxItem comboBoxItem, Brush value)
+        {
+            comboBoxItem.SetValue(ItemSelectedBackgroundProperty, value);
         }
 
         public static readonly DependencyProperty ItemSelectedBackgroundProperty =
-            DependencyProperty.RegisterAttached("ItemSelectedBackground", typeof(Brush), typeof(ComboBoxHelper), new FrameworkPropertyMetadata("#DDDDDD".ToColor().ToBrush(), FrameworkPropertyMetadataOptions.Inherits));
-
-
+            DependencyProperty.RegisterAttached("ItemSelectedBackground", typeof(Brush), typeof(ComboBoxHelper));
         #endregion
 
         #region ItemSelectedForeground
-
-
-        public static Brush GetItemSelectedForeground(DependencyObject obj)
+        public static Brush GetItemsSelectedForeground(ComboBox comboBox)
         {
-            return (Brush)obj.GetValue(ItemSelectedForegroundProperty);
+            return (Brush)comboBox.GetValue(ItemsSelectedForegroundProperty);
         }
 
-        public static void SetItemSelectedForeground(DependencyObject obj, Brush value)
+        public static void SetItemsSelectedForeground(ComboBox comboBox, Brush value)
         {
-            obj.SetValue(ItemSelectedForegroundProperty, value);
+            comboBox.SetValue(ItemsSelectedForegroundProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsSelectedForegroundProperty =
+            DependencyProperty.RegisterAttached("ItemsSelectedForeground", typeof(Brush), typeof(ComboBoxHelper));
+
+
+        public static Brush GetItemSelectedForeground(ComboBoxItem comboBoxItem)
+        {
+            return (Brush)comboBoxItem.GetValue(ItemSelectedForegroundProperty);
+        }
+
+        public static void SetItemSelectedForeground(ComboBoxItem comboBoxItem, Brush value)
+        {
+            comboBoxItem.SetValue(ItemSelectedForegroundProperty, value);
         }
 
         public static readonly DependencyProperty ItemSelectedForegroundProperty =
-            DependencyProperty.RegisterAttached("ItemSelectedForeground", typeof(Brush), typeof(ComboBoxHelper), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits));
+            DependencyProperty.RegisterAttached("ItemSelectedForeground", typeof(Brush), typeof(ComboBoxHelper));
 
 
         #endregion
 
         #region ItemSelectedBorderBrush
-        public static Brush GetItemSelectedBorderBrush(DependencyObject obj)
+        public static Brush GetItemsSelectedBorderBrush(ComboBox comboBox)
         {
-            return (Brush)obj.GetValue(ItemSelectedBorderBrushProperty);
+            return (Brush)comboBox.GetValue(ItemsSelectedBorderBrushProperty);
         }
 
-        public static void SetItemSelectedBorderBrush(DependencyObject obj, Brush value)
+        public static void SetItemsSelectedBorderBrush(ComboBox comboBox, Brush value)
         {
-            obj.SetValue(ItemSelectedBorderBrushProperty, value);
+            comboBox.SetValue(ItemsSelectedBorderBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsSelectedBorderBrushProperty =
+            DependencyProperty.RegisterAttached("ItemsSelectedBorderBrush", typeof(Brush), typeof(ComboBoxHelper));
+
+        public static Brush GetItemSelectedBorderBrush(ComboBoxItem comboBoxItem)
+        {
+            return (Brush)comboBoxItem.GetValue(ItemSelectedBorderBrushProperty);
+        }
+
+        public static void SetItemSelectedBorderBrush(ComboBoxItem comboBoxItem, Brush value)
+        {
+            comboBoxItem.SetValue(ItemSelectedBorderBrushProperty, value);
         }
 
         public static readonly DependencyProperty ItemSelectedBorderBrushProperty =
-            DependencyProperty.RegisterAttached("ItemSelectedBorderBrush", typeof(Brush), typeof(ComboBoxHelper), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits));
+            DependencyProperty.RegisterAttached("ItemSelectedBorderBrush", typeof(Brush), typeof(ComboBoxHelper));
         #endregion
 
         #region Icon
 
 
-        public static object GetIcon(DependencyObject obj)
+        public static object GetIcon(ComboBox comboBox)
         {
-            return (object)obj.GetValue(IconProperty);
+            return (object)comboBox.GetValue(IconProperty);
         }
 
-        public static void SetIcon(DependencyObject obj, object value)
+        public static void SetIcon(ComboBox comboBox, object value)
         {
-            obj.SetValue(IconProperty, value);
+            comboBox.SetValue(IconProperty, value);
         }
 
         public static readonly DependencyProperty IconProperty =
@@ -256,14 +342,14 @@ namespace Panuon.UI.Silver
 
         #region Watermark
 
-        public static string GetWatermark(DependencyObject obj)
+        public static string GetWatermark(ComboBox comboBox)
         {
-            return (string)obj.GetValue(WatermarkProperty);
+            return (string)comboBox.GetValue(WatermarkProperty);
         }
 
-        public static void SetWatermark(DependencyObject obj, string value)
+        public static void SetWatermark(ComboBox comboBox, string value)
         {
-            obj.SetValue(WatermarkProperty, value);
+            comboBox.SetValue(WatermarkProperty, value);
         }
 
         public static readonly DependencyProperty WatermarkProperty =
@@ -275,14 +361,14 @@ namespace Panuon.UI.Silver
         #region CornerRadius
 
 
-        public static CornerRadius GetCornerRadius(DependencyObject obj)
+        public static CornerRadius GetCornerRadius(ComboBox comboBox)
         {
-            return (CornerRadius)obj.GetValue(CornerRadiusProperty);
+            return (CornerRadius)comboBox.GetValue(CornerRadiusProperty);
         }
 
-        public static void SetCornerRadius(DependencyObject obj, CornerRadius value)
+        public static void SetCornerRadius(ComboBox comboBox, CornerRadius value)
         {
-            obj.SetValue(CornerRadiusProperty, value);
+            comboBox.SetValue(CornerRadiusProperty, value);
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
@@ -294,14 +380,14 @@ namespace Panuon.UI.Silver
         #region DropDownCornerRadius
 
 
-        public static CornerRadius GetDropDownCornerRadius(DependencyObject obj)
+        public static CornerRadius GetDropDownCornerRadius(ComboBox comboBox)
         {
-            return (CornerRadius)obj.GetValue(DropDownCornerRadiusProperty);
+            return (CornerRadius)comboBox.GetValue(DropDownCornerRadiusProperty);
         }
 
-        public static void SetDropDownCornerRadius(DependencyObject obj, CornerRadius value)
+        public static void SetDropDownCornerRadius(ComboBox comboBox, CornerRadius value)
         {
-            obj.SetValue(DropDownCornerRadiusProperty, value);
+            comboBox.SetValue(DropDownCornerRadiusProperty, value);
         }
 
         public static readonly DependencyProperty DropDownCornerRadiusProperty =
@@ -313,14 +399,14 @@ namespace Panuon.UI.Silver
         #region DropDownPadding
 
 
-        public static Thickness GetDropDownPadding(DependencyObject obj)
+        public static Thickness GetDropDownPadding(ComboBox comboBox)
         {
-            return (Thickness)obj.GetValue(DropDownPaddingProperty);
+            return (Thickness)comboBox.GetValue(DropDownPaddingProperty);
         }
 
-        public static void SetDropDownPadding(DependencyObject obj, Thickness value)
+        public static void SetDropDownPadding(ComboBox comboBox, Thickness value)
         {
-            obj.SetValue(DropDownPaddingProperty, value);
+            comboBox.SetValue(DropDownPaddingProperty, value);
         }
 
         public static readonly DependencyProperty DropDownPaddingProperty =
@@ -330,14 +416,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region DropDownPlacement
-        public static DropDownPlacement GetDropDownPlacement(DependencyObject obj)
+        public static DropDownPlacement GetDropDownPlacement(ComboBox comboBox)
         {
-            return (DropDownPlacement)obj.GetValue(DropDownPlacementProperty);
+            return (DropDownPlacement)comboBox.GetValue(DropDownPlacementProperty);
         }
 
-        public static void SetDropDownPlacement(DependencyObject obj, DropDownPlacement value)
+        public static void SetDropDownPlacement(ComboBox comboBox, DropDownPlacement value)
         {
-            obj.SetValue(DropDownPlacementProperty, value);
+            comboBox.SetValue(DropDownPlacementProperty, value);
         }
 
         public static readonly DependencyProperty DropDownPlacementProperty =
@@ -347,14 +433,14 @@ namespace Panuon.UI.Silver
         #region ShadowColor
 
 
-        public static Color? GetShadowColor(DependencyObject obj)
+        public static Color? GetShadowColor(ComboBox comboBox)
         {
-            return (Color?)obj.GetValue(ShadowColorProperty);
+            return (Color?)comboBox.GetValue(ShadowColorProperty);
         }
 
-        public static void SetShadowColor(DependencyObject obj, Color? value)
+        public static void SetShadowColor(ComboBox comboBox, Color? value)
         {
-            obj.SetValue(ShadowColorProperty, value);
+            comboBox.SetValue(ShadowColorProperty, value);
         }
 
         public static readonly DependencyProperty ShadowColorProperty =
@@ -366,14 +452,14 @@ namespace Panuon.UI.Silver
         #region CanSearch
 
 
-        public static bool GetCanSearch(DependencyObject obj)
+        public static bool GetCanSearch(ComboBox comboBox)
         {
-            return (bool)obj.GetValue(CanSearchProperty);
+            return (bool)comboBox.GetValue(CanSearchProperty);
         }
 
-        public static void SetCanSearch(DependencyObject obj, bool value)
+        public static void SetCanSearch(ComboBox comboBox, bool value)
         {
-            obj.SetValue(CanSearchProperty, value);
+            comboBox.SetValue(CanSearchProperty, value);
         }
 
         public static readonly DependencyProperty CanSearchProperty =
@@ -385,14 +471,14 @@ namespace Panuon.UI.Silver
         #region BindToEnum
 
 
-        public static Enum GetBindToEnum(DependencyObject obj)
+        public static Enum GetBindToEnum(ComboBox comboBox)
         {
-            return (Enum)obj.GetValue(BindToEnumProperty);
+            return (Enum)comboBox.GetValue(BindToEnumProperty);
         }
 
-        public static void SetBindToEnum(DependencyObject obj, Enum value)
+        public static void SetBindToEnum(ComboBox comboBox, Enum value)
         {
-            obj.SetValue(BindToEnumProperty, value);
+            comboBox.SetValue(BindToEnumProperty, value);
         }
 
         public static readonly DependencyProperty BindToEnumProperty =

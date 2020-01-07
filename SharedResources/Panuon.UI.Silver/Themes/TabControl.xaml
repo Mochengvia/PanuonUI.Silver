@@ -114,7 +114,7 @@
 
     <Style TargetType="TabControl">
         <!--TabControlHelper-->
-        <Setter Property="local:TabControlHelper.ItemForeground"
+        <Setter Property="local:TabControlHelper.ItemsForeground"
                 Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
         <!--Properties-->
         <Setter Property="Padding"

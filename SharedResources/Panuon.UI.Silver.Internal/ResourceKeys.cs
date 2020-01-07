@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Controls;
 
 namespace Panuon.UI.Silver.Internal
 {
@@ -729,22 +730,22 @@ namespace Panuon.UI.Silver.Internal
 
         public static readonly string ComboBoxEditableTextBoxStyle = nameof(ComboBoxEditableTextBoxStyle);
 
+        public static readonly string ComboBoxItemsHoverBackground = nameof(ComboBoxItemsHoverBackground);
+
+        public static readonly string ComboBoxItemsHoverForeground = nameof(ComboBoxItemsHoverForeground);
+
+        public static readonly string ComboBoxItemsHoverBorderBrush = nameof(ComboBoxItemsHoverBorderBrush);
+
+        public static readonly string ComboBoxItemsSelectedBackground = nameof(ComboBoxItemsSelectedBackground);
+
+        public static readonly string ComboBoxItemsSelectedForeground = nameof(ComboBoxItemsSelectedForeground);
+
+        public static readonly string ComboBoxItemsSelectedBorderBrush = nameof(ComboBoxItemsSelectedBorderBrush);
+
+        public static readonly string ComboBoxItemsHeight = nameof(ComboBoxItemsHeight);
+
         #region ComboBoxItem
         public static readonly string ComboBoxItemTemplate = nameof(ComboBoxItemTemplate);
-
-        public static readonly string ComboBoxItemHoverBackground = nameof(ComboBoxItemHoverBackground);
-
-        public static readonly string ComboBoxItemHoverForeground = nameof(ComboBoxItemHoverForeground);
-
-        public static readonly string ComboBoxItemHoverBorderBrush = nameof(ComboBoxItemHoverBorderBrush);
-
-        public static readonly string ComboBoxItemSelectedBackground = nameof(ComboBoxItemSelectedBackground);
-
-        public static readonly string ComboBoxItemSelectedForeground = nameof(ComboBoxItemSelectedForeground);
-
-        public static readonly string ComboBoxItemSelectedBorderBrush = nameof(ComboBoxItemSelectedBorderBrush);
-
-        public static readonly string ComboBoxItemHeight = nameof(ComboBoxItemHeight);
 
         public static readonly string ComboBoxItemBackground = nameof(ComboBoxItemBackground);
 
@@ -779,15 +780,15 @@ namespace Panuon.UI.Silver.Internal
 
         public static readonly string TreeViewItemStandardTemplate = nameof(TreeViewItemStandardTemplate);
 
-        public static readonly string TreeViewStandardHoverBackground = nameof(TreeViewStandardHoverBackground);
+        public static readonly string TreeViewStandardItemsHoverBackground = nameof(TreeViewStandardItemsHoverBackground);
 
         public static readonly string TreeViewStandardHoverForeground = nameof(TreeViewStandardHoverForeground);
 
-        public static readonly string TreeViewStandardToggleBrush = nameof(TreeViewStandardToggleBrush);
+        public static readonly string TreeViewStandardItemsToggleBrush = nameof(TreeViewStandardItemsToggleBrush);
 
-        public static readonly string TreeViewStandardHoverToggleBrush = nameof(TreeViewStandardHoverToggleBrush);
+        public static readonly string TreeViewStandardItemsHoverToggleBrush = nameof(TreeViewStandardItemsHoverToggleBrush);
 
-        public static readonly string TreeViewStandardSelectedBackground = nameof(TreeViewStandardSelectedBackground);
+        public static readonly string TreeViewStandardItemsSelectedBackground = nameof(TreeViewStandardItemsSelectedBackground);
 
         public static readonly string TreeViewStandardSelectedForeground = nameof(TreeViewStandardSelectedForeground);
 
@@ -845,6 +846,37 @@ namespace Panuon.UI.Silver.Internal
 
         #region DropDown
         public static readonly string DropDownStandardTemplate = nameof(DropDownStandardTemplate);
+        #endregion
+
+        #region DataGrid
+        public static readonly string DataGridBorderBrush = nameof(DataGridBorderBrush);
+
+        public static readonly string DataGridBorderThickness = nameof(DataGridBorderThickness);
+
+        public static readonly string DataGridBackground = nameof(DataGridBackground);
+
+        public static readonly string DataGridHorizontalGridLinesBrush = nameof(DataGridHorizontalGridLinesBrush);
+
+        public static readonly string DataGridMinRowHeight = nameof(DataGridMinRowHeight);
+
+        public static readonly string DataGridColumnHeaderHeight = nameof(DataGridColumnHeaderHeight);
+
+        public static readonly string DataGridRowTemplate = nameof(DataGridRowTemplate);
+
+        public static readonly string DataGridRowStyle = nameof(DataGridRowStyle);
+
+        public static readonly string DataGridCellTemplate = nameof(DataGridCellTemplate);
+
+        public static readonly string DataGridCellStyle = nameof(DataGridCellStyle);
+
+        public static readonly string DataGridColumnHeaderTemplate = nameof(DataGridColumnHeaderTemplate);
+
+        public static readonly string DataGridColumnHeaderStyle = nameof(DataGridColumnHeaderStyle);
+
+        public static readonly string DataGridRowHeaderTemplate = nameof(DataGridRowHeaderTemplate);
+
+        public static readonly string DataGridRowHeaderStyle = nameof(DataGridColumnHeaderStyle);
+
         #endregion
     }
 }

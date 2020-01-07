@@ -11,18 +11,18 @@
 
     <Style TargetType="TreeView">
         <!--TreeViewHelper-->
-        <Setter Property="local:TreeViewHelper.ItemPadding"
+        <Setter Property="local:TreeViewHelper.ItemsPadding"
                 Value="{StaticResource {x:Static i:ResourceKeys.TreeViewStandardItemPadding}}" />
-        <Setter Property="local:TreeViewHelper.ItemHeight"
+        <Setter Property="local:TreeViewHelper.ItemsHeight"
                 Value="{StaticResource {x:Static i:ResourceKeys.TreeViewStandardItemHeight}}" />
-        <Setter Property="local:TreeViewHelper.ToggleBrush"
-                Value="{StaticResource {x:Static i:ResourceKeys.TreeViewStandardToggleBrush}}" />
-        <Setter Property="local:TreeViewHelper.HoverToggleBrush"
-                Value="{StaticResource {x:Static i:ResourceKeys.TreeViewStandardHoverToggleBrush}}" />
-        <Setter Property="local:TreeViewHelper.HoverBackground"
-                Value="{StaticResource {x:Static i:ResourceKeys.TreeViewStandardHoverBackground}}" />
-        <Setter Property="local:TreeViewHelper.SelectedBackground"
-                Value="{StaticResource {x:Static i:ResourceKeys.TreeViewStandardSelectedBackground}}" />
+        <Setter Property="local:TreeViewHelper.ItemsToggleBrush"
+                Value="{StaticResource {x:Static i:ResourceKeys.TreeViewStandardItemsToggleBrush}}" />
+        <Setter Property="local:TreeViewHelper.ItemsHoverToggleBrush"
+                Value="{StaticResource {x:Static i:ResourceKeys.TreeViewStandardItemsHoverToggleBrush}}" />
+        <Setter Property="local:TreeViewHelper.ItemsHoverBackground"
+                Value="{StaticResource {x:Static i:ResourceKeys.TreeViewStandardItemsHoverBackground}}" />
+        <Setter Property="local:TreeViewHelper.ItemsSelectedBackground"
+                Value="{StaticResource {x:Static i:ResourceKeys.TreeViewStandardItemsSelectedBackground}}" />
         <!--<Setter Property="local:TreeViewHelper.HoverForeground"
                 Value="{StaticResource {x:Static i:ResourceKeys.TreeViewStandardHoverForeground}}" />
         <Setter Property="local:TreeViewHelper.SelectedForeground"

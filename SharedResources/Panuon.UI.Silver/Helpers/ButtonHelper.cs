@@ -20,14 +20,14 @@ namespace Panuon.UI.Silver
         #region Properties
 
         #region Icon
-        public static object GetIcon(DependencyObject obj)
+        public static object GetIcon(Button button)
         {
-            return (object)obj.GetValue(IconProperty);
+            return (object)button.GetValue(IconProperty);
         }
 
-        public static void SetIcon(DependencyObject obj, object value)
+        public static void SetIcon(Button button, object value)
         {
-            obj.SetValue(IconProperty, value);
+            button.SetValue(IconProperty, value);
         }
 
         public static readonly DependencyProperty IconProperty =
@@ -35,14 +35,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region IconPosition
-        public static IconPosition GetIconPosition(DependencyObject obj)
+        public static IconPosition GetIconPosition(Button button)
         {
-            return (IconPosition)obj.GetValue(IconPositionProperty);
+            return (IconPosition)button.GetValue(IconPositionProperty);
         }
 
-        public static void SetIconPosition(DependencyObject obj, IconPosition value)
+        public static void SetIconPosition(Button button, IconPosition value)
         {
-            obj.SetValue(IconPositionProperty, value);
+            button.SetValue(IconPositionProperty, value);
         }
 
         public static readonly DependencyProperty IconPositionProperty =
@@ -50,14 +50,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region ButtonStyle
-        public static ButtonStyle GetButtonStyle(DependencyObject obj)
+        public static ButtonStyle GetButtonStyle(Button button)
         {
-            return (ButtonStyle)obj.GetValue(ButtonStyleProperty);
+            return (ButtonStyle)button.GetValue(ButtonStyleProperty);
         }
 
-        public static void SetButtonStyle(DependencyObject obj, ButtonStyle value)
+        public static void SetButtonStyle(Button button, ButtonStyle value)
         {
-            obj.SetValue(ButtonStyleProperty, value);
+            button.SetValue(ButtonStyleProperty, value);
         }
 
         public static readonly DependencyProperty ButtonStyleProperty =
@@ -65,14 +65,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region ClickStyle
-        public static ClickStyle GetClickStyle(DependencyObject obj)
+        public static ClickStyle GetClickStyle(Button button)
         {
-            return (ClickStyle)obj.GetValue(ClickStyleProperty);
+            return (ClickStyle)button.GetValue(ClickStyleProperty);
         }
 
-        public static void SetClickStyle(DependencyObject obj, ClickStyle value)
+        public static void SetClickStyle(Button button, ClickStyle value)
         {
-            obj.SetValue(ClickStyleProperty, value);
+            button.SetValue(ClickStyleProperty, value);
         }
 
         public static readonly DependencyProperty ClickStyleProperty =
@@ -80,14 +80,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region HoverBrush
-        public static Brush GetHoverBrush(DependencyObject obj)
+        public static Brush GetHoverBrush(Button button)
         {
-            return (Brush)obj.GetValue(HoverBrushProperty);
+            return (Brush)button.GetValue(HoverBrushProperty);
         }
 
-        public static void SetHoverBrush(DependencyObject obj, Brush value)
+        public static void SetHoverBrush(Button button, Brush value)
         {
-            obj.SetValue(HoverBrushProperty, value);
+            button.SetValue(HoverBrushProperty, value);
         }
 
         public static readonly DependencyProperty HoverBrushProperty =
@@ -95,14 +95,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region CornerRadius
-        public static CornerRadius GetCornerRadius(DependencyObject obj)
+        public static CornerRadius GetCornerRadius(Button button)
         {
-            return (CornerRadius)obj.GetValue(CornerRadiusProperty);
+            return (CornerRadius)button.GetValue(CornerRadiusProperty);
         }
 
-        public static void SetCornerRadius(DependencyObject obj, CornerRadius value)
+        public static void SetCornerRadius(Button button, CornerRadius value)
         {
-            obj.SetValue(CornerRadiusProperty, value);
+            button.SetValue(CornerRadiusProperty, value);
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
@@ -110,14 +110,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region IsWaiting
-        public static bool GetIsWaiting(DependencyObject obj)
+        public static bool GetIsWaiting(Button button)
         {
-            return (bool)obj.GetValue(IsWaitingProperty);
+            return (bool)button.GetValue(IsWaitingProperty);
         }
 
-        public static void SetIsWaiting(DependencyObject obj, bool value)
+        public static void SetIsWaiting(Button button, bool value)
         {
-            obj.SetValue(IsWaitingProperty, value);
+            button.SetValue(IsWaitingProperty, value);
         }
 
         public static readonly DependencyProperty IsWaitingProperty =
@@ -125,14 +125,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region WaitingContent
-        public static object GetWaitingContent(DependencyObject obj)
+        public static object GetWaitingContent(Button button)
         {
-            return (object)obj.GetValue(WaitingContentProperty);
+            return (object)button.GetValue(WaitingContentProperty);
         }
 
-        public static void SetWaitingContent(DependencyObject obj, object value)
+        public static void SetWaitingContent(Button button, object value)
         {
-            obj.SetValue(WaitingContentProperty, value);
+            button.SetValue(WaitingContentProperty, value);
         }
 
         public static readonly DependencyProperty WaitingContentProperty =

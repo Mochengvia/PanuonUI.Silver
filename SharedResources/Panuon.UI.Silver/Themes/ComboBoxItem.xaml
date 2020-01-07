@@ -118,8 +118,22 @@
     <Style TargetType="ComboBoxItem">
         <Setter Property="HorizontalContentAlignment"
                 Value="Stretch" />
+        <Setter Property="local:ComboBoxHelper.ItemRemovable"
+                Value="{Binding Path=(local:ComboBoxHelper.ItemsRemovable), RelativeSource={RelativeSource AncestorType=ComboBox}}" />
+        <Setter Property="local:ComboBoxHelper.ItemHoverBackground"
+                Value="{Binding Path=(local:ComboBoxHelper.ItemsHoverBackground), RelativeSource={RelativeSource AncestorType=ComboBox}}" />
+        <Setter Property="local:ComboBoxHelper.ItemHoverForeground"
+                Value="{Binding Path=(local:ComboBoxHelper.ItemsHoverForeground), RelativeSource={RelativeSource AncestorType=ComboBox}}" />
+        <Setter Property="local:ComboBoxHelper.ItemHoverBorderBrush"
+                Value="{Binding Path=(local:ComboBoxHelper.ItemsHoverBorderBrush), RelativeSource={RelativeSource AncestorType=ComboBox}}" />
+        <Setter Property="local:ComboBoxHelper.ItemSelectedBackground"
+                Value="{Binding Path=(local:ComboBoxHelper.ItemsSelectedBackground), RelativeSource={RelativeSource AncestorType=ComboBox}}" />
+        <Setter Property="local:ComboBoxHelper.ItemSelectedForeground"
+                Value="{Binding Path=(local:ComboBoxHelper.ItemsSelectedForeground), RelativeSource={RelativeSource AncestorType=ComboBox}}" />
+        <Setter Property="local:ComboBoxHelper.ItemSelectedBorderBrush"
+                Value="{Binding Path=(local:ComboBoxHelper.ItemsSelectedBorderBrush), RelativeSource={RelativeSource AncestorType=ComboBox}}" />
         <Setter Property="Height"
-                Value="{Binding Path=(local:ComboBoxHelper.ItemHeight), RelativeSource={RelativeSource Self}}" />
+                Value="{Binding Path=(local:ComboBoxHelper.ItemsHeight), RelativeSource={RelativeSource AncestorType=ComboBox}}" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static i:ResourceKeys.ComboBoxItemTemplate}}" />
     </Style>

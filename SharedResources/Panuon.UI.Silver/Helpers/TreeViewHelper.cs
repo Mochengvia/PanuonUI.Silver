@@ -1,19 +1,22 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace Panuon.UI.Silver
 {
     public static class TreeViewHelper
     {
+        #region Properties
+
         #region TreeViewStyle
-        public static TreeViewStyle GetTreeViewStyle(DependencyObject obj)
+        public static TreeViewStyle GetTreeViewStyle(TreeView treeView)
         {
-            return (TreeViewStyle)obj.GetValue(TreeViewStyleProperty);
+            return (TreeViewStyle)treeView.GetValue(TreeViewStyleProperty);
         }
 
-        public static void SetTreeViewStyle(DependencyObject obj, TreeViewStyle value)
+        public static void SetTreeViewStyle(TreeView treeView, TreeViewStyle value)
         {
-            obj.SetValue(TreeViewStyleProperty, value);
+            treeView.SetValue(TreeViewStyleProperty, value);
         }
 
         public static readonly DependencyProperty TreeViewStyleProperty =
@@ -21,14 +24,28 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region ItemHeight
-        public static double GetItemHeight(DependencyObject obj)
+        public static double GetItemsHeight(TreeView treeView)
         {
-            return (double)obj.GetValue(ItemHeightProperty);
+            return (double)treeView.GetValue(ItemHeightProperty);
         }
 
-        public static void SetItemHeight(DependencyObject obj, double value)
+        public static void SetItemsHeight(TreeView treeView, double value)
         {
-            obj.SetValue(ItemHeightProperty, value);
+            treeView.SetValue(ItemHeightProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsHeightProperty =
+            DependencyProperty.RegisterAttached("ItemsHeight", typeof(double), typeof(TreeViewHelper));
+
+
+        public static double GetItemHeight(TreeViewItem treeViewItem)
+        {
+            return (double)treeViewItem.GetValue(ItemHeightProperty);
+        }
+
+        public static void SetItemHeight(TreeViewItem treeViewItem, double value)
+        {
+            treeViewItem.SetValue(ItemHeightProperty, value);
         }
 
         public static readonly DependencyProperty ItemHeightProperty =
@@ -36,14 +53,27 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region ItemIcon
-        public static object GetItemIcon(DependencyObject obj)
+        public static object GetItemsIcon(TreeView treeView)
         {
-            return (object)obj.GetValue(ItemIconProperty);
+            return (object)treeView.GetValue(ItemIconProperty);
         }
 
-        public static void SetItemIcon(DependencyObject obj, object value)
+        public static void SetItemsIcon(TreeView treeView, object value)
         {
-            obj.SetValue(ItemIconProperty, value);
+            treeView.SetValue(ItemIconProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsIconProperty =
+            DependencyProperty.RegisterAttached("ItemsIcon", typeof(object), typeof(TreeViewHelper));
+
+        public static object GetItemIcon(TreeViewItem treeViewItem)
+        {
+            return (object)treeViewItem.GetValue(ItemIconProperty);
+        }
+
+        public static void SetItemIcon(TreeViewItem treeViewItem, object value)
+        {
+            treeViewItem.SetValue(ItemIconProperty, value);
         }
 
         public static readonly DependencyProperty ItemIconProperty =
@@ -51,153 +81,274 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region ItemPadding
-        public static Thickness GetItemPadding(DependencyObject obj)
+        public static Thickness GetItemsPadding(TreeView treeView)
         {
-            return (Thickness)obj.GetValue(ItemPaddingProperty);
+            return (Thickness)treeView.GetValue(ItemPaddingProperty);
         }
 
-        public static void SetItemPadding(DependencyObject obj, Thickness value)
+        public static void SetItemsPadding(TreeView treeView, Thickness value)
         {
-            obj.SetValue(ItemPaddingProperty, value);
+            treeView.SetValue(ItemPaddingProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsPaddingProperty =
+            DependencyProperty.RegisterAttached("ItemsPadding", typeof(Thickness), typeof(TreeViewHelper));
+
+
+        public static Thickness GetItemPadding(TreeViewItem treeViewItem)
+        {
+            return (Thickness)treeViewItem.GetValue(ItemPaddingProperty);
+        }
+
+        public static void SetItemPadding(TreeViewItem treeViewItem, Thickness value)
+        {
+            treeViewItem.SetValue(ItemPaddingProperty, value);
         }
 
         public static readonly DependencyProperty ItemPaddingProperty =
             DependencyProperty.RegisterAttached("ItemPadding", typeof(Thickness), typeof(TreeViewHelper));
         #endregion
 
-        #region IsToggleEnabled
-        public static bool GetIsToggleEnabled(DependencyObject obj)
+        #region ItemToggleEnabled
+        public static bool GetItemsToggleEnabled(TreeView treeView)
         {
-            return (bool)obj.GetValue(IsToggleEnabledProperty);
+            return (bool)treeView.GetValue(ItemToggleEnabledProperty);
         }
 
-        public static void SetIsToggleEnabled(DependencyObject obj, bool value)
+        public static void SetItemsToggleEnabled(TreeView treeView, bool value)
         {
-            obj.SetValue(IsToggleEnabledProperty, value);
+            treeView.SetValue(ItemToggleEnabledProperty, value);
         }
 
-        public static readonly DependencyProperty IsToggleEnabledProperty =
-            DependencyProperty.RegisterAttached("IsToggleEnabled", typeof(bool), typeof(TreeViewHelper));
+        public static readonly DependencyProperty ItemsToggleEnabledProperty =
+            DependencyProperty.RegisterAttached("ItemsToggleEnabled", typeof(bool), typeof(TreeViewHelper));
+
+        public static bool GetItemToggleEnabled(TreeViewItem treeViewItem)
+        {
+            return (bool)treeViewItem.GetValue(ItemToggleEnabledProperty);
+        }
+
+        public static void SetItemToggleEnabled(TreeViewItem treeViewItem, bool value)
+        {
+            treeViewItem.SetValue(ItemToggleEnabledProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemToggleEnabledProperty =
+            DependencyProperty.RegisterAttached("ItemToggleEnabled", typeof(bool), typeof(TreeViewHelper));
         #endregion
 
-        #region ToggleBrush
-        public static Brush GetToggleBrush(DependencyObject obj)
+        #region ItemToggleBrush
+        public static Brush GetItemsToggleBrush(TreeView treeView)
         {
-            return (Brush)obj.GetValue(ToggleBrushProperty);
+            return (Brush)treeView.GetValue(ItemToggleBrushProperty);
         }
 
-        public static void SetToggleBrush(DependencyObject obj, Brush value)
+        public static void SetItemsToggleBrush(TreeView treeView, Brush value)
         {
-            obj.SetValue(ToggleBrushProperty, value);
+            treeView.SetValue(ItemToggleBrushProperty, value);
         }
 
-        public static readonly DependencyProperty ToggleBrushProperty =
-            DependencyProperty.RegisterAttached("ToggleBrush", typeof(Brush), typeof(TreeViewHelper));
+        public static readonly DependencyProperty ItemsToggleBrushProperty =
+            DependencyProperty.RegisterAttached("ItemsToggleBrush", typeof(Brush), typeof(TreeViewHelper));
+
+        public static Brush GetItemToggleBrush(TreeViewItem treeViewItem)
+        {
+            return (Brush)treeViewItem.GetValue(ItemToggleBrushProperty);
+        }
+
+        public static void SetItemToggleBrush(TreeViewItem treeViewItem, Brush value)
+        {
+            treeViewItem.SetValue(ItemToggleBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemToggleBrushProperty =
+            DependencyProperty.RegisterAttached("ItemToggleBrush", typeof(Brush), typeof(TreeViewHelper));
         #endregion
 
-        #region HoverToggleBrush
-        public static Brush GetHoverToggleBrush(DependencyObject obj)
+        #region ItemHoverToggleBrush
+        public static Brush GetItemsHoverToggleBrush(TreeView treeView)
         {
-            return (Brush)obj.GetValue(HoverToggleBrushProperty);
+            return (Brush)treeView.GetValue(ItemHoverToggleBrushProperty);
         }
 
-        public static void SetHoverToggleBrush(DependencyObject obj, Brush value)
+        public static void SetItemsHoverToggleBrush(TreeView treeView, Brush value)
         {
-            obj.SetValue(HoverToggleBrushProperty, value);
+            treeView.SetValue(ItemHoverToggleBrushProperty, value);
         }
 
-        public static readonly DependencyProperty HoverToggleBrushProperty =
-            DependencyProperty.RegisterAttached("HoverToggleBrush", typeof(Brush), typeof(TreeViewHelper));
+        public static readonly DependencyProperty ItemsHoverToggleBrushProperty =
+            DependencyProperty.RegisterAttached("ItemsHoverToggleBrush", typeof(Brush), typeof(TreeViewHelper));
+
+        public static Brush GetItemHoverToggleBrush(TreeViewItem treeViewItem)
+        {
+            return (Brush)treeViewItem.GetValue(ItemHoverToggleBrushProperty);
+        }
+
+        public static void SetItemHoverToggleBrush(TreeViewItem treeViewItem, Brush value)
+        {
+            treeViewItem.SetValue(ItemHoverToggleBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemHoverToggleBrushProperty =
+            DependencyProperty.RegisterAttached("ItemHoverToggleBrush", typeof(Brush), typeof(TreeViewHelper));
         #endregion
 
-        #region SelectedToggleBrush
-        public static Brush GetSelectedToggleBrush(DependencyObject obj)
+        #region ItemSelectedToggleBrush
+        public static Brush GetItemsSelectedToggleBrush(TreeView treeView)
         {
-            return (Brush)obj.GetValue(SelectedToggleBrushProperty);
+            return (Brush)treeView.GetValue(ItemSelectedToggleBrushProperty);
         }
 
-        public static void SetSelectedToggleBrush(DependencyObject obj, Brush value)
+        public static void SetItemsSelectedToggleBrush(TreeView treeView, Brush value)
         {
-            obj.SetValue(SelectedToggleBrushProperty, value);
+            treeView.SetValue(ItemSelectedToggleBrushProperty, value);
         }
 
-        public static readonly DependencyProperty SelectedToggleBrushProperty =
-            DependencyProperty.RegisterAttached("SelectedToggleBrush", typeof(Brush), typeof(TreeViewHelper));
+        public static readonly DependencyProperty ItemsSelectedToggleBrushProperty =
+            DependencyProperty.RegisterAttached("ItemsSelectedToggleBrush", typeof(Brush), typeof(TreeViewHelper));
+
+        public static Brush GetItemSelectedToggleBrush(TreeViewItem treeViewItem)
+        {
+            return (Brush)treeViewItem.GetValue(ItemSelectedToggleBrushProperty);
+        }
+
+        public static void SetItemSelectedToggleBrush(TreeViewItem treeViewItem, Brush value)
+        {
+            treeViewItem.SetValue(ItemSelectedToggleBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemSelectedToggleBrushProperty =
+            DependencyProperty.RegisterAttached("ItemSelectedToggleBrush", typeof(Brush), typeof(TreeViewHelper));
         #endregion
 
-        #region HoverForeground
-        public static Brush GetHoverForeground(DependencyObject obj)
+        #region ItemHoverForeground
+        public static Brush GetItemsHoverForeground(TreeView treeView)
         {
-            return (Brush)obj.GetValue(HoverForegroundProperty);
+            return (Brush)treeView.GetValue(ItemHoverForegroundProperty);
         }
 
-        public static void SetHoverForeground(DependencyObject obj, Brush value)
+        public static void SetItemsHoverForeground(TreeView treeView, Brush value)
         {
-            obj.SetValue(HoverForegroundProperty, value);
+            treeView.SetValue(ItemHoverForegroundProperty, value);
         }
 
-        public static readonly DependencyProperty HoverForegroundProperty =
-            DependencyProperty.RegisterAttached("HoverForeground", typeof(Brush), typeof(TreeViewHelper));
+        public static readonly DependencyProperty ItemsHoverForegroundProperty =
+            DependencyProperty.RegisterAttached("ItemsHoverForeground", typeof(Brush), typeof(TreeViewHelper));
+
+        public static Brush GetItemHoverForeground(TreeViewItem treeViewItem)
+        {
+            return (Brush)treeViewItem.GetValue(ItemHoverForegroundProperty);
+        }
+
+        public static void SetItemHoverForeground(TreeViewItem treeViewItem, Brush value)
+        {
+            treeViewItem.SetValue(ItemHoverForegroundProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemHoverForegroundProperty =
+            DependencyProperty.RegisterAttached("ItemHoverForeground", typeof(Brush), typeof(TreeViewHelper));
         #endregion
 
-        #region HoverBackground
-        public static Brush GetHoverBackground(DependencyObject obj)
+        #region ItemHoverBackground
+        public static Brush GetItemsHoverBackground(TreeView treeView)
         {
-            return (Brush)obj.GetValue(HoverBackgroundProperty);
+            return (Brush)treeView.GetValue(ItemHoverBackgroundProperty);
         }
 
-        public static void SetHoverBackground(DependencyObject obj, Brush value)
+        public static void SetItemsHoverBackground(TreeView treeView, Brush value)
         {
-            obj.SetValue(HoverBackgroundProperty, value);
+            treeView.SetValue(ItemHoverBackgroundProperty, value);
         }
 
-        public static readonly DependencyProperty HoverBackgroundProperty =
-            DependencyProperty.RegisterAttached("HoverBackground", typeof(Brush), typeof(TreeViewHelper));
+        public static readonly DependencyProperty ItemsHoverBackgroundProperty =
+            DependencyProperty.RegisterAttached("ItemsHoverBackground", typeof(Brush), typeof(TreeViewHelper));
+
+        public static Brush GetItemHoverBackground(TreeViewItem treeViewItem)
+        {
+            return (Brush)treeViewItem.GetValue(ItemHoverBackgroundProperty);
+        }
+
+        public static void SetItemHoverBackground(TreeViewItem treeViewItem, Brush value)
+        {
+            treeViewItem.SetValue(ItemHoverBackgroundProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemHoverBackgroundProperty =
+            DependencyProperty.RegisterAttached("ItemHoverBackground", typeof(Brush), typeof(TreeViewHelper));
         #endregion
 
-        #region SelectedForeground
-        public static Brush GetSelectedForeground(DependencyObject obj)
+        #region ItemSelectedForeground
+        public static Brush GetItemsSelectedForeground(TreeView treeView)
         {
-            return (Brush)obj.GetValue(SelectedForegroundProperty);
+            return (Brush)treeView.GetValue(ItemSelectedForegroundProperty);
         }
 
-        public static void SetSelectedForeground(DependencyObject obj, Brush value)
+        public static void SetItemsSelectedForeground(TreeView treeView, Brush value)
         {
-            obj.SetValue(SelectedForegroundProperty, value);
+            treeView.SetValue(ItemSelectedForegroundProperty, value);
         }
 
-        public static readonly DependencyProperty SelectedForegroundProperty =
-            DependencyProperty.RegisterAttached("SelectedForeground", typeof(Brush), typeof(TreeViewHelper));
+        public static readonly DependencyProperty ItemsSelectedForegroundProperty =
+            DependencyProperty.RegisterAttached("ItemsSelectedForeground", typeof(Brush), typeof(TreeViewHelper));
+
+
+        public static Brush GetItemSelectedForeground(TreeViewItem treeViewItem)
+        {
+            return (Brush)treeViewItem.GetValue(ItemSelectedForegroundProperty);
+        }
+
+        public static void SetItemSelectedForeground(TreeViewItem treeViewItem, Brush value)
+        {
+            treeViewItem.SetValue(ItemSelectedForegroundProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemSelectedForegroundProperty =
+            DependencyProperty.RegisterAttached("ItemSelectedForeground", typeof(Brush), typeof(TreeViewHelper));
         #endregion
 
-        #region SelectedBackground
-        public static Brush GetSelectedBackground(DependencyObject obj)
+        #region ItemSelectedBackground
+        public static Brush GetItemsSelectedBackground(TreeView treeView)
         {
-            return (Brush)obj.GetValue(SelectedBackgroundProperty);
+            return (Brush)treeView.GetValue(ItemSelectedBackgroundProperty);
         }
 
-        public static void SetSelectedBackground(DependencyObject obj, Brush value)
+        public static void SetItemsSelectedBackground(TreeView treeView, Brush value)
         {
-            obj.SetValue(SelectedBackgroundProperty, value);
+            treeView.SetValue(ItemSelectedBackgroundProperty, value);
         }
 
-        public static readonly DependencyProperty SelectedBackgroundProperty =
-            DependencyProperty.RegisterAttached("SelectedBackground", typeof(Brush), typeof(TreeViewHelper));
+        public static readonly DependencyProperty ItemsSelectedBackgroundProperty =
+            DependencyProperty.RegisterAttached("ItemsSelectedBackground", typeof(Brush), typeof(TreeViewHelper));
+
+        public static Brush GetItemSelectedBackground(TreeViewItem treeViewItem)
+        {
+            return (Brush)treeViewItem.GetValue(ItemSelectedBackgroundProperty);
+        }
+
+        public static void SetItemSelectedBackground(TreeViewItem treeViewItem, Brush value)
+        {
+            treeViewItem.SetValue(ItemSelectedBackgroundProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemSelectedBackgroundProperty =
+            DependencyProperty.RegisterAttached("ItemSelectedBackground", typeof(Brush), typeof(TreeViewHelper));
         #endregion
 
         #region IsMouseOver
-        internal static bool GetIsMouseOver(DependencyObject obj)
+        internal static bool GetIsMouseOver(TreeViewItem treeViewItem)
         {
-            return (bool)obj.GetValue(IsMouseOverProperty);
+            return (bool)treeViewItem.GetValue(IsMouseOverProperty);
         }
 
-        internal static void SetIsMouseOver(DependencyObject obj, bool value)
+        internal static void SetIsMouseOver(TreeViewItem treeViewItem, bool value)
         {
-            obj.SetValue(IsMouseOverProperty, value);
+            treeViewItem.SetValue(IsMouseOverProperty, value);
         }
 
         internal static readonly DependencyProperty IsMouseOverProperty =
             DependencyProperty.RegisterAttached("IsMouseOver", typeof(bool), typeof(TreeViewHelper));
+        #endregion
+
         #endregion
     }
 }

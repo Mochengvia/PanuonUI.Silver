@@ -7,14 +7,14 @@ namespace Panuon.UI.Silver
     public static partial class WindowXCaption
     {
         #region Height
-        public static double GetHeight(DependencyObject obj)
+        public static double GetHeight(WindowX windowX)
         {
-            return (double)obj.GetValue(HeightProperty);
+            return (double)windowX.GetValue(HeightProperty);
         }
 
-        public static void SetHeight(DependencyObject obj, double value)
+        public static void SetHeight(WindowX windowX, double value)
         {
-            obj.SetValue(HeightProperty, value);
+            windowX.SetValue(HeightProperty, value);
         }
 
         public static readonly DependencyProperty HeightProperty =
@@ -31,14 +31,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Foreground
-        public static Brush GetForeground(DependencyObject obj)
+        public static Brush GetForeground(WindowX windowX)
         {
-            return (Brush)obj.GetValue(ForegroundProperty);
+            return (Brush)windowX.GetValue(ForegroundProperty);
         }
 
-        public static void SetForeground(DependencyObject obj, Brush value)
+        public static void SetForeground(WindowX windowX, Brush value)
         {
-            obj.SetValue(ForegroundProperty, value);
+            windowX.SetValue(ForegroundProperty, value);
         }
 
         public static readonly DependencyProperty ForegroundProperty =
@@ -46,14 +46,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Background
-        public static Brush GetBackground(DependencyObject obj)
+        public static Brush GetBackground(WindowX windowX)
         {
-            return (Brush)obj.GetValue(BackgroundProperty);
+            return (Brush)windowX.GetValue(BackgroundProperty);
         }
 
-        public static void SetBackground(DependencyObject obj, Brush value)
+        public static void SetBackground(WindowX windowX, Brush value)
         {
-            obj.SetValue(BackgroundProperty, value);
+            windowX.SetValue(BackgroundProperty, value);
         }
 
         public static readonly DependencyProperty BackgroundProperty =
@@ -61,14 +61,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Header
-        public static object GetHeader(DependencyObject obj)
+        public static object GetHeader(WindowX windowX)
         {
-            return (object)obj.GetValue(HeaderProperty);
+            return (object)windowX.GetValue(HeaderProperty);
         }
 
-        public static void SetHeader(DependencyObject obj, object value)
+        public static void SetHeader(WindowX windowX, object value)
         {
-            obj.SetValue(HeaderProperty, value);
+            windowX.SetValue(HeaderProperty, value);
         }
 
         public static readonly DependencyProperty HeaderProperty =
@@ -76,14 +76,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region HeaderPadding
-        public static Thickness GetHeaderPadding(DependencyObject obj)
+        public static Thickness GetHeaderPadding(WindowX windowX)
         {
-            return (Thickness)obj.GetValue(HeaderPaddingProperty);
+            return (Thickness)windowX.GetValue(HeaderPaddingProperty);
         }
 
-        public static void SetHeaderPadding(DependencyObject obj, Thickness value)
+        public static void SetHeaderPadding(WindowX windowX, Thickness value)
         {
-            obj.SetValue(HeaderPaddingProperty, value);
+            windowX.SetValue(HeaderPaddingProperty, value);
         }
 
         public static readonly DependencyProperty HeaderPaddingProperty =
@@ -91,14 +91,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region HorizontalHeaderAlignment
-        public static HorizontalHeaderAlignment GetHorizontalHeaderAlignment(DependencyObject obj)
+        public static HorizontalHeaderAlignment GetHorizontalHeaderAlignment(WindowX windowX)
         {
-            return (HorizontalHeaderAlignment)obj.GetValue(HorizontalHeaderAlignmentProperty);
+            return (HorizontalHeaderAlignment)windowX.GetValue(HorizontalHeaderAlignmentProperty);
         }
 
-        public static void SetHorizontalHeaderAlignment(DependencyObject obj, HorizontalHeaderAlignment value)
+        public static void SetHorizontalHeaderAlignment(WindowX windowX, HorizontalHeaderAlignment value)
         {
-            obj.SetValue(HorizontalHeaderAlignmentProperty, value);
+            windowX.SetValue(HorizontalHeaderAlignmentProperty, value);
         }
 
         public static readonly DependencyProperty HorizontalHeaderAlignmentProperty =
@@ -106,14 +106,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region ExtendControl
-        public static object GetExtendControl(DependencyObject obj)
+        public static object GetExtendControl(WindowX windowX)
         {
-            return (object)obj.GetValue(ExtendControlProperty);
+            return (object)windowX.GetValue(ExtendControlProperty);
         }
 
-        public static void SetExtendControl(DependencyObject obj, object value)
+        public static void SetExtendControl(WindowX windowX, object value)
         {
-            obj.SetValue(ExtendControlProperty, value);
+            windowX.SetValue(ExtendControlProperty, value);
         }
 
         public static readonly DependencyProperty ExtendControlProperty =
@@ -121,14 +121,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region DisableCloseButton
-        public static bool GetDisableCloseButton(DependencyObject obj)
+        public static bool GetDisableCloseButton(WindowX windowX)
         {
-            return (bool)obj.GetValue(DisableCloseButtonProperty);
+            return (bool)windowX.GetValue(DisableCloseButtonProperty);
         }
 
-        public static void SetDisableCloseButton(DependencyObject obj, bool value)
+        public static void SetDisableCloseButton(WindowX windowX, bool value)
         {
-            obj.SetValue(DisableCloseButtonProperty, value);
+            windowX.SetValue(DisableCloseButtonProperty, value);
         }
 
         public static readonly DependencyProperty DisableCloseButtonProperty =
@@ -136,14 +136,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region HideBasicButtons
-        public static bool GetHideBasicButtons(DependencyObject obj)
+        public static bool GetHideBasicButtons(WindowX windowX)
         {
-            return (bool)obj.GetValue(HideBasicButtonsProperty);
+            return (bool)windowX.GetValue(HideBasicButtonsProperty);
         }
 
-        public static void SetHideBasicButtons(DependencyObject obj, bool value)
+        public static void SetHideBasicButtons(WindowX windowX, bool value)
         {
-            obj.SetValue(HideBasicButtonsProperty, value);
+            windowX.SetValue(HideBasicButtonsProperty, value);
         }
 
         public static readonly DependencyProperty HideBasicButtonsProperty =
@@ -153,14 +153,14 @@ namespace Panuon.UI.Silver
         #region ButtonStyle
 
         #region MinimizeButtonStyle
-        public static Style GetMinimizeButtonStyle(DependencyObject obj)
+        public static Style GetMinimizeButtonStyle(WindowX windowX)
         {
-            return (Style)obj.GetValue(MinimizeButtonStyleProperty);
+            return (Style)windowX.GetValue(MinimizeButtonStyleProperty);
         }
 
-        public static void SetMinimizeButtonStyle(DependencyObject obj, Style value)
+        public static void SetMinimizeButtonStyle(WindowX windowX, Style value)
         {
-            obj.SetValue(MinimizeButtonStyleProperty, value);
+            windowX.SetValue(MinimizeButtonStyleProperty, value);
         }
 
         public static readonly DependencyProperty MinimizeButtonStyleProperty =
@@ -168,14 +168,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region MaximizeButtonStyle
-        public static Style GetMaximizeButtonStyle(DependencyObject obj)
+        public static Style GetMaximizeButtonStyle(WindowX windowX)
         {
-            return (Style)obj.GetValue(MaximizeButtonStyleProperty);
+            return (Style)windowX.GetValue(MaximizeButtonStyleProperty);
         }
 
-        public static void SetMaximizeButtonStyle(DependencyObject obj, Style value)
+        public static void SetMaximizeButtonStyle(WindowX windowX, Style value)
         {
-            obj.SetValue(MaximizeButtonStyleProperty, value);
+            windowX.SetValue(MaximizeButtonStyleProperty, value);
         }
 
         public static readonly DependencyProperty MaximizeButtonStyleProperty =
@@ -183,14 +183,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region CloseButtonStyle
-        public static Style GetCloseButtonStyle(DependencyObject obj)
+        public static Style GetCloseButtonStyle(WindowX windowX)
         {
-            return (Style)obj.GetValue(CloseButtonStyleProperty);
+            return (Style)windowX.GetValue(CloseButtonStyleProperty);
         }
 
-        public static void SetCloseButtonStyle(DependencyObject obj, Style value)
+        public static void SetCloseButtonStyle(WindowX windowX, Style value)
         {
-            obj.SetValue(CloseButtonStyleProperty, value);
+            windowX.SetValue(CloseButtonStyleProperty, value);
         }
 
         public static readonly DependencyProperty CloseButtonStyleProperty =
@@ -198,14 +198,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region BackstageMinimizeButtonStyle
-        public static Style GetBackstageMinimizeButtonStyle(DependencyObject obj)
+        public static Style GetBackstageMinimizeButtonStyle(WindowX windowX)
         {
-            return (Style)obj.GetValue(BackstageMinimizeButtonStyleProperty);
+            return (Style)windowX.GetValue(BackstageMinimizeButtonStyleProperty);
         }
 
-        public static void SetBackstageMinimizeButtonStyle(DependencyObject obj, Style value)
+        public static void SetBackstageMinimizeButtonStyle(WindowX windowX, Style value)
         {
-            obj.SetValue(BackstageMinimizeButtonStyleProperty, value);
+            windowX.SetValue(BackstageMinimizeButtonStyleProperty, value);
         }
 
         public static readonly DependencyProperty BackstageMinimizeButtonStyleProperty =
@@ -213,14 +213,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region BackstageMaximizeButtonStyle
-        public static Style GetBackstageMaximizeButtonStyle(DependencyObject obj)
+        public static Style GetBackstageMaximizeButtonStyle(WindowX windowX)
         {
-            return (Style)obj.GetValue(BackstageMaximizeButtonStyleProperty);
+            return (Style)windowX.GetValue(BackstageMaximizeButtonStyleProperty);
         }
 
-        public static void SetBackstageMaximizeButtonStyle(DependencyObject obj, Style value)
+        public static void SetBackstageMaximizeButtonStyle(WindowX windowX, Style value)
         {
-            obj.SetValue(BackstageMaximizeButtonStyleProperty, value);
+            windowX.SetValue(BackstageMaximizeButtonStyleProperty, value);
         }
 
         public static readonly DependencyProperty BackstageMaximizeButtonStyleProperty =
@@ -228,14 +228,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region BackstageCloseButtonStyle
-        public static Style GetBackstageCloseButtonStyle(DependencyObject obj)
+        public static Style GetBackstageCloseButtonStyle(WindowX windowX)
         {
-            return (Style)obj.GetValue(BackstageCloseButtonStyleProperty);
+            return (Style)windowX.GetValue(BackstageCloseButtonStyleProperty);
         }
 
-        public static void SetBackstageCloseButtonStyle(DependencyObject obj, Style value)
+        public static void SetBackstageCloseButtonStyle(WindowX windowX, Style value)
         {
-            obj.SetValue(BackstageCloseButtonStyleProperty, value);
+            windowX.SetValue(BackstageCloseButtonStyleProperty, value);
         }
 
         public static readonly DependencyProperty BackstageCloseButtonStyleProperty =

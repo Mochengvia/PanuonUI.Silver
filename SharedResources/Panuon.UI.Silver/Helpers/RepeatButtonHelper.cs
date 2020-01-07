@@ -21,14 +21,14 @@ namespace Panuon.UI.Silver
         #region Properties
 
         #region Icon
-        public static object GetIcon(DependencyObject obj)
+        public static object GetIcon(RepeatButton repeatButton)
         {
-            return (object)obj.GetValue(IconProperty);
+            return (object)repeatButton.GetValue(IconProperty);
         }
 
-        public static void SetIcon(DependencyObject obj, object value)
+        public static void SetIcon(RepeatButton repeatButton, object value)
         {
-            obj.SetValue(IconProperty, value);
+            repeatButton.SetValue(IconProperty, value);
         }
 
         public static readonly DependencyProperty IconProperty =
@@ -36,14 +36,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region IconPosition
-        public static IconPosition GetIconPosition(DependencyObject obj)
+        public static IconPosition GetIconPosition(RepeatButton repeatButton)
         {
-            return (IconPosition)obj.GetValue(IconPositionProperty);
+            return (IconPosition)repeatButton.GetValue(IconPositionProperty);
         }
 
-        public static void SetIconPosition(DependencyObject obj, IconPosition value)
+        public static void SetIconPosition(RepeatButton repeatButton, IconPosition value)
         {
-            obj.SetValue(IconPositionProperty, value);
+            repeatButton.SetValue(IconPositionProperty, value);
         }
 
         public static readonly DependencyProperty IconPositionProperty =
@@ -51,14 +51,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region RepeatButtonStyle
-        public static RepeatButtonStyle GetRepeatButtonStyle(DependencyObject obj)
+        public static RepeatButtonStyle GetRepeatButtonStyle(RepeatButton repeatButton)
         {
-            return (RepeatButtonStyle)obj.GetValue(RepeatButtonStyleProperty);
+            return (RepeatButtonStyle)repeatButton.GetValue(RepeatButtonStyleProperty);
         }
 
-        public static void SetRepeatButtonStyle(DependencyObject obj, RepeatButtonStyle value)
+        public static void SetRepeatButtonStyle(RepeatButton repeatButton, RepeatButtonStyle value)
         {
-            obj.SetValue(RepeatButtonStyleProperty, value);
+            repeatButton.SetValue(RepeatButtonStyleProperty, value);
         }
 
         public static readonly DependencyProperty RepeatButtonStyleProperty =
@@ -66,14 +66,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region ClickStyle
-        public static ClickStyle GetClickStyle(DependencyObject obj)
+        public static ClickStyle GetClickStyle(RepeatButton repeatButton)
         {
-            return (ClickStyle)obj.GetValue(ClickStyleProperty);
+            return (ClickStyle)repeatButton.GetValue(ClickStyleProperty);
         }
 
-        public static void SetClickStyle(DependencyObject obj, ClickStyle value)
+        public static void SetClickStyle(RepeatButton repeatButton, ClickStyle value)
         {
-            obj.SetValue(ClickStyleProperty, value);
+            repeatButton.SetValue(ClickStyleProperty, value);
         }
 
         public static readonly DependencyProperty ClickStyleProperty =
@@ -81,14 +81,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region HoverBrush
-        public static Brush GetHoverBrush(DependencyObject obj)
+        public static Brush GetHoverBrush(RepeatButton repeatButton)
         {
-            return (Brush)obj.GetValue(HoverBrushProperty);
+            return (Brush)repeatButton.GetValue(HoverBrushProperty);
         }
 
-        public static void SetHoverBrush(DependencyObject obj, Brush value)
+        public static void SetHoverBrush(RepeatButton repeatButton, Brush value)
         {
-            obj.SetValue(HoverBrushProperty, value);
+            repeatButton.SetValue(HoverBrushProperty, value);
         }
 
         public static readonly DependencyProperty HoverBrushProperty =
@@ -96,14 +96,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region CornerRadius
-        public static CornerRadius GetCornerRadius(DependencyObject obj)
+        public static CornerRadius GetCornerRadius(RepeatButton repeatButton)
         {
-            return (CornerRadius)obj.GetValue(CornerRadiusProperty);
+            return (CornerRadius)repeatButton.GetValue(CornerRadiusProperty);
         }
 
-        public static void SetCornerRadius(DependencyObject obj, CornerRadius value)
+        public static void SetCornerRadius(RepeatButton repeatButton, CornerRadius value)
         {
-            obj.SetValue(CornerRadiusProperty, value);
+            repeatButton.SetValue(CornerRadiusProperty, value);
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
@@ -111,14 +111,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region IsWaiting
-        public static bool GetIsWaiting(DependencyObject obj)
+        public static bool GetIsWaiting(RepeatButton repeatButton)
         {
-            return (bool)obj.GetValue(IsWaitingProperty);
+            return (bool)repeatButton.GetValue(IsWaitingProperty);
         }
 
-        public static void SetIsWaiting(DependencyObject obj, bool value)
+        public static void SetIsWaiting(RepeatButton repeatButton, bool value)
         {
-            obj.SetValue(IsWaitingProperty, value);
+            repeatButton.SetValue(IsWaitingProperty, value);
         }
 
         public static readonly DependencyProperty IsWaitingProperty =
@@ -126,14 +126,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region WaitingContent
-        public static object GetWaitingContent(DependencyObject obj)
+        public static object GetWaitingContent(RepeatButton repeatButton)
         {
-            return (object)obj.GetValue(WaitingContentProperty);
+            return (object)repeatButton.GetValue(WaitingContentProperty);
         }
 
-        public static void SetWaitingContent(DependencyObject obj, object value)
+        public static void SetWaitingContent(RepeatButton repeatButton, object value)
         {
-            obj.SetValue(WaitingContentProperty, value);
+            repeatButton.SetValue(WaitingContentProperty, value);
         }
 
         public static readonly DependencyProperty WaitingContentProperty =

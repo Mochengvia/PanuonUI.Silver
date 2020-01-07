@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Media;
+using System.Windows.Controls;
 
 namespace Panuon.UI.Silver
 {
@@ -8,14 +9,14 @@ namespace Panuon.UI.Silver
         #region Properties
 
         #region RadioButtonStyle
-        public static RadioButtonStyle GetRadioButtonStyle(DependencyObject obj)
+        public static RadioButtonStyle GetRadioButtonStyle(RadioButton radioButton)
         {
-            return (RadioButtonStyle)obj.GetValue(RadioButtonStyleProperty);
+            return (RadioButtonStyle)radioButton.GetValue(RadioButtonStyleProperty);
         }
 
-        public static void SetRadioButtonStyle(DependencyObject obj, RadioButtonStyle value)
+        public static void SetRadioButtonStyle(RadioButton radioButton, RadioButtonStyle value)
         {
-            obj.SetValue(RadioButtonStyleProperty, value);
+            radioButton.SetValue(RadioButtonStyleProperty, value);
         }
 
         public static readonly DependencyProperty RadioButtonStyleProperty =
@@ -23,14 +24,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region CheckedBackground
-        public static Brush GetCheckedBackground(DependencyObject obj)
+        public static Brush GetCheckedBackground(RadioButton radioButton)
         {
-            return (Brush)obj.GetValue(CheckedBackgroundProperty);
+            return (Brush)radioButton.GetValue(CheckedBackgroundProperty);
         }
 
-        public static void SetCheckedBackground(DependencyObject obj, Brush value)
+        public static void SetCheckedBackground(RadioButton radioButton, Brush value)
         {
-            obj.SetValue(CheckedBackgroundProperty, value);
+            radioButton.SetValue(CheckedBackgroundProperty, value);
         }
 
         public static readonly DependencyProperty CheckedBackgroundProperty =
@@ -38,14 +39,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region GlyphBrush
-        public static Brush GetGlyphBrush(DependencyObject obj)
+        public static Brush GetGlyphBrush(RadioButton radioButton)
         {
-            return (Brush)obj.GetValue(GlyphBrushProperty);
+            return (Brush)radioButton.GetValue(GlyphBrushProperty);
         }
 
-        public static void SetGlyphBrush(DependencyObject obj, Brush value)
+        public static void SetGlyphBrush(RadioButton radioButton, Brush value)
         {
-            obj.SetValue(GlyphBrushProperty, value);
+            radioButton.SetValue(GlyphBrushProperty, value);
         }
 
         public static readonly DependencyProperty GlyphBrushProperty =
@@ -53,14 +54,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region CheckedGlyphBrush
-        public static Brush GetCheckedGlyphBrush(DependencyObject obj)
+        public static Brush GetCheckedGlyphBrush(RadioButton radioButton)
         {
-            return (Brush)obj.GetValue(CheckedGlyphBrushProperty);
+            return (Brush)radioButton.GetValue(CheckedGlyphBrushProperty);
         }
 
-        public static void SetCheckedGlyphBrush(DependencyObject obj, Brush value)
+        public static void SetCheckedGlyphBrush(RadioButton radioButton, Brush value)
         {
-            obj.SetValue(CheckedGlyphBrushProperty, value);
+            radioButton.SetValue(CheckedGlyphBrushProperty, value);
         }
 
         public static readonly DependencyProperty CheckedGlyphBrushProperty =
@@ -68,14 +69,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region CheckedBorderBrush
-        public static Brush GetCheckedBorderBrush(DependencyObject obj)
+        public static Brush GetCheckedBorderBrush(RadioButton radioButton)
         {
-            return (Brush)obj.GetValue(CheckedBorderBrushProperty);
+            return (Brush)radioButton.GetValue(CheckedBorderBrushProperty);
         }
 
-        public static void SetCheckedBorderBrush(DependencyObject obj, Brush value)
+        public static void SetCheckedBorderBrush(RadioButton radioButton, Brush value)
         {
-            obj.SetValue(CheckedBorderBrushProperty, value);
+            radioButton.SetValue(CheckedBorderBrushProperty, value);
         }
 
         public static readonly DependencyProperty CheckedBorderBrushProperty =
@@ -83,14 +84,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region BoxHeight
-        public static double GetBoxHeight(DependencyObject obj)
+        public static double GetBoxHeight(RadioButton radioButton)
         {
-            return (double)obj.GetValue(BoxHeightProperty);
+            return (double)radioButton.GetValue(BoxHeightProperty);
         }
 
-        public static void SetBoxHeight(DependencyObject obj, double value)
+        public static void SetBoxHeight(RadioButton radioButton, double value)
         {
-            obj.SetValue(BoxHeightProperty, value);
+            radioButton.SetValue(BoxHeightProperty, value);
         }
 
         public static readonly DependencyProperty BoxHeightProperty =
@@ -98,14 +99,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region BoxWidth
-        public static double GetBoxWidth(DependencyObject obj)
+        public static double GetBoxWidth(RadioButton radioButton)
         {
-            return (double)obj.GetValue(BoxWidthProperty);
+            return (double)radioButton.GetValue(BoxWidthProperty);
         }
 
-        public static void SetBoxWidth(DependencyObject obj, double value)
+        public static void SetBoxWidth(RadioButton radioButton, double value)
         {
-            obj.SetValue(BoxWidthProperty, value);
+            radioButton.SetValue(BoxWidthProperty, value);
         }
 
         public static readonly DependencyProperty BoxWidthProperty =
@@ -113,14 +114,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region CornerRadius
-        public static CornerRadius GetCornerRadius(DependencyObject obj)
+        public static CornerRadius GetCornerRadius(RadioButton radioButton)
         {
-            return (CornerRadius)obj.GetValue(CornerRadiusProperty);
+            return (CornerRadius)radioButton.GetValue(CornerRadiusProperty);
         }
 
-        public static void SetCornerRadius(DependencyObject obj, CornerRadius value)
+        public static void SetCornerRadius(RadioButton radioButton, CornerRadius value)
         {
-            obj.SetValue(CornerRadiusProperty, value);
+            radioButton.SetValue(CornerRadiusProperty, value);
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
@@ -128,14 +129,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region CheckedContent
-        public static object GetCheckedContent(DependencyObject obj)
+        public static object GetCheckedContent(RadioButton radioButton)
         {
-            return (object)obj.GetValue(CheckedContentProperty);
+            return (object)radioButton.GetValue(CheckedContentProperty);
         }
 
-        public static void SetCheckedContent(DependencyObject obj, object value)
+        public static void SetCheckedContent(RadioButton radioButton, object value)
         {
-            obj.SetValue(CheckedContentProperty, value);
+            radioButton.SetValue(CheckedContentProperty, value);
         }
 
         public static readonly DependencyProperty CheckedContentProperty =

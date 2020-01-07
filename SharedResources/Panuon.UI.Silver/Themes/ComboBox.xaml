@@ -221,6 +221,12 @@
                 Value="{StaticResource {x:Static i:ResourceKeys.ComboBoxDropDownPadding}}" />
         <Setter Property="local:ComboBoxHelper.ShadowColor"
                 Value="{StaticResource {x:Static i:ResourceKeys.ComboBoxShadowColor}}" />
+        <Setter Property="local:ComboBoxHelper.ItemsHoverBackground"
+                Value="{StaticResource {x:Static i:ResourceKeys.ComboBoxItemsHoverBackground}}" />
+        <Setter Property="local:ComboBoxHelper.ItemsSelectedBackground"
+                Value="{StaticResource {x:Static i:ResourceKeys.ComboBoxItemsSelectedBackground}}" />
+        <Setter Property="local:ComboBoxHelper.ItemsHeight"
+                Value="{StaticResource {x:Static i:ResourceKeys.ComboBoxItemsHeight}}" />
         <!--IconHelper-->
         <Setter Property="local:IconHelper.Foreground"
                 Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />

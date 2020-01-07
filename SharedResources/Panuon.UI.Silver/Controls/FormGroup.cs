@@ -26,33 +26,25 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region HeaderTemplate
-        public static DataTemplate GetHeaderTemplate(DependencyObject obj)
+        public DataTemplate HeaderTemplate
         {
-            return (DataTemplate)obj.GetValue(HeaderTemplateProperty);
-        }
-
-        public static void SetHeaderTemplate(DependencyObject obj, DataTemplate value)
-        {
-            obj.SetValue(HeaderTemplateProperty, value);
+            get { return (DataTemplate)GetValue(HeaderTemplateProperty); }
+            set { SetValue(HeaderTemplateProperty, value); }
         }
 
         public static readonly DependencyProperty HeaderTemplateProperty =
-            DependencyProperty.RegisterAttached("HeaderTemplate", typeof(DataTemplate), typeof(FormGroup));
+            DependencyProperty.Register("HeaderTemplate", typeof(DataTemplate), typeof(FormGroup));
         #endregion
 
         #region HeaderTemplateSelector
-        public static DataTemplateSelector GetHeaderTemplateSelector(DependencyObject obj)
+        public DataTemplateSelector HeaderTemplateSelector
         {
-            return (DataTemplateSelector)obj.GetValue(HeaderTemplateSelectorProperty);
-        }
-
-        public static void SetHeaderTemplateSelector(DependencyObject obj, DataTemplateSelector value)
-        {
-            obj.SetValue(HeaderTemplateSelectorProperty, value);
+            get { return (DataTemplateSelector)GetValue(HeaderTemplateSelectorProperty); }
+            set { SetValue(HeaderTemplateSelectorProperty, value); }
         }
 
         public static readonly DependencyProperty HeaderTemplateSelectorProperty =
-            DependencyProperty.RegisterAttached("HeaderTemplateSelector", typeof(DataTemplateSelector), typeof(FormGroup));
+            DependencyProperty.Register("HeaderTemplateSelector", typeof(DataTemplateSelector), typeof(FormGroup));
         #endregion
 
         #region HeaderWidth
