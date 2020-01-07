@@ -52,7 +52,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\Attributes\CallerMemberPath.cs" />
+    <Compile Include="Core\Attributes\CallerMemberName.cs" />
     <Compile Include="Controls\WindowX.cs" />
     <Compile Include="Helpers\WindowXCaption.cs" />
     <Compile Include="Core\Models\PropertyChangedBase.cs" />

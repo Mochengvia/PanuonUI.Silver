@@ -71,5 +71,7 @@
         public static readonly string TabItemCardRemoveButtonStyle = nameof(TabItemCardRemoveButtonStyle);
         #endregion
 
+        #region MessageBoxX
+        #endregion
     }
 }

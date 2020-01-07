@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 
-namespace Panuon.UI.Silver.Internal.Compenets
+namespace Panuon.UI.Silver.Internal.Components
 {
     internal class DisposableTimer : IDisposable
     {

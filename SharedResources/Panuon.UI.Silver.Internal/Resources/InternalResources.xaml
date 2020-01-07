@@ -57,7 +57,11 @@
     <icv:NullableColorToColorConverter x:Key="{x:Static i:ResourceKeys.NullableColorToColorConverter}" />
     <icv:CombineToArrayConverter x:Key="{x:Static i:ResourceKeys.CombineToArrayConverter}" />
     <icv:DropDownPathDataConverter x:Key="{x:Static i:ResourceKeys.DropDownPathDataConverter}" />
-    
+    <icv:MsgBoxIconConverter x:Key="{x:Static i:ResourceKeys.MsgBoxIconConverter}" />
+    <icv:MsgBoxIconForegroundConverter x:Key="{x:Static i:ResourceKeys.MsgBoxIconForegroundConverter}" />
+    <icv:MsgBoxButtonIsDefaultConverter x:Key="{x:Static i:ResourceKeys.MsgBoxButtonIsDefaultConverter}" />
+    <icv:MsgBoxButtonVisibilityConverter x:Key="{x:Static i:ResourceKeys.MsgBoxButtonVisibilityConverter}" />
+    <icv:MsgBoxStackPanelFlowDirectionConverter x:Key="{x:Static i:ResourceKeys.MsgBoxStackPanelFlowDirectionConverter}" />
     <!--======Common======-->
     <Color x:Key="{x:Static i:ResourceKeys.DefaultForegroundColor}">#3E3E3E</Color>
 
@@ -435,10 +439,10 @@
     <sys:Double x:Key="{x:Static i:ResourceKeys.ComboBoxMaxDropDownHeight}">180</sys:Double>
     <CornerRadius x:Key="{x:Static i:ResourceKeys.ComboBoxDropDownCornerRadius}">0</CornerRadius>
     <Thickness x:Key="{x:Static i:ResourceKeys.ComboBoxDropDownPadding}">0</Thickness>
-    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.ComboBoxItemsHoverBackground}" 
-                     Color="#EEEEEE"/>
+    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.ComboBoxItemsHoverBackground}"
+                     Color="#FAFAFA"/>
     <SolidColorBrush x:Key="{x:Static i:ResourceKeys.ComboBoxItemsSelectedBackground}"
-                     Color="#DDDDDD" />
+                     Color="#F1F1F1" />
     <sys:Double x:Key="{x:Static i:ResourceKeys.ComboBoxItemsHeight}">30</sys:Double>
 
     <!--TreeView-->
@@ -458,7 +462,8 @@
     <Thickness x:Key="{x:Static i:ResourceKeys.TreeViewStandardItemPadding}">15,0,0,0</Thickness>
 
     <!--TabControl-->
-    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.TabControlBackground}" />
+    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.TabControlBackground}" 
+                     Color="Transparent"/>
     <SolidColorBrush x:Key="{x:Static i:ResourceKeys.TabControlBorderBrush}"
                      Color="LightGray" />
     <Thickness x:Key="{x:Static i:ResourceKeys.TabControlBorderThickness}">0</Thickness>
@@ -474,5 +479,16 @@
                      Color="Transparent" />
     <sys:Double x:Key="{x:Static i:ResourceKeys.DataGridMinRowHeight}">30</sys:Double>
     <sys:Double x:Key="{x:Static i:ResourceKeys.DataGridColumnHeaderHeight}">25</sys:Double>
+
+    <!--ListBox-->
+    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.ListBoxBackground}" 
+                     Color="Transparent"/>
+    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.ListBoxBorderBrush}"
+                     Color="LightGray" />
+    <Thickness x:Key="{x:Static i:ResourceKeys.ListBoxBorderThickness}">0</Thickness>
+    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.ListBoxItemsHoverBackground}"
+                     Color="#FAFAFA" />
+    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.ListBoxItemsSelectedBackground}"
+                     Color="#F1F1F1" />
 
 </ResourceDictionary>

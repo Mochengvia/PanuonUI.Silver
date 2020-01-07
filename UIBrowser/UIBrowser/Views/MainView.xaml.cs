@@ -38,5 +38,18 @@ namespace UIBrowser.Views
                 PasswordBoxHelper.SetValidationErrorTips(psb, null);
             }
         }
+
+        private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            MessageBoxX.DefaultMessageBoxXConfigurations.YesButton = "是";
+            MessageBoxX.DefaultMessageBoxXConfigurations.NoButton = "否";
+            MessageBoxX.DefaultMessageBoxXConfigurations.MessageBoxStyle = MessageBoxStyle.Modern;
+
+            MessageBoxX.Show("WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING !", "Tips", System.Windows.MessageBoxButton.YesNoCancel, MessageBoxIcon.Info, DefaultButton.NoCancel);
+            MessageBoxX.Show("WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING !", "Tips", icon: MessageBoxIcon.Error);
+            MessageBoxX.Show("WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING !", "Tips", icon: MessageBoxIcon.Warning);
+            MessageBoxX.Show("WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING !", "Tips", icon: MessageBoxIcon.Question);
+            MessageBoxX.Show("WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING !", "Tips", icon: MessageBoxIcon.Success);
+        }
     }
 }

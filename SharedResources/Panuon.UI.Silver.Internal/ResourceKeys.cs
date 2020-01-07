@@ -105,11 +105,23 @@ namespace Panuon.UI.Silver.Internal
 
         public static readonly string NullableColorToColorConverter = nameof(NullableColorToColorConverter);
 
-
         public static readonly string CombineToArrayConverter = nameof(CombineToArrayConverter);
 
         public static readonly string DropDownPathDataConverter = nameof(DropDownPathDataConverter);
+
+        public static readonly string MsgBoxIconConverter = nameof(MsgBoxIconConverter);
+
+        public static readonly string MsgBoxIconForegroundConverter = nameof(MsgBoxIconForegroundConverter);
+
+        public static readonly string MsgBoxButtonVisibilityConverter = nameof(MsgBoxButtonVisibilityConverter);
+
+        public static readonly string MsgBoxButtonIsDefaultConverter = nameof(MsgBoxButtonIsDefaultConverter);
+
+        public static readonly string MsgBoxStackPanelFlowDirectionConverter = nameof(MsgBoxStackPanelFlowDirectionConverter);
+        
         #endregion
+
+
 
         #region Common
         public const string DefaultForegroundColor = nameof(DefaultForegroundColor);
@@ -876,6 +888,34 @@ namespace Panuon.UI.Silver.Internal
         public static readonly string DataGridRowHeaderTemplate = nameof(DataGridRowHeaderTemplate);
 
         public static readonly string DataGridRowHeaderStyle = nameof(DataGridColumnHeaderStyle);
+
+        #endregion
+
+        #region ListBox
+        public static readonly string ListBoxBorderBrush = nameof(ListBoxBorderBrush);
+
+        public static readonly string ListBoxBorderThickness = nameof(ListBoxBorderThickness);
+
+        public static readonly string ListBoxBackground = nameof(ListBoxBackground);
+
+        public static readonly string ListBoxItemsHoverBackground = nameof(ListBoxItemsHoverBackground);
+
+        public static readonly string ListBoxItemsSelectedBackground = nameof(ListBoxItemsSelectedBackground);
+        #endregion
+
+        #region MsgBox
+        public static readonly string MsgBoxButtonStyle = nameof(MsgBoxButtonStyle);
+
+        public static readonly string MsgBoxTextBoxStyle = nameof(MsgBoxTextBoxStyle);
+
+        public static readonly string MsgBoxStandardContent = nameof(MsgBoxStandardContent);
+
+        public static readonly string MsgBoxClassicContent = nameof(MsgBoxClassicContent);
+
+        public static readonly string MsgBoxModernContent = nameof(MsgBoxModernContent);
+
+        
+
 
         #endregion
     }

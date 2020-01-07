@@ -1,11 +1,9 @@
 ﻿using Panuon.UI.Silver.Core;
-using Panuon.UI.Silver.Internal.Compenets;
+using Panuon.UI.Silver.Internal.Components;
 using Panuon.UI.Silver.Internal.Models;
 using Panuon.UI.Silver.Internal.Utils;
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;

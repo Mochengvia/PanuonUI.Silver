@@ -21,6 +21,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\ListBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\TabItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -107,17 +111,20 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Components\MessageBoxXConfigurations.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Card.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\DropDown.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\FormGroup.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\MessageBoxX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NeonLabel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PopupX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TextBlockX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\WaterfallPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\WindowX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\WindowXCaption.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ListBoxHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ToggleButtonHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\RepeatButtonHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ButtonHelper.cs" />

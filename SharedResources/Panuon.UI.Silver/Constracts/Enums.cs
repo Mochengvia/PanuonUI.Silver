@@ -181,4 +181,31 @@
         Classic
     }
     #endregion
+
+    #region MessageBox
+    public enum MessageBoxStyle
+    {
+        Standard,
+        Classic,
+        Modern,
+    }
+
+    public enum MessageBoxIcon
+    {
+        None,
+        Info,
+        Warning,
+        Error,
+        Success,
+        Question,
+    }
+
+    public enum DefaultButton
+    {
+        Unset,
+        YesOK,
+        NoCancel,
+        CancelNo
+    }
+    #endregion
     }

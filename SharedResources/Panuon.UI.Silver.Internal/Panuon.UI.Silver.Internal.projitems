@@ -9,12 +9,14 @@
     <Import_RootNamespace>Panuon.UI.Silver.Internal</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Compenets\DisposableTimer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Components\DisposableTimer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\IconControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\MsgBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CheckBoxConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ColorConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CombineConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DropDownConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\MessageBoxConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ThicknessConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\GridLengthConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IconConverter.cs" />
@@ -30,12 +32,17 @@
     <Compile Include="$(MSBuildThisFileDirectory)TemplateSelectors\IconControlDataTemplateSelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\GridLengthUtils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\ImageUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\LocalizationUtils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\StoryboardUtils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\TextUtils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Win32\User32.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)Resources\InternalResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\MessageBoxX.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
