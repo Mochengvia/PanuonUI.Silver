@@ -97,6 +97,8 @@
                         Margin="0,0,15,15"
                         FlowDirection="{Binding ReverseButtonSequence, Converter={StaticResource {x:Static i:ResourceKeys.MsgBoxStackPanelFlowDirectionConverter}}, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}">
                 <Button Style="{StaticResource {x:Static i:ResourceKeys.MsgBoxButtonStyle}}"
+                        Command="{Binding OKCommand, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
                         Content="{Binding OKButton, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
                         Visibility="{Binding MessageBoxButton, Converter={StaticResource {x:Static i:ResourceKeys.MsgBoxButtonVisibilityConverter}}, ConverterParameter=OK, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}">
                     <Button.IsDefault>
@@ -112,6 +114,8 @@
                     </Button.IsDefault>
                 </Button>
                 <Button Style="{StaticResource {x:Static i:ResourceKeys.MsgBoxButtonStyle}}"
+                        Command="{Binding YesCommand, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
                         Content="{Binding YesButton, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
                         Visibility="{Binding MessageBoxButton, Converter={StaticResource {x:Static i:ResourceKeys.MsgBoxButtonVisibilityConverter}}, ConverterParameter=Yes, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}">
                     <Button.IsDefault>
@@ -127,6 +131,8 @@
                     </Button.IsDefault>
                 </Button>
                 <Button Style="{StaticResource {x:Static i:ResourceKeys.MsgBoxButtonStyle}}"
+                        Command="{Binding NoCommand, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
                         Content="{Binding NoButton, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
                         Visibility="{Binding MessageBoxButton, Converter={StaticResource {x:Static i:ResourceKeys.MsgBoxButtonVisibilityConverter}}, ConverterParameter=No, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}">
                     <Button.IsDefault>
@@ -142,6 +148,8 @@
                     </Button.IsDefault>
                 </Button>
                 <Button Style="{StaticResource {x:Static i:ResourceKeys.MsgBoxButtonStyle}}"
+                        Command="{Binding CancelCommand, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
                         Content="{Binding CancelButton, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
                         Visibility="{Binding MessageBoxButton, Converter={StaticResource {x:Static i:ResourceKeys.MsgBoxButtonVisibilityConverter}}, ConverterParameter=Cancel, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}">
                     <Button.IsDefault>
@@ -197,6 +205,8 @@
                         Margin="0,0,15,15"
                         FlowDirection="{Binding ReverseButtonSequence, Converter={StaticResource {x:Static i:ResourceKeys.MsgBoxStackPanelFlowDirectionConverter}}, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}">
                 <Button Style="{StaticResource {x:Static i:ResourceKeys.MsgBoxButtonStyle}}"
+                        Command="{Binding OKCommand, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
                         Content="{Binding OKButton, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
                         Visibility="{Binding MessageBoxButton, Converter={StaticResource {x:Static i:ResourceKeys.MsgBoxButtonVisibilityConverter}}, ConverterParameter=OK, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}">
                     <Button.IsDefault>
@@ -212,6 +222,8 @@
                     </Button.IsDefault>
                 </Button>
                 <Button Style="{StaticResource {x:Static i:ResourceKeys.MsgBoxButtonStyle}}"
+                        Command="{Binding YesCommand, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
                         Content="{Binding YesButton, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
                         Visibility="{Binding MessageBoxButton, Converter={StaticResource {x:Static i:ResourceKeys.MsgBoxButtonVisibilityConverter}}, ConverterParameter=Yes, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}">
                     <Button.IsDefault>
@@ -227,6 +239,8 @@
                     </Button.IsDefault>
                 </Button>
                 <Button Style="{StaticResource {x:Static i:ResourceKeys.MsgBoxButtonStyle}}"
+                        Command="{Binding NoCommand, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
                         Content="{Binding NoButton, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
                         Visibility="{Binding MessageBoxButton, Converter={StaticResource {x:Static i:ResourceKeys.MsgBoxButtonVisibilityConverter}}, ConverterParameter=No, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}">
                     <Button.IsDefault>
@@ -242,6 +256,8 @@
                     </Button.IsDefault>
                 </Button>
                 <Button Style="{StaticResource {x:Static i:ResourceKeys.MsgBoxButtonStyle}}"
+                        Command="{Binding CancelCommand, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
                         Content="{Binding CancelButton, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
                         Visibility="{Binding MessageBoxButton, Converter={StaticResource {x:Static i:ResourceKeys.MsgBoxButtonVisibilityConverter}}, ConverterParameter=Cancel, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}">
                     <Button.IsDefault>
@@ -299,6 +315,8 @@
                         Margin="0,0,15,15"
                         FlowDirection="{Binding ReverseButtonSequence, Converter={StaticResource {x:Static i:ResourceKeys.MsgBoxStackPanelFlowDirectionConverter}}, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}">
                 <Button Style="{StaticResource {x:Static i:ResourceKeys.MsgBoxButtonStyle}}"
+                        Command="{Binding OKCommand, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
                         Content="{Binding OKButton, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
                         Visibility="{Binding MessageBoxButton, Converter={StaticResource {x:Static i:ResourceKeys.MsgBoxButtonVisibilityConverter}}, ConverterParameter=OK, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}">
                     <Button.IsDefault>
@@ -314,6 +332,8 @@
                     </Button.IsDefault>
                 </Button>
                 <Button Style="{StaticResource {x:Static i:ResourceKeys.MsgBoxButtonStyle}}"
+                        Command="{Binding YesCommand, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
                         Content="{Binding YesButton, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
                         Visibility="{Binding MessageBoxButton, Converter={StaticResource {x:Static i:ResourceKeys.MsgBoxButtonVisibilityConverter}}, ConverterParameter=Yes, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}">
                     <Button.IsDefault>
@@ -329,6 +349,8 @@
                     </Button.IsDefault>
                 </Button>
                 <Button Style="{StaticResource {x:Static i:ResourceKeys.MsgBoxButtonStyle}}"
+                        Command="{Binding NoCommand, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
                         Content="{Binding NoButton, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
                         Visibility="{Binding MessageBoxButton, Converter={StaticResource {x:Static i:ResourceKeys.MsgBoxButtonVisibilityConverter}}, ConverterParameter=No, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}">
                     <Button.IsDefault>
@@ -344,6 +366,8 @@
                     </Button.IsDefault>
                 </Button>
                 <Button Style="{StaticResource {x:Static i:ResourceKeys.MsgBoxButtonStyle}}"
+                        Command="{Binding CancelCommand, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
                         Content="{Binding CancelButton, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
                         Visibility="{Binding MessageBoxButton, Converter={StaticResource {x:Static i:ResourceKeys.MsgBoxButtonVisibilityConverter}}, ConverterParameter=Cancel, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}">
                     <Button.IsDefault>

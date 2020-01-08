@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Panuon.UI.Silver.Core;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace Panuon.UI.Silver.Internal.Controls
@@ -209,6 +211,50 @@ namespace Panuon.UI.Silver.Internal.Controls
 
         #endregion
 
+        #region Commands
+        public ICommand OKCommand
+        {
+            get { return (ICommand)GetValue(OKCommandProperty); }
+            set { SetValue(OKCommandProperty, value); }
+        }
+
+        public static readonly DependencyProperty OKCommandProperty =
+            DependencyProperty.Register("OKCommand", typeof(ICommand), typeof(MsgBox), new PropertyMetadata(new Command(OnOKButtonClicked)));
+
+       
+
+        public ICommand CancelCommand
+        {
+            get { return (ICommand)GetValue(CancelCommandProperty); }
+            set { SetValue(CancelCommandProperty, value); }
+        }
+
+        public static readonly DependencyProperty CancelCommandProperty =
+            DependencyProperty.Register("CancelCommand", typeof(ICommand), typeof(MsgBox), new PropertyMetadata(new Command(OnCancelButtonClicked)));
+
+      
+        public ICommand YesCommand
+        {
+            get { return (ICommand)GetValue(YesCommandProperty); }
+            set { SetValue(YesCommandProperty, value); }
+        }
+
+        public static readonly DependencyProperty YesCommandProperty =
+            DependencyProperty.Register("YesCommand", typeof(ICommand), typeof(MsgBox), new PropertyMetadata(new Command(OnYesButtonClicked)));
+
+        
+        public ICommand NoCommand
+        {
+            get { return (ICommand)GetValue(NoCommandProperty); }
+            set { SetValue(NoCommandProperty, value); }
+        }
+
+        public static readonly DependencyProperty NoCommandProperty =
+            DependencyProperty.Register("NoCommand", typeof(ICommand), typeof(MsgBox), new PropertyMetadata(new Command(OnNoButtonClicked)));
+
+      
+        #endregion
+
         #region Overrides
         protected override void OnClosed(EventArgs e)
         {
@@ -219,5 +265,35 @@ namespace Panuon.UI.Silver.Internal.Controls
             base.OnClosed(e);
         }
         #endregion
+
+        #region Event Handlers
+        private static void OnNoButtonClicked(object obj)
+        {
+            var msgBox = obj as MsgBox;
+            msgBox.MessageBoxResult = MessageBoxResult.No;
+            msgBox.Close();
+        }
+
+        private static void OnYesButtonClicked(object obj)
+        {
+            var msgBox = obj as MsgBox;
+            msgBox.MessageBoxResult = MessageBoxResult.Yes;
+            msgBox.Close();
+        }
+
+        private static void OnCancelButtonClicked(object obj)
+        {
+            var msgBox = obj as MsgBox;
+            msgBox.MessageBoxResult = MessageBoxResult.Cancel;
+            msgBox.Close();
+        }
+        private static void OnOKButtonClicked(object obj)
+        {
+            var msgBox = obj as MsgBox;
+            msgBox.MessageBoxResult = MessageBoxResult.OK;
+            msgBox.Close();
+        }
+        #endregion
+
     }
 }
