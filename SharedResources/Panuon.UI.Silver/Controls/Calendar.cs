@@ -31,7 +31,7 @@ namespace Panuon.UI.Silver
         #region Ctor
         public Calendar()
         {
-            AddHandler(RadioButton.ClickEvent, new RoutedEventHandler(OnRadioButtonChecked));
+            AddHandler(RadioButton.ClickEvent, new RoutedEventHandler(OnRadioButtonClicked));
             Days = new ObservableCollection<CalendarItem>();
             Months = new ObservableCollection<CalendarItem>();
             Years = new ObservableCollection<CalendarItem>();
@@ -330,6 +330,10 @@ namespace Panuon.UI.Silver
             {
                 SelectedDate = DateTime.Now.Date;
             }
+            else
+            {
+                UpdateCalendar();
+            }
         }
 
         private static object OnMinDateCoerceValue(DependencyObject d, object baseValue)
@@ -397,6 +401,7 @@ namespace Panuon.UI.Silver
             var newDate = (DateTime)e.NewValue;
             var oldDate = (DateTime)e.OldValue;
             calendar.UpdateCalendar(oldDate, newDate);
+            calendar.RaiseSelectedDateChanged(newDate);
         }
 
         private static void OnFirstDayOfWeekChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -409,7 +414,7 @@ namespace Panuon.UI.Silver
             calendar.LoadWeeks();
         }
 
-        private void OnRadioButtonChecked(object sender, RoutedEventArgs e)
+        private void OnRadioButtonClicked(object sender, RoutedEventArgs e)
         {
             var radioButton = e.OriginalSource as RadioButton;
             if (radioButton == null || radioButton.IsChecked != true)
@@ -427,6 +432,10 @@ namespace Panuon.UI.Silver
                     {
                         SelectedDate = date;
                     }
+                    if (SelectionMode == CalendarSelectionMode.Date)
+                    {
+                        RaiseSelected(SelectedDate);
+                    }
                     break;
                 case _CALENDAR_GROUP_MONTHS:
                     date = (DateTime)radioButton.Tag;
@@ -440,6 +449,10 @@ namespace Panuon.UI.Silver
                     {
                         CurrentPanel = YearMonthDay.Day;
                     }
+                    if (SelectionMode == CalendarSelectionMode.YearMonth)
+                    {
+                        RaiseSelected(SelectedDate);
+                    }
                     break;
                 case _CALENDAR_GROUP_YEARS:
                     date = (DateTime)radioButton.Tag;
@@ -452,6 +465,10 @@ namespace Panuon.UI.Silver
                     if (SelectionMode == CalendarSelectionMode.Date)
                     {
                         CurrentPanel = YearMonthDay.Month;
+                    }
+                    if (SelectionMode == CalendarSelectionMode.Year)
+                    {
+                        RaiseSelected(SelectedDate);
                     }
                     break;
             }
@@ -563,7 +580,15 @@ namespace Panuon.UI.Silver
                 LoadOrUpdateMonths();
                 LoadOrUpdateYears();
             }
-            RaiseSelectedDateChanged(newDate);
+        }
+
+        private void UpdateCalendar()
+        {
+            YearButton = SelectedDate.Year.ToString();
+            MonthButton = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(SelectedDate.Month);
+            LoadOrUpdateDays();
+            LoadOrUpdateMonths();
+            LoadOrUpdateYears();
         }
 
         private void LoadWeeks()

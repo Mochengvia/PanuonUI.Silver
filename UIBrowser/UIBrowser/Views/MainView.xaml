@@ -145,11 +145,13 @@
                          PasswordChanged="PasswordBox_PasswordChanged" />
         </StackPanel>
         <GroupBox Header="123"
-                  Width="200"
-                  Height="200"
+                  Width="300"
+                  Height="270"
                   pu:GroupBoxHelper.GroupBoxStyle="Footnote"
                   pu:GroupBoxHelper.ShadowColor="LightGray">
-            
+            <pu:Calendar SelectedDate="2019-1-14"
+                         MaxDate="2019-1-18"
+                         MinDate="2019-1-10"/>
         </GroupBox>
 
 

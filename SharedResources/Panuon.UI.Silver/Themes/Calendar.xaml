@@ -22,6 +22,11 @@
                 <Setter Property="local:RadioButtonHelper.CheckedBackground"
                         Value="{Binding ThemeBrush, RelativeSource={RelativeSource AncestorType=local:Calendar}, Mode=OneWay}" />
             </Trigger>
+            <Trigger Property="IsEnabled"
+                     Value="False">
+                <Setter Property="Opacity"
+                        Value="0.1" />
+            </Trigger>
         </Style.Triggers>
     </Style>
 
