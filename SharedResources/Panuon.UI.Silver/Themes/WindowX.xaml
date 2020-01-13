@@ -14,9 +14,9 @@
            TargetType="Button"
            BasedOn="{StaticResource {x:Type Button}}">
         <Setter Property="FontFamily"
-                Value="pack://application:,,,/Panuon.UI.Silver;component/Resources/#iconfont" />
+                Value="{StaticResource PanuonIconFont}" />
         <Setter Property="Content"
-                Value="&#xe65a;" />
+                Value="&#xe723;" />
         <Setter Property="HorizontalAlignment"
                 Value="Right" />
         <Setter Property="VerticalAlignment"
@@ -47,9 +47,9 @@
            TargetType="Button"
            BasedOn="{StaticResource {x:Type Button}}">
         <Setter Property="FontFamily"
-                Value="pack://application:,,,/Panuon.UI.Silver;component/Resources/#iconfont" />
+                Value="{StaticResource PanuonIconFont}" />
         <Setter Property="Content"
-                Value="&#xe692;" />
+                Value="&#xe724;" />
         <Setter Property="HorizontalAlignment"
                 Value="Right" />
         <Setter Property="VerticalAlignment"
@@ -80,9 +80,9 @@
            TargetType="Button"
            BasedOn="{StaticResource {x:Type Button}}">
         <Setter Property="FontFamily"
-                Value="pack://application:,,,/Panuon.UI.Silver;component/Resources/#iconfont" />
+                Value="{StaticResource PanuonIconFont}" />
         <Setter Property="Content"
-                Value="&#xe621;" />
+                Value="&#xe725;" />
         <Setter Property="HorizontalAlignment"
                 Value="Right" />
         <Setter Property="VerticalAlignment"
@@ -153,19 +153,19 @@
                         local:WindowX.IsDragMoveArea="False"
                         Grid.Column="2"
                         Command="{TemplateBinding MinimizeCommand}"
-                        CommandParameter="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                         Style="{Binding Path=(local:WindowXCaption.MinimizeButtonStyle),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
                 <Button x:Name="BtnMaximize"
                         local:WindowX.IsDragMoveArea="False"
                         Grid.Column="3"
                         Command="{TemplateBinding MaximizeCommand}"
-                        CommandParameter="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                         Style="{Binding Path=(local:WindowXCaption.MaximizeButtonStyle),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
                 <Button x:Name="BtnClose"
                         local:WindowX.IsDragMoveArea="False"
                         Grid.Column="4"
                         Command="{TemplateBinding CloseCommand}"
-                        CommandParameter="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                         Style="{Binding Path=(local:WindowXCaption.CloseButtonStyle),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
                 <Rectangle x:Name="RectMask"
                            Grid.RowSpan="2"
@@ -295,7 +295,7 @@
                         local:WindowX.IsDragMoveArea="False"
                         Grid.Column="2"
                         Command="{TemplateBinding CloseCommand}"
-                        CommandParameter="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                         Style="{Binding Path=(local:WindowXCaption.CloseButtonStyle),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
                 <Rectangle x:Name="RectMask"
                            Grid.RowSpan="2"

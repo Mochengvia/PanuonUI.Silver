@@ -98,13 +98,13 @@ namespace Panuon.UI.Silver
 
         #region Commands
         public static readonly DependencyProperty MinimizeCommandProperty =
-            DependencyProperty.Register("MinimizeCommand", typeof(ICommand), typeof(WindowX), new PropertyMetadata(new Command(OnMinimizeCommandExecute)));
+            DependencyProperty.Register("MinimizeCommand", typeof(ICommand), typeof(WindowX), new PropertyMetadata(new RelayCommand(OnMinimizeCommandExecute)));
 
         public static readonly DependencyProperty MaximizeCommandProperty =
-            DependencyProperty.Register("MaximizeCommand", typeof(ICommand), typeof(WindowX), new PropertyMetadata(new Command(OnMaximizeCommandExecute)));
+            DependencyProperty.Register("MaximizeCommand", typeof(ICommand), typeof(WindowX), new PropertyMetadata(new RelayCommand(OnMaximizeCommandExecute)));
 
         public static readonly DependencyProperty CloseCommandProperty =
-            DependencyProperty.Register("CloseCommand", typeof(ICommand), typeof(WindowX), new PropertyMetadata(new Command(OnCloseCommandExecute)));
+            DependencyProperty.Register("CloseCommand", typeof(ICommand), typeof(WindowX), new PropertyMetadata(new RelayCommand(OnCloseCommandExecute)));
         #endregion
 
         #region Event Handler

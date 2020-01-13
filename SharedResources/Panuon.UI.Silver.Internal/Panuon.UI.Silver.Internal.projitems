@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Components\DisposableTimer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums\Enum.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\IconControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MsgBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CheckBoxConverter.cs" />
@@ -27,9 +28,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\TreeViewConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CornerRadiusConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\VisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\CalendarItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\NeonNext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ResourceKeys.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TemplateSelectors\IconControlDataTemplateSelector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\DateTimeUtils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\GridLengthUtils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\ImageUtils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\LocalizationUtils.cs" />
@@ -46,8 +49,5 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Constracts\" />
   </ItemGroup>
 </Project>

@@ -8,11 +8,15 @@ namespace Panuon.UI.Silver.Core
         #region Apply
         public static void Apply<T>(this IEnumerable<T> items, Action<T> action)
         {
-            foreach(var item in items)
+            foreach (var item in items)
             {
                 action(item);
             }
         }
+        #endregion
+
+        #region Count
+       
         #endregion
     }
 }

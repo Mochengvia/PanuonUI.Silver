@@ -16,7 +16,7 @@ namespace Panuon.UI.Silver.Internal.Converters
                 case MessageBoxIcon.Info:
                     return "\ue6af";
                 case MessageBoxIcon.Question:
-                    return "\ue6ac";
+                    return "\ue6b8";
                 case MessageBoxIcon.Success:
                     return "\ue6ad";
                 case MessageBoxIcon.Error:

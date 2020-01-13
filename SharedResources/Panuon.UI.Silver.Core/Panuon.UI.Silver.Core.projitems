@@ -10,18 +10,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Animations\BrushAnimation.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Commands\Command.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\RelayCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EventHandler\CancelableRoutedEventHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EventHandler\DateTimeChangedRoutedEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EventHandler\RemovedRoutedEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EventHandler\RemovingRoutedEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EventHandler\CancelableEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\ColorExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\DateTimeExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\GenericsExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\IEnumerableExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\IListExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\ImageExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\LongExtension.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extensions\ObjectExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\StringExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\TimespanExtension.cs" />
   </ItemGroup>

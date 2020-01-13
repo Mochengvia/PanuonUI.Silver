@@ -21,15 +21,15 @@
                     <Border Background="Transparent">
                         <TextBlock x:Name="TxtToggle"
                                    Foreground="{Binding Path=(local:TreeViewHelper.ItemToggleBrush),RelativeSource={RelativeSource AncestorType=TreeViewItem},Mode=OneWay}"
-                                   Text="&#xe699;"
-                                   FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#iconfont" />
+                                   Text="&#xe722;"
+                                   FontFamily="{StaticResource PanuonIconFont}" />
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked"
                                  Value="True">
                             <Setter TargetName="TxtToggle"
                                     Property="Text"
-                                    Value="&#xe698;" />
+                                    Value="&#xe721;" />
                         </Trigger>
                         <Trigger Property="IsMouseOver"
                                  Value="True">

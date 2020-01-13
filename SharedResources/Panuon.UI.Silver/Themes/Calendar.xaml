@@ -1,0 +1,523 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver"
+                    xmlns:i="clr-namespace:Panuon.UI.Silver.Internal"
+                    xmlns:ic="clr-namespace:Panuon.UI.Silver.Internal.Controls"
+                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/InternalResources.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Resources.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Button.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/RadioButton.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="{x:Static rs:ResourceKeys.CalendarItemStyle}"
+           TargetType="RadioButton"
+           BasedOn="{StaticResource {x:Type RadioButton}}">
+        <Setter Property="local:RadioButtonHelper.RadioButtonStyle"
+                Value="Button" />
+        <Style.Triggers>
+            <Trigger Property="local:RadioButtonHelper.RadioButtonStyle"
+                     Value="Button">
+                <Setter Property="local:RadioButtonHelper.CheckedBackground"
+                        Value="{Binding ThemeBrush, RelativeSource={RelativeSource AncestorType=local:Calendar}, Mode=OneWay}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="{x:Static rs:ResourceKeys.CalendarControlButtonStyle}"
+           TargetType="Button"
+           BasedOn="{StaticResource {x:Type Button}}">
+        <Setter Property="local:ButtonHelper.ButtonStyle"
+                Value="Link" />
+        <Style.Triggers>
+            <Trigger Property="local:ButtonHelper.ButtonStyle"
+                     Value="Link">
+                <Setter Property="Foreground"
+                        Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=local:Calendar}, Mode=OneWay}" />
+                <Setter Property="local:ButtonHelper.HoverBrush"
+                        Value="{Binding ThemeBrush, RelativeSource={RelativeSource AncestorType=local:Calendar}, Mode=OneWay}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <ControlTemplate x:Key="{x:Static i:ResourceKeys.CalendarTemplate}"
+                     TargetType="local:Calendar">
+        <Border BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                Background="{TemplateBinding Background}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Border Background="{TemplateBinding HeaderPanelBackground}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{Binding BorderThickness, Converter={StaticResource {x:Static i:ResourceKeys.ThicknessWithBottomOnlyConverter}},RelativeSource={RelativeSource AncestorType=local:Calendar}, Mode=OneWay}" />
+                <Grid x:Name="GrdControls"
+                      Height="{TemplateBinding HeaderPanelHeight}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Button Style="{TemplateBinding ControlButtonStyle}"
+                            FontFamily="{StaticResource PanuonIconFont}"
+                            Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                            Command="{Binding CalendarFastBackwardCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                            CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                            Content="&#xe728;" />
+                    <Button Style="{TemplateBinding ControlButtonStyle}"
+                            Grid.Column="1"
+                            FontFamily="{StaticResource PanuonIconFont}"
+                            Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                            Command="{Binding CalendarBackwardCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                            CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                            Content="&#xe6fc;" />
+                    <StackPanel Grid.Column="2"
+                                Orientation="Horizontal"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center">
+                        <Button x:Name="BtnMonth"
+                                Style="{TemplateBinding ControlButtonStyle}"
+                                Margin="0,0,15,0"
+                                FontSize="{Binding FontSize, Converter={StaticResource {x:Static i:ResourceKeys.Add3Converter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                Command="{Binding CalendarMonthButtonCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                Content="{TemplateBinding MonthButton}" />
+                        <Button Style="{TemplateBinding ControlButtonStyle}"
+                                FontSize="{Binding FontSize, Converter={StaticResource {x:Static i:ResourceKeys.Add3Converter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                Command="{Binding CalendarYearButtonCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                Content="{TemplateBinding YearButton}" />
+                    </StackPanel>
+
+                    <Button Style="{TemplateBinding ControlButtonStyle}"
+                            Grid.Column="3"
+                            FontFamily="{StaticResource PanuonIconFont}"
+                            Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                            Command="{Binding CalendarForewardCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                            CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                            Content="&#xe6ff;" />
+                    <Button Style="{TemplateBinding ControlButtonStyle}"
+                            Grid.Column="4"
+                            FontFamily="{StaticResource PanuonIconFont}"
+                            Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                            Command="{Binding CalendarFastForewardCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                            CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                            Content="&#xe727;" />
+                </Grid>
+                <Grid Grid.Row="1"
+                      ClipToBounds="True"
+                      Margin="{TemplateBinding Padding}">
+                    <Grid x:Name="GrdDays"
+                          RenderTransformOrigin="0.5,0.5">
+                        <Grid.RenderTransform>
+                            <ScaleTransform x:Name="ScaleDays" />
+                        </Grid.RenderTransform>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <ItemsControl x:Name="IcWeeks"
+                                      Height="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy7Converter}}, ElementName=GrdDays, Mode=OneWay}"
+                                      ItemsSource="{Binding Weeks, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Width="{Binding ActualWidth, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy7Converter}}, ElementName=GrdDays, Mode=OneWay}">
+                                        <TextBlock VerticalAlignment="Center"
+                                                   HorizontalAlignment="Center"
+                                                   Text="{Binding DisplayName}"
+                                                   FontWeight="Bold" />
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                        <ItemsControl x:Name="IcDays"
+                                      Grid.Row="1"
+                                      ItemsSource="{Binding Days, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <RadioButton Style="{Binding CalendarItemStyle, RelativeSource={RelativeSource AncestorType=local:Calendar}, Mode=OneWay}"
+                                                 GroupName="CALENDAR_GROUP_DAYS"
+                                                 Tag="{Binding Value, Mode=OneWay}"
+                                                 IsChecked="{Binding IsChecked, Mode=OneWay}"
+                                                 IsEnabled="{Binding IsEnabled, Mode=OneWay}"
+                                                 Content="{Binding DisplayName, Mode=OneWay}"
+                                                 Height="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy7Converter}}, ElementName=GrdDays, Mode=OneWay}"
+                                                 Width="{Binding ActualWidth, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy7Converter}}, ElementName=GrdDays, Mode=OneWay}" />
+                                    <DataTemplate.Triggers>
+                                        <DataTrigger Binding="{Binding IsNotCurrentMonth}"
+                                                     Value="True">
+                                            <Setter Property="Opacity"
+                                                    Value="0.3" />
+                                        </DataTrigger>
+                                    </DataTemplate.Triggers>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+                    </Grid>
+                    <Grid x:Name="GrdMonths"
+                          Grid.Row="1"
+                          Visibility="Collapsed"
+                          RenderTransformOrigin="0.5,0.5">
+                        <Grid.RenderTransform>
+                            <ScaleTransform x:Name="ScaleMonths" />
+                        </Grid.RenderTransform>
+                        <ItemsControl x:Name="IcMonths"
+                                      Grid.Row="1"
+                                      ItemsSource="{Binding Months, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <RadioButton Style="{Binding CalendarItemStyle, RelativeSource={RelativeSource AncestorType=local:Calendar}, Mode=OneWay}"
+                                                 GroupName="CALENDAR_GROUP_MONTHS"
+                                                 Tag="{Binding Value, Mode=OneWay}"
+                                                 IsChecked="{Binding IsChecked, Mode=OneWay}"
+                                                 IsEnabled="{Binding IsEnabled, Mode=OneWay}"
+                                                 Content="{Binding DisplayName, Mode=OneWay}"
+                                                 Height="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy4Converter}}, ElementName=GrdMonths, Mode=OneWay}"
+                                                 Width="{Binding ActualWidth, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy3Converter}}, ElementName=GrdMonths, Mode=OneWay}" />
+                                    <DataTemplate.Triggers>
+                                        <DataTrigger Binding="{Binding IsNotCurrentMonth}"
+                                                     Value="True">
+                                            <Setter Property="Opacity"
+                                                    Value="0.3" />
+                                        </DataTrigger>
+                                    </DataTemplate.Triggers>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+                    </Grid>
+                    <Grid x:Name="GrdYears"
+                          Grid.Row="1"
+                          Visibility="Collapsed"
+                          RenderTransformOrigin="0.5,0.5">
+                        <Grid.RenderTransform>
+                            <ScaleTransform x:Name="ScaleYears" />
+                        </Grid.RenderTransform>
+                        <ItemsControl x:Name="IcYears"
+                                      Grid.Row="1"
+                                      ItemsSource="{Binding Years, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <RadioButton Style="{Binding CalendarItemStyle, RelativeSource={RelativeSource AncestorType=local:Calendar}, Mode=OneWay}"
+                                                 GroupName="CALENDAR_GROUP_YEARS"
+                                                 Tag="{Binding Value, Mode=OneWay}"
+                                                 IsChecked="{Binding IsChecked, Mode=OneWay}"
+                                                 IsEnabled="{Binding IsEnabled, Mode=OneWay}"
+                                                 Content="{Binding DisplayName, Mode=OneWay}"
+                                                 Height="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy5Converter}}, ElementName=GrdYears, Mode=OneWay}"
+                                                 Width="{Binding ActualWidth, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy3Converter}}, ElementName=GrdYears, Mode=OneWay}" />
+                                    <DataTemplate.Triggers>
+                                        <DataTrigger Binding="{Binding IsNotCurrentMonth}"
+                                                     Value="True">
+                                            <Setter Property="Opacity"
+                                                    Value="0.3" />
+                                        </DataTrigger>
+                                    </DataTemplate.Triggers>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+                    </Grid>
+
+                </Grid>
+            </Grid>
+        </Border>
+        <ControlTemplate.Resources>
+            <Storyboard x:Key="CALENDAR_STORYBOARD_DAYTOMONTH">
+                <DoubleAnimation Storyboard.TargetName="ScaleDays"
+                                 Storyboard.TargetProperty="ScaleX"
+                                 From="1"
+                                 To="0.75"
+                                 Duration="0:0:0.2">
+                </DoubleAnimation>
+                <DoubleAnimation Storyboard.TargetName="ScaleDays"
+                                 Storyboard.TargetProperty="ScaleY"
+                                 From="1"
+                                 To="0.75"
+                                 Duration="0:0:0.2">
+                </DoubleAnimation>
+                <DoubleAnimation Storyboard.TargetName="GrdDays"
+                                 Storyboard.TargetProperty="Opacity"
+                                 From="1"
+                                 To="0"
+                                 Duration="0:0:0.2">
+                </DoubleAnimation>
+                <DoubleAnimation Storyboard.TargetName="ScaleMonths"
+                                 Storyboard.TargetProperty="ScaleX"
+                                 From="1.5"
+                                 To="1"
+                                 BeginTime="0:0:0.2"
+                                 Duration="0:0:0.3">
+                    <DoubleAnimation.EasingFunction>
+                        <CircleEase EasingMode="EaseOut" />
+                    </DoubleAnimation.EasingFunction>
+                </DoubleAnimation>
+                <DoubleAnimation Storyboard.TargetName="ScaleMonths"
+                                 Storyboard.TargetProperty="ScaleY"
+                                 From="1.5"
+                                 To="1"
+                                 BeginTime="0:0:0.2"
+                                 Duration="0:0:0.3">
+                    <DoubleAnimation.EasingFunction>
+                        <CircleEase EasingMode="EaseOut" />
+                    </DoubleAnimation.EasingFunction>
+                </DoubleAnimation>
+                <DoubleAnimation Storyboard.TargetName="GrdMonths"
+                                 Storyboard.TargetProperty="Opacity"
+                                 From="0"
+                                 To="1"
+                                 BeginTime="0:0:0.2"
+                                 Duration="0:0:0.3">
+                    <DoubleAnimation.EasingFunction>
+                        <CircleEase EasingMode="EaseOut" />
+                    </DoubleAnimation.EasingFunction>
+                </DoubleAnimation>
+                <ObjectAnimationUsingKeyFrames BeginTime="00:00:00"
+                                               Storyboard.TargetName="GrdDays"
+                                               Storyboard.TargetProperty="(UIElement.Visibility)">
+                    <DiscreteObjectKeyFrame KeyTime="0:0:0"
+                                            Value="{x:Static Visibility.Visible}" />
+                    <DiscreteObjectKeyFrame KeyTime="0:0:0.2"
+                                            Value="{x:Static Visibility.Collapsed}" />
+                </ObjectAnimationUsingKeyFrames>
+                <ObjectAnimationUsingKeyFrames BeginTime="0:0:0"
+                                               Storyboard.TargetName="GrdMonths"
+                                               Storyboard.TargetProperty="(UIElement.Visibility)">
+                    <DiscreteObjectKeyFrame KeyTime="0:0:0.2"
+                                            Value="{x:Static Visibility.Visible}" />
+                </ObjectAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="CALENDAR_STORYBOARD_MONTHTODAY">
+                <DoubleAnimation Storyboard.TargetName="ScaleMonths"
+                                 Storyboard.TargetProperty="ScaleX"
+                                 From="1"
+                                 To="1.5"
+                                 Duration="0:0:0.2" />
+                <DoubleAnimation Storyboard.TargetName="ScaleMonths"
+                                 Storyboard.TargetProperty="ScaleY"
+                                 From="1"
+                                 To="1.5"
+                                 Duration="0:0:0.2" />
+                <DoubleAnimation Storyboard.TargetName="GrdMonths"
+                                 Storyboard.TargetProperty="Opacity"
+                                 From="1"
+                                 To="0"
+                                 Duration="0:0:0.2" />
+                <DoubleAnimation Storyboard.TargetName="ScaleDays"
+                                 Storyboard.TargetProperty="ScaleX"
+                                 From="0.75"
+                                 To="1"
+                                 BeginTime="0:0:0.2"
+                                 Duration="0:0:0.3">
+                    <DoubleAnimation.EasingFunction>
+                        <CircleEase EasingMode="EaseOut" />
+                    </DoubleAnimation.EasingFunction>
+                </DoubleAnimation>
+                <DoubleAnimation Storyboard.TargetName="ScaleDays"
+                                 Storyboard.TargetProperty="ScaleY"
+                                 From="0.75"
+                                 To="1"
+                                 BeginTime="0:0:0.2"
+                                 Duration="0:0:0.3">
+                    <DoubleAnimation.EasingFunction>
+                        <CircleEase EasingMode="EaseOut" />
+                    </DoubleAnimation.EasingFunction>
+                </DoubleAnimation>
+                <DoubleAnimation Storyboard.TargetName="GrdDays"
+                                 Storyboard.TargetProperty="Opacity"
+                                 From="0"
+                                 To="1"
+                                 BeginTime="0:0:0.2"
+                                 Duration="0:0:0.3">
+                    <DoubleAnimation.EasingFunction>
+                        <CircleEase EasingMode="EaseOut" />
+                    </DoubleAnimation.EasingFunction>
+                </DoubleAnimation>
+                <ObjectAnimationUsingKeyFrames BeginTime="00:00:00"
+                                               Storyboard.TargetName="GrdMonths"
+                                               Storyboard.TargetProperty="(UIElement.Visibility)">
+                    <DiscreteObjectKeyFrame KeyTime="0:0:0"
+                                            Value="{x:Static Visibility.Visible}" />
+                    <DiscreteObjectKeyFrame KeyTime="0:0:0.2"
+                                            Value="{x:Static Visibility.Collapsed}" />
+                </ObjectAnimationUsingKeyFrames>
+                <ObjectAnimationUsingKeyFrames BeginTime="0:0:0"
+                                               Storyboard.TargetName="GrdDays"
+                                               Storyboard.TargetProperty="(UIElement.Visibility)">
+                    <DiscreteObjectKeyFrame KeyTime="0:0:0.2"
+                                            Value="{x:Static Visibility.Visible}" />
+                </ObjectAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="CALENDAR_STORYBOARD_MONTHTOYEAR">
+                <DoubleAnimation Storyboard.TargetName="ScaleMonths"
+                                 Storyboard.TargetProperty="ScaleX"
+                                 From="1"
+                                 To="0.75"
+                                 Duration="0:0:0.2">
+                </DoubleAnimation>
+                <DoubleAnimation Storyboard.TargetName="ScaleMonths"
+                                 Storyboard.TargetProperty="ScaleY"
+                                 From="1"
+                                 To="0.75"
+                                 Duration="0:0:0.2">
+                </DoubleAnimation>
+                <DoubleAnimation Storyboard.TargetName="GrdMonths"
+                                 Storyboard.TargetProperty="Opacity"
+                                 From="1"
+                                 To="0"
+                                 Duration="0:0:0.2">
+                </DoubleAnimation>
+                <DoubleAnimation Storyboard.TargetName="ScaleYears"
+                                 Storyboard.TargetProperty="ScaleX"
+                                 From="1.5"
+                                 To="1"
+                                 BeginTime="0:0:0.2"
+                                 Duration="0:0:0.3">
+                    <DoubleAnimation.EasingFunction>
+                        <CircleEase EasingMode="EaseOut" />
+                    </DoubleAnimation.EasingFunction>
+                </DoubleAnimation>
+                <DoubleAnimation Storyboard.TargetName="ScaleYears"
+                                 Storyboard.TargetProperty="ScaleY"
+                                 From="1.5"
+                                 To="1"
+                                 BeginTime="0:0:0.2"
+                                 Duration="0:0:0.3">
+                    <DoubleAnimation.EasingFunction>
+                        <CircleEase EasingMode="EaseOut" />
+                    </DoubleAnimation.EasingFunction>
+                </DoubleAnimation>
+                <DoubleAnimation Storyboard.TargetName="GrdYears"
+                                 Storyboard.TargetProperty="Opacity"
+                                 From="0"
+                                 To="1"
+                                 BeginTime="0:0:0.2"
+                                 Duration="0:0:0.3">
+                    <DoubleAnimation.EasingFunction>
+                        <CircleEase EasingMode="EaseOut" />
+                    </DoubleAnimation.EasingFunction>
+                </DoubleAnimation>
+                <ObjectAnimationUsingKeyFrames BeginTime="00:00:00"
+                                               Storyboard.TargetName="GrdMonths"
+                                               Storyboard.TargetProperty="(UIElement.Visibility)">
+                    <DiscreteObjectKeyFrame KeyTime="0:0:0"
+                                            Value="{x:Static Visibility.Visible}" />
+                    <DiscreteObjectKeyFrame KeyTime="0:0:0.2"
+                                            Value="{x:Static Visibility.Collapsed}" />
+                </ObjectAnimationUsingKeyFrames>
+                <ObjectAnimationUsingKeyFrames BeginTime="0:0:0"
+                                               Storyboard.TargetName="GrdYears"
+                                               Storyboard.TargetProperty="(UIElement.Visibility)">
+                    <DiscreteObjectKeyFrame KeyTime="0:0:0.2"
+                                            Value="{x:Static Visibility.Visible}" />
+                </ObjectAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="CALENDAR_STORYBOARD_YEARTOMONTH">
+                <DoubleAnimation Storyboard.TargetName="ScaleYears"
+                                 Storyboard.TargetProperty="ScaleX"
+                                 From="1"
+                                 To="1.5"
+                                 Duration="0:0:0.2" />
+                <DoubleAnimation Storyboard.TargetName="ScaleYears"
+                                 Storyboard.TargetProperty="ScaleY"
+                                 From="1"
+                                 To="1.5"
+                                 Duration="0:0:0.2" />
+                <DoubleAnimation Storyboard.TargetName="GrdYears"
+                                 Storyboard.TargetProperty="Opacity"
+                                 From="1"
+                                 To="0"
+                                 Duration="0:0:0.2" />
+                <DoubleAnimation Storyboard.TargetName="ScaleMonths"
+                                 Storyboard.TargetProperty="ScaleX"
+                                 From="0.75"
+                                 To="1"
+                                 BeginTime="0:0:0.2"
+                                 Duration="0:0:0.3">
+                    <DoubleAnimation.EasingFunction>
+                        <CircleEase EasingMode="EaseOut" />
+                    </DoubleAnimation.EasingFunction>
+                </DoubleAnimation>
+                <DoubleAnimation Storyboard.TargetName="ScaleMonths"
+                                 Storyboard.TargetProperty="ScaleY"
+                                 From="0.75"
+                                 To="1"
+                                 BeginTime="0:0:0.2"
+                                 Duration="0:0:0.3">
+                    <DoubleAnimation.EasingFunction>
+                        <CircleEase EasingMode="EaseOut" />
+                    </DoubleAnimation.EasingFunction>
+                </DoubleAnimation>
+                <DoubleAnimation Storyboard.TargetName="GrdMonths"
+                                 Storyboard.TargetProperty="Opacity"
+                                 From="0"
+                                 To="1"
+                                 BeginTime="0:0:0.2"
+                                 Duration="0:0:0.3">
+                    <DoubleAnimation.EasingFunction>
+                        <CircleEase EasingMode="EaseOut" />
+                    </DoubleAnimation.EasingFunction>
+                </DoubleAnimation>
+                <ObjectAnimationUsingKeyFrames BeginTime="00:00:00"
+                                               Storyboard.TargetName="GrdYears"
+                                               Storyboard.TargetProperty="(UIElement.Visibility)">
+                    <DiscreteObjectKeyFrame KeyTime="0:0:0"
+                                            Value="{x:Static Visibility.Visible}" />
+                    <DiscreteObjectKeyFrame KeyTime="0:0:0.2"
+                                            Value="{x:Static Visibility.Collapsed}" />
+                </ObjectAnimationUsingKeyFrames>
+                <ObjectAnimationUsingKeyFrames BeginTime="0:0:0"
+                                               Storyboard.TargetName="GrdMonths"
+                                               Storyboard.TargetProperty="(UIElement.Visibility)">
+                    <DiscreteObjectKeyFrame KeyTime="0:0:0.2"
+                                            Value="{x:Static Visibility.Visible}" />
+                </ObjectAnimationUsingKeyFrames>
+            </Storyboard>
+        </ControlTemplate.Resources>
+    </ControlTemplate>
+
+    <Style TargetType="local:Calendar">
+        <Setter Property="BorderBrush"
+                Value="{StaticResource {x:Static i:ResourceKeys.CalendarBorderBrush}}" />
+        <Setter Property="BorderThickness"
+                Value="{StaticResource {x:Static i:ResourceKeys.CalendarBorderThickness}}" />
+        <Setter Property="ThemeBrush"
+                Value="{StaticResource {x:Static i:ResourceKeys.CalendarThemeBrush}}" />
+        <Setter Property="ControlButtonStyle"
+                Value="{StaticResource {x:Static rs:ResourceKeys.CalendarControlButtonStyle}}" />
+        <Setter Property="CalendarItemStyle"
+                Value="{StaticResource {x:Static rs:ResourceKeys.CalendarItemStyle}}" />
+        <Setter Property="Template"
+                Value="{StaticResource {x:Static i:ResourceKeys.CalendarTemplate}}" />
+        <Setter Property="HeaderPanelHeight"
+                Value="{StaticResource {x:Static i:ResourceKeys.CalendarHeaderPanelHeight}}" />
+        <Setter Property="HeaderPanelBackground"
+                Value="{StaticResource {x:Static i:ResourceKeys.CalendarHeaderPanelBackground}}" />
+    </Style>
+</ResourceDictionary>

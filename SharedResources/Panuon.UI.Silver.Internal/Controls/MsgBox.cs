@@ -219,7 +219,7 @@ namespace Panuon.UI.Silver.Internal.Controls
         }
 
         public static readonly DependencyProperty OKCommandProperty =
-            DependencyProperty.Register("OKCommand", typeof(ICommand), typeof(MsgBox), new PropertyMetadata(new Command(OnOKButtonClicked)));
+            DependencyProperty.Register("OKCommand", typeof(ICommand), typeof(MsgBox), new PropertyMetadata(new RelayCommand(OnOKButtonClicked)));
 
        
 
@@ -230,7 +230,7 @@ namespace Panuon.UI.Silver.Internal.Controls
         }
 
         public static readonly DependencyProperty CancelCommandProperty =
-            DependencyProperty.Register("CancelCommand", typeof(ICommand), typeof(MsgBox), new PropertyMetadata(new Command(OnCancelButtonClicked)));
+            DependencyProperty.Register("CancelCommand", typeof(ICommand), typeof(MsgBox), new PropertyMetadata(new RelayCommand(OnCancelButtonClicked)));
 
       
         public ICommand YesCommand
@@ -240,7 +240,7 @@ namespace Panuon.UI.Silver.Internal.Controls
         }
 
         public static readonly DependencyProperty YesCommandProperty =
-            DependencyProperty.Register("YesCommand", typeof(ICommand), typeof(MsgBox), new PropertyMetadata(new Command(OnYesButtonClicked)));
+            DependencyProperty.Register("YesCommand", typeof(ICommand), typeof(MsgBox), new PropertyMetadata(new RelayCommand(OnYesButtonClicked)));
 
         
         public ICommand NoCommand
@@ -250,7 +250,7 @@ namespace Panuon.UI.Silver.Internal.Controls
         }
 
         public static readonly DependencyProperty NoCommandProperty =
-            DependencyProperty.Register("NoCommand", typeof(ICommand), typeof(MsgBox), new PropertyMetadata(new Command(OnNoButtonClicked)));
+            DependencyProperty.Register("NoCommand", typeof(ICommand), typeof(MsgBox), new PropertyMetadata(new RelayCommand(OnNoButtonClicked)));
 
       
         #endregion

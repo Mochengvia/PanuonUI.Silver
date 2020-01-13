@@ -144,15 +144,15 @@
                          pu:PasswordBoxHelper.Watermark="尝试在此输入123"
                          PasswordChanged="PasswordBox_PasswordChanged" />
         </StackPanel>
-        <TreeView Width="200">
-            <TreeViewItem Header="123">
-                <TreeViewItem Header="123" />
-                <TreeViewItem Header="123" />
-                <TreeViewItem Header="123" />
-            </TreeViewItem>
-            <TreeViewItem Header="123" />
-            <TreeViewItem Header="123" />
-        </TreeView>
+        <GroupBox Header="123"
+                  Width="200"
+                  Height="200"
+                  pu:GroupBoxHelper.GroupBoxStyle="Footnote"
+                  pu:GroupBoxHelper.ShadowColor="LightGray">
+            
+        </GroupBox>
+
+
     </StackPanel>
 
 </pu:WindowX>

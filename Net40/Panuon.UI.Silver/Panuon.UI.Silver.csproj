@@ -78,7 +78,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Resource Include="Resources\iconfont.ttf" />
+    <Resource Include="Resources\PanuonIcon.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Themes\Generic.xaml">

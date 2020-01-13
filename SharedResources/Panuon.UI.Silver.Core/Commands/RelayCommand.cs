@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
 
 namespace Panuon.UI.Silver.Core
 {
-    internal class Command : ICommand
+    public class RelayCommand : ICommand
     {
         #region Fields
         private Action<object> _executeAction;
@@ -18,7 +16,7 @@ namespace Panuon.UI.Silver.Core
         #endregion
 
         #region Ctor
-        public Command(Action<object> executeAction, Func<object,bool> canExecuteFunc = null)
+        public RelayCommand(Action<object> executeAction, Func<object,bool> canExecuteFunc = null)
         {
             _executeAction = executeAction;
             _canExecuteFunc = canExecuteFunc;

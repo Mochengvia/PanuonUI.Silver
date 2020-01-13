@@ -4,6 +4,7 @@
     xmlns:local="using:Panuon.UI.Silver">
 
     <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Calendar.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/MessageBoxX.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Loading.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/WindowX.xaml" />
@@ -28,6 +29,6 @@
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/TabControl.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/TabItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/DropDown.xaml" />
-
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/GroupBox.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

@@ -48,6 +48,8 @@
     <icv:CornerRadiusToDoubleConverter x:Key="{x:Static i:ResourceKeys.CornerRadiusToDoubleConverter}" />
     <icv:ThicknessToDoubleConverter x:Key="{x:Static i:ResourceKeys.ThicknessToDoubleConverter}" />
     <icv:ThicknessWithoutTopConverter x:Key="{x:Static i:ResourceKeys.ThicknessWithoutTopConverter}" />
+    <icv:ThicknessWithTopOnlyConverter x:Key="{x:Static i:ResourceKeys.ThicknessWithTopOnlyConverter}" />
+    <icv:ThicknessWithBottomOnlyConverter x:Key="{x:Static i:ResourceKeys.ThicknessWithBottomOnlyConverter}" />
     <icv:CheckBoxStandardGlyphPathConverter x:Key="{x:Static i:ResourceKeys.CheckBoxStandardGlyphPathConverter}" />
     <icv:CheckBoxSwitchToggleMarginConverter x:Key="{x:Static i:ResourceKeys.CheckBoxSwitchToggleMarginConverter}" />
     <icv:CheckBoxSwitch2DecorationMarginConverter x:Key="{x:Static i:ResourceKeys.CheckBoxSwitch2DecorationMarginConverter}" />
@@ -413,20 +415,18 @@
                      Color="LightGray" />
     <SolidColorBrush x:Key="{x:Static i:ResourceKeys.TextBoxFocusedBorderBrush}"
                      Color="#888888" />
-    <Color x:Key="{x:Static i:ResourceKeys.TextBoxFocusedShadowColor}" />
+    <Color x:Key="{x:Static i:ResourceKeys.TextBoxFocusedShadowColor}">LightGray</Color>
     <CornerRadius x:Key="{x:Static i:ResourceKeys.TextBoxCornerRadius}" />
     <Thickness x:Key="{x:Static i:ResourceKeys.TextBoxBorderThickness}">1</Thickness>
-    <!--<Color x:Key="{x:Static i:ResourceKeys.TextBoxFocusedShadowColor}"></Color>-->
 
     <!--PasswordBox-->
     <SolidColorBrush x:Key="{x:Static i:ResourceKeys.PasswordBoxBorderBrush}"
                      Color="LightGray" />
     <SolidColorBrush x:Key="{x:Static i:ResourceKeys.PasswordBoxFocusedBorderBrush}"
                      Color="#888888" />
-    <Color x:Key="{x:Static i:ResourceKeys.PasswordBoxFocusedShadowColor}" />
+    <Color x:Key="{x:Static i:ResourceKeys.PasswordBoxFocusedShadowColor}">LightGray</Color>
     <CornerRadius x:Key="{x:Static i:ResourceKeys.PasswordBoxCornerRadius}" />
     <Thickness x:Key="{x:Static i:ResourceKeys.PasswordBoxBorderThickness}">1</Thickness>
-    <!--<Color x:Key="{x:Static i:ResourceKeys.TextBoxFocusedShadowColor}"></Color>-->
 
     <!--ComboBox-->
     <SolidColorBrush x:Key="{x:Static i:ResourceKeys.ComboBoxBorderBrush}"
@@ -490,5 +490,15 @@
                      Color="#FAFAFA" />
     <SolidColorBrush x:Key="{x:Static i:ResourceKeys.ListBoxItemsSelectedBackground}"
                      Color="#F1F1F1" />
+
+    <!--Calendar-->
+    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.CalendarBorderBrush}" 
+                     Color="LightGray"/>
+    <Thickness x:Key="{x:Static i:ResourceKeys.CalendarBorderThickness}">1</Thickness>
+    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.CalendarThemeBrush}"
+                     Color="Black" />
+    <sys:Double x:Key="{x:Static i:ResourceKeys.CalendarHeaderPanelHeight}">40.0</sys:Double>
+    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.CalendarHeaderPanelBackground}" 
+                     Color="Transparent"/>
 
 </ResourceDictionary>

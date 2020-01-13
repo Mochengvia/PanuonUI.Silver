@@ -25,9 +25,9 @@
            TargetType="Button"
            BasedOn="{StaticResource {x:Type Button}}">
         <Setter Property="FontFamily"
-                Value="pack://application:,,,/Panuon.UI.Silver;component/Resources/#iconfont" />
+                Value="{StaticResource PanuonIconFont}" />
         <Setter Property="Content"
-                Value="&#xe621;" />
+                Value="&#xe725;" />
         <Setter Property="local:ButtonHelper.ButtonStyle"
                 Value="Link" />
         <Setter Property="Width"
@@ -103,7 +103,7 @@
             <Button x:Name="BtnClear"
                     Padding="0,0,0,2"
                     Command="{Binding Path=(local:TextBoxHelper.ClearTextBoxCommand),RelativeSource={RelativeSource AncestorType=TextBox},Mode=OneWay}"
-                    CommandParameter="{Binding RelativeSource={x:Static RelativeSource.TemplatedParent}}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                     Grid.Column="2"
                     Style="{DynamicResource {x:Static rs:ResourceKeys.TextBoxClearButtonStyle}}"
                     Visibility="{Binding Path=(local:TextBoxHelper.CanClear),Converter={StaticResource {x:Static i:ResourceKeys.BoolToVisibleConverter}},RelativeSource={RelativeSource AncestorType=TextBox},Mode=OneWay}" />
@@ -129,11 +129,11 @@
                          HorizontalAlignment="Center"
                          Fill="{DynamicResource {x:Static rs:ResourceKeys.TextBoxValidationErrorBrush}}" />
                 <TextBlock Margin="0,0,0,2"
-                           Text="&#xe621;"
+                           Text="&#xe725;"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
                            Foreground="White"
-                           FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#iconfont" />
+                           FontFamily="{StaticResource PanuonIconFont}" />
             </Grid>
         </Grid>
         <ControlTemplate.Triggers>

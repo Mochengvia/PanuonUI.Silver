@@ -23,16 +23,16 @@
             <Grid Grid.Column="1"
                   Width="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.Minus3Converter}},RelativeSource={RelativeSource Self},Mode=OneWay}">
                 <TextBlock x:Name="TxtArrowDown"
-                           Text="&#xe735;"
-                           FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#iconfont"
+                           Text="&#xe720;"
+                           FontFamily="{StaticResource PanuonIconFont}"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center" />
                 <TextBlock x:Name="TxtArrowUp"
                            Opacity="0"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
-                           Text="&#xe734;"
-                           FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#iconfont" />
+                           Text="&#xe71e;"
+                           FontFamily="{StaticResource PanuonIconFont}" />
             </Grid>
         </Grid>
         <ControlTemplate.Triggers>

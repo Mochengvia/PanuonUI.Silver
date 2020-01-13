@@ -45,7 +45,7 @@
                 <Setter TargetName="BdrMain"
                         Property="Effect">
                     <Setter.Value>
-                        <DropShadowEffect BlurRadius="{StaticResource {x:Static rs:ResourceKeys.CardDropShadowBlurRadius}}"
+                        <DropShadowEffect BlurRadius="10"
                                           ShadowDepth="0"
                                           Color="{Binding ShadowColor, RelativeSource={RelativeSource AncestorType=local:Card}, Mode=OneWay}" />
                     </Setter.Value>
@@ -89,7 +89,7 @@
                 <Setter TargetName="BdrMain"
                         Property="Effect">
                     <Setter.Value>
-                        <DropShadowEffect BlurRadius="{StaticResource {x:Static rs:ResourceKeys.CardDropShadowBlurRadius}}"
+                        <DropShadowEffect BlurRadius="10"
                                           ShadowDepth="0"
                                           Color="{Binding ShadowColor, RelativeSource={RelativeSource AncestorType=local:Card}, Mode=OneWay}" />
                     </Setter.Value>

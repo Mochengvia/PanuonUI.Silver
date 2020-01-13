@@ -93,6 +93,10 @@ namespace Panuon.UI.Silver.Internal
 
         public static readonly string ThicknessWithoutTopConverter = nameof(ThicknessWithoutTopConverter);
 
+        public static readonly string ThicknessWithTopOnlyConverter = nameof(ThicknessWithTopOnlyConverter);
+
+        public static readonly string ThicknessWithBottomOnlyConverter = nameof(ThicknessWithBottomOnlyConverter);
+
         public static readonly string CheckBoxStandardGlyphPathConverter = nameof(CheckBoxStandardGlyphPathConverter);
 
         public static readonly string CheckBoxSwitchToggleMarginConverter = nameof(CheckBoxSwitchToggleMarginConverter);
@@ -914,9 +918,47 @@ namespace Panuon.UI.Silver.Internal
 
         public static readonly string MsgBoxModernContent = nameof(MsgBoxModernContent);
 
-        
+        #endregion
+
+        #region Calendar
+        public static readonly string CalendarBorderBrush = nameof(CalendarBorderBrush);
+
+        public static readonly string CalendarBorderThickness = nameof(CalendarBorderThickness);
+
+        public static readonly string CalendarThemeBrush = nameof(CalendarThemeBrush);
+
+        public static readonly string CalendarTemplate = nameof(CalendarTemplate);
+
+        public static readonly string CalendarHeaderPanelHeight = nameof(CalendarHeaderPanelHeight);
+
+        public static readonly string CalendarHeaderPanelBackground = nameof(CalendarHeaderPanelBackground);
+        #endregion
+
+        #region GroupBox
+        public static readonly string GroupBoxStandardTemplate = nameof(GroupBoxStandardTemplate);
 
 
+        public static readonly string GroupBoxStandardBorderBrush = nameof(GroupBoxStandardBorderBrush);
+
+        public static readonly string GroupBoxStandardBorderThickness = nameof(GroupBoxStandardBorderThickness);
+
+        public static readonly string GroupBoxStandardBackground = nameof(GroupBoxStandardBackground);
+
+        public static readonly string GroupBoxPostTemplate = nameof(GroupBoxPostTemplate);
+
+        public static readonly string GroupBoxPostBorderBrush = nameof(GroupBoxPostBorderBrush);
+
+        public static readonly string GroupBoxPostBorderThickness = nameof(GroupBoxPostBorderThickness);
+
+        public static readonly string GroupBoxPostBackground = nameof(GroupBoxPostBackground);
+
+        public static readonly string GroupBoxFootnoteTemplate = nameof(GroupBoxFootnoteTemplate);
+
+        public static readonly string GroupBoxFootnoteBorderBrush = nameof(GroupBoxFootnoteBorderBrush);
+
+        public static readonly string GroupBoxFootnoteBorderThickness = nameof(GroupBoxFootnoteBorderThickness);
+
+        public static readonly string GroupBoxFootnoteBackground = nameof(GroupBoxFootnoteBackground);
         #endregion
     }
 }

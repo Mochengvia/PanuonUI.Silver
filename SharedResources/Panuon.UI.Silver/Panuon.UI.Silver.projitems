@@ -17,7 +17,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Calendar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\DropDown.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\GroupBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -113,6 +121,7 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Components\MessageBoxXConfigurations.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Calendar.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Card.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\DropDown.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\FormGroup.cs" />
@@ -124,6 +133,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\WaterfallPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\WindowX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\WindowXCaption.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\GroupBoxHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ListBoxHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ToggleButtonHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\RepeatButtonHelper.cs" />

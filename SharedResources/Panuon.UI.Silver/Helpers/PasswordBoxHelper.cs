@@ -222,7 +222,7 @@ namespace Panuon.UI.Silver
         }
 
         internal static readonly DependencyProperty ClearPasswordBoxCommandProperty =
-            DependencyProperty.RegisterAttached("ClearPasswordBoxCommand", typeof(ICommand), typeof(PasswordBoxHelper), new PropertyMetadata(new Command(OnClearPasswordBoxCommandExecute)));
+            DependencyProperty.RegisterAttached("ClearPasswordBoxCommand", typeof(ICommand), typeof(PasswordBoxHelper), new PropertyMetadata(new RelayCommand(OnClearPasswordBoxCommandExecute)));
 
         #endregion
 

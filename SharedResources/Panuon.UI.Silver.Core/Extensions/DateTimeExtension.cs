@@ -18,5 +18,6 @@ namespace Panuon.UI.Silver.Core
                 return Convert.ToInt64(timeSpan.TotalSeconds);
         }
         #endregion
+
     }
 }

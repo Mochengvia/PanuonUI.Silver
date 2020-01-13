@@ -28,11 +28,6 @@
         public static readonly string ToggleButtonWaitingLoadingStyle = nameof(ToggleButtonWaitingLoadingStyle);
         #endregion
 
-        #region Card
-        public const string CardDropShadowBlurRadius = nameof(CardDropShadowBlurRadius);
-
-        #endregion
-
         #region TextBox
         public static readonly string TextBoxWaitingLoadingStyle = nameof(TextBoxWaitingLoadingStyle);
 
@@ -71,7 +66,19 @@
         public static readonly string TabItemCardRemoveButtonStyle = nameof(TabItemCardRemoveButtonStyle);
         #endregion
 
-        #region MessageBoxX
+        #region Calendar
+        public static readonly string CalendarControlButtonStyle = nameof(CalendarControlButtonStyle);
+
+        public static readonly string CalendarItemStyle = nameof(CalendarItemStyle);
+        #endregion
+
+        #region GroupBox
+        public static readonly string GroupBoxStandardHeaderTemplate = nameof(GroupBoxStandardHeaderTemplate);
+
+        public static readonly string GroupBoxPostHeaderTemplate = nameof(GroupBoxPostHeaderTemplate);
+
+        public static readonly string GroupBoxFootnoteHeaderTemplate = nameof(GroupBoxFootnoteHeaderTemplate);
+
         #endregion
     }
 }

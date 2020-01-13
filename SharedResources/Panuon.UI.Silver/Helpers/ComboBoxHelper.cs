@@ -490,7 +490,7 @@ namespace Panuon.UI.Silver
 
         #region Commands
         public static readonly DependencyProperty RemoveCommandProperty =
-            DependencyProperty.RegisterAttached("RemoveCommand", typeof(ICommand), typeof(ComboBoxHelper), new PropertyMetadata(new Command(OnRemoveCommandExecute)));
+            DependencyProperty.RegisterAttached("RemoveCommand", typeof(ICommand), typeof(ComboBoxHelper), new PropertyMetadata(new RelayCommand(OnRemoveCommandExecute)));
         #endregion
 
         #region Event Handler

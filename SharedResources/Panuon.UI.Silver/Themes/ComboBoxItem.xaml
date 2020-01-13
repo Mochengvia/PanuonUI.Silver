@@ -14,9 +14,9 @@
            TargetType="Button"
            BasedOn="{StaticResource {x:Type Button}}">
         <Setter Property="FontFamily"
-                Value="pack://application:,,,/Panuon.UI.Silver;component/Resources/#iconfont" />
+                Value="{StaticResource PanuonIconFont}" />
         <Setter Property="Content"
-                Value="&#xe621;" />
+                Value="&#xe725;" />
         <Setter Property="local:ButtonHelper.ButtonStyle"
                 Value="Link" />
         <Setter Property="Width"

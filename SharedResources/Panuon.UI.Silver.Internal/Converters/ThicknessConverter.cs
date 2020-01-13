@@ -33,4 +33,31 @@ namespace Panuon.UI.Silver.Internal.Converters
         }
     }
 
+    internal class ThicknessWithTopOnlyConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var thickness = value as Thickness? ?? new Thickness(0);
+            return new Thickness(0, thickness.Top, 0, 0);
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return DependencyProperty.UnsetValue;
+        }
+    }
+
+    internal class ThicknessWithBottomOnlyConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var thickness = value as Thickness? ?? new Thickness(0);
+            return new Thickness(0, 0, 0, thickness.Bottom);
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return DependencyProperty.UnsetValue;
+        }
+    }
 }

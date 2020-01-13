@@ -208,4 +208,25 @@
         CancelNo
     }
     #endregion
+
+    #region Calendar
+
+    public enum CalendarSelectionMode
+    {
+        Date,
+        YearMonth,
+        Year,
     }
+
+    #endregion
+
+    #region GroupBox
+    public enum GroupBoxStyle
+    {
+        Standard,
+        Post,
+        Footnote
+    }
+
+    #endregion
+}
