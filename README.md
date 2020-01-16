@@ -22,6 +22,8 @@ Zhihu : @末城via
 请注意，2.0版本中不再集成FontAwesome。建议使用阿里的IconFont或其他图标字体。文档中会增加在WPF使用图标字体的帮助。  
 完备的开发文档、代码示例与1.0升级指南（文档将转移到阿里的语雀平台）。  
 预计将于1月底前发布beta版。尽请期待。  
+你可以在上方切换2.0.0分支并下载开发版代码，但控件尚不齐全。
+2.0文档参见：https://www.yuque.com/mochengvia/silver2.0
 
 #### 2019-12-29 v1.0.9.5
 解决了PUTextBlock抛出HorizontalContentAlightment异常的问题。
