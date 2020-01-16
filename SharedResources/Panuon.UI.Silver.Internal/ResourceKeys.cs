@@ -146,8 +146,6 @@ namespace Panuon.UI.Silver.Internal
 
         public static readonly string WindowXCaptionHorizontalHeaderAlignment = nameof(WindowXCaptionHorizontalHeaderAlignment);
 
-        public static readonly string WindowXCaptionHeaderPadding = nameof(WindowXCaptionHeaderPadding);
-
         public static readonly string WindowXCaptionMinimizeButtonHoverBrush = nameof(WindowXCaptionMinimizeButtonHoverBrush);
 
         public static readonly string WindowXCaptionMaximizeButtonHoverBrush = nameof(WindowXCaptionMaximizeButtonHoverBrush);

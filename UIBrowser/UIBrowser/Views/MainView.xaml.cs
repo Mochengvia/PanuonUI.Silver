@@ -43,7 +43,7 @@ namespace UIBrowser.Views
         {
             MessageBoxX.DefaultMessageBoxXConfigurations.YesButton = "是";
             MessageBoxX.DefaultMessageBoxXConfigurations.NoButton = "否";
-            MessageBoxX.DefaultMessageBoxXConfigurations.MessageBoxStyle = MessageBoxStyle.Modern;
+            MessageBoxX.DefaultMessageBoxXConfigurations.MessageBoxStyle = MessageBoxStyle.Classic;
 
             MessageBoxX.Show("WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING !", "Tips", System.Windows.MessageBoxButton.YesNoCancel, MessageBoxIcon.Info, DefaultButton.NoCancel);
             MessageBoxX.Show("WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING !", "Tips", icon: MessageBoxIcon.Error);

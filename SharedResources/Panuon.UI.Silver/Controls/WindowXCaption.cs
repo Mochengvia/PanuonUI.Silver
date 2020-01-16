@@ -75,21 +75,6 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("Header", typeof(object), typeof(WindowXCaption));
         #endregion
 
-        #region HeaderPadding
-        public static Thickness GetHeaderPadding(WindowX windowX)
-        {
-            return (Thickness)windowX.GetValue(HeaderPaddingProperty);
-        }
-
-        public static void SetHeaderPadding(WindowX windowX, Thickness value)
-        {
-            windowX.SetValue(HeaderPaddingProperty, value);
-        }
-
-        public static readonly DependencyProperty HeaderPaddingProperty =
-            DependencyProperty.RegisterAttached("HeaderPadding", typeof(Thickness), typeof(WindowXCaption));
-        #endregion
-
         #region HorizontalHeaderAlignment
         public static HorizontalHeaderAlignment GetHorizontalHeaderAlignment(WindowX windowX)
         {

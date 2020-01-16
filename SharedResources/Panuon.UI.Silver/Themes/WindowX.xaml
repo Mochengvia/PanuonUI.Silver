@@ -136,8 +136,7 @@
                            Grid.ColumnSpan="5" />
                 <ContentControl x:Name="CcHeader"
                                 Foreground="{Binding Path=(local:WindowXCaption.Foreground),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}"
-                                Content="{Binding Path=(local:WindowXCaption.Header),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}"
-                                Margin="{Binding Path=(local:WindowXCaption.HeaderPadding),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
+                                Content="{Binding Path=(local:WindowXCaption.Header),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
                 <ContentControl x:Name="CcExtendControl"
                                 local:WindowX.IsDragMoveArea="False"
                                 Grid.Column="1"
@@ -166,6 +165,7 @@
                         Grid.Column="4"
                         Command="{TemplateBinding CloseCommand}"
                         CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                        IsEnabled="{Binding Path=(local:WindowXCaption.DisableCloseButton),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}"
                         Style="{Binding Path=(local:WindowXCaption.CloseButtonStyle),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
                 <Rectangle x:Name="RectMask"
                            Grid.RowSpan="2"
@@ -278,8 +278,7 @@
                            Grid.ColumnSpan="3"/>
                 <ContentControl x:Name="CcHeader"
                                 Foreground="{Binding Path=(local:WindowXCaption.Foreground),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}"
-                                Content="{Binding Path=(local:WindowXCaption.Header),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}"
-                                Margin="{Binding Path=(local:WindowXCaption.HeaderPadding),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
+                                Content="{Binding Path=(local:WindowXCaption.Header),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
                 <ContentControl x:Name="CcExtendControl"
                                 local:WindowX.IsDragMoveArea="False"
                                 Grid.Column="1"
@@ -296,6 +295,7 @@
                         Grid.Column="2"
                         Command="{TemplateBinding CloseCommand}"
                         CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                        IsEnabled="{Binding Path=(local:WindowXCaption.DisableCloseButton),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}"
                         Style="{Binding Path=(local:WindowXCaption.CloseButtonStyle),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
                 <Rectangle x:Name="RectMask"
                            Grid.RowSpan="2"
@@ -413,8 +413,6 @@
                 Value="{StaticResource {x:Static i:ResourceKeys.WindowXCaptionHeight}}" />
         <Setter Property="local:WindowXCaption.HorizontalHeaderAlignment"
                 Value="{StaticResource {x:Static i:ResourceKeys.WindowXCaptionHorizontalHeaderAlignment}}" />
-        <Setter Property="local:WindowXCaption.HeaderPadding"
-                Value="{StaticResource {x:Static i:ResourceKeys.WindowXCaptionHeaderPadding}}" />
         <Setter Property="local:WindowXCaption.MinimizeButtonStyle"
                 Value="{StaticResource {x:Static rs:ResourceKeys.WindowXMinimizeButtonStyle}}" />
         <Setter Property="local:WindowXCaption.MaximizeButtonStyle"

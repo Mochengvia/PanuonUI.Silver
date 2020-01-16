@@ -80,7 +80,6 @@
                      Color="#D64343" />
     <sys:Double x:Key="{x:Static i:ResourceKeys.WindowXCaptionHeight}">35.0</sys:Double>
     <local:HorizontalHeaderAlignment x:Key="{x:Static i:ResourceKeys.WindowXCaptionHorizontalHeaderAlignment}">Left</local:HorizontalHeaderAlignment>
-    <win2:Thickness x:Key="{x:Static i:ResourceKeys.WindowXCaptionHeaderPadding}">0</win2:Thickness>
 
     <!--Loading-->
     <SolidColorBrush x:Key="{x:Static i:ResourceKeys.LoadingForeground}">#3E3E3E</SolidColorBrush>
