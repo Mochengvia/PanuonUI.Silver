@@ -19,6 +19,11 @@
         </TextBlock>
     </pu:WindowXCaption.Header>
     <StackPanel Margin="0,15,0,0">
+        <StackPanel>
+            <Image MaxHeight="20"
+                   MaxWidth="40"
+                   Source="/Resources/test.jpg"/>
+        </StackPanel>
         <StackPanel Orientation="Horizontal"
                     Margin="0,0,0,5">
             <Button Content="Standard"
