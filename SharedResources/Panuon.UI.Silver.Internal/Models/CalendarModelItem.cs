@@ -7,7 +7,7 @@ namespace Panuon.UI.Silver.Internal.Models
 {
 
 
-    internal class CalendarItem : PropertyChangedBase
+    internal class CalendarModelItem : PropertyChangedBase
     {
 
         #region Properties

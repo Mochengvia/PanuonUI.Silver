@@ -10,6 +10,7 @@
     <!--Converters-->
     <icv:BoolToVisibleConverter x:Key="{x:Static i:ResourceKeys.BoolToVisibleConverter}" />
     <icv:BoolToCollapseConverter x:Key="{x:Static i:ResourceKeys.BoolToCollapseConverter}" />
+    <icv:TrueToFalseConverter x:Key="{x:Static i:ResourceKeys.TrueToFalseConverter}" />
     <icv:NullToCollapseConverter x:Key="{x:Static i:ResourceKeys.NullToCollapseConverter}" />
     <icv:NullOrEmptyToCollapseConverter x:Key="{x:Static i:ResourceKeys.NullOrEmptyToCollapseConverter}" />
     <icv:NullToVisibleConverter x:Key="{x:Static i:ResourceKeys.NullToVisibleConverter}" />

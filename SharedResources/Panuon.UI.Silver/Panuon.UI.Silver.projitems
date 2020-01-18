@@ -21,6 +21,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Clock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\DropDown.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -122,7 +126,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Components\MessageBoxXConfigurations.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Calendar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\CalendarItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Card.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Clock.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ClockItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\DropDown.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\FormGroup.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading.cs" />

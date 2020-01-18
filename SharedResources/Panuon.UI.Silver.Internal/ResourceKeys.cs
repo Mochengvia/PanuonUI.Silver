@@ -14,6 +14,8 @@ namespace Panuon.UI.Silver.Internal
 
         public static readonly string NullToVisibleConverter = nameof(NullToVisibleConverter);
 
+        public static readonly string TrueToFalseConverter = nameof(TrueToFalseConverter);
+        
         public static readonly string NullOrEmptyToVisibleConverter = nameof(NullOrEmptyToVisibleConverter);
 
         public static readonly string NullToCollapseConverter = nameof(NullToCollapseConverter);

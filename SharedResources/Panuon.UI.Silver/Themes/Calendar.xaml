@@ -12,7 +12,7 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="{x:Static rs:ResourceKeys.CalendarItemStyle}"
-           TargetType="RadioButton"
+           TargetType="{x:Type local:CalendarItem}"
            BasedOn="{StaticResource {x:Type RadioButton}}">
         <Setter Property="local:RadioButtonHelper.RadioButtonStyle"
                 Value="Button" />
@@ -155,7 +155,7 @@
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <RadioButton Style="{Binding CalendarItemStyle, RelativeSource={RelativeSource AncestorType=local:Calendar}, Mode=OneWay}"
+                                    <local:CalendarItem Style="{Binding CalendarItemStyle, RelativeSource={RelativeSource AncestorType=local:Calendar}, Mode=OneWay}"
                                                  GroupName="CALENDAR_GROUP_DAYS"
                                                  Tag="{Binding Value, Mode=OneWay}"
                                                  IsChecked="{Binding IsChecked, Mode=OneWay}"
@@ -192,7 +192,7 @@
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <RadioButton Style="{Binding CalendarItemStyle, RelativeSource={RelativeSource AncestorType=local:Calendar}, Mode=OneWay}"
+                                    <local:CalendarItem Style="{Binding CalendarItemStyle, RelativeSource={RelativeSource AncestorType=local:Calendar}, Mode=OneWay}"
                                                  GroupName="CALENDAR_GROUP_MONTHS"
                                                  Tag="{Binding Value, Mode=OneWay}"
                                                  IsChecked="{Binding IsChecked, Mode=OneWay}"
@@ -229,7 +229,7 @@
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <RadioButton Style="{Binding CalendarItemStyle, RelativeSource={RelativeSource AncestorType=local:Calendar}, Mode=OneWay}"
+                                    <local:CalendarItem Style="{Binding CalendarItemStyle, RelativeSource={RelativeSource AncestorType=local:Calendar}, Mode=OneWay}"
                                                  GroupName="CALENDAR_GROUP_YEARS"
                                                  Tag="{Binding Value, Mode=OneWay}"
                                                  IsChecked="{Binding IsChecked, Mode=OneWay}"

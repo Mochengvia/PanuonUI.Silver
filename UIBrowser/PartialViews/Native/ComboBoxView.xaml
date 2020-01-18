@@ -61,7 +61,7 @@
                                       Width="200"
                                       pu:ComboBoxHelper.SearchTextChanged="CmbCustom_SearchTextChanged">
                                 <ComboBoxItem Content="Item1"
-                                              IsSelected="True"/>
+                                              IsSelected="True" />
                                 <ComboBoxItem Content="Item2" />
                                 <ComboBoxItem Content="Item3" />
                                 <ComboBoxItem Content="Item4" />

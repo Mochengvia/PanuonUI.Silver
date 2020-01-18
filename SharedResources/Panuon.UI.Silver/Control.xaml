@@ -30,5 +30,6 @@
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/TabItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/DropDown.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/GroupBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Clock.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

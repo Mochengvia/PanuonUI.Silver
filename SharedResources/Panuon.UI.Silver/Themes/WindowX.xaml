@@ -165,7 +165,7 @@
                         Grid.Column="4"
                         Command="{TemplateBinding CloseCommand}"
                         CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                        IsEnabled="{Binding Path=(local:WindowXCaption.DisableCloseButton),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}"
+                        IsEnabled="{Binding Path=(local:WindowXCaption.DisableCloseButton), Converter={StaticResource {x:Static i:ResourceKeys.TrueToFalseConverter}}, RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}"
                         Style="{Binding Path=(local:WindowXCaption.CloseButtonStyle),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
                 <Rectangle x:Name="RectMask"
                            Grid.RowSpan="2"
@@ -295,7 +295,7 @@
                         Grid.Column="2"
                         Command="{TemplateBinding CloseCommand}"
                         CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                        IsEnabled="{Binding Path=(local:WindowXCaption.DisableCloseButton),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}"
+                        IsEnabled="{Binding Path=(local:WindowXCaption.DisableCloseButton), Converter={StaticResource {x:Static i:ResourceKeys.TrueToFalseConverter}},RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}"
                         Style="{Binding Path=(local:WindowXCaption.CloseButtonStyle),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
                 <Rectangle x:Name="RectMask"
                            Grid.RowSpan="2"

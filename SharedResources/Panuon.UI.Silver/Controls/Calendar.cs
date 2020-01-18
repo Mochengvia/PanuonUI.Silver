@@ -32,10 +32,10 @@ namespace Panuon.UI.Silver
         public Calendar()
         {
             AddHandler(RadioButton.ClickEvent, new RoutedEventHandler(OnRadioButtonClicked));
-            Days = new ObservableCollection<CalendarItem>();
-            Months = new ObservableCollection<CalendarItem>();
-            Years = new ObservableCollection<CalendarItem>();
-            Weeks = new ObservableCollection<CalendarItem>();
+            Days = new ObservableCollection<CalendarModelItem>();
+            Months = new ObservableCollection<CalendarModelItem>();
+            Years = new ObservableCollection<CalendarModelItem>();
+            Weeks = new ObservableCollection<CalendarModelItem>();
             Loaded += Calendar_Loaded;
         }
 
@@ -193,47 +193,47 @@ namespace Panuon.UI.Silver
         #region Internal Properties
 
         #region Days
-        internal ObservableCollection<CalendarItem> Days
+        internal ObservableCollection<CalendarModelItem> Days
         {
-            get { return (ObservableCollection<CalendarItem>)GetValue(DaysProperty); }
+            get { return (ObservableCollection<CalendarModelItem>)GetValue(DaysProperty); }
             set { SetValue(DaysProperty, value); }
         }
 
         internal static readonly DependencyProperty DaysProperty =
-            DependencyProperty.Register("Days", typeof(ObservableCollection<CalendarItem>), typeof(Calendar));
+            DependencyProperty.Register("Days", typeof(ObservableCollection<CalendarModelItem>), typeof(Calendar));
         #endregion
 
         #region Months
-        internal ObservableCollection<CalendarItem> Months
+        internal ObservableCollection<CalendarModelItem> Months
         {
-            get { return (ObservableCollection<CalendarItem>)GetValue(MonthsProperty); }
+            get { return (ObservableCollection<CalendarModelItem>)GetValue(MonthsProperty); }
             set { SetValue(MonthsProperty, value); }
         }
 
         internal static readonly DependencyProperty MonthsProperty =
-            DependencyProperty.Register("Months", typeof(ObservableCollection<CalendarItem>), typeof(Calendar));
+            DependencyProperty.Register("Months", typeof(ObservableCollection<CalendarModelItem>), typeof(Calendar));
         #endregion
 
         #region Years
-        internal ObservableCollection<CalendarItem> Years
+        internal ObservableCollection<CalendarModelItem> Years
         {
-            get { return (ObservableCollection<CalendarItem>)GetValue(YearsProperty); }
+            get { return (ObservableCollection<CalendarModelItem>)GetValue(YearsProperty); }
             set { SetValue(YearsProperty, value); }
         }
 
         internal static readonly DependencyProperty YearsProperty =
-            DependencyProperty.Register("Years", typeof(ObservableCollection<CalendarItem>), typeof(Calendar));
+            DependencyProperty.Register("Years", typeof(ObservableCollection<CalendarModelItem>), typeof(Calendar));
         #endregion
 
         #region Weeks
-        internal ObservableCollection<CalendarItem> Weeks
+        internal ObservableCollection<CalendarModelItem> Weeks
         {
-            get { return (ObservableCollection<CalendarItem>)GetValue(WeeksProperty); }
+            get { return (ObservableCollection<CalendarModelItem>)GetValue(WeeksProperty); }
             set { SetValue(WeeksProperty, value); }
         }
 
         internal static readonly DependencyProperty WeeksProperty =
-            DependencyProperty.Register("Weeks", typeof(ObservableCollection<CalendarItem>), typeof(Calendar));
+            DependencyProperty.Register("Weeks", typeof(ObservableCollection<CalendarModelItem>), typeof(Calendar));
         #endregion
 
         #region CurrentPanel
@@ -599,7 +599,7 @@ namespace Panuon.UI.Silver
             {
                 if (Weeks.Count <= i)
                 {
-                    var calendarItem = new CalendarItem()
+                    var calendarItem = new CalendarModelItem()
                     {
                         DisplayName = CultureInfo.CurrentCulture.DateTimeFormat.GetShortestDayName(daysOfWeek),
                     };
@@ -639,7 +639,7 @@ namespace Panuon.UI.Silver
             {
                 if (Days.Count <= i)
                 {
-                    var calendarItem = new CalendarItem()
+                    var calendarItem = new CalendarModelItem()
                     {
                         Value = date,
                         DisplayName = date.Day.ToString(),
@@ -669,7 +669,7 @@ namespace Panuon.UI.Silver
             {
                 if (Months.Count <= i)
                 {
-                    var calendarItem = new CalendarItem()
+                    var calendarItem = new CalendarModelItem()
                     {
                         Value = date,
                         DisplayName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(date.Month),
@@ -699,7 +699,7 @@ namespace Panuon.UI.Silver
             {
                 if (Years.Count <= i)
                 {
-                    var calendarItem = new CalendarItem()
+                    var calendarItem = new CalendarModelItem()
                     {
                         Value = date,
                         DisplayName = date.Year.ToString(),

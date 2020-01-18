@@ -449,25 +449,6 @@ namespace Panuon.UI.Silver
 
         #endregion
 
-        #region CanSearch
-
-
-        public static bool GetCanSearch(ComboBox comboBox)
-        {
-            return (bool)comboBox.GetValue(CanSearchProperty);
-        }
-
-        public static void SetCanSearch(ComboBox comboBox, bool value)
-        {
-            comboBox.SetValue(CanSearchProperty, value);
-        }
-
-        public static readonly DependencyProperty CanSearchProperty =
-            DependencyProperty.RegisterAttached("CanSearch", typeof(bool), typeof(ComboBoxHelper));
-
-
-        #endregion
-
         #region BindToEnum
 
 

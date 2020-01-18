@@ -19,5 +19,12 @@ namespace Panuon.UI.Silver.Core
         }
         #endregion
 
+        #region Time
+        public static DateTime Time(this DateTime dateTime)
+        {
+            return new DateTime(1, 1, 1, dateTime.Hour, dateTime.Minute, dateTime.Second);
+        }
+
+        #endregion
     }
 }

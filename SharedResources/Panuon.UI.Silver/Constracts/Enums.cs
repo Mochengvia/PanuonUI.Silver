@@ -218,6 +218,13 @@
         Year,
     }
 
+    public enum YearMonthDay
+    {
+        Year,
+        Month,
+        Day
+    }
+
     #endregion
 
     #region GroupBox
@@ -229,4 +236,14 @@
     }
 
     #endregion
+
+    #region Clock
+    public enum HourMinuteSecond
+    {
+        Hour,
+        Minute,
+        Second
+    }
+    #endregion
+
 }
