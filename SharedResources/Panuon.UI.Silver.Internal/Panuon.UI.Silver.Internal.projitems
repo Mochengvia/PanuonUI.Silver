@@ -12,6 +12,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Components\DisposableTimer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\IconControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MsgBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ClockConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CheckBoxConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ColorConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CombineConverter.cs" />

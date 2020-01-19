@@ -40,6 +40,8 @@ namespace Panuon.UI.Silver.Internal
 
         public static readonly string DividedBy2_5Converter = nameof(DividedBy2_5Converter);
 
+        public static readonly string DividedByMinus2Converter = nameof(DividedByMinus2Converter);
+
         public static readonly string DividedBy3Converter = nameof(DividedBy3Converter);
 
         public static readonly string DividedBy4Converter = nameof(DividedBy4Converter);
@@ -124,6 +126,8 @@ namespace Panuon.UI.Silver.Internal
         public static readonly string MsgBoxButtonIsDefaultConverter = nameof(MsgBoxButtonIsDefaultConverter);
 
         public static readonly string MsgBoxStackPanelFlowDirectionConverter = nameof(MsgBoxStackPanelFlowDirectionConverter);
+
+        public static readonly string ClockHourTextMarginConverter = nameof(ClockHourTextMarginConverter);
         
         #endregion
 
@@ -738,9 +742,13 @@ namespace Panuon.UI.Silver.Internal
 
         public static readonly string ComboBoxShadowColor = nameof(ComboBoxShadowColor);
 
-        public static readonly string ComboBoxToggleButtonTemplate = nameof(ComboBoxToggleButtonTemplate);
+        public static readonly string ComboBoxStandardToggleButtonTemplate = nameof(ComboBoxStandardToggleButtonTemplate);
 
-        public static readonly string ComboBoxToggleButtonStyle = nameof(ComboBoxToggleButtonStyle);
+        public static readonly string ComboBoxStandardToggleButtonStyle = nameof(ComboBoxStandardToggleButtonStyle);
+
+        public static readonly string ComboBoxSimpleToggleButtonTemplate = nameof(ComboBoxSimpleToggleButtonTemplate);
+
+        public static readonly string ComboBoxSimpleToggleButtonStyle = nameof(ComboBoxSimpleToggleButtonStyle);
 
         public static readonly string ComboBoxEditableTextBoxTemplate = nameof(ComboBoxEditableTextBoxTemplate);
 
@@ -934,6 +942,18 @@ namespace Panuon.UI.Silver.Internal
         public static readonly string CalendarHeaderPanelBackground = nameof(CalendarHeaderPanelBackground);
         #endregion
 
+        #region Clock
+        public static readonly string ClockTemplate = nameof(ClockTemplate);
+
+        public static readonly string ClockThemeBrush = nameof(ClockThemeBrush);
+
+        public static readonly string ClockBorderBrush = nameof(ClockBorderBrush);
+
+        public static readonly string ClockBorderThickness = nameof(ClockBorderThickness);
+
+        public static readonly string ClockBackground = nameof(ClockBackground);
+        #endregion
+
         #region GroupBox
         public static readonly string GroupBoxStandardTemplate = nameof(GroupBoxStandardTemplate);
 
@@ -960,5 +980,6 @@ namespace Panuon.UI.Silver.Internal
 
         public static readonly string GroupBoxFootnoteBackground = nameof(GroupBoxFootnoteBackground);
         #endregion
+
     }
 }

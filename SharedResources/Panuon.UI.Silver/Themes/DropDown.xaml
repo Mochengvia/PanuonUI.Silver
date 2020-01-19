@@ -108,5 +108,12 @@
                 Value="{StaticResource ToggleButtonStyle}" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static i:ResourceKeys.DropDownStandardTemplate}}" />
+        <Style.Triggers>
+            <Trigger Property="IsEnabled"
+                     Value="False">
+                <Setter Property="Opacity"
+                        Value="{StaticResource {x:Static rs:ResourceKeys.DisabledOpacity}}" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 </ResourceDictionary>

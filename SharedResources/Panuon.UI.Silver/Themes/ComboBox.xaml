@@ -10,7 +10,7 @@
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/ScrollViewer.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <ControlTemplate x:Key="{x:Static i:ResourceKeys.ComboBoxToggleButtonTemplate}"
+    <ControlTemplate x:Key="{x:Static i:ResourceKeys.ComboBoxStandardToggleButtonTemplate}"
                      TargetType="ToggleButton">
         <Grid Background="{TemplateBinding Background}">
             <Grid.ColumnDefinitions>
@@ -69,7 +69,7 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <Style x:Key="{x:Static i:ResourceKeys.ComboBoxToggleButtonStyle}"
+    <Style x:Key="{x:Static i:ResourceKeys.ComboBoxStandardToggleButtonStyle}"
            TargetType="ToggleButton">
         <Setter Property="Background"
                 Value="Transparent" />
@@ -82,7 +82,32 @@
         <Setter Property="HorizontalContentAlignment"
                 Value="Stretch" />
         <Setter Property="Template"
-                Value="{StaticResource {x:Static i:ResourceKeys.ComboBoxToggleButtonTemplate}}" />
+                Value="{StaticResource {x:Static i:ResourceKeys.ComboBoxStandardToggleButtonTemplate}}" />
+    </Style>
+
+    <ControlTemplate x:Key="{x:Static i:ResourceKeys.ComboBoxSimpleToggleButtonTemplate}"
+                     TargetType="ToggleButton">
+        <Grid Background="{TemplateBinding Background}">
+            <ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                              Margin="{TemplateBinding Padding}" />
+        </Grid>
+    </ControlTemplate>
+
+    <Style x:Key="{x:Static i:ResourceKeys.ComboBoxSimpleToggleButtonStyle}"
+           TargetType="ToggleButton">
+        <Setter Property="Background"
+                Value="Transparent" />
+        <Setter Property="Focusable"
+                Value="False" />
+        <Setter Property="ClickMode"
+                Value="Press" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Stretch" />
+        <Setter Property="Template"
+                Value="{StaticResource {x:Static i:ResourceKeys.ComboBoxSimpleToggleButtonTemplate}}" />
     </Style>
 
     <ControlTemplate x:Key="{x:Static i:ResourceKeys.ComboBoxEditableTextBoxTemplate}"
@@ -114,7 +139,7 @@
                     Background="{TemplateBinding Background}"
                     CornerRadius="{Binding Path=(local:ComboBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=ComboBox},Mode=OneWay}" />
             <ToggleButton x:Name="TgbContent"
-                          Style="{StaticResource {x:Static i:ResourceKeys.ComboBoxToggleButtonStyle}}"
+                          Style="{StaticResource {x:Static i:ResourceKeys.ComboBoxStandardToggleButtonStyle}}"
                           Foreground="{TemplateBinding Foreground}"
                           IsChecked="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
                 <Grid>
@@ -190,6 +215,12 @@
             </local:PopupX>
         </Grid>
         <ControlTemplate.Triggers>
+            <Trigger Property="local:ComboBoxHelper.ComboBoxStyle"
+                     Value="Simple">
+                <Setter TargetName="TgbContent"
+                        Property="Style"
+                        Value="{StaticResource {x:Static i:ResourceKeys.ComboBoxSimpleToggleButtonStyle}}" />
+            </Trigger>
             <DataTrigger Binding="{Binding ActualPlacement, ElementName=PopDropDown, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                          Value="Bottom">
                 <Setter TargetName="BdrDropDown"
@@ -263,5 +294,12 @@
         </Setter>
         <Setter Property="Template"
                 Value="{StaticResource {x:Static i:ResourceKeys.ComboBoxTemplate}}" />
+        <Style.Triggers>
+            <Trigger Property="IsEnabled"
+                     Value="False">
+                <Setter Property="Opacity"
+                        Value="{StaticResource {x:Static rs:ResourceKeys.DisabledOpacity}}" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 </ResourceDictionary>

@@ -264,6 +264,11 @@
                 <Setter Property="CaretBrush"
                         Value="{Binding Path=(local:TextBoxHelper.FocusedCaretBrush),RelativeSource={RelativeSource Self}, Mode=OneWay}" />
             </MultiDataTrigger>
+            <Trigger Property="IsEnabled"
+                     Value="False">
+                <Setter Property="Opacity"
+                        Value="{StaticResource {x:Static rs:ResourceKeys.DisabledOpacity}}" />
+            </Trigger>
         </Style.Triggers>
     </Style>
 

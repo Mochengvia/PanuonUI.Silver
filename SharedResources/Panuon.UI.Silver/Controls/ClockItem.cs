@@ -10,6 +10,11 @@ namespace Panuon.UI.Silver
     public class ClockItem : Control
     {
         #region Ctor
+        public ClockItem()
+        {
+            MouseLeftButtonDown += ClockItem_MouseLeftButtonDown;
+        }
+
         #endregion
 
         #region Properties
@@ -29,6 +34,25 @@ namespace Panuon.UI.Silver
 
         #region Internal Properties
 
+        #region Hooked
+        internal bool Hooked
+        {
+            get { return (bool)GetValue(HookedProperty); }
+            set { SetValue(HookedProperty, value); }
+        }
+
+        internal static readonly DependencyProperty HookedProperty =
+            DependencyProperty.Register("Hooked", typeof(bool), typeof(ClockItem));
+        #endregion
+
+        #endregion
+
+        #region Event Handler
+        private void ClockItem_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            var clockItem = sender as ClockItem;
+            clockItem.Hooked = !clockItem.Hooked;
+        }
         #endregion
 
         #region Methods

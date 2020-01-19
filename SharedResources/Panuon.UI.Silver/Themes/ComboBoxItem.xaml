@@ -116,8 +116,6 @@
     </ControlTemplate>
 
     <Style TargetType="ComboBoxItem">
-        <Setter Property="HorizontalContentAlignment"
-                Value="Stretch" />
         <Setter Property="local:ComboBoxHelper.ItemRemovable"
                 Value="{Binding Path=(local:ComboBoxHelper.ItemsRemovable), RelativeSource={RelativeSource AncestorType=ComboBox}}" />
         <Setter Property="local:ComboBoxHelper.ItemHoverBackground"
@@ -136,5 +134,12 @@
                 Value="{Binding Path=(local:ComboBoxHelper.ItemsHeight), RelativeSource={RelativeSource AncestorType=ComboBox}}" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static i:ResourceKeys.ComboBoxItemTemplate}}" />
+        <Style.Triggers>
+            <Trigger Property="IsEnabled"
+                     Value="False">
+                <Setter Property="Opacity"
+                        Value="{StaticResource {x:Static rs:ResourceKeys.DisabledOpacity}}" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 </ResourceDictionary>

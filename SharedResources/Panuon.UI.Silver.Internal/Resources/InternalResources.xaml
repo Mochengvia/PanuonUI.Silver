@@ -20,6 +20,7 @@
     <icv:IsNullOrEmptyConverter x:Key="{x:Static i:ResourceKeys.IsNullOrEmptyConverter}" />
     <icv:GridLengthConverter x:Key="{x:Static i:ResourceKeys.GridLengthConverter}" />
     <icv:DividedBy2Converter x:Key="{x:Static i:ResourceKeys.DividedBy2Converter}" />
+    <icv:DividedByMinus2Converter x:Key="{x:Static i:ResourceKeys.DividedByMinus2Converter}" />
     <icv:DividedBy2_5Converter x:Key="{x:Static i:ResourceKeys.DividedBy2_5Converter}" />
     <icv:DividedBy3Converter x:Key="{x:Static i:ResourceKeys.DividedBy3Converter}" />
     <icv:DividedBy4Converter x:Key="{x:Static i:ResourceKeys.DividedBy4Converter}" />
@@ -65,6 +66,7 @@
     <icv:MsgBoxButtonIsDefaultConverter x:Key="{x:Static i:ResourceKeys.MsgBoxButtonIsDefaultConverter}" />
     <icv:MsgBoxButtonVisibilityConverter x:Key="{x:Static i:ResourceKeys.MsgBoxButtonVisibilityConverter}" />
     <icv:MsgBoxStackPanelFlowDirectionConverter x:Key="{x:Static i:ResourceKeys.MsgBoxStackPanelFlowDirectionConverter}" />
+    <icv:ClockHourTextMarginConverter x:Key="{x:Static i:ResourceKeys.ClockHourTextMarginConverter}" />
     <!--======Common======-->
     <Color x:Key="{x:Static i:ResourceKeys.DefaultForegroundColor}">#3E3E3E</Color>
 
@@ -500,5 +502,14 @@
     <sys:Double x:Key="{x:Static i:ResourceKeys.CalendarHeaderPanelHeight}">40.0</sys:Double>
     <SolidColorBrush x:Key="{x:Static i:ResourceKeys.CalendarHeaderPanelBackground}" 
                      Color="Transparent"/>
+
+    <!--Clock-->
+    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.ClockBackground}"
+                     Color="Transparent" />
+    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.ClockThemeBrush}" 
+                     Color="#3E3E3E" />
+    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.ClockBorderBrush}"
+                     Color="Gray" />
+    <Thickness x:Key="{x:Static i:ResourceKeys.ClockBorderThickness}">2</Thickness>
 
 </ResourceDictionary>

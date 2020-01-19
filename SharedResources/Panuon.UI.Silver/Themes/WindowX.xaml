@@ -427,11 +427,8 @@
                 Value="{Binding Path=(local:WindowXCaption.CloseButtonStyle), RelativeSource={RelativeSource Self}}" />
         <Setter Property="local:WindowXCaption.Header"
                 Value="{StaticResource {x:Static i:ResourceKeys.WindowXDefaultHeader}}" />
-
         <Setter Property="Template"
                 Value="{StaticResource {x:Static i:ResourceKeys.WindowXTemplate}}" />
-
-
         <Style.Triggers>
             <Trigger Property="WindowStyle"
                      Value="ToolWindow">

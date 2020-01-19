@@ -467,6 +467,22 @@ namespace Panuon.UI.Silver
 
         #endregion
 
+        #region BindToNumberRange
+        public static ComboBoxNumberRange GetBindToNumberRange(DependencyObject obj)
+        {
+            return (ComboBoxNumberRange)obj.GetValue(BindToNumberRangeProperty);
+        }
+
+        public static void SetBindToNumberRange(DependencyObject obj, ComboBoxNumberRange value)
+        {
+            obj.SetValue(BindToNumberRangeProperty, value);
+        }
+
+        public static readonly DependencyProperty BindToNumberRangeProperty =
+            DependencyProperty.RegisterAttached("BindToNumberRange", typeof(ComboBoxNumberRange), typeof(ComboBoxHelper), new PropertyMetadata(OnNumberRangeChanged));
+
+        #endregion
+
         #endregion
 
         #region Commands
@@ -475,6 +491,44 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Event Handler
+
+        private static void OnNumberRangeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var comboBox = d as ComboBox;
+            var numberRange = e.NewValue as ComboBoxNumberRange;
+            if(numberRange == null)
+            {
+                comboBox.ItemsSource = null;
+                return;
+            }
+            if((numberRange.Max % 1) == 0 && (numberRange.Min % 1) == 0 && (numberRange.Interval % 1) == 0)
+            {
+                var dataList = new List<int>();
+                var max = (int)numberRange.Max;
+                var min = (int)numberRange.Min;
+                var interval = (int)numberRange.Interval;
+                for(var i = min; i <= max; i += interval)
+                {
+                    dataList.Add(i);
+                }
+                comboBox.ItemsSource = dataList;
+                comboBox.SelectedValuePath = ".";
+            }
+            else
+            {
+                var dataList = new List<double>();
+                var max = numberRange.Max;
+                var min = numberRange.Min;
+                var interval = numberRange.Interval;
+                for (var i = min; i <= max; i += interval)
+                {
+                    dataList.Add(i);
+                }
+                comboBox.ItemsSource = dataList;
+                comboBox.SelectedValuePath = ".";
+            }
+        }
+
         private static void OnComboBoxItemMouseEnter(object sender, RoutedEventArgs e)
         {
             var button = sender as ComboBoxItem;

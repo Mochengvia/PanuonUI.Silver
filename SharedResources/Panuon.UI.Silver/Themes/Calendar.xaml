@@ -524,5 +524,12 @@
                 Value="{StaticResource {x:Static i:ResourceKeys.CalendarHeaderPanelHeight}}" />
         <Setter Property="HeaderPanelBackground"
                 Value="{StaticResource {x:Static i:ResourceKeys.CalendarHeaderPanelBackground}}" />
+        <Style.Triggers>
+            <Trigger Property="IsEnabled"
+                     Value="False">
+                <Setter Property="Opacity"
+                        Value="{StaticResource {x:Static rs:ResourceKeys.DisabledOpacity}}" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 </ResourceDictionary>

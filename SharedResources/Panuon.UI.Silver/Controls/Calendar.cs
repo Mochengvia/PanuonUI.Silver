@@ -362,7 +362,9 @@ namespace Panuon.UI.Silver
             {
                 var minDate = (DateTime)calendar.MinDate;
                 if (maxDate < minDate)
+                {
                     return minDate;
+                }
             }
             return maxDate;
         }

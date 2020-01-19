@@ -34,6 +34,7 @@ namespace Panuon.UI.Silver.Internal.Converters
             return DependencyProperty.UnsetValue;
         }
     }
+
     internal class DividedBy10Converter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
@@ -124,6 +125,20 @@ namespace Panuon.UI.Silver.Internal.Converters
         {
             var doubleValue = value as double? ?? 0;
             return doubleValue / 2.5;
+        }
+
+        public object ConvertBack(object value, Type targetTypes, object parameter, CultureInfo culture)
+        {
+            return DependencyProperty.UnsetValue;
+        }
+    }
+
+    internal class DividedByMinus2Converter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var doubleValue = value as double? ?? 0;
+            return doubleValue / -2;
         }
 
         public object ConvertBack(object value, Type targetTypes, object parameter, CultureInfo culture)

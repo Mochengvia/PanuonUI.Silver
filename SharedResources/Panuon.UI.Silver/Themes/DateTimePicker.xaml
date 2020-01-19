@@ -1,0 +1,43 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver"
+                    xmlns:i="clr-namespace:Panuon.UI.Silver.Internal"
+                    xmlns:ic="clr-namespace:Panuon.UI.Silver.Internal.Controls"
+                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/InternalResources.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Resources.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Calendar.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Clock.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <ControlTemplate x:Key="DateTimePickerTemplate"
+                     TargetType="{x:Type local:DateTimePicker}">
+        <Grid>
+            <Border x:Name="BdrMain"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}">
+                <ContentControl Content="{Binding SelectedDateTime, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                ContentTemplate="{TemplateBinding TextTemplate}"
+                                ContentTemplateSelector="{TemplateBinding TextTemplateSelector}" />
+            </Border>
+            <local:PopupX  Placement="{Binding Path=(local:ComboBoxHelper.DropDownPlacement),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
+                           IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                           PartnerElement="{Binding ElementName=TgbContent}"
+                           AllowsTransparency="True"
+                           Focusable="False"
+                           PopupAnimation="Slide"
+                           Height="{TemplateBinding DropDownHeight}"
+                           Width="{TemplateBinding DropDownWidth}">
+
+            </local:PopupX>
+        </Grid>
+    </ControlTemplate>
+
+    <Style TargetType="local:DateTimePicker">
+
+        <Setter Property="Template"
+                Value="{StaticResource DateTimePickerTemplate}" />
+    </Style>
+</ResourceDictionary>

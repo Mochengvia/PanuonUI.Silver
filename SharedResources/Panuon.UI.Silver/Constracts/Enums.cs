@@ -178,7 +178,7 @@
     public enum ComboBoxStyle
     {
         Standard,
-        Classic
+        Simple
     }
     #endregion
 
@@ -244,6 +244,13 @@
         Minute,
         Second
     }
+
+    public enum TimePeriod 
+    {
+        AM,
+        PM
+    }
+
     #endregion
 
-}
+    }

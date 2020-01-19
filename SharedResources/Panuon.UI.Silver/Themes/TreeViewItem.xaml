@@ -214,7 +214,11 @@
                 <Setter Property="Foreground"
                         Value="{Binding Path=(local:TreeViewHelper.ItemSelectedForeground),RelativeSource={RelativeSource Self}, Mode=OneWay}" />
             </MultiDataTrigger>
-
+            <Trigger Property="IsEnabled"
+                     Value="False">
+                <Setter Property="Opacity"
+                        Value="{StaticResource {x:Static rs:ResourceKeys.DisabledOpacity}}" />
+            </Trigger>
         </Style.Triggers>
     </Style>
 </ResourceDictionary>

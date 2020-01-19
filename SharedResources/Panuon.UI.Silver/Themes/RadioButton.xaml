@@ -613,7 +613,8 @@
             <ContentPresenter x:Name="Presenter"
                               RecognizesAccessKey="True"
                               VerticalAlignment="Center"
-                              HorizontalAlignment="Center" />
+                              HorizontalAlignment="Center"
+                              Margin="{TemplateBinding Padding}" />
         </Grid>
         <ControlTemplate.Triggers>
             <MultiDataTrigger>
@@ -706,11 +707,13 @@
     <ControlTemplate x:Key="{x:Static i:ResourceKeys.RadioButtonSelectorTemplate}"
                      TargetType="RadioButton">
         <Grid x:Name="GrdMain"
-              Background="Transparent">
+              Background="Transparent"
+             >
             <ContentPresenter x:Name="Presenter"
                               RecognizesAccessKey="True"
                               VerticalAlignment="Center"
-                              HorizontalAlignment="Center" />
+                              HorizontalAlignment="Center"
+                              Margin="{TemplateBinding Padding}" />
             <Border x:Name="BdrRaw"
                     BorderThickness="{TemplateBinding BorderThickness}"
                     BorderBrush="{TemplateBinding BorderBrush}"
