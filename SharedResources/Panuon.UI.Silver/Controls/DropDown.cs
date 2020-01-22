@@ -10,6 +10,13 @@ namespace Panuon.UI.Silver
 {
     public class DropDown : ContentControl
     {
+        #region Ctor
+        static DropDown()
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(DropDown), new FrameworkPropertyMetadata(typeof(DropDown)));
+        }
+        #endregion
+
         #region Properties
 
         #region ContentContainerStyle

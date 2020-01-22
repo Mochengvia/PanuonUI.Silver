@@ -31,7 +31,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\VisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\CalendarModelItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\NeonNext.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ResourceKeys.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Resources\ResourceKeys.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TemplateSelectors\IconControlDataTemplateSelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\DateTimeUtils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\GridLengthUtils.cs" />

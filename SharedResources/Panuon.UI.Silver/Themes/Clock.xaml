@@ -8,50 +8,15 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/InternalResources.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Resources.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/ClockItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/RadioButton.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <ControlTemplate x:Key="ClockItemTemplate"
-                     TargetType="local:ClockItem">
-        <Rectangle Fill="{TemplateBinding Foreground}"
-                   Width="{TemplateBinding Width}"
-                   Height="{TemplateBinding Height}" />
-    </ControlTemplate>
+    <Style x:Key="{x:Static rs:ResourceKeys.ClockItemStyle}"
+           TargetType="local:ClockItem" 
+           BasedOn="{StaticResource {x:Type local:ClockItem}}" />
 
-    <Style TargetType="local:ClockItem">
-        <Setter Property="Cursor"
-                Value="Hand" />
-        <Setter Property="Template"
-                Value="{StaticResource ClockItemTemplate}" />
-        <Style.Triggers>
-            <Trigger Property="Hand"
-                     Value="Hour">
-                <Setter Property="Width"
-                        Value="3" />
-                <Setter Property="Height"
-                        Value="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy5Converter}}, RelativeSource={RelativeSource AncestorType=local:Clock}, Mode=OneWay}" />
-            </Trigger>
-            <Trigger Property="Hand"
-                     Value="Minute">
-                <Setter Property="Width"
-                        Value="2" />
-                <Setter Property="Height"
-                        Value="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy4Converter}}, RelativeSource={RelativeSource AncestorType=local:Clock}, Mode=OneWay}" />
-            </Trigger>
-            <Trigger Property="Hand"
-                     Value="Second">
-                <Setter Property="Foreground"
-                        Value="Red" />
-                <Setter Property="Width"
-                        Value="1" />
-                <Setter Property="Height"
-                        Value="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy3Converter}}, RelativeSource={RelativeSource AncestorType=local:Clock}, Mode=OneWay}" />
-            </Trigger>
-        </Style.Triggers>
-
-    </Style>
-
-    <Style x:Key="ClockHourTextBlock"
+    <Style x:Key="{x:Static i:ResourceKeys.ClockHourTextBlock}"
            TargetType="TextBlock">
         <Setter Property="VerticalAlignment"
                 Value="Center" />
@@ -59,10 +24,17 @@
                 Value="Center" />
     </Style>
 
-    <Style x:Key="ClockRadioButtonStyle"
+    <Style x:Key="{x:Static rs:ResourceKeys.ClockTimeTimeInputTextBoxStyle}"
+           TargetType="TextBox">
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Center" />
+    </Style>
+    
+    <Style x:Key="{x:Static rs:ResourceKeys.ClockTimePeriodRadioButtonStyle}"
            TargetType="RadioButton"
            BasedOn="{StaticResource {x:Type RadioButton}}">
-
         <Setter Property="local:RadioButtonHelper.RadioButtonStyle"
                 Value="Button" />
         <Style.Triggers>
@@ -85,10 +57,7 @@
                 <RowDefinition />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
+            
             <Border x:Name="BdrDial">
                 <Grid VerticalAlignment="Center"
                       HorizontalAlignment="Center">
@@ -118,7 +87,8 @@
                              StrokeThickness="{Binding BorderThickness, Converter={StaticResource {x:Static i:ResourceKeys.ThicknessToDoubleConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                     <local:ClockItem RenderTransformOrigin="0.5,0.5"
                                      HorizontalAlignment="Center"
-                                     Hand="Hour">
+                                     Hand="Hour"
+                                     Hooked="{Binding IsHourHandHooked, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
                         <local:ClockItem.RenderTransform>
                             <TransformGroup>
                                 <TranslateTransform Y="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.DividedByMinus2Converter}}, RelativeSource={RelativeSource AncestorType=local:ClockItem}, Mode=OneWay}" />
@@ -128,7 +98,8 @@
                     </local:ClockItem>
                     <local:ClockItem RenderTransformOrigin="0.5,0.5"
                                      HorizontalAlignment="Center"
-                                     Hand="Minute">
+                                     Hand="Minute"
+                                     Hooked="{Binding IsMinuteHandHooked, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
                         <local:ClockItem.RenderTransform>
                             <TransformGroup>
                                 <TranslateTransform Y="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.DividedByMinus2Converter}}, RelativeSource={RelativeSource AncestorType=local:ClockItem}, Mode=OneWay}" />
@@ -138,7 +109,8 @@
                     </local:ClockItem>
                     <local:ClockItem RenderTransformOrigin="0.5,0.5"
                                      HorizontalAlignment="Center"
-                                     Hand="Second">
+                                     Hand="Second"
+                                     Hooked="{Binding IsSecondHandHooked, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
                         <local:ClockItem.RenderTransform>
                             <TransformGroup>
                                 <TranslateTransform Y="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.DividedByMinus2Converter}}, RelativeSource={RelativeSource AncestorType=local:ClockItem}, Mode=OneWay}" />
@@ -147,7 +119,7 @@
                         </local:ClockItem.RenderTransform>
                     </local:ClockItem>
                     <TextBlock Text="12"
-                               Style="{StaticResource ClockHourTextBlock}">
+                               Style="{StaticResource {x:Static i:ResourceKeys.ClockHourTextBlock}}">
                         <TextBlock.Margin>
                             <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.ClockHourTextMarginConverter}}"
                                           ConverterParameter="12">
@@ -161,7 +133,7 @@
                         </TextBlock.Margin>
                     </TextBlock>
                     <TextBlock Text="11"
-                               Style="{StaticResource ClockHourTextBlock}">
+                               Style="{StaticResource {x:Static i:ResourceKeys.ClockHourTextBlock}}">
                         <TextBlock.Margin>
                             <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.ClockHourTextMarginConverter}}"
                                           ConverterParameter="11">
@@ -175,7 +147,7 @@
                         </TextBlock.Margin>
                     </TextBlock>
                     <TextBlock Text="10"
-                               Style="{StaticResource ClockHourTextBlock}">
+                               Style="{StaticResource {x:Static i:ResourceKeys.ClockHourTextBlock}}">
                         <TextBlock.Margin>
                             <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.ClockHourTextMarginConverter}}"
                                           ConverterParameter="10">
@@ -189,7 +161,7 @@
                         </TextBlock.Margin>
                     </TextBlock>
                     <TextBlock Text="9"
-                               Style="{StaticResource ClockHourTextBlock}">
+                               Style="{StaticResource {x:Static i:ResourceKeys.ClockHourTextBlock}}">
                         <TextBlock.Margin>
                             <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.ClockHourTextMarginConverter}}"
                                           ConverterParameter="9">
@@ -203,7 +175,7 @@
                         </TextBlock.Margin>
                     </TextBlock>
                     <TextBlock Text="8"
-                               Style="{StaticResource ClockHourTextBlock}">
+                               Style="{StaticResource {x:Static i:ResourceKeys.ClockHourTextBlock}}">
                         <TextBlock.Margin>
                             <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.ClockHourTextMarginConverter}}"
                                           ConverterParameter="8">
@@ -217,7 +189,7 @@
                         </TextBlock.Margin>
                     </TextBlock>
                     <TextBlock Text="7"
-                               Style="{StaticResource ClockHourTextBlock}">
+                               Style="{StaticResource {x:Static i:ResourceKeys.ClockHourTextBlock}}">
                         <TextBlock.Margin>
                             <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.ClockHourTextMarginConverter}}"
                                           ConverterParameter="7">
@@ -231,7 +203,7 @@
                         </TextBlock.Margin>
                     </TextBlock>
                     <TextBlock Text="6"
-                               Style="{StaticResource ClockHourTextBlock}">
+                               Style="{StaticResource {x:Static i:ResourceKeys.ClockHourTextBlock}}">
                         <TextBlock.Margin>
                             <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.ClockHourTextMarginConverter}}"
                                           ConverterParameter="6">
@@ -245,7 +217,7 @@
                         </TextBlock.Margin>
                     </TextBlock>
                     <TextBlock Text="5"
-                               Style="{StaticResource ClockHourTextBlock}">
+                               Style="{StaticResource {x:Static i:ResourceKeys.ClockHourTextBlock}}">
                         <TextBlock.Margin>
                             <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.ClockHourTextMarginConverter}}"
                                           ConverterParameter="5">
@@ -259,7 +231,7 @@
                         </TextBlock.Margin>
                     </TextBlock>
                     <TextBlock Text="4"
-                               Style="{StaticResource ClockHourTextBlock}">
+                               Style="{StaticResource {x:Static i:ResourceKeys.ClockHourTextBlock}}">
                         <TextBlock.Margin>
                             <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.ClockHourTextMarginConverter}}"
                                           ConverterParameter="4">
@@ -273,7 +245,7 @@
                         </TextBlock.Margin>
                     </TextBlock>
                     <TextBlock Text="3"
-                               Style="{StaticResource ClockHourTextBlock}">
+                               Style="{StaticResource {x:Static i:ResourceKeys.ClockHourTextBlock}}">
                         <TextBlock.Margin>
                             <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.ClockHourTextMarginConverter}}"
                                           ConverterParameter="3">
@@ -287,7 +259,7 @@
                         </TextBlock.Margin>
                     </TextBlock>
                     <TextBlock Text="2"
-                               Style="{StaticResource ClockHourTextBlock}">
+                               Style="{StaticResource {x:Static i:ResourceKeys.ClockHourTextBlock}}">
                         <TextBlock.Margin>
                             <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.ClockHourTextMarginConverter}}"
                                           ConverterParameter="2">
@@ -301,7 +273,7 @@
                         </TextBlock.Margin>
                     </TextBlock>
                     <TextBlock Text="1"
-                               Style="{StaticResource ClockHourTextBlock}">
+                               Style="{StaticResource {x:Static i:ResourceKeys.ClockHourTextBlock}}">
                         <TextBlock.Margin>
                             <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.ClockHourTextMarginConverter}}"
                                           ConverterParameter="1">
@@ -320,49 +292,60 @@
                              Height="10"
                              Width="10" />
                 </Grid>
-
             </Border>
-            <StackPanel Grid.Column="1"
-                        VerticalAlignment="Center"
+            <StackPanel HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
                         Margin="5,0,0,0"
                         Visibility="{Binding CanSelectTimePeriod, Converter={StaticResource {x:Static i:ResourceKeys.BoolToVisibleConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                 <RadioButton x:Name="PART_RdbAM"
                              Content="AM"
-                             Style="{StaticResource ClockRadioButtonStyle}" />
+                             Style="{TemplateBinding TimePeriodStyle}" />
                 <RadioButton x:Name="PART_RdbPM"
                              Content="PM"
-                             Style="{StaticResource ClockRadioButtonStyle}" />
+                             Style="{TemplateBinding TimePeriodStyle}" />
             </StackPanel>
             <StackPanel Grid.Row="1"
                         Orientation="Horizontal"
                         HorizontalAlignment="Center"
                         Margin="0,5,0,0"
                         Visibility="{Binding CanInputTime, Converter={StaticResource {x:Static i:ResourceKeys.BoolToVisibleConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-                <TextBox local:TextBoxHelper.FocusedShadowColor="{x:Null}"
-                         BorderThickness="0"
-                         HorizontalContentAlignment="Center"
+                <TextBox Style="{TemplateBinding TimeInputStyle}"
                          Text="{Binding Hour, RelativeSource={RelativeSource AncestorType=local:Clock}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat='00'}" />
                 <TextBlock Text=":"
                            VerticalAlignment="Center" />
-                <TextBox local:TextBoxHelper.FocusedShadowColor="{x:Null}"
-                         BorderThickness="0"
-                         HorizontalContentAlignment="Center"
+                <TextBox Style="{TemplateBinding TimeInputStyle}"
                          Text="{Binding Minute, RelativeSource={RelativeSource AncestorType=local:Clock}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat='00'}" />
                 <TextBlock Text=":"
                            VerticalAlignment="Center" />
-                <TextBox local:TextBoxHelper.FocusedShadowColor="{x:Null}"
-                         BorderThickness="0"
-                         HorizontalContentAlignment="Center"
+                <TextBox Style="{TemplateBinding TimeInputStyle}"
                          Text="{Binding Second, RelativeSource={RelativeSource AncestorType=local:Clock}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat='00'}" />
             </StackPanel>
         </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="TimePeriod"
+                     Value="AM">
+                <Setter TargetName="PART_RdbAM"
+                        Property="IsChecked"
+                        Value="True" />
+            </Trigger>
+            <Trigger Property="TimePeriod"
+                     Value="PM">
+                <Setter TargetName="PART_RdbPM"
+                        Property="IsChecked"
+                        Value="True" />
+            </Trigger>
+        </ControlTemplate.Triggers>
     </ControlTemplate>
 
     <Style TargetType="local:Clock">
         <Setter Property="CanInputTime"
-                Value="False" />
+                Value="True" />
         <Setter Property="CanSelectTimePeriod"
-                Value="False" />
+                Value="True" />
+        <Setter Property="TimeInputStyle"
+                Value="{StaticResource {x:Static rs:ResourceKeys.ClockTimeTimeInputTextBoxStyle}}" />
+        <Setter Property="TimePeriodStyle"
+                Value="{StaticResource {x:Static rs:ResourceKeys.ClockTimePeriodRadioButtonStyle}}"/>
         <Setter Property="Background"
                 Value="{StaticResource {x:Static i:ResourceKeys.ClockBackground}}" />
         <Setter Property="ThemeBrush"

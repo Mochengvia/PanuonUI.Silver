@@ -12,23 +12,17 @@ namespace Panuon.UI.Silver
 {
     public class Clock : Control
     {
-        #region Fields
-        private RadioButton _amRadioButton;
-
-        private RadioButton _pmRadioButton;
-
-        private ClockItem _hourClockItem;
-
-        private ClockItem _minuteClockItem;
-
-        private ClockItem _secondClockItem;
-        #endregion
-
         #region Ctor
+        static Clock()
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(Clock), new FrameworkPropertyMetadata(typeof(Clock)));
+        }
+
         public Clock()
         {
             AddHandler(ClockItem.MouseLeftButtonDownEvent, new RoutedEventHandler(OnClockItemMouseLeftDown));
             AddHandler(RadioButton.ClickEvent, new RoutedEventHandler(OnRadioButtonClicked));
+            MouseDown += Clock_MouseDown;
             MouseMove += Clock_MouseMove;
             Loaded += Clock_Loaded;
         }
@@ -102,6 +96,17 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("TimeInputStyle", typeof(Style), typeof(Clock));
 
 
+        #endregion
+
+        #region TimePeriodStyle
+        public Style TimePeriodStyle
+        {
+            get { return (Style)GetValue(TimePeriodStyleProperty); }
+            set { SetValue(TimePeriodStyleProperty, value); }
+        }
+
+        public static readonly DependencyProperty TimePeriodStyleProperty =
+            DependencyProperty.Register("TimePeriodStyle", typeof(Style), typeof(Clock));
         #endregion
 
         #region ClockItemStyle
@@ -189,7 +194,7 @@ namespace Panuon.UI.Silver
         }
 
         internal static readonly DependencyProperty HourProperty =
-            DependencyProperty.Register("Hour", typeof(int), typeof(Clock), new PropertyMetadata(1, OnHourChanged, OnHourCoerceValue));
+            DependencyProperty.Register("Hour", typeof(int), typeof(Clock), new PropertyMetadata(0, OnHourChanged, OnHourCoerceValue));
         #endregion
 
         #region MinuteAngle
@@ -215,7 +220,7 @@ namespace Panuon.UI.Silver
         }
 
         internal static readonly DependencyProperty MinuteProperty =
-            DependencyProperty.Register("Minute", typeof(int), typeof(Clock), new PropertyMetadata(1, OnMinuteChanged, OnMinuteCoerceValue));
+            DependencyProperty.Register("Minute", typeof(int), typeof(Clock), new PropertyMetadata(0, OnMinuteChanged, OnMinuteCoerceValue));
 
         #endregion
 
@@ -238,7 +243,48 @@ namespace Panuon.UI.Silver
         }
 
         internal static readonly DependencyProperty SecondProperty =
-            DependencyProperty.Register("Second", typeof(int), typeof(Clock), new PropertyMetadata(1, OnSecondChanged, OnSecondCoerceValue));
+            DependencyProperty.Register("Second", typeof(int), typeof(Clock), new PropertyMetadata(0, OnSecondChanged, OnSecondCoerceValue));
+        #endregion
+
+        #region IsHourHandHooked
+
+
+        internal bool IsHourHandHooked
+        {
+            get { return (bool)GetValue(IsHourHandHookedProperty); }
+            set { SetValue(IsHourHandHookedProperty, value); }
+        }
+
+        internal static readonly DependencyProperty IsHourHandHookedProperty =
+            DependencyProperty.Register("IsHourHandHooked", typeof(bool), typeof(Clock));
+
+
+        #endregion
+
+        #region IsMinuteHandHooked
+
+
+        internal bool IsMinuteHandHooked
+        {
+            get { return (bool)GetValue(IsMinuteHandHookedProperty); }
+            set { SetValue(IsMinuteHandHookedProperty, value); }
+        }
+
+        internal static readonly DependencyProperty IsMinuteHandHookedProperty =
+            DependencyProperty.Register("IsMinuteHandHooked", typeof(bool), typeof(Clock));
+
+
+        #endregion
+
+        #region IsSecondHandHooked
+        internal bool IsSecondHandHooked
+        {
+            get { return (bool)GetValue(IsSecondHandHookedProperty); }
+            set { SetValue(IsSecondHandHookedProperty, value); }
+        }
+
+        internal static readonly DependencyProperty IsSecondHandHookedProperty =
+            DependencyProperty.Register("IsSecondHandHooked", typeof(bool), typeof(Clock));
         #endregion
 
         #endregion
@@ -334,7 +380,6 @@ namespace Panuon.UI.Silver
             {
                 return;
             }
-
             switch (radioButton.Name)
             {
                 case "PART_RdbPM":
@@ -349,10 +394,6 @@ namespace Panuon.UI.Silver
         private static void OnTimePeriodChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var clock = d as Clock;
-            if (!clock.IsLoaded)
-            {
-                return;
-            }
             clock.UpdatePeriods();
         }
 
@@ -364,7 +405,7 @@ namespace Panuon.UI.Silver
             if (angle < 0)
                 angle += 360;
 
-            if (_hourClockItem.Hooked)
+            if (IsHourHandHooked)
             {
                 var percent = angle / 30;
                 var hour = Math.Floor(percent);
@@ -373,7 +414,7 @@ namespace Panuon.UI.Silver
                 hour = TimePeriod == TimePeriod.AM ? hour : hour + 12;
                 SelectedTime = new DateTime(1, 1, 1, (int)hour, SelectedTime.Minute, SelectedTime.Second);
             }
-            else if (_minuteClockItem.Hooked)
+            else if (IsMinuteHandHooked)
             {
                 var percent = angle / 6;
                 var minute = Math.Floor(percent);
@@ -381,7 +422,7 @@ namespace Panuon.UI.Silver
                 minute = minute >= 60 ? 0 : minute;
                 SelectedTime = new DateTime(1, 1, 1, SelectedTime.Hour, (int)minute, SelectedTime.Second);
             }
-            else if (_secondClockItem.Hooked)
+            else if (IsSecondHandHooked)
             {
                 var percent = angle / 6;
                 var second = Math.Floor(percent);
@@ -393,33 +434,30 @@ namespace Panuon.UI.Silver
 
         private void Clock_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if(e.Source is ClockItem) 
+            var element = e.OriginalSource as FrameworkElement;
+            if(element != null && (element is ClockItem || VisualTreeHelper.GetParent(element) is ClockItem))
             {
                 return;
             }
-            _hourClockItem.Hooked = false;
-            _minuteClockItem.Hooked = false;
-            _secondClockItem.Hooked = false;
+
+            IsHourHandHooked = false;
+            IsMinuteHandHooked = false;
+            IsSecondHandHooked = false;
 
         }
 
         private void Clock_Loaded(object sender, RoutedEventArgs e)
         {
-            var grdDial = VisualTreeHelper.GetChild(VisualTreeHelper.GetChild(VisualTreeHelper.GetChild(this, 0), 0), 0) as Grid;
-            grdDial.MouseDown += Clock_MouseDown;
-            _hourClockItem = VisualTreeHelper.GetChild(grdDial, 1) as ClockItem;
-            _minuteClockItem = VisualTreeHelper.GetChild(grdDial, 2) as ClockItem; 
-            _secondClockItem = VisualTreeHelper.GetChild(grdDial, 3) as ClockItem;
-            var stkPeriod = VisualTreeHelper.GetChild(VisualTreeHelper.GetChild(this, 0), 1) as StackPanel;
-            _amRadioButton = VisualTreeHelper.GetChild(stkPeriod, 0) as RadioButton;
-            _pmRadioButton = VisualTreeHelper.GetChild(stkPeriod, 1) as RadioButton;
             UpdateClock(SelectedTime);
-            UpdatePeriods();
         }
 
         private static object OnMinTimeCoerceValue(DependencyObject d, object baseValue)
         {
             var clock = d as Clock;
+            if (baseValue == null)
+            {
+                return null;
+            }
             var minTime = (DateTime)baseValue;
             if (clock.MaxTime != null)
             {
@@ -438,6 +476,10 @@ namespace Panuon.UI.Silver
         private static object OnMaxTimeCoerceValue(DependencyObject d, object baseValue)
         {
             var clock = d as Clock;
+            if(baseValue== null)
+            {
+                return null;
+            }
             var maxTime = (DateTime)baseValue;
             if (clock.MinTime != null)
             {
@@ -480,12 +522,7 @@ namespace Panuon.UI.Silver
             clock.Minute = newTime.Minute;
             clock.Second = newTime.Second;
             clock.TimePeriod = newTime.Hour >= 12 ? TimePeriod.PM : TimePeriod.AM;
-            if (!clock.IsLoaded)
-            {
-                return;
-            }
             clock.UpdateClock(newTime);
-            clock.UpdatePeriods();
             clock.RaiseSelectedTimeChanged(newTime);
         }
 
@@ -513,10 +550,6 @@ namespace Panuon.UI.Silver
             switch (TimePeriod)
             {
                 case TimePeriod.AM:
-                    if (_amRadioButton.IsChecked != true)
-                    {
-                        _amRadioButton.IsChecked = true;
-                    }
                     if(hour >= 12)
                     {
                         hour -= 12;
@@ -524,10 +557,6 @@ namespace Panuon.UI.Silver
                     }
                     break;
                 case TimePeriod.PM:
-                    if (_pmRadioButton.IsChecked != true)
-                    {
-                        _pmRadioButton.IsChecked = true;
-                    }
                     if(hour < 12)
                     {
                         hour += 12;

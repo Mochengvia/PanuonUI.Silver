@@ -85,19 +85,25 @@ namespace Panuon.UI.Silver
                 _popupHandle = ((HwndSource)PresentationSource.FromVisual(this.Child)).Handle;
             }
             _parentWindow = Window.GetWindow(this);
-            _parentWindow.LocationChanged -= ParentWindow_LocationChanged;
-            _parentWindow.LocationChanged += ParentWindow_LocationChanged;
-            _parentWindow.PreviewMouseDown -= Window_PreviewMouseDown;
-            _parentWindow.PreviewMouseDown += Window_PreviewMouseDown;
 
+            if (_parentWindow != null)
+            {
+                _parentWindow.LocationChanged -= ParentWindow_LocationChanged;
+                _parentWindow.LocationChanged += ParentWindow_LocationChanged;
+                _parentWindow.PreviewMouseDown -= Window_PreviewMouseDown;
+                _parentWindow.PreviewMouseDown += Window_PreviewMouseDown;
+            }
             UpdateActualPlacement();
             base.OnOpened(e);
         }
 
         protected override void OnClosed(EventArgs e)
         {
-            _parentWindow.LocationChanged -= ParentWindow_LocationChanged;
-            _parentWindow.PreviewMouseDown -= Window_PreviewMouseDown;
+            if(_parentWindow != null)
+            {
+                _parentWindow.LocationChanged -= ParentWindow_LocationChanged;
+                _parentWindow.PreviewMouseDown -= Window_PreviewMouseDown;
+            }
             base.OnClosed(e);
         }
 

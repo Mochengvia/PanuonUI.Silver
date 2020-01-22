@@ -7,8 +7,8 @@
             xmlns:local="clr-namespace:UIBrowser.Views"
             mc:Ignorable="d"
             Title="MainView"
-            Height="450"
-            Width="800">
+            Height="700"
+            Width="1200">
     <pu:WindowXCaption.Header>
         <TextBlock VerticalAlignment="Center"
                    FontSize="20"
@@ -150,12 +150,14 @@
                          pu:PasswordBoxHelper.Watermark="尝试在此输入123"
                          PasswordChanged="PasswordBox_PasswordChanged" />
         </StackPanel>
-        <pu:Clock x:Name="Clock"
-                  Width="170"
-                  Height="150"
-                  SelectedTime="1-1-1 6:5:4" />
-        <TextBlock Text="{Binding SelectedTime, ElementName=Clock, Mode=OneWay}"/>
-
+        <pu:DateTimePicker Height="30"
+                           Width="280" />
+                                  
+        <Grid Margin="0,5,0,0"
+              Width="40"
+              Height="5"
+              Background="Red">
+        </Grid>
     </StackPanel>
 
 </pu:WindowX>

@@ -9,20 +9,139 @@
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Resources.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Calendar.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Clock.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/ClockItem.xaml" />
     </ResourceDictionary.MergedDictionaries>
+
+    <ControlTemplate x:Key="DateTimePickerStandardToggleButtonTemplate"
+                     TargetType="ToggleButton">
+        <Grid Background="{TemplateBinding Background}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                              Margin="{TemplateBinding Padding}" />
+            <Grid Grid.Column="1"
+                  Width="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.Minus3Converter}},RelativeSource={RelativeSource Self},Mode=OneWay}">
+                <TextBlock x:Name="TxtArrowDown"
+                           Text="&#xe720;"
+                           FontFamily="{StaticResource PanuonIconFont}"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center" />
+                <TextBlock x:Name="TxtArrowUp"
+                           Opacity="0"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Text="&#xe71e;"
+                           FontFamily="{StaticResource PanuonIconFont}" />
+            </Grid>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsChecked"
+                     Value="True">
+                <Trigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="TxtArrowDown"
+                                             Storyboard.TargetProperty="Opacity"
+                                             To="0"
+                                             Duration="0:0:0.2"></DoubleAnimation>
+                            <DoubleAnimation Storyboard.TargetName="TxtArrowUp"
+                                             Storyboard.TargetProperty="Opacity"
+                                             To="1"
+                                             Duration="0:0:0.2"></DoubleAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="TxtArrowDown"
+                                             Storyboard.TargetProperty="Opacity"
+                                             Duration="0:0:0.2"></DoubleAnimation>
+                            <DoubleAnimation Storyboard.TargetName="TxtArrowUp"
+                                             Storyboard.TargetProperty="Opacity"
+                                             Duration="0:0:0.2"></DoubleAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.ExitActions>
+            </Trigger>
+
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style x:Key="DateTimePickerStandardToggleButtonStyle"
+           TargetType="ToggleButton">
+        <Setter Property="Background"
+                Value="Transparent" />
+        <Setter Property="Focusable"
+                Value="False" />
+        <Setter Property="ClickMode"
+                Value="Press" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Stretch" />
+        <Setter Property="Template"
+                Value="{StaticResource DateTimePickerStandardToggleButtonTemplate}" />
+    </Style>
+
+    <ControlTemplate x:Key="DateTimePickerEditableTextBoxTemplate"
+                     TargetType="TextBox">
+        <ScrollViewer x:Name="PART_ContentHost"
+                      VerticalAlignment="Stretch"
+                      VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                      HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                      VerticalScrollBarVisibility="{TemplateBinding VerticalScrollBarVisibility}"
+                      HorizontalScrollBarVisibility="{TemplateBinding HorizontalScrollBarVisibility}" />
+    </ControlTemplate>
 
     <ControlTemplate x:Key="DateTimePickerTemplate"
                      TargetType="{x:Type local:DateTimePicker}">
         <Grid>
-            <Border x:Name="BdrMain"
+            <Border x:Name="BdrBorder"
                     BorderBrush="{TemplateBinding BorderBrush}"
                     BorderThickness="{TemplateBinding BorderThickness}"
-                    CornerRadius="{TemplateBinding CornerRadius}">
-                <ContentControl Content="{Binding SelectedDateTime, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                ContentTemplate="{TemplateBinding TextTemplate}"
-                                ContentTemplateSelector="{TemplateBinding TextTemplateSelector}" />
-            </Border>
-            <local:PopupX  Placement="{Binding Path=(local:ComboBoxHelper.DropDownPlacement),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
+                    Background="{TemplateBinding Background}"
+                    CornerRadius="{TemplateBinding CornerRadius}" />
+            <ToggleButton x:Name="TgbContent"
+                          Style="{StaticResource DateTimePickerStandardToggleButtonStyle}"
+                          Foreground="{TemplateBinding Foreground}"
+                          IsChecked="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <ic:IconControl x:Name="IcIcon"
+                                    Width="{Binding Path=(local:IconHelper.Width),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                    Height="{Binding Path=(local:IconHelper.Height),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                    MinWidth="{Binding Path=(local:IconHelper.MinWidth),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                    MinHeight="{Binding Path=(local:IconHelper.MinHeight),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                    MaxWidth="{Binding Path=(local:IconHelper.MaxWidth),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                    MaxHeight="{Binding Path=(local:IconHelper.MaxHeight),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                    Margin="{Binding Path=(local:IconHelper.Margin),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                    Visibility="{Binding Icon,Converter={StaticResource {x:Static i:ResourceKeys.NullToCollapseConverter}},RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                    Content="{Binding Icon,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                    Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                    FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                    FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center" />
+                    <Grid Margin="{TemplateBinding Padding}"
+                          Grid.Column="1"
+                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+                        <ContentPresenter x:Name="ContentSite"
+                                          Content="{TemplateBinding SelectedDateTime}"
+                                          ContentTemplate="{TemplateBinding TextTemplate}"
+                                          ContentTemplateSelector="{TemplateBinding TextTemplateSelector}"
+                                          VerticalAlignment="Center" />
+                    </Grid>
+                </Grid>
+            </ToggleButton>
+            <local:PopupX  Placement="{TemplateBinding DropDownPlacement}"
                            IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
                            PartnerElement="{Binding ElementName=TgbContent}"
                            AllowsTransparency="True"
@@ -30,14 +149,155 @@
                            PopupAnimation="Slide"
                            Height="{TemplateBinding DropDownHeight}"
                            Width="{TemplateBinding DropDownWidth}">
-
+                <Border x:Name="BdrDropDown"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding DropDownCornerRadius}"
+                        Margin="0,0,0,5">
+                    <Border.Effect>
+                        <DropShadowEffect Color="{Binding ShadowColor, Converter={StaticResource {x:Static i:ResourceKeys.NullableColorToColorConverter}},RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
+                                          BlurRadius="5"
+                                          ShadowDepth="0" />
+                    </Border.Effect>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition x:Name="CdCalendar"/>
+                            <ColumnDefinition x:Name="CdCSepartor"
+                                              Width="1" />
+                            <ColumnDefinition x:Name="CdClock"
+                                              />
+                        </Grid.ColumnDefinitions>
+                        <local:Calendar x:Name="CdrCalendar"
+                                        Style="{TemplateBinding CalendarStyle}"
+                                        MaxDate="{Binding MaxDateTime, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                        MinDate="{Binding MinDateTime, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                        SelectedDate="{Binding SelectedDate, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" 
+                                        ThemeBrush="{TemplateBinding ThemeBrush}"/>
+                        <local:Separator x:Name="SptSeparator"
+                                   Grid.Column="1"
+                                   Margin="0,10"
+                                   Alignment="Right"
+                                   Width="1"
+                                   Brush="{TemplateBinding BorderBrush}" />
+                        <local:Clock x:Name="ClkClock"
+                                     Grid.Column="2"
+                                     Margin="10"
+                                     MaxTime="{Binding MaxDateTime, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                     MinTime="{Binding MinDateTime, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                     SelectedTime="{Binding SelectedTime, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                     ThemeBrush="{TemplateBinding ThemeBrush}" />
+                    </Grid>
+                </Border>
             </local:PopupX>
         </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="DateTimePickerMode"
+                     Value="Date">
+                <Setter TargetName="CdCSepartor"
+                        Property="Width"
+                        Value="0" />
+                <Setter TargetName="CdClock"
+                        Property="Width"
+                        Value="0" />
+                <Setter TargetName="ClkClock"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="SptSeparator"
+                        Property="Visibility"
+                        Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="DateTimePickerMode"
+                     Value="Time">
+                <Setter TargetName="CdCSepartor"
+                        Property="Width"
+                        Value="0" />
+                <Setter TargetName="CdCalendar"
+                        Property="Width"
+                        Value="0" />
+                <Setter TargetName="CdrCalendar"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="SptSeparator"
+                        Property="Visibility"
+                        Value="Collapsed" />
+            </Trigger>
+        </ControlTemplate.Triggers>
     </ControlTemplate>
 
     <Style TargetType="local:DateTimePicker">
+        <Setter Property="ThemeBrush"
+                Value="#3E3E3E" />
+        <Setter Property="Background"
+                Value="White" />
+        <Setter Property="BorderBrush"
+                Value="LightGray" />
+        <Setter Property="BorderThickness"
+                Value="1" />
+        <Setter Property="Padding"
+                Value="5,0,0,0" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Stretch" />
+        <Setter Property="DropDownWidth"
+                Value="560" />
+        <Setter Property="DropDownHeight"
+                Value="280" />
+        <Setter Property="CalendarStyle">
+            <Setter.Value>
+                <Style TargetType="{x:Type local:Calendar}"
+                       BasedOn="{StaticResource {x:Type local:Calendar}}">
+                    <Setter Property="BorderThickness"
+                            Value="0" />
+                </Style>
 
+            </Setter.Value>
+        </Setter>
+        <Setter Property="TextTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock x:Name="TxtText"
+                               Text="{Binding StringFormat='dd/MM/yyyy HH:mm:ss'}"
+                               VerticalAlignment="Center" />
+                    <DataTemplate.Triggers>
+                        <DataTrigger Binding="{Binding DateTimePickerMode, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}}"
+                                     Value="Calendar">
+                            <Setter TargetName="TxtText"
+                                    Property="Text"
+                                    Value="{Binding StringFormat='dd/MM/yyyy'}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding DateTimePickerMode, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}}"
+                                     Value="Clock">
+                            <Setter TargetName="TxtText"
+                                    Property="Text"
+                                    Value="{Binding StringFormat='HH:mm:ss'}" />
+                        </DataTrigger>
+                    </DataTemplate.Triggers>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
         <Setter Property="Template"
                 Value="{StaticResource DateTimePickerTemplate}" />
+        <Style.Triggers>
+            <Trigger Property="DateTimePickerMode"
+                     Value="Date">
+                <Setter Property="DropDownWidth"
+                        Value="280" />
+                <Setter Property="DropDownHeight"
+                        Value="280" />
+            </Trigger>
+            <Trigger Property="DateTimePickerMode"
+                     Value="Time">
+                <Setter Property="DropDownWidth"
+                        Value="280" />
+                <Setter Property="DropDownHeight"
+                        Value="280" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 </ResourceDictionary>

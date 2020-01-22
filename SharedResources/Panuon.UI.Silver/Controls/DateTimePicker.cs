@@ -4,15 +4,43 @@ using System.Text;
 using System.Windows.Controls;
 using System.Windows;
 using Panuon.UI.Silver.Core;
+using System.Windows.Media;
 
 namespace Panuon.UI.Silver
 {
     public class DateTimePicker : Control
     {
         #region Ctor
+        static DateTimePicker()
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(DateTimePicker), new FrameworkPropertyMetadata(typeof(DateTimePicker)));
+        }
         #endregion
 
         #region Properties
+        #region DateTimePickerMode
+        public DateTimePickerMode DateTimePickerMode
+        {
+            get { return (DateTimePickerMode)GetValue(DateTimePickerModeProperty); }
+            set { SetValue(DateTimePickerModeProperty, value); }
+        }
+
+        public static readonly DependencyProperty DateTimePickerModeProperty =
+            DependencyProperty.Register("DateTimePickerMode", typeof(DateTimePickerMode), typeof(DateTimePicker));
+        #endregion
+
+        #region Icon
+
+
+        public object Icon
+        {
+            get { return (object)GetValue(IconProperty); }
+            set { SetValue(IconProperty, value); }
+        }
+
+        public static readonly DependencyProperty IconProperty =
+            DependencyProperty.Register("Icon", typeof(object), typeof(DateTimePicker));
+        #endregion
 
         #region DropDownPlacement
         public DropDownPlacement DropDownPlacement
@@ -22,7 +50,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty DropDownPlacementProperty =
-            DependencyProperty.Register("DropDownPlacement", typeof(DropDownPlacement), typeof(DateTimePicker));
+            DependencyProperty.Register("DropDownPlacement", typeof(DropDownPlacement), typeof(DateTimePicker), new PropertyMetadata(DropDownPlacement.BottomRight));
         #endregion
 
         #region TextTemplate
@@ -94,15 +122,15 @@ namespace Panuon.UI.Silver
 
         #endregion
 
-        #region IsOpen
-        public bool IsOpen
+        #region IsDropDownOpen
+        public bool IsDropDownOpen
         {
-            get { return (bool)GetValue(IsOpenProperty); }
-            set { SetValue(IsOpenProperty, value); }
+            get { return (bool)GetValue(IsDropDownOpenProperty); }
+            set { SetValue(IsDropDownOpenProperty, value); }
         }
 
-        public static readonly DependencyProperty IsOpenProperty =
-            DependencyProperty.Register("IsOpen", typeof(bool), typeof(DateTimePicker));
+        public static readonly DependencyProperty IsDropDownOpenProperty =
+            DependencyProperty.Register("IsDropDownOpen", typeof(bool), typeof(DateTimePicker));
         #endregion
 
         #region DropDownHeight
@@ -158,6 +186,17 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty ClockStyleProperty =
             DependencyProperty.Register("ClockStyle", typeof(Style), typeof(DateTimePicker));
+        #endregion
+
+        #region ThemeBrush
+        public Brush ThemeBrush
+        {
+            get { return (Brush)GetValue(ThemeBrushProperty); }
+            set { SetValue(ThemeBrushProperty, value); }
+        }
+
+        public static readonly DependencyProperty ThemeBrushProperty =
+            DependencyProperty.Register("ThemeBrush", typeof(Brush), typeof(DateTimePicker));
         #endregion
 
         #endregion

@@ -943,6 +943,8 @@ namespace Panuon.UI.Silver.Internal
         #endregion
 
         #region Clock
+        public static readonly string ClockItemTemplate = nameof(ClockItemTemplate);
+
         public static readonly string ClockTemplate = nameof(ClockTemplate);
 
         public static readonly string ClockThemeBrush = nameof(ClockThemeBrush);
@@ -952,6 +954,8 @@ namespace Panuon.UI.Silver.Internal
         public static readonly string ClockBorderThickness = nameof(ClockBorderThickness);
 
         public static readonly string ClockBackground = nameof(ClockBackground);
+
+        public static readonly string ClockHourTextBlock = nameof(ClockHourTextBlock);
         #endregion
 
         #region GroupBox

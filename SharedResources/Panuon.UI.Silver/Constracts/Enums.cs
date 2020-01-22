@@ -245,7 +245,7 @@
         Second
     }
 
-    public enum TimePeriod 
+    public enum TimePeriod
     {
         AM,
         PM
@@ -253,4 +253,23 @@
 
     #endregion
 
+    #region DateTimePicker
+    public enum DateTimePickerMode
+    {
+        DateTime,
+        Date,
+        Time
     }
+    #endregion
+
+    #region Separator
+    public enum Alignment
+    {
+        Top,
+        Bottom,
+        Left,
+        Right,
+    }
+    #endregion
+
+}

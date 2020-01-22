@@ -156,13 +156,13 @@
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <local:CalendarItem Style="{Binding CalendarItemStyle, RelativeSource={RelativeSource AncestorType=local:Calendar}, Mode=OneWay}"
-                                                 GroupName="CALENDAR_GROUP_DAYS"
-                                                 Tag="{Binding Value, Mode=OneWay}"
-                                                 IsChecked="{Binding IsChecked, Mode=OneWay}"
-                                                 IsEnabled="{Binding IsEnabled, Mode=OneWay}"
-                                                 Content="{Binding DisplayName, Mode=OneWay}"
-                                                 Height="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy7Converter}}, ElementName=GrdDays, Mode=OneWay}"
-                                                 Width="{Binding ActualWidth, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy7Converter}}, ElementName=GrdDays, Mode=OneWay}" />
+                                                        GroupName="CALENDAR_GROUP_DAYS"
+                                                        Tag="{Binding Value, Mode=OneWay}"
+                                                        IsChecked="{Binding IsChecked, Mode=OneWay}"
+                                                        IsEnabled="{Binding IsEnabled, Mode=OneWay}"
+                                                        Content="{Binding DisplayName, Mode=OneWay}"
+                                                        Height="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy7Converter}}, ElementName=GrdDays, Mode=OneWay}"
+                                                        Width="{Binding ActualWidth, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy7Converter}}, ElementName=GrdDays, Mode=OneWay}" />
                                     <DataTemplate.Triggers>
                                         <DataTrigger Binding="{Binding IsNotCurrentMonth}"
                                                      Value="True">
@@ -173,7 +173,6 @@
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
-
                     </Grid>
                     <Grid x:Name="GrdMonths"
                           Grid.Row="1"
@@ -230,13 +229,13 @@
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <local:CalendarItem Style="{Binding CalendarItemStyle, RelativeSource={RelativeSource AncestorType=local:Calendar}, Mode=OneWay}"
-                                                 GroupName="CALENDAR_GROUP_YEARS"
-                                                 Tag="{Binding Value, Mode=OneWay}"
-                                                 IsChecked="{Binding IsChecked, Mode=OneWay}"
-                                                 IsEnabled="{Binding IsEnabled, Mode=OneWay}"
-                                                 Content="{Binding DisplayName, Mode=OneWay}"
-                                                 Height="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy5Converter}}, ElementName=GrdYears, Mode=OneWay}"
-                                                 Width="{Binding ActualWidth, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy3Converter}}, ElementName=GrdYears, Mode=OneWay}" />
+                                                        GroupName="CALENDAR_GROUP_YEARS"
+                                                        Tag="{Binding Value, Mode=OneWay}"
+                                                        IsChecked="{Binding IsChecked, Mode=OneWay}"
+                                                        IsEnabled="{Binding IsEnabled, Mode=OneWay}"
+                                                        Content="{Binding DisplayName, Mode=OneWay}"
+                                                        Height="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy5Converter}}, ElementName=GrdYears, Mode=OneWay}"
+                                                        Width="{Binding ActualWidth, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy3Converter}}, ElementName=GrdYears, Mode=OneWay}" />
                                     <DataTemplate.Triggers>
                                         <DataTrigger Binding="{Binding IsNotCurrentMonth}"
                                                      Value="True">
@@ -249,262 +248,284 @@
                         </ItemsControl>
 
                     </Grid>
-
                 </Grid>
             </Grid>
         </Border>
-        <ControlTemplate.Resources>
-            <Storyboard x:Key="CALENDAR_STORYBOARD_DAYTOMONTH">
-                <DoubleAnimation Storyboard.TargetName="ScaleDays"
-                                 Storyboard.TargetProperty="ScaleX"
-                                 From="1"
-                                 To="0.75"
-                                 Duration="0:0:0.2">
-                </DoubleAnimation>
-                <DoubleAnimation Storyboard.TargetName="ScaleDays"
-                                 Storyboard.TargetProperty="ScaleY"
-                                 From="1"
-                                 To="0.75"
-                                 Duration="0:0:0.2">
-                </DoubleAnimation>
-                <DoubleAnimation Storyboard.TargetName="GrdDays"
-                                 Storyboard.TargetProperty="Opacity"
-                                 From="1"
-                                 To="0"
-                                 Duration="0:0:0.2">
-                </DoubleAnimation>
-                <DoubleAnimation Storyboard.TargetName="ScaleMonths"
-                                 Storyboard.TargetProperty="ScaleX"
-                                 From="1.5"
-                                 To="1"
-                                 BeginTime="0:0:0.2"
-                                 Duration="0:0:0.3">
-                    <DoubleAnimation.EasingFunction>
-                        <CircleEase EasingMode="EaseOut" />
-                    </DoubleAnimation.EasingFunction>
-                </DoubleAnimation>
-                <DoubleAnimation Storyboard.TargetName="ScaleMonths"
-                                 Storyboard.TargetProperty="ScaleY"
-                                 From="1.5"
-                                 To="1"
-                                 BeginTime="0:0:0.2"
-                                 Duration="0:0:0.3">
-                    <DoubleAnimation.EasingFunction>
-                        <CircleEase EasingMode="EaseOut" />
-                    </DoubleAnimation.EasingFunction>
-                </DoubleAnimation>
-                <DoubleAnimation Storyboard.TargetName="GrdMonths"
-                                 Storyboard.TargetProperty="Opacity"
-                                 From="0"
-                                 To="1"
-                                 BeginTime="0:0:0.2"
-                                 Duration="0:0:0.3">
-                    <DoubleAnimation.EasingFunction>
-                        <CircleEase EasingMode="EaseOut" />
-                    </DoubleAnimation.EasingFunction>
-                </DoubleAnimation>
-                <ObjectAnimationUsingKeyFrames BeginTime="00:00:00"
-                                               Storyboard.TargetName="GrdDays"
-                                               Storyboard.TargetProperty="(UIElement.Visibility)">
-                    <DiscreteObjectKeyFrame KeyTime="0:0:0"
-                                            Value="{x:Static Visibility.Visible}" />
-                    <DiscreteObjectKeyFrame KeyTime="0:0:0.2"
-                                            Value="{x:Static Visibility.Collapsed}" />
-                </ObjectAnimationUsingKeyFrames>
-                <ObjectAnimationUsingKeyFrames BeginTime="0:0:0"
-                                               Storyboard.TargetName="GrdMonths"
-                                               Storyboard.TargetProperty="(UIElement.Visibility)">
-                    <DiscreteObjectKeyFrame KeyTime="0:0:0.2"
-                                            Value="{x:Static Visibility.Visible}" />
-                </ObjectAnimationUsingKeyFrames>
-            </Storyboard>
-            <Storyboard x:Key="CALENDAR_STORYBOARD_MONTHTODAY">
-                <DoubleAnimation Storyboard.TargetName="ScaleMonths"
-                                 Storyboard.TargetProperty="ScaleX"
-                                 From="1"
-                                 To="1.5"
-                                 Duration="0:0:0.2" />
-                <DoubleAnimation Storyboard.TargetName="ScaleMonths"
-                                 Storyboard.TargetProperty="ScaleY"
-                                 From="1"
-                                 To="1.5"
-                                 Duration="0:0:0.2" />
-                <DoubleAnimation Storyboard.TargetName="GrdMonths"
-                                 Storyboard.TargetProperty="Opacity"
-                                 From="1"
-                                 To="0"
-                                 Duration="0:0:0.2" />
-                <DoubleAnimation Storyboard.TargetName="ScaleDays"
-                                 Storyboard.TargetProperty="ScaleX"
-                                 From="0.75"
-                                 To="1"
-                                 BeginTime="0:0:0.2"
-                                 Duration="0:0:0.3">
-                    <DoubleAnimation.EasingFunction>
-                        <CircleEase EasingMode="EaseOut" />
-                    </DoubleAnimation.EasingFunction>
-                </DoubleAnimation>
-                <DoubleAnimation Storyboard.TargetName="ScaleDays"
-                                 Storyboard.TargetProperty="ScaleY"
-                                 From="0.75"
-                                 To="1"
-                                 BeginTime="0:0:0.2"
-                                 Duration="0:0:0.3">
-                    <DoubleAnimation.EasingFunction>
-                        <CircleEase EasingMode="EaseOut" />
-                    </DoubleAnimation.EasingFunction>
-                </DoubleAnimation>
-                <DoubleAnimation Storyboard.TargetName="GrdDays"
-                                 Storyboard.TargetProperty="Opacity"
-                                 From="0"
-                                 To="1"
-                                 BeginTime="0:0:0.2"
-                                 Duration="0:0:0.3">
-                    <DoubleAnimation.EasingFunction>
-                        <CircleEase EasingMode="EaseOut" />
-                    </DoubleAnimation.EasingFunction>
-                </DoubleAnimation>
-                <ObjectAnimationUsingKeyFrames BeginTime="00:00:00"
-                                               Storyboard.TargetName="GrdMonths"
-                                               Storyboard.TargetProperty="(UIElement.Visibility)">
-                    <DiscreteObjectKeyFrame KeyTime="0:0:0"
-                                            Value="{x:Static Visibility.Visible}" />
-                    <DiscreteObjectKeyFrame KeyTime="0:0:0.2"
-                                            Value="{x:Static Visibility.Collapsed}" />
-                </ObjectAnimationUsingKeyFrames>
-                <ObjectAnimationUsingKeyFrames BeginTime="0:0:0"
-                                               Storyboard.TargetName="GrdDays"
-                                               Storyboard.TargetProperty="(UIElement.Visibility)">
-                    <DiscreteObjectKeyFrame KeyTime="0:0:0.2"
-                                            Value="{x:Static Visibility.Visible}" />
-                </ObjectAnimationUsingKeyFrames>
-            </Storyboard>
-            <Storyboard x:Key="CALENDAR_STORYBOARD_MONTHTOYEAR">
-                <DoubleAnimation Storyboard.TargetName="ScaleMonths"
-                                 Storyboard.TargetProperty="ScaleX"
-                                 From="1"
-                                 To="0.75"
-                                 Duration="0:0:0.2">
-                </DoubleAnimation>
-                <DoubleAnimation Storyboard.TargetName="ScaleMonths"
-                                 Storyboard.TargetProperty="ScaleY"
-                                 From="1"
-                                 To="0.75"
-                                 Duration="0:0:0.2">
-                </DoubleAnimation>
-                <DoubleAnimation Storyboard.TargetName="GrdMonths"
-                                 Storyboard.TargetProperty="Opacity"
-                                 From="1"
-                                 To="0"
-                                 Duration="0:0:0.2">
-                </DoubleAnimation>
-                <DoubleAnimation Storyboard.TargetName="ScaleYears"
-                                 Storyboard.TargetProperty="ScaleX"
-                                 From="1.5"
-                                 To="1"
-                                 BeginTime="0:0:0.2"
-                                 Duration="0:0:0.3">
-                    <DoubleAnimation.EasingFunction>
-                        <CircleEase EasingMode="EaseOut" />
-                    </DoubleAnimation.EasingFunction>
-                </DoubleAnimation>
-                <DoubleAnimation Storyboard.TargetName="ScaleYears"
-                                 Storyboard.TargetProperty="ScaleY"
-                                 From="1.5"
-                                 To="1"
-                                 BeginTime="0:0:0.2"
-                                 Duration="0:0:0.3">
-                    <DoubleAnimation.EasingFunction>
-                        <CircleEase EasingMode="EaseOut" />
-                    </DoubleAnimation.EasingFunction>
-                </DoubleAnimation>
-                <DoubleAnimation Storyboard.TargetName="GrdYears"
-                                 Storyboard.TargetProperty="Opacity"
-                                 From="0"
-                                 To="1"
-                                 BeginTime="0:0:0.2"
-                                 Duration="0:0:0.3">
-                    <DoubleAnimation.EasingFunction>
-                        <CircleEase EasingMode="EaseOut" />
-                    </DoubleAnimation.EasingFunction>
-                </DoubleAnimation>
-                <ObjectAnimationUsingKeyFrames BeginTime="00:00:00"
-                                               Storyboard.TargetName="GrdMonths"
-                                               Storyboard.TargetProperty="(UIElement.Visibility)">
-                    <DiscreteObjectKeyFrame KeyTime="0:0:0"
-                                            Value="{x:Static Visibility.Visible}" />
-                    <DiscreteObjectKeyFrame KeyTime="0:0:0.2"
-                                            Value="{x:Static Visibility.Collapsed}" />
-                </ObjectAnimationUsingKeyFrames>
-                <ObjectAnimationUsingKeyFrames BeginTime="0:0:0"
-                                               Storyboard.TargetName="GrdYears"
-                                               Storyboard.TargetProperty="(UIElement.Visibility)">
-                    <DiscreteObjectKeyFrame KeyTime="0:0:0.2"
-                                            Value="{x:Static Visibility.Visible}" />
-                </ObjectAnimationUsingKeyFrames>
-            </Storyboard>
-            <Storyboard x:Key="CALENDAR_STORYBOARD_YEARTOMONTH">
-                <DoubleAnimation Storyboard.TargetName="ScaleYears"
-                                 Storyboard.TargetProperty="ScaleX"
-                                 From="1"
-                                 To="1.5"
-                                 Duration="0:0:0.2" />
-                <DoubleAnimation Storyboard.TargetName="ScaleYears"
-                                 Storyboard.TargetProperty="ScaleY"
-                                 From="1"
-                                 To="1.5"
-                                 Duration="0:0:0.2" />
-                <DoubleAnimation Storyboard.TargetName="GrdYears"
-                                 Storyboard.TargetProperty="Opacity"
-                                 From="1"
-                                 To="0"
-                                 Duration="0:0:0.2" />
-                <DoubleAnimation Storyboard.TargetName="ScaleMonths"
-                                 Storyboard.TargetProperty="ScaleX"
-                                 From="0.75"
-                                 To="1"
-                                 BeginTime="0:0:0.2"
-                                 Duration="0:0:0.3">
-                    <DoubleAnimation.EasingFunction>
-                        <CircleEase EasingMode="EaseOut" />
-                    </DoubleAnimation.EasingFunction>
-                </DoubleAnimation>
-                <DoubleAnimation Storyboard.TargetName="ScaleMonths"
-                                 Storyboard.TargetProperty="ScaleY"
-                                 From="0.75"
-                                 To="1"
-                                 BeginTime="0:0:0.2"
-                                 Duration="0:0:0.3">
-                    <DoubleAnimation.EasingFunction>
-                        <CircleEase EasingMode="EaseOut" />
-                    </DoubleAnimation.EasingFunction>
-                </DoubleAnimation>
-                <DoubleAnimation Storyboard.TargetName="GrdMonths"
-                                 Storyboard.TargetProperty="Opacity"
-                                 From="0"
-                                 To="1"
-                                 BeginTime="0:0:0.2"
-                                 Duration="0:0:0.3">
-                    <DoubleAnimation.EasingFunction>
-                        <CircleEase EasingMode="EaseOut" />
-                    </DoubleAnimation.EasingFunction>
-                </DoubleAnimation>
-                <ObjectAnimationUsingKeyFrames BeginTime="00:00:00"
-                                               Storyboard.TargetName="GrdYears"
-                                               Storyboard.TargetProperty="(UIElement.Visibility)">
-                    <DiscreteObjectKeyFrame KeyTime="0:0:0"
-                                            Value="{x:Static Visibility.Visible}" />
-                    <DiscreteObjectKeyFrame KeyTime="0:0:0.2"
-                                            Value="{x:Static Visibility.Collapsed}" />
-                </ObjectAnimationUsingKeyFrames>
-                <ObjectAnimationUsingKeyFrames BeginTime="0:0:0"
-                                               Storyboard.TargetName="GrdMonths"
-                                               Storyboard.TargetProperty="(UIElement.Visibility)">
-                    <DiscreteObjectKeyFrame KeyTime="0:0:0.2"
-                                            Value="{x:Static Visibility.Visible}" />
-                </ObjectAnimationUsingKeyFrames>
-            </Storyboard>
-        </ControlTemplate.Resources>
+        <ControlTemplate.Triggers>
+            <Trigger Property="SelectionMode"
+                     Value="Year">
+                <Setter TargetName="BtnMonth"
+                        Property="Visibility"
+                        Value="Collapsed" />
+            </Trigger>
+            <EventTrigger RoutedEvent="local:Calendar.DayPanelToMonth">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetName="ScaleDays"
+                                         Storyboard.TargetProperty="ScaleX"
+                                         From="1"
+                                         To="0.75"
+                                         Duration="0:0:0.2">
+                        </DoubleAnimation>
+                        <DoubleAnimation Storyboard.TargetName="ScaleDays"
+                                         Storyboard.TargetProperty="ScaleY"
+                                         From="1"
+                                         To="0.75"
+                                         Duration="0:0:0.2">
+                        </DoubleAnimation>
+                        <DoubleAnimation Storyboard.TargetName="GrdDays"
+                                         Storyboard.TargetProperty="Opacity"
+                                         From="1"
+                                         To="0"
+                                         Duration="0:0:0.2">
+                        </DoubleAnimation>
+                        <DoubleAnimation Storyboard.TargetName="ScaleMonths"
+                                         Storyboard.TargetProperty="ScaleX"
+                                         From="1.5"
+                                         To="1"
+                                         BeginTime="0:0:0.2"
+                                         Duration="0:0:0.3">
+                            <DoubleAnimation.EasingFunction>
+                                <CircleEase EasingMode="EaseOut" />
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                        <DoubleAnimation Storyboard.TargetName="ScaleMonths"
+                                         Storyboard.TargetProperty="ScaleY"
+                                         From="1.5"
+                                         To="1"
+                                         BeginTime="0:0:0.2"
+                                         Duration="0:0:0.3">
+                            <DoubleAnimation.EasingFunction>
+                                <CircleEase EasingMode="EaseOut" />
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                        <DoubleAnimation Storyboard.TargetName="GrdMonths"
+                                         Storyboard.TargetProperty="Opacity"
+                                         From="0"
+                                         To="1"
+                                         BeginTime="0:0:0.2"
+                                         Duration="0:0:0.3">
+                            <DoubleAnimation.EasingFunction>
+                                <CircleEase EasingMode="EaseOut" />
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                        <ObjectAnimationUsingKeyFrames BeginTime="00:00:00"
+                                                       Storyboard.TargetName="GrdDays"
+                                                       Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="0:0:0"
+                                                    Value="{x:Static Visibility.Visible}" />
+                            <DiscreteObjectKeyFrame KeyTime="0:0:0.2"
+                                                    Value="{x:Static Visibility.Collapsed}" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames BeginTime="0:0:0"
+                                                       Storyboard.TargetName="GrdMonths"
+                                                       Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="0:0:0.2"
+                                                    Value="{x:Static Visibility.Visible}" />
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="local:Calendar.MonthPanelToDay">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetName="ScaleMonths"
+                                         Storyboard.TargetProperty="ScaleX"
+                                         From="1"
+                                         To="1.5"
+                                         Duration="0:0:0.2" />
+                        <DoubleAnimation Storyboard.TargetName="ScaleMonths"
+                                         Storyboard.TargetProperty="ScaleY"
+                                         From="1"
+                                         To="1.5"
+                                         Duration="0:0:0.2" />
+                        <DoubleAnimation Storyboard.TargetName="GrdMonths"
+                                         Storyboard.TargetProperty="Opacity"
+                                         From="1"
+                                         To="0"
+                                         Duration="0:0:0.2" />
+                        <DoubleAnimation Storyboard.TargetName="ScaleDays"
+                                         Storyboard.TargetProperty="ScaleX"
+                                         From="0.75"
+                                         To="1"
+                                         BeginTime="0:0:0.2"
+                                         Duration="0:0:0.3">
+                            <DoubleAnimation.EasingFunction>
+                                <CircleEase EasingMode="EaseOut" />
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                        <DoubleAnimation Storyboard.TargetName="ScaleDays"
+                                         Storyboard.TargetProperty="ScaleY"
+                                         From="0.75"
+                                         To="1"
+                                         BeginTime="0:0:0.2"
+                                         Duration="0:0:0.3">
+                            <DoubleAnimation.EasingFunction>
+                                <CircleEase EasingMode="EaseOut" />
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                        <DoubleAnimation Storyboard.TargetName="GrdDays"
+                                         Storyboard.TargetProperty="Opacity"
+                                         From="0"
+                                         To="1"
+                                         BeginTime="0:0:0.2"
+                                         Duration="0:0:0.3">
+                            <DoubleAnimation.EasingFunction>
+                                <CircleEase EasingMode="EaseOut" />
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                        <ObjectAnimationUsingKeyFrames BeginTime="00:00:00"
+                                                       Storyboard.TargetName="GrdMonths"
+                                                       Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="0:0:0"
+                                                    Value="{x:Static Visibility.Visible}" />
+                            <DiscreteObjectKeyFrame KeyTime="0:0:0.2"
+                                                    Value="{x:Static Visibility.Collapsed}" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames BeginTime="0:0:0"
+                                                       Storyboard.TargetName="GrdDays"
+                                                       Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="0:0:0.2"
+                                                    Value="{x:Static Visibility.Visible}" />
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="local:Calendar.MonthPanelToYear">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetName="ScaleMonths"
+                                         Storyboard.TargetProperty="ScaleX"
+                                         From="1"
+                                         To="0.75"
+                                         Duration="0:0:0.2">
+                        </DoubleAnimation>
+                        <DoubleAnimation Storyboard.TargetName="ScaleMonths"
+                                         Storyboard.TargetProperty="ScaleY"
+                                         From="1"
+                                         To="0.75"
+                                         Duration="0:0:0.2">
+                        </DoubleAnimation>
+                        <DoubleAnimation Storyboard.TargetName="GrdMonths"
+                                         Storyboard.TargetProperty="Opacity"
+                                         From="1"
+                                         To="0"
+                                         Duration="0:0:0.2">
+                        </DoubleAnimation>
+                        <DoubleAnimation Storyboard.TargetName="ScaleYears"
+                                         Storyboard.TargetProperty="ScaleX"
+                                         From="1.5"
+                                         To="1"
+                                         BeginTime="0:0:0.2"
+                                         Duration="0:0:0.3">
+                            <DoubleAnimation.EasingFunction>
+                                <CircleEase EasingMode="EaseOut" />
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                        <DoubleAnimation Storyboard.TargetName="ScaleYears"
+                                         Storyboard.TargetProperty="ScaleY"
+                                         From="1.5"
+                                         To="1"
+                                         BeginTime="0:0:0.2"
+                                         Duration="0:0:0.3">
+                            <DoubleAnimation.EasingFunction>
+                                <CircleEase EasingMode="EaseOut" />
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                        <DoubleAnimation Storyboard.TargetName="GrdYears"
+                                         Storyboard.TargetProperty="Opacity"
+                                         From="0"
+                                         To="1"
+                                         BeginTime="0:0:0.2"
+                                         Duration="0:0:0.3">
+                            <DoubleAnimation.EasingFunction>
+                                <CircleEase EasingMode="EaseOut" />
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                        <ObjectAnimationUsingKeyFrames BeginTime="00:00:00"
+                                                       Storyboard.TargetName="GrdMonths"
+                                                       Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="0:0:0"
+                                                    Value="{x:Static Visibility.Visible}" />
+                            <DiscreteObjectKeyFrame KeyTime="0:0:0.2"
+                                                    Value="{x:Static Visibility.Collapsed}" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames BeginTime="0:0:0"
+                                                       Storyboard.TargetName="GrdYears"
+                                                       Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="0:0:0.2"
+                                                    Value="{x:Static Visibility.Visible}" />
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="local:Calendar.YearPanelToMonth">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetName="ScaleYears"
+                                         Storyboard.TargetProperty="ScaleX"
+                                         From="1"
+                                         To="1.5"
+                                         Duration="0:0:0.2" />
+                        <DoubleAnimation Storyboard.TargetName="ScaleYears"
+                                         Storyboard.TargetProperty="ScaleY"
+                                         From="1"
+                                         To="1.5"
+                                         Duration="0:0:0.2" />
+                        <DoubleAnimation Storyboard.TargetName="GrdYears"
+                                         Storyboard.TargetProperty="Opacity"
+                                         From="1"
+                                         To="0"
+                                         Duration="0:0:0.2" />
+                        <DoubleAnimation Storyboard.TargetName="ScaleMonths"
+                                         Storyboard.TargetProperty="ScaleX"
+                                         From="0.75"
+                                         To="1"
+                                         BeginTime="0:0:0.2"
+                                         Duration="0:0:0.3">
+                            <DoubleAnimation.EasingFunction>
+                                <CircleEase EasingMode="EaseOut" />
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                        <DoubleAnimation Storyboard.TargetName="ScaleMonths"
+                                         Storyboard.TargetProperty="ScaleY"
+                                         From="0.75"
+                                         To="1"
+                                         BeginTime="0:0:0.2"
+                                         Duration="0:0:0.3">
+                            <DoubleAnimation.EasingFunction>
+                                <CircleEase EasingMode="EaseOut" />
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                        <DoubleAnimation Storyboard.TargetName="GrdMonths"
+                                         Storyboard.TargetProperty="Opacity"
+                                         From="0"
+                                         To="1"
+                                         BeginTime="0:0:0.2"
+                                         Duration="0:0:0.3">
+                            <DoubleAnimation.EasingFunction>
+                                <CircleEase EasingMode="EaseOut" />
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                        <ObjectAnimationUsingKeyFrames BeginTime="00:00:00"
+                                                       Storyboard.TargetName="GrdYears"
+                                                       Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="0:0:0"
+                                                    Value="{x:Static Visibility.Visible}" />
+                            <DiscreteObjectKeyFrame KeyTime="0:0:0.2"
+                                                    Value="{x:Static Visibility.Collapsed}" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames BeginTime="0:0:0"
+                                                       Storyboard.TargetName="GrdMonths"
+                                                       Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="0:0:0.2"
+                                                    Value="{x:Static Visibility.Visible}" />
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </ControlTemplate.Triggers>
     </ControlTemplate>
 
     <Style TargetType="local:Calendar">

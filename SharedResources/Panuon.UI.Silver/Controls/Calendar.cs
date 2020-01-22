@@ -19,16 +19,14 @@ namespace Panuon.UI.Silver
         private const string _CALENDAR_GROUP_DAYS = "CALENDAR_GROUP_DAYS";
         private const string _CALENDAR_GROUP_MONTHS = "CALENDAR_GROUP_MONTHS";
         private const string _CALENDAR_GROUP_YEARS = "CALENDAR_GROUP_YEARS";
-
-        private FrameworkElement _rootContainer;
-        private Storyboard _storyboard_DayToMonth;
-        private Storyboard _storyboard_MonthToDay;
-        private Storyboard _storyboard_MonthToYear;
-        private Storyboard _storyboard_YearToMonth;
-
         #endregion
 
         #region Ctor
+        static Calendar()
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(Calendar), new FrameworkPropertyMetadata(typeof(Calendar)));
+        }
+
         public Calendar()
         {
             AddHandler(RadioButton.ClickEvent, new RoutedEventHandler(OnRadioButtonClicked));
@@ -57,6 +55,66 @@ namespace Panuon.UI.Silver
         }
         #endregion
 
+        #region Internal Event
+
+        #region DayPanelToMonth
+        public static readonly RoutedEvent DayPanelToMonthEvent = EventManager.RegisterRoutedEvent("DayPanelToMonth", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Calendar));
+        public event RoutedEventHandler DayPanelToMonth
+        {
+            add { AddHandler(DayPanelToMonthEvent, value); }
+            remove { RemoveHandler(DayPanelToMonthEvent, value); }
+        }
+        void RaiseDayPanelToMonth()
+        {
+            var arg = new RoutedEventArgs(DayPanelToMonthEvent);
+            RaiseEvent(arg);
+        }
+        #endregion
+
+        #region MonthPanelToDay
+        public static readonly RoutedEvent MonthPanelToDayEvent = EventManager.RegisterRoutedEvent("MonthPanelToDay", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Calendar));
+        public event RoutedEventHandler MonthPanelToDay
+        {
+            add { AddHandler(MonthPanelToDayEvent, value); }
+            remove { RemoveHandler(MonthPanelToDayEvent, value); }
+        }
+        void RaiseMonthPanelToDay()
+        {
+            var arg = new RoutedEventArgs(MonthPanelToDayEvent);
+            RaiseEvent(arg);
+        }
+        #endregion
+
+        #region MonthPanelToYear
+        public static readonly RoutedEvent MonthPanelToYearEvent = EventManager.RegisterRoutedEvent("MonthPanelToYear", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Calendar));
+        public event RoutedEventHandler MonthPanelToYear
+        {
+            add { AddHandler(MonthPanelToYearEvent, value); }
+            remove { RemoveHandler(MonthPanelToYearEvent, value); }
+        }
+        void RaiseMonthPanelToYear()
+        {
+            var arg = new RoutedEventArgs(MonthPanelToYearEvent);
+            RaiseEvent(arg);
+        }
+        #endregion
+
+        #region YearPanelToMonth
+        public static readonly RoutedEvent YearPanelToMonthEvent = EventManager.RegisterRoutedEvent("YearPanelToMonth", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Calendar));
+        public event RoutedEventHandler YearPanelToMonth
+        {
+            add { AddHandler(YearPanelToMonthEvent, value); }
+            remove { RemoveHandler(YearPanelToMonthEvent, value); }
+        }
+        void RaiseYearPanelToMonth()
+        {
+            var arg = new RoutedEventArgs(YearPanelToMonthEvent);
+            RaiseEvent(arg);
+        }
+        #endregion
+
+        #endregion
+
         #region Selected
         public static readonly RoutedEvent SelectedEvent = EventManager.RegisterRoutedEvent("Selected", RoutingStrategy.Bubble, typeof(DateTimeChangedRoutedEventHandler), typeof(Calendar));
         public event DateTimeChangedRoutedEventHandler Selected
@@ -69,7 +127,6 @@ namespace Panuon.UI.Silver
             var arg = new DateTimeChangedRoutedEventArgs(newValue, SelectedEvent);
             RaiseEvent(arg);
         }
-
         #endregion
 
         #endregion
@@ -244,7 +301,7 @@ namespace Panuon.UI.Silver
         }
 
         internal static readonly DependencyProperty CurrentPanelProperty =
-            DependencyProperty.Register("CurrentPanel", typeof(YearMonthDay), typeof(Calendar), new PropertyMetadata(OnCurrentPanelChanged));
+            DependencyProperty.Register("CurrentPanel", typeof(YearMonthDay), typeof(Calendar), new PropertyMetadata(YearMonthDay.Day, OnCurrentPanelChanged));
 
         private static void OnCurrentPanelChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -305,14 +362,8 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Event Handler
-
         private void Calendar_Loaded(object sender, RoutedEventArgs e)
         {
-            _storyboard_DayToMonth = Template.Resources["CALENDAR_STORYBOARD_DAYTOMONTH"] as Storyboard;
-            _storyboard_MonthToDay = Template.Resources["CALENDAR_STORYBOARD_MONTHTODAY"] as Storyboard;
-            _storyboard_MonthToYear = Template.Resources["CALENDAR_STORYBOARD_MONTHTOYEAR"] as Storyboard;
-            _storyboard_YearToMonth = Template.Resources["CALENDAR_STORYBOARD_YEARTOMONTH"] as Storyboard;
-
             switch (SelectionMode)
             {
                 case CalendarSelectionMode.Date:
@@ -339,6 +390,10 @@ namespace Panuon.UI.Silver
         private static object OnMinDateCoerceValue(DependencyObject d, object baseValue)
         {
             var calendar = d as Calendar;
+            if (baseValue == null)
+            {
+                return null;
+            }
             var minDate = (DateTime)baseValue;
             if (calendar.MaxDate != null)
             {
@@ -357,6 +412,10 @@ namespace Panuon.UI.Silver
         private static object OnMaxDateCoerceValue(DependencyObject d, object baseValue)
         {
             var calendar = d as Calendar;
+            if (baseValue == null)
+            {
+                return null;
+            }
             var maxDate = (DateTime)baseValue;
             if (calendar.MinDate != null)
             {
@@ -396,10 +455,6 @@ namespace Panuon.UI.Silver
         private static void OnSelectedDateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var calendar = d as Calendar;
-            if (!calendar.IsLoaded)
-            {
-                return;
-            }
             var newDate = (DateTime)e.NewValue;
             var oldDate = (DateTime)e.OldValue;
             calendar.UpdateCalendar(oldDate, newDate);
@@ -409,10 +464,6 @@ namespace Panuon.UI.Silver
         private static void OnFirstDayOfWeekChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var calendar = d as Calendar;
-            if (!calendar.IsLoaded)
-            {
-                return;
-            }
             calendar.LoadWeeks();
         }
 
@@ -447,13 +498,14 @@ namespace Panuon.UI.Silver
                         var day = SelectedDate.Day > dayInMonth ? dayInMonth : SelectedDate.Day;
                         SelectedDate = new DateTime(SelectedDate.Year, date.Month, day);
                     }
-                    if (SelectionMode == CalendarSelectionMode.Date)
+                    switch (SelectionMode)
                     {
-                        CurrentPanel = YearMonthDay.Day;
-                    }
-                    if (SelectionMode == CalendarSelectionMode.YearMonth)
-                    {
-                        RaiseSelected(SelectedDate);
+                        case CalendarSelectionMode.Date:
+                            CurrentPanel = YearMonthDay.Day;
+                            break;
+                        case CalendarSelectionMode.YearMonth:
+                            RaiseSelected(SelectedDate);
+                            break;
                     }
                     break;
                 case _CALENDAR_GROUP_YEARS:
@@ -464,13 +516,15 @@ namespace Panuon.UI.Silver
                         var day = SelectedDate.Day > dayInMonth ? dayInMonth : SelectedDate.Day;
                         SelectedDate = new DateTime(date.Year, SelectedDate.Month, day);
                     }
-                    if (SelectionMode == CalendarSelectionMode.Date)
+                    switch (SelectionMode)
                     {
-                        CurrentPanel = YearMonthDay.Month;
-                    }
-                    if (SelectionMode == CalendarSelectionMode.Year)
-                    {
-                        RaiseSelected(SelectedDate);
+                        case CalendarSelectionMode.Date:
+                        case CalendarSelectionMode.YearMonth:
+                            CurrentPanel = YearMonthDay.Month;
+                            break;
+                        case CalendarSelectionMode.Year:
+                            RaiseSelected(SelectedDate);
+                            break;
                     }
                     break;
             }
@@ -771,21 +825,16 @@ namespace Panuon.UI.Silver
 
         private void PlayStoryboard(YearMonthDay oldValue, YearMonthDay newValue)
         {
-            if (_rootContainer == null)
-            {
-                _rootContainer = VisualTreeHelper.GetChild(this, 0) as FrameworkElement;
-            }
-
             switch (newValue)
             {
                 case YearMonthDay.Month:
                     switch (oldValue)
                     {
                         case YearMonthDay.Day:
-                            _storyboard_DayToMonth.Begin(_rootContainer);
+                            RaiseDayPanelToMonth();
                             break;
                         case YearMonthDay.Year:
-                            _storyboard_YearToMonth.Begin(_rootContainer);
+                            RaiseYearPanelToMonth();
                             break;
                     }
                     break;
@@ -793,26 +842,28 @@ namespace Panuon.UI.Silver
                     switch (oldValue)
                     {
                         case YearMonthDay.Month:
-                            _storyboard_MonthToDay.Begin(_rootContainer);
+                            RaiseMonthPanelToDay();
                             break;
-
+                        case YearMonthDay.Year:
+                            RaiseYearPanelToMonth();
+                            RaiseMonthPanelToDay();
+                            break;
                     }
                     break;
                 case YearMonthDay.Year:
                     switch (oldValue)
                     {
                         case YearMonthDay.Month:
-                            _storyboard_MonthToYear.Begin(_rootContainer);
+                            RaiseMonthPanelToYear();
                             break;
                         case YearMonthDay.Day:
-                            _storyboard_DayToMonth.Begin(_rootContainer);
-                            _storyboard_MonthToYear.Begin(_rootContainer);
+                            RaiseDayPanelToMonth();
+                            RaiseMonthPanelToYear();
                             break;
                     }
                     break;
             }
         }
     }
-
     #endregion
 }

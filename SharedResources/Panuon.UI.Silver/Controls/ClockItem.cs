@@ -10,6 +10,11 @@ namespace Panuon.UI.Silver
     public class ClockItem : Control
     {
         #region Ctor
+        static ClockItem()
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(ClockItem), new FrameworkPropertyMetadata(typeof(ClockItem)));
+        }
+
         public ClockItem()
         {
             MouseLeftButtonDown += ClockItem_MouseLeftButtonDown;
