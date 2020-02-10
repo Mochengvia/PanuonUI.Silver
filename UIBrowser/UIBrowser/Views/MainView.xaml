@@ -151,13 +151,14 @@
         </StackPanel>
         <pu:DateTimePicker Height="30"
                            Width="280"
+                           DateTimePickerMode="Date"
                            ThemeBrush="#FF3094B2" />
-                                  
-        <Grid Margin="0,5,0,0"
-              Width="40"
-              Height="5"
-              Background="Red">
-        </Grid>
+        <TextBox VerticalScrollBarVisibility="Auto"
+                 TextWrapping="Wrap"
+                 Width="100"
+                 Height="100"/>
+
+
     </StackPanel>
 
 </pu:WindowX>

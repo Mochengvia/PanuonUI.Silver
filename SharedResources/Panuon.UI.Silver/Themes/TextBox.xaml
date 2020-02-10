@@ -226,6 +226,10 @@
                 Value="Hidden" />
         <Setter Property="VerticalScrollBarVisibility"
                 Value="Disabled" />
+        <Setter Property="local:ScrollViewerHelper.ScrollBarThickness"
+                Value="8" />
+        <Setter Property="local:ScrollViewerHelper.ScrollBarCornerRadius"
+                Value="4" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static i:ResourceKeys.TextBoxTemplate}}" />
         <Setter Property="Validation.ErrorTemplate">
@@ -240,19 +244,6 @@
                      Value="True">
                 <Setter Property="local:TextBoxHelper.ValidationErrorTips"
                         Value="{Binding Path=(Validation.Errors)[0].ErrorContent,RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-            </Trigger>
-            <Trigger Property="TextWrapping"
-                     Value="Wrap">
-                <Setter Property="Padding"
-                        Value="5" />
-                <Setter Property="HorizontalContentAlignment"
-                        Value="Left" />
-                <Setter Property="VerticalContentAlignment"
-                        Value="Top" />
-                <Setter Property="HorizontalScrollBarVisibility"
-                        Value="Hidden" />
-                <Setter Property="VerticalScrollBarVisibility"
-                        Value="Disabled" />
             </Trigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>

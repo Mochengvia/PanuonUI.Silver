@@ -166,16 +166,15 @@
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition x:Name="CdCalendar"/>
-                            <ColumnDefinition x:Name="CdClock"
-                                              />
+                            <ColumnDefinition x:Name="CdCalendar" />
+                            <ColumnDefinition x:Name="CdClock" />
                         </Grid.ColumnDefinitions>
                         <local:Calendar x:Name="CdrCalendar"
                                         Style="{TemplateBinding CalendarStyle}"
                                         MaxDate="{Binding MaxDateTime, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                         MinDate="{Binding MinDateTime, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                        SelectedDate="{Binding SelectedDate, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" 
-                                        ThemeBrush="{TemplateBinding ThemeBrush}"/>
+                                        SelectedDate="{Binding SelectedDate, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                        ThemeBrush="{TemplateBinding ThemeBrush}" />
                         <local:Clock x:Name="ClkClock"
                                      Grid.Column="1"
                                      Margin="10"
@@ -245,14 +244,14 @@
                                Text="{Binding StringFormat='dd/MM/yyyy HH:mm:ss'}"
                                VerticalAlignment="Center" />
                     <DataTemplate.Triggers>
-                        <DataTrigger Binding="{Binding DateTimePickerMode, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}}"
-                                     Value="Calendar">
+                        <DataTrigger Binding="{Binding DateTimePickerMode, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
+                                     Value="Date">
                             <Setter TargetName="TxtText"
                                     Property="Text"
-                                    Value="{Binding StringFormat='dd/MM/yyyy'}"/>
+                                    Value="{Binding StringFormat='dd/MM/yyyy'}" />
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding DateTimePickerMode, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}}"
-                                     Value="Clock">
+                        <DataTrigger Binding="{Binding DateTimePickerMode, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
+                                     Value="Tine">
                             <Setter TargetName="TxtText"
                                     Property="Text"
                                     Value="{Binding StringFormat='HH:mm:ss'}" />
