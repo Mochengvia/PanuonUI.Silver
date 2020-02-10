@@ -16,14 +16,14 @@ namespace Panuon.UI.Silver.Internal.Utils
             _localizedStringDictionary = new Dictionary<string, IDictionary<string, string>>();
             _localizedStringDictionary.Add(nameof(Yes), new Dictionary<string, string>()
             {
-                { "zh-CN", "是 的" },
+                { "zh-CN", "是" },
                 { "ja-JP", "はい" },
                 { "en-US", "Yes" },
 
             });
             _localizedStringDictionary.Add(nameof(No), new Dictionary<string, string>()
             {
-                { "zh-CN", "不" },
+                { "zh-CN", "否" },
                 { "ja-JP", "いいえ" },
                 { "en-US", "No" },
             });
@@ -35,7 +35,7 @@ namespace Panuon.UI.Silver.Internal.Utils
             });
             _localizedStringDictionary.Add(nameof(OK), new Dictionary<string, string>()
             {
-                { "zh-CN", "好 的" },
+                { "zh-CN", "好" },
                 { "ja-JP", "了 解" },
                 { "en-US", "OK" },
             });

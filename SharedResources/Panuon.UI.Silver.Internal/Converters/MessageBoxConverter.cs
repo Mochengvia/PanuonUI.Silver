@@ -14,15 +14,15 @@ namespace Panuon.UI.Silver.Internal.Converters
             switch (icon) 
             {
                 case MessageBoxIcon.Info:
-                    return "\ue6af";
+                    return "\ue92f";
                 case MessageBoxIcon.Question:
-                    return "\ue6b8";
+                    return "\ue937";
                 case MessageBoxIcon.Success:
-                    return "\ue6ad";
+                    return "\ue935";
                 case MessageBoxIcon.Error:
-                    return "\ue6b1";
+                    return "\ue933";
                 case MessageBoxIcon.Warning:
-                    return "\ue6ae";
+                    return "\ue931";
                 default:
                     return null;
             }

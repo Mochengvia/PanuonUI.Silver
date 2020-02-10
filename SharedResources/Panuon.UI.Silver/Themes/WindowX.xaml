@@ -24,11 +24,11 @@
         <Setter Property="Height"
                 Value="{Binding Path=(local:WindowXCaption.Height),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
         <Setter Property="Width"
-                Value="{Binding Path=(local:WindowXCaption.Height),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
+                Value="{Binding Path=(local:WindowXCaption.Height),Converter={StaticResource {x:Static i:ResourceKeys.Add5Converter}},RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
         <Setter Property="MaxHeight"
                 Value="35" />
         <Setter Property="MaxWidth"
-                Value="35" />
+                Value="40" />
         <Setter Property="local:ButtonHelper.ButtonStyle"
                 Value="Hollow" />
         <Style.Triggers>
@@ -57,11 +57,11 @@
         <Setter Property="Height"
                 Value="{Binding Path=(local:WindowXCaption.Height),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
         <Setter Property="Width"
-                Value="{Binding Path=(local:WindowXCaption.Height),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
+                Value="{Binding Path=(local:WindowXCaption.Height),Converter={StaticResource {x:Static i:ResourceKeys.Add5Converter}},RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
         <Setter Property="MaxHeight"
                 Value="35" />
         <Setter Property="MaxWidth"
-                Value="35" />
+                Value="40" />
         <Setter Property="local:ButtonHelper.ButtonStyle"
                 Value="Hollow" />
         <Style.Triggers>
@@ -90,11 +90,11 @@
         <Setter Property="Height"
                 Value="{Binding Path=(local:WindowXCaption.Height),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
         <Setter Property="Width"
-                Value="{Binding Path=(local:WindowXCaption.Height),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
+                Value="{Binding Path=(local:WindowXCaption.Height),Converter={StaticResource {x:Static i:ResourceKeys.Add5Converter}},RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
         <Setter Property="MaxHeight"
                 Value="35" />
         <Setter Property="MaxWidth"
-                Value="35" />
+                Value="40" />
         <Setter Property="local:ButtonHelper.ButtonStyle"
                 Value="Hollow" />
         <Style.Triggers>
