@@ -16,7 +16,7 @@
         <Setter Property="FontFamily"
                 Value="{StaticResource PanuonIconFont}" />
         <Setter Property="Content"
-                Value="&#xe725;" />
+                Value="&#xe92d;" />
         <Setter Property="local:ButtonHelper.ButtonStyle"
                 Value="Link" />
         <Setter Property="Width"

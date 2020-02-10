@@ -73,14 +73,14 @@
                             Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                             Command="{Binding CalendarFastBackwardCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                             CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                            Content="&#xe728;" />
+                            Content="&#xe924;" />
                     <Button Style="{TemplateBinding ControlButtonStyle}"
                             Grid.Column="1"
                             FontFamily="{StaticResource PanuonIconFont}"
                             Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                             Command="{Binding CalendarBackwardCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                             CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                            Content="&#xe6fc;" />
+                            Content="&#xe900;" />
                     <StackPanel Grid.Column="2"
                                 Orientation="Horizontal"
                                 VerticalAlignment="Center"
@@ -105,14 +105,14 @@
                             Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                             Command="{Binding CalendarForewardCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                             CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                            Content="&#xe6ff;" />
+                            Content="&#xe902;" />
                     <Button Style="{TemplateBinding ControlButtonStyle}"
                             Grid.Column="4"
                             FontFamily="{StaticResource PanuonIconFont}"
                             Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                             Command="{Binding CalendarFastForewardCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                             CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                            Content="&#xe727;" />
+                            Content="&#xe926;" />
                 </Grid>
                 <Grid Grid.Row="1"
                       ClipToBounds="True"

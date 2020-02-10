@@ -188,7 +188,7 @@ namespace Panuon.UI.Silver
             return (double)tabControl.GetValue(ItemsWidthProperty);
         }
 
-        public static void SetItemWidth(TabControl tabControl, double value)
+        public static void SetItemsWidth(TabControl tabControl, double value)
         {
             tabControl.SetValue(ItemsWidthProperty, value);
         }

@@ -28,7 +28,7 @@
                 <Setter Property="FontFamily"
                         Value="{StaticResource PanuonIconFont}" />
                 <Setter Property="Content"
-                        Value="&#xe725;" />
+                        Value="&#xe92d;" />
                 <Setter Property="HorizontalAlignment"
                         Value="Center" />
                 <Setter Property="VerticalAlignment"
@@ -50,8 +50,8 @@
                     BorderBrush="{TemplateBinding BorderBrush}" />
             <StackPanel Orientation="Horizontal"
                         Margin="{TemplateBinding Padding}"
-                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
                 <ic:IconControl x:Name="IcIcon"
                                 Width="{Binding Path=(local:IconHelper.Width),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
                                 Height="{Binding Path=(local:IconHelper.Height),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
@@ -130,7 +130,7 @@
                 <Setter Property="FontFamily"
                         Value="{StaticResource PanuonIconFont}" />
                 <Setter Property="Content"
-                        Value="&#xe725;" />
+                        Value="&#xe92d;" />
                 <Setter Property="HorizontalAlignment"
                         Value="Center" />
                 <Setter Property="VerticalAlignment"

@@ -125,7 +125,7 @@ namespace Panuon.UI.Silver
         private static void OnMaximizeCommandExecute(object obj)
         {
             var window = (obj as WindowX);
-            window.MaximizeOrNormal();   
+            window.MaximizeOrNormalmize();
         }
 
 
@@ -165,15 +165,15 @@ namespace Panuon.UI.Silver
             WindowState = WindowState.Maximized;
         }
 
-        public void Normal()
+        public void Normalmize()
         {
             WindowState = WindowState.Normal;
         }
 
-        public void MaximizeOrNormal()
+        public void MaximizeOrNormalmize()
         {
             if (WindowState == WindowState.Maximized)
-                Normal();
+                Normalmize();
             else
                 Maximize();
         }

@@ -33,7 +33,7 @@
                           MaxWidth="{Binding ActualWidth,ElementName=GrdMain}" />
                 <Border x:Name="BdrLine"
                         Visibility="Collapsed"
-                        Grid.Column="1"
+                        Grid.Column="2"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="0,0,0,1" />
                 <ContentControl Grid.Column="2"
@@ -80,7 +80,7 @@
                           MaxWidth="{Binding ActualWidth,ElementName=GrdMain}" />
                 <Border x:Name="BdrLine"
                         Visibility="Collapsed"
-                        Grid.Row="1"
+                        Grid.Row="2"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="0,0,1,0" />
                 <ContentControl Grid.Row="2"

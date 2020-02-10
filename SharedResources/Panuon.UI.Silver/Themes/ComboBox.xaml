@@ -23,7 +23,7 @@
             <Grid Grid.Column="1"
                   Width="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.Minus3Converter}},RelativeSource={RelativeSource Self},Mode=OneWay}">
                 <TextBlock x:Name="TxtArrowDown"
-                           Text="&#xe720;"
+                           Text="&#xe91f;"
                            FontFamily="{StaticResource PanuonIconFont}"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center" />
@@ -31,7 +31,7 @@
                            Opacity="0"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
-                           Text="&#xe71e;"
+                           Text="&#xe91d;"
                            FontFamily="{StaticResource PanuonIconFont}" />
             </Grid>
         </Grid>

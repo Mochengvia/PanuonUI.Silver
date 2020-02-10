@@ -126,6 +126,21 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(ToggleButtonHelper));
         #endregion
 
+        #region CheckedContent
+        public static object GetCheckedContent(DependencyObject obj)
+        {
+            return (object)obj.GetValue(CheckedContentProperty);
+        }
+
+        public static void SetCheckedContent(DependencyObject obj, object value)
+        {
+            obj.SetValue(CheckedContentProperty, value);
+        }
+
+        public static readonly DependencyProperty CheckedContentProperty =
+            DependencyProperty.RegisterAttached("CheckedContent", typeof(object), typeof(ToggleButtonHelper));
+        #endregion
+
         #region IsWaiting
         public static bool GetIsWaiting(ToggleButton toggleButton)
         {

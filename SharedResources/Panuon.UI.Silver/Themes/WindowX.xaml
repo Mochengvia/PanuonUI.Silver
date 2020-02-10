@@ -16,7 +16,7 @@
         <Setter Property="FontFamily"
                 Value="{StaticResource PanuonIconFont}" />
         <Setter Property="Content"
-                Value="&#xe723;" />
+                Value="&#xe92a;" />
         <Setter Property="HorizontalAlignment"
                 Value="Right" />
         <Setter Property="VerticalAlignment"
@@ -24,9 +24,9 @@
         <Setter Property="Height"
                 Value="{Binding Path=(local:WindowXCaption.Height),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
         <Setter Property="Width"
-                Value="{Binding Path=(local:WindowXCaption.Height),Converter={StaticResource {x:Static i:ResourceKeys.Add5Converter}},RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
+                Value="{Binding Path=(local:WindowXCaption.Height),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
         <Setter Property="MaxHeight"
-                Value="40" />
+                Value="35" />
         <Setter Property="MaxWidth"
                 Value="35" />
         <Setter Property="local:ButtonHelper.ButtonStyle"
@@ -49,7 +49,7 @@
         <Setter Property="FontFamily"
                 Value="{StaticResource PanuonIconFont}" />
         <Setter Property="Content"
-                Value="&#xe724;" />
+                Value="&#xe92b;" />
         <Setter Property="HorizontalAlignment"
                 Value="Right" />
         <Setter Property="VerticalAlignment"
@@ -57,9 +57,9 @@
         <Setter Property="Height"
                 Value="{Binding Path=(local:WindowXCaption.Height),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
         <Setter Property="Width"
-                Value="{Binding Path=(local:WindowXCaption.Height),Converter={StaticResource {x:Static i:ResourceKeys.Add5Converter}},RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
+                Value="{Binding Path=(local:WindowXCaption.Height),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
         <Setter Property="MaxHeight"
-                Value="40" />
+                Value="35" />
         <Setter Property="MaxWidth"
                 Value="35" />
         <Setter Property="local:ButtonHelper.ButtonStyle"
@@ -82,7 +82,7 @@
         <Setter Property="FontFamily"
                 Value="{StaticResource PanuonIconFont}" />
         <Setter Property="Content"
-                Value="&#xe725;" />
+                Value="&#xe92d;" />
         <Setter Property="HorizontalAlignment"
                 Value="Right" />
         <Setter Property="VerticalAlignment"
@@ -90,9 +90,9 @@
         <Setter Property="Height"
                 Value="{Binding Path=(local:WindowXCaption.Height),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
         <Setter Property="Width"
-                Value="{Binding Path=(local:WindowXCaption.Height),Converter={StaticResource {x:Static i:ResourceKeys.Add5Converter}},RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
+                Value="{Binding Path=(local:WindowXCaption.Height),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
         <Setter Property="MaxHeight"
-                Value="40" />
+                Value="35" />
         <Setter Property="MaxWidth"
                 Value="35" />
         <Setter Property="local:ButtonHelper.ButtonStyle"
@@ -106,7 +106,6 @@
                         Value="{StaticResource {x:Static i:ResourceKeys.WindowXCaptionCloseButtonHoverBrush}}" />
                 <Setter Property="Foreground"
                         Value="{Binding Path=(local:WindowXCaption.Foreground),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneTime}" />
-                
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -176,6 +175,21 @@
             </Grid>
         </Border>
         <ControlTemplate.Triggers>
+            <Trigger Property="ResizeMode"
+                     Value="CanMinimize">
+                <Setter TargetName="BtnMaximize"
+                        Property="Visibility"
+                        Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="ResizeMode"
+                     Value="NoResize">
+                <Setter TargetName="BtnMaximize"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="BtnMinimize"
+                        Property="Visibility"
+                        Value="Collapsed" />
+            </Trigger>
             <Trigger Property="IsBackstageVisible"
                      Value="True">
                 <Setter TargetName="CcBackstage"

@@ -21,7 +21,7 @@
                     <Border Background="Transparent">
                         <TextBlock x:Name="TxtToggle"
                                    Foreground="{Binding Path=(local:TreeViewHelper.ItemToggleBrush),RelativeSource={RelativeSource AncestorType=TreeViewItem},Mode=OneWay}"
-                                   Text="&#xe722;"
+                                   Text="&#xe945;"
                                    FontFamily="{StaticResource PanuonIconFont}" />
                     </Border>
                     <ControlTemplate.Triggers>
@@ -29,7 +29,7 @@
                                  Value="True">
                             <Setter TargetName="TxtToggle"
                                     Property="Text"
-                                    Value="&#xe721;" />
+                                    Value="&#xe946;" />
                         </Trigger>
                         <Trigger Property="IsMouseOver"
                                  Value="True">
@@ -39,7 +39,7 @@
                         </Trigger>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                                <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                            Value="True" />
                                 <Condition Binding="{Binding Path=(local:TreeViewHelper.ItemSelectedToggleBrush),Converter={StaticResource {x:Static i:ResourceKeys.IsNotNullConverter}},RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
                                            Value="True" />
@@ -153,7 +153,7 @@
         <Setter Property="local:TreeViewHelper.ItemIcon"
                 Value="{Binding Path=(local:TreeViewHelper.ItemsIcon),RelativeSource={RelativeSource AncestorType=TreeView}}" />
         <Setter Property="local:TreeViewHelper.ItemPadding"
-                Value="{Binding Path=(local:TreeViewHelper.ItemsHoverBackground),RelativeSource={RelativeSource AncestorType=TreeView}}" />
+                Value="{Binding Path=(local:TreeViewHelper.ItemsPadding),RelativeSource={RelativeSource AncestorType=TreeView}}" />
         <Setter Property="local:TreeViewHelper.ItemToggleEnabled"
                 Value="{Binding Path=(local:TreeViewHelper.ItemsToggleEnabled),RelativeSource={RelativeSource AncestorType=TreeView}}" />
         <Setter Property="local:TreeViewHelper.ItemToggleBrush"

@@ -25,7 +25,7 @@
             <Grid Grid.Column="1"
                   Width="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.Minus3Converter}},RelativeSource={RelativeSource Self},Mode=OneWay}">
                 <TextBlock x:Name="TxtArrowDown"
-                           Text="&#xe720;"
+                           Text="&#xe91f;"
                            FontFamily="{StaticResource PanuonIconFont}"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center" />
@@ -33,7 +33,7 @@
                            Opacity="0"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
-                           Text="&#xe71e;"
+                           Text="&#xe91d;"
                            FontFamily="{StaticResource PanuonIconFont}" />
             </Grid>
         </Grid>
@@ -167,8 +167,6 @@
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition x:Name="CdCalendar"/>
-                            <ColumnDefinition x:Name="CdCSepartor"
-                                              Width="1" />
                             <ColumnDefinition x:Name="CdClock"
                                               />
                         </Grid.ColumnDefinitions>
@@ -178,14 +176,8 @@
                                         MinDate="{Binding MinDateTime, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                         SelectedDate="{Binding SelectedDate, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" 
                                         ThemeBrush="{TemplateBinding ThemeBrush}"/>
-                        <local:Separator x:Name="SptSeparator"
-                                   Grid.Column="1"
-                                   Margin="0,10"
-                                   Alignment="Right"
-                                   Width="1"
-                                   Brush="{TemplateBinding BorderBrush}" />
                         <local:Clock x:Name="ClkClock"
-                                     Grid.Column="2"
+                                     Grid.Column="1"
                                      Margin="10"
                                      MaxTime="{Binding MaxDateTime, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                      MinTime="{Binding MinDateTime, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -198,31 +190,19 @@
         <ControlTemplate.Triggers>
             <Trigger Property="DateTimePickerMode"
                      Value="Date">
-                <Setter TargetName="CdCSepartor"
-                        Property="Width"
-                        Value="0" />
                 <Setter TargetName="CdClock"
                         Property="Width"
                         Value="0" />
                 <Setter TargetName="ClkClock"
                         Property="Visibility"
                         Value="Collapsed" />
-                <Setter TargetName="SptSeparator"
-                        Property="Visibility"
-                        Value="Collapsed" />
             </Trigger>
             <Trigger Property="DateTimePickerMode"
                      Value="Time">
-                <Setter TargetName="CdCSepartor"
-                        Property="Width"
-                        Value="0" />
                 <Setter TargetName="CdCalendar"
                         Property="Width"
                         Value="0" />
                 <Setter TargetName="CdrCalendar"
-                        Property="Visibility"
-                        Value="Collapsed" />
-                <Setter TargetName="SptSeparator"
                         Property="Visibility"
                         Value="Collapsed" />
             </Trigger>

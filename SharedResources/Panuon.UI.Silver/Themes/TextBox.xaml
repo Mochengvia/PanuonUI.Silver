@@ -27,7 +27,7 @@
         <Setter Property="FontFamily"
                 Value="{StaticResource PanuonIconFont}" />
         <Setter Property="Content"
-                Value="&#xe725;" />
+                Value="&#xe92d;" />
         <Setter Property="local:ButtonHelper.ButtonStyle"
                 Value="Link" />
         <Setter Property="Width"
@@ -129,7 +129,7 @@
                          HorizontalAlignment="Center"
                          Fill="{DynamicResource {x:Static rs:ResourceKeys.TextBoxValidationErrorBrush}}" />
                 <TextBlock Margin="0,0,0,2"
-                           Text="&#xe725;"
+                           Text="&#xe92d;"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
                            Foreground="White"

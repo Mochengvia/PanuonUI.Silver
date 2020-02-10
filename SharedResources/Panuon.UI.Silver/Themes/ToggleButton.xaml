@@ -115,7 +115,17 @@
                         Property="TextElement.Foreground"
                         Value="{Binding Path=(local:ToggleButtonHelper.CheckedBrush),RelativeSource={RelativeSource AncestorType=ToggleButton}, Mode=OneWay}" />
             </MultiTrigger>
-
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:ToggleButtonHelper.CheckedContent), Converter={StaticResource {x:Static i:ResourceKeys.IsNotNullConverter}}, RelativeSource={RelativeSource Self}}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="Presenter"
+                        Property="Content"
+                        Value="{Binding Path=(local:ToggleButtonHelper.CheckedContent),RelativeSource={RelativeSource AncestorType=ToggleButton}, Mode=OneWay}" />
+            </MultiDataTrigger>
             <Trigger Property="local:ToggleButtonHelper.IsWaiting"
                      Value="True">
                 <Setter Property="IsEnabled"
