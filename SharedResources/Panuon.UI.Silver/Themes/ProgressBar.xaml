@@ -44,10 +44,10 @@
                                         <VisualBrush>
                                             <VisualBrush.Visual>
                                                 <Rectangle Fill="Black"
-                                                           Height="{Binding ActualHeight,ElementName=PART_Track}"
-                                                           Width="{Binding ActualWidth,ElementName=PART_Track}"
-                                                           RadiusX="{Binding Path=(local:ProgressBarHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=ProgressBar},Mode=OneWay}"
-                                                           RadiusY="{Binding Path=(local:ProgressBarHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=ProgressBar},Mode=OneWay}" />
+                                                           Height="{Binding ActualHeight,RelativeSource={RelativeSource TemplatedParent}}"
+                                                           Width="{Binding ActualWidth,RelativeSource={RelativeSource TemplatedParent}}"
+                                                           RadiusX="{Binding Path=(local:ProgressBarHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                           RadiusY="{Binding Path=(local:ProgressBarHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
                                             </VisualBrush.Visual>
                                         </VisualBrush>
                                     </Border.OpacityMask>

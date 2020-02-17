@@ -216,9 +216,9 @@
                                                    RadiusY="{Binding Path=(local:CheckBoxHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=CheckBox},Converter={StaticResource HalfConverter}, Mode=OneWay}">
                                             <Rectangle.Margin>
                                                 <MultiBinding Converter="{StaticResource SwitchToggleMarginConverter}">
-                                                    <Binding Path="Width"
+                                                    <Binding Path="ActualWidth"
                                                              ElementName="Rect" />
-                                                    <Binding Path="Height"
+                                                    <Binding Path="ActualHeight"
                                                              ElementName="Rect" />
                                                 </MultiBinding>
                                             </Rectangle.Margin>
@@ -389,9 +389,9 @@
                                                 VerticalAlignment="Center">
                                             <Border.Margin>
                                                 <MultiBinding Converter="{StaticResource SwitchToggleMarginConverter}">
-                                                    <Binding Path="Width"
+                                                    <Binding Path="ActualWidth"
                                                              ElementName="Rect" />
-                                                    <Binding Path="Height"
+                                                    <Binding Path="ActualHeight"
                                                              ElementName="Rect" />
                                                 </MultiBinding>
                                             </Border.Margin>

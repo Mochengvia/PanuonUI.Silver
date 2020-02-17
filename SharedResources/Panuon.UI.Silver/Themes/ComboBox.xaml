@@ -209,7 +209,8 @@
                                     <MultiBinding Converter="{StaticResource ComboBoxTextMarginConverter}">
                                         <Binding Path="ActualWidth"
                                                  ElementName="LblIcon" />
-                                        <Binding Path="Padding" />
+                                        <Binding Path="Padding"
+                                                 RelativeSource="{RelativeSource TemplatedParent}"/>
                                     </MultiBinding>
                                 </TextBox.Margin>
                             </TextBox>
@@ -232,7 +233,7 @@
                                             <DropShadowEffect ShadowDepth="0"
                                                               BlurRadius="10"
                                                               Opacity="1"
-                                                              Color="{Binding Path=(local:ComboBoxHelper.ShadowColor),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"></DropShadowEffect>
+                                                              Color="{Binding Path=(local:ComboBoxHelper.ShadowColor),Converter={StaticResource NullableColorToColoConverter},RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"></DropShadowEffect>
                                         </Border.Effect>
                                     </Border>
                                     <Grid  Margin="{Binding Path=(local:ComboBoxHelper.DropDownPadding),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}">

@@ -196,10 +196,10 @@
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
                                         <Label x:Name="LblIcon"
-                                               Content="{Binding Path=(local:TreeViewHelper.ItemIcon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
-                                               Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
-                                               FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
-                                               FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
+                                               Content="{Binding Path=(local:TreeViewHelper.ItemIcon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                               Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                               FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                               FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                                VerticalContentAlignment="Center"
                                                HorizontalContentAlignment="Center"
                                                Padding="10,0,7,0" />
@@ -296,10 +296,10 @@
                                             <ColumnDefinition />
                                         </Grid.ColumnDefinitions>
                                         <Label x:Name="LblIcon"
-                                               Content="{Binding Path=(local:TreeViewHelper.ItemIcon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
-                                               Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
-                                               FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
-                                               FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
+                                               Content="{Binding Path=(local:TreeViewHelper.ItemIcon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                               Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                               FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                               FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                                VerticalContentAlignment="Center"
                                                HorizontalContentAlignment="Center"
                                                Padding="10,0,7,0" />
@@ -489,9 +489,9 @@
                                         </Grid.ColumnDefinitions>
                                         <Label x:Name="LblIcon"
                                                Content="{Binding Path=(local:TreeViewHelper.ItemIcon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
-                                               Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
-                                               FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
-                                               FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
+                                               Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                               FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                               FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                                VerticalContentAlignment="Center"
                                                HorizontalContentAlignment="Center"
                                                Padding="10,0,7,0"/>
@@ -632,10 +632,10 @@
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
                                         <Label x:Name="LblIcon"
-                                               Content="{Binding Path=(local:TreeViewHelper.ItemIcon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
-                                               Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
-                                               FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
-                                               FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
+                                               Content="{Binding Path=(local:TreeViewHelper.ItemIcon),Converter={StaticResource IconConverter},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                               Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                               FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                               FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                                VerticalContentAlignment="Center"
                                                HorizontalContentAlignment="Center"
                                                Padding="10,0,7,0" />

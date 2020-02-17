@@ -19,6 +19,8 @@
                          Color="#FF5656" />
         <SolidColorBrush x:Key="WarnBrush"
                          Color="#F9D01A" />
+        <SolidColorBrush x:Key="QuestionBrush"
+                         Color="#55CEF1" />
         <converter:CheckIconConverter x:Key="CheckIconConverter" />
     </UserControl.Resources>
     <Grid>
@@ -105,5 +107,26 @@
             </Path>
 
         </Grid>
+        <Grid x:Name="GrdQuestion"
+              Visibility="Collapsed">
+            <Ellipse Stroke="{StaticResource QuestionBrush}"
+                     StrokeThickness="{Binding Thickness,ElementName=icon}" />
+            <Path Stroke="{StaticResource QuestionBrush}"
+                  StrokeThickness="{Binding Thickness,ElementName=icon}"
+                  StrokeEndLineCap="Round"
+                  StrokeStartLineCap="Round">
+                <Path.Data>
+                    <MultiBinding Converter="{StaticResource CheckIconConverter}">
+                        <Binding Path="ActualWidth"
+                                 ElementName="icon" />
+                        <Binding Path="MessageBoxIcon"
+                                 ElementName="icon" />
+                        <Binding Path="Thickness"
+                                 ElementName="icon" />
+                    </MultiBinding>
+                </Path.Data>
+            </Path>
+        </Grid>
+
     </Grid>
 </UserControl>

@@ -37,8 +37,6 @@ namespace Panuon.UI.Silver.Controls.Internal
 
         }
 
-        
-
         #region Property
         public CornerRadius CornerRadius
         {

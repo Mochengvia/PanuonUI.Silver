@@ -17,6 +17,7 @@
         Success,
         Error,
         Warning,
+        Question,
     }
 
     public enum DefaultButton

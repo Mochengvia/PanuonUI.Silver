@@ -2154,7 +2154,7 @@
                                         <DropShadowEffect ShadowDepth="0"
                                                           BlurRadius="10"
                                                           Opacity="1"
-                                                          Color="{Binding Path=ShadowColor,RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"></DropShadowEffect>
+                                                          Color="{Binding Path=ShadowColor,Converter={StaticResource NullableColorToColoConverter},RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"></DropShadowEffect>
                                     </Border.Effect>
                                 </Border>
                                 <Grid>
@@ -2424,7 +2424,7 @@
                                             <DropShadowEffect ShadowDepth="0"
                                                               BlurRadius="10"
                                                               Opacity="1"
-                                                              Color="{Binding ShadowColor,RelativeSource={RelativeSource AncestorType=local:DateTimePicker}}"></DropShadowEffect>
+                                                              Color="{Binding ShadowColor,Converter={StaticResource NullableColorToColoConverter},RelativeSource={RelativeSource AncestorType=local:DateTimePicker}}"></DropShadowEffect>
                                         </Border.Effect>
                                     </Border>
                                     <Grid Margin="1,1,1,10">
@@ -2584,7 +2584,7 @@
                                                 <DropShadowEffect ShadowDepth="0"
                                                                   BlurRadius="8"
                                                                   Opacity="1"
-                                                                  Color="{Binding ShadowColor,RelativeSource={RelativeSource AncestorType=local:DropDown}}"></DropShadowEffect>
+                                                                  Color="{Binding ShadowColor,Converter={StaticResource NullableColorToColoConverter},RelativeSource={RelativeSource AncestorType=local:DropDown}}"></DropShadowEffect>
                                             </Path.Effect>
                                         </Path>
                                         <Grid Margin="0,7,0,0">
@@ -2668,7 +2668,7 @@
                                                 <DropShadowEffect ShadowDepth="0"
                                                                   BlurRadius="5"
                                                                   Opacity="1"
-                                                                  Color="{Binding ShadowColor,RelativeSource={RelativeSource AncestorType=local:DropDown}}"></DropShadowEffect>
+                                                                  Color="{Binding ShadowColor,Converter={StaticResource NullableColorToColoConverter},RelativeSource={RelativeSource AncestorType=local:DropDown}}"></DropShadowEffect>
                                             </Path.Effect>
                                         </Path>
                                         <Grid>

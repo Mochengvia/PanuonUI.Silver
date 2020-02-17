@@ -43,7 +43,6 @@
                       pu:TreeViewHelper.SelectedForeground="#49A9C0"
                       pu:TreeViewHelper.ExpandMode="SingleClick"
                       pu:TreeViewHelper.SelectMode="ChildOnly"
-                      SelectedValuePath="Value"
                       SelectedItemChanged="TvMenu_SelectionChanged"
                       Margin="5,0,0,0"
                       ItemsSource="{Binding MenuItems}">

@@ -30,6 +30,9 @@ namespace Panuon.UI.Silver.Converters
                 case MessageBoxIcon.Warning:
                     path = $"M {0.5 * width},{0.1 * width} L 5,{0.9 * width} H {width - 5} Z M {0.5 * width},{0.3 * width} V {0.70 * width} M {0.5 * width},{0.8 * width} V {0.8 * width}";
                     break;
+                case MessageBoxIcon.Question:
+                    path = $"M {0.3 * width} {0.375 * width} A {0.21 * width} {0.21 * width} 0 1 1 {0.5 * width} {0.6 * width} V {0.7 * width}  M {0.5 * width},{0.8 * width} V {0.8 * width}";
+                    break;
             }
 
             return PathGeometry.Parse(path);
