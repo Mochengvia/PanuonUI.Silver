@@ -112,7 +112,8 @@
 
     <ControlTemplate x:Key="{x:Static i:ResourceKeys.WindowXTemplate}"
                      TargetType="{x:Type local:WindowX}">
-        <Border Background="{TemplateBinding Background}"
+        <Border SnapsToDevicePixels="True"
+                Background="{TemplateBinding Background}"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}">
             <Grid x:Name="GrdMain">
@@ -271,7 +272,8 @@
 
     <ControlTemplate x:Key="{x:Static i:ResourceKeys.WindowXToolWindowTemplate}"
                      TargetType="local:WindowX">
-        <Border Background="{TemplateBinding Background}"
+        <Border SnapsToDevicePixels="True"
+                Background="{TemplateBinding Background}"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}">
             <Grid x:Name="GrdMain">

@@ -265,10 +265,20 @@
     #region Separator
     public enum Alignment
     {
-        Top,
-        Bottom,
         Left,
+        Top,
         Right,
+        Bottom,
+    }
+    #endregion
+
+    #region DrawerPlacement
+    public enum DrawerPlacement
+    {
+        Left,
+        Top,
+        Right,
+        Bottom,
     }
     #endregion
 

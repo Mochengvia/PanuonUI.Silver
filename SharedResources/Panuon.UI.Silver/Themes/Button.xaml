@@ -24,6 +24,7 @@
     <ControlTemplate x:Key="{x:Static i:ResourceKeys.ButtonTemplate}"
                      TargetType="Button">
         <Border x:Name="BdrMain"
+                SnapsToDevicePixels="True"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
                 Background="{TemplateBinding Background}"

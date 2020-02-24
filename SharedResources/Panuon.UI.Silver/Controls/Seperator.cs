@@ -8,16 +8,20 @@ using System.Windows.Threading;
 
 namespace Panuon.UI.Silver
 {
-    public class Separator : FrameworkElement
+    public class Separator : UIElement
     {
-        #region Ctor
-        static Separator()
-        {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(Separator), new FrameworkPropertyMetadata(typeof(Separator)));
-        }
-        #endregion
-
         #region Properties
+
+        #region Thickness
+        public double Thickness
+        {
+            get { return (double)GetValue(ThicknessProperty); }
+            set { SetValue(ThicknessProperty, value); }
+        }
+
+        public static readonly DependencyProperty ThicknessProperty =
+            DependencyProperty.Register("Thickness", typeof(double), typeof(Separator), new FrameworkPropertyMetadata(1.0, FrameworkPropertyMetadataOptions.AffectsRender));
+        #endregion
 
         #region Brush
         public Brush Brush
@@ -27,7 +31,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty BrushProperty =
-            DependencyProperty.Register("Brush", typeof(Brush), typeof(Separator));
+            DependencyProperty.Register("Brush", typeof(Brush), typeof(Separator), new FrameworkPropertyMetadata(Brushes.Black, FrameworkPropertyMetadataOptions.AffectsRender));
         #endregion
 
         #region Alignment
@@ -39,14 +43,13 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty AlignmentProperty =
-            DependencyProperty.Register("Alignment", typeof(Alignment), typeof(Separator));
+            DependencyProperty.Register("Alignment", typeof(Alignment), typeof(Separator), new FrameworkPropertyMetadata(Alignment.Bottom, FrameworkPropertyMetadataOptions.AffectsRender));
 
         #endregion
 
         #endregion
 
         #region Overrides
-       
         protected override void OnRender(DrawingContext drawingContext)
         {
             base.OnRender(drawingContext);
@@ -54,7 +57,22 @@ namespace Panuon.UI.Silver
             {
                 return;
             }
-            drawingContext.DrawRectangle(Brush, null, new Rect(1, 1, RenderSize.Width, RenderSize.Height));
+            switch (Alignment)
+            {
+                case Alignment.Left:
+                    drawingContext.DrawRectangle(Brush, null, new Rect(0, 0, Thickness, RenderSize.Height));
+                    break;
+                case Alignment.Right:
+                    drawingContext.DrawRectangle(Brush, null, new Rect(RenderSize.Width, 0, Thickness, RenderSize.Height));
+
+                    break;
+                case Alignment.Top:
+                    drawingContext.DrawRectangle(Brush, null, new Rect(0, 0, RenderSize.Width, Thickness));
+                    break;
+                default:
+                    drawingContext.DrawRectangle(Brush, null, new Rect(0, RenderSize.Height, RenderSize.Width, Thickness));
+                    break;
+            }
         }
     }
     #endregion

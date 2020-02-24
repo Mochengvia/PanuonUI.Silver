@@ -13,6 +13,7 @@
     <ControlTemplate x:Key="{x:Static i:ResourceKeys.CardStandardVerticalTemplate}"
                      TargetType="local:Card">
         <Border x:Name="BdrMain"
+                SnapsToDevicePixels="True"
                 Background="{TemplateBinding Background}"
                 BorderThickness="{TemplateBinding BorderThickness}"
                 BorderBrush="{TemplateBinding BorderBrush}"
@@ -57,6 +58,7 @@
     <ControlTemplate x:Key="{x:Static i:ResourceKeys.CardStandardHorizontalTemplate}"
                      TargetType="local:Card">
         <Border x:Name="BdrMain"
+                SnapsToDevicePixels="True"
                 Background="{TemplateBinding Background}"
                 BorderThickness="{TemplateBinding BorderThickness}"
                 BorderBrush="{TemplateBinding BorderBrush}"
@@ -64,7 +66,8 @@
             <Border.OpacityMask>
                 <VisualBrush>
                     <VisualBrush.Visual>
-                        <Border CornerRadius="{TemplateBinding CornerRadius}"
+                        <Border SnapsToDevicePixels="True"
+                                CornerRadius="{TemplateBinding CornerRadius}"
                                 Background="Black"
                                 Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=local:Card}, Mode=OneWay}"
                                 Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=local:Card}, Mode=OneWay}" />

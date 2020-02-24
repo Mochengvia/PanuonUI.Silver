@@ -29,7 +29,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\DataGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\DateTimePicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Drawer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -45,7 +53,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\Separator.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Themes\ListBoxItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -143,17 +151,20 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Clock.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ClockItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\DateTimePicker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Drawer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\DropDown.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\FormGroup.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MessageBoxX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NeonLabel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PopupX.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Rectangle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Seperator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TextBlockX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\WaterfallPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\WindowX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\WindowXCaption.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\DataGridHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\GroupBoxHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ListBoxHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ToggleButtonHelper.cs" />

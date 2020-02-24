@@ -17,6 +17,7 @@
                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                     Margin="{TemplateBinding Padding}">
             <Border x:Name="BdrBox"
+                    SnapsToDevicePixels="True"
                     Opacity="0.8"
                     Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
                     Width="{Binding Path=(local:RadioButtonHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
@@ -184,6 +185,7 @@
             <Grid Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
                   Width="{Binding Path=(local:RadioButtonHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}">
                 <Border x:Name="BdrMain"
+                        SnapsToDevicePixels="True"
                         CornerRadius="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy2Converter}}, RelativeSource={RelativeSource Self}}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{Binding BorderThickness, RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
@@ -327,6 +329,7 @@
             <Grid Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
                   Width="{Binding Path=(local:RadioButtonHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}">
                 <Border x:Name="BdrMain"
+                        SnapsToDevicePixels="True"
                         CornerRadius="{Binding Path=(local:RadioButtonHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{Binding BorderThickness, RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
@@ -475,6 +478,7 @@
             <Grid Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
                   Width="{Binding Path=(local:RadioButtonHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}">
                 <Border x:Name="BdrMain"
+                        SnapsToDevicePixels="True"
                         CornerRadius="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy2Converter}}, RelativeSource={RelativeSource Self}}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{Binding BorderThickness, RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
@@ -487,6 +491,7 @@
                                Opacity="0" />
                 </Border>
                 <Border x:Name="BdrToggleTrack"
+                        SnapsToDevicePixels="True"
                         Margin="{Binding Path=(local:RadioButtonHelper.BoxHeight),Converter={StaticResource {x:Static i:ResourceKeys.CheckBoxSwitch3ToggleTrackMarginConverter}},RelativeSource={RelativeSource AncestorType=RadioButton},Mode=OneWay}">
                     <Rectangle x:Name="EllToggle"
                                Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
@@ -715,10 +720,12 @@
                               HorizontalAlignment="Center"
                               Margin="{TemplateBinding Padding}" />
             <Border x:Name="BdrRaw"
+                    SnapsToDevicePixels="True"
                     BorderThickness="{TemplateBinding BorderThickness}"
                     BorderBrush="{TemplateBinding BorderBrush}"
                     CornerRadius="{Binding Path=(local:RadioButtonHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}">
                 <Border x:Name="BdrGlyphRaw"
+                        SnapsToDevicePixels="True"
                         Width="{Binding ActualHeight,RelativeSource={RelativeSource Self},Mode=OneWay}"
                         Height="{Binding ActualHeight, ElementName=BdrChecked, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy2_5Converter}},Mode=OneWay}"
                         VerticalAlignment="Bottom"
@@ -742,11 +749,13 @@
                 </Border>
             </Border>
             <Border x:Name="BdrChecked"
+                    SnapsToDevicePixels="True"
                     Opacity="0"
                     BorderThickness="{TemplateBinding BorderThickness}"
                     BorderBrush="{Binding Path=(local:RadioButtonHelper.CheckedBorderBrush), RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
                     CornerRadius="{Binding Path=(local:RadioButtonHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}">
                 <Border x:Name="BdrGlyph"
+                        SnapsToDevicePixels="True"
                         Width="{Binding ActualHeight,RelativeSource={RelativeSource Self},Mode=OneWay}"
                         Height="{Binding ActualHeight, ElementName=BdrChecked, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy2_5Converter}},Mode=OneWay}"
                         VerticalAlignment="Bottom"

@@ -37,6 +37,7 @@
     <ControlTemplate x:Key="{x:Static i:ResourceKeys.ComboBoxItemTemplate}"
                      TargetType="ComboBoxItem">
         <Border x:Name="BdrMain"
+                SnapsToDevicePixels="True"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
                 Background="{TemplateBinding Background}">

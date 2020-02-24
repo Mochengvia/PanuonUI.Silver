@@ -35,6 +35,7 @@
     <icv:Add7Converter x:Key="{x:Static i:ResourceKeys.Add7Converter}" />
     <icv:Add10Converter x:Key="{x:Static i:ResourceKeys.Add10Converter}" />
     <icv:Add16Converter x:Key="{x:Static i:ResourceKeys.Add16Converter}" />
+    <icv:Minus0_5Converter x:Key="{x:Static i:ResourceKeys.Minus0_5Converter}" />
     <icv:Minus1Converter x:Key="{x:Static i:ResourceKeys.Minus1Converter}" />
     <icv:Minus2Converter x:Key="{x:Static i:ResourceKeys.Minus2Converter}" />
     <icv:Minus3Converter x:Key="{x:Static i:ResourceKeys.Minus3Converter}" />
@@ -512,4 +513,8 @@
                      Color="Gray" />
     <Thickness x:Key="{x:Static i:ResourceKeys.ClockBorderThickness}">2</Thickness>
 
+    <!--ListBox-->
+    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.ListBoxItemStandardBackground}"
+                     Color="Transparent" />
+    <Thickness x:Key="{x:Static i:ResourceKeys.ListBoxItemStandardBorderThickness}">1</Thickness>
 </ResourceDictionary>

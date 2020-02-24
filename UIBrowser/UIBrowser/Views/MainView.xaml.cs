@@ -1,4 +1,6 @@
 ﻿using Panuon.UI.Silver;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows.Controls;
 
 namespace UIBrowser.Views
@@ -11,6 +13,10 @@ namespace UIBrowser.Views
         public MainView()
         {
             InitializeComponent();
+            var list = new ObservableCollection<object>();
+            list.Add(new { Value = "12345" });
+            list.Add(new { Value = "12345" });
+
         }
 
         private void TextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)

@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using Panuon.UI.Silver.Internal.Utils;
+using System;
+using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -20,7 +23,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty ItemsHoverBackgroundProperty =
-            DependencyProperty.RegisterAttached("ItemsHoverBackground", typeof(Brush), typeof(ComboBoxHelper));
+            DependencyProperty.RegisterAttached("ItemsHoverBackground", typeof(Brush), typeof(ListBoxHelper));
 
         public static Brush GetItemHoverBackground(ListBoxItem listBoxItem)
         {
@@ -33,7 +36,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty ItemHoverBackgroundProperty =
-            DependencyProperty.RegisterAttached("ItemHoverBackground", typeof(Brush), typeof(ComboBoxHelper));
+            DependencyProperty.RegisterAttached("ItemHoverBackground", typeof(Brush), typeof(ListBoxHelper));
 
 
         #endregion
@@ -50,7 +53,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty ItemsHoverForegroundProperty =
-            DependencyProperty.RegisterAttached("ItemsHoverForeground", typeof(Brush), typeof(ComboBoxHelper));
+            DependencyProperty.RegisterAttached("ItemsHoverForeground", typeof(Brush), typeof(ListBoxHelper));
 
 
 
@@ -65,7 +68,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty ItemHoverForegroundProperty =
-            DependencyProperty.RegisterAttached("ItemHoverForeground", typeof(Brush), typeof(ComboBoxHelper));
+            DependencyProperty.RegisterAttached("ItemHoverForeground", typeof(Brush), typeof(ListBoxHelper));
 
 
         #endregion
@@ -82,7 +85,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty ItemsHoverBorderBrushProperty =
-            DependencyProperty.RegisterAttached("ItemsHoverBorderBrush", typeof(Brush), typeof(ComboBoxHelper));
+            DependencyProperty.RegisterAttached("ItemsHoverBorderBrush", typeof(Brush), typeof(ListBoxHelper));
 
         public static Brush GetItemHoverBorderBrush(ListBoxItem listBoxItem)
         {
@@ -95,7 +98,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty ItemHoverBorderBrushProperty =
-            DependencyProperty.RegisterAttached("ItemHoverBorderBrush", typeof(Brush), typeof(ComboBoxHelper));
+            DependencyProperty.RegisterAttached("ItemHoverBorderBrush", typeof(Brush), typeof(ListBoxHelper));
         #endregion
 
         #region ItemSelectedBackground
@@ -110,7 +113,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty ItemsSelectedBackgroundProperty =
-            DependencyProperty.RegisterAttached("ItemsSelectedBackground", typeof(Brush), typeof(ComboBoxHelper));
+            DependencyProperty.RegisterAttached("ItemsSelectedBackground", typeof(Brush), typeof(ListBoxHelper));
 
         public static Brush GetItemSelectedBackground(ListBoxItem listBoxItem)
         {
@@ -123,7 +126,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty ItemSelectedBackgroundProperty =
-            DependencyProperty.RegisterAttached("ItemSelectedBackground", typeof(Brush), typeof(ComboBoxHelper));
+            DependencyProperty.RegisterAttached("ItemSelectedBackground", typeof(Brush), typeof(ListBoxHelper));
         #endregion
 
         #region ItemSelectedForeground
@@ -138,7 +141,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty ItemsSelectedForegroundProperty =
-            DependencyProperty.RegisterAttached("ItemsSelectedForeground", typeof(Brush), typeof(ComboBoxHelper));
+            DependencyProperty.RegisterAttached("ItemsSelectedForeground", typeof(Brush), typeof(ListBoxHelper));
 
 
         public static Brush GetItemSelectedForeground(ListBoxItem listBoxItem)
@@ -152,7 +155,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty ItemSelectedForegroundProperty =
-            DependencyProperty.RegisterAttached("ItemSelectedForeground", typeof(Brush), typeof(ComboBoxHelper));
+            DependencyProperty.RegisterAttached("ItemSelectedForeground", typeof(Brush), typeof(ListBoxHelper));
 
 
         #endregion
@@ -169,7 +172,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty ItemsSelectedBorderBrushProperty =
-            DependencyProperty.RegisterAttached("ItemsSelectedBorderBrush", typeof(Brush), typeof(ComboBoxHelper));
+            DependencyProperty.RegisterAttached("ItemsSelectedBorderBrush", typeof(Brush), typeof(ListBoxHelper));
 
         public static Brush GetItemSelectedBorderBrush(ListBoxItem listBoxItem)
         {
@@ -182,7 +185,26 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty ItemSelectedBorderBrushProperty =
-            DependencyProperty.RegisterAttached("ItemSelectedBorderBrush", typeof(Brush), typeof(ComboBoxHelper));
+            DependencyProperty.RegisterAttached("ItemSelectedBorderBrush", typeof(Brush), typeof(ListBoxHelper));
+        #endregion
+
+        #region ItemsHeight
+
+
+        public static double GetItemsHeight(DependencyObject obj)
+        {
+            return (double)obj.GetValue(ItemsHeightProperty);
+        }
+
+        public static void SetItemsHeight(DependencyObject obj, double value)
+        {
+            obj.SetValue(ItemsHeightProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsHeightProperty =
+            DependencyProperty.RegisterAttached("ItemsHeight", typeof(double), typeof(ListBoxHelper));
+
+
         #endregion
 
         #region ItemIcon

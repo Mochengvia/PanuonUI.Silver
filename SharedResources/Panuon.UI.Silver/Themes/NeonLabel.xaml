@@ -18,6 +18,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="local:NeonLabel">
                     <Border x:Name="BdrMain"
+                            SnapsToDevicePixels="True"
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"

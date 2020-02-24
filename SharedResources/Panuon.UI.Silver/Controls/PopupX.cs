@@ -114,28 +114,24 @@ namespace Panuon.UI.Silver
             var location = Child.TranslatePoint(new Point(0, 0), target);
 
 
-            if (location.X > 0)
+            if(location.X >= 0)
             {
-                if (location.Y > 0)
+                if(location.Y > 0)
                 {
                     ActualPlacement = ActualPlacement.BottomRight;
-                }
-                else if (location.Y == 0)
-                {
-                    ActualPlacement = ActualPlacement.Right;
                 }
                 else
                 {
                     ActualPlacement = ActualPlacement.TopRight;
                 }
             }
-            else if (location.X == 0)
+            else if(location.X == ((target as FrameworkElement).ActualWidth - (Child as FrameworkElement).ActualWidth) / 2)
             {
                 if (location.Y > 0)
                 {
                     ActualPlacement = ActualPlacement.Bottom;
                 }
-                else if (location.Y < 0)
+                else
                 {
                     ActualPlacement = ActualPlacement.Top;
                 }
@@ -145,10 +141,6 @@ namespace Panuon.UI.Silver
                 if (location.Y > 0)
                 {
                     ActualPlacement = ActualPlacement.BottomLeft;
-                }
-                else if (location.Y == 0)
-                {
-                    ActualPlacement = ActualPlacement.Left;
                 }
                 else
                 {

@@ -45,6 +45,7 @@
         <Grid x:Name="GrdMain"
               Background="Transparent">
             <Border x:Name="BdrBack"
+                    SnapsToDevicePixels="True"
                     Background="{TemplateBinding Background}"
                     BorderThickness="0,0,0,1"
                     BorderBrush="{TemplateBinding BorderBrush}" />
@@ -79,29 +80,6 @@
             </StackPanel>
         </Grid>
         <ControlTemplate.Triggers>
-            <MultiDataTrigger>
-                <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsSelected,RelativeSource={RelativeSource Self}}"
-                               Value="True" />
-                    <Condition Binding="{Binding Path=(local:TabControlHelper.ItemSelectedForeground),Converter={StaticResource {x:Static i:ResourceKeys.IsNotNullConverter}},RelativeSource={RelativeSource Self}, Mode=OneWay}"
-                               Value="True" />
-                </MultiDataTrigger.Conditions>
-                <Setter TargetName="CpHeader"
-                        Property="TextBlock.Foreground"
-                        Value="{Binding Path=(local:TabControlHelper.ItemSelectedForeground),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <Setter TargetName="CpHeader"
-                        Property="TextElement.Foreground"
-                        Value="{Binding Path=(local:TabControlHelper.ItemSelectedForeground),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <Setter TargetName="BtnRemove"
-                        Property="Foreground"
-                        Value="{Binding Path=(local:TabControlHelper.ItemSelectedForeground),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <Setter TargetName="IcIcon"
-                        Property="TextBlock.Foreground"
-                        Value="{Binding Path=(local:TabControlHelper.ItemSelectedForeground),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <Setter TargetName="IcIcon"
-                        Property="TextElement.Foreground"
-                        Value="{Binding Path=(local:TabControlHelper.ItemSelectedForeground),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-            </MultiDataTrigger>
             <Trigger Property="IsSelected"
                      Value="True">
                 <Setter TargetName="BdrBack"
@@ -147,6 +125,7 @@
         <Grid x:Name="GrdMain"
               Background="Transparent">
             <Border x:Name="BdrBack"
+                    SnapsToDevicePixels="True"
                     Background="{TemplateBinding Background}"
                     BorderThickness="{TemplateBinding BorderThickness}"
                     BorderBrush="{TemplateBinding BorderBrush}" />
@@ -246,21 +225,21 @@
                 <Setter Property="Template"
                         Value="{StaticResource {x:Static i:ResourceKeys.TabItemCardTemplate}}" />
             </Trigger>
-            <MultiDataTrigger>
-                <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsSelected,RelativeSource={RelativeSource Self}}"
-                               Value="True" />
-                    <Condition Binding="{Binding Path=(local:TabControlHelper.ItemSelectedBackground),Converter={StaticResource {x:Static i:ResourceKeys.IsNotNullConverter}},RelativeSource={RelativeSource Self}, Mode=OneWay}"
-                               Value="True" />
-                </MultiDataTrigger.Conditions>
-                <Setter Property="Background"
-                        Value="{Binding Path=(local:TabControlHelper.ItemSelectedBackground),RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-            </MultiDataTrigger>
             <Trigger Property="IsEnabled"
                      Value="False">
                 <Setter Property="Opacity"
                         Value="{StaticResource {x:Static rs:ResourceKeys.DisabledOpacity}}" />
             </Trigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsSelected,RelativeSource={RelativeSource Self}}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:TabControlHelper.ItemSelectedForeground),Converter={StaticResource {x:Static i:ResourceKeys.IsNotNullConverter}},RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Foreground"
+                        Value="{Binding Path=(local:TabControlHelper.ItemSelectedForeground),RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            </MultiDataTrigger>
 
         </Style.Triggers>
     </Style>

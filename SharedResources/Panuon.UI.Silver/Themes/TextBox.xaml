@@ -55,6 +55,7 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <Border x:Name="BdrBorder"
+                    SnapsToDevicePixels="True"
                     Grid.ColumnSpan="3"
                     BorderBrush="{TemplateBinding BorderBrush}"
                     BorderThickness="{TemplateBinding BorderThickness}"
@@ -108,6 +109,7 @@
                     Style="{DynamicResource {x:Static rs:ResourceKeys.TextBoxClearButtonStyle}}"
                     Visibility="{Binding Path=(local:TextBoxHelper.CanClear),Converter={StaticResource {x:Static i:ResourceKeys.BoolToVisibleConverter}},RelativeSource={RelativeSource AncestorType=TextBox},Mode=OneWay}" />
             <Border x:Name="BdrWait"
+                    SnapsToDevicePixels="True"
                     Grid.Column="2"
                     Width="{Binding ActualHeight,Converter={StaticResource {x:Static i:ResourceKeys.Minus5Converter}},RelativeSource={RelativeSource AncestorType=TextBox},Mode=OneWay}"
                     Height="{Binding ActualHeight,RelativeSource={RelativeSource AncestorType=TextBox},Mode=OneWay}"

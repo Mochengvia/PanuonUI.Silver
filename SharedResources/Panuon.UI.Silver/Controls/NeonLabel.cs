@@ -375,7 +375,9 @@ namespace Panuon.UI.Silver
             }
             _lastAnimation = Animation;
             if (PlayDelay != null)
+            {
                 _storyboard.BeginTime = PlayDelay;
+            }
             _storyboard.Completed += delegate
             {
                 completeAction?.Invoke();

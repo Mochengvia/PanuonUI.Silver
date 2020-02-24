@@ -18,7 +18,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ToggleButton">
-                    <Border Background="Transparent">
+                    <Border SnapsToDevicePixels="True"
+                            Background="Transparent">
                         <TextBlock x:Name="TxtToggle"
                                    Foreground="{Binding Path=(local:TreeViewHelper.ItemToggleBrush),RelativeSource={RelativeSource AncestorType=TreeViewItem},Mode=OneWay}"
                                    Text="&#xe945;"

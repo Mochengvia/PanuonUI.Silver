@@ -13,7 +13,8 @@
 
     <ControlTemplate x:Key="{x:Static i:ResourceKeys.ScrollViewerThumbTemplate}"
                      TargetType="Thumb">
-        <Border Background="{Binding Path=(local:ScrollViewerHelper.ThumbBrush),RelativeSource={RelativeSource Self}, Mode=OneWay}"
+        <Border SnapsToDevicePixels="True"
+                Background="{Binding Path=(local:ScrollViewerHelper.ThumbBrush),RelativeSource={RelativeSource Self}, Mode=OneWay}"
                 CornerRadius="{Binding Path=(local:ScrollViewerHelper.ScrollBarCornerRadius),RelativeSource={RelativeSource Self}, Mode=OneWay}" />
     </ControlTemplate>
 
@@ -58,7 +59,8 @@
                           FontSize="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.Minus2Converter}}, RelativeSource={RelativeSource AncestorType=ScrollBar}, Mode=OneWay}"
                           FontFamily="{StaticResource PanuonIconFont}"
                           Command="ScrollBar.LineLeftCommand" />
-            <Border Background="{Binding Path=(local:ScrollViewerHelper.TrackBrush),RelativeSource={RelativeSource Self}, Mode=OneWay}"
+            <Border SnapsToDevicePixels="True"
+                    Background="{Binding Path=(local:ScrollViewerHelper.TrackBrush),RelativeSource={RelativeSource Self}, Mode=OneWay}"
                     CornerRadius="{Binding Path=(local:ScrollViewerHelper.ScrollBarCornerRadius),RelativeSource={RelativeSource Self}, Mode=OneWay}"
                     Grid.Column="2">
                 <Track x:Name="PART_Track"
@@ -171,7 +173,8 @@
                           FontSize="{Binding ActualWidth, Converter={StaticResource {x:Static i:ResourceKeys.Minus2Converter}}, RelativeSource={RelativeSource AncestorType=ScrollBar}, Mode=OneWay}"
                           FontFamily="{StaticResource PanuonIconFont}"
                           Command="ScrollBar.LineUpCommand" />
-            <Border Background="{Binding Path=(local:ScrollViewerHelper.TrackBrush),RelativeSource={RelativeSource Self}, Mode=OneWay}"
+            <Border SnapsToDevicePixels="True"
+                    Background="{Binding Path=(local:ScrollViewerHelper.TrackBrush),RelativeSource={RelativeSource Self}, Mode=OneWay}"
                     CornerRadius="{Binding Path=(local:ScrollViewerHelper.ScrollBarCornerRadius),RelativeSource={RelativeSource Self}, Mode=OneWay}"
                     Grid.Row="2">
                 <Track x:Name="PART_Track"
@@ -291,7 +294,8 @@
 
     <ControlTemplate x:Key="{x:Static i:ResourceKeys.ScrollViewerTemplate}"
                      TargetType="{x:Type ScrollViewer}">
-        <Border BorderBrush="{TemplateBinding BorderBrush}"
+        <Border SnapsToDevicePixels="True"
+                BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
                 Background="{TemplateBinding Background}">
             <Grid>
@@ -327,10 +331,10 @@
     </ControlTemplate>
 
     <Style TargetType="ScrollViewer">
-        <Setter Property="VerticalAlignment"
-                Value="Stretch" />
-        <Setter Property="HorizontalAlignment"
-                Value="Stretch" />
+        <Setter Property="VerticalScrollBarVisibility"
+                Value="Auto" />
+        <Setter Property="HorizontalScrollBarVisibility"
+                Value="Disabled" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static i:ResourceKeys.ScrollViewerTemplate}}" />
         <Style.Triggers>

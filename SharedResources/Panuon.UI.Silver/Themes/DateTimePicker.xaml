@@ -101,6 +101,7 @@
                      TargetType="{x:Type local:DateTimePicker}">
         <Grid>
             <Border x:Name="BdrBorder"
+                    SnapsToDevicePixels="True"
                     BorderBrush="{TemplateBinding BorderBrush}"
                     BorderThickness="{TemplateBinding BorderThickness}"
                     Background="{TemplateBinding Background}"
@@ -150,6 +151,7 @@
                            Height="{TemplateBinding DropDownHeight}"
                            Width="{TemplateBinding DropDownWidth}">
                 <Border x:Name="BdrDropDown"
+                        SnapsToDevicePixels="True"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"

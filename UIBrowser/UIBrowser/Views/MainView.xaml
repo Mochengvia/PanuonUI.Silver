@@ -18,147 +18,29 @@
             <Run Foreground="#68D450"> U O N</Run>
         </TextBlock>
     </pu:WindowXCaption.Header>
-    <StackPanel Margin="0,15,0,0">
-        <StackPanel>
-            <Image MaxHeight="20"
-                   MaxWidth="40"
-                   Source="/Resources/test.jpg"/>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal"
-                    Margin="0,0,0,5">
-            <Button Content="Standard"
-                    Height="30"
-                    Width="120"
-                    Margin="0,0,5,0"
-                    Click="Button_Click"/>
-            <Button Content="Hollow"
-                    Height="30"
-                    Width="120"
-                    Margin="0,0,5,0"
-                    pu:ButtonHelper.ButtonStyle="Hollow" />
-            <Button Content="Outline"
-                    Height="30"
-                    Width="120"
-                    Margin="0,0,5,0"
-                    pu:ButtonHelper.ButtonStyle="Outline" />
-            <Button Content="Link"
-                    Height="30"
-                    Width="120"
-                    Margin="0,0,5,0"
-                    pu:ButtonHelper.ButtonStyle="Link" />
-        </StackPanel>
-        <StackPanel Orientation="Horizontal"
-                    Margin="0,0,0,5">
-            <Button Content="Standard"
-                    Height="30"
-                    Width="120"
-                    Margin="0,0,5,0"
-                    pu:IconHelper.MaxHeight="20"
-                    pu:IconHelper.MaxWidth="20"
-                    pu:IconHelper.Margin="0,0,5,0"
-                    pu:ButtonHelper.Icon="/UIBrowser;component/Resources/test.jpg" />
-            <Button Content="Hollow"
-                    Height="30"
-                    Width="120"
-                    Margin="0,0,5,0"
-                    pu:IconHelper.MaxHeight="20"
-                    pu:IconHelper.MaxWidth="20"
-                    pu:IconHelper.Margin="0,0,5,0"
-                    pu:ButtonHelper.ButtonStyle="Hollow"
-                    pu:ButtonHelper.Icon="/UIBrowser;component/Resources/test.jpg" />
-            <Button Content="Outline"
-                    Height="30"
-                    Width="120"
-                    Margin="0,0,5,0"
-                    pu:IconHelper.MaxHeight="20"
-                    pu:IconHelper.MaxWidth="20"
-                    pu:ButtonHelper.ButtonStyle="Outline"
-                    pu:IconHelper.Margin="0,0,5,0"
-                    pu:ButtonHelper.Icon="/UIBrowser;component/Resources/test.jpg" />
-            <Button Content="Link"
-                    Height="30"
-                    Width="120"
-                    Margin="0,0,5,0"
-                    pu:IconHelper.MaxHeight="20"
-                    pu:IconHelper.MaxWidth="20"
-                    pu:ButtonHelper.ButtonStyle="Link"
-                    pu:IconHelper.Margin="0,0,5,0"
-                    pu:ButtonHelper.Icon="/UIBrowser;component/Resources/test.jpg" />
-        </StackPanel>
-        <StackPanel Orientation="Horizontal"
-                    Margin="0,0,0,5">
-            <Button Content="Standard"
-                    Height="50"
-                    Width="120"
-                    Margin="0,0,5,0"
-                    pu:IconHelper.MaxHeight="20"
-                    pu:IconHelper.MaxWidth="20"
-                    pu:IconHelper.Margin="0,0,5,0"
-                    pu:ButtonHelper.IconPosition="Top"
-                    pu:ButtonHelper.Icon="/UIBrowser;component/Resources/test.jpg" />
-            <Button Content="Hollow"
-                    Height="50"
-                    Width="120"
-                    Margin="0,0,5,0"
-                    pu:IconHelper.MaxHeight="20"
-                    pu:IconHelper.MaxWidth="20"
-                    pu:IconHelper.Margin="0,0,5,0"
-                    pu:ButtonHelper.ButtonStyle="Hollow"
-                    pu:ButtonHelper.IconPosition="Top"
-                    pu:ButtonHelper.Icon="/UIBrowser;component/Resources/test.jpg" />
-            <Button Content="Outline"
-                    Height="50"
-                    Width="120"
-                    Margin="0,0,5,0"
-                    pu:IconHelper.MaxHeight="20"
-                    pu:IconHelper.MaxWidth="20"
-                    pu:ButtonHelper.ButtonStyle="Outline"
-                    pu:IconHelper.Margin="0,0,5,0"
-                    pu:ButtonHelper.IconPosition="Top"
-                    pu:ButtonHelper.Icon="/UIBrowser;component/Resources/test.jpg" />
-            <Button Content="Link"
-                    Height="50"
-                    Width="120"
-                    Margin="0,0,5,0"
-                    pu:IconHelper.MaxHeight="20"
-                    pu:IconHelper.MaxWidth="20"
-                    pu:ButtonHelper.ButtonStyle="Link"
-                    pu:IconHelper.Margin="0,0,5,0"
-                    pu:ButtonHelper.IconPosition="Top"
-                    pu:ButtonHelper.Icon="/UIBrowser;component/Resources/test.jpg" />
-        </StackPanel>
-        <StackPanel Orientation="Horizontal"
-                    Margin="0,0,0,5">
-            
-            <TextBox Width="200"
-                     Height="30"
-                     pu:IconHelper.Width="20"
-                     pu:IconHelper.Height="20"
-                     pu:TextBoxHelper.FocusedBorderBrush="LightBlue"
-                     pu:TextBoxHelper.FocusedShadowColor="LightBlue"
-                     pu:TextBoxHelper.Icon="/UIBrowser;component/Resources/test.jpg"
-                     pu:TextBoxHelper.CanClear="True"
-                     pu:TextBoxHelper.Watermark="尝试在此输入123"
-                     TextChanged="TextBox_TextChanged" 
-                     Margin="0,0,5,0"/>
-            <PasswordBox Width="200"
-                         Height="30"
-                         pu:PasswordBoxHelper.FocusedBorderBrush="LightBlue"
-                         pu:PasswordBoxHelper.FocusedShadowColor="LightBlue"
-                         pu:PasswordBoxHelper.CanPlain="True"
-                         pu:PasswordBoxHelper.Watermark="尝试在此输入123"
-                         PasswordChanged="PasswordBox_PasswordChanged" />
-        </StackPanel>
-        <pu:DateTimePicker Height="30"
-                           Width="280"
-                           DateTimePickerMode="Date"
-                           ThemeBrush="#FF3094B2" />
-        <TextBox VerticalScrollBarVisibility="Auto"
-                 TextWrapping="Wrap"
-                 Width="100"
-                 Height="100"/>
 
-
-    </StackPanel>
-
+    <Grid>
+        <TextBox pu:TextBoxHelper.CanClear="True"
+                 Height="30"
+                 Width="200"/>
+        <!--<DataGrid x:Name="Dg"
+                  Width="500"
+                  Height="300"
+                  RowHeaderWidth="8"
+                  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Hello"
+                                    Binding="{Binding Value}" />
+                <DataGridTextColumn Header="Hello"
+                                    Binding="{Binding Value}" />
+                <DataGridTextColumn Header="Hello"
+                                    Binding="{Binding Value}" />
+                <DataGridTextColumn Header="Hello"
+                                    Binding="{Binding Value}" />
+                <DataGridTextColumn Header="Hello"
+                                    Binding="{Binding Value}"
+                                    Width="*" />
+            </DataGrid.Columns>
+        </DataGrid>-->
+    </Grid>
 </pu:WindowX>

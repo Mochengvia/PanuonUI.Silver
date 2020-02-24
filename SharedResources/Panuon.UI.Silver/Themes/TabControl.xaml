@@ -10,7 +10,8 @@
 
     <ControlTemplate x:Key="{x:Static i:ResourceKeys.TabControlStandardTopTemplate}"
                      TargetType="TabControl">
-        <Border Background="{TemplateBinding Background}"
+        <Border SnapsToDevicePixels="True"
+                Background="{TemplateBinding Background}"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}">
             <Grid x:Name="GrdMain"
@@ -32,6 +33,7 @@
                           Background="Transparent"
                           MaxWidth="{Binding ActualWidth,ElementName=GrdMain}" />
                 <Border x:Name="BdrLine"
+                        SnapsToDevicePixels="True"
                         Visibility="Collapsed"
                         Grid.Column="2"
                         BorderBrush="{TemplateBinding BorderBrush}"
@@ -57,7 +59,8 @@
 
     <ControlTemplate x:Key="{x:Static i:ResourceKeys.TabControlStandardLeftTemplate}"
                      TargetType="TabControl">
-        <Border Background="{TemplateBinding Background}"
+        <Border SnapsToDevicePixels="True"
+                Background="{TemplateBinding Background}"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}">
             <Grid x:Name="GrdMain"
@@ -79,6 +82,7 @@
                           Background="Transparent"
                           MaxWidth="{Binding ActualWidth,ElementName=GrdMain}" />
                 <Border x:Name="BdrLine"
+                        SnapsToDevicePixels="True"
                         Visibility="Collapsed"
                         Grid.Row="2"
                         BorderBrush="{TemplateBinding BorderBrush}"

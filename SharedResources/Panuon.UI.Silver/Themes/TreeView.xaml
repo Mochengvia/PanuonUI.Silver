@@ -10,6 +10,10 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="TreeView">
+        <Setter Property="local:ScrollViewerHelper.ScrollBarThickness"
+                Value="6" />
+        <Setter Property="local:ScrollViewerHelper.ScrollBarCornerRadius"
+                Value="3" />
         <!--TreeViewHelper-->
         <Setter Property="local:TreeViewHelper.ItemsPadding"
                 Value="{StaticResource {x:Static i:ResourceKeys.TreeViewStandardItemPadding}}" />
@@ -43,15 +47,16 @@
             <Setter.Value>
                 <ControlTemplate TargetType="TreeView">
                     <Border x:Name="BdrMain"
+                            SnapsToDevicePixels="True"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             Background="{TemplateBinding Background}"
                             BorderThickness="{TemplateBinding BorderThickness}">
                         <ScrollViewer Focusable="False"
                                       Padding="{TemplateBinding Padding}"
-                                      VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}"
-                                      HorizontalScrollBarVisibility="{Binding Path=(ScrollViewer.HorizontalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}"
+                                      VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                      HorizontalScrollBarVisibility="{Binding Path=(ScrollViewer.HorizontalScrollBarVisibility),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                       CanContentScroll="True">
-                            <ItemsPresenter />
+                            <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                         </ScrollViewer>
                     </Border>
                 </ControlTemplate>

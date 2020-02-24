@@ -134,6 +134,7 @@
                      TargetType="ComboBox">
         <Grid>
             <Border x:Name="BdrBorder"
+                    SnapsToDevicePixels="True"
                     BorderBrush="{TemplateBinding BorderBrush}"
                     BorderThickness="{TemplateBinding BorderThickness}"
                     Background="{TemplateBinding Background}"
@@ -196,6 +197,7 @@
                           MaxHeight="{TemplateBinding MaxDropDownHeight}"
                           MinWidth="{Binding ActualWidth, Converter={StaticResource {x:Static i:ResourceKeys.Add10Converter}}, ElementName=TgbContent}">
                 <Border x:Name="BdrDropDown"
+                        SnapsToDevicePixels="True"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{Binding BorderThickness,Converter={StaticResource {x:Static i:ResourceKeys.ThicknessWithoutTopConverter}},RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"

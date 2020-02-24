@@ -70,6 +70,8 @@ namespace Panuon.UI.Silver.Internal
 
         public static readonly string Minus1Converter = nameof(Minus1Converter);
 
+        public static readonly string Minus0_5Converter = nameof(Minus0_5Converter);
+
         public static readonly string Minus2Converter = nameof(Minus2Converter);
 
         public static readonly string Minus3Converter = nameof(Minus3Converter);
@@ -130,8 +132,6 @@ namespace Panuon.UI.Silver.Internal
         public static readonly string ClockHourTextMarginConverter = nameof(ClockHourTextMarginConverter);
         
         #endregion
-
-
 
         #region Common
         public const string DefaultForegroundColor = nameof(DefaultForegroundColor);
@@ -872,37 +872,6 @@ namespace Panuon.UI.Silver.Internal
         public static readonly string DropDownStandardTemplate = nameof(DropDownStandardTemplate);
         #endregion
 
-        #region DataGrid
-        public static readonly string DataGridBorderBrush = nameof(DataGridBorderBrush);
-
-        public static readonly string DataGridBorderThickness = nameof(DataGridBorderThickness);
-
-        public static readonly string DataGridBackground = nameof(DataGridBackground);
-
-        public static readonly string DataGridHorizontalGridLinesBrush = nameof(DataGridHorizontalGridLinesBrush);
-
-        public static readonly string DataGridMinRowHeight = nameof(DataGridMinRowHeight);
-
-        public static readonly string DataGridColumnHeaderHeight = nameof(DataGridColumnHeaderHeight);
-
-        public static readonly string DataGridRowTemplate = nameof(DataGridRowTemplate);
-
-        public static readonly string DataGridRowStyle = nameof(DataGridRowStyle);
-
-        public static readonly string DataGridCellTemplate = nameof(DataGridCellTemplate);
-
-        public static readonly string DataGridCellStyle = nameof(DataGridCellStyle);
-
-        public static readonly string DataGridColumnHeaderTemplate = nameof(DataGridColumnHeaderTemplate);
-
-        public static readonly string DataGridColumnHeaderStyle = nameof(DataGridColumnHeaderStyle);
-
-        public static readonly string DataGridRowHeaderTemplate = nameof(DataGridRowHeaderTemplate);
-
-        public static readonly string DataGridRowHeaderStyle = nameof(DataGridColumnHeaderStyle);
-
-        #endregion
-
         #region ListBox
         public static readonly string ListBoxBorderBrush = nameof(ListBoxBorderBrush);
 
@@ -983,6 +952,51 @@ namespace Panuon.UI.Silver.Internal
         public static readonly string GroupBoxFootnoteBorderThickness = nameof(GroupBoxFootnoteBorderThickness);
 
         public static readonly string GroupBoxFootnoteBackground = nameof(GroupBoxFootnoteBackground);
+        #endregion
+
+        #region ListBox
+        public static readonly string ListBoxStandardTemplate = nameof(ListBoxStandardTemplate);
+
+        public static readonly string ListBoxItemStandardTemplate = nameof(ListBoxItemStandardTemplate);
+
+        public static readonly string ListBoxItemStandardBorderBrush = nameof(ListBoxItemStandardBorderBrush);
+
+        public static readonly string ListBoxItemStandardBorderThickness = nameof(ListBoxItemStandardBorderThickness);
+
+        public static readonly string ListBoxItemStandardBackground = nameof(ListBoxItemStandardBackground);
+
+        #endregion
+
+        #region DataGrid
+        public static readonly string DataGridBorderBrush = nameof(DataGridBorderBrush);
+
+        public static readonly string DataGridBorderThickness = nameof(DataGridBorderThickness);
+
+        public static readonly string DataGridBackground = nameof(DataGridBackground);
+
+        public static readonly string DataGridHorizontalGridLinesBrush = nameof(DataGridHorizontalGridLinesBrush);
+
+        public static readonly string DataGridMinRowHeight = nameof(DataGridMinRowHeight);
+
+        public static readonly string DataGridColumnHeaderHeight = nameof(DataGridColumnHeaderHeight);
+
+        public static readonly string DataGridResizeThumbTemplate = nameof(DataGridResizeThumbTemplate);
+
+        public static readonly string DataGridResizeThumbStyle = nameof(DataGridResizeThumbStyle);
+
+        public static readonly string DataGridSelectAllButtonTemplate = nameof(DataGridSelectAllButtonTemplate);
+
+        public static readonly string DataGridScrollViewerTemplate = nameof(DataGridScrollViewerTemplate);
+
+        public static readonly string DataGridColumnHeaderTemplate = nameof(DataGridColumnHeaderTemplate);
+
+        public static readonly string DataGridRowHeaderTemplate = nameof(DataGridRowHeaderTemplate);
+
+        public static readonly string DataGridRowTemplate = nameof(DataGridRowTemplate);
+
+        public static readonly string DataGridCellTemplate = nameof(DataGridCellTemplate);
+
+        public static readonly string DataGridStandardTemplate = nameof(DataGridStandardTemplate);
         #endregion
 
     }

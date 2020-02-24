@@ -58,7 +58,8 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             
-            <Border x:Name="BdrDial">
+            <Border x:Name="BdrDial"
+                    SnapsToDevicePixels="True">
                 <Grid VerticalAlignment="Center"
                       HorizontalAlignment="Center">
                     <Grid.Width>

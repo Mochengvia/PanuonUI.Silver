@@ -9,11 +9,12 @@
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Resources.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <ControlTemplate x:Key="ListBoxStyle"
+    <ControlTemplate x:Key="{x:Static i:ResourceKeys.ListBoxStandardTemplate}"
                      TargetType="{x:Type ListBox}">
-        <Border Background="{TemplateBinding Background}"
-                BorderBrush="{TemplateBinding BorderBrush}"
-                BorderThickness="{TemplateBinding BorderThickness}">
+        <Border x:Name="BdrMain"
+                SnapsToDevicePixels="True"
+                Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}">
             <ScrollViewer Focusable="False"
                           Padding="{TemplateBinding Padding}"
                           VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}"
@@ -28,16 +29,30 @@
     </ControlTemplate>
     
     <Style TargetType="{x:Type ListBox}">
+        <Setter Property="local:ScrollViewerHelper.ScrollBarThickness"
+                Value="6" />
+        <Setter Property="local:ScrollViewerHelper.ScrollBarCornerRadius"
+                Value="3" />
         <Setter Property="Background"
                 Value="Transparent" />
         <Setter Property="BorderBrush"
                 Value="LightGray" />
         <Setter Property="BorderThickness"
-                Value="0" />
+                Value="1" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility"
                 Value="Disabled" />
+        <Setter Property="local:ListBoxHelper.ItemsHoverBackground"
+                Value="#FAFAFA"/>
+        <Setter Property="local:ListBoxHelper.ItemsSelectedBackground"
+                Value="#F1F1F1" />
+        <Setter Property="local:ListBoxHelper.ItemsHeight"
+                Value="30" />
+        <Setter Property="VirtualizingStackPanel.IsVirtualizing"
+                Value="True" />
+        <Setter Property="VirtualizingStackPanel.VirtualizationMode"
+                Value="Recycling" />
         <Setter Property="Template"
-                Value="{StaticResource ListBoxStyle}"/>
+                Value="{StaticResource {x:Static i:ResourceKeys.ListBoxStandardTemplate}}"/>
         <Style.Triggers>
             <Trigger Property="IsGrouping"
                      Value="true">

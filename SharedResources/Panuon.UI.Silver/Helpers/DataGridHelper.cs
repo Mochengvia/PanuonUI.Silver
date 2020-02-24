@@ -19,6 +19,7 @@ namespace Panuon.UI.Silver
 
         #region Properties
 
+
         #region HeaderPadding
         public static Thickness GetHeaderPadding(DataGrid dataGrid)
         {
@@ -32,43 +33,6 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty HeaderPaddingProperty =
             DependencyProperty.RegisterAttached("HeaderPadding", typeof(Thickness), typeof(DataGridHelper));
-        #endregion
-
-        #region CellPadding
-
-
-        public static Thickness GetCellPadding(DataGrid dataGrid)
-        {
-            return (Thickness)dataGrid.GetValue(CellPaddingProperty);
-        }
-
-        public static void SetCellPadding(DataGrid dataGrid, Thickness value)
-        {
-            dataGrid.SetValue(CellPaddingProperty, value);
-        }
-
-        public static readonly DependencyProperty CellPaddingProperty =
-            DependencyProperty.RegisterAttached("CellPadding", typeof(Thickness), typeof(DataGridHelper));
-
-
-        #endregion
-
-        #region MinHeaderHeight
-
-
-        public static double GetMinHeaderHeight(DataGrid dataGrid)
-        {
-            return (double)dataGrid.GetValue(MinHeaderHeightProperty);
-        }
-
-        public static void SetMinHeaderHeight(DataGrid dataGrid, double value)
-        {
-            dataGrid.SetValue(MinHeaderHeightProperty, value);
-        }
-
-        public static readonly DependencyProperty MinHeaderHeightProperty =
-            DependencyProperty.RegisterAttached("MinHeaderHeight", typeof(double), typeof(DataGridHelper));
-
         #endregion
 
         #region HeaderBackground
@@ -105,6 +69,179 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty HeaderForegroundProperty =
             DependencyProperty.RegisterAttached("HeaderForeground", typeof(Brush), typeof(DataGridHelper));
+
+
+        #endregion
+
+        #region HeaderHoverBackground
+
+
+        public static Brush GetHeaderHoverBackground(DataGrid dataGrid)
+        {
+            return (Brush)dataGrid.GetValue(HeaderHoverBackgroundProperty);
+        }
+
+        public static void SetHeaderHoverBackground(DataGrid dataGrid, Brush value)
+        {
+            dataGrid.SetValue(HeaderHoverBackgroundProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderHoverBackgroundProperty =
+            DependencyProperty.RegisterAttached("HeaderHoverBackground", typeof(Brush), typeof(DataGridHelper));
+
+
+        #endregion
+
+        #region HeaderHoverForeground
+
+
+        public static Brush GetHeaderHoverForeground(DataGrid dataGrid)
+        {
+            return (Brush)dataGrid.GetValue(HeaderHoverForegroundProperty);
+        }
+
+        public static void SetHeaderHoverForeground(DataGrid dataGrid, Brush value)
+        {
+            dataGrid.SetValue(HeaderHoverForegroundProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderHoverForegroundProperty =
+            DependencyProperty.RegisterAttached("HeaderHoverForeground", typeof(Brush), typeof(DataGridHelper));
+
+
+        #endregion
+
+        #region UnitPadding
+
+
+        public static Thickness GetUnitPadding(DataGrid dataGrid)
+        {
+            return (Thickness)dataGrid.GetValue(UnitPaddingProperty);
+        }
+
+        public static void SetUnitPadding(DataGrid dataGrid, Thickness value)
+        {
+            dataGrid.SetValue(UnitPaddingProperty, value);
+        }
+
+        public static readonly DependencyProperty UnitPaddingProperty =
+            DependencyProperty.RegisterAttached("UnitPadding", typeof(Thickness), typeof(DataGridHelper));
+
+
+        #endregion
+
+        #region UnitHoverBackground
+
+
+        public static Brush GetUnitHoverBackground(DataGrid dataGrid)
+        {
+            return (Brush)dataGrid.GetValue(UnitHoverBackgroundProperty);
+        }
+
+        public static void SetUnitHoverBackground(DataGrid dataGrid, Brush value)
+        {
+            dataGrid.SetValue(UnitHoverBackgroundProperty, value);
+        }
+
+        public static readonly DependencyProperty UnitHoverBackgroundProperty =
+            DependencyProperty.RegisterAttached("UnitHoverBackground", typeof(Brush), typeof(DataGridHelper));
+
+
+        #endregion
+
+        #region UnitHoverForeground
+
+
+        public static Brush GetUnitHoverForeground(DataGrid dataGrid)
+        {
+            return (Brush)dataGrid.GetValue(UnitHoverForegroundProperty);
+        }
+
+        public static void SetUnitHoverForeground(DataGrid dataGrid, Brush value)
+        {
+            dataGrid.SetValue(UnitHoverForegroundProperty, value);
+        }
+
+        public static readonly DependencyProperty UnitHoverForegroundProperty =
+            DependencyProperty.RegisterAttached("UnitHoverForeground", typeof(Brush), typeof(DataGridHelper));
+
+
+        #endregion
+
+        #region UnitSelectedBackground
+
+
+        public static Brush GetUnitSelectedBackground(DataGrid dataGrid)
+        {
+            return (Brush)dataGrid.GetValue(UnitSelectedBackgroundProperty);
+        }
+
+        public static void SetUnitSelectedBackground(DataGrid dataGrid, Brush value)
+        {
+            dataGrid.SetValue(UnitSelectedBackgroundProperty, value);
+        }
+
+        public static readonly DependencyProperty UnitSelectedBackgroundProperty =
+            DependencyProperty.RegisterAttached("UnitSelectedBackground", typeof(Brush), typeof(DataGridHelper));
+
+
+        #endregion
+
+        #region UnitSelectedForeground
+
+
+        public static Brush GetUnitSelectedForeground(DataGrid dataGrid)
+        {
+            return (Brush)dataGrid.GetValue(UnitSelectedForegroundProperty);
+        }
+
+        public static void SetUnitSelectedForeground(DataGrid dataGrid, Brush value)
+        {
+            dataGrid.SetValue(UnitSelectedForegroundProperty, value);
+        }
+
+        public static readonly DependencyProperty UnitSelectedForegroundProperty =
+            DependencyProperty.RegisterAttached("UnitSelectedForeground", typeof(Brush), typeof(DataGridHelper));
+
+
+        #endregion
+
+        #region RowHeaderBackground
+
+
+        public static Brush GetRowHeaderBackground(DataGrid dataGrid)
+        {
+            return (Brush)dataGrid.GetValue(RowHeaderBackgroundProperty);
+        }
+
+        public static void SetRowHeaderBackground(DataGrid dataGrid, Brush value)
+        {
+            dataGrid.SetValue(RowHeaderBackgroundProperty, value);
+        }
+
+        public static readonly DependencyProperty RowHeaderBackgroundProperty =
+            DependencyProperty.RegisterAttached("RowHeaderBackground", typeof(Brush), typeof(DataGridHelper));
+
+
+        #endregion
+
+        #region RowHeaderHoverBackground
+
+
+        public static Brush GetRowHeaderHoverBackground(DataGrid dataGrid)
+        {
+            return (Brush)dataGrid.GetValue(RowHeaderHoverBackgroundProperty);
+        }
+
+        public static void SetRowHeaderHoverBackground(DataGrid dataGrid, Brush value)
+        {
+            dataGrid.SetValue(RowHeaderHoverBackgroundProperty, value);
+        }
+
+        public static readonly DependencyProperty RowHeaderHoverBackgroundProperty =
+            DependencyProperty.RegisterAttached("RowHeaderHoverBackground", typeof(Brush), typeof(DataGridHelper));
+
+
         #endregion
 
         #region ResizeThumbThickness
@@ -122,122 +259,23 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("ResizeThumbThickness", typeof(double), typeof(DataGridHelper));
         #endregion
 
-        #region ResizeThumbBrush
-        public static Brush GetResizeThumbBrush(DataGrid dataGrid)
+        #region CellFocusedHightlightBorderBrush
+
+
+        public static Brush GetCellFocusedHightlightBorderBrush(DataGrid dataGrid)
         {
-            return (Brush)dataGrid.GetValue(ResizeThumbBrushProperty);
+            return (Brush)dataGrid.GetValue(CellFocusedHightlightBorderBrushProperty);
         }
 
-        public static void SetResizeThumbBrush(DataGrid dataGrid, Brush value)
+        public static void SetCellFocusedHightlightBorderBrush(DataGrid dataGrid, Brush value)
         {
-            dataGrid.SetValue(ResizeThumbBrushProperty, value);
+            dataGrid.SetValue(CellFocusedHightlightBorderBrushProperty, value);
         }
 
-        public static readonly DependencyProperty ResizeThumbBrushProperty =
-            DependencyProperty.RegisterAttached("ResizeThumbBrush", typeof(Brush), typeof(DataGridHelper));
-        #endregion
-
-        #region HoverBackground
-        public static Brush GetHoverBackground(DataGrid dataGrid)
-        {
-            return (Brush)dataGrid.GetValue(HoverBackgroundProperty);
-        }
-
-        public static void SetHoverBackground(DataGrid dataGrid, Brush value)
-        {
-            dataGrid.SetValue(HoverBackgroundProperty, value);
-        }
-
-        public static readonly DependencyProperty HoverBackgroundProperty =
-            DependencyProperty.RegisterAttached("HoverBackground", typeof(Brush), typeof(DataGridHelper));
-        #endregion
-
-        #region SelectedBackground
-        public static Brush GetSelectedBackground(DataGrid dataGrid)
-        {
-            return (Brush)dataGrid.GetValue(SelectedBackgroundProperty);
-        }
-
-        public static void SetSelectedBackground(DataGrid dataGrid, Brush value)
-        {
-            dataGrid.SetValue(SelectedBackgroundProperty, value);
-        }
-
-        public static readonly DependencyProperty SelectedBackgroundProperty =
-            DependencyProperty.RegisterAttached("SelectedBackground", typeof(Brush), typeof(DataGridHelper));
-        #endregion
-
-        #region SelectedForeground
-        public static Brush GetSelectedForeground(DataGrid dataGrid)
-        {
-            return (Brush)dataGrid.GetValue(SelectedForegroundProperty);
-        }
-
-        public static void SetSelectedForeground(DataGrid dataGrid, Brush value)
-        {
-            dataGrid.SetValue(SelectedForegroundProperty, value);
-        }
-
-        public static readonly DependencyProperty SelectedForegroundProperty =
-            DependencyProperty.RegisterAttached("SelectedForeground", typeof(Brush), typeof(DataGridHelper));
-        #endregion
-
-        #region AutoGenerateCheckBoxStyle
-        public static Style GetAutoGenerateCheckBoxStyle(DataGrid dataGrid)
-        {
-            return (Style)dataGrid.GetValue(AutoGenerateCheckBoxStyleProperty);
-        }
-
-        public static void SetAutoGenerateCheckBoxStyle(DataGrid dataGrid, Style value)
-        {
-            dataGrid.SetValue(AutoGenerateCheckBoxStyleProperty, value);
-        }
-
-        public static readonly DependencyProperty AutoGenerateCheckBoxStyleProperty =
-            DependencyProperty.RegisterAttached("AutoGenerateCheckBoxStyle", typeof(Style), typeof(DataGridHelper));
-        #endregion
-
-        #region SelectedItems
-        public static IList GetSelectedItems(DataGrid dataGrid)
-        {
-            return (IList)dataGrid.GetValue(SelectedItemsProperty);
-        }
-
-        public static void SetSelectedItems(DataGrid dataGrid, IList value)
-        {
-            dataGrid.SetValue(SelectedItemsProperty, value);
-        }
-
-        public static readonly DependencyProperty SelectedItemsProperty =
-            DependencyProperty.RegisterAttached("SelectedItems", typeof(IList), typeof(DataGridHelper));
-        #endregion
+        public static readonly DependencyProperty CellFocusedHightlightBorderBrushProperty =
+            DependencyProperty.RegisterAttached("CellFocusedHightlightBorderBrush", typeof(Brush), typeof(DataGridHelper));
 
         #endregion
-
-        #region Internal Properties
-
-        #region DataGridHook
-        public static bool GetDataGridHook(DataGrid dataGrid)
-        {
-            return (bool)dataGrid.GetValue(DataGridHookProperty);
-        }
-
-        public static void SetDataGridHook(DataGrid dataGrid, bool value)
-        {
-            dataGrid.SetValue(DataGridHookProperty, value);
-        }
-
-        public static readonly DependencyProperty DataGridHookProperty =
-            DependencyProperty.RegisterAttached("DataGridHook", typeof(bool), typeof(DataGridHelper));
-        #endregion
-
-        #endregion
-
-        #region Event Handler
-        private static void OnDataGridHookChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var dataGrid = d as DataGrid;
-        }
 
         #endregion
     }
