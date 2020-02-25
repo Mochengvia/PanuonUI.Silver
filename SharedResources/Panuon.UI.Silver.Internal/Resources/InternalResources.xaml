@@ -8,6 +8,7 @@
                     xmlns:icv="clr-namespace:Panuon.UI.Silver.Internal.Converters">
 
     <!--Converters-->
+    <icv:CloneConverter x:Key="{x:Static i:ResourceKeys.CloneConverter}" />
     <icv:BoolToVisibleConverter x:Key="{x:Static i:ResourceKeys.BoolToVisibleConverter}" />
     <icv:BoolToCollapseConverter x:Key="{x:Static i:ResourceKeys.BoolToCollapseConverter}" />
     <icv:TrueToFalseConverter x:Key="{x:Static i:ResourceKeys.TrueToFalseConverter}" />
@@ -48,6 +49,8 @@
     <icv:LoadingClassicRenderTransformOriginConverter x:Key="{x:Static i:ResourceKeys.LoadingClassicRenderTransformOriginConverter}" />
     <icv:TreeViewPaddingConverter x:Key="{x:Static i:ResourceKeys.TreeViewPaddingConverter}" />
     <icv:DoubleMinConverter x:Key="{x:Static i:ResourceKeys.DoubleMinConverter}" />
+    <icv:DoubleEqualsConverter x:Key="{x:Static i:ResourceKeys.DoubleEqualsConverter}" />
+    <icv:DoubleToRightMarginConverter x:Key="{x:Static i:ResourceKeys.DoubleToRightMarginConverter}" />
     <icv:CornerRadiusToDoubleConverter x:Key="{x:Static i:ResourceKeys.CornerRadiusToDoubleConverter}" />
     <icv:ThicknessToDoubleConverter x:Key="{x:Static i:ResourceKeys.ThicknessToDoubleConverter}" />
     <icv:ThicknessWithoutTopConverter x:Key="{x:Static i:ResourceKeys.ThicknessWithoutTopConverter}" />

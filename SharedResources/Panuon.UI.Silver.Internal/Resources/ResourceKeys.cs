@@ -8,6 +8,8 @@ namespace Panuon.UI.Silver.Internal
     internal static class ResourceKeys
     {
         #region Converters
+        public const string CloneConverter = nameof(CloneConverter);
+
         public const string BoolToVisibleConverter = nameof(BoolToVisibleConverter);
 
         public static readonly string BoolToCollapseConverter = nameof(BoolToCollapseConverter);
@@ -15,7 +17,7 @@ namespace Panuon.UI.Silver.Internal
         public static readonly string NullToVisibleConverter = nameof(NullToVisibleConverter);
 
         public static readonly string TrueToFalseConverter = nameof(TrueToFalseConverter);
-        
+
         public static readonly string NullOrEmptyToVisibleConverter = nameof(NullOrEmptyToVisibleConverter);
 
         public static readonly string NullToCollapseConverter = nameof(NullToCollapseConverter);
@@ -84,6 +86,10 @@ namespace Panuon.UI.Silver.Internal
 
         public static readonly string DoubleMinConverter = nameof(DoubleMinConverter);
 
+        public static readonly string DoubleEqualsConverter = nameof(DoubleEqualsConverter);
+
+        public static readonly string DoubleToRightMarginConverter = nameof(DoubleToRightMarginConverter);
+
         public static readonly string IsGreaterThanZeroConverter = nameof(IsGreaterThanZeroConverter);
 
         public static readonly string IsLessThanZeroConverter = nameof(IsLessThanZeroConverter);
@@ -91,7 +97,6 @@ namespace Panuon.UI.Silver.Internal
         public static readonly string ArcConverter = nameof(ArcConverter);
 
         public static readonly string TreeViewPaddingConverter = nameof(TreeViewPaddingConverter);
-
 
         public static readonly string CornerRadiusToDoubleConverter = nameof(CornerRadiusToDoubleConverter);
 
@@ -130,7 +135,7 @@ namespace Panuon.UI.Silver.Internal
         public static readonly string MsgBoxStackPanelFlowDirectionConverter = nameof(MsgBoxStackPanelFlowDirectionConverter);
 
         public static readonly string ClockHourTextMarginConverter = nameof(ClockHourTextMarginConverter);
-        
+
         #endregion
 
         #region Common
@@ -831,7 +836,7 @@ namespace Panuon.UI.Silver.Internal
         public static readonly string TabControlBorderThickness = nameof(TabControlBorderThickness);
 
         public static readonly string TabControlPadding = nameof(TabControlPadding);
-        
+
         public static readonly string TabControlBackground = nameof(TabControlBackground);
 
         public static readonly string TabControlStandardTopTemplate = nameof(TabControlStandardTopTemplate);
@@ -999,5 +1004,10 @@ namespace Panuon.UI.Silver.Internal
         public static readonly string DataGridStandardTemplate = nameof(DataGridStandardTemplate);
         #endregion
 
+        #region Pagination
+
+        public static readonly string PaginationTemplate = nameof(PaginationTemplate);
+        
+        #endregion
     }
 }

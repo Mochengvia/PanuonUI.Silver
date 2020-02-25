@@ -8,7 +8,7 @@ using System.Windows.Threading;
 
 namespace Panuon.UI.Silver
 {
-    public class Separator : UIElement
+    public class SeparatorX : UIElement
     {
         #region Properties
 
@@ -20,7 +20,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty ThicknessProperty =
-            DependencyProperty.Register("Thickness", typeof(double), typeof(Separator), new FrameworkPropertyMetadata(1.0, FrameworkPropertyMetadataOptions.AffectsRender));
+            DependencyProperty.Register("Thickness", typeof(double), typeof(SeparatorX), new FrameworkPropertyMetadata(1.0, FrameworkPropertyMetadataOptions.AffectsRender));
         #endregion
 
         #region Brush
@@ -31,7 +31,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty BrushProperty =
-            DependencyProperty.Register("Brush", typeof(Brush), typeof(Separator), new FrameworkPropertyMetadata(Brushes.Black, FrameworkPropertyMetadataOptions.AffectsRender));
+            DependencyProperty.Register("Brush", typeof(Brush), typeof(SeparatorX), new FrameworkPropertyMetadata(Brushes.Black, FrameworkPropertyMetadataOptions.AffectsRender));
         #endregion
 
         #region Alignment
@@ -43,7 +43,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty AlignmentProperty =
-            DependencyProperty.Register("Alignment", typeof(Alignment), typeof(Separator), new FrameworkPropertyMetadata(Alignment.Bottom, FrameworkPropertyMetadataOptions.AffectsRender));
+            DependencyProperty.Register("Alignment", typeof(Alignment), typeof(SeparatorX), new FrameworkPropertyMetadata(Alignment.Bottom, FrameworkPropertyMetadataOptions.AffectsRender));
 
         #endregion
 
@@ -60,17 +60,16 @@ namespace Panuon.UI.Silver
             switch (Alignment)
             {
                 case Alignment.Left:
-                    drawingContext.DrawRectangle(Brush, null, new Rect(0, 0, Thickness, RenderSize.Height));
+                    drawingContext.DrawLine(new Pen(Brush, Thickness), new Point(0, 0), new Point(0, RenderSize.Height));
                     break;
                 case Alignment.Right:
-                    drawingContext.DrawRectangle(Brush, null, new Rect(RenderSize.Width, 0, Thickness, RenderSize.Height));
-
+                    drawingContext.DrawLine(new Pen(Brush, Thickness), new Point(RenderSize.Width - Thickness, 0), new Point(RenderSize.Width - Thickness, RenderSize.Height));
                     break;
                 case Alignment.Top:
-                    drawingContext.DrawRectangle(Brush, null, new Rect(0, 0, RenderSize.Width, Thickness));
+                    drawingContext.DrawLine(new Pen(Brush, Thickness), new Point(0, Thickness / 2), new Point(RenderSize.Width, Thickness / 2));
                     break;
                 default:
-                    drawingContext.DrawRectangle(Brush, null, new Rect(0, RenderSize.Height, RenderSize.Width, Thickness));
+                    drawingContext.DrawLine(new Pen(Brush, Thickness), new Point(0, RenderSize.Height - Thickness / 2), new Point(RenderSize.Width - Thickness, RenderSize.Height - Thickness / 2));
                     break;
             }
         }

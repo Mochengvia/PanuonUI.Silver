@@ -8,7 +8,7 @@
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/InternalResources.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Resources.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    
+
     <!--Standard-->
     <Style x:Key="{x:Static i:ResourceKeys.LoadingStandardRectangleStyle}"
            TargetType="{x:Type Rectangle}">

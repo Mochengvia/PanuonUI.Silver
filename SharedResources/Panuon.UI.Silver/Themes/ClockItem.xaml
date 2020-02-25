@@ -16,7 +16,7 @@
                    Width="{TemplateBinding Width}"
                    Height="{TemplateBinding Height}" />
     </ControlTemplate>
-    
+
     <Style TargetType="local:ClockItem">
         <Setter Property="Cursor"
                 Value="Hand" />

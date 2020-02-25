@@ -48,8 +48,7 @@
 
     <ControlTemplate x:Key="{x:Static i:ResourceKeys.CalendarTemplate}"
                      TargetType="local:Calendar">
-        <Border SnapsToDevicePixels="True"
-                BorderBrush="{TemplateBinding BorderBrush}"
+        <Border BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
                 Background="{TemplateBinding Background}">
             <Grid>
@@ -57,8 +56,7 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <Border SnapsToDevicePixels="True"
-                        Background="{TemplateBinding HeaderPanelBackground}"
+                <Border Background="{TemplateBinding HeaderPanelBackground}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{Binding BorderThickness, Converter={StaticResource {x:Static i:ResourceKeys.ThicknessWithBottomOnlyConverter}},RelativeSource={RelativeSource AncestorType=local:Calendar}, Mode=OneWay}" />
                 <Grid x:Name="GrdControls"
@@ -194,13 +192,13 @@
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <local:CalendarItem Style="{Binding CalendarItemStyle, RelativeSource={RelativeSource AncestorType=local:Calendar}, Mode=OneWay}"
-                                                 GroupName="CALENDAR_GROUP_MONTHS"
-                                                 Tag="{Binding Value, Mode=OneWay}"
-                                                 IsChecked="{Binding IsChecked, Mode=OneWay}"
-                                                 IsEnabled="{Binding IsEnabled, Mode=OneWay}"
-                                                 Content="{Binding DisplayName, Mode=OneWay}"
-                                                 Height="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy4Converter}}, ElementName=GrdMonths, Mode=OneWay}"
-                                                 Width="{Binding ActualWidth, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy3Converter}}, ElementName=GrdMonths, Mode=OneWay}" />
+                                                        GroupName="CALENDAR_GROUP_MONTHS"
+                                                        Tag="{Binding Value, Mode=OneWay}"
+                                                        IsChecked="{Binding IsChecked, Mode=OneWay}"
+                                                        IsEnabled="{Binding IsEnabled, Mode=OneWay}"
+                                                        Content="{Binding DisplayName, Mode=OneWay}"
+                                                        Height="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy4Converter}}, ElementName=GrdMonths, Mode=OneWay}"
+                                                        Width="{Binding ActualWidth, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy3Converter}}, ElementName=GrdMonths, Mode=OneWay}" />
                                     <DataTemplate.Triggers>
                                         <DataTrigger Binding="{Binding IsNotCurrentMonth}"
                                                      Value="True">

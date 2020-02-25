@@ -14,7 +14,6 @@
 
         <Border x:Name="BdrMain"
                 Grid.RowSpan="1"
-                SnapsToDevicePixels="True"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
                 Background="{TemplateBinding Background}"
@@ -22,8 +21,7 @@
             <Border.OpacityMask>
                 <VisualBrush>
                     <VisualBrush.Visual>
-                        <Border SnapsToDevicePixels="True"
-                                CornerRadius="{Binding Path=(local:GroupBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=GroupBox},Mode=OneWay}"
+                        <Border CornerRadius="{Binding Path=(local:GroupBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=GroupBox},Mode=OneWay}"
                                 Background="Black"
                                 Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=GroupBox}, Mode=OneWay}"
                                 Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=GroupBox}, Mode=OneWay}" />
@@ -35,8 +33,7 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <Border SnapsToDevicePixels="True"
-                        VerticalAlignment="Bottom"
+                <Border VerticalAlignment="Bottom"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{Binding BorderThickness, Converter={StaticResource {x:Static i:ResourceKeys.ThicknessWithBottomOnlyConverter}},RelativeSource={RelativeSource AncestorType=GroupBox}, Mode=OneWay}" />
                 <Grid>
@@ -89,7 +86,6 @@
                      TargetType="GroupBox">
         <Border x:Name="BdrMain"
                 Grid.RowSpan="1"
-                SnapsToDevicePixels="True"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
                 Background="{TemplateBinding Background}"
@@ -97,8 +93,7 @@
             <Border.OpacityMask>
                 <VisualBrush>
                     <VisualBrush.Visual>
-                        <Border SnapsToDevicePixels="True"
-                                CornerRadius="{Binding Path=(local:GroupBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=GroupBox},Mode=OneWay}"
+                        <Border CornerRadius="{Binding Path=(local:GroupBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=GroupBox},Mode=OneWay}"
                                 Background="Black"
                                 Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=GroupBox}, Mode=OneWay}"
                                 Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=GroupBox}, Mode=OneWay}" />
@@ -160,7 +155,6 @@
                      TargetType="GroupBox">
         <Border x:Name="BdrMain"
                 Grid.RowSpan="1"
-                SnapsToDevicePixels="True"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
                 Background="{TemplateBinding Background}"
@@ -168,8 +162,7 @@
             <Border.OpacityMask>
                 <VisualBrush>
                     <VisualBrush.Visual>
-                        <Border SnapsToDevicePixels="True"
-                                CornerRadius="{Binding Path=(local:GroupBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=GroupBox},Mode=OneWay}"
+                        <Border CornerRadius="{Binding Path=(local:GroupBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=GroupBox},Mode=OneWay}"
                                 Background="Black"
                                 Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=GroupBox}, Mode=OneWay}"
                                 Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=GroupBox}, Mode=OneWay}" />

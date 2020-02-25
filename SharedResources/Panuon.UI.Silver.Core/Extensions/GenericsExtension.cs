@@ -26,6 +26,24 @@ namespace Panuon.UI.Silver.Core
         }
         #endregion
 
+        #region Initialize
+        public static void Init<T>(this T[] array, T value)
+        {
+            for(int i = 0; i < array.Length; i++)
+            {
+                array[i] = value;
+            }
+        }
+
+        public static void Init<T>(this T[] array, Func<int,T> func)
+        {
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = func(i);
+            }
+        }
+        #endregion
+
         #region DeepCopy
         // Testing
         internal static T DeepCopy<T>(this T obj)

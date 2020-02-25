@@ -88,5 +88,17 @@
         public static readonly string GroupBoxFootnoteHeaderTemplate = nameof(GroupBoxFootnoteHeaderTemplate);
 
         #endregion
+
+        #region Pagination
+
+        public static readonly string PaginationItemStyle = nameof(PaginationItemStyle);
+
+        public static readonly string PaginationPreviousButtonStyle = nameof(PaginationPreviousButtonStyle);
+
+        public static readonly string PaginationNextButtonStyle = nameof(PaginationNextButtonStyle);
+
+        public static readonly string PaginationOmitTextStyle = nameof(PaginationOmitTextStyle);
+            
+        #endregion
     }
 }

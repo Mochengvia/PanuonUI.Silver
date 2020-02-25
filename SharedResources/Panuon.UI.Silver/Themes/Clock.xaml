@@ -13,7 +13,7 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="{x:Static rs:ResourceKeys.ClockItemStyle}"
-           TargetType="local:ClockItem" 
+           TargetType="local:ClockItem"
            BasedOn="{StaticResource {x:Type local:ClockItem}}" />
 
     <Style x:Key="{x:Static i:ResourceKeys.ClockHourTextBlock}"
@@ -31,7 +31,7 @@
         <Setter Property="HorizontalContentAlignment"
                 Value="Center" />
     </Style>
-    
+
     <Style x:Key="{x:Static rs:ResourceKeys.ClockTimePeriodRadioButtonStyle}"
            TargetType="RadioButton"
            BasedOn="{StaticResource {x:Type RadioButton}}">
@@ -57,9 +57,8 @@
                 <RowDefinition />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            
-            <Border x:Name="BdrDial"
-                    SnapsToDevicePixels="True">
+
+            <Border x:Name="BdrDial">
                 <Grid VerticalAlignment="Center"
                       HorizontalAlignment="Center">
                     <Grid.Width>
@@ -346,7 +345,7 @@
         <Setter Property="TimeInputStyle"
                 Value="{StaticResource {x:Static rs:ResourceKeys.ClockTimeTimeInputTextBoxStyle}}" />
         <Setter Property="TimePeriodStyle"
-                Value="{StaticResource {x:Static rs:ResourceKeys.ClockTimePeriodRadioButtonStyle}}"/>
+                Value="{StaticResource {x:Static rs:ResourceKeys.ClockTimePeriodRadioButtonStyle}}" />
         <Setter Property="Background"
                 Value="{StaticResource {x:Static i:ResourceKeys.ClockBackground}}" />
         <Setter Property="ThemeBrush"

@@ -19,7 +19,7 @@ namespace UIBrowser.Views
 
         }
 
-        private void TextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             var tb = sender as TextBox;
             if(tb.Text == "123")

@@ -9,7 +9,7 @@
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Resources.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Loading.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    
+
     <Style x:Key="{x:Static rs:ResourceKeys.ButtonWaitingLoadingStyle}"
            TargetType="{x:Type local:Loading}"
            BasedOn="{StaticResource {x:Type local:Loading}}">
@@ -20,11 +20,10 @@
         <Setter Property="Foreground"
                 Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button},Mode=OneWay}" />
     </Style>
-    
+
     <ControlTemplate x:Key="{x:Static i:ResourceKeys.ButtonTemplate}"
                      TargetType="Button">
         <Border x:Name="BdrMain"
-                SnapsToDevicePixels="True"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
                 Background="{TemplateBinding Background}"
@@ -33,7 +32,7 @@
                         Margin="{TemplateBinding Padding}"
                         VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                         HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
-                <ic:IconControl x:Name="IcIcon" 
+                <ic:IconControl x:Name="IcIcon"
                                 Width="{Binding Path=(local:IconHelper.Width),RelativeSource={RelativeSource AncestorType=Button},Mode=OneWay}"
                                 Height="{Binding Path=(local:IconHelper.Height),RelativeSource={RelativeSource AncestorType=Button},Mode=OneWay}"
                                 MinWidth="{Binding Path=(local:IconHelper.MinWidth),RelativeSource={RelativeSource AncestorType=Button},Mode=OneWay}"
@@ -83,9 +82,9 @@
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}"
-                                                   Value="True" />
+                               Value="True" />
                     <Condition Binding="{Binding Path=(local:ButtonHelper.ClickStyle), RelativeSource={RelativeSource Self}}"
-                                                   Value="Sink" />
+                               Value="Sink" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrMain"
                         Property="Margin"

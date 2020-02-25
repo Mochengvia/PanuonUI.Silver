@@ -57,6 +57,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Pagination.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\TabItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -157,9 +161,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MessageBoxX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NeonLabel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Pagination.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PopupX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Rectangle.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Seperator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\SeperatorX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TextBlockX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\WaterfallPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\WindowX.cs" />

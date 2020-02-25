@@ -24,7 +24,7 @@
     <ControlTemplate x:Key="{x:Static i:ResourceKeys.ToggleButtonTemplate}"
                      TargetType="ToggleButton">
         <Border x:Name="BdrMain"
-                SnapsToDevicePixels="True"
+                
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
                 Background="{TemplateBinding Background}"

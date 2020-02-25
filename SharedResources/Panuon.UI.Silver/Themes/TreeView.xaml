@@ -47,7 +47,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="TreeView">
                     <Border x:Name="BdrMain"
-                            SnapsToDevicePixels="True"
+                            
                             BorderBrush="{TemplateBinding BorderBrush}"
                             Background="{TemplateBinding Background}"
                             BorderThickness="{TemplateBinding BorderThickness}">

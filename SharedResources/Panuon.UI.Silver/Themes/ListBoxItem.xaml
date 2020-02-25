@@ -13,7 +13,6 @@
     <ControlTemplate x:Key="{x:Static i:ResourceKeys.ListBoxItemStandardTemplate}"
                      TargetType="ListBoxItem">
         <Border x:Name="BdrMain"
-                SnapsToDevicePixels="True"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
                 Background="{TemplateBinding Background}">
@@ -74,7 +73,7 @@
             </MultiDataTrigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
-    
+
     <Style TargetType="ListBoxItem">
         <Setter Property="local:ListBoxHelper.ItemHoverBackground"
                 Value="{Binding Path=(local:ListBoxHelper.ItemsHoverBackground), RelativeSource={RelativeSource AncestorType=ListBox}}" />
@@ -99,7 +98,7 @@
         <Setter Property="Background"
                 Value="{StaticResource {x:Static i:ResourceKeys.ListBoxItemStandardBackground}}" />
         <Setter Property="Template"
-                Value="{StaticResource {x:Static i:ResourceKeys.ListBoxItemStandardTemplate}}"/>
+                Value="{StaticResource {x:Static i:ResourceKeys.ListBoxItemStandardTemplate}}" />
         <Style.Triggers>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
@@ -123,7 +122,7 @@
                 <Setter Property="Foreground"
                         Value="{Binding Path=(local:ListBoxHelper.ItemHoverForeground),RelativeSource={RelativeSource Self}, Mode=OneWay}" />
             </MultiDataTrigger>
-           
+
         </Style.Triggers>
     </Style>
 </ResourceDictionary>

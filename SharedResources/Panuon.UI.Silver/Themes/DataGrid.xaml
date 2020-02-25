@@ -254,7 +254,7 @@
         <Grid x:Name="GrdMain"
               Background="{TemplateBinding Background}">
             <Border BorderBrush="{TemplateBinding SeparatorBrush}"
-                    BorderThickness="1"/>
+                    BorderThickness="1" />
             <ContentPresenter />
             <Control SnapsToDevicePixels="False"
                      Template="{Binding ValidationErrorTemplate, RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}"
@@ -298,7 +298,6 @@
     <ControlTemplate x:Key="{x:Static i:ResourceKeys.DataGridRowTemplate}"
                      TargetType="DataGridRow">
         <Border x:Name="BdrMain"
-                SnapsToDevicePixels="True"
                 Background="{TemplateBinding Background}">
             <SelectiveScrollingGrid>
                 <SelectiveScrollingGrid.ColumnDefinitions>
@@ -461,8 +460,7 @@
         <Border x:Name="BdrMain"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 Background="{TemplateBinding Background}"
-                BorderThickness="{TemplateBinding BorderThickness}"
-                SnapsToDevicePixels="True">
+                BorderThickness="{TemplateBinding BorderThickness}">
             <ScrollViewer Template="{StaticResource DataGridScrollViewerTemplate}"
                           Focusable="False"
                           Padding="{TemplateBinding Padding}"

@@ -8,7 +8,7 @@
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/InternalResources.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Resources.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    
+
     <Style TargetType="local:FormGroup">
         <Setter Property="HeaderTemplate">
             <Setter.Value>

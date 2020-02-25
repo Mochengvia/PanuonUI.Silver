@@ -12,7 +12,6 @@
     <ControlTemplate x:Key="{x:Static i:ResourceKeys.ListBoxStandardTemplate}"
                      TargetType="{x:Type ListBox}">
         <Border x:Name="BdrMain"
-                SnapsToDevicePixels="True"
                 Background="{TemplateBinding Background}"
                 BorderBrush="{TemplateBinding BorderBrush}">
             <ScrollViewer Focusable="False"
@@ -24,10 +23,10 @@
             </ScrollViewer>
         </Border>
         <ControlTemplate.Triggers>
-            
+
         </ControlTemplate.Triggers>
     </ControlTemplate>
-    
+
     <Style TargetType="{x:Type ListBox}">
         <Setter Property="local:ScrollViewerHelper.ScrollBarThickness"
                 Value="6" />
@@ -42,7 +41,7 @@
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility"
                 Value="Disabled" />
         <Setter Property="local:ListBoxHelper.ItemsHoverBackground"
-                Value="#FAFAFA"/>
+                Value="#FAFAFA" />
         <Setter Property="local:ListBoxHelper.ItemsSelectedBackground"
                 Value="#F1F1F1" />
         <Setter Property="local:ListBoxHelper.ItemsHeight"
@@ -52,7 +51,7 @@
         <Setter Property="VirtualizingStackPanel.VirtualizationMode"
                 Value="Recycling" />
         <Setter Property="Template"
-                Value="{StaticResource {x:Static i:ResourceKeys.ListBoxStandardTemplate}}"/>
+                Value="{StaticResource {x:Static i:ResourceKeys.ListBoxStandardTemplate}}" />
         <Style.Triggers>
             <Trigger Property="IsGrouping"
                      Value="true">
@@ -66,5 +65,5 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    
+
 </ResourceDictionary>

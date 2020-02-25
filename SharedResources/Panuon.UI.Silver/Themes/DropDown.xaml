@@ -13,7 +13,7 @@
                      TargetType="ToggleButton">
         <Grid Background="Transparent">
             <ContentPresenter />
-            <Border Background="Transparent"/>
+            <Border Background="Transparent" />
         </Grid>
     </ControlTemplate>
 

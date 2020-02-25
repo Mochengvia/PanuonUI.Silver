@@ -13,8 +13,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Label">
-                    <Border SnapsToDevicePixels="True"
-                            Background="{TemplateBinding Background}"
+                    <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="{Binding Path=(local:LabelHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=Label}, Mode=OneWay}">

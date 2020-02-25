@@ -36,6 +36,7 @@
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/GroupBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Clock.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/ClockItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Pagination.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/DateTimePicker.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

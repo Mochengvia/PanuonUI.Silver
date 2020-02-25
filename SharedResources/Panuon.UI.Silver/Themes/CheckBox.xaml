@@ -226,7 +226,6 @@
             <Grid Height="{Binding Path=(local:CheckBoxHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
                   Width="{Binding Path=(local:CheckBoxHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}">
                 <Border x:Name="BdrMain"
-                        SnapsToDevicePixels="True"
                         CornerRadius="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy2Converter}}, RelativeSource={RelativeSource Self}}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{Binding BorderThickness, RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
@@ -370,7 +369,6 @@
             <Grid Height="{Binding Path=(local:CheckBoxHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
                   Width="{Binding Path=(local:CheckBoxHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}">
                 <Border x:Name="BdrMain"
-                        SnapsToDevicePixels="True"
                         CornerRadius="{Binding Path=(local:CheckBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{Binding BorderThickness, RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
@@ -519,7 +517,6 @@
             <Grid Height="{Binding Path=(local:CheckBoxHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
                   Width="{Binding Path=(local:CheckBoxHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}">
                 <Border x:Name="BdrMain"
-                        SnapsToDevicePixels="True"
                         CornerRadius="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy2Converter}}, RelativeSource={RelativeSource Self}}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{Binding BorderThickness, RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
@@ -532,7 +529,6 @@
                                Opacity="0" />
                 </Border>
                 <Border x:Name="BdrToggleTrack"
-                        SnapsToDevicePixels="True"
                         Margin="{Binding Path=(local:CheckBoxHelper.BoxHeight),Converter={StaticResource {x:Static i:ResourceKeys.CheckBoxSwitch3ToggleTrackMarginConverter}},RelativeSource={RelativeSource AncestorType=CheckBox},Mode=OneWay}">
                     <Rectangle x:Name="EllToggle"
                                Stroke="Transparent"
@@ -759,12 +755,10 @@
                               VerticalAlignment="Center"
                               HorizontalAlignment="Center" />
             <Border x:Name="BdrRaw"
-                    SnapsToDevicePixels="True"
                     BorderThickness="{TemplateBinding BorderThickness}"
                     BorderBrush="{TemplateBinding BorderBrush}"
                     CornerRadius="{Binding Path=(local:CheckBoxHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}">
                 <Border x:Name="BdrGlyphRaw"
-                        SnapsToDevicePixels="True"
                         Width="{Binding ActualHeight,RelativeSource={RelativeSource Self},Mode=OneWay}"
                         Height="{Binding ActualHeight, ElementName=BdrChecked, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy2_5Converter}},Mode=OneWay}"
                         VerticalAlignment="Bottom"
@@ -788,13 +782,11 @@
                 </Border>
             </Border>
             <Border x:Name="BdrChecked"
-                    SnapsToDevicePixels="True"
                     Opacity="0"
                     BorderThickness="{TemplateBinding BorderThickness}"
                     BorderBrush="{Binding Path=(local:CheckBoxHelper.CheckedBorderBrush), RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
                     CornerRadius="{Binding Path=(local:CheckBoxHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}">
                 <Border x:Name="BdrGlyph"
-                        SnapsToDevicePixels="True"
                         Width="{Binding ActualHeight,RelativeSource={RelativeSource Self},Mode=OneWay}"
                         Height="{Binding ActualHeight, ElementName=BdrChecked, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy2_5Converter}},Mode=OneWay}"
                         VerticalAlignment="Bottom"
