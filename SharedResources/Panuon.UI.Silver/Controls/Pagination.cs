@@ -48,26 +48,15 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("PaginationItemStyle", typeof(Style), typeof(Pagination));
         #endregion
 
-        #region PreviousButtonStyle
-        public Style PreviousButtonStyle
+        #region SideButtonStyle
+        public Style SideButtonStyle
         {
-            get { return (Style)GetValue(PreviousButtonStyleProperty); }
-            set { SetValue(PreviousButtonStyleProperty, value); }
+            get { return (Style)GetValue(SideButtonStyleProperty); }
+            set { SetValue(SideButtonStyleProperty, value); }
         }
 
-        public static readonly DependencyProperty PreviousButtonStyleProperty =
-            DependencyProperty.Register("PreviousButtonStyle", typeof(Style), typeof(Pagination));
-        #endregion
-
-        #region NextButtonStyle
-        public Style NextButtonStyle
-        {
-            get { return (Style)GetValue(NextButtonStyleProperty); }
-            set { SetValue(NextButtonStyleProperty, value); }
-        }
-
-        public static readonly DependencyProperty NextButtonStyleProperty =
-            DependencyProperty.Register("NextButtonStyle", typeof(Style), typeof(Pagination));
+        public static readonly DependencyProperty SideButtonStyleProperty =
+            DependencyProperty.Register("SideButtonStyle", typeof(Style), typeof(Pagination));
         #endregion
 
         #region OmitTextStyle

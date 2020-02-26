@@ -93,9 +93,8 @@
 
         public static readonly string PaginationItemStyle = nameof(PaginationItemStyle);
 
-        public static readonly string PaginationPreviousButtonStyle = nameof(PaginationPreviousButtonStyle);
+        public static readonly string PaginationSideButtonStyle = nameof(PaginationSideButtonStyle);
 
-        public static readonly string PaginationNextButtonStyle = nameof(PaginationNextButtonStyle);
 
         public static readonly string PaginationOmitTextStyle = nameof(PaginationOmitTextStyle);
             

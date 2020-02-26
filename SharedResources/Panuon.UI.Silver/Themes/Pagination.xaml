@@ -29,32 +29,9 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="{x:Static rs:ResourceKeys.PaginationPreviousButtonStyle}"
+    <Style x:Key="{x:Static rs:ResourceKeys.PaginationSideButtonStyle}"
            TargetType="RepeatButton"
            BasedOn="{StaticResource {x:Type RepeatButton}}">
-        <Setter Property="FontFamily"
-                Value="{StaticResource PanuonIconFont}" />
-        <Setter Property="Content"
-                Value="&#xe900;" />
-        <Setter Property="Width"
-                Value="{Binding ActualHeight,RelativeSource={RelativeSource TemplatedParent}}" />
-        <Setter Property="Background"
-                Value="#3E3E3E" />
-        <Setter Property="local:RepeatButtonHelper.HoverBrush"
-                Value="#2E2E2E" />
-        <Setter Property="Foreground"
-                Value="White" />
-        <Setter Property="local:RepeatButtonHelper.CornerRadius"
-                Value="2" />
-    </Style>
-
-    <Style x:Key="{x:Static rs:ResourceKeys.PaginationNextButtonStyle}"
-           TargetType="RepeatButton"
-           BasedOn="{StaticResource {x:Type RepeatButton}}">
-        <Setter Property="FontFamily"
-                Value="{StaticResource PanuonIconFont}" />
-        <Setter Property="Content"
-                Value="&#xe902;" />
         <Setter Property="Width"
                 Value="{Binding ActualHeight,RelativeSource={RelativeSource TemplatedParent}}" />
         <Setter Property="Background"
@@ -95,9 +72,11 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <RepeatButton Margin="{Binding Spacing, Converter={StaticResource {x:Static i:ResourceKeys.DoubleToRightMarginConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                        Style="{TemplateBinding PreviousButtonStyle}"
-                        Command="{Binding PreviousCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                        CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}" />
+                              Style="{TemplateBinding SideButtonStyle}"
+                              Content="&#xe900;"
+                              FontFamily="{StaticResource PanuonIconFont}"
+                              Command="{Binding PreviousCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                              CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}" />
                 <ItemsControl ItemsSource="{Binding IndexList, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               Grid.Column="1">
                     <ItemsControl.ItemsPanel>
@@ -146,9 +125,11 @@
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
                 <RepeatButton Grid.Column="2"
-                        Style="{TemplateBinding NextButtonStyle}"
-                        Command="{Binding NextCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                        CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}" />
+                              Style="{TemplateBinding SideButtonStyle}"
+                              Content="&#xe902;"
+                              FontFamily="{StaticResource PanuonIconFont}"
+                              Command="{Binding NextCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                              CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}" />
             </Grid>
         </Border>
     </ControlTemplate>
@@ -160,10 +141,8 @@
                 Value="Left" />
         <Setter Property="PaginationItemStyle"
                 Value="{StaticResource {x:Static rs:ResourceKeys.PaginationItemStyle}}" />
-        <Setter Property="PreviousButtonStyle"
-                Value="{StaticResource {x:Static rs:ResourceKeys.PaginationPreviousButtonStyle}}" />
-        <Setter Property="NextButtonStyle"
-                Value="{StaticResource {x:Static rs:ResourceKeys.PaginationNextButtonStyle}}" />
+        <Setter Property="SideButtonStyle"
+                Value="{StaticResource {x:Static rs:ResourceKeys.PaginationSideButtonStyle}}" />
         <Setter Property="OmitTextStyle"
                 Value="{StaticResource {x:Static rs:ResourceKeys.PaginationOmitTextStyle}}" />
         <Setter Property="Template"
