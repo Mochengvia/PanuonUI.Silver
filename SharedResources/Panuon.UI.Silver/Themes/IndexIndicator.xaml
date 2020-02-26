@@ -1,0 +1,77 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver"
+                    xmlns:i="clr-namespace:Panuon.UI.Silver.Internal"
+                    xmlns:ic="clr-namespace:Panuon.UI.Silver.Internal.Controls"
+                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/InternalResources.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Resources.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/RadioButton.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="IndexIndicatorItemStyle"
+           TargetType="RadioButton"
+           BasedOn="{StaticResource {x:Type RadioButton}}">
+        <Setter Property="BorderBrush"
+                Value="LightGray" />
+        <Setter Property="local:RadioButtonHelper.GlyphBrush"
+                Value="LightGray" />
+        <Setter Property="local:RadioButtonHelper.CheckedBorderBrush"
+                Value="DimGray" />
+        <Setter Property="local:RadioButtonHelper.CheckedGlyphBrush"
+                Value="DimGray" />
+        <Setter Property="local:RadioButtonHelper.BoxWidth"
+                Value="12" />
+        <Setter Property="local:RadioButtonHelper.BoxHeight"
+                Value="12" />
+    </Style>
+
+    <ControlTemplate x:Key="IndexIndicatorTemplate"
+                     TargetType="local:IndexIndicator">
+        <ItemsControl ItemsSource="{Binding IndexList, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="{Binding Orientation, RelativeSource={RelativeSource AncestorType=local:IndexIndicator}, Mode=OneWay}" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <RadioButton x:Name="RdbIndex"
+                                 GroupName="RADIOGROUP_IndexIndicator"
+                                 Style="{Binding IndexIndicatorItemStyle, RelativeSource={RelativeSource AncestorType=local:IndexIndicator}, Mode=OneWay}"
+                                 Tag="{Binding}" />
+                    <DataTemplate.Triggers>
+                        <DataTrigger Value="True">
+                            <DataTrigger.Binding>
+                                <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.DoubleEqualsConverter}}">
+                                    <Binding Path="." />
+                                    <Binding Path="CurrentIndex"
+                                             RelativeSource="{RelativeSource AncestorType=local:IndexIndicator}"
+                                             Mode="OneWay" />
+                                </MultiBinding>
+                            </DataTrigger.Binding>
+                            <Setter TargetName="RdbIndex"
+                                    Property="IsChecked"
+                                    Value="True" />
+                        </DataTrigger>
+                    </DataTemplate.Triggers>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+    </ControlTemplate>
+
+    <Style TargetType="local:IndexIndicator">
+        <Setter Property="TotalIndex"
+                Value="1" />
+        <Setter Property="CurrentIndex"
+                Value="1" />
+        <Setter Property="Orientation"
+                Value="Horizontal" />
+        <Setter Property="IndexIndicatorItemStyle"
+                Value="{StaticResource IndexIndicatorItemStyle}" />
+        <Setter Property="Template"
+                Value="{StaticResource IndexIndicatorTemplate}" />
+    </Style>
+</ResourceDictionary>

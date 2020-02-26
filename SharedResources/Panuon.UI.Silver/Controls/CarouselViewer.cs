@@ -52,15 +52,26 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("SideButtonStyle", typeof(Style), typeof(CarouselViewer));
         #endregion
 
-        #region IsIndicatorVisible
-        public bool IsIndicatorVisible
+        #region IndicatorVisibility
+        public IndicatorVisibility IndicatorVisibility
         {
-            get { return (bool)GetValue(IsIndicatorVisibleProperty); }
-            set { SetValue(IsIndicatorVisibleProperty, value); }
+            get { return (IndicatorVisibility)GetValue(IndicatorVisibilityProperty); }
+            set { SetValue(IndicatorVisibilityProperty, value); }
         }
 
-        public static readonly DependencyProperty IsIndicatorVisibleProperty =
-            DependencyProperty.Register("IsIndicatorVisible", typeof(bool), typeof(CarouselViewer));
+        public static readonly DependencyProperty IndicatorVisibilityProperty =
+            DependencyProperty.Register("IndicatorVisibility", typeof(IndicatorVisibility), typeof(CarouselViewer));
+        #endregion
+
+        #region IndicatorPosition
+        public IndicatorPosition IndicatorPosition
+        {
+            get { return (IndicatorPosition)GetValue(IndicatorPositionProperty); }
+            set { SetValue(IndicatorPositionProperty, value); }
+        }
+
+        public static readonly DependencyProperty IndicatorPositionProperty =
+            DependencyProperty.Register("IndicatorPosition", typeof(IndicatorPosition), typeof(CarouselViewer));
         #endregion
 
         #region IndicatorStyle

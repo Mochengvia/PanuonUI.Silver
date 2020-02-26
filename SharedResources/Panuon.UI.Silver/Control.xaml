@@ -39,5 +39,6 @@
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Pagination.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/DateTimePicker.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/CarouselViewer.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/IndexIndicator.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

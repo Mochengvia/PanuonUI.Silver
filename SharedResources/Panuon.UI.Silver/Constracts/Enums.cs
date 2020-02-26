@@ -311,5 +311,18 @@
         Fade,
         Collapsed,
     }
+
+    public enum IndicatorVisibility
+    {
+        Visible,
+        Fade,
+        Collapsed,
+    }
+
+    public enum IndicatorPosition
+    {
+        BottomOrRight,
+        TopOrLeft,
+    }
     #endregion
 }

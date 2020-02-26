@@ -67,6 +67,19 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("Orientation", typeof(Orientation), typeof(CarouselPanel), new FrameworkPropertyMetadata(Orientation.Horizontal, FrameworkPropertyMetadataOptions.AffectsArrange));
         #endregion
 
+        #region ItemsCount
+
+
+        public int ItemsCount
+        {
+            get { return (int)GetValue(ItemsCountProperty); }
+            private set { SetValue(ItemsCountProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsCountProperty =
+            DependencyProperty.Register("ItemsCount", typeof(int), typeof(CarouselPanel));
+        #endregion
+
         #endregion
 
         #region Internal Properties
@@ -115,6 +128,7 @@ namespace Panuon.UI.Silver
 
         protected override Size MeasureOverride(Size availableSize)
         {
+            ItemsCount = InternalChildren.Count;
             foreach (UIElement child in InternalChildren)
             {
                 child.Measure(availableSize);
@@ -125,6 +139,7 @@ namespace Panuon.UI.Silver
 
         protected override Size ArrangeOverride(Size finalSize)
         {
+            ItemsCount = InternalChildren.Count;
             for (int i = 0, count = InternalChildren.Count; i < count; ++i)
             {
                 UIElement child = InternalChildren[i];
