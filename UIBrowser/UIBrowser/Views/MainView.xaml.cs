@@ -47,6 +47,8 @@ namespace UIBrowser.Views
 
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
+            Crl.Previous();
+            return;
             MessageBoxX.DefaultMessageBoxXConfigurations.YesButton = "是";
             MessageBoxX.DefaultMessageBoxXConfigurations.NoButton = "否";
             MessageBoxX.DefaultMessageBoxXConfigurations.MessageBoxStyle = MessageBoxStyle.Standard;
@@ -56,6 +58,11 @@ namespace UIBrowser.Views
             MessageBoxX.Show("WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING !", "Tips", icon: MessageBoxIcon.Warning);
             MessageBoxX.Show("WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING !", "Tips", icon: MessageBoxIcon.Question);
             MessageBoxX.Show("WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING ! WARNING !", "Tips", icon: MessageBoxIcon.Success);
+        }
+
+        private void Button_Click_1(object sender, System.Windows.RoutedEventArgs e)
+        {
+            Crl.Next();
         }
     }
 }

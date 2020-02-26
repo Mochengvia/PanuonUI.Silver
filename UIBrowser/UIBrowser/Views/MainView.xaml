@@ -20,10 +20,6 @@
     </pu:WindowXCaption.Header>
 
     <Grid>
-        <pu:Pagination TotalIndex="10"
-                       CurrentIndex="1"
-                       Height="30"
-                       Width="Auto"/>
         <!--<DataGrid x:Name="Dg"
                   Width="500"
                   Height="300"

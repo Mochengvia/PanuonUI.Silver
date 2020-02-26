@@ -15,6 +15,16 @@ namespace Panuon.UI.Silver
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(DropDown), new FrameworkPropertyMetadata(typeof(DropDown)));
         }
+
+        public DropDown()
+        {
+        }
+        #endregion
+
+        #region Event Handler
+        public event EventHandler Opened;
+
+        public event EventHandler Closed;
         #endregion
 
         #region Properties

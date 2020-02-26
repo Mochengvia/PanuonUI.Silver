@@ -152,6 +152,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Calendar.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CalendarItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Card.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\CarouselPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Clock.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ClockItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\DateTimePicker.cs" />
