@@ -303,4 +303,13 @@
         PowerInOut,
     }
     #endregion
+
+    #region SideButtonVisibility
+    public enum SideButtonVisibility
+    {
+        Visible,
+        Fade,
+        Collapsed,
+    }
+    #endregion
 }

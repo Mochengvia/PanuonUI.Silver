@@ -10,6 +10,7 @@
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Resources.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Button.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/RadioButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/RepeatButton.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="{x:Static rs:ResourceKeys.PaginationItemStyle}"
@@ -39,7 +40,7 @@
                 Value="{Binding ActualHeight,RelativeSource={RelativeSource TemplatedParent}}" />
         <Setter Property="Background"
                 Value="#3E3E3E" />
-        <Setter Property="Background"
+        <Setter Property="local:RepeatButtonHelper.HoverBrush"
                 Value="#2E2E2E" />
         <Setter Property="Foreground"
                 Value="White" />
@@ -58,7 +59,7 @@
                 Value="{Binding ActualHeight,RelativeSource={RelativeSource TemplatedParent}}" />
         <Setter Property="Background"
                 Value="#3E3E3E" />
-        <Setter Property="Background"
+        <Setter Property="local:RepeatButtonHelper.HoverBrush"
                 Value="#2E2E2E" />
         <Setter Property="Foreground"
                 Value="White" />

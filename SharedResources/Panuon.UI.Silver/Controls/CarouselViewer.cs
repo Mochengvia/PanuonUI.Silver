@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Panuon.UI.Silver.Core;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace Panuon.UI.Silver
 {
@@ -28,15 +30,15 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("CurrentIndex", typeof(int), typeof(CarouselViewer), new PropertyMetadata(1, null, OnCurrentIndexCoerceValue));
         #endregion
 
-        #region IsSideButtonVisible
-        public bool IsSideButtonVisible
+        #region SideButtonVisibility
+        public SideButtonVisibility SideButtonVisibility
         {
-            get { return (bool)GetValue(IsSideButtonVisibleProperty); }
-            set { SetValue(IsSideButtonVisibleProperty, value); }
+            get { return (SideButtonVisibility)GetValue(SideButtonVisibilityProperty); }
+            set { SetValue(SideButtonVisibilityProperty, value); }
         }
 
-        public static readonly DependencyProperty IsSideButtonVisibleProperty =
-            DependencyProperty.Register("IsSideButtonVisible", typeof(bool), typeof(CarouselViewer));
+        public static readonly DependencyProperty SideButtonVisibilityProperty =
+            DependencyProperty.Register("SideButtonVisibility", typeof(SideButtonVisibility), typeof(CarouselViewer));
         #endregion
 
         #region SideButtonStyle
@@ -107,6 +109,29 @@ namespace Panuon.UI.Silver
 
         #endregion
 
+        #region Commands
+        internal ICommand PreviousCommand
+        {
+            get { return (ICommand)GetValue(PreviousCommandProperty); }
+            set { SetValue(PreviousCommandProperty, value); }
+        }
+
+        internal static readonly DependencyProperty PreviousCommandProperty =
+            DependencyProperty.Register("PreviousCommand", typeof(ICommand), typeof(CarouselViewer), new PropertyMetadata(new RelayCommand(OnPreviousCommandExecute)));
+
+
+
+        internal ICommand NextCommand
+        {
+            get { return (ICommand)GetValue(NextCommandProperty); }
+            set { SetValue(NextCommandProperty, value); }
+        }
+
+        internal static readonly DependencyProperty NextCommandProperty =
+            DependencyProperty.Register("NextCommand", typeof(ICommand), typeof(CarouselViewer), new PropertyMetadata(new RelayCommand(OnNextCommandExecute)));
+
+        #endregion
+
         #region Event Handler
         private static object OnCurrentIndexCoerceValue(DependencyObject d, object baseValue)
         {
@@ -124,6 +149,18 @@ namespace Panuon.UI.Silver
                 }
             }
             return index;
+        }
+
+        private static void OnPreviousCommandExecute(object obj)
+        {
+            var pagination = (obj as CarouselViewer);
+            pagination.CurrentIndex--;
+        }
+
+        private static void OnNextCommandExecute(object obj)
+        {
+            var pagination = (obj as CarouselViewer);
+            pagination.CurrentIndex++;
         }
         #endregion
 

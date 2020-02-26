@@ -7,22 +7,109 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/InternalResources.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Resources.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Button.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <ControlTemplate x:Key="CarouselViewerTemplate"
+    <Style x:Key="CarouselSideButtonStyle"
+           TargetType="Button"
+           BasedOn="{StaticResource {x:Type Button}}">
+        <Setter Property="Height"
+                Value="30" />
+        <Setter Property="Width"
+                Value="30" />
+        <Setter Property="local:ButtonHelper.CornerRadius"
+                Value="15" />
+    </Style>
+
+    <ControlTemplate x:Key="CarouselVerticalViewerTemplate"
                      TargetType="local:CarouselViewer">
         <Border x:Name="BdrMain"
                 Background="{TemplateBinding Background}"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}">
-            <local:CarouselPanel Margin="{TemplateBinding Padding}"
-                                 CurrentIndex="{TemplateBinding CurrentIndex}"
-                                 Orientation="{TemplateBinding Orientation}"
-                                 AnimationDuration="{TemplateBinding AnimationDuration}"
-                                 AnimationEase="{TemplateBinding AnimationEase}"
-                                 IsItemsHost="True" />
-
+            <Grid>
+                <local:CarouselPanel Margin="{TemplateBinding Padding}"
+                                     CurrentIndex="{TemplateBinding CurrentIndex}"
+                                     Orientation="{TemplateBinding Orientation}"
+                                     AnimationDuration="{TemplateBinding AnimationDuration}"
+                                     AnimationEase="{TemplateBinding AnimationEase}"
+                                     IsItemsHost="True" />
+                <Button x:Name="BtnPrevious"
+                        Opacity="0"
+                        Content="&#xe900;"
+                        Command="{Binding PreviousCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                        FontFamily="{StaticResource PanuonIconFont}"
+                        Margin="5,0,0,0"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left"
+                        Style="{TemplateBinding SideButtonStyle}" />
+                <Button x:Name="BtnNext"
+                        Opacity="0"
+                        Content="&#xe902;"
+                        Command="{Binding NextCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                        FontFamily="{StaticResource PanuonIconFont}"
+                        Margin="0,0,5,0"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Right"
+                        Style="{TemplateBinding SideButtonStyle}" />
+            </Grid>
         </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="SideButtonVisibility"
+                     Value="Collapsed">
+                <Setter TargetName="BtnPrevious"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="BtnNext"
+                        Property="Visibility"
+                        Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="SideButtonVisibility"
+                     Value="Visible">
+                <Setter TargetName="BtnPrevious"
+                        Property="Opacity"
+                        Value="1" />
+                <Setter TargetName="BtnNext"
+                        Property="Opacity"
+                        Value="1" />
+            </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver"
+                               Value="True" />
+                    <Condition Property="SideButtonVisibility"
+                               Value="Fade" />
+                </MultiTrigger.Conditions>
+                <MultiTrigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="BtnPrevious"
+                                             Storyboard.TargetProperty="Opacity"
+                                             To="1"
+                                             Duration="0:0:0.3" />
+                            <DoubleAnimation Storyboard.TargetName="BtnNext"
+                                             Storyboard.TargetProperty="Opacity"
+                                             To="1"
+                                             Duration="0:0:0.3" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </MultiTrigger.EnterActions>
+                <MultiTrigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="BtnPrevious"
+                                             Storyboard.TargetProperty="Opacity"
+                                             Duration="0:0:0.3" />
+                            <DoubleAnimation Storyboard.TargetName="BtnNext"
+                                             Storyboard.TargetProperty="Opacity"
+                                             Duration="0:0:0.3" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </MultiTrigger.ExitActions>
+            </MultiTrigger>
+        </ControlTemplate.Triggers>
     </ControlTemplate>
 
     <Style TargetType="local:CarouselViewer">
@@ -30,7 +117,11 @@
                 Value="0:0:0.5" />
         <Setter Property="AnimationEase"
                 Value="CubicOut" />
+        <Setter Property="SideButtonVisibility"
+                Value="Fade" />
+        <Setter Property="SideButtonStyle"
+                Value="{StaticResource CarouselSideButtonStyle}" />
         <Setter Property="Template"
-                Value="{StaticResource CarouselViewerTemplate}" />
+                Value="{StaticResource CarouselVerticalViewerTemplate}" />
     </Style>
 </ResourceDictionary>
