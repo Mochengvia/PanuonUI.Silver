@@ -1,0 +1,36 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver"
+                    xmlns:i="clr-namespace:Panuon.UI.Silver.Internal"
+                    xmlns:ic="clr-namespace:Panuon.UI.Silver.Internal.Controls"
+                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/InternalResources.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Resources.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <ControlTemplate x:Key="CarouselViewerTemplate"
+                     TargetType="local:CarouselViewer">
+        <Border x:Name="BdrMain"
+                Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}">
+            <local:CarouselPanel Margin="{TemplateBinding Padding}"
+                                 CurrentIndex="{TemplateBinding CurrentIndex}"
+                                 Orientation="{TemplateBinding Orientation}"
+                                 AnimationDuration="{TemplateBinding AnimationDuration}"
+                                 AnimationEase="{TemplateBinding AnimationEase}"
+                                 IsItemsHost="True" />
+
+        </Border>
+    </ControlTemplate>
+
+    <Style TargetType="local:CarouselViewer">
+        <Setter Property="AnimationDuration"
+                Value="0:0:0.5" />
+        <Setter Property="AnimationEase"
+                Value="CubicOut" />
+        <Setter Property="Template"
+                Value="{StaticResource CarouselViewerTemplate}" />
+    </Style>
+</ResourceDictionary>

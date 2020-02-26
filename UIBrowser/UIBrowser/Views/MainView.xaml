@@ -20,6 +20,18 @@
     </pu:WindowXCaption.Header>
 
     <Grid>
+        <StackPanel >
+            <pu:CarouselViewer x:Name="Crl"
+                               Height="300"
+                               Width="300">
+                <Grid Background="Red" />
+                <Grid Background="Blue" />
+                <Grid Background="Yellow" />
+                <Grid Background="Green" />
+            </pu:CarouselViewer>
+            <Button Height="30"
+                    Click="Button_Click_1"/>
+        </StackPanel>
         <!--<DataGrid x:Name="Dg"
                   Width="500"
                   Height="300"

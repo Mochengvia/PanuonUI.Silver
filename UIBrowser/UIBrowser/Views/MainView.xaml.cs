@@ -47,7 +47,6 @@ namespace UIBrowser.Views
 
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            Crl.Previous();
             return;
             MessageBoxX.DefaultMessageBoxXConfigurations.YesButton = "是";
             MessageBoxX.DefaultMessageBoxXConfigurations.NoButton = "否";
@@ -62,7 +61,7 @@ namespace UIBrowser.Views
 
         private void Button_Click_1(object sender, System.Windows.RoutedEventArgs e)
         {
-            Crl.Next();
+            Crl.CurrentIndex++;
         }
     }
 }

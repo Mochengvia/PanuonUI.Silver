@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Panuon.UI.Silver.Internal.Utils;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -42,6 +43,17 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty AnimationDurationProperty =
             DependencyProperty.Register("AnimationDuration", typeof(TimeSpan), typeof(CarouselPanel), new PropertyMetadata(TimeSpan.FromSeconds(0.5)));
+        #endregion
+
+        #region AnimationEase
+        public AnimationEase AnimationEase
+        {
+            get { return (AnimationEase)GetValue(AnimationEaseProperty); }
+            set { SetValue(AnimationEaseProperty, value); }
+        }
+
+        public static readonly DependencyProperty AnimationEaseProperty =
+            DependencyProperty.Register("AnimationEase", typeof(AnimationEase), typeof(CarouselPanel), new PropertyMetadata(AnimationEase.CubicOut));
         #endregion
 
         #region Orientation
@@ -161,7 +173,7 @@ namespace Panuon.UI.Silver
                 {
                     To = targetPosition,
                     Duration = AnimationDuration,
-                    EasingFunction = new CubicEase() { EasingMode = EasingMode.EaseOut },
+                    EasingFunction = AnimationUtils.CreateEasingFunction(AnimationEase),
                 };
                 BeginAnimation(PositionProperty, animation);
             }
