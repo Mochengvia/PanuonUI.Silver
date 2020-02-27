@@ -1007,6 +1007,14 @@ namespace Panuon.UI.Silver.Internal
         #region Pagination
 
         public static readonly string PaginationTemplate = nameof(PaginationTemplate);
+
+        #endregion
+
+        #region CarouselViewer
+        public static readonly string CarouselViewerIndicatorStyle = nameof(CarouselViewerIndicatorStyle);
+        public static readonly string CarouselViewerHorizontalTemplate = nameof(CarouselViewerHorizontalTemplate);
+        public static readonly string CarouselViewerSideButtonStyle = nameof(CarouselViewerSideButtonStyle);
+        public static readonly string CarouselViewerVerticalTemplate = nameof(CarouselViewerVerticalTemplate);
         
         #endregion
     }

@@ -95,9 +95,9 @@
 
         public static readonly string PaginationSideButtonStyle = nameof(PaginationSideButtonStyle);
 
-
         public static readonly string PaginationOmitTextStyle = nameof(PaginationOmitTextStyle);
-            
+
         #endregion
+
     }
 }

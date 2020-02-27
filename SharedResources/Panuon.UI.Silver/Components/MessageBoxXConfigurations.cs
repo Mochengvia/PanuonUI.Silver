@@ -20,7 +20,7 @@ namespace Panuon.UI.Silver
         /// <summary>
         /// Gets or sets the background of the default button.
         /// </summary>
-        public Brush DefaultButtonBrush { get; set; } = "#55CEF1".ToColor().ToBrush();
+        public Brush DefaultButtonBrush { get; set; } = "#80BEE8".ToColor().ToBrush();
 
         /// <summary>
         /// Gets or sets the min height of MessageBoxX.

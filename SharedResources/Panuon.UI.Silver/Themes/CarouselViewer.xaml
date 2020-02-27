@@ -11,13 +11,13 @@
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/IndexIndicator.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="CarouselIndicatorStyle"
+    <Style x:Key="{x:Static i:ResourceKeys.CarouselViewerIndicatorStyle}"
            TargetType="local:IndexIndicator"
            BasedOn="{StaticResource {x:Type local:IndexIndicator}}">
-        
+
     </Style>
-    
-    <Style x:Key="CarouselSideButtonStyle"
+
+    <Style x:Key="{x:Static i:ResourceKeys.CarouselViewerSideButtonStyle}"
            TargetType="Button"
            BasedOn="{StaticResource {x:Type Button}}">
         <Setter Property="Height"
@@ -28,7 +28,7 @@
                 Value="15" />
     </Style>
 
-    <ControlTemplate x:Key="CarouselHorizontalViewerTemplate"
+    <ControlTemplate x:Key="{x:Static i:ResourceKeys.CarouselViewerHorizontalTemplate}"
                      TargetType="local:CarouselViewer">
         <Border x:Name="BdrMain"
                 Background="{TemplateBinding Background}"
@@ -68,8 +68,8 @@
                                       TotalIndex="{Binding ItemsCount, ElementName=CrlItems, Mode=OneWay}"
                                       CurrentIndex="{Binding CurrentIndex, ElementName=CrlItems, Mode=TwoWay}"
                                       VerticalAlignment="Bottom"
-                                      HorizontalAlignment="Center" 
-                                      Margin="0,0,0,5"/>
+                                      HorizontalAlignment="Center"
+                                      Margin="0,0,0,5" />
             </Grid>
         </Border>
         <ControlTemplate.Triggers>
@@ -149,7 +149,7 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <ControlTemplate x:Key="CarouselVerticalViewerTemplate"
+    <ControlTemplate x:Key="{x:Static i:ResourceKeys.CarouselViewerVerticalTemplate}"
                      TargetType="local:CarouselViewer">
         <Border x:Name="BdrMain"
                 Background="{TemplateBinding Background}"
@@ -283,18 +283,16 @@
         <Setter Property="IndicatorPosition"
                 Value="BottomOrRight" />
         <Setter Property="IndicatorStyle"
-                Value="{StaticResource CarouselIndicatorStyle}"/>
-
-
+                Value="{StaticResource {x:Static i:ResourceKeys.CarouselViewerIndicatorStyle}}" />
         <Setter Property="SideButtonStyle"
-                Value="{StaticResource CarouselSideButtonStyle}" />
+                Value="{StaticResource {x:Static i:ResourceKeys.CarouselViewerSideButtonStyle}}" />
         <Setter Property="Template"
-                Value="{StaticResource CarouselHorizontalViewerTemplate}" />
+                Value="{StaticResource {x:Static i:ResourceKeys.CarouselViewerHorizontalTemplate}}" />
         <Style.Triggers>
             <Trigger Property="Orientation"
                      Value="Vertical">
                 <Setter Property="Template"
-                        Value="{StaticResource CarouselVerticalViewerTemplate}" />
+                        Value="{StaticResource {x:Static i:ResourceKeys.CarouselViewerVerticalTemplate}}" />
             </Trigger>
         </Style.Triggers>
     </Style>

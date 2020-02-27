@@ -58,7 +58,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty SelectedTimeProperty =
-            DependencyProperty.Register("SelectedTime", typeof(DateTime), typeof(Clock), new PropertyMetadata(default(DateTime), OnSelectedTimeChanged, OnSelectedTimeCoerceValue));
+            DependencyProperty.Register("SelectedTime", typeof(DateTime), typeof(Clock), new FrameworkPropertyMetadata(default(DateTime), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnSelectedTimeChanged, OnSelectedTimeCoerceValue));
         #endregion
 
         #region MaxTime

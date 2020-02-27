@@ -42,9 +42,9 @@ namespace Panuon.UI.Silver.Internal.Converters
             switch (icon)
             {
                 case MessageBoxIcon.Info:
-                    return "#55CEF1".ToColor().ToBrush();
+                    return "#80BEE8".ToColor().ToBrush();
                 case MessageBoxIcon.Question:
-                    return "#55CEF1".ToColor().ToBrush();
+                    return "#80BEE8".ToColor().ToBrush();
                 case MessageBoxIcon.Success:
                     return "#75CD43".ToColor().ToBrush();
                 case MessageBoxIcon.Error:

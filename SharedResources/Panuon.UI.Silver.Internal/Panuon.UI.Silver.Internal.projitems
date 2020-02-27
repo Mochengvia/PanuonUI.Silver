@@ -18,8 +18,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CombineConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DropDownConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\MessageBoxConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\BoolConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\MessageBoxConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\MiscellaneousConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ThicknessConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\GridLengthConverter.cs" />

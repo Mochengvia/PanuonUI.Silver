@@ -94,7 +94,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty SelectedDateTimeProperty =
-            DependencyProperty.Register("SelectedDateTime", typeof(DateTime), typeof(DateTimePicker), new PropertyMetadata(default(DateTime), OnSelectedDateTimeChanged, OnSelectedDateTimeCoerceValue));
+            DependencyProperty.Register("SelectedDateTime", typeof(DateTime), typeof(DateTimePicker), new FrameworkPropertyMetadata(default(DateTime), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnSelectedDateTimeChanged, OnSelectedDateTimeCoerceValue));
 
         #endregion
 

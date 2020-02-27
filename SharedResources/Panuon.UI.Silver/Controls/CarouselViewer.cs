@@ -130,8 +130,6 @@ namespace Panuon.UI.Silver
         internal static readonly DependencyProperty PreviousCommandProperty =
             DependencyProperty.Register("PreviousCommand", typeof(ICommand), typeof(CarouselViewer), new PropertyMetadata(new RelayCommand(OnPreviousCommandExecute)));
 
-
-
         internal ICommand NextCommand
         {
             get { return (ICommand)GetValue(NextCommandProperty); }

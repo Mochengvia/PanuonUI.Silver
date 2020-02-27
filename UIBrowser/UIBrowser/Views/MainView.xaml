@@ -20,42 +20,6 @@
     </pu:WindowXCaption.Header>
 
     <Grid>
-        <StackPanel >
-            <pu:CarouselViewer x:Name="Crl"
-                               Height="300"
-                               Width="300"
-Orientation="Vertical">
-                <Grid Background="White">
-                    <TextBlock Text="1"/>
-                </Grid>
-                <Grid Background="White">
-                    <TextBlock Text="1" />
-                </Grid>
-                <Grid Background="White">
-                    <TextBlock Text="1" />
-                </Grid>
-            </pu:CarouselViewer>
-            <Button Height="30"
-                    Click="Button_Click_1"/>
-        </StackPanel>
-        <!--<DataGrid x:Name="Dg"
-                  Width="500"
-                  Height="300"
-                  RowHeaderWidth="8"
-                  AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Hello"
-                                    Binding="{Binding Value}" />
-                <DataGridTextColumn Header="Hello"
-                                    Binding="{Binding Value}" />
-                <DataGridTextColumn Header="Hello"
-                                    Binding="{Binding Value}" />
-                <DataGridTextColumn Header="Hello"
-                                    Binding="{Binding Value}" />
-                <DataGridTextColumn Header="Hello"
-                                    Binding="{Binding Value}"
-                                    Width="*" />
-            </DataGrid.Columns>
-        </DataGrid>-->
+        <Button Click="Button_Click_1"/>
     </Grid>
 </pu:WindowX>

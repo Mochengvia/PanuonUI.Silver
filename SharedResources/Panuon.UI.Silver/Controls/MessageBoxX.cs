@@ -155,16 +155,6 @@ namespace Panuon.UI.Silver
         /// <summary>
         /// Open a message box and return the result selected by the user.
         /// </summary>
-        /// <param name="messageBoxText">Text to display.</param>
-        /// <param name="messageBoxXConfigurationsKey">The key stored in the MessageBoxX.MessageBoxConfigurations static property. You can get the MessageBoxXConfigurations by the pre-defined key anywhere in the current AppDomain. If the value is null, the value of MessageBoxX.DefaultMessageBoxXConfigurations static property will be used instead.</param>
-        public static MessageBoxResult Show(string messageBoxText, string messageBoxXConfigurationsKey = null)
-        {
-            return CallMessageBox(null, messageBoxText, null, MessageBoxButton.OK, MessageBoxIcon.None, DefaultButton.YesOK, messageBoxXConfigurationsKey);
-        }
-
-        /// <summary>
-        /// Open a message box and return the result selected by the user.
-        /// </summary>
         /// <param name="owner">The owner of message box.</param>
         /// <param name="messageBoxText">Text to display.</param>
         /// <param name="caption">The title of message box.</param>
