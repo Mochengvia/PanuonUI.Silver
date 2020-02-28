@@ -83,6 +83,11 @@
                 <Setter Property="local:MenuHelper.HoverForeground"
                         Value="#000000" />
             </DataTrigger>
+            <Trigger  Property="IsEnabled"
+                      Value="False">
+                <Setter Property="Opacity"
+                        Value="0.4" />
+            </Trigger>
         </Style.Triggers>
     </Style>
 
@@ -1089,6 +1094,11 @@
                     </Setter.Value>
                 </Setter>
             </MultiDataTrigger>
+            <Trigger  Property="IsEnabled"
+                      Value="False">
+                <Setter Property="Opacity"
+                        Value="0.4" />
+            </Trigger>
         </Style.Triggers>
     </Style>
 
@@ -1114,6 +1124,13 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <Trigger  Property="IsEnabled"
+                      Value="False">
+                <Setter Property="Opacity"
+                        Value="0.4" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
     <Style x:Key="{x:Static MenuItem.SeparatorStyleKey}"
