@@ -14,40 +14,26 @@ using System.Windows.Media.Animation;
 
 namespace Panuon.UI.Silver
 {
-    [ContentProperty(nameof(Content))]
-    public class Drawer : UIElement
+    public class Drawer : ContentControl
     {
-        #region Ctor
-        public Drawer()
+        #region Ctorcdasd
+        static Drawer()
         {
-
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(Drawer), new FrameworkPropertyMetadata(typeof(Drawer)));
         }
         #endregion
 
         #region Properties
 
-        #region Alignment
-
-
-        public Alignment Alignment
+        #region DrawePlacement
+        public DrawerPlacement Placement
         {
-            get { return (Alignment)GetValue(AlignmentProperty); }
-            set { SetValue(AlignmentProperty, value); }
+            get { return (DrawerPlacement)GetValue(PlacementProperty); }
+            set { SetValue(PlacementProperty, value); }
         }
 
-        public static readonly DependencyProperty AlignmentProperty =
-            DependencyProperty.Register("Alignment", typeof(Alignment), typeof(Drawer), new FrameworkPropertyMetadata(Alignment.Left, FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsArrange));
-        #endregion
-
-        #region Content
-        public UIElement Content
-        {
-            get { return (UIElement)GetValue(ContentProperty); }
-            set { SetValue(ContentProperty, value); }
-        }
-
-        public static readonly DependencyProperty ContentProperty =
-            DependencyProperty.Register("Content", typeof(UIElement), typeof(Drawer));
+        public static readonly DependencyProperty PlacementProperty =
+            DependencyProperty.Register("Placement", typeof(DrawerPlacement), typeof(Drawer));
         #endregion
 
         #region IsOpen
@@ -58,123 +44,143 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty IsOpenProperty =
-            DependencyProperty.Register("IsOpen", typeof(bool), typeof(Drawer), new PropertyMetadata(true, OnIsOpenChanged));
+            DependencyProperty.Register("IsOpen", typeof(bool), typeof(Drawer), new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnIsOpenChanged));
         #endregion
 
-        #region Width
-        public double Width
+        #region AnimationDuration
+        public TimeSpan AnimationDuration
         {
-            get { return (double)GetValue(WidthProperty); }
-            set { SetValue(WidthProperty, value); }
+            get { return (TimeSpan)GetValue(AnimationDurationProperty); }
+            set { SetValue(AnimationDurationProperty, value); }
         }
 
-        public static readonly DependencyProperty WidthProperty =
-            DependencyProperty.Register("Width", typeof(double), typeof(Drawer), new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
-        #endregion
-
-        #region Height
-        public double Height
-        {
-            get { return (double)GetValue(HeightProperty); }
-            set { SetValue(HeightProperty, value); }
-        }
-
-        public static readonly DependencyProperty HeightProperty =
-            DependencyProperty.Register("Height", typeof(double), typeof(Drawer), new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
-        #endregion
+        public static readonly DependencyProperty AnimationDurationProperty =
+            DependencyProperty.Register("AnimationDuration", typeof(TimeSpan), typeof(Drawer));
 
         #endregion
 
-        #region Internal Properties
-        public Rect PositionOffset
+        #region AnimationEase
+        public AnimationEase AnimationEase
         {
-            get { return (Rect)GetValue(PositionOffsetProperty); }
-            set { SetValue(PositionOffsetProperty, value); }
+            get { return (AnimationEase)GetValue(AnimationEaseProperty); }
+            set { SetValue(AnimationEaseProperty, value); }
         }
 
-        public static readonly DependencyProperty PositionOffsetProperty =
-            DependencyProperty.Register("PositionOffset", typeof(Rect), typeof(Drawer), new PropertyMetadata(new Rect(), new PropertyChangedCallback(OnPositionOffsetChanged)));
-
-        private static void OnPositionOffsetChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var drawer = d as Drawer;
-            drawer.ArrangeCore(new Rect(0, 0, drawer.Width, drawer.DesiredSize.Height));
-        }
+        public static readonly DependencyProperty AnimationEaseProperty =
+            DependencyProperty.Register("AnimationEase", typeof(AnimationEase), typeof(Drawer));
         #endregion
 
-        #region Event Handler
-        private static void OnIsOpenChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        #region CornerRadius
+        public CornerRadius CornerRadius
         {
-            var drawer = d as Drawer;
-            if (drawer.RenderSize.Width == 0 && drawer.RenderSize.Height == 0)
-            {
-                if ((bool)e.NewValue)
-                {
-                    drawer.PositionOffset = new Rect(0, 0, 0, 0);
-                }
-                else
-                {
-                    drawer.PositionOffset = new Rect(0, 0, drawer.Width, drawer.Height);
-                }
-            }
-            else
-            {
-                if ((bool)e.NewValue)
-                {
-                    var animation = new RectAnimation()
-                    {
-                        To = new Rect(),
-                        Duration = TimeSpan.FromSeconds(0.3),
-                        EasingFunction = AnimationUtils.CreateEasingFunction( AnimationEase.CubicOut),
-                    };
-                    drawer.BeginAnimation(PositionOffsetProperty, animation);
-                }
-                else
-                {
-                    var animation = new RectAnimation()
-                    {
-                        To = new Rect(0, 0 , drawer.Width, drawer.Height),
-                        Duration = TimeSpan.FromSeconds(0.3),
-                        EasingFunction = AnimationUtils.CreateEasingFunction(AnimationEase.CubicOut),
-                    };
-                    drawer.BeginAnimation(PositionOffsetProperty, animation);
-                }
-            }
+            get { return (CornerRadius)GetValue(CornerRadiusProperty); }
+            set { SetValue(CornerRadiusProperty, value); }
         }
+
+        public static readonly DependencyProperty CornerRadiusProperty =
+            DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(Drawer));
         #endregion
 
-        #region Override
+        #region ShadowColor
 
-        protected override Visual GetVisualChild(int index)
+
+        public Color? ShadowColor
         {
-            return Content;
+            get { return (Color?)GetValue(ShadowColorProperty); }
+            set { SetValue(ShadowColorProperty, value); }
         }
 
-        protected override int VisualChildrenCount => 1;
+        public static readonly DependencyProperty ShadowColorProperty =
+            DependencyProperty.Register("ShadowColor", typeof(Color?), typeof(Drawer));
+        #endregion
 
-        protected override Size MeasureCore(Size availableSize)
-        {
-            Content?.Measure(availableSize);
-            return availableSize;
-        }
-
-        protected override void ArrangeCore(Rect finalRect)
-        {
-            Content?.Arrange(new Rect(finalRect.Left, finalRect.Top, Width, finalRect.Height));
-
-            var newRect = new Rect();
-            if(Alignment == Alignment.Left || Alignment == Alignment.Right)
-            {
-                newRect = new Rect(0, 0, Width - PositionOffset.Width, finalRect.Height);
-            }
-            else
-            {
-                newRect = new Rect(0, 0, finalRect.Width, Height - PositionOffset.Height);
-            }
-        }
         #endregion
 
         #region Methods
+
+        private static void OnIsOpenChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var drawer = d as Drawer;
+            switch (drawer.Placement)
+            {
+                case DrawerPlacement.Left:
+                case DrawerPlacement.Right:
+                    if (double.IsNaN(drawer.MaxWidth))
+                    {
+                        throw new Exception("Drawer Exception : value of MaxWidth property can not be Auto.");
+                    }
+                    if (!drawer.IsLoaded || drawer.AnimationDuration.TotalMilliseconds == 0)
+                    {
+                        if ((bool)e.NewValue)
+                        {
+                            drawer.Width = drawer.MaxWidth;
+                        }
+                        else
+                        {
+                            drawer.Width = 0;
+                        }
+                    }
+                    else
+                    {
+                        if ((bool)e.NewValue)
+                        {
+                            if (double.IsNaN(drawer.Width))
+                            {
+                                drawer.Width = drawer.ActualWidth;
+                            }
+                            AnimationUtils.BeginAnimation(drawer, WidthProperty, drawer.MaxWidth, drawer.AnimationDuration, drawer.AnimationEase);
+                        }
+                        else
+                        {
+                            if (double.IsNaN(drawer.Width))
+                            {
+                                drawer.Width = drawer.ActualWidth;
+                            }
+                            AnimationUtils.BeginAnimation(drawer, WidthProperty, 0, drawer.AnimationDuration, drawer.AnimationEase);
+                        }
+                    }
+                    break;
+                case DrawerPlacement.Top:
+                case DrawerPlacement.Bottom:
+                    if (double.IsNaN(drawer.MaxWidth))
+                    {
+                        throw new Exception("Drawer Exception : value of MaxHeight property can not be Auto.");
+                    }
+                    if (!drawer.IsLoaded || drawer.AnimationDuration.TotalMilliseconds == 0)
+                    {
+                        if ((bool)e.NewValue)
+                        {
+                            drawer.Height = drawer.MaxHeight;
+                        }
+                        else
+                        {
+                            drawer.Height = 0;
+                        }
+                    }
+                    else
+                    {
+                        if ((bool)e.NewValue)
+                        {
+                            if (double.IsNaN(drawer.Height))
+                            {
+                                drawer.Height = drawer.ActualHeight;
+                            }
+                            AnimationUtils.BeginAnimation(drawer, HeightProperty, drawer.MaxHeight, drawer.AnimationDuration, drawer.AnimationEase);
+                        }
+                        else
+                        {
+                            if (double.IsNaN(drawer.Height))
+                            {
+                                drawer.Height = drawer.ActualHeight;
+                            }
+                            AnimationUtils.BeginAnimation(drawer, HeightProperty, 0, drawer.AnimationDuration, drawer.AnimationEase);
+                        }
+                    }
+                    break;
+            }
+
+
+        }
         #endregion
 
         #region Function

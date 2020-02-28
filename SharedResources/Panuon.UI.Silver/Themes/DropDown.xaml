@@ -9,7 +9,7 @@
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Resources.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <ControlTemplate x:Key="ToggleButtonTemplate"
+    <ControlTemplate x:Key="{x:Static i:ResourceKeys.DropDownToggleButtonTemplate}"
                      TargetType="ToggleButton">
         <Grid Background="Transparent">
             <ContentPresenter />
@@ -17,10 +17,10 @@
         </Grid>
     </ControlTemplate>
 
-    <Style x:Key="ToggleButtonStyle"
+    <Style x:Key="{x:Static i:ResourceKeys.DropDownToggleButtonStyle}"
            TargetType="ToggleButton">
         <Setter Property="Template"
-                Value="{StaticResource ToggleButtonTemplate}" />
+                Value="{StaticResource {x:Static i:ResourceKeys.DropDownToggleButtonTemplate}}" />
     </Style>
 
     <ControlTemplate x:Key="{x:Static i:ResourceKeys.DropDownStandardTemplate}"
@@ -105,7 +105,7 @@
         <Setter Property="ShadowColor"
                 Value="#EEEEEE" />
         <Setter Property="ContentContainerStyle"
-                Value="{StaticResource ToggleButtonStyle}" />
+                Value="{StaticResource {x:Static i:ResourceKeys.ToggleButtonStyle}}" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static i:ResourceKeys.DropDownStandardTemplate}}" />
         <Style.Triggers>

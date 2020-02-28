@@ -48,23 +48,12 @@ namespace Panuon.UI.Silver.Internal.Utils
         }
 
 
-        public static void BeginAnimation(UIElement uiElement, DependencyProperty dependencyProperty, double to, AnimationEase animationEase = AnimationEase.None)
+        public static void BeginAnimation(UIElement uiElement, DependencyProperty dependencyProperty, double to, TimeSpan animationDuration, AnimationEase animationEase = AnimationEase.None)
         {
             var anima = new DoubleAnimation()
             {
                 To = to,
-                Duration = TimeSpan.FromSeconds(0.4),
-                EasingFunction = CreateEasingFunction(animationEase),
-            };
-            uiElement.BeginAnimation(dependencyProperty, anima);
-        }
-
-        public static void BeginAnimation(UIElement uiElement, DependencyProperty dependencyProperty, Rect to, AnimationEase animationEase = AnimationEase.None)
-        {
-            var anima = new RectAnimation()
-            {
-                To = to,
-                Duration = TimeSpan.FromSeconds(0.4),
+                Duration = animationDuration,
                 EasingFunction = CreateEasingFunction(animationEase),
             };
             uiElement.BeginAnimation(dependencyProperty, anima);

@@ -875,7 +875,14 @@ namespace Panuon.UI.Silver.Internal
 
         #region DropDown
         public static readonly string DropDownStandardTemplate = nameof(DropDownStandardTemplate);
+
+        public static readonly string DropDownToggleButtonTemplate = nameof(DropDownToggleButtonTemplate);
+
+        public static readonly string DropDownToggleButtonStyle = nameof(DropDownToggleButtonStyle);
+
+
         #endregion
+
 
         #region ListBox
         public static readonly string ListBoxBorderBrush = nameof(ListBoxBorderBrush);
@@ -1012,10 +1019,17 @@ namespace Panuon.UI.Silver.Internal
 
         #region CarouselViewer
         public static readonly string CarouselViewerIndicatorStyle = nameof(CarouselViewerIndicatorStyle);
+
         public static readonly string CarouselViewerHorizontalTemplate = nameof(CarouselViewerHorizontalTemplate);
+     
         public static readonly string CarouselViewerSideButtonStyle = nameof(CarouselViewerSideButtonStyle);
+       
         public static readonly string CarouselViewerVerticalTemplate = nameof(CarouselViewerVerticalTemplate);
-        
+
+        #endregion
+
+        #region Drawer
+        public static readonly string DrawerTemplate = nameof(DrawerTemplate);
         #endregion
     }
 }

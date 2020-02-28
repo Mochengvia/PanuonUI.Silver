@@ -315,4 +315,14 @@
         TopOrLeft,
     }
     #endregion
+
+    #region Drawer
+    public enum DrawerPlacement
+    {
+        Left,
+        Top,
+        Right,
+        Bottom,
+    }
+    #endregion
 }
