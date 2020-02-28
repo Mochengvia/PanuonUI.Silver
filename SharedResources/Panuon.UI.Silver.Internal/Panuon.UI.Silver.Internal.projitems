@@ -36,6 +36,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Resources\ResourceKeys.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TemplateSelectors\IconControlDataTemplateSelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\AnimationUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\BrushUtils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\DateTimeUtils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\GridLengthUtils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\ImageUtils.cs" />

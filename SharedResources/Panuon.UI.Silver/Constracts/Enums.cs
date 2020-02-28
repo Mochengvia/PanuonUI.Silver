@@ -10,7 +10,7 @@
         Classic
     }
 
-    public enum LoadingRunningSpeed
+    public enum LoadingSpeed
     {
         Normal,
         Quick,

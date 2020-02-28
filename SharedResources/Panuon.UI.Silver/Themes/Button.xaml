@@ -73,7 +73,7 @@
                         Property="Visibility"
                         Value="Collapsed" />
                 <Setter TargetName="LoadWait"
-                        Property="IsRunning"
+                        Property="IsLoading"
                         Value="True" />
                 <Setter TargetName="Presenter"
                         Property="Content"

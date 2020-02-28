@@ -105,7 +105,7 @@
             <!--NormalSpeed-->
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="IsRunning"
+                    <Condition Property="IsLoading"
                                Value="True" />
                     <Condition Property="Speed"
                                Value="Normal" />
@@ -245,7 +245,7 @@
             <!--QuickSpeed-->
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="IsRunning"
+                    <Condition Property="IsLoading"
                                Value="True" />
                     <Condition Property="Speed"
                                Value="Quick" />
@@ -385,7 +385,7 @@
             <!--SlowSpeed-->
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="IsRunning"
+                    <Condition Property="IsLoading"
                                Value="True" />
                     <Condition Property="Speed"
                                Value="Slow" />
@@ -590,7 +590,7 @@
             <!--Normal Speed-->
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="IsRunning"
+                    <Condition Property="IsLoading"
                                Value="True" />
                     <Condition Property="Speed"
                                Value="Normal" />
@@ -662,7 +662,7 @@
             <!--Quick Speed-->
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="IsRunning"
+                    <Condition Property="IsLoading"
                                Value="True" />
                     <Condition Property="Speed"
                                Value="Quick" />
@@ -732,7 +732,7 @@
             <!--Slow Speed-->
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="IsRunning"
+                    <Condition Property="IsLoading"
                                Value="True" />
                     <Condition Property="Speed"
                                Value="Slow" />
@@ -837,7 +837,7 @@
             <!--Normal-->
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="IsRunning"
+                    <Condition Property="IsLoading"
                                Value="True" />
                     <Condition Property="Speed"
                                Value="Normal" />
@@ -867,7 +867,7 @@
             <!--Quick-->
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="IsRunning"
+                    <Condition Property="IsLoading"
                                Value="True" />
                     <Condition Property="Speed"
                                Value="Quick" />
@@ -897,7 +897,7 @@
             <!--Slow-->
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="IsRunning"
+                    <Condition Property="IsLoading"
                                Value="True" />
                     <Condition Property="Speed"
                                Value="Slow" />
@@ -960,7 +960,7 @@
             <!--Normal-->
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="IsRunning"
+                    <Condition Property="IsLoading"
                                Value="True" />
                     <Condition Property="Speed"
                                Value="Normal" />
@@ -999,7 +999,7 @@
             <!--Quick-->
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="IsRunning"
+                    <Condition Property="IsLoading"
                                Value="True" />
                     <Condition Property="Speed"
                                Value="Quick" />
@@ -1037,7 +1037,7 @@
             <!--Slow-->
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="IsRunning"
+                    <Condition Property="IsLoading"
                                Value="True" />
                     <Condition Property="Speed"
                                Value="Slow" />
@@ -1145,7 +1145,7 @@
             <!--Normal Speed-->
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="IsRunning"
+                    <Condition Property="IsLoading"
                                Value="True" />
                     <Condition Property="Speed"
                                Value="Normal" />
@@ -1461,7 +1461,7 @@
             <!--Slow Speed-->
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="IsRunning"
+                    <Condition Property="IsLoading"
                                Value="True" />
                     <Condition Property="Speed"
                                Value="Slow" />
@@ -1777,7 +1777,7 @@
             <!--Quick Speed-->
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="IsRunning"
+                    <Condition Property="IsLoading"
                                Value="True" />
                     <Condition Property="Speed"
                                Value="Quick" />
@@ -2136,7 +2136,7 @@
                 <Setter Property="Template"
                         Value="{StaticResource {x:Static i:ResourceKeys.LoadingClassicTemplate}}" />
             </Trigger>
-            <Trigger Property="IsRunning"
+            <Trigger Property="IsLoading"
                      Value="False">
                 <Setter Property="Visibility"
                         Value="Hidden" />

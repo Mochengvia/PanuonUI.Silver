@@ -1,6 +1,7 @@
 ﻿using Panuon.UI.Silver.Core;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace Panuon.UI.Silver
 {
@@ -17,14 +18,14 @@ namespace Panuon.UI.Silver
         /// <summary>
         /// Gets or sets is loading control running.
         /// </summary>
-        public bool IsRunning
+        public bool IsLoading
         {
-            get { return (bool)GetValue(IsRunningProperty); }
-            set { SetValue(IsRunningProperty, value); }
+            get { return (bool)GetValue(IsLoadingProperty); }
+            set { SetValue(IsLoadingProperty, value); }
         }
 
-        public static readonly DependencyProperty IsRunningProperty =
-            DependencyProperty.Register("IsRunning", typeof(bool), typeof(Loading));
+        public static readonly DependencyProperty IsLoadingProperty =
+            DependencyProperty.Register("IsLoading", typeof(bool), typeof(Loading));
 
         /// <summary>
         /// Gets or sets base style of loading control.
@@ -68,14 +69,14 @@ namespace Panuon.UI.Silver
         /// <summary>
         /// Gets or sets running speed of loading control.
         /// </summary>
-        public LoadingRunningSpeed Speed
+        public LoadingSpeed Speed
         {
-            get { return (LoadingRunningSpeed)GetValue(SpeedProperty); }
+            get { return (LoadingSpeed)GetValue(SpeedProperty); }
             set { SetValue(SpeedProperty, value); }
         }
 
         public static readonly DependencyProperty SpeedProperty =
-            DependencyProperty.Register("Speed", typeof(LoadingRunningSpeed), typeof(Loading));
+            DependencyProperty.Register("Speed", typeof(LoadingSpeed), typeof(Loading));
 
 
         #endregion

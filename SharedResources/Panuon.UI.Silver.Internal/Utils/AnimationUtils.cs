@@ -48,7 +48,7 @@ namespace Panuon.UI.Silver.Internal.Utils
         }
 
 
-        public static void BeginAnimation(UIElement uiElement, DependencyProperty dependencyProperty, double to, TimeSpan animationDuration, AnimationEase animationEase = AnimationEase.None)
+        public static void BeginAnimation(UIElement uiElement, DependencyProperty dependencyProperty, double to, TimeSpan animationDuration, AnimationEase animationEase = AnimationEase.None, bool repeatForever = false)
         {
             var anima = new DoubleAnimation()
             {
@@ -56,6 +56,26 @@ namespace Panuon.UI.Silver.Internal.Utils
                 Duration = animationDuration,
                 EasingFunction = CreateEasingFunction(animationEase),
             };
+            if (repeatForever)
+            {
+                anima.RepeatBehavior = RepeatBehavior.Forever;
+            }
+            uiElement.BeginAnimation(dependencyProperty, anima);
+        }
+
+        public static void BeginAnimation(UIElement uiElement, DependencyProperty dependencyProperty, double from, double to, TimeSpan animationDuration, AnimationEase animationEase = AnimationEase.None, bool repeatForever = false)
+        {
+            var anima = new DoubleAnimation()
+            {
+                From = from,
+                To = to,
+                Duration = animationDuration,
+                EasingFunction = CreateEasingFunction(animationEase),
+            };
+            if (repeatForever)
+            {
+                anima.RepeatBehavior = RepeatBehavior.Forever;
+            }
             uiElement.BeginAnimation(dependencyProperty, anima);
         }
     }

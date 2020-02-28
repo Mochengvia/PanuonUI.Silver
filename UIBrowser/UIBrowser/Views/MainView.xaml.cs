@@ -1,6 +1,7 @@
 ﻿using Panuon.UI.Silver;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using System.Windows.Controls;
 
 namespace UIBrowser.Views
@@ -13,11 +14,8 @@ namespace UIBrowser.Views
         public MainView()
         {
             InitializeComponent();
-            var list = new ObservableCollection<object>();
-            list.Add(new { Value = "12345" });
-            list.Add(new { Value = "12345" });
-
         }
+
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -52,7 +50,6 @@ namespace UIBrowser.Views
 
         private void Button_Click_1(object sender, System.Windows.RoutedEventArgs e)
         {
-            Dr.IsOpen = !Dr.IsOpen;
         }
     }
 }

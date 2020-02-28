@@ -196,7 +196,7 @@
                         Property="Visibility"
                         Value="Visible" />
                 <Setter TargetName="LoadWait"
-                        Property="IsRunning"
+                        Property="IsLoading"
                         Value="True" />
             </Trigger>
         </ControlTemplate.Triggers>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Panuon.UI.Silver.Internal.Utils;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -60,11 +61,11 @@ namespace Panuon.UI.Silver.Core
                 if (defaultDestinationValue is SolidColorBrush && ((SolidColorBrush)defaultDestinationValue).Color.A < 255
                     && (!(defaultOriginValue is SolidColorBrush) || (((SolidColorBrush)defaultOriginValue).Color.A == 255)))
                 {
-                    return GetVisualBrush(defaultDestinationValue, defaultOriginValue, 1 - animationClock.CurrentProgress.Value);
+                    return BrushUtils.GetVisualBrush(defaultDestinationValue, defaultOriginValue, 1 - animationClock.CurrentProgress.Value);
                 }
                 else
                 {
-                    return GetVisualBrush(defaultOriginValue, defaultDestinationValue, animationClock.CurrentProgress.Value);
+                    return BrushUtils.GetVisualBrush(defaultOriginValue, defaultDestinationValue, animationClock.CurrentProgress.Value);
                 }
             }
             else
@@ -72,32 +73,13 @@ namespace Panuon.UI.Silver.Core
                 if (defaultOriginValue is SolidColorBrush && ((SolidColorBrush)defaultOriginValue).Color.A < 255
                     && (!(defaultDestinationValue is SolidColorBrush) || (((SolidColorBrush)defaultDestinationValue).Color.A == 255)))
                 {
-                    return GetVisualBrush(defaultOriginValue, defaultDestinationValue, animationClock.CurrentProgress.Value);
+                    return BrushUtils.GetVisualBrush(defaultOriginValue, defaultDestinationValue, animationClock.CurrentProgress.Value);
                 }
                 else
                 {
-                    return GetVisualBrush(defaultDestinationValue, defaultOriginValue, 1 - animationClock.CurrentProgress.Value);
+                    return BrushUtils.GetVisualBrush(defaultDestinationValue, defaultOriginValue, 1 - animationClock.CurrentProgress.Value);
                 }
             }
-        }
-        #endregion
-
-        #region Function
-        private VisualBrush GetVisualBrush(Brush background, Brush foreground, double opacity)
-        {
-            return new VisualBrush(new Border()
-            {
-                Width = 1,
-                Height = 1,
-                Background = background,
-
-                Child = new Border()
-                {
-                    Background = foreground,
-                    Opacity = opacity
-                }
-
-            });
         }
         #endregion
     }
