@@ -2098,7 +2098,7 @@
         <Setter Property="Thickness"
                 Value="{Binding ActualWidth,RelativeSource={RelativeSource Self},Converter={StaticResource {x:Static i:ResourceKeys.DividedBy15Converter}},Mode=OneWay}" />
         <Setter Property="CornerRadius"
-                Value="{Binding Thickness,RelativeSource={RelativeSource Self},Converter={StaticResource {x:Static i:ResourceKeys.DividedBy2Converter}},Mode=OneWay}" />
+                Value="0" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static i:ResourceKeys.LoadingStandardTemplate}}" />
         <Setter Property="Foreground"
