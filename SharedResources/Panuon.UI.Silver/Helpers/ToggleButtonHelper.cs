@@ -202,7 +202,7 @@ namespace Panuon.UI.Silver
                     dic.Add(ToggleButton.ForegroundProperty, hoverBrush);
                     break;
             }
-            StoryboardUtils.BeginStoryboard(button, dic);
+            StoryboardUtils.BeginBrushStoryboard(button, dic);
         }
 
 
@@ -233,7 +233,7 @@ namespace Panuon.UI.Silver
                     list.Add(ToggleButton.ForegroundProperty);
                     break;
             }
-            StoryboardUtils.BeginStoryboard(button, list);
+            StoryboardUtils.BeginBrushStoryboard(button, list);
         }
 
 

@@ -544,7 +544,7 @@ namespace Panuon.UI.Silver
             dic.Add(ComboBoxItem.ForegroundProperty, hoverForeground);
             dic.Add(ComboBoxItem.BorderBrushProperty, hoverBorderBrush);
 
-            StoryboardUtils.BeginStoryboard(button, dic);
+            StoryboardUtils.BeginBrushStoryboard(button, dic);
         }
 
         private static void OnComboBoxItemMouseLeave(object sender, RoutedEventArgs e)
@@ -562,7 +562,7 @@ namespace Panuon.UI.Silver
             list.Add(ComboBoxItem.ForegroundProperty);
             list.Add(ComboBoxItem.BorderBrushProperty);
 
-            StoryboardUtils.BeginStoryboard(button, list);
+            StoryboardUtils.BeginBrushStoryboard(button, list);
         }
 
         private static void OnRemoveCommandExecute(object obj)

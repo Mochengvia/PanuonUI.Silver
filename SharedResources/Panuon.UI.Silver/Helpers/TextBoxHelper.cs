@@ -207,7 +207,7 @@ namespace Panuon.UI.Silver
             if (fcForeground != null)
                 dic.Add(TextBox.ForegroundProperty, fcForeground);
 
-            StoryboardUtils.BeginStoryboard(textBox, dic);
+            StoryboardUtils.BeginBrushStoryboard(textBox, dic);
         }
 
         private static void OnTextBoxLostFocus(object sender, RoutedEventArgs e)
@@ -225,7 +225,7 @@ namespace Panuon.UI.Silver
             if (fcForeground != null)
                 list.Add(TextBox.ForegroundProperty);
 
-            StoryboardUtils.BeginStoryboard(textBox, list);
+            StoryboardUtils.BeginBrushStoryboard(textBox, list);
         }
 
         private static void OnClearTextBoxCommandExecute(object textBox)

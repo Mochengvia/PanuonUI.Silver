@@ -52,7 +52,7 @@ namespace UIBrowser.Views
 
         private void Button_Click_1(object sender, System.Windows.RoutedEventArgs e)
         {
-            MessageBoxX.Show("Please don't click this button anymore. You may be executed.", "123", icon: MessageBoxIcon.Info);
+            Dr.IsOpen = !Dr.IsOpen;
         }
     }
 }

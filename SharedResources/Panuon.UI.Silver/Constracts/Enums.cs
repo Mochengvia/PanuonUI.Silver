@@ -272,16 +272,6 @@
     }
     #endregion
 
-    #region DrawerPlacement
-    public enum DrawerPlacement
-    {
-        Left,
-        Top,
-        Right,
-        Bottom,
-    }
-    #endregion
-
     #region AnimationEasing
     public enum AnimationEase
     {

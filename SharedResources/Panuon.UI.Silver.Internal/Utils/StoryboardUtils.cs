@@ -11,7 +11,7 @@ namespace Panuon.UI.Silver.Internal.Utils
     internal static class StoryboardUtils
     {
         #region Methods
-        public static void BeginStoryboard(DependencyObject dependencyObj, IDictionary<DependencyProperty, Brush> toDictionary)
+        public static void BeginBrushStoryboard(DependencyObject dependencyObj, IDictionary<DependencyProperty, Brush> toDictionary)
         {
             var storyboard = new Storyboard();
             foreach (var keyValue in toDictionary)
@@ -28,7 +28,7 @@ namespace Panuon.UI.Silver.Internal.Utils
             storyboard.Begin();
         }
 
-        public static void BeginStoryboard(DependencyObject dependencyObj, IList<DependencyProperty> dpList)
+        public static void BeginBrushStoryboard(DependencyObject dependencyObj, IList<DependencyProperty> dpList)
         {
             var storyboard = new Storyboard();
             foreach (var dp in dpList)
@@ -43,6 +43,8 @@ namespace Panuon.UI.Silver.Internal.Utils
             }
             storyboard.Begin();
         }
+
+      
         #endregion
     }
 }

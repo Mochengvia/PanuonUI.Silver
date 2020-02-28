@@ -171,7 +171,7 @@ namespace Panuon.UI.Silver
                     dic.Add(RepeatButton.ForegroundProperty, hoverBrush);
                     break;
             }
-            StoryboardUtils.BeginStoryboard(repeatButton, dic);
+            StoryboardUtils.BeginBrushStoryboard(repeatButton, dic);
         }
 
 
@@ -202,7 +202,7 @@ namespace Panuon.UI.Silver
                     list.Add(RepeatButton.ForegroundProperty);
                     break;
             }
-            StoryboardUtils.BeginStoryboard(repeatButton, list);
+            StoryboardUtils.BeginBrushStoryboard(repeatButton, list);
         }
 
         #endregion

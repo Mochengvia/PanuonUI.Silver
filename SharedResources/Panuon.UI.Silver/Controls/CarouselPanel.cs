@@ -84,16 +84,16 @@ namespace Panuon.UI.Silver
 
         #region Internal Properties
 
-        #region Position
+        #region PositionOffset
 
-        internal Rect Position
+        internal Rect PositionOffset
         {
-            get { return (Rect)GetValue(PositionProperty); }
-            set { SetValue(PositionProperty, value); }
+            get { return (Rect)GetValue(PositionOffsetProperty); }
+            set { SetValue(PositionOffsetProperty, value); }
         }
 
-        internal static readonly DependencyProperty PositionProperty =
-            DependencyProperty.Register("Position", typeof(Rect), typeof(CarouselPanel), new FrameworkPropertyMetadata(new Rect(), FrameworkPropertyMetadataOptions.AffectsArrange));
+        internal static readonly DependencyProperty PositionOffsetProperty =
+            DependencyProperty.Register("PositionOffset", typeof(Rect), typeof(CarouselPanel), new FrameworkPropertyMetadata(new Rect(), FrameworkPropertyMetadataOptions.AffectsArrange));
         #endregion
 
         #endregion
@@ -146,11 +146,11 @@ namespace Panuon.UI.Silver
                 var bounds = new Rect(0, 0, finalSize.Width, finalSize.Height);
                 if(Orientation == Orientation.Horizontal)
                 {
-                    bounds.X = i * finalSize.Width - Position.X;
+                    bounds.X = i * finalSize.Width - PositionOffset.X;
                 }
                 else
                 {
-                    bounds.Y = i * finalSize.Height - Position.Y;
+                    bounds.Y = i * finalSize.Height - PositionOffset.Y;
                 }
                 child.Arrange(bounds);
             }
@@ -176,21 +176,21 @@ namespace Panuon.UI.Silver
         {
             var targetX = (CurrentIndex - 1) * DesiredSize.Width;
             var targetY = (CurrentIndex - 1) * DesiredSize.Height;
-            var targetPosition = new Rect(targetX, targetY, 0, 0);
+            var targetPositionOffset = new Rect(targetX, targetY, 0, 0);
 
-            if (AnimationDuration.TotalMilliseconds == 0)
+            if (!IsLoaded || AnimationDuration.TotalMilliseconds == 0)
             {
-                Position = targetPosition;
+                PositionOffset = targetPositionOffset;
             }
             else
             {
                 var animation = new RectAnimation()
                 {
-                    To = targetPosition,
+                    To = targetPositionOffset,
                     Duration = AnimationDuration,
                     EasingFunction = AnimationUtils.CreateEasingFunction(AnimationEase),
                 };
-                BeginAnimation(PositionProperty, animation);
+                BeginAnimation(PositionOffsetProperty, animation);
             }
         }
         #endregion

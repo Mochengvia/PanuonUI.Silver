@@ -274,7 +274,7 @@ namespace Panuon.UI.Silver
             if (fcForeground != null)
                 dic.Add(PasswordBox.ForegroundProperty, fcForeground);
 
-            StoryboardUtils.BeginStoryboard(passwordBox, dic);
+            StoryboardUtils.BeginBrushStoryboard(passwordBox, dic);
         }
 
         private static void OnPasswordBoxLostFocus(object sender, RoutedEventArgs e)
@@ -292,7 +292,7 @@ namespace Panuon.UI.Silver
             if (fcForeground != null)
                 list.Add(PasswordBox.ForegroundProperty);
 
-            StoryboardUtils.BeginStoryboard(passwordBox, list);
+            StoryboardUtils.BeginBrushStoryboard(passwordBox, list);
         }
 
         private static void OnClearPasswordBoxCommandExecute(object obj)

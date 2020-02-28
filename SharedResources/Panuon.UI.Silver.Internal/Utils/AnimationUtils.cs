@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows;
 using System.Windows.Media.Animation;
 
 namespace Panuon.UI.Silver.Internal.Utils
@@ -44,6 +45,29 @@ namespace Panuon.UI.Silver.Internal.Utils
                     return new QuadraticEase() { EasingMode = EasingMode.EaseInOut };
             }
             return null;
+        }
+
+
+        public static void BeginAnimation(UIElement uiElement, DependencyProperty dependencyProperty, double to, AnimationEase animationEase = AnimationEase.None)
+        {
+            var anima = new DoubleAnimation()
+            {
+                To = to,
+                Duration = TimeSpan.FromSeconds(0.4),
+                EasingFunction = CreateEasingFunction(animationEase),
+            };
+            uiElement.BeginAnimation(dependencyProperty, anima);
+        }
+
+        public static void BeginAnimation(UIElement uiElement, DependencyProperty dependencyProperty, Rect to, AnimationEase animationEase = AnimationEase.None)
+        {
+            var anima = new RectAnimation()
+            {
+                To = to,
+                Duration = TimeSpan.FromSeconds(0.4),
+                EasingFunction = CreateEasingFunction(animationEase),
+            };
+            uiElement.BeginAnimation(dependencyProperty, anima);
         }
     }
 }
