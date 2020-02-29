@@ -20,39 +20,21 @@
         </TextBlock>
     </pu:WindowXCaption.Header>
 
-    <StackPanel Orientation="Horizontal"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center">
-        <pu:Loading Width="40"
-                    Height="40"
-                    LoadingStyle="Standard"
-                    Foreground="#A4D3E5"
-                    IsLoading="True" />
-        <pu:Loading Margin="15,0,0,0"
-                    Width="40"
-                    Height="40"
-                    Foreground="#A4D3E5"
-                    Background="#22A4D3E5"
-                    LoadingStyle="Ring"
-                    IsLoading="True" />
-        <pu:Loading Margin="15,0,0,0"
-                    Width="40"
-                    Height="40"
-                    Foreground="#A4D3E5"
-                    Background="#22A4D3E5"
-                    LoadingStyle="Ring2"
-                    IsLoading="True" />
-        <pu:Loading Margin="15,0,0,0"
-                    Width="40"
-                    Height="40"
-                    Foreground="#A4D3E5"
-                    LoadingStyle="Classic"
-                    IsLoading="True" />
-        <pu:Loading Margin="15,0,0,0"
-                    Width="40"
-                    Height="40"
-                    Foreground="#A4D3E5"
-                    LoadingStyle="Wave"
-                    IsLoading="True" />
-    </StackPanel>
+    <TreeView Width="200">
+        <TreeViewItem Header="Item1">
+            <TreeViewItem Header="Item1-1" />
+            <TreeViewItem Header="Item1-2" />
+            <TreeViewItem Header="Item1-3" />
+        </TreeViewItem>
+        <TreeViewItem Header="Item2">
+            <TreeViewItem Header="Item2-1" />
+            <TreeViewItem Header="Item2-2" />
+            <TreeViewItem Header="Item2-3" />
+        </TreeViewItem>
+        <TreeViewItem Header="Item3">
+            <TreeViewItem Header="Item3-1" />
+            <TreeViewItem Header="Item3-2" />
+            <TreeViewItem Header="Item3-3" />
+        </TreeViewItem>
+    </TreeView>
 </pu:WindowX>
