@@ -518,14 +518,14 @@
     <SolidColorBrush x:Key="{x:Static i:ResourceKeys.ListBoxItemsSelectedBackground}"
                      Color="#F1F1F1" />
 
-    <!--Calendar-->
-    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.CalendarBorderBrush}" 
+    <!--CalendarX-->
+    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.CalendarXBorderBrush}" 
                      Color="LightGray"/>
-    <Thickness x:Key="{x:Static i:ResourceKeys.CalendarBorderThickness}">1</Thickness>
-    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.CalendarThemeBrush}"
+    <Thickness x:Key="{x:Static i:ResourceKeys.CalendarXBorderThickness}">1</Thickness>
+    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.CalendarXThemeBrush}"
                      Color="Black" />
-    <sys:Double x:Key="{x:Static i:ResourceKeys.CalendarHeaderPanelHeight}">40.0</sys:Double>
-    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.CalendarHeaderPanelBackground}" 
+    <sys:Double x:Key="{x:Static i:ResourceKeys.CalendarXHeaderPanelHeight}">40.0</sys:Double>
+    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.CalendarXHeaderPanelBackground}" 
                      Color="Transparent"/>
 
     <!--Clock-->

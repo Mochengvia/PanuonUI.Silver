@@ -953,18 +953,18 @@ namespace Panuon.UI.Silver.Internal
 
         #endregion
 
-        #region Calendar
-        public static readonly string CalendarBorderBrush = nameof(CalendarBorderBrush);
+        #region CalendarX
+        public static readonly string CalendarXBorderBrush = nameof(CalendarXBorderBrush);
 
-        public static readonly string CalendarBorderThickness = nameof(CalendarBorderThickness);
+        public static readonly string CalendarXBorderThickness = nameof(CalendarXBorderThickness);
 
-        public static readonly string CalendarThemeBrush = nameof(CalendarThemeBrush);
+        public static readonly string CalendarXThemeBrush = nameof(CalendarXThemeBrush);
 
-        public static readonly string CalendarTemplate = nameof(CalendarTemplate);
+        public static readonly string CalendarXTemplate = nameof(CalendarXTemplate);
 
-        public static readonly string CalendarHeaderPanelHeight = nameof(CalendarHeaderPanelHeight);
+        public static readonly string CalendarXHeaderPanelHeight = nameof(CalendarXHeaderPanelHeight);
 
-        public static readonly string CalendarHeaderPanelBackground = nameof(CalendarHeaderPanelBackground);
+        public static readonly string CalendarXHeaderPanelBackground = nameof(CalendarXHeaderPanelBackground);
         #endregion
 
         #region Clock

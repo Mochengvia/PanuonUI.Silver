@@ -17,7 +17,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\Calendar.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Themes\CalendarX.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -158,7 +158,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Components\MessageBoxXConfigurations.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Components\StateItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Calendar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\CalendarX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Card.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CarouselPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CarouselViewer.cs" />

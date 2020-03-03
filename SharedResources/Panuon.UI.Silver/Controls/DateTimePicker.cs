@@ -166,15 +166,15 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("DropDownCornerRadius", typeof(CornerRadius), typeof(DateTimePicker));
         #endregion
 
-        #region CalendarStyle
-        public Style CalendarStyle
+        #region CalendarXStyle
+        public Style CalendarXStyle
         {
-            get { return (Style)GetValue(CalendarStyleProperty); }
-            set { SetValue(CalendarStyleProperty, value); }
+            get { return (Style)GetValue(CalendarXStyleProperty); }
+            set { SetValue(CalendarXStyleProperty, value); }
         }
 
-        public static readonly DependencyProperty CalendarStyleProperty =
-            DependencyProperty.Register("CalendarStyle", typeof(Style), typeof(DateTimePicker));
+        public static readonly DependencyProperty CalendarXStyleProperty =
+            DependencyProperty.Register("CalendarXStyle", typeof(Style), typeof(DateTimePicker));
         #endregion
 
         #region ThemeBrush

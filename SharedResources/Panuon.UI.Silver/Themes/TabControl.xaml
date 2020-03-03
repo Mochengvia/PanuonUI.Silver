@@ -120,6 +120,12 @@
         <!--TabControlHelper-->
         <Setter Property="local:TabControlHelper.ItemsForeground"
                 Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
+        <Setter Property="local:TabControlHelper.ItemsHeight"
+                Value="30" />
+        <Setter Property="local:TabControlHelper.ItemsPadding"
+                Value="15,0" />
+        <Setter Property="local:TabControlHelper.ItemsBackground"
+                Value="Transparent" />
         <!--Properties-->
         <Setter Property="Padding"
                 Value="{StaticResource {x:Static i:ResourceKeys.TabControlPadding}}" />
@@ -227,6 +233,13 @@
                 <Setter Property="Template"
                         Value="{StaticResource {x:Static i:ResourceKeys.TabControlScrollableBottomTemplate}}" />
             </MultiTrigger>
+            <Trigger Property="local:TabControlHelper.TabControlStyle"
+                     Value="Card">
+                <Setter Property="local:TabControlHelper.ItemsSelectedBackground"
+                        Value="#3E3E3E" />
+                <Setter Property="local:TabControlHelper.ItemsSelectedForeground"
+                        Value="#FFFFFF" />
+            </Trigger>
             <Trigger Property="IsEnabled"
                      Value="False">
                 <Setter Property="Opacity"

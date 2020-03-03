@@ -66,10 +66,10 @@
         public static readonly string TabItemCardRemoveButtonStyle = nameof(TabItemCardRemoveButtonStyle);
         #endregion
 
-        #region Calendar
-        public static readonly string CalendarControlButtonStyle = nameof(CalendarControlButtonStyle);
+        #region CalendarX
+        public static readonly string CalendarXControlButtonStyle = nameof(CalendarXControlButtonStyle);
 
-        public static readonly string CalendarItemStyle = nameof(CalendarItemStyle);
+        public static readonly string CalendarXItemStyle = nameof(CalendarXItemStyle);
         #endregion
 
         #region Clock

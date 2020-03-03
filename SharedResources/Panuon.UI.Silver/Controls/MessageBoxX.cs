@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace Panuon.UI.Silver
 {
@@ -284,6 +285,8 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Property
+        public static Dispatcher Dispatcher { get; set; } = Application.Current?.Dispatcher;
+
         public static MessageBoxXConfigurations DefaultMessageBoxXConfigurations { get; }
 
         public static IDictionary<string, MessageBoxXConfigurations> MessageBoxXConfigurations { get; }
@@ -325,9 +328,9 @@ namespace Panuon.UI.Silver
 
             MessageBoxResult result = MessageBoxResult.OK;
 
-            if (Application.Current?.Dispatcher != null)
+            if (Dispatcher != null)
             {
-                Application.Current.Dispatcher.Invoke(new Action(() =>
+                Dispatcher.Invoke(new Action(() =>
                 {
                     result = func.Invoke();
                 }));

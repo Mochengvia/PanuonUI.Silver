@@ -211,7 +211,7 @@
     }
     #endregion
 
-    #region Calendar
+    #region CalendarX
 
     public enum CalendarSelectionMode
     {

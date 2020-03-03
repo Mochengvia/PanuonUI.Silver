@@ -82,6 +82,23 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("ItemForeground", typeof(Brush), typeof(TabControlHelper));
         #endregion
 
+        #region ItemBackground
+        public static Brush GetItemsBackground(TabControl tabControl)
+        {
+            return (Brush)tabControl.GetValue(ItemsBackgroundProperty);
+        }
+
+        public static void SetItemsBackground(TabControl tabControl, Brush value)
+        {
+            tabControl.SetValue(ItemsBackgroundProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsBackgroundProperty =
+            DependencyProperty.RegisterAttached("ItemsBackground", typeof(Brush), typeof(TabControlHelper));
+     
+        #endregion
+
+
         #region ItemSelectedForeground
         public static Brush GetItemsSelectedForeground(TabControl tabControl)
         {
@@ -195,6 +212,21 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty ItemsWidthProperty =
             DependencyProperty.RegisterAttached("ItemsWidth", typeof(double), typeof(TabControlHelper), new FrameworkPropertyMetadata(double.NaN, FrameworkPropertyMetadataOptions.Inherits));
+        #endregion
+
+        #region ItemPadding
+        public static Thickness GetItemsPadding(TabControl tabControl)
+        {
+            return (Thickness)tabControl.GetValue(ItemsPaddingProperty);
+        }
+
+        public static void SetItemsPadding(TabControl tabControl, Thickness value)
+        {
+            tabControl.SetValue(ItemsPaddingProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsPaddingProperty =
+            DependencyProperty.RegisterAttached("ItemsPadding", typeof(Thickness), typeof(TabControlHelper));
         #endregion
 
         #region ItemRemovable

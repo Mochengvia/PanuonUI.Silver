@@ -1,4 +1,5 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Panuon.UI.Silver"
                     xmlns:i="clr-namespace:Panuon.UI.Silver.Internal"
@@ -11,7 +12,7 @@
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/RadioButton.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{x:Static rs:ResourceKeys.CalendarItemStyle}"
+    <Style x:Key="{x:Static rs:ResourceKeys.CalendarXItemStyle}"
            TargetType="{x:Type RadioButton}"
            BasedOn="{StaticResource {x:Type RadioButton}}">
         <Setter Property="local:RadioButtonHelper.RadioButtonStyle"
@@ -20,7 +21,7 @@
             <Trigger Property="local:RadioButtonHelper.RadioButtonStyle"
                      Value="Button">
                 <Setter Property="local:RadioButtonHelper.CheckedBackground"
-                        Value="{Binding ThemeBrush, RelativeSource={RelativeSource AncestorType=local:Calendar}, Mode=OneWay}" />
+                        Value="{Binding ThemeBrush, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}" />
             </Trigger>
             <Trigger Property="IsEnabled"
                      Value="False">
@@ -30,7 +31,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="{x:Static rs:ResourceKeys.CalendarControlButtonStyle}"
+    <Style x:Key="{x:Static rs:ResourceKeys.CalendarXControlButtonStyle}"
            TargetType="Button"
            BasedOn="{StaticResource {x:Type Button}}">
         <Setter Property="local:ButtonHelper.ButtonStyle"
@@ -39,15 +40,15 @@
             <Trigger Property="local:ButtonHelper.ButtonStyle"
                      Value="Link">
                 <Setter Property="Foreground"
-                        Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=local:Calendar}, Mode=OneWay}" />
+                        Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}" />
                 <Setter Property="local:ButtonHelper.HoverBrush"
-                        Value="{Binding ThemeBrush, RelativeSource={RelativeSource AncestorType=local:Calendar}, Mode=OneWay}" />
+                        Value="{Binding ThemeBrush, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}" />
             </Trigger>
         </Style.Triggers>
     </Style>
 
-    <ControlTemplate x:Key="{x:Static i:ResourceKeys.CalendarTemplate}"
-                     TargetType="local:Calendar">
+    <ControlTemplate x:Key="{x:Static i:ResourceKeys.CalendarXTemplate}"
+                     TargetType="local:CalendarX">
         <Border BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
                 Background="{TemplateBinding Background}">
@@ -58,7 +59,7 @@
                 </Grid.RowDefinitions>
                 <Border Background="{TemplateBinding HeaderPanelBackground}"
                         BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{Binding BorderThickness, Converter={StaticResource {x:Static i:ResourceKeys.ThicknessWithBottomOnlyConverter}},RelativeSource={RelativeSource AncestorType=local:Calendar}, Mode=OneWay}" />
+                        BorderThickness="{Binding BorderThickness, Converter={StaticResource {x:Static i:ResourceKeys.ThicknessWithBottomOnlyConverter}},RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}" />
                 <Grid x:Name="GrdControls"
                       Height="{TemplateBinding HeaderPanelHeight}">
                     <Grid.ColumnDefinitions>
@@ -71,14 +72,14 @@
                     <Button Style="{TemplateBinding ControlButtonStyle}"
                             FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
                             Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
-                            Command="{Binding CalendarFastBackwardCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                            Command="{Binding CalendarXFastBackwardCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                             CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                             Content="&#xe924;" />
                     <Button Style="{TemplateBinding ControlButtonStyle}"
                             Grid.Column="1"
                             FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
                             Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
-                            Command="{Binding CalendarBackwardCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                            Command="{Binding CalendarXBackwardCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                             CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                             Content="&#xe900;" />
                     <StackPanel Grid.Column="2"
@@ -89,12 +90,12 @@
                                 Style="{TemplateBinding ControlButtonStyle}"
                                 Margin="0,0,15,0"
                                 FontSize="{Binding FontSize, Converter={StaticResource {x:Static i:ResourceKeys.Add3Converter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                Command="{Binding CalendarMonthButtonCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                Command="{Binding CalendarXMonthButtonCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                 CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                 Content="{TemplateBinding MonthButton}" />
                         <Button Style="{TemplateBinding ControlButtonStyle}"
                                 FontSize="{Binding FontSize, Converter={StaticResource {x:Static i:ResourceKeys.Add3Converter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                Command="{Binding CalendarYearButtonCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                Command="{Binding CalendarXYearButtonCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                 CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                 Content="{TemplateBinding YearButton}" />
                     </StackPanel>
@@ -103,14 +104,14 @@
                             Grid.Column="3"
                             FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
                             Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
-                            Command="{Binding CalendarForewardCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                            Command="{Binding CalendarXForewardCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                             CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                             Content="&#xe902;" />
                     <Button Style="{TemplateBinding ControlButtonStyle}"
                             Grid.Column="4"
                             FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
                             Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
-                            Command="{Binding CalendarFastForewardCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                            Command="{Binding CalendarXFastForewardCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                             CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                             Content="&#xe926;" />
                 </Grid>
@@ -155,8 +156,8 @@
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <RadioButton Style="{Binding CalendarItemStyle, RelativeSource={RelativeSource AncestorType=local:Calendar}, Mode=OneWay}"
-                                                        GroupName="CALENDAR_GROUP_DAYS"
+                                    <RadioButton Style="{Binding CalendarXItemStyle, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}"
+                                                        GroupName="CalendarX_GROUP_DAYS"
                                                         Tag="{Binding Value, Mode=OneWay}"
                                                         IsChecked="{Binding IsChecked, Mode=OneWay}"
                                                         IsEnabled="{Binding IsEnabled, Mode=OneWay}"
@@ -191,8 +192,8 @@
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <RadioButton Style="{Binding CalendarItemStyle, RelativeSource={RelativeSource AncestorType=local:Calendar}, Mode=OneWay}"
-                                                        GroupName="CALENDAR_GROUP_MONTHS"
+                                    <RadioButton Style="{Binding CalendarXItemStyle, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}"
+                                                        GroupName="CalendarX_GROUP_MONTHS"
                                                         Tag="{Binding Value, Mode=OneWay}"
                                                         IsChecked="{Binding IsChecked, Mode=OneWay}"
                                                         IsEnabled="{Binding IsEnabled, Mode=OneWay}"
@@ -228,8 +229,8 @@
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <RadioButton Style="{Binding CalendarItemStyle, RelativeSource={RelativeSource AncestorType=local:Calendar}, Mode=OneWay}"
-                                                        GroupName="CALENDAR_GROUP_YEARS"
+                                    <RadioButton Style="{Binding CalendarXItemStyle, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}"
+                                                        GroupName="CalendarX_GROUP_YEARS"
                                                         Tag="{Binding Value, Mode=OneWay}"
                                                         IsChecked="{Binding IsChecked, Mode=OneWay}"
                                                         IsEnabled="{Binding IsEnabled, Mode=OneWay}"
@@ -258,7 +259,7 @@
                         Property="Visibility"
                         Value="Collapsed" />
             </Trigger>
-            <EventTrigger RoutedEvent="local:Calendar.DayPanelToMonth">
+            <EventTrigger RoutedEvent="local:CalendarX.DayPanelToMonth">
                 <BeginStoryboard>
                     <Storyboard>
                         <DoubleAnimation Storyboard.TargetName="ScaleDays"
@@ -326,7 +327,7 @@
                     </Storyboard>
                 </BeginStoryboard>
             </EventTrigger>
-            <EventTrigger RoutedEvent="local:Calendar.MonthPanelToDay">
+            <EventTrigger RoutedEvent="local:CalendarX.MonthPanelToDay">
                 <BeginStoryboard>
                     <Storyboard>
                         <DoubleAnimation Storyboard.TargetName="ScaleMonths"
@@ -392,7 +393,7 @@
 
                 </BeginStoryboard>
             </EventTrigger>
-            <EventTrigger RoutedEvent="local:Calendar.MonthPanelToYear">
+            <EventTrigger RoutedEvent="local:CalendarX.MonthPanelToYear">
                 <BeginStoryboard>
                     <Storyboard>
                         <DoubleAnimation Storyboard.TargetName="ScaleMonths"
@@ -460,7 +461,7 @@
                     </Storyboard>
                 </BeginStoryboard>
             </EventTrigger>
-            <EventTrigger RoutedEvent="local:Calendar.YearPanelToMonth">
+            <EventTrigger RoutedEvent="local:CalendarX.YearPanelToMonth">
                 <BeginStoryboard>
                     <Storyboard>
                         <DoubleAnimation Storyboard.TargetName="ScaleYears"
@@ -528,23 +529,23 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <Style TargetType="local:Calendar">
+    <Style TargetType="local:CalendarX">
         <Setter Property="BorderBrush"
-                Value="{StaticResource {x:Static i:ResourceKeys.CalendarBorderBrush}}" />
+                Value="{StaticResource {x:Static i:ResourceKeys.CalendarXBorderBrush}}" />
         <Setter Property="BorderThickness"
-                Value="{StaticResource {x:Static i:ResourceKeys.CalendarBorderThickness}}" />
+                Value="{StaticResource {x:Static i:ResourceKeys.CalendarXBorderThickness}}" />
         <Setter Property="ThemeBrush"
-                Value="{StaticResource {x:Static i:ResourceKeys.CalendarThemeBrush}}" />
+                Value="{StaticResource {x:Static i:ResourceKeys.CalendarXThemeBrush}}" />
         <Setter Property="ControlButtonStyle"
-                Value="{StaticResource {x:Static rs:ResourceKeys.CalendarControlButtonStyle}}" />
-        <Setter Property="CalendarItemStyle"
-                Value="{StaticResource {x:Static rs:ResourceKeys.CalendarItemStyle}}" />
+                Value="{StaticResource {x:Static rs:ResourceKeys.CalendarXControlButtonStyle}}" />
+        <Setter Property="CalendarXItemStyle"
+                Value="{StaticResource {x:Static rs:ResourceKeys.CalendarXItemStyle}}" />
         <Setter Property="Template"
-                Value="{StaticResource {x:Static i:ResourceKeys.CalendarTemplate}}" />
+                Value="{StaticResource {x:Static i:ResourceKeys.CalendarXTemplate}}" />
         <Setter Property="HeaderPanelHeight"
-                Value="{StaticResource {x:Static i:ResourceKeys.CalendarHeaderPanelHeight}}" />
+                Value="{StaticResource {x:Static i:ResourceKeys.CalendarXHeaderPanelHeight}}" />
         <Setter Property="HeaderPanelBackground"
-                Value="{StaticResource {x:Static i:ResourceKeys.CalendarHeaderPanelBackground}}" />
+                Value="{StaticResource {x:Static i:ResourceKeys.CalendarXHeaderPanelBackground}}" />
         <Style.Triggers>
             <Trigger Property="IsEnabled"
                      Value="False">

@@ -13,28 +13,28 @@ using System.Windows.Media.Animation;
 
 namespace Panuon.UI.Silver
 {
-    public class Calendar : Control
+    public class CalendarX : Control
     {
         #region Fields
-        private const string _CALENDAR_GROUP_DAYS = "CALENDAR_GROUP_DAYS";
-        private const string _CALENDAR_GROUP_MONTHS = "CALENDAR_GROUP_MONTHS";
-        private const string _CALENDAR_GROUP_YEARS = "CALENDAR_GROUP_YEARS";
+        private const string _CalendarX_GROUP_DAYS = "CalendarX_GROUP_DAYS";
+        private const string _CalendarX_GROUP_MONTHS = "CalendarX_GROUP_MONTHS";
+        private const string _CalendarX_GROUP_YEARS = "CalendarX_GROUP_YEARS";
         #endregion
 
         #region Ctor
-        static Calendar()
+        static CalendarX()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(Calendar), new FrameworkPropertyMetadata(typeof(Calendar)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(CalendarX), new FrameworkPropertyMetadata(typeof(CalendarX)));
         }
 
-        public Calendar()
+        public CalendarX()
         {
             AddHandler(RadioButton.ClickEvent, new RoutedEventHandler(OnRadioButtonClicked));
-            Days = new ObservableCollection<CalendarModelItem>();
-            Months = new ObservableCollection<CalendarModelItem>();
-            Years = new ObservableCollection<CalendarModelItem>();
-            Weeks = new ObservableCollection<CalendarModelItem>();
-            Loaded += Calendar_Loaded;
+            Days = new ObservableCollection<CalendarXModelItem>();
+            Months = new ObservableCollection<CalendarXModelItem>();
+            Years = new ObservableCollection<CalendarXModelItem>();
+            Weeks = new ObservableCollection<CalendarXModelItem>();
+            Loaded += CalendarX_Loaded;
         }
 
         #endregion
@@ -42,7 +42,7 @@ namespace Panuon.UI.Silver
         #region RoutedEvent
 
         #region SelectedDateChanged
-        public static readonly RoutedEvent SelectedDateChangedEvent = EventManager.RegisterRoutedEvent("SelectedDateChanged", RoutingStrategy.Bubble, typeof(DateTimeChangedRoutedEventHandler), typeof(Calendar));
+        public static readonly RoutedEvent SelectedDateChangedEvent = EventManager.RegisterRoutedEvent("SelectedDateChanged", RoutingStrategy.Bubble, typeof(DateTimeChangedRoutedEventHandler), typeof(CalendarX));
         public event DateTimeChangedRoutedEventHandler SelectedDateChanged
         {
             add { AddHandler(SelectedDateChangedEvent, value); }
@@ -58,7 +58,7 @@ namespace Panuon.UI.Silver
         #region Internal Event
 
         #region DayPanelToMonth
-        public static readonly RoutedEvent DayPanelToMonthEvent = EventManager.RegisterRoutedEvent("DayPanelToMonth", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Calendar));
+        public static readonly RoutedEvent DayPanelToMonthEvent = EventManager.RegisterRoutedEvent("DayPanelToMonth", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(CalendarX));
         public event RoutedEventHandler DayPanelToMonth
         {
             add { AddHandler(DayPanelToMonthEvent, value); }
@@ -72,7 +72,7 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region MonthPanelToDay
-        public static readonly RoutedEvent MonthPanelToDayEvent = EventManager.RegisterRoutedEvent("MonthPanelToDay", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Calendar));
+        public static readonly RoutedEvent MonthPanelToDayEvent = EventManager.RegisterRoutedEvent("MonthPanelToDay", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(CalendarX));
         public event RoutedEventHandler MonthPanelToDay
         {
             add { AddHandler(MonthPanelToDayEvent, value); }
@@ -86,7 +86,7 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region MonthPanelToYear
-        public static readonly RoutedEvent MonthPanelToYearEvent = EventManager.RegisterRoutedEvent("MonthPanelToYear", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Calendar));
+        public static readonly RoutedEvent MonthPanelToYearEvent = EventManager.RegisterRoutedEvent("MonthPanelToYear", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(CalendarX));
         public event RoutedEventHandler MonthPanelToYear
         {
             add { AddHandler(MonthPanelToYearEvent, value); }
@@ -100,7 +100,7 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region YearPanelToMonth
-        public static readonly RoutedEvent YearPanelToMonthEvent = EventManager.RegisterRoutedEvent("YearPanelToMonth", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Calendar));
+        public static readonly RoutedEvent YearPanelToMonthEvent = EventManager.RegisterRoutedEvent("YearPanelToMonth", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(CalendarX));
         public event RoutedEventHandler YearPanelToMonth
         {
             add { AddHandler(YearPanelToMonthEvent, value); }
@@ -116,7 +116,7 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Selected
-        public static readonly RoutedEvent SelectedEvent = EventManager.RegisterRoutedEvent("Selected", RoutingStrategy.Bubble, typeof(DateTimeChangedRoutedEventHandler), typeof(Calendar));
+        public static readonly RoutedEvent SelectedEvent = EventManager.RegisterRoutedEvent("Selected", RoutingStrategy.Bubble, typeof(DateTimeChangedRoutedEventHandler), typeof(CalendarX));
         public event DateTimeChangedRoutedEventHandler Selected
         {
             add { AddHandler(SelectedEvent, value); }
@@ -141,7 +141,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty SelectedDateProperty =
-            DependencyProperty.Register("SelectedDate", typeof(DateTime), typeof(Calendar), new FrameworkPropertyMetadata(default(DateTime), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnSelectedDateChanged, OnSelectedDateCoerceValue));
+            DependencyProperty.Register("SelectedDate", typeof(DateTime), typeof(CalendarX), new FrameworkPropertyMetadata(default(DateTime), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnSelectedDateChanged, OnSelectedDateCoerceValue));
 
         #endregion
 
@@ -153,18 +153,18 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty ControlButtonStyleProperty =
-            DependencyProperty.Register("ControlButtonStyle", typeof(Style), typeof(Calendar));
+            DependencyProperty.Register("ControlButtonStyle", typeof(Style), typeof(CalendarX));
         #endregion
 
-        #region CalendarItemStyle
-        public Style CalendarItemStyle
+        #region CalendarXItemStyle
+        public Style CalendarXItemStyle
         {
-            get { return (Style)GetValue(CalendarItemStyleProperty); }
-            set { SetValue(CalendarItemStyleProperty, value); }
+            get { return (Style)GetValue(CalendarXItemStyleProperty); }
+            set { SetValue(CalendarXItemStyleProperty, value); }
         }
 
-        public static readonly DependencyProperty CalendarItemStyleProperty =
-            DependencyProperty.Register("CalendarItemStyle", typeof(Style), typeof(Calendar));
+        public static readonly DependencyProperty CalendarXItemStyleProperty =
+            DependencyProperty.Register("CalendarXItemStyle", typeof(Style), typeof(CalendarX));
         #endregion
 
         #region MinDate
@@ -175,7 +175,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty MinDateProperty =
-            DependencyProperty.Register("MinDate", typeof(DateTime?), typeof(Calendar), new PropertyMetadata(null, OnMinDateChanged, OnMinDateCoerceValue));
+            DependencyProperty.Register("MinDate", typeof(DateTime?), typeof(CalendarX), new PropertyMetadata(null, OnMinDateChanged, OnMinDateCoerceValue));
         #endregion
 
         #region MaxDate
@@ -186,7 +186,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty MaxDateProperty =
-            DependencyProperty.Register("MaxDate", typeof(DateTime?), typeof(Calendar), new PropertyMetadata(null, OnMaxDateChanged, OnMaxDateCoerceValue));
+            DependencyProperty.Register("MaxDate", typeof(DateTime?), typeof(CalendarX), new PropertyMetadata(null, OnMaxDateChanged, OnMaxDateCoerceValue));
         #endregion
 
         #region SelectionMode
@@ -197,7 +197,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty SelectionModeProperty =
-            DependencyProperty.Register("SelectionMode", typeof(CalendarSelectionMode), typeof(Calendar));
+            DependencyProperty.Register("SelectionMode", typeof(CalendarSelectionMode), typeof(CalendarX));
         #endregion
 
         #region FirstDayOfWeek
@@ -208,7 +208,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty FirstDayOfWeekProperty =
-            DependencyProperty.Register("FirstDayOfWeek", typeof(DayOfWeek), typeof(Calendar), new PropertyMetadata(OnFirstDayOfWeekChanged));
+            DependencyProperty.Register("FirstDayOfWeek", typeof(DayOfWeek), typeof(CalendarX), new PropertyMetadata(OnFirstDayOfWeekChanged));
 
         #endregion
 
@@ -220,7 +220,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty ThemeBrushProperty =
-            DependencyProperty.Register("ThemeBrush", typeof(Brush), typeof(Calendar));
+            DependencyProperty.Register("ThemeBrush", typeof(Brush), typeof(CalendarX));
         #endregion
 
         #region HeaderPanelBackground
@@ -231,7 +231,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty HeaderPanelBackgroundProperty =
-            DependencyProperty.Register("HeaderPanelBackground", typeof(Brush), typeof(Calendar));
+            DependencyProperty.Register("HeaderPanelBackground", typeof(Brush), typeof(CalendarX));
         #endregion
 
         #region HeaderPanelHeight
@@ -242,7 +242,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty HeaderPanelHeightProperty =
-            DependencyProperty.Register("HeaderPanelHeight", typeof(double), typeof(Calendar));
+            DependencyProperty.Register("HeaderPanelHeight", typeof(double), typeof(CalendarX));
         #endregion
 
         #endregion
@@ -250,47 +250,47 @@ namespace Panuon.UI.Silver
         #region Internal Properties
 
         #region Days
-        internal ObservableCollection<CalendarModelItem> Days
+        internal ObservableCollection<CalendarXModelItem> Days
         {
-            get { return (ObservableCollection<CalendarModelItem>)GetValue(DaysProperty); }
+            get { return (ObservableCollection<CalendarXModelItem>)GetValue(DaysProperty); }
             set { SetValue(DaysProperty, value); }
         }
 
         internal static readonly DependencyProperty DaysProperty =
-            DependencyProperty.Register("Days", typeof(ObservableCollection<CalendarModelItem>), typeof(Calendar));
+            DependencyProperty.Register("Days", typeof(ObservableCollection<CalendarXModelItem>), typeof(CalendarX));
         #endregion
 
         #region Months
-        internal ObservableCollection<CalendarModelItem> Months
+        internal ObservableCollection<CalendarXModelItem> Months
         {
-            get { return (ObservableCollection<CalendarModelItem>)GetValue(MonthsProperty); }
+            get { return (ObservableCollection<CalendarXModelItem>)GetValue(MonthsProperty); }
             set { SetValue(MonthsProperty, value); }
         }
 
         internal static readonly DependencyProperty MonthsProperty =
-            DependencyProperty.Register("Months", typeof(ObservableCollection<CalendarModelItem>), typeof(Calendar));
+            DependencyProperty.Register("Months", typeof(ObservableCollection<CalendarXModelItem>), typeof(CalendarX));
         #endregion
 
         #region Years
-        internal ObservableCollection<CalendarModelItem> Years
+        internal ObservableCollection<CalendarXModelItem> Years
         {
-            get { return (ObservableCollection<CalendarModelItem>)GetValue(YearsProperty); }
+            get { return (ObservableCollection<CalendarXModelItem>)GetValue(YearsProperty); }
             set { SetValue(YearsProperty, value); }
         }
 
         internal static readonly DependencyProperty YearsProperty =
-            DependencyProperty.Register("Years", typeof(ObservableCollection<CalendarModelItem>), typeof(Calendar));
+            DependencyProperty.Register("Years", typeof(ObservableCollection<CalendarXModelItem>), typeof(CalendarX));
         #endregion
 
         #region Weeks
-        internal ObservableCollection<CalendarModelItem> Weeks
+        internal ObservableCollection<CalendarXModelItem> Weeks
         {
-            get { return (ObservableCollection<CalendarModelItem>)GetValue(WeeksProperty); }
+            get { return (ObservableCollection<CalendarXModelItem>)GetValue(WeeksProperty); }
             set { SetValue(WeeksProperty, value); }
         }
 
         internal static readonly DependencyProperty WeeksProperty =
-            DependencyProperty.Register("Weeks", typeof(ObservableCollection<CalendarModelItem>), typeof(Calendar));
+            DependencyProperty.Register("Weeks", typeof(ObservableCollection<CalendarXModelItem>), typeof(CalendarX));
         #endregion
 
         #region CurrentPanel
@@ -301,39 +301,39 @@ namespace Panuon.UI.Silver
         }
 
         internal static readonly DependencyProperty CurrentPanelProperty =
-            DependencyProperty.Register("CurrentPanel", typeof(YearMonthDay), typeof(Calendar), new PropertyMetadata(YearMonthDay.Day, OnCurrentPanelChanged));
+            DependencyProperty.Register("CurrentPanel", typeof(YearMonthDay), typeof(CalendarX), new PropertyMetadata(YearMonthDay.Day, OnCurrentPanelChanged));
 
         private static void OnCurrentPanelChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var calendar = d as Calendar;
-            if (!calendar.IsLoaded)
+            var CalendarX = d as CalendarX;
+            if (!CalendarX.IsLoaded)
             {
                 return;
             }
-            calendar.PlayStoryboard((YearMonthDay)e.OldValue, (YearMonthDay)e.NewValue);
+            CalendarX.PlayStoryboard((YearMonthDay)e.OldValue, (YearMonthDay)e.NewValue);
         }
 
 
         #endregion
 
         #region Commands
-        internal static readonly DependencyProperty CalendarForewardCommandProperty =
-            DependencyProperty.Register("CalendarForewardCommand", typeof(ICommand), typeof(Calendar), new PropertyMetadata(new RelayCommand(OnCalendarForeward)));
+        internal static readonly DependencyProperty CalendarXForewardCommandProperty =
+            DependencyProperty.Register("CalendarXForewardCommand", typeof(ICommand), typeof(CalendarX), new PropertyMetadata(new RelayCommand(OnCalendarXForeward)));
 
-        internal static readonly DependencyProperty CalendarFastForewardCommandProperty =
-            DependencyProperty.Register("CalendarFastForewardCommand", typeof(ICommand), typeof(Calendar), new PropertyMetadata(new RelayCommand(OnCalendarFastForeward)));
+        internal static readonly DependencyProperty CalendarXFastForewardCommandProperty =
+            DependencyProperty.Register("CalendarXFastForewardCommand", typeof(ICommand), typeof(CalendarX), new PropertyMetadata(new RelayCommand(OnCalendarXFastForeward)));
 
-        internal static readonly DependencyProperty CalendarBackwardCommandProperty =
-            DependencyProperty.Register("CalendarBackwardCommand", typeof(ICommand), typeof(Calendar), new PropertyMetadata(new RelayCommand(OnCalendarBackward)));
+        internal static readonly DependencyProperty CalendarXBackwardCommandProperty =
+            DependencyProperty.Register("CalendarXBackwardCommand", typeof(ICommand), typeof(CalendarX), new PropertyMetadata(new RelayCommand(OnCalendarXBackward)));
 
-        internal static readonly DependencyProperty CalendarFastBackwardCommandProperty =
-            DependencyProperty.Register("CalendarFastBackwardCommand", typeof(ICommand), typeof(Calendar), new PropertyMetadata(new RelayCommand(OnCalendarFastBackward)));
+        internal static readonly DependencyProperty CalendarXFastBackwardCommandProperty =
+            DependencyProperty.Register("CalendarXFastBackwardCommand", typeof(ICommand), typeof(CalendarX), new PropertyMetadata(new RelayCommand(OnCalendarXFastBackward)));
 
-        internal static readonly DependencyProperty CalendarYearButtonCommandProperty =
-            DependencyProperty.Register("CalendarYearButtonCommand", typeof(ICommand), typeof(Calendar), new PropertyMetadata(new RelayCommand(OnCalendarYearButtonCommand)));
+        internal static readonly DependencyProperty CalendarXYearButtonCommandProperty =
+            DependencyProperty.Register("CalendarXYearButtonCommand", typeof(ICommand), typeof(CalendarX), new PropertyMetadata(new RelayCommand(OnCalendarXYearButtonCommand)));
 
-        internal static readonly DependencyProperty CalendarMonthButtonCommandProperty =
-            DependencyProperty.Register("CalendarMonthButtonCommand", typeof(ICommand), typeof(Calendar), new PropertyMetadata(new RelayCommand(OnCalendarMonthButtonCommand)));
+        internal static readonly DependencyProperty CalendarXMonthButtonCommandProperty =
+            DependencyProperty.Register("CalendarXMonthButtonCommand", typeof(ICommand), typeof(CalendarX), new PropertyMetadata(new RelayCommand(OnCalendarXMonthButtonCommand)));
 
         #endregion
 
@@ -345,7 +345,7 @@ namespace Panuon.UI.Silver
         }
 
         internal static readonly DependencyProperty MonthButtonProperty =
-            DependencyProperty.Register("MonthButton", typeof(string), typeof(Calendar));
+            DependencyProperty.Register("MonthButton", typeof(string), typeof(CalendarX));
         #endregion
 
         #region YearButton
@@ -356,13 +356,13 @@ namespace Panuon.UI.Silver
         }
 
         internal static readonly DependencyProperty YearButtonProperty =
-            DependencyProperty.Register("YearButton", typeof(string), typeof(Calendar));
+            DependencyProperty.Register("YearButton", typeof(string), typeof(CalendarX));
         #endregion
 
         #endregion
 
         #region Event Handler
-        private void Calendar_Loaded(object sender, RoutedEventArgs e)
+        private void CalendarX_Loaded(object sender, RoutedEventArgs e)
         {
             switch (SelectionMode)
             {
@@ -383,21 +383,21 @@ namespace Panuon.UI.Silver
             }
             else
             {
-                UpdateCalendar();
+                UpdateCalendarX();
             }
         }
 
         private static object OnMinDateCoerceValue(DependencyObject d, object baseValue)
         {
-            var calendar = d as Calendar;
+            var CalendarX = d as CalendarX;
             if (baseValue == null)
             {
                 return null;
             }
             var minDate = (DateTime)baseValue;
-            if (calendar.MaxDate != null)
+            if (CalendarX.MaxDate != null)
             {
-                var maxDate = (DateTime)calendar.MaxDate;
+                var maxDate = (DateTime)CalendarX.MaxDate;
                 if (minDate > maxDate)
                     return maxDate;
             }
@@ -411,15 +411,15 @@ namespace Panuon.UI.Silver
 
         private static object OnMaxDateCoerceValue(DependencyObject d, object baseValue)
         {
-            var calendar = d as Calendar;
+            var CalendarX = d as CalendarX;
             if (baseValue == null)
             {
                 return null;
             }
             var maxDate = (DateTime)baseValue;
-            if (calendar.MinDate != null)
+            if (CalendarX.MinDate != null)
             {
-                var minDate = (DateTime)calendar.MinDate;
+                var minDate = (DateTime)CalendarX.MinDate;
                 if (maxDate < minDate)
                 {
                     return minDate;
@@ -435,17 +435,17 @@ namespace Panuon.UI.Silver
 
         private static object OnSelectedDateCoerceValue(DependencyObject d, object baseValue)
         {
-            var calendar = d as Calendar;
+            var CalendarX = d as CalendarX;
             var selectedDate = (DateTime)baseValue;
-            if (calendar.MinDate != null)
+            if (CalendarX.MinDate != null)
             {
-                var minDate = (DateTime)calendar.MinDate;
+                var minDate = (DateTime)CalendarX.MinDate;
                 if (selectedDate < minDate)
                     return minDate;
             }
-            if (calendar.MaxDate != null)
+            if (CalendarX.MaxDate != null)
             {
-                var maxDate = (DateTime)calendar.MaxDate;
+                var maxDate = (DateTime)CalendarX.MaxDate;
                 if (selectedDate > maxDate)
                     return maxDate;
             }
@@ -454,17 +454,17 @@ namespace Panuon.UI.Silver
 
         private static void OnSelectedDateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var calendar = d as Calendar;
+            var CalendarX = d as CalendarX;
             var newDate = (DateTime)e.NewValue;
             var oldDate = (DateTime)e.OldValue;
-            calendar.UpdateCalendar(oldDate, newDate);
-            calendar.RaiseSelectedDateChanged(newDate);
+            CalendarX.UpdateCalendarX(oldDate, newDate);
+            CalendarX.RaiseSelectedDateChanged(newDate);
         }
 
         private static void OnFirstDayOfWeekChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var calendar = d as Calendar;
-            calendar.LoadWeeks();
+            var CalendarX = d as CalendarX;
+            CalendarX.LoadWeeks();
         }
 
         private void OnRadioButtonClicked(object sender, RoutedEventArgs e)
@@ -479,7 +479,7 @@ namespace Panuon.UI.Silver
             DateTime date;
             switch (groupName)
             {
-                case _CALENDAR_GROUP_DAYS:
+                case _CalendarX_GROUP_DAYS:
                     date = (DateTime)radioButton.Tag;
                     if (SelectedDate != date)
                     {
@@ -490,7 +490,7 @@ namespace Panuon.UI.Silver
                         RaiseSelected(SelectedDate);
                     }
                     break;
-                case _CALENDAR_GROUP_MONTHS:
+                case _CalendarX_GROUP_MONTHS:
                     date = (DateTime)radioButton.Tag;
                     if (!(SelectedDate.Year == date.Year && SelectedDate.Month == date.Month))
                     {
@@ -508,7 +508,7 @@ namespace Panuon.UI.Silver
                             break;
                     }
                     break;
-                case _CALENDAR_GROUP_YEARS:
+                case _CalendarX_GROUP_YEARS:
                     date = (DateTime)radioButton.Tag;
                     if (SelectedDate.Year != date.Year)
                     {
@@ -530,87 +530,87 @@ namespace Panuon.UI.Silver
             }
         }
 
-        private static void OnCalendarFastForeward(object obj)
+        private static void OnCalendarXFastForeward(object obj)
         {
-            var calendar = obj as Calendar;
-            switch (calendar.CurrentPanel)
+            var CalendarX = obj as CalendarX;
+            switch (CalendarX.CurrentPanel)
             {
                 case YearMonthDay.Day:
                 case YearMonthDay.Month:
 
-                    calendar.SelectedDate = calendar.SelectedDate.AddYears(1);
+                    CalendarX.SelectedDate = CalendarX.SelectedDate.AddYears(1);
                     break;
                 case YearMonthDay.Year:
-                    calendar.SelectedDate = calendar.SelectedDate.AddYears(4);
+                    CalendarX.SelectedDate = CalendarX.SelectedDate.AddYears(4);
                     break;
             }
         }
 
-        private static void OnCalendarForeward(object obj)
+        private static void OnCalendarXForeward(object obj)
         {
-            var calendar = obj as Calendar;
-            switch (calendar.CurrentPanel)
+            var CalendarX = obj as CalendarX;
+            switch (CalendarX.CurrentPanel)
             {
                 case YearMonthDay.Day:
                 case YearMonthDay.Month:
 
-                    calendar.SelectedDate = calendar.SelectedDate.AddMonths(1);
+                    CalendarX.SelectedDate = CalendarX.SelectedDate.AddMonths(1);
                     break;
                 case YearMonthDay.Year:
-                    calendar.SelectedDate = calendar.SelectedDate.AddYears(1);
+                    CalendarX.SelectedDate = CalendarX.SelectedDate.AddYears(1);
                     break;
             }
         }
 
-        private static void OnCalendarBackward(object obj)
+        private static void OnCalendarXBackward(object obj)
         {
-            var calendar = obj as Calendar;
-            switch (calendar.CurrentPanel)
+            var CalendarX = obj as CalendarX;
+            switch (CalendarX.CurrentPanel)
             {
                 case YearMonthDay.Day:
                 case YearMonthDay.Month:
 
-                    calendar.SelectedDate = calendar.SelectedDate.AddMonths(-1);
+                    CalendarX.SelectedDate = CalendarX.SelectedDate.AddMonths(-1);
                     break;
                 case YearMonthDay.Year:
-                    calendar.SelectedDate = calendar.SelectedDate.AddYears(-1);
+                    CalendarX.SelectedDate = CalendarX.SelectedDate.AddYears(-1);
                     break;
             }
         }
 
-        private static void OnCalendarFastBackward(object obj)
+        private static void OnCalendarXFastBackward(object obj)
         {
-            var calendar = obj as Calendar;
-            switch (calendar.CurrentPanel)
+            var CalendarX = obj as CalendarX;
+            switch (CalendarX.CurrentPanel)
             {
                 case YearMonthDay.Day:
                 case YearMonthDay.Month:
 
-                    calendar.SelectedDate = calendar.SelectedDate.AddYears(-1);
+                    CalendarX.SelectedDate = CalendarX.SelectedDate.AddYears(-1);
                     break;
                 case YearMonthDay.Year:
-                    calendar.SelectedDate = calendar.SelectedDate.AddYears(-4);
+                    CalendarX.SelectedDate = CalendarX.SelectedDate.AddYears(-4);
                     break;
             }
         }
 
-        private static void OnCalendarYearButtonCommand(object obj)
+        private static void OnCalendarXYearButtonCommand(object obj)
         {
-            var calendar = obj as Calendar;
-            calendar.CurrentPanel = YearMonthDay.Year;
+            var CalendarX = obj as CalendarX;
+            CalendarX.CurrentPanel = YearMonthDay.Year;
         }
 
-        private static void OnCalendarMonthButtonCommand(object obj)
+        private static void OnCalendarXMonthButtonCommand(object obj)
         {
-            var calendar = obj as Calendar;
+            var CalendarX = obj as CalendarX;
 
-            calendar.CurrentPanel = YearMonthDay.Month;
+            CalendarX.CurrentPanel = YearMonthDay.Month;
         }
 
         #endregion
 
         #region Function
-        private void UpdateCalendar(DateTime oldDate, DateTime newDate)
+        private void UpdateCalendarX(DateTime oldDate, DateTime newDate)
         {
             if (newDate.Year == oldDate.Year)
             {
@@ -638,7 +638,7 @@ namespace Panuon.UI.Silver
             }
         }
 
-        private void UpdateCalendar()
+        private void UpdateCalendarX()
         {
             YearButton = SelectedDate.Year.ToString();
             MonthButton = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(SelectedDate.Month);
@@ -655,16 +655,16 @@ namespace Panuon.UI.Silver
             {
                 if (Weeks.Count <= i)
                 {
-                    var calendarItem = new CalendarModelItem()
+                    var CalendarXItem = new CalendarXModelItem()
                     {
                         DisplayName = CultureInfo.CurrentCulture.DateTimeFormat.GetShortestDayName(daysOfWeek),
                     };
-                    Weeks.Add(calendarItem);
+                    Weeks.Add(CalendarXItem);
                 }
                 else
                 {
-                    var calendarItem = Weeks[i];
-                    calendarItem.DisplayName = CultureInfo.CurrentCulture.DateTimeFormat.GetShortestDayName(daysOfWeek);
+                    var CalendarXItem = Weeks[i];
+                    CalendarXItem.DisplayName = CultureInfo.CurrentCulture.DateTimeFormat.GetShortestDayName(daysOfWeek);
                 }
                 daysOfWeek = DateTimeUtils.GetNextDayOfWeek(daysOfWeek);
             }
@@ -695,7 +695,7 @@ namespace Panuon.UI.Silver
             {
                 if (Days.Count <= i)
                 {
-                    var calendarItem = new CalendarModelItem()
+                    var CalendarXItem = new CalendarXModelItem()
                     {
                         Value = date,
                         DisplayName = date.Day.ToString(),
@@ -703,16 +703,16 @@ namespace Panuon.UI.Silver
                         IsChecked = date == SelectedDate,
                         IsNotCurrentMonth = i < interval ? true : (i >= (interval + dayInMonth)),
                     };
-                    Days.Add(calendarItem);
+                    Days.Add(CalendarXItem);
                 }
                 else
                 {
-                    var calendarItem = Days[i];
-                    calendarItem.Value = date;
-                    calendarItem.DisplayName = date.Day.ToString();
-                    calendarItem.IsEnabled = IsDateValidated(date);
-                    calendarItem.IsChecked = date == SelectedDate;
-                    calendarItem.IsNotCurrentMonth = i < interval ? true : (i >= (interval + dayInMonth));
+                    var CalendarXItem = Days[i];
+                    CalendarXItem.Value = date;
+                    CalendarXItem.DisplayName = date.Day.ToString();
+                    CalendarXItem.IsEnabled = IsDateValidated(date);
+                    CalendarXItem.IsChecked = date == SelectedDate;
+                    CalendarXItem.IsNotCurrentMonth = i < interval ? true : (i >= (interval + dayInMonth));
                 }
                 date = date.AddDays(1);
             }
@@ -725,22 +725,22 @@ namespace Panuon.UI.Silver
             {
                 if (Months.Count <= i)
                 {
-                    var calendarItem = new CalendarModelItem()
+                    var CalendarXItem = new CalendarXModelItem()
                     {
                         Value = date,
                         DisplayName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(date.Month),
                         IsEnabled = IsMonthValidated(date),
                         IsChecked = (date.Year == SelectedDate.Year && date.Month == SelectedDate.Month),
                     };
-                    Months.Add(calendarItem);
+                    Months.Add(CalendarXItem);
                 }
                 else
                 {
-                    var calendarItem = Months[i];
-                    calendarItem.Value = date;
-                    calendarItem.DisplayName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(date.Month);
-                    calendarItem.IsEnabled = IsMonthValidated(date);
-                    calendarItem.IsChecked = (date.Year == SelectedDate.Year && date.Month == SelectedDate.Month);
+                    var CalendarXItem = Months[i];
+                    CalendarXItem.Value = date;
+                    CalendarXItem.DisplayName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(date.Month);
+                    CalendarXItem.IsEnabled = IsMonthValidated(date);
+                    CalendarXItem.IsChecked = (date.Year == SelectedDate.Year && date.Month == SelectedDate.Month);
                 }
                 date = date.AddMonths(1);
             }
@@ -755,22 +755,22 @@ namespace Panuon.UI.Silver
             {
                 if (Years.Count <= i)
                 {
-                    var calendarItem = new CalendarModelItem()
+                    var CalendarXItem = new CalendarXModelItem()
                     {
                         Value = date,
                         DisplayName = date.Year.ToString(),
                         IsEnabled = IsMonthValidated(date),
                         IsChecked = date.Year == SelectedDate.Year,
                     };
-                    Years.Add(calendarItem);
+                    Years.Add(CalendarXItem);
                 }
                 else
                 {
-                    var calendarItem = Years[i];
-                    calendarItem.Value = date;
-                    calendarItem.DisplayName = date.Year.ToString();
-                    calendarItem.IsEnabled = IsMonthValidated(date);
-                    calendarItem.IsChecked = date.Year == SelectedDate.Year;
+                    var CalendarXItem = Years[i];
+                    CalendarXItem.Value = date;
+                    CalendarXItem.DisplayName = date.Year.ToString();
+                    CalendarXItem.IsEnabled = IsMonthValidated(date);
+                    CalendarXItem.IsChecked = date.Year == SelectedDate.Year;
                 }
                 date = date.AddYears(1);
             }

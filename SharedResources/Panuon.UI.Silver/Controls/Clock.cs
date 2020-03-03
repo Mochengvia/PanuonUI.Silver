@@ -15,9 +15,9 @@ namespace Panuon.UI.Silver
     public class Clock : Control
     {
         #region Fields
-        private const string _CLOCK_GROUP_SECONDS = "CLOCK_GROUP_SECONDS";
-        private const string _CLOCK_GROUP_MINUTES = "CLOCK_GROUP_MINUTES";
-        private const string _CLOCK_GROUP_HOURS = "CLOCK_GROUP_HOURS";
+        private const string _Clock_GROUP_SECONDS = "Clock_GROUP_SECONDS";
+        private const string _Clock_GROUP_MINUTES = "Clock_GROUP_MINUTES";
+        private const string _Clock_GROUP_HOURS = "Clock_GROUP_HOURS";
         #endregion
 
         #region Ctor
@@ -171,21 +171,21 @@ namespace Panuon.UI.Silver
             var groupName = radioButton.GroupName;
             switch (groupName)
             {
-                case _CLOCK_GROUP_SECONDS:
+                case _Clock_GROUP_SECONDS:
                     var seconds = (int)radioButton.Tag;
                     if (seconds != SelectedTime.Second)
                     {
                         SelectedTime = new DateTime(SelectedTime.Year, SelectedTime.Month, SelectedTime.Day, SelectedTime.Hour, SelectedTime.Minute, seconds);
                     }
                     break;
-                case _CLOCK_GROUP_MINUTES:
+                case _Clock_GROUP_MINUTES:
                     var minutes = (int)radioButton.Tag;
                     if (minutes != SelectedTime.Second)
                     {
                         SelectedTime = new DateTime(SelectedTime.Year, SelectedTime.Month, SelectedTime.Day, SelectedTime.Hour, minutes, SelectedTime.Second);
                     }
                     break;
-                case _CLOCK_GROUP_HOURS:
+                case _Clock_GROUP_HOURS:
                     var hours = (int)radioButton.Tag;
                     if (hours != SelectedTime.Second)
                     {
@@ -205,15 +205,15 @@ namespace Panuon.UI.Silver
 
         private static object OnMinTimeCoerceValue(DependencyObject d, object baseValue)
         {
-            var clock = d as Clock;
+            var Clock = d as Clock;
             if (baseValue == null)
             {
                 return null;
             }
             var minTime = (DateTime)baseValue;
-            if (clock.MaxTime != null)
+            if (Clock.MaxTime != null)
             {
-                var maxTime = (DateTime)clock.MaxTime;
+                var maxTime = (DateTime)Clock.MaxTime;
                 if (minTime.Time() > maxTime.Time())
                     return maxTime;
             }
@@ -227,15 +227,15 @@ namespace Panuon.UI.Silver
 
         private static object OnMaxTimeCoerceValue(DependencyObject d, object baseValue)
         {
-            var clock = d as Clock;
+            var Clock = d as Clock;
             if (baseValue == null)
             {
                 return null;
             }
             var maxTime = (DateTime)baseValue;
-            if (clock.MinTime != null)
+            if (Clock.MinTime != null)
             {
-                var minTime = (DateTime)clock.MinTime;
+                var minTime = (DateTime)Clock.MinTime;
                 if (maxTime.Time() < minTime.Time())
                     return minTime;
             }
@@ -249,17 +249,17 @@ namespace Panuon.UI.Silver
 
         private static object OnSelectedTimeCoerceValue(DependencyObject d, object baseValue)
         {
-            var clock = d as Clock;
+            var Clock = d as Clock;
             var selectedDate = (DateTime)baseValue;
-            if (clock.MinTime != null)
+            if (Clock.MinTime != null)
             {
-                var minTime = (DateTime)clock.MinTime;
+                var minTime = (DateTime)Clock.MinTime;
                 if (selectedDate.Time() < minTime.Time())
                     return minTime.Time();
             }
-            if (clock.MaxTime != null)
+            if (Clock.MaxTime != null)
             {
-                var maxTime = (DateTime)clock.MaxTime;
+                var maxTime = (DateTime)Clock.MaxTime;
                 if (selectedDate.Time() > maxTime.Time())
                     return maxTime.Time();
             }
@@ -268,11 +268,11 @@ namespace Panuon.UI.Silver
 
         private static void OnSelectedTimeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var clock = d as Clock;
+            var Clock = d as Clock;
             var newDate = (DateTime)e.NewValue;
             var oldDate = (DateTime)e.OldValue;
-            clock.UpdateClock(oldDate, newDate);
-            clock.RaiseSelectedTimeChanged(newDate);
+            Clock.UpdateClock(oldDate, newDate);
+            Clock.RaiseSelectedTimeChanged(newDate);
         }
 
         #endregion
@@ -320,22 +320,22 @@ namespace Panuon.UI.Silver
             {
                 if (Hours.Count <= i)
                 {
-                    var clockItem = new ClockModelItem()
+                    var ClockItem = new ClockModelItem()
                     {
                         Value = i,
                         DisplayName = i.ToString(),
                         IsEnabled = IsHourValidated(i),
                         IsChecked = i == SelectedTime.Hour,
                     };
-                    Hours.Add(clockItem);
+                    Hours.Add(ClockItem);
                 }
                 else
                 {
-                    var clockItem = Hours[i];
-                    clockItem.Value = i;
-                    clockItem.DisplayName = i.ToString();
-                    clockItem.IsEnabled = IsHourValidated(i);
-                    clockItem.IsChecked = i == SelectedTime.Hour;
+                    var ClockItem = Hours[i];
+                    ClockItem.Value = i;
+                    ClockItem.DisplayName = i.ToString();
+                    ClockItem.IsEnabled = IsHourValidated(i);
+                    ClockItem.IsChecked = i == SelectedTime.Hour;
                 }
             }
         }
@@ -346,22 +346,22 @@ namespace Panuon.UI.Silver
             {
                 if (Minutes.Count <= i)
                 {
-                    var clockItem = new ClockModelItem()
+                    var ClockItem = new ClockModelItem()
                     {
                         Value = i,
                         DisplayName = i.ToString(),
                         IsEnabled = IsMinuteValidated(SelectedTime.Hour, i),
                         IsChecked = i == SelectedTime.Minute,
                     };
-                    Minutes.Add(clockItem);
+                    Minutes.Add(ClockItem);
                 }
                 else
                 {
-                    var clockItem = Minutes[i];
-                    clockItem.Value = i;
-                    clockItem.DisplayName = i.ToString();
-                    clockItem.IsEnabled = IsMinuteValidated(SelectedTime.Hour, i);
-                    clockItem.IsChecked = i == SelectedTime.Minute;
+                    var ClockItem = Minutes[i];
+                    ClockItem.Value = i;
+                    ClockItem.DisplayName = i.ToString();
+                    ClockItem.IsEnabled = IsMinuteValidated(SelectedTime.Hour, i);
+                    ClockItem.IsChecked = i == SelectedTime.Minute;
                 }
             }
         }
@@ -372,22 +372,22 @@ namespace Panuon.UI.Silver
             {
                 if (Seconds.Count <= i)
                 {
-                    var clockItem = new ClockModelItem()
+                    var ClockItem = new ClockModelItem()
                     {
                         Value = i,
                         DisplayName = i.ToString(),
                         IsEnabled = IsSecondValidated(SelectedTime.Hour, SelectedTime.Minute, i),
                         IsChecked = i == SelectedTime.Second,
                     };
-                    Seconds.Add(clockItem);
+                    Seconds.Add(ClockItem);
                 }
                 else
                 {
-                    var clockItem = Seconds[i];
-                    clockItem.Value = i;
-                    clockItem.DisplayName = i.ToString();
-                    clockItem.IsEnabled = IsSecondValidated(SelectedTime.Hour, SelectedTime.Minute, i);
-                    clockItem.IsChecked = i == SelectedTime.Second;
+                    var ClockItem = Seconds[i];
+                    ClockItem.Value = i;
+                    ClockItem.DisplayName = i.ToString();
+                    ClockItem.IsEnabled = IsSecondValidated(SelectedTime.Hour, SelectedTime.Minute, i);
+                    ClockItem.IsChecked = i == SelectedTime.Second;
                 }
             }
         }

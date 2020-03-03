@@ -7,7 +7,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/InternalResources.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Resources.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Calendar.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/CalendarX.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Clock.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
@@ -165,11 +165,11 @@
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition x:Name="CdCalendar" />
+                            <ColumnDefinition x:Name="CdCalendarX" />
                             <ColumnDefinition x:Name="CdClock" />
                         </Grid.ColumnDefinitions>
-                        <local:Calendar x:Name="CdrCalendar"
-                                        Style="{TemplateBinding CalendarStyle}"
+                        <local:CalendarX x:Name="CdrCalendarX"
+                                        Style="{TemplateBinding CalendarXStyle}"
                                         MaxDate="{Binding MaxDateTime, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                         MinDate="{Binding MinDateTime, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                         SelectedDate="{Binding SelectedDate, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
@@ -197,10 +197,10 @@
             </Trigger>
             <Trigger Property="DateTimePickerMode"
                      Value="Time">
-                <Setter TargetName="CdCalendar"
+                <Setter TargetName="CdCalendarX"
                         Property="Width"
                         Value="0" />
-                <Setter TargetName="CdrCalendar"
+                <Setter TargetName="CdrCalendarX"
                         Property="Visibility"
                         Value="Collapsed" />
             </Trigger>
@@ -226,10 +226,10 @@
                 Value="560" />
         <Setter Property="DropDownHeight"
                 Value="280" />
-        <Setter Property="CalendarStyle">
+        <Setter Property="CalendarXStyle">
             <Setter.Value>
-                <Style TargetType="{x:Type local:Calendar}"
-                       BasedOn="{StaticResource {x:Type local:Calendar}}">
+                <Style TargetType="{x:Type local:CalendarX}"
+                       BasedOn="{StaticResource {x:Type local:CalendarX}}">
                     <Setter Property="BorderThickness"
                             Value="0" />
                 </Style>

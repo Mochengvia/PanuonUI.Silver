@@ -71,7 +71,7 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <RadioButton Style="{Binding ClockItemStyle, RelativeSource={RelativeSource AncestorType=local:Clock}, Mode=OneWay}"
-                                     GroupName="CLOCK_GROUP_HOURS"
+                                     GroupName="Clock_GROUP_HOURS"
                                      Content="{Binding DisplayName}"
                                      Tag="{Binding Value}"
                                      IsChecked="{Binding IsChecked, Mode=OneWay}"
@@ -91,7 +91,7 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <RadioButton Style="{Binding ClockItemStyle, RelativeSource={RelativeSource AncestorType=local:Clock}, Mode=OneWay}"
-                                     GroupName="CLOCK_GROUP_MINUTES"
+                                     GroupName="Clock_GROUP_MINUTES"
                                      Content="{Binding DisplayName}"
                                      Tag="{Binding Value}"
                                      IsChecked="{Binding IsChecked, Mode=OneWay}"
@@ -111,7 +111,7 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <RadioButton Style="{Binding ClockItemStyle, RelativeSource={RelativeSource AncestorType=local:Clock}, Mode=OneWay}"
-                                     GroupName="CLOCK_GROUP_SECONDS"
+                                     GroupName="Clock_GROUP_SECONDS"
                                      Content="{Binding DisplayName}"
                                      Tag="{Binding Value}"
                                      IsChecked="{Binding IsChecked, Mode=OneWay}"
