@@ -158,7 +158,7 @@
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
                            FontSize="{Binding FontSize, Converter={StaticResource {x:Static i:ResourceKeys.Minus1Converter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                           FontFamily="{StaticResource PanuonIconFont}" />
+                           FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon" />
                 <TextBlock x:Name="TxtDesc"
                            Grid.Column="1"
                            Margin="3,0,-3,0"
@@ -167,7 +167,7 @@
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
                            FontSize="{Binding FontSize, Converter={StaticResource {x:Static i:ResourceKeys.Minus1Converter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                           FontFamily="{StaticResource PanuonIconFont}" />
+                           FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon" />
             </Grid>
             <Thumb x:Name="PART_LeftHeaderGripper"
                    HorizontalAlignment="Left"
@@ -473,6 +473,8 @@
     </ControlTemplate>
 
     <Style TargetType="DataGrid">
+        <Setter Property="local:DataGridHelper.DataGridHook"
+                Value="True" />
         <Setter Property="local:ScrollViewerHelper.ScrollBarThickness"
                 Value="6" />
         <Setter Property="local:ScrollViewerHelper.ScrollBarCornerRadius"

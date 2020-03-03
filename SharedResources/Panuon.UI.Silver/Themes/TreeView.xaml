@@ -27,10 +27,6 @@
                 Value="{StaticResource {x:Static i:ResourceKeys.TreeViewStandardItemsHoverBackground}}" />
         <Setter Property="local:TreeViewHelper.ItemsSelectedBackground"
                 Value="{StaticResource {x:Static i:ResourceKeys.TreeViewStandardItemsSelectedBackground}}" />
-        <!--<Setter Property="local:TreeViewHelper.HoverForeground"
-                Value="{StaticResource {x:Static i:ResourceKeys.TreeViewStandardHoverForeground}}" />
-        <Setter Property="local:TreeViewHelper.SelectedForeground"
-                Value="{StaticResource {x:Static i:ResourceKeys.TreeViewStandardSelectedForeground}}" />-->
         <!--VirtualizingStackPanel-->
         <Setter Property="VirtualizingStackPanel.IsVirtualizing"
                 Value="True" />
@@ -63,6 +59,39 @@
             </Setter.Value>
         </Setter>
         <Style.Triggers>
+            <Trigger Property="local:TreeViewHelper.TreeViewStyle"
+                     Value="Modern">
+                <Setter Property="local:TreeViewHelper.ItemsPadding"
+                        Value="{StaticResource {x:Static i:ResourceKeys.TreeViewModernItemPadding}}" />
+                <Setter Property="local:TreeViewHelper.ItemsHeight"
+                        Value="{StaticResource {x:Static i:ResourceKeys.TreeViewModernItemHeight}}" />
+                <Setter Property="local:TreeViewHelper.ItemsToggleBrush"
+                        Value="{StaticResource {x:Static i:ResourceKeys.TreeViewModernItemsToggleBrush}}" />
+                <Setter Property="local:TreeViewHelper.ItemsHoverToggleBrush"
+                        Value="{StaticResource {x:Static i:ResourceKeys.TreeViewModernItemsHoverToggleBrush}}" />
+                <Setter Property="local:TreeViewHelper.ItemsSelectedToggleBrush"
+                        Value="{StaticResource {x:Static i:ResourceKeys.TreeViewModernItemsSelectedToggleBrush}}" />
+                <Setter Property="local:TreeViewHelper.ItemsHoverBackground"
+                        Value="{StaticResource {x:Static i:ResourceKeys.TreeViewModernItemsHoverBackground}}" />
+                <Setter Property="local:TreeViewHelper.ItemsSelectedBackground"
+                        Value="{StaticResource {x:Static i:ResourceKeys.TreeViewModernItemsSelectedBackground}}" />
+            </Trigger>
+            <Trigger Property="local:TreeViewHelper.TreeViewStyle"
+                     Value="Chain">
+                <Setter Property="local:TreeViewHelper.ItemsPadding"
+                        Value="{StaticResource {x:Static i:ResourceKeys.TreeViewChainItemPadding}}" />
+                <Setter Property="local:TreeViewHelper.ItemsHeight"
+                        Value="{StaticResource {x:Static i:ResourceKeys.TreeViewChainItemHeight}}" />
+                <Setter Property="local:TreeViewHelper.ItemsToggleBrush"
+                        Value="{StaticResource {x:Static i:ResourceKeys.TreeViewChainItemsToggleBrush}}" />
+                <Setter Property="local:TreeViewHelper.ItemsHoverToggleBrush"
+                        Value="{StaticResource {x:Static i:ResourceKeys.TreeViewChainItemsHoverToggleBrush}}" />
+                <Setter Property="local:TreeViewHelper.ItemsHoverBackground"
+                        Value="{x:Null}" />
+                <Setter Property="local:TreeViewHelper.ItemsSelectedBackground"
+                        Value="{x:Null}" />
+            </Trigger>
+
             <Trigger Property="IsEnabled"
                      Value="False">
                 <Setter Property="Opacity"

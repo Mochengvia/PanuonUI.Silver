@@ -69,6 +69,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\StateControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\TabItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -156,6 +160,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Components\MessageBoxXConfigurations.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Components\StateItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Calendar.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CalendarItem.cs" />
@@ -165,6 +170,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Clock.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ClockItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\DateTimePicker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Dotline.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Drawer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\DropDown.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\FormGroup.cs" />
@@ -176,6 +182,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PopupX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Rectangle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\SeperatorX.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\StateControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TextBlockX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\WaterfallPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\WindowX.cs" />

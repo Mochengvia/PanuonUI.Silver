@@ -24,7 +24,7 @@
                   Width="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.Minus3Converter}},RelativeSource={RelativeSource Self},Mode=OneWay}">
                 <TextBlock x:Name="TxtArrowDown"
                            Text="&#xe91f;"
-                           FontFamily="{StaticResource PanuonIconFont}"
+                           FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center" />
                 <TextBlock x:Name="TxtArrowUp"
@@ -32,7 +32,7 @@
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
                            Text="&#xe91d;"
-                           FontFamily="{StaticResource PanuonIconFont}" />
+                           FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon" />
             </Grid>
         </Grid>
         <ControlTemplate.Triggers>

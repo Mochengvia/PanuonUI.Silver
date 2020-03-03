@@ -14,7 +14,7 @@
            TargetType="Button"
            BasedOn="{StaticResource {x:Type Button}}">
         <Setter Property="FontFamily"
-                Value="{StaticResource PanuonIconFont}" />
+                Value="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon" />
         <Setter Property="Content"
                 Value="&#xe92a;" />
         <Setter Property="HorizontalAlignment"
@@ -47,7 +47,7 @@
            TargetType="Button"
            BasedOn="{StaticResource {x:Type Button}}">
         <Setter Property="FontFamily"
-                Value="{StaticResource PanuonIconFont}" />
+                Value="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon" />
         <Setter Property="Content"
                 Value="&#xe92b;" />
         <Setter Property="HorizontalAlignment"
@@ -80,7 +80,7 @@
            TargetType="Button"
            BasedOn="{StaticResource {x:Type Button}}">
         <Setter Property="FontFamily"
-                Value="{StaticResource PanuonIconFont}" />
+                Value="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon" />
         <Setter Property="Content"
                 Value="&#xe92d;" />
         <Setter Property="HorizontalAlignment"

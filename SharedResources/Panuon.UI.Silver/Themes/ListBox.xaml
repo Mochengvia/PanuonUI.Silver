@@ -13,7 +13,8 @@
                      TargetType="{x:Type ListBox}">
         <Border x:Name="BdrMain"
                 Background="{TemplateBinding Background}"
-                BorderBrush="{TemplateBinding BorderBrush}">
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}">
             <ScrollViewer Focusable="False"
                           Padding="{TemplateBinding Padding}"
                           VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}"

@@ -49,7 +49,7 @@
                           Style="{DynamicResource {x:Static rs:ResourceKeys.ScrollViewerScrollButtonStyle}}"
                           Content="&#xe920;"
                           FontSize="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.Minus2Converter}}, RelativeSource={RelativeSource AncestorType=ScrollBar}, Mode=OneWay}"
-                          FontFamily="{StaticResource PanuonIconFont}"
+                          FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
                           Command="ScrollBar.ScrollToLeftEndCommand" />
             <RepeatButton x:Name="RpbLeft"
                           Grid.Column="1"
@@ -57,7 +57,7 @@
                           Style="{DynamicResource {x:Static rs:ResourceKeys.ScrollViewerScrollButtonStyle}}"
                           Content="&#xe900;"
                           FontSize="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.Minus2Converter}}, RelativeSource={RelativeSource AncestorType=ScrollBar}, Mode=OneWay}"
-                          FontFamily="{StaticResource PanuonIconFont}"
+                          FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
                           Command="ScrollBar.LineLeftCommand" />
             <Border 
                     Background="{Binding Path=(local:ScrollViewerHelper.TrackBrush),RelativeSource={RelativeSource Self}, Mode=OneWay}"
@@ -78,7 +78,7 @@
                           Style="{DynamicResource {x:Static rs:ResourceKeys.ScrollViewerScrollButtonStyle}}"
                           Content="&#xe902;"
                           FontSize="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.Minus2Converter}}, RelativeSource={RelativeSource AncestorType=ScrollBar}, Mode=OneWay}"
-                          FontFamily="{StaticResource PanuonIconFont}"
+                          FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
                           Command="ScrollBar.LineRightCommand" />
             <RepeatButton x:Name="RpbRightEnd"
                           Grid.Column="4"
@@ -86,7 +86,7 @@
                           Style="{DynamicResource {x:Static rs:ResourceKeys.ScrollViewerScrollButtonStyle}}"
                           Content="&#xe922;"
                           FontSize="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.Minus2Converter}}, RelativeSource={RelativeSource AncestorType=ScrollBar}, Mode=OneWay}"
-                          FontFamily="{StaticResource PanuonIconFont}"
+                          FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
                           Command="ScrollBar.ScrollToRightEndCommand" />
         </Grid>
         <ControlTemplate.Triggers>
@@ -163,7 +163,7 @@
                           Style="{DynamicResource {x:Static rs:ResourceKeys.ScrollViewerScrollButtonStyle}}"
                           Content="&#xe921;"
                           FontSize="{Binding ActualWidth, Converter={StaticResource {x:Static i:ResourceKeys.Minus2Converter}},RelativeSource={RelativeSource AncestorType=ScrollBar}, Mode=OneWay}"
-                          FontFamily="{StaticResource PanuonIconFont}"
+                          FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
                           Command="ScrollBar.ScrollToTopCommand" />
             <RepeatButton x:Name="RpbUp"
                           Grid.Row="1"
@@ -171,7 +171,7 @@
                           Style="{DynamicResource {x:Static rs:ResourceKeys.ScrollViewerScrollButtonStyle}}"
                           Content="&#xe901;"
                           FontSize="{Binding ActualWidth, Converter={StaticResource {x:Static i:ResourceKeys.Minus2Converter}}, RelativeSource={RelativeSource AncestorType=ScrollBar}, Mode=OneWay}"
-                          FontFamily="{StaticResource PanuonIconFont}"
+                          FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
                           Command="ScrollBar.LineUpCommand" />
             <Border 
                     Background="{Binding Path=(local:ScrollViewerHelper.TrackBrush),RelativeSource={RelativeSource Self}, Mode=OneWay}"
@@ -193,7 +193,7 @@
                           Style="{DynamicResource {x:Static rs:ResourceKeys.ScrollViewerScrollButtonStyle}}"
                           Content="&#xe903;"
                           FontSize="{Binding ActualWidth, Converter={StaticResource {x:Static i:ResourceKeys.Minus2Converter}}, RelativeSource={RelativeSource AncestorType=ScrollBar}, Mode=OneWay}"
-                          FontFamily="{StaticResource PanuonIconFont}"
+                          FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
                           Command="ScrollBar.LineDownCommand" />
             <RepeatButton x:Name="RpbBottom"
                           Grid.Row="4"
@@ -201,7 +201,7 @@
                           Style="{DynamicResource {x:Static rs:ResourceKeys.ScrollViewerScrollButtonStyle}}"
                           Content="&#xe923;"
                           FontSize="{Binding ActualWidth, Converter={StaticResource {x:Static i:ResourceKeys.Minus2Converter}}, RelativeSource={RelativeSource AncestorType=ScrollBar}, Mode=OneWay}"
-                          FontFamily="{StaticResource PanuonIconFont}"
+                          FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
                           Command="ScrollBar.ScrollToBottomCommand" />
         </Grid>
         <ControlTemplate.Triggers>

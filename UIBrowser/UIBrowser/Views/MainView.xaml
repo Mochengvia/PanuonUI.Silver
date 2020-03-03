@@ -9,7 +9,8 @@
             mc:Ignorable="d"
             Title="MainView"
             Height="700"
-            Width="1200">
+            Width="1200"
+            x:Name="this">
     <pu:WindowXCaption.Header>
         <TextBlock VerticalAlignment="Center"
                    FontSize="20"
@@ -19,8 +20,8 @@
             <Run Foreground="#68D450"> U O N</Run>
         </TextBlock>
     </pu:WindowXCaption.Header>
-
-    <TreeView Width="200">
+    <TreeView Width="200"
+              pu:TreeViewHelper.TreeViewStyle="Chain">
         <TreeViewItem Header="Item1">
             <TreeViewItem Header="Item1-1" />
             <TreeViewItem Header="Item1-2" />

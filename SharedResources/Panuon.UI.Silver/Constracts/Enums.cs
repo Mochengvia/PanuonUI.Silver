@@ -137,6 +137,8 @@
     public enum TreeViewStyle
     {
         Standard,
+        Modern,
+        Chain
     }
 
     #endregion
@@ -263,12 +265,14 @@
     #endregion
 
     #region Separator
-    public enum Alignment
+    public enum SeparatorAlignment
     {
         Left,
         Top,
         Right,
         Bottom,
+        HorizontalCenter,
+        VerticalCenter,
     }
     #endregion
 

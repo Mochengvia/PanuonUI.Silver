@@ -26,7 +26,7 @@
                 <Setter Property="Foreground"
                         Value="{Binding Foreground,RelativeSource={RelativeSource TemplatedParent},Mode=OneTime}" />
                 <Setter Property="FontFamily"
-                        Value="{StaticResource PanuonIconFont}" />
+                        Value="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon" />
                 <Setter Property="Content"
                         Value="&#xe92d;" />
                 <Setter Property="HorizontalAlignment"
@@ -129,7 +129,7 @@
                 <Setter Property="Foreground"
                         Value="{Binding Foreground,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
                 <Setter Property="FontFamily"
-                        Value="{StaticResource PanuonIconFont}" />
+                        Value="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon" />
                 <Setter Property="Content"
                         Value="&#xe92d;" />
                 <Setter Property="HorizontalAlignment"

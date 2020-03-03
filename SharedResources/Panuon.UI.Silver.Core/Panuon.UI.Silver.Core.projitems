@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Animations\BrushAnimation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Attributes\DataGridColumnAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\RelayCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EventHandler\CancelableRoutedEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EventHandler\CurrentIndexChangedRoutedEventHandler.cs" />

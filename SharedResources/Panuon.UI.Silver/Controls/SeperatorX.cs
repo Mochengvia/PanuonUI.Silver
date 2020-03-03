@@ -36,14 +36,14 @@ namespace Panuon.UI.Silver
 
         #region Alignment
 
-        public Alignment Alignment
+        public SeparatorAlignment Alignment
         {
-            get { return (Alignment)GetValue(AlignmentProperty); }
+            get { return (SeparatorAlignment)GetValue(AlignmentProperty); }
             set { SetValue(AlignmentProperty, value); }
         }
 
         public static readonly DependencyProperty AlignmentProperty =
-            DependencyProperty.Register("Alignment", typeof(Alignment), typeof(SeparatorX), new FrameworkPropertyMetadata(Alignment.Bottom, FrameworkPropertyMetadataOptions.AffectsRender));
+            DependencyProperty.Register("Alignment", typeof(SeparatorAlignment), typeof(SeparatorX), new FrameworkPropertyMetadata(SeparatorAlignment.Bottom, FrameworkPropertyMetadataOptions.AffectsRender));
 
         #endregion
 
@@ -57,16 +57,23 @@ namespace Panuon.UI.Silver
             {
                 return;
             }
+
             switch (Alignment)
             {
-                case Alignment.Left:
+                case SeparatorAlignment.Left:
                     drawingContext.DrawLine(new Pen(Brush, Thickness), new Point(0, 0), new Point(0, RenderSize.Height));
                     break;
-                case Alignment.Right:
+                case SeparatorAlignment.Right:
                     drawingContext.DrawLine(new Pen(Brush, Thickness), new Point(RenderSize.Width - Thickness, 0), new Point(RenderSize.Width - Thickness, RenderSize.Height));
                     break;
-                case Alignment.Top:
+                case SeparatorAlignment.Top:
                     drawingContext.DrawLine(new Pen(Brush, Thickness), new Point(0, Thickness / 2), new Point(RenderSize.Width, Thickness / 2));
+                    break;
+                case SeparatorAlignment.HorizontalCenter:
+                    drawingContext.DrawLine(new Pen(Brush, Thickness), new Point((RenderSize.Width - Thickness) / 2, 0), new Point(0, RenderSize.Height));
+                    break;
+                case SeparatorAlignment.VerticalCenter:
+                    drawingContext.DrawLine(new Pen(Brush, Thickness), new Point(0, (RenderSize.Height - Thickness) / 2), new Point(RenderSize.Width, Thickness / 2));
                     break;
                 default:
                     drawingContext.DrawLine(new Pen(Brush, Thickness), new Point(0, RenderSize.Height - Thickness / 2), new Point(RenderSize.Width - Thickness, RenderSize.Height - Thickness / 2));

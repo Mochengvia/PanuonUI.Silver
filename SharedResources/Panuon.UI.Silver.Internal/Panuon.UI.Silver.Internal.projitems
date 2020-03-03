@@ -21,6 +21,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\BoolConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\MessageBoxConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\MiscellaneousConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\StateControlConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ThicknessConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\GridLengthConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IconConverter.cs" />

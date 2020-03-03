@@ -74,7 +74,7 @@
                 <RepeatButton Margin="{Binding Spacing, Converter={StaticResource {x:Static i:ResourceKeys.DoubleToRightMarginConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               Style="{TemplateBinding SideButtonStyle}"
                               Content="&#xe900;"
-                              FontFamily="{StaticResource PanuonIconFont}"
+                              FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
                               Command="{Binding PreviousCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}" />
                 <ItemsControl ItemsSource="{Binding IndexList, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -127,7 +127,7 @@
                 <RepeatButton Grid.Column="2"
                               Style="{TemplateBinding SideButtonStyle}"
                               Content="&#xe902;"
-                              FontFamily="{StaticResource PanuonIconFont}"
+                              FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
                               Command="{Binding NextCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}" />
             </Grid>

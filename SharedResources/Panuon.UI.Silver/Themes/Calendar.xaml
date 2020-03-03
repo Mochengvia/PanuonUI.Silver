@@ -69,14 +69,14 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <Button Style="{TemplateBinding ControlButtonStyle}"
-                            FontFamily="{StaticResource PanuonIconFont}"
+                            FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
                             Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                             Command="{Binding CalendarFastBackwardCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                             CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                             Content="&#xe924;" />
                     <Button Style="{TemplateBinding ControlButtonStyle}"
                             Grid.Column="1"
-                            FontFamily="{StaticResource PanuonIconFont}"
+                            FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
                             Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                             Command="{Binding CalendarBackwardCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                             CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
@@ -101,14 +101,14 @@
 
                     <Button Style="{TemplateBinding ControlButtonStyle}"
                             Grid.Column="3"
-                            FontFamily="{StaticResource PanuonIconFont}"
+                            FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
                             Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                             Command="{Binding CalendarForewardCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                             CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                             Content="&#xe902;" />
                     <Button Style="{TemplateBinding ControlButtonStyle}"
                             Grid.Column="4"
-                            FontFamily="{StaticResource PanuonIconFont}"
+                            FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
                             Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                             Command="{Binding CalendarFastForewardCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                             CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"

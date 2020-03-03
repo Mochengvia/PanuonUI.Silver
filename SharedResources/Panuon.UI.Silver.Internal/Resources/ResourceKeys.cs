@@ -98,6 +98,10 @@ namespace Panuon.UI.Silver.Internal
 
         public static readonly string TreeViewPaddingConverter = nameof(TreeViewPaddingConverter);
 
+        public static readonly string TreeViewChainHorizontalMarginConverter = nameof(TreeViewChainHorizontalMarginConverter);
+
+        public static readonly string TreeViewChainVerticalMarginConverter = nameof(TreeViewChainVerticalMarginConverter);
+        
         public static readonly string CornerRadiusToDoubleConverter = nameof(CornerRadiusToDoubleConverter);
 
         public static readonly string ThicknessToDoubleConverter = nameof(ThicknessToDoubleConverter);
@@ -135,6 +139,8 @@ namespace Panuon.UI.Silver.Internal
         public static readonly string MsgBoxStackPanelFlowDirectionConverter = nameof(MsgBoxStackPanelFlowDirectionConverter);
 
         public static readonly string ClockHourTextMarginConverter = nameof(ClockHourTextMarginConverter);
+
+        public static readonly string StateControlTemplateConverter = nameof(StateControlTemplateConverter);
 
         #endregion
 
@@ -809,6 +815,10 @@ namespace Panuon.UI.Silver.Internal
 
         public static readonly string TreeViewItemStandardTemplate = nameof(TreeViewItemStandardTemplate);
 
+        public static readonly string TreeViewItemModernTemplate = nameof(TreeViewItemModernTemplate);
+
+        public static readonly string TreeViewItemChainTemplate = nameof(TreeViewItemChainTemplate);
+
         public static readonly string TreeViewStandardItemsHoverBackground = nameof(TreeViewStandardItemsHoverBackground);
 
         public static readonly string TreeViewStandardHoverForeground = nameof(TreeViewStandardHoverForeground);
@@ -825,9 +835,45 @@ namespace Panuon.UI.Silver.Internal
 
         public static readonly string TreeViewStandardItemPadding = nameof(TreeViewStandardItemPadding);
 
-        public static readonly string TreeViewVerticalToggleButtonStyle = nameof(TreeViewVerticalToggleButtonStyle);
+        public static readonly string TreeViewStandardToggleButtonStyle = nameof(TreeViewStandardToggleButtonStyle);
 
-        public static readonly string TreeViewHorinzontalToggleButtonStyle = nameof(TreeViewHorinzontalToggleButtonStyle);
+        public static readonly string TreeViewModernItemsHoverBackground = nameof(TreeViewModernItemsHoverBackground);
+
+        public static readonly string TreeViewModernHoverForeground = nameof(TreeViewModernHoverForeground);
+
+        public static readonly string TreeViewModernItemsToggleBrush = nameof(TreeViewModernItemsToggleBrush);
+
+        public static readonly string TreeViewModernItemsHoverToggleBrush = nameof(TreeViewModernItemsHoverToggleBrush);
+
+        public static readonly string TreeViewModernItemsSelectedToggleBrush = nameof(TreeViewModernItemsSelectedToggleBrush);
+        
+        public static readonly string TreeViewModernItemsSelectedBackground = nameof(TreeViewModernItemsSelectedBackground);
+
+        public static readonly string TreeViewModernSelectedForeground = nameof(TreeViewModernSelectedForeground);
+
+        public static readonly string TreeViewModernItemHeight = nameof(TreeViewModernItemHeight);
+
+        public static readonly string TreeViewModernItemPadding = nameof(TreeViewModernItemPadding);
+
+        public static readonly string TreeViewModernToggleButtonStyle = nameof(TreeViewModernToggleButtonStyle);
+
+        public static readonly string TreeViewChainItemsHoverBackground = nameof(TreeViewChainItemsHoverBackground);
+
+        public static readonly string TreeViewChainHoverForeground = nameof(TreeViewChainHoverForeground);
+
+        public static readonly string TreeViewChainItemsToggleBrush = nameof(TreeViewChainItemsToggleBrush);
+
+        public static readonly string TreeViewChainItemsHoverToggleBrush = nameof(TreeViewChainItemsHoverToggleBrush);
+
+        public static readonly string TreeViewChainItemsSelectedBackground = nameof(TreeViewChainItemsSelectedBackground);
+
+        public static readonly string TreeViewChainSelectedForeground = nameof(TreeViewChainSelectedForeground);
+
+        public static readonly string TreeViewChainItemHeight = nameof(TreeViewChainItemHeight);
+
+        public static readonly string TreeViewChainItemPadding = nameof(TreeViewChainItemPadding);
+
+        public static readonly string TreeViewChainToggleButtonStyle = nameof(TreeViewChainToggleButtonStyle);
         #endregion
 
         #region TabControl

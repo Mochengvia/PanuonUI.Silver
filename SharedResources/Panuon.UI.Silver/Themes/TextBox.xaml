@@ -25,7 +25,7 @@
            TargetType="Button"
            BasedOn="{StaticResource {x:Type Button}}">
         <Setter Property="FontFamily"
-                Value="{StaticResource PanuonIconFont}" />
+                Value="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon" />
         <Setter Property="Content"
                 Value="&#xe92d;" />
         <Setter Property="local:ButtonHelper.ButtonStyle"
@@ -135,7 +135,7 @@
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
                            Foreground="White"
-                           FontFamily="{StaticResource PanuonIconFont}" />
+                           FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon" />
             </Grid>
         </Grid>
         <ControlTemplate.Triggers>

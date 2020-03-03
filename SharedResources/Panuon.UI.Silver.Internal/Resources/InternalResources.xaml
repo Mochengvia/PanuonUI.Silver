@@ -48,6 +48,8 @@
     <icv:ArcConverter x:Key="{x:Static i:ResourceKeys.ArcConverter}" />
     <icv:LoadingClassicRenderTransformOriginConverter x:Key="{x:Static i:ResourceKeys.LoadingClassicRenderTransformOriginConverter}" />
     <icv:TreeViewPaddingConverter x:Key="{x:Static i:ResourceKeys.TreeViewPaddingConverter}" />
+    <icv:TreeViewChainHorizontalMarginConverter x:Key="{x:Static i:ResourceKeys.TreeViewChainHorizontalMarginConverter}" />
+    <icv:TreeViewChainVerticalMarginConverter x:Key="{x:Static i:ResourceKeys.TreeViewChainVerticalMarginConverter}" />
     <icv:DoubleMinConverter x:Key="{x:Static i:ResourceKeys.DoubleMinConverter}" />
     <icv:DoubleEqualsConverter x:Key="{x:Static i:ResourceKeys.DoubleEqualsConverter}" />
     <icv:DoubleToRightMarginConverter x:Key="{x:Static i:ResourceKeys.DoubleToRightMarginConverter}" />
@@ -71,6 +73,7 @@
     <icv:MsgBoxButtonVisibilityConverter x:Key="{x:Static i:ResourceKeys.MsgBoxButtonVisibilityConverter}" />
     <icv:MsgBoxStackPanelFlowDirectionConverter x:Key="{x:Static i:ResourceKeys.MsgBoxStackPanelFlowDirectionConverter}" />
     <icv:ClockHourTextMarginConverter x:Key="{x:Static i:ResourceKeys.ClockHourTextMarginConverter}" />
+    <icv:StateControlTemplateConverter x:Key="{x:Static i:ResourceKeys.StateControlTemplateConverter}" />
     <!--======Common======-->
     <Color x:Key="{x:Static i:ResourceKeys.DefaultForegroundColor}">#3E3E3E</Color>
 
@@ -467,6 +470,25 @@
     <sys:Double x:Key="{x:Static i:ResourceKeys.TreeViewStandardItemHeight}">30</sys:Double>
     <Thickness x:Key="{x:Static i:ResourceKeys.TreeViewStandardItemPadding}">15,0,0,0</Thickness>
 
+    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.TreeViewModernItemsHoverBackground}"
+                     Color="#FAFAFA" />
+    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.TreeViewModernItemsSelectedBackground}"
+                     Color="#F1F1F1" />
+    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.TreeViewModernItemsToggleBrush}"
+                     Color="#EEEEEE" />
+    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.TreeViewModernItemsHoverToggleBrush}"
+                     Color="#CCCCCC" />
+    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.TreeViewModernItemsSelectedToggleBrush}"
+                     Color="#3E3E3E" />
+    <sys:Double x:Key="{x:Static i:ResourceKeys.TreeViewModernItemHeight}">30</sys:Double>
+    <Thickness x:Key="{x:Static i:ResourceKeys.TreeViewModernItemPadding}">15,0,0,0</Thickness>
+
+    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.TreeViewChainItemsToggleBrush}"
+                     Color="Gray" />
+    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.TreeViewChainItemsHoverToggleBrush}"
+                     Color="#3E3E3E" />
+    <sys:Double x:Key="{x:Static i:ResourceKeys.TreeViewChainItemHeight}">30</sys:Double>
+    <Thickness x:Key="{x:Static i:ResourceKeys.TreeViewChainItemPadding}">15,0,0,0</Thickness>
     <!--TabControl-->
     <SolidColorBrush x:Key="{x:Static i:ResourceKeys.TabControlBackground}" 
                      Color="Transparent"/>
