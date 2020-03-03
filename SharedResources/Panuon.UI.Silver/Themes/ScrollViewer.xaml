@@ -13,8 +13,7 @@
 
     <ControlTemplate x:Key="{x:Static i:ResourceKeys.ScrollViewerThumbTemplate}"
                      TargetType="Thumb">
-        <Border 
-                Background="{Binding Path=(local:ScrollViewerHelper.ThumbBrush),RelativeSource={RelativeSource Self}, Mode=OneWay}"
+        <Border Background="{Binding Path=(local:ScrollViewerHelper.ThumbBrush),RelativeSource={RelativeSource Self}, Mode=OneWay}"
                 CornerRadius="{Binding Path=(local:ScrollViewerHelper.ScrollBarCornerRadius),RelativeSource={RelativeSource Self}, Mode=OneWay}" />
     </ControlTemplate>
 

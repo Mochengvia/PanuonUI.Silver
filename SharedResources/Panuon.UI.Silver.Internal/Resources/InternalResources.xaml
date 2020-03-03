@@ -72,7 +72,6 @@
     <icv:MsgBoxButtonIsDefaultConverter x:Key="{x:Static i:ResourceKeys.MsgBoxButtonIsDefaultConverter}" />
     <icv:MsgBoxButtonVisibilityConverter x:Key="{x:Static i:ResourceKeys.MsgBoxButtonVisibilityConverter}" />
     <icv:MsgBoxStackPanelFlowDirectionConverter x:Key="{x:Static i:ResourceKeys.MsgBoxStackPanelFlowDirectionConverter}" />
-    <icv:ClockHourTextMarginConverter x:Key="{x:Static i:ResourceKeys.ClockHourTextMarginConverter}" />
     <icv:StateControlTemplateConverter x:Key="{x:Static i:ResourceKeys.StateControlTemplateConverter}" />
     <!--======Common======-->
     <Color x:Key="{x:Static i:ResourceKeys.DefaultForegroundColor}">#3E3E3E</Color>

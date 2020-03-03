@@ -1,6 +1,8 @@
 ﻿using Panuon.UI.Silver.Core;
+using Panuon.UI.Silver.Internal.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Text;
 using System.Windows;
@@ -12,6 +14,12 @@ namespace Panuon.UI.Silver
 {
     public class Clock : Control
     {
+        #region Fields
+        private const string _CLOCK_GROUP_SECONDS = "CLOCK_GROUP_SECONDS";
+        private const string _CLOCK_GROUP_MINUTES = "CLOCK_GROUP_MINUTES";
+        private const string _CLOCK_GROUP_HOURS = "CLOCK_GROUP_HOURS";
+        #endregion
+
         #region Ctor
         static Clock()
         {
@@ -20,14 +28,14 @@ namespace Panuon.UI.Silver
 
         public Clock()
         {
-            AddHandler(ClockItem.MouseLeftButtonDownEvent, new RoutedEventHandler(OnClockItemMouseLeftDown));
             AddHandler(RadioButton.ClickEvent, new RoutedEventHandler(OnRadioButtonClicked));
-            MouseDown += Clock_MouseDown;
-            MouseMove += Clock_MouseMove;
+            Hours = new ObservableCollection<ClockModelItem>();
+            Minutes = new ObservableCollection<ClockModelItem>();
+            Seconds = new ObservableCollection<ClockModelItem>();
             Loaded += Clock_Loaded;
         }
 
-        
+
         #endregion
 
         #region RoutedEvent
@@ -83,32 +91,6 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("MinTime", typeof(DateTime?), typeof(Clock), new PropertyMetadata(null, OnMinTimeChanged, OnMinTimeCoerceValue));
         #endregion
 
-        #region TimeInputStyle
-
-
-        public Style TimeInputStyle
-        {
-            get { return (Style)GetValue(TimeInputStyleProperty); }
-            set { SetValue(TimeInputStyleProperty, value); }
-        }
-
-        public static readonly DependencyProperty TimeInputStyleProperty =
-            DependencyProperty.Register("TimeInputStyle", typeof(Style), typeof(Clock));
-
-
-        #endregion
-
-        #region TimePeriodStyle
-        public Style TimePeriodStyle
-        {
-            get { return (Style)GetValue(TimePeriodStyleProperty); }
-            set { SetValue(TimePeriodStyleProperty, value); }
-        }
-
-        public static readonly DependencyProperty TimePeriodStyleProperty =
-            DependencyProperty.Register("TimePeriodStyle", typeof(Style), typeof(Clock));
-        #endregion
-
         #region ClockItemStyle
 
 
@@ -121,18 +103,6 @@ namespace Panuon.UI.Silver
         public static readonly DependencyProperty ClockItemStyleProperty =
             DependencyProperty.Register("ClockItemStyle", typeof(Style), typeof(Clock));
 
-
-        #endregion
-
-        #region TimePeriod
-        public TimePeriod TimePeriod
-        {
-            get { return (TimePeriod)GetValue(TimePeriodProperty); }
-            set { SetValue(TimePeriodProperty, value); }
-        }
-
-        public static readonly DependencyProperty TimePeriodProperty =
-            DependencyProperty.Register("TimePeriod", typeof(TimePeriod), typeof(Clock), new PropertyMetadata(OnTimePeriodChanged));
 
         #endregion
 
@@ -149,306 +119,88 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("ThemeBrush", typeof(Brush), typeof(Clock));
         #endregion
 
-        #region CanInputTime
-        public bool CanInputTime
-        {
-            get { return (bool)GetValue(CanInputTimeProperty); }
-            set { SetValue(CanInputTimeProperty, value); }
-        }
-
-        public static readonly DependencyProperty CanInputTimeProperty =
-            DependencyProperty.Register("CanInputTime", typeof(bool), typeof(Clock));
-        #endregion
-
-        #region CanSelectTimePeriod
-        public bool CanSelectTimePeriod
-        {
-            get { return (bool)GetValue(CanSelectTimePeriodProperty); }
-            set { SetValue(CanSelectTimePeriodProperty, value); }
-        }
-
-        public static readonly DependencyProperty CanSelectTimePeriodProperty =
-            DependencyProperty.Register("CanSelectTimePeriod", typeof(bool), typeof(Clock));
-        #endregion
-
         #endregion
 
         #region Internal Properties
 
-        #region HourAngle
-        internal int HourAngle
+        #region Hours
+        internal ObservableCollection<ClockModelItem> Hours
         {
-            get { return (int)GetValue(HourAngleProperty); }
-            set { SetValue(HourAngleProperty, value); }
+            get { return (ObservableCollection<ClockModelItem>)GetValue(HoursProperty); }
+            set { SetValue(HoursProperty, value); }
         }
 
-        internal static readonly DependencyProperty HourAngleProperty =
-            DependencyProperty.Register("HourAngle", typeof(int), typeof(Clock));
+        internal static readonly DependencyProperty HoursProperty =
+            DependencyProperty.Register("Hours", typeof(ObservableCollection<ClockModelItem>), typeof(Clock));
         #endregion
 
-        #region Hour
-        internal int Hour
+        #region Minutes
+        internal ObservableCollection<ClockModelItem> Minutes
         {
-            get { return (int)GetValue(HourProperty); }
-            set { SetValue(HourProperty, value); }
+            get { return (ObservableCollection<ClockModelItem>)GetValue(MinutesProperty); }
+            set { SetValue(MinutesProperty, value); }
         }
 
-        internal static readonly DependencyProperty HourProperty =
-            DependencyProperty.Register("Hour", typeof(int), typeof(Clock), new PropertyMetadata(0, OnHourChanged, OnHourCoerceValue));
+        internal static readonly DependencyProperty MinutesProperty =
+            DependencyProperty.Register("Minutes", typeof(ObservableCollection<ClockModelItem>), typeof(Clock));
         #endregion
 
-        #region MinuteAngle
-
-
-        internal int MinuteAngle
+        #region Seconds
+        internal ObservableCollection<ClockModelItem> Seconds
         {
-            get { return (int)GetValue(MinuteAngleProperty); }
-            set { SetValue(MinuteAngleProperty, value); }
+            get { return (ObservableCollection<ClockModelItem>)GetValue(SecondsProperty); }
+            set { SetValue(SecondsProperty, value); }
         }
 
-        internal static readonly DependencyProperty MinuteAngleProperty =
-            DependencyProperty.Register("MinuteAngle", typeof(int), typeof(Clock));
-        #endregion
-
-        #region Minute
-
-
-        internal int Minute
-        {
-            get { return (int)GetValue(MinuteProperty); }
-            set { SetValue(MinuteProperty, value); }
-        }
-
-        internal static readonly DependencyProperty MinuteProperty =
-            DependencyProperty.Register("Minute", typeof(int), typeof(Clock), new PropertyMetadata(0, OnMinuteChanged, OnMinuteCoerceValue));
-
-        #endregion
-
-        #region SecondAngle
-        internal int SecondAngle
-        {
-            get { return (int)GetValue(SecondAngleProperty); }
-            set { SetValue(SecondAngleProperty, value); }
-        }
-
-        internal static readonly DependencyProperty SecondAngleProperty =
-            DependencyProperty.Register("SecondAngle", typeof(int), typeof(Clock));
-        #endregion
-
-        #region Second
-        internal int Second
-        {
-            get { return (int)GetValue(SecondProperty); }
-            set { SetValue(SecondProperty, value); }
-        }
-
-        internal static readonly DependencyProperty SecondProperty =
-            DependencyProperty.Register("Second", typeof(int), typeof(Clock), new PropertyMetadata(0, OnSecondChanged, OnSecondCoerceValue));
-        #endregion
-
-        #region IsHourHandHooked
-
-
-        internal bool IsHourHandHooked
-        {
-            get { return (bool)GetValue(IsHourHandHookedProperty); }
-            set { SetValue(IsHourHandHookedProperty, value); }
-        }
-
-        internal static readonly DependencyProperty IsHourHandHookedProperty =
-            DependencyProperty.Register("IsHourHandHooked", typeof(bool), typeof(Clock));
-
-
-        #endregion
-
-        #region IsMinuteHandHooked
-
-
-        internal bool IsMinuteHandHooked
-        {
-            get { return (bool)GetValue(IsMinuteHandHookedProperty); }
-            set { SetValue(IsMinuteHandHookedProperty, value); }
-        }
-
-        internal static readonly DependencyProperty IsMinuteHandHookedProperty =
-            DependencyProperty.Register("IsMinuteHandHooked", typeof(bool), typeof(Clock));
-
-
-        #endregion
-
-        #region IsSecondHandHooked
-        internal bool IsSecondHandHooked
-        {
-            get { return (bool)GetValue(IsSecondHandHookedProperty); }
-            set { SetValue(IsSecondHandHookedProperty, value); }
-        }
-
-        internal static readonly DependencyProperty IsSecondHandHookedProperty =
-            DependencyProperty.Register("IsSecondHandHooked", typeof(bool), typeof(Clock));
+        internal static readonly DependencyProperty SecondsProperty =
+            DependencyProperty.Register("Seconds", typeof(ObservableCollection<ClockModelItem>), typeof(Clock));
         #endregion
 
         #endregion
 
         #region Event Handler
 
-        private static void OnHourChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var clock = d as Clock;
-            var hour = clock.Hour;
-            if(clock.SelectedTime.Hour != hour)
-            {
-                clock.SelectedTime = new DateTime(1, 1, 1, hour, clock.SelectedTime.Minute, clock.SelectedTime.Second);
-            }
-        }
-
-        private static object OnHourCoerceValue(DependencyObject d, object baseValue)
-        {
-            var value = (int)baseValue;
-            if(value < 0)
-            {
-                return 0;
-            }
-            else if(value > 23)
-            {
-                return 0;
-            }
-            else
-            {
-                return value;
-            }
-        }
-
-
-        private static object OnMinuteCoerceValue(DependencyObject d, object baseValue)
-        {
-            var value = (int)baseValue;
-            if (value < 0)
-            {
-                return 0;
-            }
-            else if (value > 59)
-            {
-                return 0;
-            }
-            else
-            {
-                return value;
-            }
-        }
-
-        private static void OnMinuteChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var clock = d as Clock;
-            var minute = clock.Minute;
-            if (clock.SelectedTime.Minute != minute)
-            {
-                clock.SelectedTime = new DateTime(1, 1, 1, clock.SelectedTime.Hour, minute, clock.SelectedTime.Second);
-            }
-        }
-
-        private static object OnSecondCoerceValue(DependencyObject d, object baseValue)
-        {
-            var value = (int)baseValue;
-            if (value < 0)
-            {
-                return 0;
-            }
-            else if (value > 59)
-            {
-                return 0;
-            }
-            else
-            {
-                return value;
-            }
-        }
-
-        private static void OnSecondChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var clock = d as Clock;
-            var second = clock.Second;
-            if (clock.SelectedTime.Second != second)
-            {
-                clock.SelectedTime = new DateTime(1, 1, 1, clock.SelectedTime.Hour, clock.SelectedTime.Minute, second);
-            }
-        }
 
         private void OnRadioButtonClicked(object sender, RoutedEventArgs e)
         {
             var radioButton = e.OriginalSource as RadioButton;
-            if(radioButton == null)
+            if (radioButton == null)
             {
                 return;
             }
-            switch (radioButton.Name)
+            var groupName = radioButton.GroupName;
+            switch (groupName)
             {
-                case "PART_RdbPM":
-                    TimePeriod = TimePeriod.PM;
+                case _CLOCK_GROUP_SECONDS:
+                    var seconds = (int)radioButton.Tag;
+                    if (seconds != SelectedTime.Second)
+                    {
+                        SelectedTime = new DateTime(SelectedTime.Year, SelectedTime.Month, SelectedTime.Day, SelectedTime.Hour, SelectedTime.Minute, seconds);
+                    }
                     break;
-                default:
-                    TimePeriod = TimePeriod.AM;
+                case _CLOCK_GROUP_MINUTES:
+                    var minutes = (int)radioButton.Tag;
+                    if (minutes != SelectedTime.Second)
+                    {
+                        SelectedTime = new DateTime(SelectedTime.Year, SelectedTime.Month, SelectedTime.Day, SelectedTime.Hour, minutes, SelectedTime.Second);
+                    }
                     break;
+                case _CLOCK_GROUP_HOURS:
+                    var hours = (int)radioButton.Tag;
+                    if (hours != SelectedTime.Second)
+                    {
+                        SelectedTime = new DateTime(SelectedTime.Year, SelectedTime.Month, SelectedTime.Day, hours, SelectedTime.Minute, SelectedTime.Second);
+                    }
+                    break;
+
             }
         }
 
-        private static void OnTimePeriodChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var clock = d as Clock;
-            clock.UpdatePeriods();
-        }
 
-        private void Clock_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
-        {
-            var center = new Point(ActualWidth / 2, ActualHeight / 2);
-            var point = Mouse.GetPosition(this);
-            var angle = Math.Atan2(point.Y - center.Y, point.X - center.X) * (180 / Math.PI)  + 90;
-            if (angle < 0)
-                angle += 360;
-
-            if (IsHourHandHooked)
-            {
-                var percent = angle / 30;
-                var hour = Math.Floor(percent);
-                hour = (percent - hour) > 0.5 ? hour + 1 : hour;
-                hour = hour >= 12 ? 0 : hour;
-                hour = TimePeriod == TimePeriod.AM ? hour : hour + 12;
-                SelectedTime = new DateTime(1, 1, 1, (int)hour, SelectedTime.Minute, SelectedTime.Second);
-            }
-            else if (IsMinuteHandHooked)
-            {
-                var percent = angle / 6;
-                var minute = Math.Floor(percent);
-                minute = (percent - minute) > 0.5 ? minute + 1 : minute;
-                minute = minute >= 60 ? 0 : minute;
-                SelectedTime = new DateTime(1, 1, 1, SelectedTime.Hour, (int)minute, SelectedTime.Second);
-            }
-            else if (IsSecondHandHooked)
-            {
-                var percent = angle / 6;
-                var second = Math.Floor(percent);
-                second = (percent - second) > 0.5 ? second + 1 : second;
-                second = second >= 60 ? 0 : second;
-                SelectedTime = new DateTime(1, 1, 1, SelectedTime.Hour, SelectedTime.Minute, (int)second);
-            }
-        }
-
-        private void Clock_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            var element = e.OriginalSource as FrameworkElement;
-            if(element != null && (element is ClockItem || VisualTreeHelper.GetParent(element) is ClockItem))
-            {
-                return;
-            }
-
-            IsHourHandHooked = false;
-            IsMinuteHandHooked = false;
-            IsSecondHandHooked = false;
-
-        }
 
         private void Clock_Loaded(object sender, RoutedEventArgs e)
         {
-            UpdateClock(SelectedTime);
+            UpdateClock();
         }
 
         private static object OnMinTimeCoerceValue(DependencyObject d, object baseValue)
@@ -476,7 +228,7 @@ namespace Panuon.UI.Silver
         private static object OnMaxTimeCoerceValue(DependencyObject d, object baseValue)
         {
             var clock = d as Clock;
-            if(baseValue== null)
+            if (baseValue == null)
             {
                 return null;
             }
@@ -517,54 +269,210 @@ namespace Panuon.UI.Silver
         private static void OnSelectedTimeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var clock = d as Clock;
-            var newTime = (DateTime)e.NewValue;
-            clock.Hour = newTime.Hour;
-            clock.Minute = newTime.Minute;
-            clock.Second = newTime.Second;
-            clock.TimePeriod = newTime.Hour >= 12 ? TimePeriod.PM : TimePeriod.AM;
-            clock.UpdateClock(newTime);
-            clock.RaiseSelectedTimeChanged(newTime);
+            var newDate = (DateTime)e.NewValue;
+            var oldDate = (DateTime)e.OldValue;
+            clock.UpdateClock(oldDate, newDate);
+            clock.RaiseSelectedTimeChanged(newDate);
         }
 
-        private void OnClockItemMouseLeftDown(object sender, RoutedEventArgs e)
-        {
-        }
         #endregion
 
         #region Methods
         #endregion
 
         #region Function
-        private void UpdateClock(DateTime newTime)
+        private void UpdateClock()
         {
-            var hour = newTime.Hour;
-            hour = hour >= 12 ? hour - 12 : hour;
-            HourAngle = hour * 30;
-            MinuteAngle = newTime.Minute * 6;
-            SecondAngle = newTime.Second * 6;
+            LoadOrUpdateHours();
+            LoadOrUpdateMinutes();
+            LoadOrUpdateSeconds();
         }
 
-        private void UpdatePeriods()
+        private void UpdateClock(DateTime oldDate, DateTime newDate)
         {
-            var hour = SelectedTime.Hour;
-            switch (TimePeriod)
+            if (newDate.Hour == oldDate.Hour)
             {
-                case TimePeriod.AM:
-                    if(hour >= 12)
+                if (newDate.Minute == oldDate.Minute)
+                {
+                    if (newDate.Second != oldDate.Second)
                     {
-                        hour -= 12;
-                        SelectedTime = new DateTime(1, 1, 1, hour, SelectedTime.Minute, SelectedTime.Second);
+                        LoadOrUpdateSeconds();
                     }
-                    break;
-                case TimePeriod.PM:
-                    if(hour < 12)
-                    {
-                        hour += 12;
-                        SelectedTime = new DateTime(1, 1, 1, hour, SelectedTime.Minute, SelectedTime.Second);
-                    }
-                    break;
+                }
+                else
+                {
+                    LoadOrUpdateSeconds();
+                    LoadOrUpdateMinutes();
+                }
+            }
+            else
+            {
+                LoadOrUpdateSeconds();
+                LoadOrUpdateMinutes();
+                LoadOrUpdateHours();
             }
         }
+
+
+        private void LoadOrUpdateHours()
+        {
+            for (int i = 0; i < 24; i++)
+            {
+                if (Hours.Count <= i)
+                {
+                    var clockItem = new ClockModelItem()
+                    {
+                        Value = i,
+                        DisplayName = i.ToString(),
+                        IsEnabled = IsHourValidated(i),
+                        IsChecked = i == SelectedTime.Hour,
+                    };
+                    Hours.Add(clockItem);
+                }
+                else
+                {
+                    var clockItem = Hours[i];
+                    clockItem.Value = i;
+                    clockItem.DisplayName = i.ToString();
+                    clockItem.IsEnabled = IsHourValidated(i);
+                    clockItem.IsChecked = i == SelectedTime.Hour;
+                }
+            }
+        }
+
+        private void LoadOrUpdateMinutes()
+        {
+            for (int i = 0; i < 6000; i++)
+            {
+                if (Minutes.Count <= i)
+                {
+                    var clockItem = new ClockModelItem()
+                    {
+                        Value = i,
+                        DisplayName = i.ToString(),
+                        IsEnabled = IsMinuteValidated(SelectedTime.Hour, i),
+                        IsChecked = i == SelectedTime.Minute,
+                    };
+                    Minutes.Add(clockItem);
+                }
+                else
+                {
+                    var clockItem = Minutes[i];
+                    clockItem.Value = i;
+                    clockItem.DisplayName = i.ToString();
+                    clockItem.IsEnabled = IsMinuteValidated(SelectedTime.Hour, i);
+                    clockItem.IsChecked = i == SelectedTime.Minute;
+                }
+            }
+        }
+
+        private void LoadOrUpdateSeconds()
+        {
+            for (int i = 0; i < 60; i++)
+            {
+                if (Seconds.Count <= i)
+                {
+                    var clockItem = new ClockModelItem()
+                    {
+                        Value = i,
+                        DisplayName = i.ToString(),
+                        IsEnabled = IsSecondValidated(SelectedTime.Hour, SelectedTime.Minute, i),
+                        IsChecked = i == SelectedTime.Second,
+                    };
+                    Seconds.Add(clockItem);
+                }
+                else
+                {
+                    var clockItem = Seconds[i];
+                    clockItem.Value = i;
+                    clockItem.DisplayName = i.ToString();
+                    clockItem.IsEnabled = IsSecondValidated(SelectedTime.Hour, SelectedTime.Minute, i);
+                    clockItem.IsChecked = i == SelectedTime.Second;
+                }
+            }
+        }
+
+        private bool IsHourValidated(int hour)
+        {
+            if (MaxTime.HasValue)
+            {
+                if (hour > MaxTime.Value.Hour)
+                {
+                    return false;
+                }
+            }
+            if (MinTime.HasValue)
+            {
+                if (hour < MinTime.Value.Minute)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private bool IsMinuteValidated(int currentHour, int minute)
+        {
+            if (MaxTime.HasValue)
+            {
+                if (currentHour > MaxTime.Value.Hour)
+                {
+                    return false;
+                }
+                else if (currentHour == MaxTime.Value.Hour && minute > MaxTime.Value.Hour)
+                {
+                    return false;
+                }
+            }
+            if (MinTime.HasValue)
+            {
+                if (currentHour < MinTime.Value.Hour)
+                {
+                    return false;
+                }
+                else if (currentHour == MinTime.Value.Hour && minute < MinTime.Value.Hour)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private bool IsSecondValidated(int currentHour, int currentMinute, int minute)
+        {
+            if (MaxTime.HasValue)
+            {
+                if (currentHour > MaxTime.Value.Hour)
+                {
+                    return false;
+                }
+                else if (currentHour == MaxTime.Value.Hour && currentMinute > MaxTime.Value.Minute)
+                {
+                    return false;
+                }
+                else if (currentHour == MaxTime.Value.Hour && currentMinute == MaxTime.Value.Minute && minute > MaxTime.Value.Hour)
+                {
+                    return false;
+                }
+            }
+            if (MinTime.HasValue)
+            {
+                if (currentHour < MinTime.Value.Hour)
+                {
+                    return false;
+                }
+                else if (currentHour == MinTime.Value.Hour && currentMinute < MinTime.Value.Minute)
+                {
+                    return false;
+                }
+                if (currentHour == MinTime.Value.Hour && currentMinute == MinTime.Value.Minute && minute < MinTime.Value.Hour)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         #endregion
     }
 }

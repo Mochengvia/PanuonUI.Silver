@@ -138,8 +138,6 @@ namespace Panuon.UI.Silver.Internal
 
         public static readonly string MsgBoxStackPanelFlowDirectionConverter = nameof(MsgBoxStackPanelFlowDirectionConverter);
 
-        public static readonly string ClockHourTextMarginConverter = nameof(ClockHourTextMarginConverter);
-
         public static readonly string StateControlTemplateConverter = nameof(StateControlTemplateConverter);
 
         #endregion
@@ -970,8 +968,6 @@ namespace Panuon.UI.Silver.Internal
         #endregion
 
         #region Clock
-        public static readonly string ClockItemTemplate = nameof(ClockItemTemplate);
-
         public static readonly string ClockTemplate = nameof(ClockTemplate);
 
         public static readonly string ClockThemeBrush = nameof(ClockThemeBrush);
@@ -982,7 +978,8 @@ namespace Panuon.UI.Silver.Internal
 
         public static readonly string ClockBackground = nameof(ClockBackground);
 
-        public static readonly string ClockHourTextBlock = nameof(ClockHourTextBlock);
+        public static readonly string ClockItemsControlStyle = nameof(ClockItemsControlStyle);
+        
         #endregion
 
         #region GroupBox

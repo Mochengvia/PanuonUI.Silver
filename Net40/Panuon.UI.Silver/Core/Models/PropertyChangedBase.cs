@@ -11,5 +11,11 @@ namespace Panuon.UI.Silver.Core
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        protected void SetValue<T>(ref T identifer, T value, [CallerMemberName]string propertyName = null)
+        {
+            identifer = value;
+            NotifyPropertyChanged(propertyName);
+        }
     }
 }

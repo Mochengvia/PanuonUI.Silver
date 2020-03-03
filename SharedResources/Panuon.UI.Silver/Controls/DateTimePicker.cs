@@ -177,17 +177,6 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("CalendarStyle", typeof(Style), typeof(DateTimePicker));
         #endregion
 
-        #region ClockStyle
-        public Style ClockStyle
-        {
-            get { return (Style)GetValue(ClockStyleProperty); }
-            set { SetValue(ClockStyleProperty, value); }
-        }
-
-        public static readonly DependencyProperty ClockStyleProperty =
-            DependencyProperty.Register("ClockStyle", typeof(Style), typeof(DateTimePicker));
-        #endregion
-
         #region ThemeBrush
         public Brush ThemeBrush
         {
@@ -204,25 +193,25 @@ namespace Panuon.UI.Silver
         #region Internal Properties
 
         #region SelectedDate
-        public DateTime SelectedDate
+        internal DateTime SelectedDate
         {
             get { return (DateTime)GetValue(SelectedDateProperty); }
             set { SetValue(SelectedDateProperty, value); }
         }
 
-        public static readonly DependencyProperty SelectedDateProperty =
+        internal static readonly DependencyProperty SelectedDateProperty =
             DependencyProperty.Register("SelectedDate", typeof(DateTime), typeof(DateTimePicker), new PropertyMetadata(OnSelectedDateChanged));
 
         #endregion
 
         #region SelectedTime
-        public DateTime SelectedTime
+        internal DateTime SelectedTime
         {
             get { return (DateTime)GetValue(SelectedTimeProperty); }
             set { SetValue(SelectedTimeProperty, value); }
         }
 
-        public static readonly DependencyProperty SelectedTimeProperty =
+        internal static readonly DependencyProperty SelectedTimeProperty =
             DependencyProperty.Register("SelectedTime", typeof(DateTime), typeof(DateTimePicker), new PropertyMetadata(OnSelectedTimeChanged));
 
         #endregion

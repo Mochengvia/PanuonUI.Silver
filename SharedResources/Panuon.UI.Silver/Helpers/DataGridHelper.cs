@@ -353,11 +353,11 @@ namespace Panuon.UI.Silver
                     {
                         width = GridLengthUtils.ConvertToDataGridLength(dgcAttribute.ColumnWidth);
                     }
-                    if (dgcAttribute.BindingMode == null)
+                    if (dgcAttribute.BindingMode != null)
                     {
                         bindingMode = (BindingMode)dgcAttribute.BindingMode;
                     }
-                    if (dgcAttribute.UpdateSourceTrigger == null)
+                    if (dgcAttribute.UpdateSourceTrigger != null)
                     {
                         updateSourceTrigger = (UpdateSourceTrigger)dgcAttribute.UpdateSourceTrigger;
                     }

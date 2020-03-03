@@ -29,10 +29,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\ClockItem.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\DataGrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -163,12 +159,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Components\StateItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Calendar.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\CalendarItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Card.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CarouselPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CarouselViewer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Clock.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\ClockItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\DateTimePicker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Dotline.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Drawer.cs" />

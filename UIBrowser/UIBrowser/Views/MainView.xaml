@@ -20,22 +20,8 @@
             <Run Foreground="#68D450"> U O N</Run>
         </TextBlock>
     </pu:WindowXCaption.Header>
-    <TreeView Width="200"
-              pu:TreeViewHelper.TreeViewStyle="Chain">
-        <TreeViewItem Header="Item1">
-            <TreeViewItem Header="Item1-1" />
-            <TreeViewItem Header="Item1-2" />
-            <TreeViewItem Header="Item1-3" />
-        </TreeViewItem>
-        <TreeViewItem Header="Item2">
-            <TreeViewItem Header="Item2-1" />
-            <TreeViewItem Header="Item2-2" />
-            <TreeViewItem Header="Item2-3" />
-        </TreeViewItem>
-        <TreeViewItem Header="Item3">
-            <TreeViewItem Header="Item3-1" />
-            <TreeViewItem Header="Item3-2" />
-            <TreeViewItem Header="Item3-3" />
-        </TreeViewItem>
-    </TreeView>
+    <pu:DateTimePicker Height="30"
+                       Width="200"
+                       SelectedDateTime="2020-3-3 10:9:5"/>
+
 </pu:WindowX>

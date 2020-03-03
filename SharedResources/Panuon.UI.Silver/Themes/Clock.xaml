@@ -8,31 +8,41 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/InternalResources.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Resources.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/ClockItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/RadioButton.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
+    <Style x:Key="{x:Static i:ResourceKeys.ClockItemsControlStyle}"
+           TargetType="ItemsControl">
+        <Setter Property="VirtualizingStackPanel.IsVirtualizing"
+                Value="True" />
+        <Setter Property="ScrollViewer.CanContentScroll"
+                Value="True" />
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ItemsControl">
+                    <Border BorderThickness="{TemplateBinding Border.BorderThickness}"
+                            Padding="{TemplateBinding Control.Padding}"
+                            BorderBrush="{TemplateBinding Border.BorderBrush}"
+                            Background="{TemplateBinding Panel.Background}"
+                            SnapsToDevicePixels="True">
+                        <ScrollViewer Padding="{TemplateBinding Control.Padding}"
+                                      Focusable="False">
+                            <ItemsPresenter SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
+                        </ScrollViewer>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style x:Key="{x:Static rs:ResourceKeys.ClockItemStyle}"
-           TargetType="local:ClockItem"
-           BasedOn="{StaticResource {x:Type local:ClockItem}}" />
-
-    <Style x:Key="{x:Static i:ResourceKeys.ClockHourTextBlock}"
-           TargetType="TextBlock">
-        <Setter Property="VerticalAlignment"
-                Value="Center" />
-        <Setter Property="HorizontalAlignment"
-                Value="Center" />
-    </Style>
-
-    <Style x:Key="{x:Static rs:ResourceKeys.ClockTimeTimeInputTextBoxStyle}"
-           TargetType="TextBox">
-        <Setter Property="BorderThickness"
-                Value="0" />
-        <Setter Property="HorizontalContentAlignment"
-                Value="Center" />
-    </Style>
-
-    <Style x:Key="{x:Static rs:ResourceKeys.ClockTimePeriodRadioButtonStyle}"
            TargetType="RadioButton"
            BasedOn="{StaticResource {x:Type RadioButton}}">
         <Setter Property="local:RadioButtonHelper.RadioButtonStyle"
@@ -40,10 +50,8 @@
         <Style.Triggers>
             <Trigger Property="local:RadioButtonHelper.RadioButtonStyle"
                      Value="Button">
-                <Setter Property="Padding"
-                        Value="5,2" />
                 <Setter Property="Height"
-                        Value="Auto" />
+                        Value="35" />
                 <Setter Property="local:RadioButtonHelper.CheckedBackground"
                         Value="{Binding ThemeBrush, RelativeSource={RelativeSource AncestorType=local:Clock}, Mode=OneWay}" />
             </Trigger>
@@ -53,299 +61,74 @@
     <ControlTemplate x:Key="{x:Static i:ResourceKeys.ClockTemplate}"
                      TargetType="local:Clock">
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-
-            <Border x:Name="BdrDial">
-                <Grid VerticalAlignment="Center"
-                      HorizontalAlignment="Center">
-                    <Grid.Width>
-                        <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.DoubleMinConverter}}">
-                            <Binding Path="ActualWidth"
-                                     ElementName="BdrDial"
-                                     Mode="OneWay" />
-                            <Binding Path="ActualHeight"
-                                     ElementName="BdrDial"
-                                     Mode="OneWay" />
-                        </MultiBinding>
-                    </Grid.Width>
-                    <Grid.Height>
-                        <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.DoubleMinConverter}}">
-                            <Binding Path="ActualWidth"
-                                     ElementName="BdrDial"
-                                     Mode="OneWay" />
-                            <Binding Path="ActualHeight"
-                                     ElementName="BdrDial"
-                                     Mode="OneWay" />
-                        </MultiBinding>
-                    </Grid.Height>
-                    <Ellipse x:Name="EllDial"
-                             Stroke="{TemplateBinding BorderBrush}"
-                             Fill="{TemplateBinding Background}"
-                             StrokeThickness="{Binding BorderThickness, Converter={StaticResource {x:Static i:ResourceKeys.ThicknessToDoubleConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                    <local:ClockItem RenderTransformOrigin="0.5,0.5"
-                                     HorizontalAlignment="Center"
-                                     Hand="Hour"
-                                     Hooked="{Binding IsHourHandHooked, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
-                        <local:ClockItem.RenderTransform>
-                            <TransformGroup>
-                                <TranslateTransform Y="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.DividedByMinus2Converter}}, RelativeSource={RelativeSource AncestorType=local:ClockItem}, Mode=OneWay}" />
-                                <RotateTransform Angle="{Binding HourAngle, RelativeSource={RelativeSource AncestorType=local:Clock}, Mode=OneWay}" />
-                            </TransformGroup>
-                        </local:ClockItem.RenderTransform>
-                    </local:ClockItem>
-                    <local:ClockItem RenderTransformOrigin="0.5,0.5"
-                                     HorizontalAlignment="Center"
-                                     Hand="Minute"
-                                     Hooked="{Binding IsMinuteHandHooked, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
-                        <local:ClockItem.RenderTransform>
-                            <TransformGroup>
-                                <TranslateTransform Y="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.DividedByMinus2Converter}}, RelativeSource={RelativeSource AncestorType=local:ClockItem}, Mode=OneWay}" />
-                                <RotateTransform Angle="{Binding MinuteAngle, RelativeSource={RelativeSource AncestorType=local:Clock}, Mode=OneWay}" />
-                            </TransformGroup>
-                        </local:ClockItem.RenderTransform>
-                    </local:ClockItem>
-                    <local:ClockItem RenderTransformOrigin="0.5,0.5"
-                                     HorizontalAlignment="Center"
-                                     Hand="Second"
-                                     Hooked="{Binding IsSecondHandHooked, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
-                        <local:ClockItem.RenderTransform>
-                            <TransformGroup>
-                                <TranslateTransform Y="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.DividedByMinus2Converter}}, RelativeSource={RelativeSource AncestorType=local:ClockItem}, Mode=OneWay}" />
-                                <RotateTransform Angle="{Binding SecondAngle, RelativeSource={RelativeSource AncestorType=local:Clock}, Mode=OneWay}" />
-                            </TransformGroup>
-                        </local:ClockItem.RenderTransform>
-                    </local:ClockItem>
-                    <TextBlock Text="12"
-                               Style="{StaticResource {x:Static i:ResourceKeys.ClockHourTextBlock}}">
-                        <TextBlock.Margin>
-                            <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.ClockHourTextMarginConverter}}"
-                                          ConverterParameter="12">
-                                <Binding Path="StrokeThickness"
-                                         ElementName="EllDial"
-                                         Mode="OneWay" />
-                                <Binding Path="ActualHeight"
-                                         ElementName="EllDial"
-                                         Mode="OneWay" />
-                            </MultiBinding>
-                        </TextBlock.Margin>
-                    </TextBlock>
-                    <TextBlock Text="11"
-                               Style="{StaticResource {x:Static i:ResourceKeys.ClockHourTextBlock}}">
-                        <TextBlock.Margin>
-                            <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.ClockHourTextMarginConverter}}"
-                                          ConverterParameter="11">
-                                <Binding Path="StrokeThickness"
-                                         ElementName="EllDial"
-                                         Mode="OneWay" />
-                                <Binding Path="ActualHeight"
-                                         ElementName="EllDial"
-                                         Mode="OneWay" />
-                            </MultiBinding>
-                        </TextBlock.Margin>
-                    </TextBlock>
-                    <TextBlock Text="10"
-                               Style="{StaticResource {x:Static i:ResourceKeys.ClockHourTextBlock}}">
-                        <TextBlock.Margin>
-                            <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.ClockHourTextMarginConverter}}"
-                                          ConverterParameter="10">
-                                <Binding Path="StrokeThickness"
-                                         ElementName="EllDial"
-                                         Mode="OneWay" />
-                                <Binding Path="ActualHeight"
-                                         ElementName="EllDial"
-                                         Mode="OneWay" />
-                            </MultiBinding>
-                        </TextBlock.Margin>
-                    </TextBlock>
-                    <TextBlock Text="9"
-                               Style="{StaticResource {x:Static i:ResourceKeys.ClockHourTextBlock}}">
-                        <TextBlock.Margin>
-                            <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.ClockHourTextMarginConverter}}"
-                                          ConverterParameter="9">
-                                <Binding Path="StrokeThickness"
-                                         ElementName="EllDial"
-                                         Mode="OneWay" />
-                                <Binding Path="ActualHeight"
-                                         ElementName="EllDial"
-                                         Mode="OneWay" />
-                            </MultiBinding>
-                        </TextBlock.Margin>
-                    </TextBlock>
-                    <TextBlock Text="8"
-                               Style="{StaticResource {x:Static i:ResourceKeys.ClockHourTextBlock}}">
-                        <TextBlock.Margin>
-                            <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.ClockHourTextMarginConverter}}"
-                                          ConverterParameter="8">
-                                <Binding Path="StrokeThickness"
-                                         ElementName="EllDial"
-                                         Mode="OneWay" />
-                                <Binding Path="ActualHeight"
-                                         ElementName="EllDial"
-                                         Mode="OneWay" />
-                            </MultiBinding>
-                        </TextBlock.Margin>
-                    </TextBlock>
-                    <TextBlock Text="7"
-                               Style="{StaticResource {x:Static i:ResourceKeys.ClockHourTextBlock}}">
-                        <TextBlock.Margin>
-                            <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.ClockHourTextMarginConverter}}"
-                                          ConverterParameter="7">
-                                <Binding Path="StrokeThickness"
-                                         ElementName="EllDial"
-                                         Mode="OneWay" />
-                                <Binding Path="ActualHeight"
-                                         ElementName="EllDial"
-                                         Mode="OneWay" />
-                            </MultiBinding>
-                        </TextBlock.Margin>
-                    </TextBlock>
-                    <TextBlock Text="6"
-                               Style="{StaticResource {x:Static i:ResourceKeys.ClockHourTextBlock}}">
-                        <TextBlock.Margin>
-                            <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.ClockHourTextMarginConverter}}"
-                                          ConverterParameter="6">
-                                <Binding Path="StrokeThickness"
-                                         ElementName="EllDial"
-                                         Mode="OneWay" />
-                                <Binding Path="ActualHeight"
-                                         ElementName="EllDial"
-                                         Mode="OneWay" />
-                            </MultiBinding>
-                        </TextBlock.Margin>
-                    </TextBlock>
-                    <TextBlock Text="5"
-                               Style="{StaticResource {x:Static i:ResourceKeys.ClockHourTextBlock}}">
-                        <TextBlock.Margin>
-                            <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.ClockHourTextMarginConverter}}"
-                                          ConverterParameter="5">
-                                <Binding Path="StrokeThickness"
-                                         ElementName="EllDial"
-                                         Mode="OneWay" />
-                                <Binding Path="ActualHeight"
-                                         ElementName="EllDial"
-                                         Mode="OneWay" />
-                            </MultiBinding>
-                        </TextBlock.Margin>
-                    </TextBlock>
-                    <TextBlock Text="4"
-                               Style="{StaticResource {x:Static i:ResourceKeys.ClockHourTextBlock}}">
-                        <TextBlock.Margin>
-                            <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.ClockHourTextMarginConverter}}"
-                                          ConverterParameter="4">
-                                <Binding Path="StrokeThickness"
-                                         ElementName="EllDial"
-                                         Mode="OneWay" />
-                                <Binding Path="ActualHeight"
-                                         ElementName="EllDial"
-                                         Mode="OneWay" />
-                            </MultiBinding>
-                        </TextBlock.Margin>
-                    </TextBlock>
-                    <TextBlock Text="3"
-                               Style="{StaticResource {x:Static i:ResourceKeys.ClockHourTextBlock}}">
-                        <TextBlock.Margin>
-                            <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.ClockHourTextMarginConverter}}"
-                                          ConverterParameter="3">
-                                <Binding Path="StrokeThickness"
-                                         ElementName="EllDial"
-                                         Mode="OneWay" />
-                                <Binding Path="ActualHeight"
-                                         ElementName="EllDial"
-                                         Mode="OneWay" />
-                            </MultiBinding>
-                        </TextBlock.Margin>
-                    </TextBlock>
-                    <TextBlock Text="2"
-                               Style="{StaticResource {x:Static i:ResourceKeys.ClockHourTextBlock}}">
-                        <TextBlock.Margin>
-                            <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.ClockHourTextMarginConverter}}"
-                                          ConverterParameter="2">
-                                <Binding Path="StrokeThickness"
-                                         ElementName="EllDial"
-                                         Mode="OneWay" />
-                                <Binding Path="ActualHeight"
-                                         ElementName="EllDial"
-                                         Mode="OneWay" />
-                            </MultiBinding>
-                        </TextBlock.Margin>
-                    </TextBlock>
-                    <TextBlock Text="1"
-                               Style="{StaticResource {x:Static i:ResourceKeys.ClockHourTextBlock}}">
-                        <TextBlock.Margin>
-                            <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.ClockHourTextMarginConverter}}"
-                                          ConverterParameter="1">
-                                <Binding Path="StrokeThickness"
-                                         ElementName="EllDial"
-                                         Mode="OneWay" />
-                                <Binding Path="ActualHeight"
-                                         ElementName="EllDial"
-                                         Mode="OneWay" />
-                            </MultiBinding>
-                        </TextBlock.Margin>
-                    </TextBlock>
-                    <Ellipse VerticalAlignment="Center"
-                             HorizontalAlignment="Center"
-                             Fill="{TemplateBinding Foreground}"
-                             Height="10"
-                             Width="10" />
-                </Grid>
-            </Border>
-            <StackPanel HorizontalAlignment="Right"
-                        VerticalAlignment="Top"
-                        Margin="5,0,0,0"
-                        Visibility="{Binding CanSelectTimePeriod, Converter={StaticResource {x:Static i:ResourceKeys.BoolToVisibleConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-                <RadioButton x:Name="PART_RdbAM"
-                             Content="AM"
-                             Style="{TemplateBinding TimePeriodStyle}" />
-                <RadioButton x:Name="PART_RdbPM"
-                             Content="PM"
-                             Style="{TemplateBinding TimePeriodStyle}" />
-            </StackPanel>
-            <StackPanel Grid.Row="1"
-                        Orientation="Horizontal"
-                        HorizontalAlignment="Center"
-                        Margin="0,5,0,0"
-                        Visibility="{Binding CanInputTime, Converter={StaticResource {x:Static i:ResourceKeys.BoolToVisibleConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-                <TextBox Style="{TemplateBinding TimeInputStyle}"
-                         Text="{Binding Hour, RelativeSource={RelativeSource AncestorType=local:Clock}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat='00'}" />
-                <TextBlock Text=":"
-                           VerticalAlignment="Center" />
-                <TextBox Style="{TemplateBinding TimeInputStyle}"
-                         Text="{Binding Minute, RelativeSource={RelativeSource AncestorType=local:Clock}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat='00'}" />
-                <TextBlock Text=":"
-                           VerticalAlignment="Center" />
-                <TextBox Style="{TemplateBinding TimeInputStyle}"
-                         Text="{Binding Second, RelativeSource={RelativeSource AncestorType=local:Clock}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat='00'}" />
-            </StackPanel>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <ItemsControl ItemsSource="{Binding Hours, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                          Style="{StaticResource {x:Static i:ResourceKeys.ClockItemsControlStyle}}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <RadioButton Style="{Binding ClockItemStyle, RelativeSource={RelativeSource AncestorType=local:Clock}, Mode=OneWay}"
+                                     GroupName="CLOCK_GROUP_HOURS"
+                                     Content="{Binding DisplayName}"
+                                     Tag="{Binding Value}"
+                                     IsChecked="{Binding IsChecked, Mode=OneWay}"
+                                     IsEnabled="{Binding IsEnabled, Mode=OneWay}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            <ItemsControl Grid.Column="1"
+                          ItemsSource="{Binding Minutes, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                          Style="{StaticResource {x:Static i:ResourceKeys.ClockItemsControlStyle}}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel VirtualizingStackPanel.IsVirtualizing="True"
+                                                VirtualizingStackPanel.VirtualizationMode="Recycling" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <RadioButton Style="{Binding ClockItemStyle, RelativeSource={RelativeSource AncestorType=local:Clock}, Mode=OneWay}"
+                                     GroupName="CLOCK_GROUP_MINUTES"
+                                     Content="{Binding DisplayName}"
+                                     Tag="{Binding Value}"
+                                     IsChecked="{Binding IsChecked, Mode=OneWay}"
+                                     IsEnabled="{Binding IsEnabled, Mode=OneWay}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            <ItemsControl Grid.Column="2"
+                          ItemsSource="{Binding Seconds, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                          Style="{StaticResource {x:Static i:ResourceKeys.ClockItemsControlStyle}}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel VirtualizingStackPanel.IsVirtualizing="True"
+                                                VirtualizingStackPanel.VirtualizationMode="Recycling" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <RadioButton Style="{Binding ClockItemStyle, RelativeSource={RelativeSource AncestorType=local:Clock}, Mode=OneWay}"
+                                     GroupName="CLOCK_GROUP_SECONDS"
+                                     Content="{Binding DisplayName}"
+                                     Tag="{Binding Value}"
+                                     IsChecked="{Binding IsChecked, Mode=OneWay}"
+                                     IsEnabled="{Binding IsEnabled, Mode=OneWay}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </Grid>
-        <ControlTemplate.Triggers>
-            <Trigger Property="TimePeriod"
-                     Value="AM">
-                <Setter TargetName="PART_RdbAM"
-                        Property="IsChecked"
-                        Value="True" />
-            </Trigger>
-            <Trigger Property="TimePeriod"
-                     Value="PM">
-                <Setter TargetName="PART_RdbPM"
-                        Property="IsChecked"
-                        Value="True" />
-            </Trigger>
-        </ControlTemplate.Triggers>
     </ControlTemplate>
 
     <Style TargetType="local:Clock">
-        <Setter Property="CanInputTime"
-                Value="True" />
-        <Setter Property="CanSelectTimePeriod"
-                Value="True" />
-        <Setter Property="TimeInputStyle"
-                Value="{StaticResource {x:Static rs:ResourceKeys.ClockTimeTimeInputTextBoxStyle}}" />
-        <Setter Property="TimePeriodStyle"
-                Value="{StaticResource {x:Static rs:ResourceKeys.ClockTimePeriodRadioButtonStyle}}" />
+        <Setter Property="local:ScrollViewerHelper.ScrollBarThickness"
+                Value="4" />
+        <Setter Property="local:ScrollViewerHelper.ScrollBarCornerRadius"
+                Value="2" />
+        <Setter Property="ClockItemStyle"
+                Value="{StaticResource {x:Static rs:ResourceKeys.ClockItemStyle}}" />
         <Setter Property="Background"
                 Value="{StaticResource {x:Static i:ResourceKeys.ClockBackground}}" />
         <Setter Property="ThemeBrush"

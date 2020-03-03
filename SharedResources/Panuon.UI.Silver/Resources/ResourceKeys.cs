@@ -74,10 +74,6 @@
 
         #region Clock
         public static readonly string ClockItemStyle = nameof(ClockItemStyle);
-
-        public static readonly string ClockTimePeriodRadioButtonStyle = nameof(ClockTimePeriodRadioButtonStyle);
-
-        public static readonly string ClockTimeTimeInputTextBoxStyle = nameof(ClockTimeTimeInputTextBoxStyle);
         #endregion
 
         #region GroupBox
