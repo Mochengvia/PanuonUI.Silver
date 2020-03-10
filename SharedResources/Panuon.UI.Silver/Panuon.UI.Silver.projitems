@@ -45,6 +45,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Form.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\GroupBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -70,6 +74,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\TabItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\TextBlock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -109,7 +117,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\FormGroup.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Themes\FormItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -158,6 +166,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Components\MessageBoxXConfigurations.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Components\StateItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Abstracts\FormGroupItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Constracts\Interfaces\FormItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CalendarX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Card.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CarouselPanel.cs" />
@@ -167,7 +177,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Dotline.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Drawer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\DropDown.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Form.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\FormGroup.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\FormTextGroupItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\IndexIndicator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MessageBoxX.cs" />
@@ -198,5 +210,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\TextBoxHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\TreeViewHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\ResourceKeys.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Constracts\Interfaces\" />
   </ItemGroup>
 </Project>

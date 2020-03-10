@@ -20,6 +20,7 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Property
+        #region DisableForceClosing
         /// <summary>
         /// Gets or sets is force closing disabled.
         /// </summary>
@@ -31,7 +32,9 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty DisableForceClosingProperty =
             DependencyProperty.Register("DisableForceClosing", typeof(bool), typeof(WindowX));
+        #endregion
 
+        #region IsMaskVisible
         /// <summary>
         /// Gets or sets is mask visible.
         /// </summary>
@@ -43,7 +46,9 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty IsMaskVisibleProperty =
             DependencyProperty.Register("IsMaskVisible", typeof(bool), typeof(WindowX));
+        #endregion
 
+        #region MaskBrush
         /// <summary>
         /// Gets or sets mask brush.
         /// </summary>
@@ -55,7 +60,9 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty MaskBrushProperty =
             DependencyProperty.Register("MaskBrush", typeof(Brush), typeof(WindowX));
+        #endregion
 
+        #region Backstage
         /// <summary>
         /// Gets or sets backstage.
         /// </summary>
@@ -67,7 +74,9 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty BackstageProperty =
             DependencyProperty.Register("Backstage", typeof(object), typeof(WindowX));
+        #endregion
 
+        #region IsBackstageVisible
         /// <summary>
         /// Gets or sets is backstage visible.
         /// </summary>
@@ -79,6 +88,8 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty IsBackstageVisibleProperty =
             DependencyProperty.Register("IsBackstageVisible", typeof(bool), typeof(WindowX));
+        #endregion
+
         #endregion
 
         #region Attached Property

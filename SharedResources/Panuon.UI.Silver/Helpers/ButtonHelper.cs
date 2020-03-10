@@ -161,13 +161,17 @@ namespace Panuon.UI.Silver
                 case ButtonStyle.Hollow:
                     dic.Add(Button.BackgroundProperty, hoverBrush);
                     dic.Add(Button.ForegroundProperty, Brushes.White);
+                    dic.Add(IconHelper.ForegroundProperty, Brushes.White);
+
                     break;
                 case ButtonStyle.Outline:
                     dic.Add(Button.BorderBrushProperty, hoverBrush);
                     dic.Add(Button.ForegroundProperty, hoverBrush);
+                    dic.Add(IconHelper.ForegroundProperty, hoverBrush);
                     break;
                 case ButtonStyle.Link:
                     dic.Add(Button.ForegroundProperty, hoverBrush);
+                    dic.Add(IconHelper.ForegroundProperty, hoverBrush);
                     break;
             }
             StoryboardUtils.BeginBrushStoryboard(button, dic);
@@ -192,13 +196,16 @@ namespace Panuon.UI.Silver
                 case ButtonStyle.Hollow:
                     list.Add(Button.BackgroundProperty);
                     list.Add(Button.ForegroundProperty);
+                    list.Add(IconHelper.ForegroundProperty);
                     break;
                 case ButtonStyle.Outline:
                     list.Add(Button.BorderBrushProperty);
                     list.Add(Button.ForegroundProperty);
+                    list.Add(IconHelper.ForegroundProperty);
                     break;
                 case ButtonStyle.Link:
                     list.Add(Button.ForegroundProperty);
+                    list.Add(IconHelper.ForegroundProperty);
                     break;
             }
             StoryboardUtils.BeginBrushStoryboard(button, list);

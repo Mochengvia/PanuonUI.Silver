@@ -8,6 +8,7 @@
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/InternalResources.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Resources.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Button.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Loading.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="{x:Static rs:ResourceKeys.WindowXMinimizeButtonStyle}"
@@ -38,8 +39,6 @@
                         Value="0" />
                 <Setter Property="local:ButtonHelper.HoverBrush"
                         Value="{StaticResource {x:Static i:ResourceKeys.WindowXCaptionMinimizeButtonHoverBrush}}" />
-                <Setter Property="Foreground"
-                        Value="{Binding Path=(local:WindowXCaption.Foreground),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneTime}" />
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -71,8 +70,6 @@
                         Value="0" />
                 <Setter Property="local:ButtonHelper.HoverBrush"
                         Value="{StaticResource {x:Static i:ResourceKeys.WindowXCaptionMaximizeButtonHoverBrush}}" />
-                <Setter Property="Foreground"
-                        Value="{Binding Path=(local:WindowXCaption.Foreground),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneTime}" />
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -104,8 +101,6 @@
                         Value="0" />
                 <Setter Property="local:ButtonHelper.HoverBrush"
                         Value="{StaticResource {x:Static i:ResourceKeys.WindowXCaptionCloseButtonHoverBrush}}" />
-                <Setter Property="Foreground"
-                        Value="{Binding Path=(local:WindowXCaption.Foreground),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneTime}" />
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -140,7 +135,6 @@
                 <ContentControl x:Name="CcExtendControl"
                                 local:WindowX.IsDragMoveArea="False"
                                 Grid.Column="1"
-                                Foreground="{Binding Path=(local:WindowXCaption.Foreground),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}"
                                 Content="{Binding Path=(local:WindowXCaption.ExtendControl),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
                 <ContentControl x:Name="CcBackstage"
                                 local:WindowX.IsDragMoveArea="False"
@@ -167,6 +161,7 @@
                         CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                         IsEnabled="{Binding Path=(local:WindowXCaption.DisableCloseButton), Converter={StaticResource {x:Static i:ResourceKeys.TrueToFalseConverter}}, RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}"
                         Style="{Binding Path=(local:WindowXCaption.CloseButtonStyle),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
+                
                 <Rectangle x:Name="RectMask"
                            Grid.RowSpan="2"
                            Grid.ColumnSpan="5"
@@ -298,7 +293,6 @@
                 <ContentControl x:Name="CcExtendControl"
                                 local:WindowX.IsDragMoveArea="False"
                                 Grid.Column="1"
-                                Foreground="{Binding Path=(local:WindowXCaption.Foreground),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}"
                                 Content="{Binding Path=(local:WindowXCaption.ExtendControl),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
                 <ContentControl x:Name="CcBackstage"
                                 local:WindowX.IsDragMoveArea="False"
@@ -401,6 +395,8 @@
                  local:WindowX.IsDragMoveArea="True"
                  VerticalAlignment="Center">
         <Image Margin="5,0,0,0"
+               MaxHeight="25"
+               MaxWidth="25"
                RenderOptions.BitmapScalingMode="HighQuality"
                VerticalAlignment="Center"
                Source="{Binding Icon,RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />

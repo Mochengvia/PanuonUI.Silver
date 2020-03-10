@@ -162,13 +162,16 @@ namespace Panuon.UI.Silver
                 case RepeatButtonStyle.Hollow:
                     dic.Add(RepeatButton.BackgroundProperty, hoverBrush);
                     dic.Add(RepeatButton.ForegroundProperty, Brushes.White);
+                    dic.Add(IconHelper.ForegroundProperty, Brushes.White);
                     break;
                 case RepeatButtonStyle.Outline:
                     dic.Add(RepeatButton.BorderBrushProperty, hoverBrush);
                     dic.Add(RepeatButton.ForegroundProperty, hoverBrush);
+                    dic.Add(IconHelper.ForegroundProperty, hoverBrush);
                     break;
                 case RepeatButtonStyle.Link:
                     dic.Add(RepeatButton.ForegroundProperty, hoverBrush);
+                    dic.Add(IconHelper.ForegroundProperty, hoverBrush);
                     break;
             }
             StoryboardUtils.BeginBrushStoryboard(repeatButton, dic);
@@ -193,13 +196,16 @@ namespace Panuon.UI.Silver
                 case RepeatButtonStyle.Hollow:
                     list.Add(RepeatButton.BackgroundProperty);
                     list.Add(RepeatButton.ForegroundProperty);
+                    list.Add(IconHelper.ForegroundProperty);
                     break;
                 case RepeatButtonStyle.Outline:
                     list.Add(RepeatButton.BorderBrushProperty);
                     list.Add(RepeatButton.ForegroundProperty);
+                    list.Add(IconHelper.ForegroundProperty);
                     break;
                 case RepeatButtonStyle.Link:
                     list.Add(RepeatButton.ForegroundProperty);
+                    list.Add(IconHelper.ForegroundProperty);
                     break;
             }
             StoryboardUtils.BeginBrushStoryboard(repeatButton, list);

@@ -193,13 +193,16 @@ namespace Panuon.UI.Silver
                 case ToggleButtonStyle.Hollow:
                     dic.Add(ToggleButton.BackgroundProperty, hoverBrush);
                     dic.Add(ToggleButton.ForegroundProperty, Brushes.White);
+                    dic.Add(IconHelper.ForegroundProperty, Brushes.White);
                     break;
                 case ToggleButtonStyle.Outline:
                     dic.Add(ToggleButton.BorderBrushProperty, hoverBrush);
                     dic.Add(ToggleButton.ForegroundProperty, hoverBrush);
+                    dic.Add(IconHelper.ForegroundProperty, hoverBrush);
                     break;
                 case ToggleButtonStyle.Link:
                     dic.Add(ToggleButton.ForegroundProperty, hoverBrush);
+                    dic.Add(IconHelper.ForegroundProperty, hoverBrush);
                     break;
             }
             StoryboardUtils.BeginBrushStoryboard(button, dic);
@@ -224,13 +227,16 @@ namespace Panuon.UI.Silver
                 case ToggleButtonStyle.Hollow:
                     list.Add(ToggleButton.BackgroundProperty);
                     list.Add(ToggleButton.ForegroundProperty);
+                    list.Add(IconHelper.ForegroundProperty);
                     break;
                 case ToggleButtonStyle.Outline:
                     list.Add(ToggleButton.BorderBrushProperty);
                     list.Add(ToggleButton.ForegroundProperty);
+                    list.Add(IconHelper.ForegroundProperty);
                     break;
                 case ToggleButtonStyle.Link:
                     list.Add(ToggleButton.ForegroundProperty);
+                    list.Add(IconHelper.ForegroundProperty);
                     break;
             }
             StoryboardUtils.BeginBrushStoryboard(button, list);

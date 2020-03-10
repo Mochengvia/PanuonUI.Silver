@@ -102,21 +102,21 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("Animation", typeof(NeonAnimation), typeof(NeonLabel));
         #endregion
 
-        #region PlayDelay
+        #region BeginTime
         /// <summary>
         /// Gets or sets delay time before play.
         /// </summary>
-        public TimeSpan? PlayDelay
+        public TimeSpan? BeginTime
         {
-            get { return (TimeSpan?)GetValue(PlayDelayProperty); }
-            set { SetValue(PlayDelayProperty, value); }
+            get { return (TimeSpan?)GetValue(BeginTimeProperty); }
+            set { SetValue(BeginTimeProperty, value); }
         }
 
         /// <summary>
-        /// Identifies the Panuon.UI.Silver.NeonLabel.PlayDelay dependency property.
+        /// Identifies the Panuon.UI.Silver.NeonLabel.BeginTime dependency property.
         /// </summary>
-        public static readonly DependencyProperty PlayDelayProperty =
-            DependencyProperty.Register("PlayDelay", typeof(TimeSpan?), typeof(NeonLabel));
+        public static readonly DependencyProperty BeginTimeProperty =
+            DependencyProperty.Register("BeginTime", typeof(TimeSpan?), typeof(NeonLabel));
         #endregion
 
         #region Duration
@@ -374,9 +374,9 @@ namespace Panuon.UI.Silver
                 return;
             }
             _lastAnimation = Animation;
-            if (PlayDelay != null)
+            if (BeginTime != null)
             {
-                _storyboard.BeginTime = PlayDelay;
+                _storyboard.BeginTime = BeginTime;
             }
             _storyboard.Completed += delegate
             {
@@ -400,7 +400,7 @@ namespace Panuon.UI.Silver
                 if (_timer != null)
                     _timer.Dispose();
 
-                _timer = new DisposableTimer(OnTimerTicked, PlayDelay);
+                _timer = new DisposableTimer(OnTimerTicked, BeginTime);
             }
         }
 

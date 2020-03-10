@@ -38,6 +38,10 @@ namespace Panuon.UI.Silver.Internal
 
         public static readonly string GridLengthConverter = nameof(GridLengthConverter);
 
+        public static readonly string GridLengthStringToDoubleConverter = nameof(GridLengthStringToDoubleConverter);
+
+        public static readonly string GridLengthIsAbsoluteOrAutoConverter = nameof(GridLengthIsAbsoluteOrAutoConverter);
+
         public static readonly string DividedBy2Converter = nameof(DividedBy2Converter);
 
         public static readonly string DividedBy2_5Converter = nameof(DividedBy2_5Converter);
@@ -90,6 +94,7 @@ namespace Panuon.UI.Silver.Internal
 
         public static readonly string DoubleToRightMarginConverter = nameof(DoubleToRightMarginConverter);
 
+        
         public static readonly string IsGreaterThanZeroConverter = nameof(IsGreaterThanZeroConverter);
 
         public static readonly string IsLessThanZeroConverter = nameof(IsLessThanZeroConverter);

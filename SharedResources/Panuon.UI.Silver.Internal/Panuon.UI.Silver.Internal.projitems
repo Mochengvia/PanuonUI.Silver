@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Components\DisposableTimer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums\FormItemCategory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\IconControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MsgBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CheckBoxConverter.cs" />
@@ -57,6 +58,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Constracts\Enums\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Constracts\Interfaces\" />
   </ItemGroup>
 </Project>

@@ -1,0 +1,70 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver"
+                    xmlns:i="clr-namespace:Panuon.UI.Silver.Internal"
+                    xmlns:ic="clr-namespace:Panuon.UI.Silver.Internal.Controls"
+                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/InternalResources.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Resources.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/TextBox.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="local:FormTextGroupItem">
+        <Setter Property="Height"
+                Value="{Binding ItemsHeight, RelativeSource={RelativeSource AncestorType=local:Form}, Mode=OneWay}" />
+        <Setter Property="Padding"
+                Value="{Binding ItemsPadding, RelativeSource={RelativeSource AncestorType=local:Form}, Mode=OneWay}" />
+        <Setter Property="GroupWidth"
+                Value="*" />
+        <Setter Property="HeaderWidth"
+                Value="{Binding ItemsHeaderWidth, RelativeSource={RelativeSource AncestorType=local:Form}, Mode=OneWay}" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="Focusable"
+                Value="False" />
+        <Setter Property="HeaderTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Grid>
+                        <ContentPresenter Content="{Binding}"
+                                          HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"/>
+                    </Grid>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:FormTextGroupItem">
+                    <Border x:Name="BdrMain"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}">
+                        <Grid Margin="{TemplateBinding Padding}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="{Binding HeaderWidth, Converter={StaticResource  {x:Static i:ResourceKeys.GridLengthConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Foreground="Red"
+                                           VerticalAlignment="Center"
+                                           Visibility="{Binding IsRequired, Converter={StaticResource {x:Static i:ResourceKeys.BoolToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                                    <Run Text="*"/>
+                                </TextBlock>
+                                <ContentPresenter ContentSource="Header" />
+                            </StackPanel>
+                            <TextBox Grid.Column="1"
+                                     Margin="5,0,0,0"
+                                     Text="{Binding Text,RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     local:TextBoxHelper.Watermark="{TemplateBinding Watermark}"
+                                     VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                     HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                        </Grid>
+
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

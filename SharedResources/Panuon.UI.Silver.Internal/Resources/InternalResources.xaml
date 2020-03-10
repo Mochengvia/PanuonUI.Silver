@@ -20,7 +20,9 @@
     <icv:IsNotNullConverter x:Key="{x:Static i:ResourceKeys.IsNotNullConverter}" />
     <icv:IsNullOrEmptyConverter x:Key="{x:Static i:ResourceKeys.IsNullOrEmptyConverter}" />
     <icv:GridLengthConverter x:Key="{x:Static i:ResourceKeys.GridLengthConverter}" />
-    <icv:DividedBy2Converter x:Key="{x:Static i:ResourceKeys.DividedBy2Converter}" />
+    <icv:GridLengthStringToDoubleConverter x:Key="{x:Static i:ResourceKeys.GridLengthStringToDoubleConverter}" />
+    <icv:GridLengthIsAbsoluteOrAutoConverter x:Key="{x:Static i:ResourceKeys.GridLengthIsAbsoluteOrAutoConverter}" />
+    <icv:DividedBy2Converter x:Key="{x:Static i:ResourceKeys.DividedBy2Converter}" /> 
     <icv:DividedByMinus2Converter x:Key="{x:Static i:ResourceKeys.DividedByMinus2Converter}" />
     <icv:DividedBy2_5Converter x:Key="{x:Static i:ResourceKeys.DividedBy2_5Converter}" />
     <icv:DividedBy3Converter x:Key="{x:Static i:ResourceKeys.DividedBy3Converter}" />

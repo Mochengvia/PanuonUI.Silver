@@ -14,11 +14,6 @@ namespace UIBrowser.Views
         public MainView()
         {
             InitializeComponent();
-            var list = new List<int>();
-            for(int i = 0; i < 10000; i++)
-            {
-                list.Add(i);
-            }
         }
 
 

@@ -7,20 +7,21 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/InternalResources.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Resources.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/FormItem.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <ControlTemplate x:Key="{x:Static i:ResourceKeys.ListBoxStandardTemplate}"
-                     TargetType="{x:Type ListBox}">
+    <ControlTemplate x:Key="FormTemplate"
+                     TargetType="{x:Type local:Form}">
         <Border x:Name="BdrMain"
                 Background="{TemplateBinding Background}"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}">
             <ScrollViewer Focusable="False"
                           Padding="{TemplateBinding Padding}"
-                          VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}"
-                          HorizontalScrollBarVisibility="{Binding Path=(ScrollViewer.HorizontalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}"
+                          VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=local:Form}, Mode=OneWay}"
+                          HorizontalScrollBarVisibility="{Binding Path=(ScrollViewer.HorizontalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=local:Form}, Mode=OneWay}"
                           CanContentScroll="True">
-                <ItemsPresenter />
+                <ItemsControl ItemsSource="{TemplateBinding Items}" />
             </ScrollViewer>
         </Border>
         <ControlTemplate.Triggers>
@@ -28,39 +29,34 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <Style TargetType="{x:Type ListBox}">
+    <Style TargetType="{x:Type local:Form}">
+        <Setter Property="ItemsHeaderHeight"
+                Value="Auto" />
+        <Setter Property="ItemsHeaderWidth"
+                Value="Auto" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility"
+                Value="Auto" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility"
+                Value="Disabled" />
         <Setter Property="local:ScrollViewerHelper.ScrollBarThickness"
                 Value="6" />
         <Setter Property="local:ScrollViewerHelper.ScrollBarCornerRadius"
                 Value="3" />
+        <Setter Property="VirtualizingStackPanel.IsVirtualizing"
+                Value="True" />
+        <Setter Property="VirtualizingStackPanel.VirtualizationMode"
+                Value="Recycling" />
+        <Setter Property="Focusable"
+                Value="False" />
         <Setter Property="Background"
                 Value="Transparent" />
         <Setter Property="BorderBrush"
                 Value="LightGray" />
         <Setter Property="BorderThickness"
                 Value="1" />
-        <Setter Property="ScrollViewer.VerticalScrollBarVisibility"
-                Value="Auto" />
-        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility"
-                Value="Disabled" />
-        <Setter Property="local:ListBoxHelper.ItemsHoverBackground"
-                Value="#FAFAFA" />
-        <Setter Property="local:ListBoxHelper.ItemsSelectedBackground"
-                Value="#F1F1F1" />
-        <Setter Property="local:ListBoxHelper.ItemsHeight"
-                Value="30" />
-        <Setter Property="VirtualizingStackPanel.IsVirtualizing"
-                Value="True" />
-        <Setter Property="VirtualizingStackPanel.VirtualizationMode"
-                Value="Recycling" />
         <Setter Property="Template"
-                Value="{StaticResource {x:Static i:ResourceKeys.ListBoxStandardTemplate}}" />
+                Value="{StaticResource FormTemplate}" />
         <Style.Triggers>
-            <Trigger Property="IsGrouping"
-                     Value="true">
-                <Setter Property="ScrollViewer.CanContentScroll"
-                        Value="false" />
-            </Trigger>
             <Trigger Property="IsEnabled"
                      Value="False">
                 <Setter Property="Opacity"

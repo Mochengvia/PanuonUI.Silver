@@ -14,6 +14,10 @@ namespace Panuon.UI.Silver.Internal.Converters
         {
             var state = values[0];
             var states = values[1] as ObservableCollection<StateItem>;
+            if(state == null || states == null)
+            {
+                return null;
+            }
             var targetState = states.FirstOrDefault(x => x.State.ToString().ToLower().Equals(state.ToString().ToLower()));
             if(targetState == null)
             {

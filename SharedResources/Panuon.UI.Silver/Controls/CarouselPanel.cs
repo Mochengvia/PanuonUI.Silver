@@ -11,10 +11,14 @@ namespace Panuon.UI.Silver
     public class CarouselPanel : Panel
     {
         #region Ctor
-        public CarouselPanel(): base()
+        public CarouselPanel()
+            : base()
         {
             ClipToBounds = true;
+            Loaded += CarouselPanel_Loaded;
         }
+
+       
         #endregion
 
         #region Properties
@@ -99,6 +103,11 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Routed Event
+        private void CarouselPanel_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateChildren(false);
+        }
+
         private static object OnCurrentIndexCoerceValue(DependencyObject d, object baseValue)
         {
             var carousel = d as CarouselPanel;
@@ -120,7 +129,10 @@ namespace Panuon.UI.Silver
         private static void OnCurrentIndexChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var carousel = d as CarouselPanel;
-            carousel.UpdateChildren();
+            if (carousel.IsLoaded)
+            {
+                carousel.UpdateChildren(true);
+            }
         }
         #endregion
 
@@ -133,7 +145,7 @@ namespace Panuon.UI.Silver
             {
                 child.Measure(availableSize);
             }
-
+            UpdateChildren(true);
             return availableSize;
         }
 
@@ -172,13 +184,13 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Function
-        private void UpdateChildren()
+        private void UpdateChildren(bool useAnimation)
         {
             var targetX = (CurrentIndex - 1) * DesiredSize.Width;
             var targetY = (CurrentIndex - 1) * DesiredSize.Height;
             var targetPositionOffset = new Rect(targetX, targetY, 0, 0);
 
-            if (!IsLoaded || AnimationDuration.TotalMilliseconds == 0)
+            if (!IsLoaded || !useAnimation || AnimationDuration.TotalMilliseconds == 0)
             {
                 PositionOffset = targetPositionOffset;
             }

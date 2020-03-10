@@ -20,7 +20,6 @@ namespace Panuon.UI.Silver.Internal.Converters
         }
     }
 
-
     internal class DoubleEqualsConverter : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
