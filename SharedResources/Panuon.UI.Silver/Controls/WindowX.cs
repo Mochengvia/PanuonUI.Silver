@@ -1,4 +1,5 @@
 ﻿using Panuon.UI.Silver.Core;
+using System;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
@@ -156,6 +157,12 @@ namespace Panuon.UI.Silver
                 return;
             }
             base.OnClosing(e);
+        }
+
+        protected override void OnContentRendered(EventArgs e)
+        {
+            base.OnContentRendered(e);
+            InvalidateVisual();
         }
         #endregion
 
