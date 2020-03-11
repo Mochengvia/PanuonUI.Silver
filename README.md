@@ -25,6 +25,11 @@ Zhihu : @末城via
 2.0文档参见：https://www.yuque.com/mochengvia/silver2.0
 由于作者工作繁忙，2.0的测试版将较迟发布。
 
+#### 2020-3-11 v1.0.9.8
+修复了Badge的Background和Foreground的绑定初始值未生效的BUG。
+修复了ContextMenu中的MenuItem无法识别AccessKey的BUG。
+修复了WindowX会在SizeToContent="WidthAndHeight"时出现白边的BUG。
+修复了DateTimePicker的SelectedDate赋值为new DateTime时会报错的问题。SelectedDate的年份最小值已被限定为5（与MinDate无关）。
 
 #### 2020-2-17 v1.0.9.6
 修复了部分控件可能会在后台抛出错误的问题。

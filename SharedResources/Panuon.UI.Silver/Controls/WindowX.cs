@@ -106,7 +106,11 @@ namespace Panuon.UI.Silver
             var grdTitle = VisualTreeHelper.GetChild(((VisualTreeHelper.GetChild(this, 0) as Border).Child as Grid), 0) as Grid;
             grdTitle.MouseLeftButtonDown += GrdTitle_MouseLeftButtonDown;
         }
-
+        protected override void OnContentRendered(EventArgs e)
+        {
+            base.OnContentRendered(e);
+            InvalidateVisual();
+        }
         private void GrdTitle_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();

@@ -150,6 +150,7 @@
                                               Style="{Binding Path=(local:ContextMenuHelper.CheckableCheckboxStyle),RelativeSource={RelativeSource AncestorType=MenuItem}}"
                                               Visibility="Collapsed" />
                                     <ContentPresenter x:Name="Presenter"
+                                                      RecognizesAccessKey="True"
                                                       ContentSource="Header"
                                                       Grid.Column="1"
                                                       VerticalAlignment="Center"

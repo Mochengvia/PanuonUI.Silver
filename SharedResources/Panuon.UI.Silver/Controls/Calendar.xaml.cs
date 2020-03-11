@@ -95,7 +95,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty SelectedDateProperty =
-            DependencyProperty.Register("SelectedDate", typeof(DateTime), typeof(Calendar), new PropertyMetadata(DateTime.Now.Date, OnSelectedDateChanged));
+            DependencyProperty.Register("SelectedDate", typeof(DateTime), typeof(Calendar), new PropertyMetadata(DateTime.Now.Date, OnSelectedDateChanged, OnSelectedDateCoerceValue));
 
         /// <summary>
         /// get or set max datetime.
@@ -158,6 +158,16 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Property Changed Handler
+        private static object OnSelectedDateCoerceValue(DependencyObject d, object baseValue)
+        {
+            var date = (DateTime)baseValue;
+            if(date.Year < 5)
+            {
+                return new DateTime(5, date.Month, date.Day, date.Hour, date.Minute, date.Second);
+            }
+            return date;
+        }
+
         private static void OnSelectedDateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var calendar = d as Calendar;
