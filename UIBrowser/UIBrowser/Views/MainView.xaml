@@ -19,33 +19,43 @@
             <Run Foreground="#68D450"> U O N</Run>
         </TextBlock>
     </pu:WindowXCaption.Header>
-    <pu:Form Height="300"
-             Width="800"
-             ItemsHeight="30"
-             ItemsHeaderWidth="70"
-             ItemsPadding="10,0"
-             Padding="10">
-        <pu:FormGroup>
-            <pu:FormTextGroupItem Header="Name :"
-                                  GroupWidth="0.7*"
-                                  IsRequired="True" />
-            <pu:FormTextGroupItem Header="Age : "
-                                  HeaderWidth="35"
-                                  GroupWidth="0.3*"
-                                  IsRequired="True" />
-            <pu:FormTextGroupItem Header="Mobile :"
-                                  IsRequired="True" />
-        </pu:FormGroup>
-        <pu:FormGroup Margin="0,10,0,0">
-            <pu:FormTextGroupItem Header="Account :"
-                                  IsRequired="True"/>
-            <pu:FormTextGroupItem Header="Email : "
-                                  IsRequired="True" />
-        </pu:FormGroup>
-        <pu:FormTextGroupItem Margin="0,10,0,0"
-                              Watermark="Enter your address"
-                              VerticalContentAlignment="Top"
-                              Header="Address : " 
-                              Height="100"/>
-    </pu:Form>
+    <StackPanel>
+        <pu:Form Height="300"
+                 Width="800"
+                 ItemsHeight="30"
+                 ItemsHeaderWidth="70"
+                 ItemsPadding="10,0"
+                 Padding="10">
+            <pu:FormGroup>
+                <pu:FormTextGroupItem Header="Name :"
+                                      GroupWidth="0.7*"
+                                      IsRequired="True" />
+                <pu:FormTextGroupItem Header="Age : "
+                                      HeaderWidth="35"
+                                      GroupWidth="0.3*"
+                                      IsRequired="True" />
+                <pu:FormTextGroupItem Header="Mobile :"
+                                      IsRequired="True" />
+            </pu:FormGroup>
+            <pu:FormGroup Margin="0,10,0,0">
+                <pu:FormTextGroupItem Header="Account :"
+                                      IsRequired="True" />
+                <pu:FormTextGroupItem Header="Email : "
+                                      IsRequired="True" />
+            </pu:FormGroup>
+            <pu:FormTextGroupItem Margin="0,10,0,0"
+                                  Watermark="Enter your address"
+                                  VerticalContentAlignment="Top"
+                                  Header="Address : "
+                                  Height="100" />
+        </pu:Form>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <CheckBox HorizontalAlignment="Right" 
+                      pu:CheckBoxHelper.CheckBoxStyle="Switch3" 
+                      Content="自动登录" />
+        </Grid>
+    </StackPanel>
 </pu:WindowX>

@@ -12,6 +12,10 @@ namespace Panuon.UI.Silver.Internal.Converters
         {
             var actualWidth = values[0] as double? ?? 0;
             var actualHeight = values[1] as double? ?? 0;
+            if(actualWidth == 0 || actualWidth == 0)
+            {
+                return null;
+            }
             var percent = values[2] as double? ?? 0;
             var thickness = 0.0;
             if (values[3] is double)
