@@ -143,8 +143,6 @@ namespace Panuon.UI.Silver.Internal
 
         public static readonly string MsgBoxStackPanelFlowDirectionConverter = nameof(MsgBoxStackPanelFlowDirectionConverter);
 
-        public static readonly string StateControlTemplateConverter = nameof(StateControlTemplateConverter);
-
         #endregion
 
         #region Common

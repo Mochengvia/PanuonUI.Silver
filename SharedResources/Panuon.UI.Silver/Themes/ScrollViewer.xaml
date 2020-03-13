@@ -47,7 +47,7 @@
                           Visibility="Collapsed"
                           Style="{DynamicResource {x:Static rs:ResourceKeys.ScrollViewerScrollButtonStyle}}"
                           Content="&#xe920;"
-                          FontSize="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.Minus2Converter}}, RelativeSource={RelativeSource AncestorType=ScrollBar}, Mode=OneWay}"
+                          FontSize="{Binding ActualHeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                           FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
                           Command="ScrollBar.ScrollToLeftEndCommand" />
             <RepeatButton x:Name="RpbLeft"
@@ -55,7 +55,7 @@
                           Visibility="Collapsed"
                           Style="{DynamicResource {x:Static rs:ResourceKeys.ScrollViewerScrollButtonStyle}}"
                           Content="&#xe900;"
-                          FontSize="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.Minus2Converter}}, RelativeSource={RelativeSource AncestorType=ScrollBar}, Mode=OneWay}"
+                          FontSize="{Binding ActualHeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                           FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
                           Command="ScrollBar.LineLeftCommand" />
             <Border 
@@ -63,7 +63,7 @@
                     CornerRadius="{Binding Path=(local:ScrollViewerHelper.ScrollBarCornerRadius),RelativeSource={RelativeSource Self}, Mode=OneWay}"
                     Grid.Column="2">
                 <Track x:Name="PART_Track"
-                       IsEnabled="{Binding IsMouseOver,RelativeSource={RelativeSource AncestorType=ScrollBar}, Mode=OneWay}">
+                       IsEnabled="{Binding IsMouseOver,RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                     <Track.Thumb>
                         <Thumb x:Name="Thumb"
                                Opacity="0.5"
@@ -76,7 +76,7 @@
                           Visibility="Collapsed"
                           Style="{DynamicResource {x:Static rs:ResourceKeys.ScrollViewerScrollButtonStyle}}"
                           Content="&#xe902;"
-                          FontSize="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.Minus2Converter}}, RelativeSource={RelativeSource AncestorType=ScrollBar}, Mode=OneWay}"
+                          FontSize="{Binding ActualHeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                           FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
                           Command="ScrollBar.LineRightCommand" />
             <RepeatButton x:Name="RpbRightEnd"
@@ -84,7 +84,7 @@
                           Visibility="Collapsed"
                           Style="{DynamicResource {x:Static rs:ResourceKeys.ScrollViewerScrollButtonStyle}}"
                           Content="&#xe922;"
-                          FontSize="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.Minus2Converter}}, RelativeSource={RelativeSource AncestorType=ScrollBar}, Mode=OneWay}"
+                          FontSize="{Binding ActualHeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                           FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
                           Command="ScrollBar.ScrollToRightEndCommand" />
         </Grid>
@@ -161,7 +161,7 @@
                           Visibility="Collapsed"
                           Style="{DynamicResource {x:Static rs:ResourceKeys.ScrollViewerScrollButtonStyle}}"
                           Content="&#xe921;"
-                          FontSize="{Binding ActualWidth, Converter={StaticResource {x:Static i:ResourceKeys.Minus2Converter}},RelativeSource={RelativeSource AncestorType=ScrollBar}, Mode=OneWay}"
+                          FontSize="{Binding ActualWidth,RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                           FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
                           Command="ScrollBar.ScrollToTopCommand" />
             <RepeatButton x:Name="RpbUp"
@@ -169,7 +169,7 @@
                           Visibility="Collapsed"
                           Style="{DynamicResource {x:Static rs:ResourceKeys.ScrollViewerScrollButtonStyle}}"
                           Content="&#xe901;"
-                          FontSize="{Binding ActualWidth, Converter={StaticResource {x:Static i:ResourceKeys.Minus2Converter}}, RelativeSource={RelativeSource AncestorType=ScrollBar}, Mode=OneWay}"
+                          FontSize="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                           FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
                           Command="ScrollBar.LineUpCommand" />
             <Border 
@@ -177,7 +177,7 @@
                     CornerRadius="{Binding Path=(local:ScrollViewerHelper.ScrollBarCornerRadius),RelativeSource={RelativeSource Self}, Mode=OneWay}"
                     Grid.Row="2">
                 <Track x:Name="PART_Track"
-                       IsEnabled="{Binding IsMouseOver,RelativeSource={RelativeSource AncestorType=ScrollBar}, Mode=OneWay}"
+                       IsEnabled="{Binding IsMouseOver,RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                        IsDirectionReversed="True">
                     <Track.Thumb>
                         <Thumb x:Name="Thumb"
@@ -191,7 +191,7 @@
                           Visibility="Collapsed"
                           Style="{DynamicResource {x:Static rs:ResourceKeys.ScrollViewerScrollButtonStyle}}"
                           Content="&#xe903;"
-                          FontSize="{Binding ActualWidth, Converter={StaticResource {x:Static i:ResourceKeys.Minus2Converter}}, RelativeSource={RelativeSource AncestorType=ScrollBar}, Mode=OneWay}"
+                          FontSize="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                           FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
                           Command="ScrollBar.LineDownCommand" />
             <RepeatButton x:Name="RpbBottom"
@@ -199,7 +199,7 @@
                           Visibility="Collapsed"
                           Style="{DynamicResource {x:Static rs:ResourceKeys.ScrollViewerScrollButtonStyle}}"
                           Content="&#xe923;"
-                          FontSize="{Binding ActualWidth, Converter={StaticResource {x:Static i:ResourceKeys.Minus2Converter}}, RelativeSource={RelativeSource AncestorType=ScrollBar}, Mode=OneWay}"
+                          FontSize="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                           FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
                           Command="ScrollBar.ScrollToBottomCommand" />
         </Grid>

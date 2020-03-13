@@ -22,7 +22,7 @@ namespace Panuon.UI.Silver.Internal.Utils
                     Duration = TimeSpan.FromSeconds(0.4),
                 };
                 Storyboard.SetTarget(anima, dependencyObj);
-                Storyboard.SetTargetProperty(anima, new PropertyPath(keyValue.Key.Name));
+                Storyboard.SetTargetProperty(anima, new PropertyPath(keyValue.Key));
                 storyboard.Children.Add(anima);
             }
             storyboard.Begin();
@@ -38,13 +38,13 @@ namespace Panuon.UI.Silver.Internal.Utils
                     Duration = TimeSpan.FromSeconds(0.4),
                 };
                 Storyboard.SetTarget(anima, dependencyObj);
-                Storyboard.SetTargetProperty(anima, new PropertyPath(dp.Name));
+                Storyboard.SetTargetProperty(anima, new PropertyPath(dp));
                 storyboard.Children.Add(anima);
             }
             storyboard.Begin();
         }
 
-      
+
         #endregion
     }
 }

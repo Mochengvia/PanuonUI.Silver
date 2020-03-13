@@ -268,7 +268,7 @@ namespace Panuon.UI.Silver.Internal.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var doubleValue = value as double? ?? 0;
-            return doubleValue < 2 ? 0 : doubleValue - 2;
+            return doubleValue < 2 ? 0: doubleValue - 2;
         }
 
         public object ConvertBack(object value, Type targetTypes, object parameter, CultureInfo culture)

@@ -55,7 +55,7 @@ namespace Panuon.UI.Silver
         /// Identifies the Panuon.UI.Silver.TextBlockX.MatchText dependency property.
         /// </summary>
         public static readonly DependencyProperty MatchTextProperty =
-            DependencyProperty.Register("MatchText", typeof(string), typeof(TextBlockX), new FrameworkPropertyMetadata(null,FrameworkPropertyMetadataOptions.AffectsArrange));
+            DependencyProperty.Register("MatchText", typeof(string), typeof(TextBlockX), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsArrange));
 
         #endregion
 
@@ -73,7 +73,7 @@ namespace Panuon.UI.Silver
         /// Identifies the Panuon.UI.Silver.TextBlockX.MatchedForeground dependency property.
         /// </summary>
         public static readonly DependencyProperty MatchedForegroundProperty =
-            DependencyProperty.Register("MatchedForeground", typeof(Brush), typeof(TextBlockX), new FrameworkPropertyMetadata(Brushes.Red,FrameworkPropertyMetadataOptions.AffectsArrange));
+            DependencyProperty.Register("MatchedForeground", typeof(Brush), typeof(TextBlockX), new FrameworkPropertyMetadata(Brushes.Red, FrameworkPropertyMetadataOptions.AffectsArrange));
 
         #endregion
 
@@ -92,7 +92,7 @@ namespace Panuon.UI.Silver
         /// Identifies the Panuon.UI.Silver.TextBlockX.AutoAdaptation dependency property.
         /// </summary>
         public static readonly DependencyProperty AutoAdaptationProperty =
-            DependencyProperty.Register("AutoAdaptation", typeof(bool), typeof(TextBlockX), new FrameworkPropertyMetadata(false,FrameworkPropertyMetadataOptions.AffectsArrange));
+            DependencyProperty.Register("AutoAdaptation", typeof(bool), typeof(TextBlockX), new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.AffectsArrange));
         #endregion
 
         #region ExceededTextFiller
@@ -127,7 +127,7 @@ namespace Panuon.UI.Silver
         /// Identifies the Panuon.UI.Silver.TextBlockX.MatchRule dependency property.
         /// </summary>
         public static readonly DependencyProperty MatchRuleProperty =
-            DependencyProperty.Register("MatchRule", typeof(MatchRule), typeof(TextBlockX), new FrameworkPropertyMetadata(MatchRule.First,FrameworkPropertyMetadataOptions.AffectsArrange));
+            DependencyProperty.Register("MatchRule", typeof(MatchRule), typeof(TextBlockX), new FrameworkPropertyMetadata(MatchRule.First, FrameworkPropertyMetadataOptions.AffectsArrange));
 
         #endregion
 
@@ -145,7 +145,7 @@ namespace Panuon.UI.Silver
         /// Identifies the Panuon.UI.Silver.TextBlockX.TextWrappingProperty dependency property.
         /// </summary>
         public static readonly DependencyProperty TextWrappingProperty =
-            DependencyProperty.Register("TextWrapping", typeof(TextWrapping), typeof(TextBlockX), new FrameworkPropertyMetadata(TextWrapping.WrapWithOverflow,FrameworkPropertyMetadataOptions.AffectsArrange));
+            DependencyProperty.Register("TextWrapping", typeof(TextWrapping), typeof(TextBlockX), new FrameworkPropertyMetadata(TextWrapping.WrapWithOverflow, FrameworkPropertyMetadataOptions.AffectsArrange));
         #endregion
 
         #region TextAlignment
@@ -162,7 +162,7 @@ namespace Panuon.UI.Silver
         /// Identifies the Panuon.UI.Silver.TextBlockX.TextAlignment dependency property.
         /// </summary>
         public static readonly DependencyProperty TextAlignmentProperty =
-            DependencyProperty.Register("TextAlignment", typeof(TextAlignment), typeof(TextBlockX), new FrameworkPropertyMetadata(TextAlignment.Left,FrameworkPropertyMetadataOptions.AffectsArrange));
+            DependencyProperty.Register("TextAlignment", typeof(TextAlignment), typeof(TextBlockX), new FrameworkPropertyMetadata(TextAlignment.Left, FrameworkPropertyMetadataOptions.AffectsArrange));
         #endregion
 
         #region TextEffects
@@ -214,7 +214,7 @@ namespace Panuon.UI.Silver
 
             if (AutoAdaptation)
             {
-                if(!(width > 0 && height > 0))
+                if (!(width > 0 && height > 0))
                 {
                     throw new Exception($"Exception in TextBlockX : width or height value of arrange bounds must greater then 0 when using the AutoAdaption property. If you are using TextBlockX in DataTemplate, you must explicitly specify its width and height property value. ArrageBoundsSize:{width},{height}.");
                 }
