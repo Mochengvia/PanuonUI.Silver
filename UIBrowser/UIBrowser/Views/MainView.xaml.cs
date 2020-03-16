@@ -23,7 +23,6 @@ namespace UIBrowser.Views
                 new { Name = "Option5", Value = 5 },
                 new { Name = "Option6", Value = 6 },
             };
-            rdg.ItemsSource = list;
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -69,10 +68,5 @@ namespace UIBrowser.Views
             
         }
 
-        private void rdg_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var v = rdg.SelectedValue;
-            var c = rdg.SelectedItem;
-        }
     }
 }

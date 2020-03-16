@@ -526,7 +526,7 @@
     <Thickness x:Key="{x:Static i:ResourceKeys.CalendarXBorderThickness}">1</Thickness>
     <SolidColorBrush x:Key="{x:Static i:ResourceKeys.CalendarXThemeBrush}"
                      Color="Black" />
-    <sys:Double x:Key="{x:Static i:ResourceKeys.CalendarXHeaderPanelHeight}">40.0</sys:Double>
+    <sys:Double x:Key="{x:Static i:ResourceKeys.CalendarXHeaderPanelHeight}">45.0</sys:Double>
     <SolidColorBrush x:Key="{x:Static i:ResourceKeys.CalendarXHeaderPanelBackground}" 
                      Color="Transparent"/>
 

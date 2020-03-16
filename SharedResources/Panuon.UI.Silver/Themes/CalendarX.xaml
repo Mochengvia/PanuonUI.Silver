@@ -57,9 +57,6 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <Border Background="{TemplateBinding HeaderPanelBackground}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{Binding BorderThickness, Converter={StaticResource {x:Static i:ResourceKeys.ThicknessWithBottomOnlyConverter}},RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}" />
                 <Grid x:Name="GrdControls"
                       Height="{TemplateBinding HeaderPanelHeight}">
                     <Grid.ColumnDefinitions>
