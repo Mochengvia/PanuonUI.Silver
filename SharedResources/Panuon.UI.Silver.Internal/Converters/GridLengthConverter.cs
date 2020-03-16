@@ -24,7 +24,7 @@ namespace Panuon.UI.Silver.Internal.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var gridLength = GridLengthUtils.ConvertToGridLength(value?.ToString());
-            return gridLength.Value;
+            return gridLength.IsAuto ? double.NaN : gridLength.Value;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

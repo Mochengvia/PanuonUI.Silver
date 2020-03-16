@@ -45,10 +45,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\Form.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\GroupBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -66,6 +62,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\Pagination.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\RadioButtonGroup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -113,7 +113,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\FormItem.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Themes\FormGroup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -161,8 +161,7 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Components\MessageBoxXConfigurations.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Abstracts\FormGroupItem.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Constracts\Interfaces\FormItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Abstracts\FormGroup.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CalendarX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Card.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CarouselPanel.cs" />
@@ -172,15 +171,16 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Dotline.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Drawer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\DropDown.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Form.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\FormGroup.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\FormTextGroupItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\FormCheckBoxGroup.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\FormTextGroup.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\FormCustomGroup.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\IndexIndicator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MessageBoxX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NeonLabel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Pagination.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PopupX.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\RadioButtonGroup.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Rectangle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\SeperatorX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TextBlockX.cs" />

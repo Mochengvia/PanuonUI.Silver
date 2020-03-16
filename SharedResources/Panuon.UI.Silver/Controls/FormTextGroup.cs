@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
+using System.Windows.Data;
 
 namespace Panuon.UI.Silver
 {
-    public class FormTextGroupItem : FormGroupItem
+    public class FormTextGroup : FormGroup
     {
         #region Ctor
-        static FormTextGroupItem()
+        static FormTextGroup()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(FormTextGroupItem), new FrameworkPropertyMetadata(typeof(FormTextGroupItem)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(FormTextGroup), new FrameworkPropertyMetadata(typeof(FormTextGroup)));
         }
         #endregion
 
@@ -24,7 +22,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty TextProperty =
-            DependencyProperty.Register("Text", typeof(string), typeof(FormTextGroupItem), new FrameworkPropertyMetadata());
+            DependencyProperty.Register("Text", typeof(string), typeof(FormTextGroup), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
         #endregion
 
         #region Watermark
@@ -35,7 +33,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty WatermarkProperty =
-            DependencyProperty.Register("Watermark", typeof(string), typeof(FormTextGroupItem));
+            DependencyProperty.Register("Watermark", typeof(string), typeof(FormTextGroup));
         #endregion
 
         #region IsReadOnly
@@ -46,7 +44,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty IsReadOnlyProperty =
-            DependencyProperty.Register("IsReadOnly", typeof(bool), typeof(FormTextGroupItem));
+            DependencyProperty.Register("IsReadOnly", typeof(bool), typeof(FormTextGroup));
         #endregion
 
         #region TextBoxStyle
@@ -57,7 +55,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty TextBoxStyleProperty =
-            DependencyProperty.Register("TextBoxStyle", typeof(Style), typeof(FormTextGroupItem));
+            DependencyProperty.Register("TextBoxStyle", typeof(Style), typeof(FormTextGroup));
         #endregion
 
         #endregion

@@ -14,8 +14,17 @@ namespace UIBrowser.Views
         public MainView()
         {
             InitializeComponent();
+            var list = new List<object>()
+            {
+                new { Name = "Option1", Value = 1 },
+                new { Name = "Option2", Value = 2 },
+                new { Name = "Option3", Value = 3 },
+                new { Name = "Option4", Value = 4 },
+                new { Name = "Option5", Value = 5 },
+                new { Name = "Option6", Value = 6 },
+            };
+            rdg.ItemsSource = list;
         }
-
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -45,11 +54,25 @@ namespace UIBrowser.Views
 
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            return;
+            MessageBoxX.Show("HelloWorld !", "Caption", MessageBoxIcon.Info, new MessageBoxXConfigurations()
+            {
+                MessageBoxStyle = MessageBoxStyle.Standard,
+            });
         }
 
         private void Button_Click_1(object sender, System.Windows.RoutedEventArgs e)
         {
+        }
+
+        private void this_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            
+        }
+
+        private void rdg_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var v = rdg.SelectedValue;
+            var c = rdg.SelectedItem;
         }
     }
 }

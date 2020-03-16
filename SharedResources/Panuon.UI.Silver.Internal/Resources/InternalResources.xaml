@@ -336,8 +336,9 @@
     <!--<SolidColorBrush x:Key="{x:Static i:ResourceKeys.RadioButtonStandardDefaultCheckedBackground}"/>-->
     <SolidColorBrush x:Key="{x:Static i:ResourceKeys.RadioButtonStandardDefaultGlyphBrush}"
                      Color="#AAAAAA" />
-    <!--<SolidColorBrush x:Key="{x:Static i:ResourceKeys.RadioButtonStandardDefaultCheckedGlyphBrush}" />
-    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.RadioButtonStandardDefaultCheckedBorderBrush}" />-->
+    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.RadioButtonStandardDefaultCheckedGlyphBrush}"
+                     Color="#666666"/>
+    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.RadioButtonStandardDefaultCheckedBorderBrush}" />
     <CornerRadius x:Key="{x:Static i:ResourceKeys.RadioButtonStandardDefaultCornerRadius}">2</CornerRadius>
     <sys:Double x:Key="{x:Static i:ResourceKeys.RadioButtonStandardDefaultBoxHeight}">16</sys:Double>
     <sys:Double x:Key="{x:Static i:ResourceKeys.RadioButtonStandardDefaultBoxWidth}">16</sys:Double>

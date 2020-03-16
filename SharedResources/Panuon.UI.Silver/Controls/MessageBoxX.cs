@@ -19,6 +19,15 @@ namespace Panuon.UI.Silver
 
         #region Methods
         /// <summary>
+        /// Open a message box .
+        /// </summary>
+        /// <param name="messageBoxText">Text to display.</param>
+        public static MessageBoxResult Show(string messageBoxText)
+        {
+            return CallMessageBox(null, messageBoxText, null, MessageBoxButton.OK, MessageBoxIcon.None, DefaultButton.YesOK, messageBoxXConfigurationsKey: null);
+        }
+
+        /// <summary>
         /// Open a message box and return the result selected by the user.
         /// </summary>
         /// <param name="messageBoxText">Text to display.</param>

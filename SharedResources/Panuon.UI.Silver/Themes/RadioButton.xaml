@@ -868,7 +868,7 @@
         <Setter Property="local:RadioButtonHelper.GlyphBrush"
                 Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonStandardDefaultGlyphBrush}}" />
         <Setter Property="local:RadioButtonHelper.CheckedGlyphBrush"
-                Value="{x:Null}" />
+                Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonStandardDefaultCheckedGlyphBrush}}" />
         <Setter Property="local:RadioButtonHelper.CheckedBorderBrush"
                 Value="{x:Null}" />
         <Setter Property="local:RadioButtonHelper.BoxHeight"
