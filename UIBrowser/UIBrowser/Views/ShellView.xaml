@@ -13,6 +13,12 @@
             Height="600"
             Width="1000"
             WindowStartupLocation="CenterScreen">
+    <pu:WindowXCaption.Header>
+            <Image Height="30"
+                   HorizontalAlignment="Left"
+                   RenderOptions.BitmapScalingMode="HighQuality"
+                   Source="/UIBrowser;component/Resources/Images/panuon.png" />
+    </pu:WindowXCaption.Header>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250" />
