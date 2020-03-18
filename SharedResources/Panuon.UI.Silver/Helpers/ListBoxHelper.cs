@@ -11,6 +11,96 @@ namespace Panuon.UI.Silver
     {
         #region Properties
 
+        #region ItemsCornerRadius
+        public static CornerRadius GetItemsCornerRadius(ListBox listBox)
+        {
+            return (CornerRadius)listBox.GetValue(ItemCornerRadiusProperty);
+        }
+
+        public static void SetItemsCornerRadius(ListBox listBox, CornerRadius value)
+        {
+            listBox.SetValue(ItemsCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("ItemsCornerRadius", typeof(CornerRadius), typeof(ListBoxHelper));
+
+        public static CornerRadius GetItemCornerRadius(ListBoxItem listBoxItem)
+        {
+            return (CornerRadius)listBoxItem.GetValue(ItemCornerRadiusProperty);
+        }
+
+        public static void SetItemCornerRadius(ListBoxItem listBoxItem, CornerRadius value)
+        {
+            listBoxItem.SetValue(ItemCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("ItemCornerRadius", typeof(CornerRadius), typeof(ListBoxHelper));
+
+        #endregion
+
+        #region ItemForeground
+        public static Brush GetItemsForeground(ListBox listBox)
+        {
+            return (Brush)listBox.GetValue(ItemsForegroundProperty);
+        }
+
+        public static void SetItemsForeground(ListBox listBox, Brush value)
+        {
+            listBox.SetValue(ItemsForegroundProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsForegroundProperty =
+            DependencyProperty.RegisterAttached("ItemsForeground", typeof(Brush), typeof(ListBoxHelper));
+
+
+        public static Brush GetItemForeground(ListBoxItem listBoxItem)
+        {
+            return (Brush)listBoxItem.GetValue(ItemForegroundProperty);
+        }
+
+        public static void SetItemForeground(ListBoxItem listBoxItem, Brush value)
+        {
+            listBoxItem.SetValue(ItemForegroundProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemForegroundProperty =
+            DependencyProperty.RegisterAttached("ItemForeground", typeof(Brush), typeof(ListBoxHelper));
+        #endregion
+
+        #region ItemBackground
+        public static Brush GetItemsBackground(ListBox listBox)
+        {
+            return (Brush)listBox.GetValue(ItemsBackgroundProperty);
+        }
+
+        public static void SetItemsBackground(ListBox listBox, Brush value)
+        {
+            listBox.SetValue(ItemsBackgroundProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsBackgroundProperty =
+            DependencyProperty.RegisterAttached("ItemsBackground", typeof(Brush), typeof(ListBoxHelper));
+
+        #endregion
+
+        #region ItemBorderBrush
+        public static Brush GetItemsBorderBrush(ListBox listBox)
+        {
+            return (Brush)listBox.GetValue(ItemsBorderBrushProperty);
+        }
+
+        public static void SetItemsBorderBrush(ListBox listBox, Brush value)
+        {
+            listBox.SetValue(ItemsBorderBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsBorderBrushProperty =
+            DependencyProperty.RegisterAttached("ItemsBorderBrush", typeof(Brush), typeof(ListBoxHelper));
+
+        #endregion
+
         #region ItemHoverBackground
         public static Brush GetItemsHoverBackground(ListBox listBox)
         {
@@ -37,9 +127,7 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty ItemHoverBackgroundProperty =
             DependencyProperty.RegisterAttached("ItemHoverBackground", typeof(Brush), typeof(ListBoxHelper));
-
-
-        #endregion
+#endregion
 
         #region ItemHoverForeground
         public static Brush GetItemsHoverForeground(ListBox listBox)
@@ -191,14 +279,14 @@ namespace Panuon.UI.Silver
         #region ItemsHeight
 
 
-        public static double GetItemsHeight(DependencyObject obj)
+        public static double GetItemsHeight(ListBox listBox)
         {
-            return (double)obj.GetValue(ItemsHeightProperty);
+            return (double)listBox.GetValue(ItemsHeightProperty);
         }
 
-        public static void SetItemsHeight(DependencyObject obj, double value)
+        public static void SetItemsHeight(ListBox listBox, double value)
         {
-            obj.SetValue(ItemsHeightProperty, value);
+            listBox.SetValue(ItemsHeightProperty, value);
         }
 
         public static readonly DependencyProperty ItemsHeightProperty =

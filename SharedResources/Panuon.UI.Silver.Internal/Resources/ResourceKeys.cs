@@ -10,138 +10,135 @@ namespace Panuon.UI.Silver.Internal
         #region Converters
         public const string CloneConverter = nameof(CloneConverter);
 
-        public const string BoolToVisibleConverter = nameof(BoolToVisibleConverter);
 
-        public static readonly string BoolToCollapseConverter = nameof(BoolToCollapseConverter);
+        public const string NullToVisibleConverter = nameof(NullToVisibleConverter);
 
-        public static readonly string NullToVisibleConverter = nameof(NullToVisibleConverter);
+        public const string TrueToFalseConverter = nameof(TrueToFalseConverter);
 
-        public static readonly string TrueToFalseConverter = nameof(TrueToFalseConverter);
+        public const string NullOrEmptyToVisibleConverter = nameof(NullOrEmptyToVisibleConverter);
 
-        public static readonly string NullOrEmptyToVisibleConverter = nameof(NullOrEmptyToVisibleConverter);
+        public const string NullToCollapseConverter = nameof(NullToCollapseConverter);
 
-        public static readonly string NullToCollapseConverter = nameof(NullToCollapseConverter);
+        public const string NullOrEmptyToCollapseConverter = nameof(NullOrEmptyToCollapseConverter);
 
-        public static readonly string NullOrEmptyToCollapseConverter = nameof(NullOrEmptyToCollapseConverter);
+        public const string IsNullConverter = nameof(IsNullConverter);
 
-        public static readonly string IsNullConverter = nameof(IsNullConverter);
+        public const string IsNotNullConverter = nameof(IsNotNullConverter);
 
-        public static readonly string IsNotNullConverter = nameof(IsNotNullConverter);
+        public const string IsNullOrEmptyConverter = nameof(IsNullOrEmptyConverter);
 
-        public static readonly string IsNullOrEmptyConverter = nameof(IsNullOrEmptyConverter);
+        public const string HoverBrushConverter = nameof(HoverBrushConverter);
 
-        public static readonly string HoverBrushConverter = nameof(HoverBrushConverter);
+        public const string IconPositionToOrientationConverter = nameof(IconPositionToOrientationConverter);
 
-        public static readonly string IconPositionToOrientationConverter = nameof(IconPositionToOrientationConverter);
+        public const string BrushToColorConverter = nameof(BrushToColorConverter);
 
-        public static readonly string BrushToColorConverter = nameof(BrushToColorConverter);
+        public const string GridLengthConverter = nameof(GridLengthConverter);
 
-        public static readonly string GridLengthConverter = nameof(GridLengthConverter);
+        public const string GridLengthStringToDoubleConverter = nameof(GridLengthStringToDoubleConverter);
 
-        public static readonly string GridLengthStringToDoubleConverter = nameof(GridLengthStringToDoubleConverter);
+        public const string GridLengthIsAbsoluteOrAutoConverter = nameof(GridLengthIsAbsoluteOrAutoConverter);
 
-        public static readonly string GridLengthIsAbsoluteOrAutoConverter = nameof(GridLengthIsAbsoluteOrAutoConverter);
+        public const string DividedBy2Converter = nameof(DividedBy2Converter);
 
-        public static readonly string DividedBy2Converter = nameof(DividedBy2Converter);
+        public const string DividedBy2_5Converter = nameof(DividedBy2_5Converter);
 
-        public static readonly string DividedBy2_5Converter = nameof(DividedBy2_5Converter);
+        public const string DividedByMinus2Converter = nameof(DividedByMinus2Converter);
 
-        public static readonly string DividedByMinus2Converter = nameof(DividedByMinus2Converter);
+        public const string DividedBy3Converter = nameof(DividedBy3Converter);
 
-        public static readonly string DividedBy3Converter = nameof(DividedBy3Converter);
+        public const string DividedBy4Converter = nameof(DividedBy4Converter);
 
-        public static readonly string DividedBy4Converter = nameof(DividedBy4Converter);
+        public const string DividedBy5Converter = nameof(DividedBy5Converter);
 
-        public static readonly string DividedBy5Converter = nameof(DividedBy5Converter);
+        public const string DividedBy6Converter = nameof(DividedBy6Converter);
 
-        public static readonly string DividedBy6Converter = nameof(DividedBy6Converter);
+        public const string DividedBy7Converter = nameof(DividedBy7Converter);
 
-        public static readonly string DividedBy7Converter = nameof(DividedBy7Converter);
+        public const string DividedBy10Converter = nameof(DividedBy10Converter);
 
-        public static readonly string DividedBy10Converter = nameof(DividedBy10Converter);
+        public const string DividedBy12Converter = nameof(DividedBy12Converter);
 
-        public static readonly string DividedBy12Converter = nameof(DividedBy12Converter);
+        public const string DividedBy15Converter = nameof(DividedBy15Converter);
 
-        public static readonly string DividedBy15Converter = nameof(DividedBy15Converter);
+        public const string Add3Converter = nameof(Add3Converter);
 
-        public static readonly string Add3Converter = nameof(Add3Converter);
+        public const string Add5Converter = nameof(Add5Converter);
 
-        public static readonly string Add5Converter = nameof(Add5Converter);
+        public const string Add7Converter = nameof(Add7Converter);
 
-        public static readonly string Add7Converter = nameof(Add7Converter);
+        public const string Add10Converter = nameof(Add10Converter);
 
-        public static readonly string Add10Converter = nameof(Add10Converter);
+        public const string Add16Converter = nameof(Add16Converter);
 
-        public static readonly string Add16Converter = nameof(Add16Converter);
+        public const string Minus1Converter = nameof(Minus1Converter);
 
-        public static readonly string Minus1Converter = nameof(Minus1Converter);
+        public const string Minus0_5Converter = nameof(Minus0_5Converter);
 
-        public static readonly string Minus0_5Converter = nameof(Minus0_5Converter);
+        public const string Minus2Converter = nameof(Minus2Converter);
 
-        public static readonly string Minus2Converter = nameof(Minus2Converter);
+        public const string Minus3Converter = nameof(Minus3Converter);
 
-        public static readonly string Minus3Converter = nameof(Minus3Converter);
+        public const string Minus5Converter = nameof(Minus5Converter);
 
-        public static readonly string Minus5Converter = nameof(Minus5Converter);
+        public const string Minus7Converter = nameof(Minus7Converter);
 
-        public static readonly string Minus7Converter = nameof(Minus7Converter);
+        public const string Minus10Converter = nameof(Minus10Converter);
 
-        public static readonly string Minus10Converter = nameof(Minus10Converter);
+        public const string DoubleMinConverter = nameof(DoubleMinConverter);
 
-        public static readonly string DoubleMinConverter = nameof(DoubleMinConverter);
+        public const string DoubleEqualsConverter = nameof(DoubleEqualsConverter);
 
-        public static readonly string DoubleEqualsConverter = nameof(DoubleEqualsConverter);
-
-        public static readonly string DoubleToRightMarginConverter = nameof(DoubleToRightMarginConverter);
+        public const string DoubleToRightMarginConverter = nameof(DoubleToRightMarginConverter);
 
         
-        public static readonly string IsGreaterThanZeroConverter = nameof(IsGreaterThanZeroConverter);
+        public const string IsGreaterThanZeroConverter = nameof(IsGreaterThanZeroConverter);
 
-        public static readonly string IsLessThanZeroConverter = nameof(IsLessThanZeroConverter);
+        public const string IsLessThanZeroConverter = nameof(IsLessThanZeroConverter);
 
-        public static readonly string ArcConverter = nameof(ArcConverter);
+        public const string ArcConverter = nameof(ArcConverter);
 
-        public static readonly string TreeViewPaddingConverter = nameof(TreeViewPaddingConverter);
+        public const string TreeViewPaddingConverter = nameof(TreeViewPaddingConverter);
 
-        public static readonly string TreeViewChainHorizontalMarginConverter = nameof(TreeViewChainHorizontalMarginConverter);
+        public const string TreeViewChainHorizontalMarginConverter = nameof(TreeViewChainHorizontalMarginConverter);
 
-        public static readonly string TreeViewChainVerticalMarginConverter = nameof(TreeViewChainVerticalMarginConverter);
+        public const string TreeViewChainVerticalMarginConverter = nameof(TreeViewChainVerticalMarginConverter);
         
-        public static readonly string CornerRadiusToDoubleConverter = nameof(CornerRadiusToDoubleConverter);
+        public const string CornerRadiusToDoubleConverter = nameof(CornerRadiusToDoubleConverter);
 
-        public static readonly string ThicknessToDoubleConverter = nameof(ThicknessToDoubleConverter);
+        public const string ThicknessToDoubleConverter = nameof(ThicknessToDoubleConverter);
 
-        public static readonly string ThicknessWithoutTopConverter = nameof(ThicknessWithoutTopConverter);
+        public const string ThicknessWithoutTopConverter = nameof(ThicknessWithoutTopConverter);
 
-        public static readonly string ThicknessWithTopOnlyConverter = nameof(ThicknessWithTopOnlyConverter);
+        public const string ThicknessWithTopOnlyConverter = nameof(ThicknessWithTopOnlyConverter);
 
-        public static readonly string ThicknessWithBottomOnlyConverter = nameof(ThicknessWithBottomOnlyConverter);
+        public const string ThicknessWithBottomOnlyConverter = nameof(ThicknessWithBottomOnlyConverter);
 
-        public static readonly string CheckBoxStandardGlyphPathConverter = nameof(CheckBoxStandardGlyphPathConverter);
+        public const string CheckBoxStandardGlyphPathConverter = nameof(CheckBoxStandardGlyphPathConverter);
 
-        public static readonly string CheckBoxSwitchToggleMarginConverter = nameof(CheckBoxSwitchToggleMarginConverter);
+        public const string CheckBoxSwitchToggleMarginConverter = nameof(CheckBoxSwitchToggleMarginConverter);
 
-        public static readonly string CheckBoxSwitch2DecorationMarginConverter = nameof(CheckBoxSwitch2DecorationMarginConverter);
+        public const string CheckBoxSwitch2DecorationMarginConverter = nameof(CheckBoxSwitch2DecorationMarginConverter);
 
-        public static readonly string CheckBoxSwitch3ToggleMarginConverter = nameof(CheckBoxSwitch3ToggleMarginConverter);
+        public const string CheckBoxSwitch3ToggleMarginConverter = nameof(CheckBoxSwitch3ToggleMarginConverter);
 
-        public static readonly string CheckBoxSwitch3ToggleTrackMarginConverter = nameof(CheckBoxSwitch3ToggleTrackMarginConverter);
+        public const string CheckBoxSwitch3ToggleTrackMarginConverter = nameof(CheckBoxSwitch3ToggleTrackMarginConverter);
 
-        public static readonly string NullableColorToColorConverter = nameof(NullableColorToColorConverter);
+        public const string NullableColorToColorConverter = nameof(NullableColorToColorConverter);
 
-        public static readonly string CombineToArrayConverter = nameof(CombineToArrayConverter);
+        public const string CombineToArrayConverter = nameof(CombineToArrayConverter);
 
-        public static readonly string DropDownPathDataConverter = nameof(DropDownPathDataConverter);
+        public const string DropDownPathDataConverter = nameof(DropDownPathDataConverter);
 
-        public static readonly string MsgBoxIconConverter = nameof(MsgBoxIconConverter);
+        public const string MsgBoxIconConverter = nameof(MsgBoxIconConverter);
 
-        public static readonly string MsgBoxIconForegroundConverter = nameof(MsgBoxIconForegroundConverter);
+        public const string MsgBoxIconForegroundConverter = nameof(MsgBoxIconForegroundConverter);
 
-        public static readonly string MsgBoxButtonVisibilityConverter = nameof(MsgBoxButtonVisibilityConverter);
+        public const string MsgBoxButtonVisibilityConverter = nameof(MsgBoxButtonVisibilityConverter);
 
-        public static readonly string MsgBoxButtonIsDefaultConverter = nameof(MsgBoxButtonIsDefaultConverter);
+        public const string MsgBoxButtonIsDefaultConverter = nameof(MsgBoxButtonIsDefaultConverter);
 
-        public static readonly string MsgBoxStackPanelFlowDirectionConverter = nameof(MsgBoxStackPanelFlowDirectionConverter);
+        public const string MsgBoxStackPanelFlowDirectionConverter = nameof(MsgBoxStackPanelFlowDirectionConverter);
 
         #endregion
 
@@ -150,25 +147,25 @@ namespace Panuon.UI.Silver.Internal
         #endregion
 
         #region WindowX
-        public static readonly string WindowXTemplate = nameof(WindowXTemplate);
+        public const string WindowXTemplate = nameof(WindowXTemplate);
 
-        public static readonly string WindowXToolWindowTemplate = nameof(WindowXToolWindowTemplate);
+        public const string WindowXToolWindowTemplate = nameof(WindowXToolWindowTemplate);
 
-        public static readonly string WindowXDefaultHeader = nameof(WindowXDefaultHeader);
+        public const string WindowXDefaultHeader = nameof(WindowXDefaultHeader);
 
-        public static readonly string WindowXCaptionForeground = nameof(WindowXCaptionForeground);
+        public const string WindowXCaptionForeground = nameof(WindowXCaptionForeground);
 
-        public static readonly string WindowXCaptionBackground = nameof(WindowXCaptionBackground);
+        public const string WindowXCaptionBackground = nameof(WindowXCaptionBackground);
 
-        public static readonly string WindowXCaptionHeight = nameof(WindowXCaptionHeight);
+        public const string WindowXCaptionHeight = nameof(WindowXCaptionHeight);
 
-        public static readonly string WindowXCaptionHorizontalHeaderAlignment = nameof(WindowXCaptionHorizontalHeaderAlignment);
+        public const string WindowXCaptionHorizontalHeaderAlignment = nameof(WindowXCaptionHorizontalHeaderAlignment);
 
-        public static readonly string WindowXCaptionMinimizeButtonHoverBrush = nameof(WindowXCaptionMinimizeButtonHoverBrush);
+        public const string WindowXCaptionMinimizeButtonHoverBrush = nameof(WindowXCaptionMinimizeButtonHoverBrush);
 
-        public static readonly string WindowXCaptionMaximizeButtonHoverBrush = nameof(WindowXCaptionMaximizeButtonHoverBrush);
+        public const string WindowXCaptionMaximizeButtonHoverBrush = nameof(WindowXCaptionMaximizeButtonHoverBrush);
 
-        public static readonly string WindowXCaptionCloseButtonHoverBrush = nameof(WindowXCaptionCloseButtonHoverBrush);
+        public const string WindowXCaptionCloseButtonHoverBrush = nameof(WindowXCaptionCloseButtonHoverBrush);
 
 
         #endregion
@@ -682,400 +679,396 @@ namespace Panuon.UI.Silver.Internal
         #endregion
 
         #region Loading
-        public static readonly string LoadingStandardRectangleStyle = nameof(LoadingStandardRectangleStyle);
+        public const string LoadingStandardRectangleStyle = nameof(LoadingStandardRectangleStyle);
 
-        public static readonly string LoadingStandardTemplate = nameof(LoadingStandardTemplate);
+        public const string LoadingStandardTemplate = nameof(LoadingStandardTemplate);
 
-        public static readonly string LoadingWaveRectangleStyle = nameof(LoadingWaveRectangleStyle);
+        public const string LoadingWaveRectangleStyle = nameof(LoadingWaveRectangleStyle);
 
-        public static readonly string LoadingWaveTemplate = nameof(LoadingWaveTemplate);
+        public const string LoadingWaveTemplate = nameof(LoadingWaveTemplate);
 
-        public static readonly string LoadingRingTemplate = nameof(LoadingRingTemplate);
+        public const string LoadingRingTemplate = nameof(LoadingRingTemplate);
 
-        public static readonly string LoadingRing2Template = nameof(LoadingRing2Template);
+        public const string LoadingRing2Template = nameof(LoadingRing2Template);
 
-        public static readonly string LoadingClassicTemplate = nameof(LoadingClassicTemplate);
+        public const string LoadingClassicTemplate = nameof(LoadingClassicTemplate);
 
-        public static readonly string LoadingForeground = nameof(LoadingForeground);
+        public const string LoadingForeground = nameof(LoadingForeground);
 
-        public static readonly string LoadingBackground = nameof(LoadingBackground);
+        public const string LoadingBackground = nameof(LoadingBackground);
 
-        public static readonly string LoadingClassicEllipseStyle = nameof(LoadingClassicEllipseStyle);
+        public const string LoadingClassicEllipseStyle = nameof(LoadingClassicEllipseStyle);
         #endregion
 
         #region TextBox
-        public static readonly string TextBoxTemplate = nameof(TextBoxTemplate);
+        public const string TextBoxTemplate = nameof(TextBoxTemplate);
 
-        public static readonly string TextBoxBorderBrush = nameof(TextBoxBorderBrush);
+        public const string TextBoxBorderBrush = nameof(TextBoxBorderBrush);
 
-        public static readonly string TextBoxBorderThickness = nameof(TextBoxBorderThickness);
+        public const string TextBoxBorderThickness = nameof(TextBoxBorderThickness);
 
-        public static readonly string TextBoxValidationErrorTemplate = nameof(TextBoxValidationErrorTemplate);
+        public const string TextBoxValidationErrorTemplate = nameof(TextBoxValidationErrorTemplate);
 
-        public static readonly string TextBoxFocusedBorderBrush = nameof(TextBoxFocusedBorderBrush);
+        public const string TextBoxFocusedBorderBrush = nameof(TextBoxFocusedBorderBrush);
 
-        public static readonly string TextBoxFocusedShadowColor = nameof(TextBoxFocusedShadowColor);
+        public const string TextBoxFocusedShadowColor = nameof(TextBoxFocusedShadowColor);
 
-        public static readonly string TextBoxCornerRadius = nameof(TextBoxCornerRadius);
+        public const string TextBoxCornerRadius = nameof(TextBoxCornerRadius);
         #endregion
 
         #region PasswordBox
-        public static readonly string PasswordBoxTemplate = nameof(PasswordBoxTemplate);
+        public const string PasswordBoxTemplate = nameof(PasswordBoxTemplate);
 
-        public static readonly string PasswordBoxBorderBrush = nameof(PasswordBoxBorderBrush);
+        public const string PasswordBoxBorderBrush = nameof(PasswordBoxBorderBrush);
 
-        public static readonly string PasswordBoxBorderThickness = nameof(PasswordBoxBorderThickness);
+        public const string PasswordBoxBorderThickness = nameof(PasswordBoxBorderThickness);
 
-        public static readonly string PasswordBoxValidationErrorTemplate = nameof(PasswordBoxValidationErrorTemplate);
+        public const string PasswordBoxValidationErrorTemplate = nameof(PasswordBoxValidationErrorTemplate);
 
-        public static readonly string PasswordBoxFocusedBorderBrush = nameof(PasswordBoxFocusedBorderBrush);
+        public const string PasswordBoxFocusedBorderBrush = nameof(PasswordBoxFocusedBorderBrush);
 
-        public static readonly string PasswordBoxFocusedShadowColor = nameof(PasswordBoxFocusedShadowColor);
+        public const string PasswordBoxFocusedShadowColor = nameof(PasswordBoxFocusedShadowColor);
 
-        public static readonly string PasswordBoxCornerRadius = nameof(PasswordBoxCornerRadius);
+        public const string PasswordBoxCornerRadius = nameof(PasswordBoxCornerRadius);
         #endregion
 
         #region ComboBox
-        public static readonly string ComboBoxTemplate = nameof(ComboBoxTemplate);
+        public const string ComboBoxTemplate = nameof(ComboBoxTemplate);
 
-        public static readonly string ComboBoxBorderBrush = nameof(ComboBoxBorderBrush);
+        public const string ComboBoxBorderBrush = nameof(ComboBoxBorderBrush);
 
-        public static readonly string ComboBoxBorderThickness = nameof(ComboBoxBorderThickness);
+        public const string ComboBoxBorderThickness = nameof(ComboBoxBorderThickness);
 
-        public static readonly string ComboBoxBackground = nameof(ComboBoxBackground);
+        public const string ComboBoxBackground = nameof(ComboBoxBackground);
 
-        public static readonly string ComboBoxCornerRadius = nameof(ComboBoxCornerRadius);
+        public const string ComboBoxCornerRadius = nameof(ComboBoxCornerRadius);
 
-        public static readonly string ComboBoxMaxDropDownHeight = nameof(ComboBoxMaxDropDownHeight);
+        public const string ComboBoxMaxDropDownHeight = nameof(ComboBoxMaxDropDownHeight);
 
-        public static readonly string ComboBoxDropDownCornerRadius = nameof(ComboBoxDropDownCornerRadius);
+        public const string ComboBoxDropDownCornerRadius = nameof(ComboBoxDropDownCornerRadius);
 
-        public static readonly string ComboBoxDropDownPadding = nameof(ComboBoxDropDownPadding);
+        public const string ComboBoxDropDownPadding = nameof(ComboBoxDropDownPadding);
 
-        public static readonly string ComboBoxShadowColor = nameof(ComboBoxShadowColor);
+        public const string ComboBoxShadowColor = nameof(ComboBoxShadowColor);
 
-        public static readonly string ComboBoxStandardToggleButtonTemplate = nameof(ComboBoxStandardToggleButtonTemplate);
+        public const string ComboBoxStandardToggleButtonTemplate = nameof(ComboBoxStandardToggleButtonTemplate);
 
-        public static readonly string ComboBoxStandardToggleButtonStyle = nameof(ComboBoxStandardToggleButtonStyle);
+        public const string ComboBoxStandardToggleButtonStyle = nameof(ComboBoxStandardToggleButtonStyle);
 
-        public static readonly string ComboBoxSimpleToggleButtonTemplate = nameof(ComboBoxSimpleToggleButtonTemplate);
+        public const string ComboBoxSimpleToggleButtonTemplate = nameof(ComboBoxSimpleToggleButtonTemplate);
 
-        public static readonly string ComboBoxSimpleToggleButtonStyle = nameof(ComboBoxSimpleToggleButtonStyle);
+        public const string ComboBoxSimpleToggleButtonStyle = nameof(ComboBoxSimpleToggleButtonStyle);
 
-        public static readonly string ComboBoxEditableTextBoxTemplate = nameof(ComboBoxEditableTextBoxTemplate);
+        public const string ComboBoxEditableTextBoxTemplate = nameof(ComboBoxEditableTextBoxTemplate);
 
-        public static readonly string ComboBoxEditableTextBoxStyle = nameof(ComboBoxEditableTextBoxStyle);
+        public const string ComboBoxEditableTextBoxStyle = nameof(ComboBoxEditableTextBoxStyle);
 
-        public static readonly string ComboBoxItemsHoverBackground = nameof(ComboBoxItemsHoverBackground);
+        public const string ComboBoxItemsHoverBackground = nameof(ComboBoxItemsHoverBackground);
 
-        public static readonly string ComboBoxItemsHoverForeground = nameof(ComboBoxItemsHoverForeground);
+        public const string ComboBoxItemsHoverForeground = nameof(ComboBoxItemsHoverForeground);
 
-        public static readonly string ComboBoxItemsHoverBorderBrush = nameof(ComboBoxItemsHoverBorderBrush);
+        public const string ComboBoxItemsHoverBorderBrush = nameof(ComboBoxItemsHoverBorderBrush);
 
-        public static readonly string ComboBoxItemsSelectedBackground = nameof(ComboBoxItemsSelectedBackground);
+        public const string ComboBoxItemsSelectedBackground = nameof(ComboBoxItemsSelectedBackground);
 
-        public static readonly string ComboBoxItemsSelectedForeground = nameof(ComboBoxItemsSelectedForeground);
+        public const string ComboBoxItemsSelectedForeground = nameof(ComboBoxItemsSelectedForeground);
 
-        public static readonly string ComboBoxItemsSelectedBorderBrush = nameof(ComboBoxItemsSelectedBorderBrush);
+        public const string ComboBoxItemsSelectedBorderBrush = nameof(ComboBoxItemsSelectedBorderBrush);
 
-        public static readonly string ComboBoxItemsHeight = nameof(ComboBoxItemsHeight);
+        public const string ComboBoxItemsHeight = nameof(ComboBoxItemsHeight);
 
         #region ComboBoxItem
-        public static readonly string ComboBoxItemTemplate = nameof(ComboBoxItemTemplate);
+        public const string ComboBoxItemTemplate = nameof(ComboBoxItemTemplate);
 
-        public static readonly string ComboBoxItemBackground = nameof(ComboBoxItemBackground);
+        public const string ComboBoxItemBackground = nameof(ComboBoxItemBackground);
 
-        public static readonly string ComboBoxItemBorderBrush = nameof(ComboBoxItemBorderBrush);
+        public const string ComboBoxItemBorderBrush = nameof(ComboBoxItemBorderBrush);
 
-        public static readonly string ComboBoxItemBorderThickness = nameof(ComboBoxItemBorderThickness);
+        public const string ComboBoxItemBorderThickness = nameof(ComboBoxItemBorderThickness);
         #endregion
 
         #endregion
 
         #region ScrollViewer
-        public static readonly string ScrollViewerTemplate = nameof(ScrollViewerTemplate);
+        public const string ScrollViewerTemplate = nameof(ScrollViewerTemplate);
 
-        public static readonly string ScrollViewerThumbTemplate = nameof(ScrollViewerThumbTemplate);
+        public const string ScrollViewerThumbTemplate = nameof(ScrollViewerThumbTemplate);
 
-        public static readonly string ScrollViewerThumbStyle = nameof(ScrollViewerThumbStyle);
+        public const string ScrollViewerThumbStyle = nameof(ScrollViewerThumbStyle);
 
-        public static readonly string ScrollViewerVerticalScrollBarTemplate = nameof(ScrollViewerVerticalScrollBarTemplate);
+        public const string ScrollViewerVerticalScrollBarTemplate = nameof(ScrollViewerVerticalScrollBarTemplate);
 
-        public static readonly string ScrollViewerHorizontalScrollBarTemplate = nameof(ScrollViewerHorizontalScrollBarTemplate);
+        public const string ScrollViewerHorizontalScrollBarTemplate = nameof(ScrollViewerHorizontalScrollBarTemplate);
 
-        public static readonly string ScrollViewerScrollBarStyle = nameof(ScrollViewerScrollBarStyle);
+        public const string ScrollViewerScrollBarStyle = nameof(ScrollViewerScrollBarStyle);
 
         #endregion
 
         #region TreeView
-        public static readonly string TreeViewBorderBrush = nameof(TreeViewBorderBrush);
+        public const string TreeViewBorderBrush = nameof(TreeViewBorderBrush);
 
-        public static readonly string TreeViewBorderThickness = nameof(TreeViewBorderThickness);
+        public const string TreeViewBorderThickness = nameof(TreeViewBorderThickness);
 
-        public static readonly string TreeViewBackground = nameof(TreeViewBackground);
+        public const string TreeViewBackground = nameof(TreeViewBackground);
 
-        public static readonly string TreeViewItemStandardTemplate = nameof(TreeViewItemStandardTemplate);
+        public const string TreeViewItemStandardTemplate = nameof(TreeViewItemStandardTemplate);
 
-        public static readonly string TreeViewItemModernTemplate = nameof(TreeViewItemModernTemplate);
+        public const string TreeViewItemModernTemplate = nameof(TreeViewItemModernTemplate);
 
-        public static readonly string TreeViewItemChainTemplate = nameof(TreeViewItemChainTemplate);
+        public const string TreeViewItemChainTemplate = nameof(TreeViewItemChainTemplate);
 
-        public static readonly string TreeViewStandardItemsHoverBackground = nameof(TreeViewStandardItemsHoverBackground);
+        public const string TreeViewStandardItemsHoverBackground = nameof(TreeViewStandardItemsHoverBackground);
 
-        public static readonly string TreeViewStandardHoverForeground = nameof(TreeViewStandardHoverForeground);
+        public const string TreeViewStandardHoverForeground = nameof(TreeViewStandardHoverForeground);
 
-        public static readonly string TreeViewStandardItemsToggleBrush = nameof(TreeViewStandardItemsToggleBrush);
+        public const string TreeViewStandardItemsToggleBrush = nameof(TreeViewStandardItemsToggleBrush);
 
-        public static readonly string TreeViewStandardItemsHoverToggleBrush = nameof(TreeViewStandardItemsHoverToggleBrush);
+        public const string TreeViewStandardItemsHoverToggleBrush = nameof(TreeViewStandardItemsHoverToggleBrush);
 
-        public static readonly string TreeViewStandardItemsSelectedBackground = nameof(TreeViewStandardItemsSelectedBackground);
+        public const string TreeViewStandardItemsSelectedBackground = nameof(TreeViewStandardItemsSelectedBackground);
 
-        public static readonly string TreeViewStandardSelectedForeground = nameof(TreeViewStandardSelectedForeground);
+        public const string TreeViewStandardSelectedForeground = nameof(TreeViewStandardSelectedForeground);
 
-        public static readonly string TreeViewStandardItemHeight = nameof(TreeViewStandardItemHeight);
+        public const string TreeViewStandardItemHeight = nameof(TreeViewStandardItemHeight);
 
-        public static readonly string TreeViewStandardItemPadding = nameof(TreeViewStandardItemPadding);
+        public const string TreeViewStandardItemPadding = nameof(TreeViewStandardItemPadding);
 
-        public static readonly string TreeViewStandardToggleButtonStyle = nameof(TreeViewStandardToggleButtonStyle);
+        public const string TreeViewStandardToggleButtonStyle = nameof(TreeViewStandardToggleButtonStyle);
 
-        public static readonly string TreeViewModernItemsHoverBackground = nameof(TreeViewModernItemsHoverBackground);
+        public const string TreeViewModernItemsHoverBackground = nameof(TreeViewModernItemsHoverBackground);
 
-        public static readonly string TreeViewModernHoverForeground = nameof(TreeViewModernHoverForeground);
+        public const string TreeViewModernHoverForeground = nameof(TreeViewModernHoverForeground);
 
-        public static readonly string TreeViewModernItemsToggleBrush = nameof(TreeViewModernItemsToggleBrush);
+        public const string TreeViewModernItemsToggleBrush = nameof(TreeViewModernItemsToggleBrush);
 
-        public static readonly string TreeViewModernItemsHoverToggleBrush = nameof(TreeViewModernItemsHoverToggleBrush);
+        public const string TreeViewModernItemsHoverToggleBrush = nameof(TreeViewModernItemsHoverToggleBrush);
 
-        public static readonly string TreeViewModernItemsSelectedToggleBrush = nameof(TreeViewModernItemsSelectedToggleBrush);
+        public const string TreeViewModernItemsSelectedToggleBrush = nameof(TreeViewModernItemsSelectedToggleBrush);
         
-        public static readonly string TreeViewModernItemsSelectedBackground = nameof(TreeViewModernItemsSelectedBackground);
+        public const string TreeViewModernItemsSelectedBackground = nameof(TreeViewModernItemsSelectedBackground);
 
-        public static readonly string TreeViewModernSelectedForeground = nameof(TreeViewModernSelectedForeground);
+        public const string TreeViewModernSelectedForeground = nameof(TreeViewModernSelectedForeground);
 
-        public static readonly string TreeViewModernItemHeight = nameof(TreeViewModernItemHeight);
+        public const string TreeViewModernItemHeight = nameof(TreeViewModernItemHeight);
 
-        public static readonly string TreeViewModernItemPadding = nameof(TreeViewModernItemPadding);
+        public const string TreeViewModernItemPadding = nameof(TreeViewModernItemPadding);
 
-        public static readonly string TreeViewModernToggleButtonStyle = nameof(TreeViewModernToggleButtonStyle);
+        public const string TreeViewModernToggleButtonStyle = nameof(TreeViewModernToggleButtonStyle);
 
-        public static readonly string TreeViewChainItemsHoverBackground = nameof(TreeViewChainItemsHoverBackground);
+        public const string TreeViewChainItemsHoverBackground = nameof(TreeViewChainItemsHoverBackground);
 
-        public static readonly string TreeViewChainHoverForeground = nameof(TreeViewChainHoverForeground);
+        public const string TreeViewChainHoverForeground = nameof(TreeViewChainHoverForeground);
 
-        public static readonly string TreeViewChainItemsToggleBrush = nameof(TreeViewChainItemsToggleBrush);
+        public const string TreeViewChainItemsToggleBrush = nameof(TreeViewChainItemsToggleBrush);
 
-        public static readonly string TreeViewChainItemsHoverToggleBrush = nameof(TreeViewChainItemsHoverToggleBrush);
+        public const string TreeViewChainItemsHoverToggleBrush = nameof(TreeViewChainItemsHoverToggleBrush);
 
-        public static readonly string TreeViewChainItemsSelectedBackground = nameof(TreeViewChainItemsSelectedBackground);
+        public const string TreeViewChainItemsSelectedBackground = nameof(TreeViewChainItemsSelectedBackground);
 
-        public static readonly string TreeViewChainSelectedForeground = nameof(TreeViewChainSelectedForeground);
+        public const string TreeViewChainSelectedForeground = nameof(TreeViewChainSelectedForeground);
 
-        public static readonly string TreeViewChainItemHeight = nameof(TreeViewChainItemHeight);
+        public const string TreeViewChainItemHeight = nameof(TreeViewChainItemHeight);
 
-        public static readonly string TreeViewChainItemPadding = nameof(TreeViewChainItemPadding);
+        public const string TreeViewChainItemPadding = nameof(TreeViewChainItemPadding);
 
-        public static readonly string TreeViewChainToggleButtonStyle = nameof(TreeViewChainToggleButtonStyle);
+        public const string TreeViewChainToggleButtonStyle = nameof(TreeViewChainToggleButtonStyle);
         #endregion
 
         #region TabControl
-        public static readonly string TabControlBorderBrush = nameof(TabControlBorderBrush);
+        public const string TabControlBorderBrush = nameof(TabControlBorderBrush);
 
-        public static readonly string TabControlBorderThickness = nameof(TabControlBorderThickness);
+        public const string TabControlBorderThickness = nameof(TabControlBorderThickness);
 
-        public static readonly string TabControlPadding = nameof(TabControlPadding);
+        public const string TabControlPadding = nameof(TabControlPadding);
 
-        public static readonly string TabControlBackground = nameof(TabControlBackground);
+        public const string TabControlBackground = nameof(TabControlBackground);
 
-        public static readonly string TabControlStandardTopTemplate = nameof(TabControlStandardTopTemplate);
+        public const string TabControlStandardTopTemplate = nameof(TabControlStandardTopTemplate);
 
-        public static readonly string TabControlStandardBottomTemplate = nameof(TabControlStandardBottomTemplate);
+        public const string TabControlStandardBottomTemplate = nameof(TabControlStandardBottomTemplate);
 
-        public static readonly string TabControlStandardLeftTemplate = nameof(TabControlStandardLeftTemplate);
+        public const string TabControlStandardLeftTemplate = nameof(TabControlStandardLeftTemplate);
 
-        public static readonly string TabControlStandardRightTemplate = nameof(TabControlStandardRightTemplate);
+        public const string TabControlStandardRightTemplate = nameof(TabControlStandardRightTemplate);
 
-        public static readonly string TabControlExpandableTopTemplate = nameof(TabControlExpandableTopTemplate);
+        public const string TabControlExpandableTopTemplate = nameof(TabControlExpandableTopTemplate);
 
-        public static readonly string TabControlExpandableBottomTemplate = nameof(TabControlExpandableBottomTemplate);
+        public const string TabControlExpandableBottomTemplate = nameof(TabControlExpandableBottomTemplate);
 
-        public static readonly string TabControlExpandableLeftTemplate = nameof(TabControlExpandableLeftTemplate);
+        public const string TabControlExpandableLeftTemplate = nameof(TabControlExpandableLeftTemplate);
 
-        public static readonly string TabControlExpandableRightTemplate = nameof(TabControlExpandableRightTemplate);
+        public const string TabControlExpandableRightTemplate = nameof(TabControlExpandableRightTemplate);
 
-        public static readonly string TabControlScrollableTopTemplate = nameof(TabControlScrollableTopTemplate);
+        public const string TabControlScrollableTopTemplate = nameof(TabControlScrollableTopTemplate);
 
-        public static readonly string TabControlScrollableBottomTemplate = nameof(TabControlScrollableBottomTemplate);
+        public const string TabControlScrollableBottomTemplate = nameof(TabControlScrollableBottomTemplate);
 
-        public static readonly string TabControlScrollableLeftTemplate = nameof(TabControlScrollableLeftTemplate);
+        public const string TabControlScrollableLeftTemplate = nameof(TabControlScrollableLeftTemplate);
 
-        public static readonly string TabControlScrollableRightTemplate = nameof(TabControlScrollableRightTemplate);
+        public const string TabControlScrollableRightTemplate = nameof(TabControlScrollableRightTemplate);
 
-        public static readonly string TabItemStandardTemplate = nameof(TabItemStandardTemplate);
+        public const string TabItemStandardTemplate = nameof(TabItemStandardTemplate);
 
-        public static readonly string TabItemModernTemplate = nameof(TabItemModernTemplate);
+        public const string TabItemModernTemplate = nameof(TabItemModernTemplate);
 
-        public static readonly string TabItemModern2Template = nameof(TabItemModern2Template);
+        public const string TabItemModern2Template = nameof(TabItemModern2Template);
 
-        public static readonly string TabItemCardTemplate = nameof(TabItemCardTemplate);
+        public const string TabItemCardTemplate = nameof(TabItemCardTemplate);
 
         #endregion
 
         #region DropDown
-        public static readonly string DropDownStandardTemplate = nameof(DropDownStandardTemplate);
+        public const string DropDownStandardTemplate = nameof(DropDownStandardTemplate);
 
-        public static readonly string DropDownToggleButtonTemplate = nameof(DropDownToggleButtonTemplate);
+        public const string DropDownToggleButtonTemplate = nameof(DropDownToggleButtonTemplate);
 
-        public static readonly string DropDownToggleButtonStyle = nameof(DropDownToggleButtonStyle);
+        public const string DropDownToggleButtonStyle = nameof(DropDownToggleButtonStyle);
 
 
         #endregion
 
 
         #region ListBox
-        public static readonly string ListBoxBorderBrush = nameof(ListBoxBorderBrush);
+        public const string ListBoxBorderBrush = nameof(ListBoxBorderBrush);
 
-        public static readonly string ListBoxBorderThickness = nameof(ListBoxBorderThickness);
+        public const string ListBoxBorderThickness = nameof(ListBoxBorderThickness);
 
-        public static readonly string ListBoxBackground = nameof(ListBoxBackground);
+        public const string ListBoxBackground = nameof(ListBoxBackground);
 
-        public static readonly string ListBoxItemsHoverBackground = nameof(ListBoxItemsHoverBackground);
+        public const string ListBoxItemsHoverBackground = nameof(ListBoxItemsHoverBackground);
 
-        public static readonly string ListBoxItemsSelectedBackground = nameof(ListBoxItemsSelectedBackground);
+        public const string ListBoxItemsSelectedBackground = nameof(ListBoxItemsSelectedBackground);
         #endregion
 
         #region MsgBox
-        public static readonly string MsgBoxButtonStyle = nameof(MsgBoxButtonStyle);
+        public const string MsgBoxButtonStyle = nameof(MsgBoxButtonStyle);
 
-        public static readonly string MsgBoxTextBoxStyle = nameof(MsgBoxTextBoxStyle);
+        public const string MsgBoxTextBoxStyle = nameof(MsgBoxTextBoxStyle);
 
-        public static readonly string MsgBoxStandardContent = nameof(MsgBoxStandardContent);
+        public const string MsgBoxStandardContent = nameof(MsgBoxStandardContent);
 
-        public static readonly string MsgBoxClassicContent = nameof(MsgBoxClassicContent);
+        public const string MsgBoxClassicContent = nameof(MsgBoxClassicContent);
 
-        public static readonly string MsgBoxModernContent = nameof(MsgBoxModernContent);
+        public const string MsgBoxModernContent = nameof(MsgBoxModernContent);
 
         #endregion
 
         #region CalendarX
-        public static readonly string CalendarXBorderBrush = nameof(CalendarXBorderBrush);
+        public const string CalendarXBorderBrush = nameof(CalendarXBorderBrush);
 
-        public static readonly string CalendarXBorderThickness = nameof(CalendarXBorderThickness);
+        public const string CalendarXBorderThickness = nameof(CalendarXBorderThickness);
 
-        public static readonly string CalendarXThemeBrush = nameof(CalendarXThemeBrush);
+        public const string CalendarXThemeBrush = nameof(CalendarXThemeBrush);
 
-        public static readonly string CalendarXTemplate = nameof(CalendarXTemplate);
+        public const string CalendarXTemplate = nameof(CalendarXTemplate);
 
-        public static readonly string CalendarXHeaderPanelHeight = nameof(CalendarXHeaderPanelHeight);
+        public const string CalendarXHeaderPanelHeight = nameof(CalendarXHeaderPanelHeight);
 
-        public static readonly string CalendarXHeaderPanelBackground = nameof(CalendarXHeaderPanelBackground);
+        public const string CalendarXHeaderPanelBackground = nameof(CalendarXHeaderPanelBackground);
         #endregion
 
         #region Clock
-        public static readonly string ClockTemplate = nameof(ClockTemplate);
+        public const string ClockTemplate = nameof(ClockTemplate);
 
-        public static readonly string ClockThemeBrush = nameof(ClockThemeBrush);
+        public const string ClockThemeBrush = nameof(ClockThemeBrush);
 
-        public static readonly string ClockBorderBrush = nameof(ClockBorderBrush);
+        public const string ClockBorderBrush = nameof(ClockBorderBrush);
 
-        public static readonly string ClockBorderThickness = nameof(ClockBorderThickness);
+        public const string ClockBorderThickness = nameof(ClockBorderThickness);
 
-        public static readonly string ClockBackground = nameof(ClockBackground);
+        public const string ClockBackground = nameof(ClockBackground);
 
-        public static readonly string ClockItemsControlStyle = nameof(ClockItemsControlStyle);
+        public const string ClockItemsControlStyle = nameof(ClockItemsControlStyle);
         
         #endregion
 
         #region GroupBox
-        public static readonly string GroupBoxStandardTemplate = nameof(GroupBoxStandardTemplate);
+        public const string GroupBoxStandardTemplate = nameof(GroupBoxStandardTemplate);
 
 
-        public static readonly string GroupBoxStandardBorderBrush = nameof(GroupBoxStandardBorderBrush);
+        public const string GroupBoxStandardBorderBrush = nameof(GroupBoxStandardBorderBrush);
 
-        public static readonly string GroupBoxStandardBorderThickness = nameof(GroupBoxStandardBorderThickness);
+        public const string GroupBoxStandardBorderThickness = nameof(GroupBoxStandardBorderThickness);
 
-        public static readonly string GroupBoxStandardBackground = nameof(GroupBoxStandardBackground);
+        public const string GroupBoxStandardBackground = nameof(GroupBoxStandardBackground);
 
-        public static readonly string GroupBoxPostTemplate = nameof(GroupBoxPostTemplate);
+        public const string GroupBoxPostTemplate = nameof(GroupBoxPostTemplate);
 
-        public static readonly string GroupBoxPostBorderBrush = nameof(GroupBoxPostBorderBrush);
+        public const string GroupBoxPostBorderBrush = nameof(GroupBoxPostBorderBrush);
 
-        public static readonly string GroupBoxPostBorderThickness = nameof(GroupBoxPostBorderThickness);
+        public const string GroupBoxPostBorderThickness = nameof(GroupBoxPostBorderThickness);
 
-        public static readonly string GroupBoxPostBackground = nameof(GroupBoxPostBackground);
+        public const string GroupBoxPostBackground = nameof(GroupBoxPostBackground);
 
-        public static readonly string GroupBoxFootnoteTemplate = nameof(GroupBoxFootnoteTemplate);
+        public const string GroupBoxFootnoteTemplate = nameof(GroupBoxFootnoteTemplate);
 
-        public static readonly string GroupBoxFootnoteBorderBrush = nameof(GroupBoxFootnoteBorderBrush);
+        public const string GroupBoxFootnoteBorderBrush = nameof(GroupBoxFootnoteBorderBrush);
 
-        public static readonly string GroupBoxFootnoteBorderThickness = nameof(GroupBoxFootnoteBorderThickness);
+        public const string GroupBoxFootnoteBorderThickness = nameof(GroupBoxFootnoteBorderThickness);
 
-        public static readonly string GroupBoxFootnoteBackground = nameof(GroupBoxFootnoteBackground);
+        public const string GroupBoxFootnoteBackground = nameof(GroupBoxFootnoteBackground);
         #endregion
 
         #region ListBox
-        public static readonly string ListBoxStandardTemplate = nameof(ListBoxStandardTemplate);
+        public const string ListBoxStandardTemplate = nameof(ListBoxStandardTemplate);
 
-        public static readonly string ListBoxItemStandardTemplate = nameof(ListBoxItemStandardTemplate);
+        public const string ListBoxItemStandardTemplate = nameof(ListBoxItemStandardTemplate);
 
-        public static readonly string ListBoxItemStandardBorderBrush = nameof(ListBoxItemStandardBorderBrush);
 
-        public static readonly string ListBoxItemStandardBorderThickness = nameof(ListBoxItemStandardBorderThickness);
-
-        public static readonly string ListBoxItemStandardBackground = nameof(ListBoxItemStandardBackground);
-
+        public const string ListBoxItemStandardBorderThickness = nameof(ListBoxItemStandardBorderThickness);
         #endregion
 
         #region DataGrid
-        public static readonly string DataGridBorderBrush = nameof(DataGridBorderBrush);
+        public const string DataGridBorderBrush = nameof(DataGridBorderBrush);
 
-        public static readonly string DataGridBorderThickness = nameof(DataGridBorderThickness);
+        public const string DataGridBorderThickness = nameof(DataGridBorderThickness);
 
-        public static readonly string DataGridBackground = nameof(DataGridBackground);
+        public const string DataGridBackground = nameof(DataGridBackground);
 
-        public static readonly string DataGridHorizontalGridLinesBrush = nameof(DataGridHorizontalGridLinesBrush);
+        public const string DataGridHorizontalGridLinesBrush = nameof(DataGridHorizontalGridLinesBrush);
 
-        public static readonly string DataGridMinRowHeight = nameof(DataGridMinRowHeight);
+        public const string DataGridMinRowHeight = nameof(DataGridMinRowHeight);
 
-        public static readonly string DataGridColumnHeaderHeight = nameof(DataGridColumnHeaderHeight);
+        public const string DataGridColumnHeaderHeight = nameof(DataGridColumnHeaderHeight);
 
-        public static readonly string DataGridResizeThumbTemplate = nameof(DataGridResizeThumbTemplate);
+        public const string DataGridResizeThumbTemplate = nameof(DataGridResizeThumbTemplate);
 
-        public static readonly string DataGridResizeThumbStyle = nameof(DataGridResizeThumbStyle);
+        public const string DataGridResizeThumbStyle = nameof(DataGridResizeThumbStyle);
 
-        public static readonly string DataGridSelectAllButtonTemplate = nameof(DataGridSelectAllButtonTemplate);
+        public const string DataGridSelectAllButtonTemplate = nameof(DataGridSelectAllButtonTemplate);
 
-        public static readonly string DataGridScrollViewerTemplate = nameof(DataGridScrollViewerTemplate);
+        public const string DataGridScrollViewerTemplate = nameof(DataGridScrollViewerTemplate);
 
-        public static readonly string DataGridColumnHeaderTemplate = nameof(DataGridColumnHeaderTemplate);
+        public const string DataGridColumnHeaderTemplate = nameof(DataGridColumnHeaderTemplate);
 
-        public static readonly string DataGridRowHeaderTemplate = nameof(DataGridRowHeaderTemplate);
+        public const string DataGridRowHeaderTemplate = nameof(DataGridRowHeaderTemplate);
 
-        public static readonly string DataGridRowTemplate = nameof(DataGridRowTemplate);
+        public const string DataGridRowTemplate = nameof(DataGridRowTemplate);
 
-        public static readonly string DataGridCellTemplate = nameof(DataGridCellTemplate);
+        public const string DataGridCellTemplate = nameof(DataGridCellTemplate);
 
-        public static readonly string DataGridStandardTemplate = nameof(DataGridStandardTemplate);
+        public const string DataGridStandardTemplate = nameof(DataGridStandardTemplate);
         #endregion
 
         #region Pagination
 
-        public static readonly string PaginationTemplate = nameof(PaginationTemplate);
+        public const string PaginationTemplate = nameof(PaginationTemplate);
 
         #endregion
 
         #region CarouselViewer
-        public static readonly string CarouselViewerIndicatorStyle = nameof(CarouselViewerIndicatorStyle);
+        public const string CarouselViewerIndicatorStyle = nameof(CarouselViewerIndicatorStyle);
 
-        public static readonly string CarouselViewerHorizontalTemplate = nameof(CarouselViewerHorizontalTemplate);
+        public const string CarouselViewerHorizontalTemplate = nameof(CarouselViewerHorizontalTemplate);
      
-        public static readonly string CarouselViewerSideButtonStyle = nameof(CarouselViewerSideButtonStyle);
+        public const string CarouselViewerSideButtonStyle = nameof(CarouselViewerSideButtonStyle);
        
-        public static readonly string CarouselViewerVerticalTemplate = nameof(CarouselViewerVerticalTemplate);
+        public const string CarouselViewerVerticalTemplate = nameof(CarouselViewerVerticalTemplate);
 
         #endregion
 
         #region Drawer
-        public static readonly string DrawerTemplate = nameof(DrawerTemplate);
+        public const string DrawerTemplate = nameof(DrawerTemplate);
         #endregion
     }
 }

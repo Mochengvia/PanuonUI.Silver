@@ -98,7 +98,6 @@ namespace Panuon.UI.Silver
      
         #endregion
 
-
         #region ItemSelectedForeground
         public static Brush GetItemsSelectedForeground(TabControl tabControl)
         {

@@ -258,7 +258,7 @@
             <ContentPresenter />
             <Control SnapsToDevicePixels="False"
                      Template="{Binding ValidationErrorTemplate, RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}"
-                     Visibility="{Binding (Validation.HasError), Converter={StaticResource BoolToVisibleConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}" />
+                     Visibility="{Binding (Validation.HasError), Converter={StaticResource TrueToVisibleConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}" />
             <Thumb x:Name="PART_TopHeaderGripper"
                    VerticalAlignment="Top"
                    Cursor="SizeNS"

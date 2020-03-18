@@ -127,14 +127,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region CheckedContent
-        public static object GetCheckedContent(DependencyObject obj)
+        public static object GetCheckedContent(ToggleButton toggleButton)
         {
-            return (object)obj.GetValue(CheckedContentProperty);
+            return (object)toggleButton.GetValue(CheckedContentProperty);
         }
 
-        public static void SetCheckedContent(DependencyObject obj, object value)
+        public static void SetCheckedContent(ToggleButton toggleButton, object value)
         {
-            obj.SetValue(CheckedContentProperty, value);
+            toggleButton.SetValue(CheckedContentProperty, value);
         }
 
         public static readonly DependencyProperty CheckedContentProperty =

@@ -9,8 +9,6 @@
 
     <!--Converters-->
     <icv:CloneConverter x:Key="{x:Static i:ResourceKeys.CloneConverter}" />
-    <icv:BoolToVisibleConverter x:Key="{x:Static i:ResourceKeys.BoolToVisibleConverter}" />
-    <icv:BoolToCollapseConverter x:Key="{x:Static i:ResourceKeys.BoolToCollapseConverter}" />
     <icv:TrueToFalseConverter x:Key="{x:Static i:ResourceKeys.TrueToFalseConverter}" />
     <icv:NullToCollapseConverter x:Key="{x:Static i:ResourceKeys.NullToCollapseConverter}" />
     <icv:NullOrEmptyToCollapseConverter x:Key="{x:Static i:ResourceKeys.NullOrEmptyToCollapseConverter}" />
@@ -540,7 +538,5 @@
     <Thickness x:Key="{x:Static i:ResourceKeys.ClockBorderThickness}">2</Thickness>
 
     <!--ListBox-->
-    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.ListBoxItemStandardBackground}"
-                     Color="Transparent" />
     <Thickness x:Key="{x:Static i:ResourceKeys.ListBoxItemStandardBorderThickness}">1</Thickness>
 </ResourceDictionary>

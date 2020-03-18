@@ -2,96 +2,98 @@
 {
     public static class ResourceKeys
     {
+
         #region Common
-        public static readonly string DisabledOpacity = nameof(DisabledOpacity);
+
+        public const string DisabledOpacity = nameof(DisabledOpacity);
         #endregion
 
         #region Button
-        public static readonly string ButtonWaitingLoadingStyle = nameof(ButtonWaitingLoadingStyle);
+        public const string ButtonWaitingLoadingStyle = nameof(ButtonWaitingLoadingStyle);
 
 
         #endregion
 
         #region WindowX
-        public static readonly string WindowXMinimizeButtonStyle = nameof(WindowXMinimizeButtonStyle);
+        public const string WindowXMinimizeButtonStyle = nameof(WindowXMinimizeButtonStyle);
 
-        public static readonly string WindowXMaximizeButtonStyle = nameof(WindowXMaximizeButtonStyle);
+        public const string WindowXMaximizeButtonStyle = nameof(WindowXMaximizeButtonStyle);
 
-        public static readonly string WindowXCloseButtonStyle = nameof(WindowXCloseButtonStyle);
+        public const string WindowXCloseButtonStyle = nameof(WindowXCloseButtonStyle);
         #endregion
 
         #region RepeatButton
-        public static readonly string RepeatButtonWaitingLoadingStyle = nameof(RepeatButtonWaitingLoadingStyle);
+        public const string RepeatButtonWaitingLoadingStyle = nameof(RepeatButtonWaitingLoadingStyle);
         #endregion
 
         #region ToggleButton
-        public static readonly string ToggleButtonWaitingLoadingStyle = nameof(ToggleButtonWaitingLoadingStyle);
+        public const string ToggleButtonWaitingLoadingStyle = nameof(ToggleButtonWaitingLoadingStyle);
         #endregion
 
         #region TextBox
-        public static readonly string TextBoxWaitingLoadingStyle = nameof(TextBoxWaitingLoadingStyle);
+        public const string TextBoxWaitingLoadingStyle = nameof(TextBoxWaitingLoadingStyle);
 
-        public static readonly string TextBoxClearButtonStyle = nameof(TextBoxClearButtonStyle);
+        public const string TextBoxClearButtonStyle = nameof(TextBoxClearButtonStyle);
 
-        public static readonly string TextBoxValidationErrorBrush = nameof(TextBoxValidationErrorBrush);
+        public const string TextBoxValidationErrorBrush = nameof(TextBoxValidationErrorBrush);
 
         #endregion
 
         #region PasswordBox
-        public static readonly string PasswordBoxWaitingLoadingStyle = nameof(PasswordBoxWaitingLoadingStyle);
+        public const string PasswordBoxWaitingLoadingStyle = nameof(PasswordBoxWaitingLoadingStyle);
 
-        public static readonly string PasswordBoxClearButtonStyle = nameof(PasswordBoxClearButtonStyle);
+        public const string PasswordBoxClearButtonStyle = nameof(PasswordBoxClearButtonStyle);
 
-        public static readonly string PasswordBoxPlainButtonStyle = nameof(PasswordBoxPlainButtonStyle);
+        public const string PasswordBoxPlainButtonStyle = nameof(PasswordBoxPlainButtonStyle);
 
-        public static readonly string PasswordBoxValidationErrorBrush = nameof(PasswordBoxValidationErrorBrush);
+        public const string PasswordBoxValidationErrorBrush = nameof(PasswordBoxValidationErrorBrush);
         #endregion
 
         #region ComboBox
-        public static readonly string ComboBoxItemRemoveButtonStyle = nameof(ComboBoxItemRemoveButtonStyle);
+        public const string ComboBoxItemRemoveButtonStyle = nameof(ComboBoxItemRemoveButtonStyle);
         #endregion
 
         #region ScrollViewer
-        public static readonly string ScrollViewerScrollButtonStyle = nameof(ScrollViewerScrollButtonStyle);
+        public const string ScrollViewerScrollButtonStyle = nameof(ScrollViewerScrollButtonStyle);
         #endregion
 
         #region TabControl
 
-        public static readonly string TabItemStandardRemoveButtonStyle = nameof(TabItemStandardRemoveButtonStyle);
+        public const string TabItemStandardRemoveButtonStyle = nameof(TabItemStandardRemoveButtonStyle);
 
-        public static readonly string TabItemModernRemoveButtonStyle = nameof(TabItemModernRemoveButtonStyle);
+        public const string TabItemModernRemoveButtonStyle = nameof(TabItemModernRemoveButtonStyle);
 
-        public static readonly string TabItemModern2RemoveButtonStyle = nameof(TabItemModern2RemoveButtonStyle);
+        public const string TabItemModern2RemoveButtonStyle = nameof(TabItemModern2RemoveButtonStyle);
 
-        public static readonly string TabItemCardRemoveButtonStyle = nameof(TabItemCardRemoveButtonStyle);
+        public const string TabItemCardRemoveButtonStyle = nameof(TabItemCardRemoveButtonStyle);
         #endregion
 
         #region CalendarX
-        public static readonly string CalendarXControlButtonStyle = nameof(CalendarXControlButtonStyle);
+        public const string CalendarXControlButtonStyle = nameof(CalendarXControlButtonStyle);
 
-        public static readonly string CalendarXItemStyle = nameof(CalendarXItemStyle);
+        public const string CalendarXItemStyle = nameof(CalendarXItemStyle);
         #endregion
 
         #region Clock
-        public static readonly string ClockItemStyle = nameof(ClockItemStyle);
+        public const string ClockItemStyle = nameof(ClockItemStyle);
         #endregion
 
         #region GroupBox
-        public static readonly string GroupBoxStandardHeaderTemplate = nameof(GroupBoxStandardHeaderTemplate);
+        public const string GroupBoxStandardHeaderTemplate = nameof(GroupBoxStandardHeaderTemplate);
 
-        public static readonly string GroupBoxPostHeaderTemplate = nameof(GroupBoxPostHeaderTemplate);
+        public const string GroupBoxPostHeaderTemplate = nameof(GroupBoxPostHeaderTemplate);
 
-        public static readonly string GroupBoxFootnoteHeaderTemplate = nameof(GroupBoxFootnoteHeaderTemplate);
+        public const string GroupBoxFootnoteHeaderTemplate = nameof(GroupBoxFootnoteHeaderTemplate);
 
         #endregion
 
         #region Pagination
 
-        public static readonly string PaginationItemStyle = nameof(PaginationItemStyle);
+        public const string PaginationItemStyle = nameof(PaginationItemStyle);
 
-        public static readonly string PaginationSideButtonStyle = nameof(PaginationSideButtonStyle);
+        public const string PaginationSideButtonStyle = nameof(PaginationSideButtonStyle);
 
-        public static readonly string PaginationOmitTextStyle = nameof(PaginationOmitTextStyle);
+        public const string PaginationOmitTextStyle = nameof(PaginationOmitTextStyle);
 
         #endregion
 

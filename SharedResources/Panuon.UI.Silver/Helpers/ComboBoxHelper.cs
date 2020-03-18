@@ -468,14 +468,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region BindToNumberRange
-        public static ComboBoxNumberRange GetBindToNumberRange(DependencyObject obj)
+        public static ComboBoxNumberRange GetBindToNumberRange(ComboBox comboBox)
         {
-            return (ComboBoxNumberRange)obj.GetValue(BindToNumberRangeProperty);
+            return (ComboBoxNumberRange)comboBox.GetValue(BindToNumberRangeProperty);
         }
 
-        public static void SetBindToNumberRange(DependencyObject obj, ComboBoxNumberRange value)
+        public static void SetBindToNumberRange(ComboBox comboBox, ComboBoxNumberRange value)
         {
-            obj.SetValue(BindToNumberRangeProperty, value);
+            comboBox.SetValue(BindToNumberRangeProperty, value);
         }
 
         public static readonly DependencyProperty BindToNumberRangeProperty =

@@ -107,7 +107,7 @@
                     CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                     Grid.Column="2"
                     Style="{DynamicResource {x:Static rs:ResourceKeys.TextBoxClearButtonStyle}}"
-                    Visibility="{Binding Path=(local:TextBoxHelper.CanClear),Converter={StaticResource {x:Static i:ResourceKeys.BoolToVisibleConverter}},RelativeSource={RelativeSource AncestorType=TextBox},Mode=OneWay}" />
+                    Visibility="{Binding Path=(local:TextBoxHelper.CanClear),Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}},RelativeSource={RelativeSource AncestorType=TextBox},Mode=OneWay}" />
             <Border x:Name="BdrWait"
                     
                     Grid.Column="2"
@@ -232,6 +232,8 @@
                 Value="8" />
         <Setter Property="local:ScrollViewerHelper.ScrollBarCornerRadius"
                 Value="4" />
+        <Setter Property="local:IconHelper.Margin"
+                Value="7,0,0,0" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static i:ResourceKeys.TextBoxTemplate}}" />
         <Setter Property="Validation.ErrorTemplate">

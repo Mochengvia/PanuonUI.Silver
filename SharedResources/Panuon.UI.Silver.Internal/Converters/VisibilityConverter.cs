@@ -5,7 +5,7 @@ using System.Windows.Data;
 
 namespace Panuon.UI.Silver.Internal.Converters
 {
-    internal class BoolToVisibleConverter : IValueConverter
+    internal class TrueToVisibleConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -18,7 +18,7 @@ namespace Panuon.UI.Silver.Internal.Converters
         }
     }
 
-    internal class BoolToCollapseConverter : IValueConverter
+    internal class TrueToCollapseConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

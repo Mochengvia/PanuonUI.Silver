@@ -29,6 +29,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\ContextMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\DataGrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -145,6 +149,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\ToolTip.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\TreeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -187,6 +195,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\WaterfallPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\WindowX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\WindowXCaption.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ContextMenuHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\DataGridHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\GroupBoxHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ListBoxHelper.cs" />
@@ -202,7 +211,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ScrollViewerHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\TabControlHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\TextBoxHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ToolTipHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\TreeViewHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Resources\Converters.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\ResourceKeys.cs" />
   </ItemGroup>
   <ItemGroup>

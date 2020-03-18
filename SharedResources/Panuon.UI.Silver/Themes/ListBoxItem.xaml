@@ -15,7 +15,8 @@
         <Border x:Name="BdrMain"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
-                Background="{TemplateBinding Background}">
+                Background="{TemplateBinding Background}"
+                CornerRadius="{Binding Path=(local:ListBoxHelper.ItemCornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
             <ContentPresenter x:Name="CpContent"
                               Margin="{TemplateBinding Padding}"
                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -75,6 +76,8 @@
     </ControlTemplate>
 
     <Style TargetType="ListBoxItem">
+        <Setter Property="local:ListBoxHelper.ItemCornerRadius"
+                Value="{Binding Path=(local:ListBoxHelper.ItemsCornerRadius), RelativeSource={RelativeSource AncestorType=ListBox}}" />
         <Setter Property="local:ListBoxHelper.ItemHoverBackground"
                 Value="{Binding Path=(local:ListBoxHelper.ItemsHoverBackground), RelativeSource={RelativeSource AncestorType=ListBox}}" />
         <Setter Property="local:ListBoxHelper.ItemHoverBorderBrush"
@@ -89,14 +92,18 @@
                 Value="{Binding Path=(local:ListBoxHelper.ItemsSelectedForeground), RelativeSource={RelativeSource AncestorType=ListBox}}" />
         <Setter Property="local:ListBoxHelper.ItemIcon"
                 Value="{Binding Path=(local:ListBoxHelper.ItemsIcon), RelativeSource={RelativeSource AncestorType=ListBox}}" />
+        <Setter Property="Foreground"
+                Value="{Binding Path=(local:ListBoxHelper.ItemsForeground), RelativeSource={RelativeSource AncestorType=ListBox}}" />
+        <Setter Property="Background"
+                Value="{Binding Path=(local:ListBoxHelper.ItemsBackground), RelativeSource={RelativeSource AncestorType=ListBox}}" />
+        <Setter Property="BorderBrush"
+                Value="{Binding Path=(local:ListBoxHelper.ItemsBorderBrush), RelativeSource={RelativeSource AncestorType=ListBox}}" />
         <Setter Property="Height"
                 Value="{Binding Path=(local:ListBoxHelper.ItemsHeight), RelativeSource={RelativeSource AncestorType=ListBox}}" />
+        <Setter Property="BorderThickness"
+                Value="1" />
         <Setter Property="VerticalContentAlignment"
                 Value="Center" />
-        <Setter Property="BorderThickness"
-                Value="{StaticResource {x:Static i:ResourceKeys.ListBoxItemStandardBorderThickness}}" />
-        <Setter Property="Background"
-                Value="{StaticResource {x:Static i:ResourceKeys.ListBoxItemStandardBackground}}" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static i:ResourceKeys.ListBoxItemStandardTemplate}}" />
         <Style.Triggers>

@@ -18,6 +18,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)EventHandler\RemovedRoutedEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EventHandler\RemovingRoutedEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EventHandler\CancelableEventHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\ArrayExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\ColorExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\DateTimeExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\GenericsExtension.cs" />

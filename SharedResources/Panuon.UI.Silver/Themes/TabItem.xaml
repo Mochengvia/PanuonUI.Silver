@@ -75,7 +75,7 @@
                                   RecognizesAccessKey="True" />
                 <Button x:Name="BtnRemove"
                         Style="{DynamicResource {x:Static rs:ResourceKeys.TabItemStandardRemoveButtonStyle}}"
-                        Visibility="{Binding Path=(local:TabControlHelper.ItemRemovable),Converter={StaticResource {x:Static i:ResourceKeys.BoolToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
+                        Visibility="{Binding Path=(local:TabControlHelper.ItemRemovable),Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
             </StackPanel>
             <Rectangle x:Name="RectRibbon"
                        Margin="4"/>
@@ -228,7 +228,7 @@
                                   IsHitTestVisible="False" />
                 <Button x:Name="BtnRemove"
                         Style="{DynamicResource {x:Static rs:ResourceKeys.TabItemCardRemoveButtonStyle}}"
-                        Visibility="{Binding Path=(local:TabControlHelper.ItemRemovable),Converter={StaticResource {x:Static i:ResourceKeys.BoolToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
+                        Visibility="{Binding Path=(local:TabControlHelper.ItemRemovable),Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
             </StackPanel>
             <Rectangle x:Name="RectRibbon" />
         </Grid>

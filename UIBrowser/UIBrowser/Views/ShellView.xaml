@@ -1,0 +1,102 @@
+﻿<pu:WindowX x:Class="UIBrowser.Views.ShellView"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:l="clr-namespace:UIBrowser.Localization.Properties;assembly=UIBrowser.Localization"
+            xmlns:pu="clr-namespace:Panuon.UI.Silver;assembly=Panuon.UI.Silver"
+            xmlns:purs="clr-namespace:Panuon.UI.Silver.Resources;assembly=Panuon.UI.Silver"
+            xmlns:local="clr-namespace:UIBrowser.Views"
+            mc:Ignorable="d"
+            Icon="/UIBrowser;component/Resources/Images/panuon.ico"
+            Title="UIBrowser"
+            Height="600"
+            Width="1000"
+            WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Border BorderBrush="LightGray"
+                BorderThickness="0,0,1,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBox Margin="0,5,0,0"
+                         Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Delay=300}"
+                         Height="30"
+                         pu:TextBoxHelper.Icon="&#xe928;"
+                         pu:TextBoxHelper.FocusedShadowColor="{x:Null}"
+                         BorderThickness="0"
+                         pu:IconHelper.FontFamily="{StaticResource PanuonIconFont}"
+                         pu:TextBoxHelper.Watermark="{x:Static l:Resources.SearchControlTips}" />
+                <ListBox x:Name="PartialViews"
+                         Grid.Row="1"
+                         Margin="0,5,0,0"
+                         BorderThickness="0"
+                         DisplayMemberPath="DisplayName"
+                         Padding="5,0,0,0"
+                         pu:ListBoxHelper.ItemsHeight="35">
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem"
+                               BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                            <Setter Property="Visibility"
+                                    Value="{Binding IsVisible, Converter={StaticResource {x:Static purs:Converters.TrueToVisibleConverter}}}" />
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                </ListBox>
+            </Grid>
+        </Border>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <TextBlock Margin="10,0,0,0"
+                       Text="{Binding SelectedPartialView.DisplayName}"
+                       FontSize="25" />
+            <ContentControl  Grid.Row="1"
+                             Margin="10,15,0,0"
+                             x:Name="ActiveItem" />
+            <pu:Drawer x:Name="DwPalette"
+                       Grid.Row="2"
+                       BorderBrush="LightGray"
+                       BorderThickness="0,1,0,0"
+                       Placement="Bottom"
+                       MaxHeight="200"
+                       MinHeight="30"
+                       IsOpen="False">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <ToggleButton  Background="Transparent"
+                                   pu:ToggleButtonHelper.CheckedBrush="Transparent"
+                                   IsChecked="{Binding IsOpen, ElementName=DwPalette, Mode=TwoWay}">
+                        <ToggleButton.Content>
+                            <TextBlock>
+                                <Run Text="&#xe901;"
+                                     FontFamily="{StaticResource PanuonIconFont}" /> 
+                                <Run Text="{x:Static l:Resources.Palette}" />
+                            </TextBlock>
+                        </ToggleButton.Content>
+                        <pu:ToggleButtonHelper.CheckedContent>
+                            <TextBlock>
+                                <Run Text="&#xe903;"
+                                     FontFamily="{StaticResource PanuonIconFont}" /> 
+                                <Run Text="{x:Static l:Resources.Palette}" />
+                            </TextBlock>
+                        </pu:ToggleButtonHelper.CheckedContent>
+                    </ToggleButton>
+                    <ContentControl Grid.Row="1"
+                                    x:Name="PaletteViewModel"/>
+                </Grid>
+            </pu:Drawer>
+        </Grid>
+    </Grid>
+</pu:WindowX>

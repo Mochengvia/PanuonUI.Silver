@@ -179,7 +179,7 @@
                     </Grid>
                     <TextBox x:Name="PART_EditableTextBox"
                              Grid.Column="1"
-                             Visibility="{Binding IsEditable, Converter={StaticResource {x:Static i:ResourceKeys.BoolToVisibleConverter}}, RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
+                             Visibility="{Binding IsEditable, Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}}, RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                              Margin="{TemplateBinding Padding}"
                              VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                              HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -206,8 +206,8 @@
                                           BlurRadius="5"
                                           ShadowDepth="0" />
                     </Border.Effect>
-                    <ScrollViewer VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
-                                  HorizontalScrollBarVisibility="{Binding Path=(ScrollViewer.HorizontalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
+                    <ScrollViewer VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                  HorizontalScrollBarVisibility="{Binding Path=(ScrollViewer.HorizontalScrollBarVisibility),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                   Margin="{Binding Path=(local:ComboBoxHelper.DropDownPadding),RelativeSource={RelativeSource AncestorType=ComboBox},Mode=OneWay}">
                         <ItemsPresenter />
                     </ScrollViewer>
@@ -282,6 +282,8 @@
                 Value="4" />
         <Setter Property="local:ScrollViewerHelper.ScrollBarCornerRadius"
                 Value="2" />
+        <Setter Property="local:IconHelper.Margin"
+                Value="7,0,0,0" />
         <Setter Property="local:ScrollViewerHelper.TrackBrush"
                 Value="Transparent" />
         <Setter Property="ItemsPanel">

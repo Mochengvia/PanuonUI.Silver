@@ -43,7 +43,6 @@
             <Setter.Value>
                 <ControlTemplate TargetType="TreeView">
                     <Border x:Name="BdrMain"
-                            
                             BorderBrush="{TemplateBinding BorderBrush}"
                             Background="{TemplateBinding Background}"
                             BorderThickness="{TemplateBinding BorderThickness}">

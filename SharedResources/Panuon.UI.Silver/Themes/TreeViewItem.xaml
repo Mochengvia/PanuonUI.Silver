@@ -98,7 +98,7 @@
             </Grid>
             <ItemsPresenter x:Name="ItemsHost"
                             Grid.Row="1"
-                            Visibility="{Binding IsExpanded,Converter={StaticResource {x:Static i:ResourceKeys.BoolToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
+                            Visibility="{Binding IsExpanded,Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger SourceName="GrdHeader"
@@ -233,7 +233,7 @@
             </Grid>
             <ItemsPresenter x:Name="ItemsHost"
                             Grid.Row="1"
-                            Visibility="{Binding IsExpanded,Converter={StaticResource {x:Static i:ResourceKeys.BoolToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
+                            Visibility="{Binding IsExpanded,Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger SourceName="GrdHeader"
@@ -347,7 +347,7 @@
                            Stroke="Gray"
                            StrokeDashArray="2,3"
                            VerticalAlignment="Center"
-                           Visibility="{Binding HasItems, Converter={StaticResource {x:Static i:ResourceKeys.BoolToCollapseConverter}},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           Visibility="{Binding HasItems, Converter={StaticResource {x:Static rs:Converters.TrueToCollapseConverter}},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            Margin="{Binding ActualWidth, Converter={StaticResource {x:Static i:ResourceKeys.TreeViewChainHorizontalMarginConverter}},ElementName=TbtnToggle, Mode=OneWay}" />
                 <ic:IconControl x:Name="IcIcon"
                                 Grid.Column="1"
@@ -371,7 +371,7 @@
             </Grid>
             <ItemsPresenter x:Name="ItemsHost"
                             Grid.Row="1"
-                            Visibility="{Binding IsExpanded,Converter={StaticResource {x:Static i:ResourceKeys.BoolToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
+                            Visibility="{Binding IsExpanded,Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
             <Rectangle Grid.Row="1"
                        RenderOptions.EdgeMode="Aliased"
                        StrokeThickness="1"

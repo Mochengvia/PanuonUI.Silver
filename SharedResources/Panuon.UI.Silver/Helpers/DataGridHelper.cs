@@ -282,14 +282,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region SelectedItems
-        public static IList GetSelectedItems(DependencyObject obj)
+        public static IList GetSelectedItems(DataGrid dataGrid)
         {
-            return (IList)obj.GetValue(SelectedItemsProperty);
+            return (IList)dataGrid.GetValue(SelectedItemsProperty);
         }
 
-        internal static void SetSelectedItems(DependencyObject obj, IList value)
+        internal static void SetSelectedItems(DataGrid dataGrid, IList value)
         {
-            obj.SetValue(SelectedItemsProperty, value);
+            dataGrid.SetValue(SelectedItemsProperty, value);
         }
 
         public static readonly DependencyProperty SelectedItemsProperty =
@@ -302,14 +302,14 @@ namespace Panuon.UI.Silver
         #region Internal Properties
 
         #region (Internal) DataGridHook
-        internal static bool GetDataGridHook(DependencyObject obj)
+        internal static bool GetDataGridHook(DataGrid dataGrid)
         {
-            return (bool)obj.GetValue(DataGridHookProperty);
+            return (bool)dataGrid.GetValue(DataGridHookProperty);
         }
 
-        internal static void SetDataGridHook(DependencyObject obj, bool value)
+        internal static void SetDataGridHook(DataGrid dataGrid, bool value)
         {
-            obj.SetValue(DataGridHookProperty, value);
+            dataGrid.SetValue(DataGridHookProperty, value);
         }
 
         internal static readonly DependencyProperty DataGridHookProperty =

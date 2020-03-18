@@ -17,8 +17,8 @@
                 BorderThickness="{TemplateBinding BorderThickness}">
             <ScrollViewer Focusable="False"
                           Padding="{TemplateBinding Padding}"
-                          VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}"
-                          HorizontalScrollBarVisibility="{Binding Path=(ScrollViewer.HorizontalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}"
+                          VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                          HorizontalScrollBarVisibility="{Binding Path=(ScrollViewer.HorizontalScrollBarVisibility),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                           CanContentScroll="True">
                 <ItemsPresenter />
             </ScrollViewer>
@@ -47,6 +47,14 @@
                 Value="#FAFAFA" />
         <Setter Property="local:ListBoxHelper.ItemsSelectedBackground"
                 Value="#F1F1F1" />
+        <Setter Property="local:ListBoxHelper.ItemsBackground"
+                Value="Transparent" />
+        <Setter Property="local:ListBoxHelper.ItemsForeground"
+                Value="#3E3E3E" />
+        <Setter Property="local:ListBoxHelper.ItemsBorderBrush"
+                Value="{x:Null}" />
+        <Setter Property="local:ListBoxHelper.ItemsCornerRadius"
+                Value="0" />
         <Setter Property="local:ListBoxHelper.ItemsHeight"
                 Value="30" />
         <Setter Property="VirtualizingStackPanel.IsVirtualizing"

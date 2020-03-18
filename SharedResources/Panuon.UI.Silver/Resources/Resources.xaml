@@ -8,6 +8,9 @@
                     xmlns:icv="clr-namespace:Panuon.UI.Silver.Internal.Converters"
                     xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources">
 
+    <icv:TrueToVisibleConverter x:Key="{x:Static rs:Converters.TrueToVisibleConverter}" />
+    <icv:TrueToCollapseConverter x:Key="{x:Static rs:Converters.TrueToCollapseConverter}" />
+    
     <FontFamily x:Key="PanuonIconFont">pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon</FontFamily>
     <sys:Double x:Key="{x:Static rs:ResourceKeys.DisabledOpacity}">0.4</sys:Double>
     <SolidColorBrush x:Key="{x:Static rs:ResourceKeys.TextBoxValidationErrorBrush}"

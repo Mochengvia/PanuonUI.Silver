@@ -58,7 +58,7 @@
                                         Margin="{TemplateBinding HeaderMargin}">
                                 <TextBlock Foreground="Red"
                                            VerticalAlignment="Center"
-                                           Visibility="{Binding IsRequired, Converter={StaticResource {x:Static i:ResourceKeys.BoolToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                                           Visibility="{Binding IsRequired, Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                                     <Run Text="*" />
                                 </TextBlock>
                                 <ContentPresenter ContentSource="Header" />
@@ -103,7 +103,7 @@
                                                 Margin="{TemplateBinding HeaderMargin}">
                                         <TextBlock Foreground="Red"
                                                    VerticalAlignment="Center"
-                                                   Visibility="{Binding IsRequired, Converter={StaticResource {x:Static i:ResourceKeys.BoolToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                                                   Visibility="{Binding IsRequired, Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                                             <Run Text="*" />
                                         </TextBlock>
                                         <ContentPresenter ContentSource="Header" />
@@ -188,7 +188,7 @@
                                         Margin="{TemplateBinding HeaderMargin}">
                                 <TextBlock Foreground="Red"
                                            VerticalAlignment="Center"
-                                           Visibility="{Binding IsRequired, Converter={StaticResource {x:Static i:ResourceKeys.BoolToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                                           Visibility="{Binding IsRequired, Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                                     <Run Text="*"/>
                                 </TextBlock>
                                 <ContentPresenter ContentSource="Header" />
@@ -237,7 +237,7 @@
                                                 Margin="{TemplateBinding HeaderMargin}">
                                         <TextBlock Foreground="Red"
                                                    VerticalAlignment="Center"
-                                                   Visibility="{Binding IsRequired, Converter={StaticResource {x:Static i:ResourceKeys.BoolToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                                                   Visibility="{Binding IsRequired, Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                                             <Run Text="*" />
                                         </TextBlock>
                                         <ContentPresenter ContentSource="Header" />
@@ -326,7 +326,7 @@
                                         Margin="{TemplateBinding HeaderMargin}">
                                 <TextBlock Foreground="Red"
                                            VerticalAlignment="Center"
-                                           Visibility="{Binding IsRequired, Converter={StaticResource {x:Static i:ResourceKeys.BoolToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                                           Visibility="{Binding IsRequired, Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                                     <Run Text="*" />
                                 </TextBlock>
                                 <ContentPresenter ContentSource="Header" />
@@ -375,7 +375,7 @@
                                                 Margin="{TemplateBinding HeaderMargin}">
                                         <TextBlock Foreground="Red"
                                                    VerticalAlignment="Center"
-                                                   Visibility="{Binding IsRequired, Converter={StaticResource {x:Static i:ResourceKeys.BoolToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                                                   Visibility="{Binding IsRequired, Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                                             <Run Text="*" />
                                         </TextBlock>
                                         <ContentPresenter ContentSource="Header" />
