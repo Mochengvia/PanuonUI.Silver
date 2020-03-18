@@ -53,16 +53,19 @@
                                 <ColumnDefinition Width="{Binding HeaderWidth, Converter={StaticResource  {x:Static i:ResourceKeys.GridLengthConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
-                            <StackPanel x:Name="StkHeader"
-                                        Orientation="Horizontal"
-                                        Margin="{TemplateBinding HeaderMargin}">
-                                <TextBlock Foreground="Red"
-                                           VerticalAlignment="Center"
-                                           Visibility="{Binding IsRequired, Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                            <Grid x:Name="GrdHeader"
+                                  Margin="{TemplateBinding HeaderMargin}">
+                                <StackPanel x:Name="StkHeader"
+                                            Orientation="Horizontal"
+                                            VerticalAlignment="Center">
+                                    <TextBlock Foreground="Red"
+                                               VerticalAlignment="Center"
+                                               Visibility="{Binding IsRequired, Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                                     <Run Text="*" />
-                                </TextBlock>
-                                <ContentPresenter ContentSource="Header" />
-                            </StackPanel>
+                                    </TextBlock>
+                                    <ContentPresenter ContentSource="Header" />
+                                </StackPanel>
+                            </Grid>
                             <ContentPresenter Grid.Column="1"
                                      Margin="{TemplateBinding Padding}"
                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -72,10 +75,10 @@
                     <ControlTemplate.Triggers>
                         <DataTrigger Binding="{Binding HeaderHeight, Converter={StaticResource {x:Static i:ResourceKeys.GridLengthIsAbsoluteOrAutoConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                      Value="True">
-                            <Setter TargetName="StkHeader"
+                            <Setter TargetName="GrdHeader"
                                     Property="Height"
                                     Value="{Binding HeaderHeight, Converter={StaticResource {x:Static i:ResourceKeys.GridLengthStringToDoubleConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                            <Setter TargetName="StkHeader"
+                            <Setter TargetName="GrdHeader"
                                     Property="VerticalAlignment"
                                     Value="Top" />
                         </DataTrigger>
@@ -98,16 +101,19 @@
                                         <RowDefinition Height="{Binding HeaderHeight, Converter={StaticResource  {x:Static i:ResourceKeys.GridLengthConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                                         <RowDefinition />
                                     </Grid.RowDefinitions>
-                                    <StackPanel x:Name="StkHeader"
-                                                Orientation="Horizontal"
-                                                Margin="{TemplateBinding HeaderMargin}">
-                                        <TextBlock Foreground="Red"
-                                                   VerticalAlignment="Center"
-                                                   Visibility="{Binding IsRequired, Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                                    <Grid x:Name="GrdHeader"
+                                          Margin="{TemplateBinding HeaderMargin}">
+                                        <StackPanel x:Name="StkHeader"
+                                                    Orientation="Horizontal"
+                                                    VerticalAlignment="Center">
+                                            <TextBlock Foreground="Red"
+                                                       VerticalAlignment="Center"
+                                                       Visibility="{Binding IsRequired, Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                                             <Run Text="*" />
-                                        </TextBlock>
-                                        <ContentPresenter ContentSource="Header" />
-                                    </StackPanel>
+                                            </TextBlock>
+                                            <ContentPresenter ContentSource="Header" />
+                                        </StackPanel>
+                                    </Grid>
                                     <ContentPresenter Grid.Row="1"
                                                       Margin="{TemplateBinding Padding}"
                                                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -117,10 +123,10 @@
                             <ControlTemplate.Triggers>
                                 <DataTrigger Binding="{Binding HeaderWidth, Converter={StaticResource {x:Static i:ResourceKeys.GridLengthIsAbsoluteOrAutoConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                              Value="True">
-                                    <Setter TargetName="StkHeader"
-                                            Property="Height"
+                                    <Setter TargetName="GrdHeader"
+                                            Property="Width"
                                             Value="{Binding HeaderWidth, Converter={StaticResource {x:Static i:ResourceKeys.GridLengthStringToDoubleConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                                    <Setter TargetName="StkHeader"
+                                    <Setter TargetName="GrdHeader"
                                             Property="HorizontalAlignment"
                                             Value="Left" />
                                 </DataTrigger>
@@ -183,16 +189,19 @@
                                 <ColumnDefinition Width="{Binding HeaderWidth, Converter={StaticResource  {x:Static i:ResourceKeys.GridLengthConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
-                            <StackPanel x:Name="StkHeader"
-                                        Orientation="Horizontal"
-                                        Margin="{TemplateBinding HeaderMargin}">
-                                <TextBlock Foreground="Red"
-                                           VerticalAlignment="Center"
-                                           Visibility="{Binding IsRequired, Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-                                    <Run Text="*"/>
-                                </TextBlock>
-                                <ContentPresenter ContentSource="Header" />
-                            </StackPanel>
+                            <Grid x:Name="GrdHeader"
+                                  Margin="{TemplateBinding HeaderMargin}">
+                                <StackPanel x:Name="StkHeader"
+                                            Orientation="Horizontal"
+                                            VerticalAlignment="Center">
+                                    <TextBlock Foreground="Red"
+                                               VerticalAlignment="Center"
+                                               Visibility="{Binding IsRequired, Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                                    <Run Text="*" />
+                                    </TextBlock>
+                                    <ContentPresenter ContentSource="Header" />
+                                </StackPanel>
+                            </Grid>
                             <TextBox Grid.Column="1"
                                      Padding="{TemplateBinding Padding}"
                                      Text="{Binding Text,RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -206,10 +215,10 @@
                     <ControlTemplate.Triggers>
                         <DataTrigger Binding="{Binding HeaderHeight, Converter={StaticResource {x:Static i:ResourceKeys.GridLengthIsAbsoluteOrAutoConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                      Value="True">
-                            <Setter TargetName="StkHeader"
+                            <Setter TargetName="GrdHeader"
                                     Property="Height"
                                     Value="{Binding HeaderHeight, Converter={StaticResource {x:Static i:ResourceKeys.GridLengthStringToDoubleConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                            <Setter TargetName="StkHeader"
+                            <Setter TargetName="GrdHeader"
                                     Property="VerticalAlignment"
                                     Value="Top" />
                         </DataTrigger>
@@ -232,16 +241,19 @@
                                         <RowDefinition Height="{Binding HeaderHeight, Converter={StaticResource  {x:Static i:ResourceKeys.GridLengthConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                                         <RowDefinition />
                                     </Grid.RowDefinitions>
-                                    <StackPanel x:Name="StkHeader"
-                                                Orientation="Horizontal"
-                                                Margin="{TemplateBinding HeaderMargin}">
-                                        <TextBlock Foreground="Red"
-                                                   VerticalAlignment="Center"
-                                                   Visibility="{Binding IsRequired, Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                                    <Grid x:Name="GrdHeader"
+                                          Margin="{TemplateBinding HeaderMargin}">
+                                        <StackPanel x:Name="StkHeader"
+                                                    Orientation="Horizontal"
+                                                    VerticalAlignment="Center">
+                                            <TextBlock Foreground="Red"
+                                                       VerticalAlignment="Center"
+                                                       Visibility="{Binding IsRequired, Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                                             <Run Text="*" />
-                                        </TextBlock>
-                                        <ContentPresenter ContentSource="Header" />
-                                    </StackPanel>
+                                            </TextBlock>
+                                            <ContentPresenter ContentSource="Header" />
+                                        </StackPanel>
+                                    </Grid>
                                     <TextBox Grid.Row="1"
                                              Padding="{TemplateBinding Padding}"
                                              Text="{Binding Text,RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -255,10 +267,10 @@
                             <ControlTemplate.Triggers>
                                 <DataTrigger Binding="{Binding HeaderWidth, Converter={StaticResource {x:Static i:ResourceKeys.GridLengthIsAbsoluteOrAutoConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                              Value="True">
-                                    <Setter TargetName="StkHeader"
-                                            Property="Height"
+                                    <Setter TargetName="GrdHeader"
+                                            Property="Width"
                                             Value="{Binding HeaderWidth, Converter={StaticResource {x:Static i:ResourceKeys.GridLengthStringToDoubleConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                                    <Setter TargetName="StkHeader"
+                                    <Setter TargetName="GrdHeader"
                                             Property="HorizontalAlignment"
                                             Value="Left" />
                                 </DataTrigger>
@@ -321,16 +333,19 @@
                                 <ColumnDefinition Width="{Binding HeaderWidth, Converter={StaticResource  {x:Static i:ResourceKeys.GridLengthConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
-                            <StackPanel x:Name="StkHeader"
-                                        Orientation="Horizontal"
-                                        Margin="{TemplateBinding HeaderMargin}">
-                                <TextBlock Foreground="Red"
-                                           VerticalAlignment="Center"
-                                           Visibility="{Binding IsRequired, Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                            <Grid x:Name="GrdHeader"
+                                  Margin="{TemplateBinding HeaderMargin}">
+                                <StackPanel x:Name="StkHeader"
+                                            Orientation="Horizontal"
+                                            VerticalAlignment="Center">
+                                    <TextBlock Foreground="Red"
+                                               VerticalAlignment="Center"
+                                               Visibility="{Binding IsRequired, Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                                     <Run Text="*" />
-                                </TextBlock>
-                                <ContentPresenter ContentSource="Header" />
-                            </StackPanel>
+                                    </TextBlock>
+                                    <ContentPresenter ContentSource="Header" />
+                                </StackPanel>
+                            </Grid>
                             <CheckBox Grid.Column="1"
                                      Padding="{TemplateBinding Padding}"
                                      IsChecked="{Binding IsChecked,RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -344,10 +359,10 @@
                     <ControlTemplate.Triggers>
                         <DataTrigger Binding="{Binding HeaderHeight, Converter={StaticResource {x:Static i:ResourceKeys.GridLengthIsAbsoluteOrAutoConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                      Value="True">
-                            <Setter TargetName="StkHeader"
+                            <Setter TargetName="GrdHeader"
                                     Property="Height"
                                     Value="{Binding HeaderHeight, Converter={StaticResource {x:Static i:ResourceKeys.GridLengthStringToDoubleConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                            <Setter TargetName="StkHeader"
+                            <Setter TargetName="GrdHeader"
                                     Property="VerticalAlignment"
                                     Value="Top" />
                         </DataTrigger>
@@ -370,16 +385,19 @@
                                         <RowDefinition Height="{Binding HeaderHeight, Converter={StaticResource  {x:Static i:ResourceKeys.GridLengthConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                                         <RowDefinition />
                                     </Grid.RowDefinitions>
-                                    <StackPanel x:Name="StkHeader"
-                                                Orientation="Horizontal"
-                                                Margin="{TemplateBinding HeaderMargin}">
-                                        <TextBlock Foreground="Red"
-                                                   VerticalAlignment="Center"
-                                                   Visibility="{Binding IsRequired, Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                                    <Grid x:Name="GrdHeader"
+                                          Margin="{TemplateBinding HeaderMargin}">
+                                        <StackPanel x:Name="StkHeader"
+                                                    Orientation="Horizontal"
+                                                    VerticalAlignment="Center">
+                                            <TextBlock Foreground="Red"
+                                                       VerticalAlignment="Center"
+                                                       Visibility="{Binding IsRequired, Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                                             <Run Text="*" />
-                                        </TextBlock>
-                                        <ContentPresenter ContentSource="Header" />
-                                    </StackPanel>
+                                            </TextBlock>
+                                            <ContentPresenter ContentSource="Header" />
+                                        </StackPanel>
+                                    </Grid>
                                     <CheckBox Grid.Row="1"
                                               Padding="{TemplateBinding Padding}"
                                               IsChecked="{Binding IsChecked,RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -393,10 +411,10 @@
                             <ControlTemplate.Triggers>
                                 <DataTrigger Binding="{Binding HeaderWidth, Converter={StaticResource {x:Static i:ResourceKeys.GridLengthIsAbsoluteOrAutoConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                              Value="True">
-                                    <Setter TargetName="StkHeader"
-                                            Property="Height"
+                                    <Setter TargetName="GrdHeader"
+                                            Property="Width"
                                             Value="{Binding HeaderWidth, Converter={StaticResource {x:Static i:ResourceKeys.GridLengthStringToDoubleConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                                    <Setter TargetName="StkHeader"
+                                    <Setter TargetName="GrdHeader"
                                             Property="HorizontalAlignment"
                                             Value="Left" />
                                 </DataTrigger>

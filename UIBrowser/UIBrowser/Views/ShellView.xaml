@@ -14,10 +14,10 @@
             Width="1000"
             WindowStartupLocation="CenterScreen">
     <pu:WindowXCaption.Header>
-            <Image Height="30"
-                   HorizontalAlignment="Left"
-                   RenderOptions.BitmapScalingMode="HighQuality"
-                   Source="/UIBrowser;component/Resources/Images/panuon.png" />
+        <Image Height="30"
+               HorizontalAlignment="Left"
+               RenderOptions.BitmapScalingMode="HighQuality"
+               Source="/UIBrowser;component/Resources/Images/panuon.png" />
     </pu:WindowXCaption.Header>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -100,7 +100,7 @@
                         </pu:ToggleButtonHelper.CheckedContent>
                     </ToggleButton>
                     <ContentControl Grid.Row="1"
-                                    x:Name="PaletteViewModel"/>
+                                    x:Name="PaletteViewModel" />
                 </Grid>
             </pu:Drawer>
         </Grid>

@@ -107,7 +107,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty HeaderHeightProperty =
-            DependencyProperty.RegisterAttached("HeaderHeight", typeof(string), typeof(FormGroup), new FrameworkPropertyMetadata("Auto", FrameworkPropertyMetadataOptions.Inherits));
+            DependencyProperty.RegisterAttached("HeaderHeight", typeof(string), typeof(FormGroup), new FrameworkPropertyMetadata("*", FrameworkPropertyMetadataOptions.Inherits));
         #endregion
 
         #region Header
@@ -122,6 +122,18 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region HeaderTemplate
+
+
+        public static DataTemplate GetHeaderTemplate(DependencyObject obj)
+        {
+            return (DataTemplate)obj.GetValue(HeaderTemplateProperty);
+        }
+
+        public static void SetHeaderTemplate(DependencyObject obj, DataTemplate value)
+        {
+            obj.SetValue(HeaderTemplateProperty, value);
+        }
+
         public DataTemplate HeaderTemplate
         {
             get { return (DataTemplate)GetValue(HeaderTemplateProperty); }
@@ -133,6 +145,16 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region HeaderTemplateSelector
+        public static DataTemplateSelector GetHeaderTemplateSelector(DependencyObject obj)
+        {
+            return (DataTemplateSelector)obj.GetValue(HeaderTemplateSelectorProperty);
+        }
+
+        public static void SetHeaderTemplateSelector(DependencyObject obj, DataTemplateSelector value)
+        {
+            obj.SetValue(HeaderTemplateSelectorProperty, value);
+        }
+
         public DataTemplateSelector HeaderTemplateSelector
         {
             get { return (DataTemplateSelector)GetValue(HeaderTemplateSelectorProperty); }
