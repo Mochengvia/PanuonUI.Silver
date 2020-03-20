@@ -58,6 +58,21 @@
                                 <StackPanel x:Name="StkHeader"
                                             Orientation="Horizontal"
                                             VerticalAlignment="Center">
+                                    <ic:IconControl x:Name="IcIcon"
+                                                    Width="{Binding Path=(local:IconHelper.Width),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                    Height="{Binding Path=(local:IconHelper.Height),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                    MinWidth="{Binding Path=(local:IconHelper.MinWidth),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                    MinHeight="{Binding Path=(local:IconHelper.MinHeight),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                    MaxWidth="{Binding Path=(local:IconHelper.MaxWidth),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                    MaxHeight="{Binding Path=(local:IconHelper.MaxHeight),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                    Margin="{Binding Path=(local:IconHelper.Margin),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                    Visibility="{Binding Icon,Converter={StaticResource {x:Static i:ResourceKeys.NullToCollapseConverter}},RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                    Content="{Binding Icon,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                    Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                    FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                    FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                    VerticalAlignment="Center"
+                                                    HorizontalAlignment="Center" />
                                     <TextBlock Foreground="Red"
                                                VerticalAlignment="Center"
                                                Visibility="{Binding IsRequired, Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
@@ -67,9 +82,9 @@
                                 </StackPanel>
                             </Grid>
                             <ContentPresenter Grid.Column="1"
-                                     Margin="{TemplateBinding Padding}"
-                                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                                              Margin="{TemplateBinding Padding}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
@@ -106,6 +121,21 @@
                                         <StackPanel x:Name="StkHeader"
                                                     Orientation="Horizontal"
                                                     VerticalAlignment="Center">
+                                            <ic:IconControl x:Name="IcIcon"
+                                                            Width="{Binding Path=(local:IconHelper.Width),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                            Height="{Binding Path=(local:IconHelper.Height),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                            MinWidth="{Binding Path=(local:IconHelper.MinWidth),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                            MinHeight="{Binding Path=(local:IconHelper.MinHeight),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                            MaxWidth="{Binding Path=(local:IconHelper.MaxWidth),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                            MaxHeight="{Binding Path=(local:IconHelper.MaxHeight),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                            Margin="{Binding Path=(local:IconHelper.Margin),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                            Visibility="{Binding Icon,Converter={StaticResource {x:Static i:ResourceKeys.NullToCollapseConverter}},RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                            Content="{Binding Icon,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                            Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                            FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                            FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                            VerticalAlignment="Center"
+                                                            HorizontalAlignment="Center" />
                                             <TextBlock Foreground="Red"
                                                        VerticalAlignment="Center"
                                                        Visibility="{Binding IsRequired, Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
@@ -158,8 +188,8 @@
                 Value="{Binding Path=(local:FormGroup.IsRequired), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="TextBoxStyle">
             <Setter.Value>
-                <Style BasedOn="{StaticResource {x:Type TextBox}}" 
-                       TargetType="TextBox"/>
+                <Style BasedOn="{StaticResource {x:Type TextBox}}"
+                       TargetType="TextBox" />
             </Setter.Value>
         </Setter>
         <Setter Property="VerticalContentAlignment"
@@ -172,7 +202,7 @@
                     <Grid>
                         <ContentPresenter Content="{Binding}"
                                           HorizontalAlignment="Center"
-                                          VerticalAlignment="Center"/>
+                                          VerticalAlignment="Center" />
                     </Grid>
                 </DataTemplate>
             </Setter.Value>
@@ -194,6 +224,21 @@
                                 <StackPanel x:Name="StkHeader"
                                             Orientation="Horizontal"
                                             VerticalAlignment="Center">
+                                    <ic:IconControl x:Name="IcIcon"
+                                                    Width="{Binding Path=(local:IconHelper.Width),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                    Height="{Binding Path=(local:IconHelper.Height),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                    MinWidth="{Binding Path=(local:IconHelper.MinWidth),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                    MinHeight="{Binding Path=(local:IconHelper.MinHeight),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                    MaxWidth="{Binding Path=(local:IconHelper.MaxWidth),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                    MaxHeight="{Binding Path=(local:IconHelper.MaxHeight),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                    Margin="{Binding Path=(local:IconHelper.Margin),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                    Visibility="{Binding Icon,Converter={StaticResource {x:Static i:ResourceKeys.NullToCollapseConverter}},RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                    Content="{Binding Icon,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                    Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                    FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                    FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                    VerticalAlignment="Center"
+                                                    HorizontalAlignment="Center" />
                                     <TextBlock Foreground="Red"
                                                VerticalAlignment="Center"
                                                Visibility="{Binding IsRequired, Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
@@ -246,6 +291,21 @@
                                         <StackPanel x:Name="StkHeader"
                                                     Orientation="Horizontal"
                                                     VerticalAlignment="Center">
+                                            <ic:IconControl x:Name="IcIcon"
+                                                            Width="{Binding Path=(local:IconHelper.Width),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                            Height="{Binding Path=(local:IconHelper.Height),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                            MinWidth="{Binding Path=(local:IconHelper.MinWidth),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                            MinHeight="{Binding Path=(local:IconHelper.MinHeight),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                            MaxWidth="{Binding Path=(local:IconHelper.MaxWidth),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                            MaxHeight="{Binding Path=(local:IconHelper.MaxHeight),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                            Margin="{Binding Path=(local:IconHelper.Margin),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                            Visibility="{Binding Icon,Converter={StaticResource {x:Static i:ResourceKeys.NullToCollapseConverter}},RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                            Content="{Binding Icon,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                            Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                            FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                            FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                            VerticalAlignment="Center"
+                                                            HorizontalAlignment="Center" />
                                             <TextBlock Foreground="Red"
                                                        VerticalAlignment="Center"
                                                        Visibility="{Binding IsRequired, Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
@@ -338,6 +398,21 @@
                                 <StackPanel x:Name="StkHeader"
                                             Orientation="Horizontal"
                                             VerticalAlignment="Center">
+                                    <ic:IconControl x:Name="IcIcon"
+                                                    Width="{Binding Path=(local:IconHelper.Width),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                    Height="{Binding Path=(local:IconHelper.Height),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                    MinWidth="{Binding Path=(local:IconHelper.MinWidth),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                    MinHeight="{Binding Path=(local:IconHelper.MinHeight),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                    MaxWidth="{Binding Path=(local:IconHelper.MaxWidth),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                    MaxHeight="{Binding Path=(local:IconHelper.MaxHeight),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                    Margin="{Binding Path=(local:IconHelper.Margin),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                    Visibility="{Binding Icon,Converter={StaticResource {x:Static i:ResourceKeys.NullToCollapseConverter}},RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                    Content="{Binding Icon,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                    Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                    FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                    FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                    VerticalAlignment="Center"
+                                                    HorizontalAlignment="Center" />
                                     <TextBlock Foreground="Red"
                                                VerticalAlignment="Center"
                                                Visibility="{Binding IsRequired, Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
@@ -347,13 +422,13 @@
                                 </StackPanel>
                             </Grid>
                             <CheckBox Grid.Column="1"
-                                     Padding="{TemplateBinding Padding}"
-                                     IsChecked="{Binding IsChecked,RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     local:CheckBoxHelper.CheckedContent="{TemplateBinding CheckedContent}"
-                                     Content="{TemplateBinding Content}"
-                                     Style="{TemplateBinding CheckBoxStyle}"
-                                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                                      Padding="{TemplateBinding Padding}"
+                                      IsChecked="{Binding IsChecked,RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                      local:CheckBoxHelper.CheckedContent="{TemplateBinding CheckedContent}"
+                                      Content="{TemplateBinding Content}"
+                                      Style="{TemplateBinding CheckBoxStyle}"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
@@ -390,6 +465,21 @@
                                         <StackPanel x:Name="StkHeader"
                                                     Orientation="Horizontal"
                                                     VerticalAlignment="Center">
+                                            <ic:IconControl x:Name="IcIcon"
+                                                            Width="{Binding Path=(local:IconHelper.Width),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                            Height="{Binding Path=(local:IconHelper.Height),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                            MinWidth="{Binding Path=(local:IconHelper.MinWidth),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                            MinHeight="{Binding Path=(local:IconHelper.MinHeight),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                            MaxWidth="{Binding Path=(local:IconHelper.MaxWidth),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                            MaxHeight="{Binding Path=(local:IconHelper.MaxHeight),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                            Margin="{Binding Path=(local:IconHelper.Margin),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                            Visibility="{Binding Icon,Converter={StaticResource {x:Static i:ResourceKeys.NullToCollapseConverter}},RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                            Content="{Binding Icon,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                            Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                            FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                            FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                            VerticalAlignment="Center"
+                                                            HorizontalAlignment="Center" />
                                             <TextBlock Foreground="Red"
                                                        VerticalAlignment="Center"
                                                        Visibility="{Binding IsRequired, Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">

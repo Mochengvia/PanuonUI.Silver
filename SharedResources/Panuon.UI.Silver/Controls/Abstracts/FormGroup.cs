@@ -67,6 +67,19 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("HeaderMargin", typeof(Thickness), typeof(FormGroup), new FrameworkPropertyMetadata(new Thickness(), FrameworkPropertyMetadataOptions.Inherits));
         #endregion
 
+        #region Icon
+
+        public object Icon
+        {
+            get { return (object)GetValue(IconProperty); }
+            set { SetValue(IconProperty, value); }
+        }
+
+        public static readonly DependencyProperty IconProperty =
+            DependencyProperty.Register("Icon", typeof(object), typeof(FormGroup));
+
+        #endregion
+
         #region HeaderWidth
         public static string GetItemsHeaderWidth(DependencyObject obj)
         {

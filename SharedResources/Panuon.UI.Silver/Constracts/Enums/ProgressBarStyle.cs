@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Panuon.UI.Silver.Controls
+namespace Panuon.UI.Silver
 {
-    class Dotline
+    public enum ProgressBarStyle
     {
+        Standard,
     }
 }

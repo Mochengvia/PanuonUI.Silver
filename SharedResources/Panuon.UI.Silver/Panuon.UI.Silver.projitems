@@ -169,6 +169,11 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Components\MessageBoxXConfigurations.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums\HorizontalHeaderAlignment.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums\LoadingSpeed.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums\LoadingStyle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums\ProgressBarStyle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums\ProgressDirection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Abstracts\FormGroup.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CalendarX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Card.cs" />
@@ -176,7 +181,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CarouselViewer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Clock.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\DateTimePicker.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Dotline.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Drawer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\DropDown.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\FormCheckBoxGroup.cs" />

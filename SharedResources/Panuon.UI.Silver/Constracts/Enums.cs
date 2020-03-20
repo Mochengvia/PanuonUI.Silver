@@ -1,32 +1,5 @@
 ﻿namespace Panuon.UI.Silver
 {
-    #region Loading
-    public enum LoadingStyle
-    {
-        Standard,
-        Wave,
-        Ring,
-        Ring2,
-        Classic
-    }
-
-    public enum LoadingSpeed
-    {
-        Normal,
-        Quick,
-        Slow
-    }
-    #endregion
-
-    #region WindowX
-    public enum HorizontalHeaderAlignment
-    {
-        Left,
-        Stretch,
-        Center
-    }
-    #endregion
-
     #region Button & RepeatButton
     public enum ButtonStyle
     {

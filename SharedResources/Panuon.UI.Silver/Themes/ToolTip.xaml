@@ -47,8 +47,6 @@
                 Value="LightGray" />
         <Setter Property="local:ToolTipHelper.Padding"
                 Value="5" />
-        <Setter Property="local:ToolTipHelper.CornerRadius"
-                Value="2" />
         <Setter Property="Template"
                 Value="{StaticResource ToolTipTemplate}" />
     </Style>
