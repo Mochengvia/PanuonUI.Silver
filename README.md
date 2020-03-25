@@ -21,9 +21,9 @@ Zhihu : @末城via
 2.0版本对现有控件库的代码进行了完全的重构，从根源上解决了一些BUG，并大幅减少了可能出现的Exception。从1.0版本升级到2.0版本需要修改约30%控件库相关代码，但这值得一试。  
 请注意，2.0版本中不再集成FontAwesome，改为内置Panuon独家设计的IconFont字体库。目前已有200多个图标，你可以在UIBrowser中看到它们。Panuon IconFont会保持更新。  
 提供完备的开发文档、代码示例与1.0升级指南（文档将转移到阿里的语雀平台）。https://www.yuque.com/mochengvia/silver2.0   
-下载方式：你可以在上方的Branch中切换2.0.0分支并下载开发版代码，但控件尚不齐全。测试版Nuget将在稍后发行。  
+下载方式：你可以在上方的Branch中切换2.0.0分支并下载开发版代码，但控件尚不齐全。开发版Nuget已经发行。  
 
-#### 2020-3-11 v1.0.9.9
+#### 2020-3-25 v1.0.9.9
 [Re] 修复了Badge的Background和Foreground的绑定初始值未生效的BUG。  
 将PasswordBoxHelper.Password属性更改为默认双向绑定。
 
@@ -36,10 +36,6 @@ Zhihu : @末城via
 #### 2020-2-17 v1.0.9.6
 修复了部分控件可能会在后台抛出错误的问题。
 新增了MessageBoxX的Question图标。
-
-#### 2019-12-29 v1.0.9.5
-解决了PUTextBlock抛出HorizontalContentAlightment异常的问题。
-解决了DateTimePicker不能在选中日期后自动关闭的问题。可以将StaysOpen设置为False来阻止关闭。
 
 # ReleaseNote 发布文档  
 
