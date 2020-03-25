@@ -24,14 +24,6 @@ namespace Panuon.UI.Silver
             AlwaysCenter = true;
             _storyboard_ScaleBigger = FindResource("Storyboard_ScaleBigger") as Storyboard;
             _storyboard_ScaleSmaller = FindResource("Storyboard_ScaleSmaller") as Storyboard;
-            if(Background == null)
-            {
-                Background = "#3E3E3E".ToColor().ToBrush();
-            }
-            if(Foreground == null)
-            {
-                Foreground = Colors.White.ToBrush();
-            }
         }
         #endregion
 

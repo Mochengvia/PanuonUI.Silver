@@ -23,6 +23,10 @@ Zhihu : @末城via
 提供完备的开发文档、代码示例与1.0升级指南（文档将转移到阿里的语雀平台）。https://www.yuque.com/mochengvia/silver2.0   
 下载方式：你可以在上方的Branch中切换2.0.0分支并下载开发版代码，但控件尚不齐全。测试版Nuget将在稍后发行。  
 
+#### 2020-3-11 v1.0.9.9
+[Re] 修复了Badge的Background和Foreground的绑定初始值未生效的BUG。  
+将PasswordBoxHelper.Password属性更改为默认双向绑定。
+
 #### 2020-3-11 v1.0.9.8
 修复了Badge的Background和Foreground的绑定初始值未生效的BUG。  
 修复了ContextMenu中的MenuItem无法识别AccessKey的BUG。  
