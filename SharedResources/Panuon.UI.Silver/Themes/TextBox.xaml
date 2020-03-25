@@ -47,7 +47,6 @@
 
     <ControlTemplate x:Key="{x:Static i:ResourceKeys.TextBoxTemplate}"
                      TargetType="{x:Type TextBox}">
-
         <Grid x:Name="GrdMain">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
@@ -55,7 +54,6 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <Border x:Name="BdrBorder"
-                    
                     Grid.ColumnSpan="3"
                     BorderBrush="{TemplateBinding BorderBrush}"
                     BorderThickness="{TemplateBinding BorderThickness}"

@@ -13,5 +13,14 @@
                    FontSize="50"
                    Foreground="{Binding Foreground}"
                    FontFamily="{StaticResource PanuonIconFont}"/>
+        <TreeView>
+            <TreeView.ItemContainerStyle>
+                <Style TargetType="TreeViewItem"
+                       BasedOn="{StaticResource {x:Type TreeViewItem}}">
+                    <Setter Property="IsSelected"
+                            Value="{Binding IsSelected, Mode=TwoWay}" />
+                </Style>
+            </TreeView.ItemContainerStyle>
+        </TreeView>
     </Grid>
 </UserControl>

@@ -1,5 +1,6 @@
-﻿
-using Microsoft.Windows.Shell;
+﻿using Microsoft.Windows.Shell;
+using System;
+
 namespace Panuon.UI.Silver
 {
     public static partial class WindowXCaption
@@ -7,10 +8,26 @@ namespace Panuon.UI.Silver
         #region Function
         private static void SetCaptionHeight(WindowX windowX, double height)
         {
-            var chrome = WindowChrome.GetWindowChrome(windowX);
-            if (chrome == null)
-                return;
-            chrome.CaptionHeight = height;
+            var action = new Action(() =>
+            {
+                var chrome = WindowChrome.GetWindowChrome(windowX);
+                if (chrome == null)
+                    return;
+                chrome.CaptionHeight = height;
+            });
+
+            if (windowX.IsLoaded)
+            {
+                action();
+            }
+            else
+            {
+                windowX.Loaded += delegate
+                {
+                    action();
+                };
+            }
+
         }
         #endregion
 

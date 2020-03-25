@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -30,6 +32,18 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Properties
+
+        #region BindToEnum
+        public Enum BindToEnum
+        {
+            get { return (Enum)GetValue(BindToEnumProperty); }
+            set { SetValue(BindToEnumProperty, value); }
+        }
+
+        public static readonly DependencyProperty BindToEnumProperty =
+            DependencyProperty.Register("BindToEnum", typeof(Enum), typeof(RadioButtonGroup), new PropertyMetadata(OnBindToEnumChanged));
+
+        #endregion
 
         #endregion
 
@@ -77,6 +91,53 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Event Handler
+        private static void OnBindToEnumChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var radioButtonGroup = d as RadioButtonGroup;
+            var selectedValue = radioButtonGroup.SelectedValue ?? e.NewValue as object;
+            if (selectedValue == null)
+                return;
+
+            var type = selectedValue.GetType();
+            if (!type.IsEnum)
+                throw new Exception($"\"{type.FullName}\" is not an enumeration type.");
+
+            if (type == null)
+            {
+                radioButtonGroup.ItemsSource = null;
+                radioButtonGroup.SelectedItem = null;
+            }
+            else
+            {
+                var enumList = new ArrayList();
+                foreach (Enum item in Enum.GetValues(type))
+                {
+                    var field = type.GetField(item.ToString());
+                    if (null != field)
+                    {
+                        var descriptions = field.GetCustomAttributes(typeof(DescriptionAttribute), true) as DescriptionAttribute[];
+                        if (descriptions.Length > 0)
+                        {
+                            enumList.Add(new
+                            {
+                                Name = descriptions[0].Description,
+                                Enum = item,
+                            });
+                        }
+                        else
+                            enumList.Add(new
+                            {
+                                Name = item.ToString(),
+                                Enum = item,
+                            });
+                    }
+                }
+                radioButtonGroup.ItemsSource = enumList;
+                radioButtonGroup.DisplayMemberPath = "Name";
+                radioButtonGroup.SelectedValuePath = "Enum";
+                radioButtonGroup.SelectedValue = selectedValue;
+            }
+        }
 
         private void OnRadioButtonUnchecked(object sender, RoutedEventArgs e)
         {

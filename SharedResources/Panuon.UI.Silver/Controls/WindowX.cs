@@ -21,6 +21,7 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Property
+
         #region DisableForceClosing
         /// <summary>
         /// Gets or sets is force closing disabled.
