@@ -5,13 +5,12 @@
 Panuon.UI optimized version. A beautiful wpf ui library using templates &amp; attached properties.  
 Panuon.UI的优化版本。一个漂亮的、使用样式与附加属性的WPF UI控件库。
 
-You can download Panuon.UI.Silver (pre-release) from nuget now. Check "include pre-release" option before query.  
-Panuon.UI.Silver(预发行版)现已加入Nuget平台。在搜索"Panuon.UI.Silver"前，请在Nuget包管理器中勾选“包括预发行版”。  
 
 Email : zeoun@qq.com  
 QQ Group : 718778191  
 Zhihu : @末城via
 
+码云地址： https://gitee.com/panuon/PanuonUI.Silver
 # News 动态  
 
 ## 2.0版本即将到来
