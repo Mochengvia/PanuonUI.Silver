@@ -22,6 +22,17 @@ namespace Panuon.UI.Silver.Core
             ColumnWidth = columnWidth;
         }
 
+        public DataGridColumnAttribute(string columnWidth, bool ignore)
+        {
+            ColumnWidth = columnWidth;
+            Ignore = ignore;
+        }
+
+        public DataGridColumnAttribute(bool ignore)
+        {
+            Ignore = ignore;
+        }
+
         public DataGridColumnAttribute(bool ignore, bool readOnly)
         {
             Ignore = ignore;
