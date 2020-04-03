@@ -1,0 +1,122 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver"
+                    xmlns:i="clr-namespace:Panuon.UI.Silver.Internal"
+                    xmlns:ic="clr-namespace:Panuon.UI.Silver.Internal.Controls"
+                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
+                    xmlns:cp="clr-namespace:Panuon.UI.Silver.Components">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/InternalResources.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Resources.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Button.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/WindowX.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <ControlTemplate x:Key="NoticeXCardTemplate"
+                     TargetType="cp:NoticeXCard">
+        <Grid Margin="10,0">
+            <Border x:Name="BdrMain"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    Background="{TemplateBinding Background}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    Effect="{Binding ShadowColor, Converter={StaticResource {x:Static i:ResourceKeys.NullableColorToShadowEffectConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            <Grid Margin="10,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="TxtIcon"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
+                           Margin="15,0,15,0"
+                           FontSize="60"
+                           Foreground="{Binding Icon, Converter={StaticResource {x:Static i:ResourceKeys.MsgBoxIconForegroundConverter}}, RelativeSource={RelativeSource AncestorType=cp:NoticeXCard}, Mode=OneWay}"
+                           Text="{Binding Icon, Converter={StaticResource {x:Static i:ResourceKeys.MsgBoxIconConverter}}, RelativeSource={RelativeSource AncestorType=cp:NoticeXCard}, Mode=OneWay}"/>
+                <Image x:Name="ImgIcon"
+                       Visibility="Collapsed"
+                       Height="{Binding ActualHeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                       Width="{Binding ActualHeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                       Source="{Binding ImageSource, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                       RenderOptions.BitmapScalingMode="HighQuality" />
+                <Grid x:Name="GrdContent"
+                      Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="{TemplateBinding Caption}"
+                               Margin="0,15,0,5"
+                               TextWrapping="Wrap"
+                               FontWeight="Bold"/>
+                    <TextBlock Text="{TemplateBinding Message}"
+                               Grid.Row="1"
+                               Margin="0,5,0,15"
+                               TextWrapping="Wrap" />
+                    <Button x:Name="BtnClose"
+                            Visibility="{Binding CanClose, Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Right"
+                            FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
+                            Content="&#xe92d;"
+                            Margin="0,10,0,5"
+                            Command="{Binding CloseCommand, RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                            CommandParameter="{Binding Path=.,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Background="Transparent">
+                                                <ContentPresenter />
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </Grid>
+            </Grid>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <DataTrigger Binding="{Binding Icon, Converter={StaticResource {x:Static i:ResourceKeys.IsNullConverter}}, RelativeSource={RelativeSource Self}}"
+                         Value="False">
+                <Setter TargetName="TxtIcon"
+                        Property="Visibility"
+                        Value="Visible" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ImageSource, Converter={StaticResource {x:Static i:ResourceKeys.IsNullOrEmptyConverter}}, RelativeSource={RelativeSource Self}}"
+                         Value="False">
+                <Setter TargetName="TxtIcon"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="ImgIcon"
+                        Property="Visibility" 
+                        Value="Visible"/>
+            </DataTrigger>
+           
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style TargetType="cp:NoticeXCard">
+        <Setter Property="ShadowColor"
+                Value="LightGray" />
+        <Setter Property="Margin"
+                Value="0,10,0,0" />
+        <Setter Property="Width"
+                Value="400" />
+        <Setter Property="Height"
+                Value="150" />
+        <Setter Property="FontSize"
+                Value="14" />
+        <Setter Property="Background"
+                Value="White" />
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="Template"
+                Value="{StaticResource NoticeXCardTemplate}" />
+
+    </Style>
+</ResourceDictionary>

@@ -20,15 +20,19 @@ namespace Panuon.UI.Silver.Internal.Controls
         #region Ctor
         public MsgBox(Window owner, string messageBoxText, string caption, MessageBoxButton button, MessageBoxIcon icon, DefaultButton defaultButton, MessageBoxXConfigurations messageBoxXConfigurations)
         {
+            Owner = owner;
             if(owner == null)
             {
-                if(Application.Current?.MainWindow != null)
+                try
                 {
-                    owner = Application.Current.MainWindow;
+                    Owner = Application.Current.MainWindow;
+                }
+                catch
+                {
+
                 }
             }
 
-            Owner = owner;
             _owner = owner as WindowX;
 
             MessageBoxText = messageBoxText;

@@ -94,13 +94,9 @@ namespace Panuon.UI.Silver
         private static void OnBindToEnumChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var radioButtonGroup = d as RadioButtonGroup;
-            var selectedValue = radioButtonGroup.SelectedValue ?? e.NewValue as object;
-            if (selectedValue == null)
-                return;
+           
 
-            var type = selectedValue.GetType();
-            if (!type.IsEnum)
-                throw new Exception($"\"{type.FullName}\" is not an enumeration type.");
+            var type = e.NewValue.GetType();
 
             if (type == null)
             {
@@ -135,7 +131,7 @@ namespace Panuon.UI.Silver
                 radioButtonGroup.ItemsSource = enumList;
                 radioButtonGroup.DisplayMemberPath = "Name";
                 radioButtonGroup.SelectedValuePath = "Enum";
-                radioButtonGroup.SelectedValue = selectedValue;
+                radioButtonGroup.SelectedValue = radioButtonGroup.SelectedValue ?? e.NewValue;
             }
         }
 

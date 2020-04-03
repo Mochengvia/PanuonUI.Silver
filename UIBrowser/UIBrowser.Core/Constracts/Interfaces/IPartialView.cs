@@ -10,6 +10,8 @@ namespace UIBrowser.Core
     {
         ControlType PaletteControlType { get; }
 
+        bool IsPaletteEnabled { get; }
+
         event UpdatePaletteEventHandler UpdatePalette;
     }
 }

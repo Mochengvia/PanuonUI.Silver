@@ -599,13 +599,8 @@ namespace Panuon.UI.Silver
         private static void OnBindToEnumChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var comboBox = d as ComboBox;
-            var selectedValue = comboBox.SelectedValue ?? e.NewValue as object;
-            if (selectedValue == null)
-                return;
 
-            var type = selectedValue.GetType();
-            if (!type.IsEnum)
-                throw new Exception($"\"{type.FullName}\" is not an enumeration type.");
+            var type = e.NewValue?.GetType();
 
             if (type == null)
             {
@@ -640,7 +635,7 @@ namespace Panuon.UI.Silver
                 comboBox.ItemsSource = enumList;
                 comboBox.DisplayMemberPath = "Name";
                 comboBox.SelectedValuePath = "Enum";
-                comboBox.SelectedValue = selectedValue;
+                comboBox.SelectedValue = comboBox.SelectedValue ?? e.NewValue;
             }
         }
 

@@ -309,6 +309,11 @@
 
 
     <Style TargetType="TabItem">
+        <!--IconHelper-->
+        <Setter Property="local:IconHelper.Foreground"
+                Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
+        <Setter Property="local:IconHelper.FontSize"
+                Value="{Binding FontSize, RelativeSource={RelativeSource Self}}" />
         <!--TabControlHelper-->
         <Setter Property="Background"
                 Value="{Binding Path=(local:TabControlHelper.ItemsBackground), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />

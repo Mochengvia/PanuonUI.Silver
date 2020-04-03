@@ -142,7 +142,6 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Event Handler
-
         private static void OnButtonMouseEnter(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;

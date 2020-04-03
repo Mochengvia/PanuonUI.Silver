@@ -24,10 +24,12 @@
                   Width="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.Minus3Converter}},RelativeSource={RelativeSource Self},Mode=OneWay}">
                 <TextBlock x:Name="TxtArrowDown"
                            Text="&#xe91f;"
+                           FontSize="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource {x:Static i:ResourceKeys.Minus5Converter}}}"
                            FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center" />
                 <TextBlock x:Name="TxtArrowUp"
+                           FontSize="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource {x:Static i:ResourceKeys.Minus5Converter}}}"
                            Opacity="0"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
@@ -200,12 +202,8 @@
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{Binding BorderThickness,Converter={StaticResource {x:Static i:ResourceKeys.ThicknessWithoutTopConverter}},RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                         CornerRadius="{Binding Path=(local:ComboBoxHelper.DropDownCornerRadius),RelativeSource={RelativeSource AncestorType=ComboBox},Mode=OneWay}"
-                        Margin="5,0,5,5">
-                    <Border.Effect>
-                        <DropShadowEffect Color="{Binding Path=(local:ComboBoxHelper.ShadowColor), Converter={StaticResource {x:Static i:ResourceKeys.NullableColorToColorConverter}},RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
-                                          BlurRadius="5"
-                                          ShadowDepth="0" />
-                    </Border.Effect>
+                        Margin="5,0,5,5"
+                        Effect="{Binding Path=(local:ComboBoxHelper.ShadowColor), Converter={StaticResource {x:Static i:ResourceKeys.NullableColorToShadowEffectConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                     <ScrollViewer VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                   HorizontalScrollBarVisibility="{Binding Path=(ScrollViewer.HorizontalScrollBarVisibility),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                   Margin="{Binding Path=(local:ComboBoxHelper.DropDownPadding),RelativeSource={RelativeSource AncestorType=ComboBox},Mode=OneWay}">
@@ -233,12 +231,7 @@
                         Property="Margin"
                         Value="5,5,5,0" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding Path=(local:ComboBoxHelper.ShadowColor), Converter={StaticResource {x:Static i:ResourceKeys.IsNullConverter}}, RelativeSource={RelativeSource Self}}"
-                         Value="True">
-                <Setter TargetName="BdrDropDown"
-                        Property="Effect"
-                        Value="{x:Null}" />
-            </DataTrigger>
+         
         </ControlTemplate.Triggers>
     </ControlTemplate>
 

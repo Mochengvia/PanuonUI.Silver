@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="UIBrowser.Views.Partials.Notifications.NoticeXView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:cm="http://www.caliburnproject.org"
+             xmlns:local="clr-namespace:UIBrowser.Views.Partials.Notifications"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="Button"
+               BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="Padding"
+                    Value="20,0" />
+            <Setter Property="Height"
+                    Value="30" />
+            <Setter Property="Margin"
+                    Value="0,0,0,15" />
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <StackPanel HorizontalAlignment="Left">
+            <Button Content="NoticeX"
+                    cm:Message.Attach="[Event Click]=[Action Notice('none')]" />
+            <Button Content="NoticeX (Info)"
+                    cm:Message.Attach="[Event Click]=[Action Notice('info')]" />
+            <Button Content="NoticeX (Warning)"
+                    cm:Message.Attach="[Event Click]=[Action Notice('warning')]" />
+            <Button Content="NoticeX (Error)"
+                    cm:Message.Attach="[Event Click]=[Action Notice('error')]" />
+            <Button Content="NoticeX (Question)"
+                    cm:Message.Attach="[Event Click]=[Action Notice('question')]" />
+            <Button Content="NoticeX (Success)"
+                    cm:Message.Attach="[Event Click]=[Action Notice('success')]" />
+            <Button Content="NoticeX (Image)"
+                    cm:Message.Attach="[Event Click]=[Action Notice('image')]" />
+            <Button Content="NoticeX (Always On)"
+                    cm:Message.Attach="[Event Click]=[Action Notice('always')]" />
+        </StackPanel>
+    </Grid>
+</UserControl>

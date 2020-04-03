@@ -17,7 +17,8 @@
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
                 Background="{TemplateBinding Background}"
-                CornerRadius="{Binding Path=(local:GroupBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=GroupBox},Mode=OneWay}">
+                CornerRadius="{Binding Path=(local:GroupBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=GroupBox},Mode=OneWay}"
+                Effect="{Binding Path=(local:GroupBoxHelper.ShadowColor), Converter={StaticResource {x:Static i:ResourceKeys.NullableColorToShadowEffectConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
             <Border.OpacityMask>
                 <VisualBrush>
                     <VisualBrush.Visual>
@@ -67,19 +68,6 @@
                 <ContentPresenter Grid.Row="1" />
             </Grid>
         </Border>
-        <ControlTemplate.Triggers>
-            <DataTrigger Binding="{Binding Path=(local:GroupBoxHelper.ShadowColor),Converter={StaticResource {x:Static i:ResourceKeys.IsNotNullConverter}}, RelativeSource={RelativeSource Self}}"
-                         Value="True">
-                <Setter TargetName="BdrMain"
-                        Property="Effect">
-                    <Setter.Value>
-                        <DropShadowEffect BlurRadius="10"
-                                          ShadowDepth="0"
-                                          Color="{Binding Path=(local:GroupBoxHelper.ShadowColor), RelativeSource={RelativeSource AncestorType=GroupBox}, Mode=OneWay}" />
-                    </Setter.Value>
-                </Setter>
-            </DataTrigger>
-        </ControlTemplate.Triggers>
     </ControlTemplate>
 
     <ControlTemplate x:Key="{x:Static i:ResourceKeys.GroupBoxPostTemplate}"
@@ -89,7 +77,8 @@
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
                 Background="{TemplateBinding Background}"
-                CornerRadius="{Binding Path=(local:GroupBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=GroupBox},Mode=OneWay}">
+                CornerRadius="{Binding Path=(local:GroupBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=GroupBox},Mode=OneWay}"
+                Effect="{Binding Path=(local:GroupBoxHelper.ShadowColor), Converter={StaticResource {x:Static i:ResourceKeys.NullableColorToShadowEffectConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
             <Border.OpacityMask>
                 <VisualBrush>
                     <VisualBrush.Visual>
@@ -136,19 +125,7 @@
                 <ContentPresenter Grid.Row="1" />
             </Grid>
         </Border>
-        <ControlTemplate.Triggers>
-            <DataTrigger Binding="{Binding Path=(local:GroupBoxHelper.ShadowColor),Converter={StaticResource {x:Static i:ResourceKeys.IsNotNullConverter}}, RelativeSource={RelativeSource Self}}"
-                         Value="True">
-                <Setter TargetName="BdrMain"
-                        Property="Effect">
-                    <Setter.Value>
-                        <DropShadowEffect BlurRadius="10"
-                                          ShadowDepth="0"
-                                          Color="{Binding Path=(local:GroupBoxHelper.ShadowColor), RelativeSource={RelativeSource AncestorType=GroupBox}, Mode=OneWay}" />
-                    </Setter.Value>
-                </Setter>
-            </DataTrigger>
-        </ControlTemplate.Triggers>
+        
     </ControlTemplate>
 
     <ControlTemplate x:Key="{x:Static i:ResourceKeys.GroupBoxFootnoteTemplate}"
@@ -158,7 +135,8 @@
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
                 Background="{TemplateBinding Background}"
-                CornerRadius="{Binding Path=(local:GroupBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=GroupBox},Mode=OneWay}">
+                CornerRadius="{Binding Path=(local:GroupBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=GroupBox},Mode=OneWay}"
+                Effect="{Binding Path=(local:GroupBoxHelper.ShadowColor), Converter={StaticResource {x:Static i:ResourceKeys.NullableColorToShadowEffectConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
             <Border.OpacityMask>
                 <VisualBrush>
                     <VisualBrush.Visual>
@@ -202,24 +180,9 @@
                                       RecognizesAccessKey="True" />
                     <ContentControl Grid.Column="2"
                                     Content="{Binding Path=(local:GroupBoxHelper.ExtendControl),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-
                 </Grid>
-
             </Grid>
         </Border>
-        <ControlTemplate.Triggers>
-            <DataTrigger Binding="{Binding Path=(local:GroupBoxHelper.ShadowColor),Converter={StaticResource {x:Static i:ResourceKeys.IsNotNullConverter}}, RelativeSource={RelativeSource Self}}"
-                         Value="True">
-                <Setter TargetName="BdrMain"
-                        Property="Effect">
-                    <Setter.Value>
-                        <DropShadowEffect BlurRadius="10"
-                                          ShadowDepth="0"
-                                          Color="{Binding Path=(local:GroupBoxHelper.ShadowColor), RelativeSource={RelativeSource AncestorType=GroupBox}, Mode=OneWay}" />
-                    </Setter.Value>
-                </Setter>
-            </DataTrigger>
-        </ControlTemplate.Triggers>
     </ControlTemplate>
 
     <DataTemplate x:Key="{x:Static rs:ResourceKeys.GroupBoxStandardHeaderTemplate}">
@@ -241,6 +204,11 @@
     </DataTemplate>
 
     <Style TargetType="GroupBox">
+        <!--IconHelper-->
+        <Setter Property="local:IconHelper.Foreground"
+                Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
+        <Setter Property="local:IconHelper.FontSize"
+                Value="{Binding FontSize, RelativeSource={RelativeSource Self}}" />
         <Setter Property="Background"
                 Value="White" />
         <Setter Property="BorderBrush"

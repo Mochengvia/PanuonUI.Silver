@@ -64,7 +64,7 @@
                                       BlurRadius="0"
                                       ShadowDepth="0"
                                       Opacity="0.6"
-                                      Color="{Binding Path=(local:TextBoxHelper.FocusedShadowColor), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                                      Color="{Binding Path=(local:TextBoxHelper.FocusedShadowColor), Converter={StaticResource {x:Static i:ResourceKeys.NullableColorToColorConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 </Border.Effect>
             </Border>
             <ic:IconControl x:Name="IcIcon"

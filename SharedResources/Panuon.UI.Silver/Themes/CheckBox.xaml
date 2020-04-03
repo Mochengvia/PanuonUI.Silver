@@ -15,8 +15,7 @@
         <StackPanel Orientation="Horizontal"
                     Background="Transparent"
                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                    Margin="{TemplateBinding Padding}">
+                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
             <Grid Height="{Binding Path=(local:CheckBoxHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
                   Width="{Binding Path=(local:CheckBoxHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}">
                 <Rectangle x:Name="RectBoxBorder"
@@ -79,7 +78,7 @@
             </Grid>
             <ContentPresenter x:Name="Presenter"
                               RecognizesAccessKey="True"
-                              Margin="5,0,0,0"
+                              Margin="{TemplateBinding Padding}"
                               VerticalAlignment="Center" />
         </StackPanel>
         <ControlTemplate.Triggers>
@@ -221,8 +220,7 @@
         <StackPanel Orientation="Horizontal"
                     Background="Transparent"
                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                    Margin="{TemplateBinding Padding}">
+                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
             <Grid Height="{Binding Path=(local:CheckBoxHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
                   Width="{Binding Path=(local:CheckBoxHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}">
                 <Border x:Name="BdrMain"
@@ -270,7 +268,7 @@
             </Grid>
             <ContentPresenter x:Name="Presenter"
                               RecognizesAccessKey="True"
-                              Margin="5,0,0,0"
+                              Margin="{TemplateBinding Padding}"
                               VerticalAlignment="Center" />
         </StackPanel>
         <ControlTemplate.Triggers>
@@ -364,8 +362,7 @@
         <StackPanel Orientation="Horizontal"
                     Background="Transparent"
                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                    Margin="{TemplateBinding Padding}">
+                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
             <Grid Height="{Binding Path=(local:CheckBoxHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
                   Width="{Binding Path=(local:CheckBoxHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}">
                 <Border x:Name="BdrMain"
@@ -418,7 +415,7 @@
             </Grid>
             <ContentPresenter x:Name="Presenter"
                               RecognizesAccessKey="True"
-                              Margin="5,0,0,0"
+                              Margin="{TemplateBinding Padding}"
                               VerticalAlignment="Center" />
         </StackPanel>
         <ControlTemplate.Triggers>
@@ -512,8 +509,7 @@
         <StackPanel Orientation="Horizontal"
                     Background="Transparent"
                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                    Margin="{TemplateBinding Padding}">
+                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
             <Grid Height="{Binding Path=(local:CheckBoxHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}"
                   Width="{Binding Path=(local:CheckBoxHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=CheckBox}, Mode=OneWay}">
                 <Border x:Name="BdrMain"
@@ -552,7 +548,7 @@
             </Grid>
             <ContentPresenter x:Name="Presenter"
                               RecognizesAccessKey="True"
-                              Margin="5,0,0,0"
+                              Margin="{TemplateBinding Padding}"
                               VerticalAlignment="Center" />
         </StackPanel>
         <ControlTemplate.Triggers>
@@ -899,6 +895,8 @@
                 Value="{StaticResource {x:Static i:ResourceKeys.CheckBoxStandardDefaultBorderBrush}}" />
         <Setter Property="BorderThickness"
                 Value="{StaticResource {x:Static i:ResourceKeys.CheckBoxStandardDefaultBorderThickness}}" />
+        <Setter Property="Padding"
+                Value="5,0,0,0" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static i:ResourceKeys.CheckBoxStandardTemplate}}" />
         <!--CheckBoxHelper-->

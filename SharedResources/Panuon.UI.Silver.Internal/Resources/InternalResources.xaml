@@ -52,6 +52,7 @@
     <icv:TreeViewChainVerticalMarginConverter x:Key="{x:Static i:ResourceKeys.TreeViewChainVerticalMarginConverter}" />
     <icv:DoubleMinConverter x:Key="{x:Static i:ResourceKeys.DoubleMinConverter}" />
     <icv:DoubleEqualsConverter x:Key="{x:Static i:ResourceKeys.DoubleEqualsConverter}" />
+    <icv:DoubleLimitMin1Converter x:Key="{x:Static i:ResourceKeys.DoubleLimitMin1Converter}" />
     <icv:DoubleToRightMarginConverter x:Key="{x:Static i:ResourceKeys.DoubleToRightMarginConverter}" />
     <icv:CornerRadiusToDoubleConverter x:Key="{x:Static i:ResourceKeys.CornerRadiusToDoubleConverter}" />
     <icv:ThicknessToDoubleConverter x:Key="{x:Static i:ResourceKeys.ThicknessToDoubleConverter}" />
@@ -65,6 +66,7 @@
     <icv:CheckBoxSwitch3ToggleTrackMarginConverter x:Key="{x:Static i:ResourceKeys.CheckBoxSwitch3ToggleTrackMarginConverter}" />
     <icv:IconPositionToOrientationConverter x:Key="{x:Static i:ResourceKeys.IconPositionToOrientationConverter}" />
     <icv:NullableColorToColorConverter x:Key="{x:Static i:ResourceKeys.NullableColorToColorConverter}" />
+    <icv:NullableColorToShadowEffectConverter x:Key="{x:Static i:ResourceKeys.NullableColorToShadowEffectConverter}" />
     <icv:CombineToArrayConverter x:Key="{x:Static i:ResourceKeys.CombineToArrayConverter}" />
     <icv:DropDownPathDataConverter x:Key="{x:Static i:ResourceKeys.DropDownPathDataConverter}" />
     <icv:MsgBoxIconConverter x:Key="{x:Static i:ResourceKeys.MsgBoxIconConverter}" />
@@ -244,7 +246,7 @@
                      Color="#888888" />
     <SolidColorBrush x:Key="{x:Static i:ResourceKeys.CheckBoxStandardDefaultCheckedBorderBrush}"
                      Color="#888888" />
-    <CornerRadius x:Key="{x:Static i:ResourceKeys.CheckBoxStandardDefaultCornerRadius}">2</CornerRadius>
+    <CornerRadius x:Key="{x:Static i:ResourceKeys.CheckBoxStandardDefaultCornerRadius}">0</CornerRadius>
     <sys:Double x:Key="{x:Static i:ResourceKeys.CheckBoxStandardDefaultBoxHeight}">16</sys:Double>
     <sys:Double x:Key="{x:Static i:ResourceKeys.CheckBoxStandardDefaultBoxWidth}">16</sys:Double>
 

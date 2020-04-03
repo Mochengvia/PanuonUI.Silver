@@ -120,8 +120,14 @@
   <data name="IconFont" xml:space="preserve">
     <value>IconFont 图标字体</value>
   </data>
+  <data name="NoticeX" xml:space="preserve">
+    <value>NoticeX 通知</value>
+  </data>
   <data name="Palette" xml:space="preserve">
     <value>调色板</value>
+  </data>
+  <data name="PendingBoxX" xml:space="preserve">
+    <value>PendingBoxX 等待框</value>
   </data>
   <data name="SearchControlTips" xml:space="preserve">
     <value>搜索控件...</value>

@@ -62,6 +62,24 @@ namespace UIBrowser.ViewModels
         public PaletteViewModel PaletteViewModel { get; private set; } = new PaletteViewModel();
         #endregion
 
+        #region IsPaletteOpen
+        public bool IsPaletteOpen
+        {
+            get { return _isPaletteOpen; }
+            set { _isPaletteOpen = value; NotifyOfPropertyChange(); }
+        }
+        private bool _isPaletteOpen;
+        #endregion
+
+        #region IsPaletteEnabled
+        public bool IsPaletteEnabled
+        {
+            get { return _isPaletteEnabled; }
+            set { _isPaletteEnabled = value; NotifyOfPropertyChange(); }
+        }
+        private bool _isPaletteEnabled;
+        #endregion
+
         #endregion
 
         #region Methods
@@ -84,6 +102,12 @@ namespace UIBrowser.ViewModels
             if(view is IPartialView)
             {
                 PaletteViewModel.PaletteControlType = (view as IPartialView).PaletteControlType;
+                IsPaletteEnabled = (view as IPartialView).IsPaletteEnabled;
+                if (!(view as IPartialView).IsPaletteEnabled)
+                {
+                    IsPaletteOpen = false;
+                }
+
                 (view as IPartialView).UpdatePalette -= ShellViewModel_UpdatePalette;
                 (view as IPartialView).UpdatePalette += ShellViewModel_UpdatePalette;
             }

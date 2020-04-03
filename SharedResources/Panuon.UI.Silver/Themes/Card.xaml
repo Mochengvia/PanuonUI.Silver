@@ -59,7 +59,8 @@
                 Background="{TemplateBinding Background}"
                 BorderThickness="{TemplateBinding BorderThickness}"
                 BorderBrush="{TemplateBinding BorderBrush}"
-                CornerRadius="{TemplateBinding CornerRadius}">
+                CornerRadius="{TemplateBinding CornerRadius}"
+                Effect="{Binding ShadowColor, Converter={StaticResource {x:Static i:ResourceKeys.NullableColorToShadowEffectConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
             <Border.OpacityMask>
                 <VisualBrush>
                     <VisualBrush.Visual>
@@ -82,19 +83,6 @@
                                   RecognizesAccessKey="True" />
             </Grid>
         </Border>
-        <ControlTemplate.Triggers>
-            <DataTrigger Binding="{Binding ShadowColor, Converter={StaticResource {x:Static i:ResourceKeys.IsNotNullConverter}}, RelativeSource={RelativeSource Self}}"
-                         Value="True">
-                <Setter TargetName="BdrMain"
-                        Property="Effect">
-                    <Setter.Value>
-                        <DropShadowEffect BlurRadius="10"
-                                          ShadowDepth="0"
-                                          Color="{Binding ShadowColor, RelativeSource={RelativeSource AncestorType=local:Card}, Mode=OneWay}" />
-                    </Setter.Value>
-                </Setter>
-            </DataTrigger>
-        </ControlTemplate.Triggers>
     </ControlTemplate>
 
     <Style TargetType="local:Card">

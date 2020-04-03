@@ -65,7 +65,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\NoticeXCard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\Pagination.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\PendingBoxXControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -168,16 +176,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Components\MessageBoxXConfigurations.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Components\NoticeXConfigurations.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Components\PendingBoxXConfigurations.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums\HorizontalHeaderAlignment.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums\LoadingSpeed.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums\LoadingStyle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums\ProgressBarStyle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums\ProgressDirection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums\StackDirection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Constracts\Interfaces\IPendingHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Abstracts\FormGroup.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CalendarX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Card.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\CarouselPanel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\PendingBoxX.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\SpecialControls\NoticeXCard.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Panels\AnimationStackPanel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Panels\CarouselPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CarouselViewer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Clock.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\DateTimePicker.cs" />
@@ -190,11 +205,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MessageBoxX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NeonLabel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\NoticeX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Pagination.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PopupX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\RadioButtonGroup.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Rectangle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\SeperatorX.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\SpecialControls\PendingBoxXControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TextBlockX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\WaterfallPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\WindowX.cs" />
@@ -219,8 +236,5 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\TreeViewHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\Converters.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\ResourceKeys.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Constracts\Interfaces\" />
   </ItemGroup>
 </Project>

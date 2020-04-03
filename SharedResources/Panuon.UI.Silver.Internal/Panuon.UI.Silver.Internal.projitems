@@ -11,8 +11,15 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Components\DisposableTimer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums\FormItemCategory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Constracts\Implements\PendingHanlderImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\IconControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MsgBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\NoticeWindow.xaml.cs">
+      <DependentUpon>NoticeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\PendingWindow.xaml.cs">
+      <DependentUpon>PendingWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CheckBoxConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ColorConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CombineConverter.cs" />
@@ -47,6 +54,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)Win32\User32.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\PendingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\NoticeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Resources\InternalResources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -55,8 +70,5 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Constracts\Interfaces\" />
   </ItemGroup>
 </Project>

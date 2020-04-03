@@ -35,6 +35,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIBrowser.Localization", "U
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIBrowser.Code", "UIBrowser\UIBrowser.Code\UIBrowser.Code.csproj", "{713DA5D8-457B-4CB5-8BAB-5C5949F19A9B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{1BCA421B-F3EB-4642-A719-18D671AFB555}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "Test\TestApp\TestApp.csproj", "{63244455-A041-430E-B8C7-B4F75A3152FA}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		SharedResources\Panuon.UI.Silver.Core\Panuon.UI.Silver.Core.projitems*{66a3cb31-ac17-4fb7-885c-95fc1ae2cddd}*SharedItemsImports = 13
@@ -43,6 +47,9 @@ Global
 		SharedResources\Panuon.UI.Silver\Panuon.UI.Silver.projitems*{7823da22-6993-4b67-b989-af9c8b61c9b8}*SharedItemsImports = 4
 		SharedResources\Panuon.UI.Silver\Panuon.UI.Silver.projitems*{8025ebd9-c57d-47f5-a4d0-6a93c7d656fc}*SharedItemsImports = 13
 		SharedResources\Panuon.UI.Silver.Internal\Panuon.UI.Silver.Internal.projitems*{818bd6a9-4ae2-4749-9219-9329be7626bd}*SharedItemsImports = 13
+		SharedResources\Panuon.UI.Silver.Core\Panuon.UI.Silver.Core.projitems*{9bfceabc-a354-443a-92b5-b4adf74e8fc6}*SharedItemsImports = 5
+		SharedResources\Panuon.UI.Silver.Internal\Panuon.UI.Silver.Internal.projitems*{9bfceabc-a354-443a-92b5-b4adf74e8fc6}*SharedItemsImports = 5
+		SharedResources\Panuon.UI.Silver\Panuon.UI.Silver.projitems*{9bfceabc-a354-443a-92b5-b4adf74e8fc6}*SharedItemsImports = 5
 		SharedResources\Panuon.UI.Silver.Core\Panuon.UI.Silver.Core.projitems*{9ce564ba-ae91-4350-8b91-ec21d4752b69}*SharedItemsImports = 4
 		SharedResources\Panuon.UI.Silver.Internal\Panuon.UI.Silver.Internal.projitems*{9ce564ba-ae91-4350-8b91-ec21d4752b69}*SharedItemsImports = 4
 		SharedResources\Panuon.UI.Silver\Panuon.UI.Silver.projitems*{9ce564ba-ae91-4350-8b91-ec21d4752b69}*SharedItemsImports = 4
@@ -84,6 +91,10 @@ Global
 		{713DA5D8-457B-4CB5-8BAB-5C5949F19A9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{713DA5D8-457B-4CB5-8BAB-5C5949F19A9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{713DA5D8-457B-4CB5-8BAB-5C5949F19A9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63244455-A041-430E-B8C7-B4F75A3152FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63244455-A041-430E-B8C7-B4F75A3152FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63244455-A041-430E-B8C7-B4F75A3152FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63244455-A041-430E-B8C7-B4F75A3152FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -100,6 +111,7 @@ Global
 		{1A779466-81A4-4CA2-9E04-09713FFC41C9} = {BF6CE5CA-D026-47DB-BCCC-DBCE793CF60F}
 		{D4F108E4-A0D9-4939-ABE0-BE6C4B49FDDE} = {BF6CE5CA-D026-47DB-BCCC-DBCE793CF60F}
 		{713DA5D8-457B-4CB5-8BAB-5C5949F19A9B} = {BF6CE5CA-D026-47DB-BCCC-DBCE793CF60F}
+		{63244455-A041-430E-B8C7-B4F75A3152FA} = {1BCA421B-F3EB-4642-A719-18D671AFB555}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A8CBAEF7-FF0D-4212-BC6A-A2E32BC26469}

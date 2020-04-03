@@ -120,8 +120,14 @@
   <data name="IconFont" xml:space="preserve">
     <value>IconFont</value>
   </data>
+  <data name="NoticeX" xml:space="preserve">
+    <value>NoticeX</value>
+  </data>
   <data name="Palette" xml:space="preserve">
     <value>Palette</value>
+  </data>
+  <data name="PendingBoxX" xml:space="preserve">
+    <value>PendingBoxX</value>
   </data>
   <data name="SearchControlTips" xml:space="preserve">
     <value>Search controls ...</value>

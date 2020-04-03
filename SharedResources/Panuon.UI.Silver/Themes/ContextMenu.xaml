@@ -16,26 +16,14 @@
                 BorderThickness="{TemplateBinding BorderThickness}"
                 Background="{TemplateBinding Background}"
                 CornerRadius="{Binding Path=(local:ContextMenuHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                Effect="{Binding Path=(local:ContextMenuHelper.ShadowColor), Converter={StaticResource {x:Static i:ResourceKeys.NullableColorToShadowEffectConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                 Margin="5">
-            <Border.Effect>
-                <DropShadowEffect Color="{Binding Path=(local:ContextMenuHelper.ShadowColor), Converter={StaticResource {x:Static i:ResourceKeys.NullableColorToColorConverter}},RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}"
-                                  BlurRadius="5"
-                                  ShadowDepth="0" />
-            </Border.Effect>
             <ScrollViewer  VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            HorizontalScrollBarVisibility="{Binding Path=(ScrollViewer.HorizontalScrollBarVisibility),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            Margin="{TemplateBinding Padding}">
                 <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Cycle" />
             </ScrollViewer>
         </Border>
-        <ControlTemplate.Triggers>
-            <DataTrigger Binding="{Binding Path=(local:ContextMenuHelper.ShadowColor), Converter={StaticResource {x:Static i:ResourceKeys.IsNullConverter}}, RelativeSource={RelativeSource Self}}"
-                         Value="True">
-                <Setter TargetName="BdrMain"
-                        Property="Effect"
-                        Value="{x:Null}" />
-            </DataTrigger>
-        </ControlTemplate.Triggers>
     </ControlTemplate>
 
     <ControlTemplate x:Key="ContextMenuItemTemplate"

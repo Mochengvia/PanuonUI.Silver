@@ -28,6 +28,7 @@ namespace UIBrowser.ViewModels.Partials.Miscellaneous
         #endregion
 
         #region Properties
+        public bool IsPaletteEnabled => true;
 
         #region Fonts
         public BindableCollection<FontItem> Fonts { get; private set; } = new BindableCollection<FontItem>();

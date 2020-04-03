@@ -78,14 +78,11 @@
     <Compile Include="Models\FontItem.cs" />
     <Compile Include="Models\PartialViewItem.cs" />
     <Compile Include="Models\ViewInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Utils\ViewUtils.cs" />
     <Compile Include="ViewModels\Partials\Customs\WindowXViewModel.cs" />
     <Compile Include="ViewModels\Partials\Miscellaneous\IconFontViewModel.cs" />
+    <Compile Include="ViewModels\Partials\Notifications\PendingBoxXViewModel.cs" />
+    <Compile Include="ViewModels\Partials\Notifications\NoticeXViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -122,6 +119,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Partials\Notifications\PendingBoxXView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Partials\Notifications\NoticeXView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\ShellView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -147,12 +152,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\panuon.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -16,24 +16,14 @@
                 BorderBrush="{Binding Path=(local:ToolTipHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                 BorderThickness="{Binding Path=(local:ToolTipHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                 Background="{Binding Path=(local:ToolTipHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                CornerRadius="{Binding Path=(local:ToolTipHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-            <Border.Effect>
-                <DropShadowEffect Color="{Binding Path=(local:ToolTipHelper.ShadowColor), Converter={StaticResource {x:Static i:ResourceKeys.NullableColorToColorConverter}},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                  BlurRadius="5"
-                                  ShadowDepth="0" />
-            </Border.Effect>
+                CornerRadius="{Binding Path=(local:ToolTipHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                Effect="{Binding Path=(local:ToolTipHelper.ShadowColor), Converter={StaticResource {x:Static i:ResourceKeys.NullableColorToShadowEffectConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+          
             <ContentPresenter Margin="{Binding Path=(local:ToolTipHelper.Padding), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               HorizontalAlignment="Left"
                               VerticalAlignment="Top" />
         </Border>
-        <ControlTemplate.Triggers>
-            <DataTrigger Binding="{Binding Path=(local:ToolTipHelper.ShadowColor), Converter={StaticResource {x:Static i:ResourceKeys.IsNullConverter}}, RelativeSource={RelativeSource Self}}"
-                         Value="True">
-                <Setter TargetName="BdrMain"
-                        Property="Effect"
-                        Value="{x:Null}" />
-            </DataTrigger>
-        </ControlTemplate.Triggers>
+        
     </ControlTemplate>
     
     <Style TargetType="ToolTip">

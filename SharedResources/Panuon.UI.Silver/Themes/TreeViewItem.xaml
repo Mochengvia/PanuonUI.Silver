@@ -437,6 +437,11 @@
     </ControlTemplate>
 
     <Style TargetType="TreeViewItem">
+        <!--IconHelper-->
+        <Setter Property="local:IconHelper.Foreground"
+                Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
+        <Setter Property="local:IconHelper.FontSize"
+                Value="{Binding FontSize, RelativeSource={RelativeSource Self}}" />
         <!--TreeViewHelper-->
         <Setter Property="local:TreeViewHelper.ItemHeight"
                 Value="{Binding Path=(local:TreeViewHelper.ItemsHeight),RelativeSource={RelativeSource AncestorType=TreeView}}" />
@@ -512,6 +517,8 @@
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter Property="Foreground"
+                        Value="{Binding Path=(local:TreeViewHelper.ItemSelectedForeground),RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+                <Setter Property="local:TreeViewHelper.ItemIcon"
                         Value="{Binding Path=(local:TreeViewHelper.ItemSelectedForeground),RelativeSource={RelativeSource Self}, Mode=OneWay}" />
             </MultiDataTrigger>
             <Trigger Property="IsEnabled"

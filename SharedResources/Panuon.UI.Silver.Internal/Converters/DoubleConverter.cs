@@ -6,6 +6,20 @@ using System.Windows.Data;
 
 namespace Panuon.UI.Silver.Internal.Converters
 {
+    internal class DoubleLimitMin1Converter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var doubleValue = value as double? ?? 0;
+            return doubleValue < 1 ? 1 : doubleValue;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return DependencyProperty.UnsetValue;
+        }
+    }
+
     internal class DoubleToRightMarginConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

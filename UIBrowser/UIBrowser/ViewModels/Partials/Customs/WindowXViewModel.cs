@@ -19,6 +19,8 @@ namespace UIBrowser.ViewModels.Partials.Customs
         #region PaletteControlType
         public ControlType PaletteControlType { get { return ControlType.WindowX; } }
 
+        public bool IsPaletteEnabled => true;
+
         #endregion
 
         #endregion

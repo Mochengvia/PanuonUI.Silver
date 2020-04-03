@@ -69,13 +69,14 @@
                              Margin="10,15,0,0"
                              x:Name="ActiveItem" />
             <pu:Drawer x:Name="DwPalette"
+                       IsEnabled="{Binding IsPaletteEnabled, Mode=TwoWay}"
+                       IsOpen="{Binding IsPaletteOpen, Mode=TwoWay}"
                        Grid.Row="2"
                        BorderBrush="LightGray"
                        BorderThickness="0,1,0,0"
                        Placement="Bottom"
                        MaxHeight="200"
-                       MinHeight="30"
-                       IsOpen="False">
+                       MinHeight="30">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30" />

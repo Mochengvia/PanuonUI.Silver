@@ -52,7 +52,7 @@ namespace Panuon.UI.Silver.Internal.Converters
                 case MessageBoxIcon.Warning:
                     return "#F9D01A".ToColor().ToBrush();
                 default:
-                    return null;
+                    return Brushes.Black;
             }
         }
 

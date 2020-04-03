@@ -91,6 +91,7 @@ namespace Panuon.UI.Silver.Internal
 
         public const string DoubleToRightMarginConverter = nameof(DoubleToRightMarginConverter);
 
+        public const string DoubleLimitMin1Converter = nameof(DoubleLimitMin1Converter);
         
         public const string IsGreaterThanZeroConverter = nameof(IsGreaterThanZeroConverter);
 
@@ -125,6 +126,8 @@ namespace Panuon.UI.Silver.Internal
         public const string CheckBoxSwitch3ToggleTrackMarginConverter = nameof(CheckBoxSwitch3ToggleTrackMarginConverter);
 
         public const string NullableColorToColorConverter = nameof(NullableColorToColorConverter);
+
+        public const string NullableColorToShadowEffectConverter = nameof(NullableColorToShadowEffectConverter);
 
         public const string CombineToArrayConverter = nameof(CombineToArrayConverter);
 

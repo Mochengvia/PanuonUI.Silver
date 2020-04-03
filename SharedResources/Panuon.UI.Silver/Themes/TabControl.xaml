@@ -5,6 +5,7 @@
                     xmlns:ic="clr-namespace:Panuon.UI.Silver.Internal.Controls"
                     xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources">
     <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Resources.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/InternalResources.xaml" />
     </ResourceDictionary.MergedDictionaries>
 

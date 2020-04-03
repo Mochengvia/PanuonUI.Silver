@@ -70,11 +70,29 @@ namespace UIBrowser.Localization.Properties {
         }
         
         /// <summary>
+        ///   查找类似 NoticeX 的本地化字符串。
+        /// </summary>
+        public static string NoticeX {
+            get {
+                return ResourceManager.GetString("NoticeX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Palette 的本地化字符串。
         /// </summary>
         public static string Palette {
             get {
                 return ResourceManager.GetString("Palette", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 PendingBoxX 的本地化字符串。
+        /// </summary>
+        public static string PendingBoxX {
+            get {
+                return ResourceManager.GetString("PendingBoxX", resourceCulture);
             }
         }
         

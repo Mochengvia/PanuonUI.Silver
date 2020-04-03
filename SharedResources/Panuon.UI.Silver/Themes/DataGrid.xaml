@@ -157,7 +157,7 @@
                            Visibility="Collapsed"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
-                           FontSize="{Binding FontSize, Converter={StaticResource {x:Static i:ResourceKeys.Minus1Converter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           FontSize="{Binding FontSize, Converter={StaticResource {x:Static i:ResourceKeys.DoubleLimitMin1Converter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon" />
                 <TextBlock x:Name="TxtDesc"
                            Grid.Column="1"
@@ -166,7 +166,7 @@
                            Visibility="Collapsed"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
-                           FontSize="{Binding FontSize, Converter={StaticResource {x:Static i:ResourceKeys.Minus1Converter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           FontSize="{Binding FontSize, Converter={StaticResource {x:Static i:ResourceKeys.DoubleLimitMin1Converter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon" />
             </Grid>
             <Thumb x:Name="PART_LeftHeaderGripper"

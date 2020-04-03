@@ -41,18 +41,19 @@
                           Focusable="False"
                           PopupAnimation="Slide">
                 <Grid Margin="5,0,5,5">
-                    <Path x:Name="BdrDropDown"
+                    <Path x:Name="PathDropDown"
                           Fill="{TemplateBinding Background}"
                           Stroke="{TemplateBinding BorderBrush}"
                           StrokeThickness="{Binding BorderThickness,Converter={StaticResource {x:Static i:ResourceKeys.ThicknessToDoubleConverter}},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                          Effect="{Binding ShadowColor, Converter={StaticResource {x:Static i:ResourceKeys.NullableColorToShadowEffectConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                           Margin="0.5">
                         <Path.Data>
                             <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.DropDownPathDataConverter}}">
                                 <Binding Path="ActualWidth"
-                                         ElementName="BdrDropDown"
+                                         ElementName="PathDropDown"
                                          Mode="OneWay" />
                                 <Binding Path="ActualHeight"
-                                         ElementName="BdrDropDown"
+                                         ElementName="PathDropDown"
                                          Mode="OneWay" />
                                 <Binding Path="CornerRadius"
                                          RelativeSource="{RelativeSource AncestorType=local:DropDown}"
@@ -64,15 +65,11 @@
                                          RelativeSource="{RelativeSource AncestorType=local:DropDown}"
                                          Mode="OneWay" />
                                 <Binding Path="Margin"
-                                         ElementName="BdrDropDown"
+                                         ElementName="PathDropDown"
                                          Mode="OneWay" />
                             </MultiBinding>
                         </Path.Data>
-                        <Path.Effect>
-                            <DropShadowEffect Color="{Binding ShadowColor, Converter={StaticResource {x:Static i:ResourceKeys.NullableColorToColorConverter}},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                              BlurRadius="8"
-                                              ShadowDepth="0" />
-                        </Path.Effect>
+                        
                     </Path>
                     <ContentPresenter x:Name="CpChild"
                                       Margin="5"
@@ -83,14 +80,6 @@
 
             </local:PopupX>
         </Grid>
-        <ControlTemplate.Triggers>
-            <DataTrigger Binding="{Binding ShadowColor, Converter={StaticResource {x:Static i:ResourceKeys.IsNullConverter}}, RelativeSource={RelativeSource Self}}"
-                         Value="True">
-                <Setter TargetName="BdrDropDown"
-                        Property="Effect"
-                        Value="{x:Null}" />
-            </DataTrigger>
-        </ControlTemplate.Triggers>
     </ControlTemplate>
 
     <Style TargetType="local:DropDown">

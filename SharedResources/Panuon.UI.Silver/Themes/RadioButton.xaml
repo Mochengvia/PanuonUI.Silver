@@ -15,7 +15,7 @@
                     Background="Transparent"
                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                    Margin="{TemplateBinding Padding}">
+                    >
             <Border x:Name="BdrBox"
                     Opacity="0.8"
                     Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
@@ -36,7 +36,7 @@
             </Border>
             <ContentPresenter x:Name="Presenter"
                               RecognizesAccessKey="True"
-                              Margin="5,0,0,0"
+                              Margin="{TemplateBinding Padding}"
                               VerticalAlignment="Center" />
         </StackPanel>
         <ControlTemplate.Triggers>
@@ -180,7 +180,7 @@
                     Background="Transparent"
                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                    Margin="{TemplateBinding Padding}">
+                    >
             <Grid Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
                   Width="{Binding Path=(local:RadioButtonHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}">
                 <Border x:Name="BdrMain"
@@ -228,7 +228,7 @@
             </Grid>
             <ContentPresenter x:Name="Presenter"
                               RecognizesAccessKey="True"
-                              Margin="5,0,0,0"
+                              Margin="{TemplateBinding Padding}"
                               VerticalAlignment="Center" />
         </StackPanel>
         <ControlTemplate.Triggers>
@@ -323,7 +323,7 @@
                     Background="Transparent"
                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                    Margin="{TemplateBinding Padding}">
+                    >
             <Grid Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
                   Width="{Binding Path=(local:RadioButtonHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}">
                 <Border x:Name="BdrMain"
@@ -376,7 +376,7 @@
             </Grid>
             <ContentPresenter x:Name="Presenter"
                               RecognizesAccessKey="True"
-                              Margin="5,0,0,0"
+                              Margin="{TemplateBinding Padding}"
                               VerticalAlignment="Center" />
         </StackPanel>
         <ControlTemplate.Triggers>
@@ -471,7 +471,7 @@
                     Background="Transparent"
                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                    Margin="{TemplateBinding Padding}">
+                    >
             <Grid Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
                   Width="{Binding Path=(local:RadioButtonHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}">
                 <Border x:Name="BdrMain"
@@ -509,7 +509,7 @@
             </Grid>
             <ContentPresenter x:Name="Presenter"
                               RecognizesAccessKey="True"
-                              Margin="5,0,0,0"
+                              Margin="{TemplateBinding Padding}"
                               VerticalAlignment="Center" />
         </StackPanel>
         <ControlTemplate.Triggers>
@@ -614,7 +614,7 @@
                               RecognizesAccessKey="True"
                               VerticalAlignment="Center"
                               HorizontalAlignment="Center"
-                              Margin="{TemplateBinding Padding}" />
+                               />
         </Grid>
         <ControlTemplate.Triggers>
             <MultiDataTrigger>
@@ -712,7 +712,7 @@
                               RecognizesAccessKey="True"
                               VerticalAlignment="Center"
                               HorizontalAlignment="Center"
-                              Margin="{TemplateBinding Padding}" />
+                               />
             <Border x:Name="BdrRaw"
                     BorderThickness="{TemplateBinding BorderThickness}"
                     BorderBrush="{TemplateBinding BorderBrush}"
@@ -852,6 +852,8 @@
 
     <Style TargetType="RadioButton">
         <!--Properties-->
+        <Setter Property="Padding"
+                Value="5,0,0,0" />
         <Setter Property="Background"
                 Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonStandardDefaultBackground}}" />
         <Setter Property="BorderBrush"

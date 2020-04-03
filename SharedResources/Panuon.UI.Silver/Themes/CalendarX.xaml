@@ -26,7 +26,7 @@
             <Trigger Property="IsEnabled"
                      Value="False">
                 <Setter Property="Opacity"
-                        Value="0.1" />
+                        Value="{StaticResource {x:Static rs:ResourceKeys.DisabledOpacity}}" />
             </Trigger>
         </Style.Triggers>
     </Style>

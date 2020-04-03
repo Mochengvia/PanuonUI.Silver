@@ -16,12 +16,9 @@
                     BorderBrush="{TemplateBinding BorderBrush}"
                     BorderThickness="{TemplateBinding BorderThickness}"
                     Background="{TemplateBinding Background}"
-                    CornerRadius="{TemplateBinding CornerRadius}">
-                <Border.Effect>
-                    <DropShadowEffect Color="{Binding ShadowColor, Converter={StaticResource {x:Static i:ResourceKeys.NullableColorToColorConverter}},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                      BlurRadius="5"
-                                      ShadowDepth="0" />
-                </Border.Effect>
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    Effect="{Binding ShadowColor, Converter={StaticResource {x:Static i:ResourceKeys.NullableColorToShadowEffectConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+               
             </Border>
             <ContentPresenter x:Name="CpContent"/>
         </Grid>
@@ -62,12 +59,7 @@
                         Property="Height"
                         Value="{Binding MaxHeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </Trigger>
-            <DataTrigger Binding="{Binding ShadowColor, Converter={StaticResource {x:Static i:ResourceKeys.IsNullConverter}}, RelativeSource={RelativeSource Self}}"
-                         Value="True">
-                <Setter TargetName="BdrMain"
-                        Property="Effect"
-                        Value="{x:Null}" />
-            </DataTrigger>
+           
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
@@ -86,5 +78,12 @@
                 Value="CubicOut" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static i:ResourceKeys.DrawerTemplate}}" />
+        <Style.Triggers>
+            <Trigger Property="IsEnabled"
+                     Value="False">
+                <Setter Property="Opacity"
+                        Value="{StaticResource {x:Static rs:ResourceKeys.DisabledOpacity}}" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 </ResourceDictionary>
