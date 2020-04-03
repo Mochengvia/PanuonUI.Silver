@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
+using System.Collections.Concurrent;
 
 namespace Panuon.UI.Silver
 {
@@ -79,6 +80,7 @@ namespace Panuon.UI.Silver
             {
                 if (Configurations.InvokeOnNewThread)
                 {
+                    var autoReset = new AutoResetEvent(false);
                     _thread = new Thread(() =>
                     {
                         _noticeWindow = new NoticeWindow();
@@ -88,11 +90,13 @@ namespace Panuon.UI.Silver
                         };
                         _noticeWindow.Show();
                         _noticeWindow.AddCard(message, caption, icon, imageSource, intervalMs, canClose);
+                        autoReset.Set();
                         Dispatcher.Run();
                     });
                     _thread.SetApartmentState(ApartmentState.STA);
                     _thread.IsBackground = true;
                     _thread.Start();
+                    autoReset.WaitOne();
                 }
                 else
                 {
@@ -100,10 +104,11 @@ namespace Panuon.UI.Silver
                     _noticeWindow.Show();
                 }
             }
-            else if (_noticeWindow != null)
+            else
             {
                 _noticeWindow.AddCard(message, caption, icon, imageSource, intervalMs, canClose);
             }
+          
         }
 
         #endregion
