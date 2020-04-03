@@ -518,7 +518,7 @@
                 </MultiDataTrigger.Conditions>
                 <Setter Property="Foreground"
                         Value="{Binding Path=(local:TreeViewHelper.ItemSelectedForeground),RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-                <Setter Property="local:TreeViewHelper.ItemIcon"
+                <Setter Property="local:IconHelper.Foreground"
                         Value="{Binding Path=(local:TreeViewHelper.ItemSelectedForeground),RelativeSource={RelativeSource Self}, Mode=OneWay}" />
             </MultiDataTrigger>
             <Trigger Property="IsEnabled"
