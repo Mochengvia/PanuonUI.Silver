@@ -34,6 +34,7 @@ namespace Panuon.UI.Silver.Internal.Controls
                 var noticeCard = new NoticeXCard();
                 AstpCard.Children.Add(noticeCard);
                 AstpCard.Children.Remove(noticeCard);
+                Hide();
             }
 
         }
@@ -44,6 +45,7 @@ namespace Panuon.UI.Silver.Internal.Controls
         {
             Dispatcher.Invoke(new Action(() =>
             {
+                Show();
                 NoticeXCard noticeCard = null;
                 if (imageSource != null)
                 {
@@ -103,6 +105,10 @@ namespace Panuon.UI.Silver.Internal.Controls
                 opacityAnimation.Completed += delegate
                 {
                     AstpCard.Children.Remove(noticeCard);
+                    if(AstpCard.Children.Count == 0)
+                    {
+                        Hide();
+                    }
                 };
                 noticeCard.BeginAnimation(OpacityProperty, opacityAnimation);
             }));
