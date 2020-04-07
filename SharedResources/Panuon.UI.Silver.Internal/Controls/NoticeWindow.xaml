@@ -9,12 +9,12 @@
         mc:Ignorable="d"
         ShowInTaskbar="False"
         Topmost="True"
+        SizeToContent="Width"
         WindowStyle="None"
         Background="Transparent"
-        WindowState="Maximized"
         AllowsTransparency="True"
         Initialized="NoticeWindow_Initialized">
     <pu:AnimationStackPanel x:Name="AstpCard"
                             HorizontalAlignment="Right"
-                            Direction="Reverse"/>
+                            Direction="Reverse" />
 </Window>

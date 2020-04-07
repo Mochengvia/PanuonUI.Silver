@@ -6,13 +6,37 @@
         xmlns:pu="clr-namespace:Panuon.UI.Silver;assembly=Panuon.UI.Silver"
         xmlns:local="clr-namespace:TestApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="800">
+        Title="MainWindow"
+        Height="800"
+        Width="800">
     <Grid>
-        <pu:AnimationStackPanel x:Name="panel"
-                                Direction="Reverse">
-            <Button Content="1"
-                    Height="35"
-                    Click="BtnMy_Click"/>
+        <pu:AnimationStackPanel x:Name="AstpPanel"
+                                Grid.Row="1"
+                                Width="300"
+                                Height="300">
+            <Label Background="#D0E0C9"
+                   Height="30"
+                   Content="Label"
+                   Foreground="White" />
+            <Label Background="#B1DEF1"
+                   Height="30"
+                   Content="Label"
+                   Foreground="White" />
+            <Label Background="#FFCFDB"
+                   Height="30"
+                   Content="Label"
+                   Foreground="White" />
+            <Label Background="#FFFFE1AD"
+                   Height="30"
+                   Content="Label"
+                   Foreground="White" />
+            <Label Background="#FFCCE3FF"
+                   Height="30"
+                   Content="Label"
+                   Foreground="White" />
         </pu:AnimationStackPanel>
+        <Button Height="30"
+                VerticalAlignment="Bottom"
+                Click="Button_Click" />
     </Grid>
 </Window>

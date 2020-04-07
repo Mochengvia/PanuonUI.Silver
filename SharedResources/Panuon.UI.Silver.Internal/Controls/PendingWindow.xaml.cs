@@ -1,6 +1,7 @@
 ﻿using Panuon.UI.Silver.Core;
 using System;
 using System.Windows;
+using System.Windows.Forms;
 
 namespace Panuon.UI.Silver.Internal.Controls
 {
@@ -25,6 +26,7 @@ namespace Panuon.UI.Silver.Internal.Controls
             PbcControl.Caption = caption;
             PbcControl.CanCancel = canCancel;
             PbcControl.CancelButtonContent = cancelButtonContent;
+
         }
 
 
@@ -99,7 +101,7 @@ namespace Panuon.UI.Silver.Internal.Controls
         #endregion
 
         #region Function
-
+    
         private void SetOwner()
         {
             if (_owner != null)

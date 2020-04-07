@@ -1,12 +1,10 @@
-﻿using Panuon.UI.Silver.Internal.Utils;
-using Panuon.UI.Silver.Components;
-using System;
-using System.Diagnostics;
-using System.Windows;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Interop;
+﻿using Panuon.UI.Silver.Components;
 using Panuon.UI.Silver.Internal.Win32;
+using System;
+using System.Windows;
+using System.Windows.Forms;
+using System.Windows.Interop;
+using System.Windows.Media.Animation;
 
 namespace Panuon.UI.Silver.Internal.Controls
 {
@@ -15,13 +13,6 @@ namespace Panuon.UI.Silver.Internal.Controls
     /// </summary>
     internal partial class NoticeWindow : Window
     {
-        #region Fields
-        public const int WS_EX_TOOLWINDOW = 0x00000080;
-        public const int WS_EX_NOACTIVATE = 0x08000000;
-        public const int WS_EX_TRANSPARENT = 0x00000020;
-        public const int GWL_EXSTYLE = (-20);
-        #endregion
-
         #region Ctor
         public NoticeWindow()
         {
@@ -66,22 +57,13 @@ namespace Panuon.UI.Silver.Internal.Controls
                 noticeCard.Loaded += NoticeCard_Loaded;
                 AstpCard.Children.Add(noticeCard);
                 AstpCard.Width = noticeCard.Width;
-             
+                Left = Screen.PrimaryScreen.WorkingArea.Width - noticeCard.Width;
             }));
         }
-
 
         #endregion
 
         #region Event Handler
-        protected override void OnSourceInitialized(EventArgs e)
-        {
-            var hwnd = new WindowInteropHelper(this).Handle;
-            var extendedStyle = User32.GetWindowLong(hwnd, GWL_EXSTYLE);
-            User32.SetWindowLong(hwnd, GWL_EXSTYLE, extendedStyle | WS_EX_TOOLWINDOW | WS_EX_NOACTIVATE | WS_EX_TRANSPARENT);
-            base.OnSourceInitialized(e);
-        }
-
         private void NoticeCard_Loaded(object sender, RoutedEventArgs e)
         {
             var noticeCard = sender as NoticeXCard;
@@ -125,6 +107,9 @@ namespace Panuon.UI.Silver.Internal.Controls
                 noticeCard.BeginAnimation(OpacityProperty, opacityAnimation);
             }));
         }
+        #endregion
+
+        #region Function
         #endregion
     }
 }

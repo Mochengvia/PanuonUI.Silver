@@ -1,7 +1,5 @@
 ﻿using Panuon.UI.Silver.Internal.Utils;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
@@ -49,7 +47,7 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("AnimationEase", typeof(AnimationEase), typeof(AnimationStackPanel), new PropertyMetadata(AnimationEase.CubicOut));
         #endregion
 
-        #region StackDirection
+        #region Direction
         public StackDirection Direction
         {
             get { return (StackDirection)GetValue(DirectionProperty); }
