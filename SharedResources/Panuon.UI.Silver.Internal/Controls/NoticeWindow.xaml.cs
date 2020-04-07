@@ -5,6 +5,8 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Interop;
+using Panuon.UI.Silver.Internal.Win32;
 
 namespace Panuon.UI.Silver.Internal.Controls
 {
@@ -13,11 +15,20 @@ namespace Panuon.UI.Silver.Internal.Controls
     /// </summary>
     internal partial class NoticeWindow : Window
     {
+        #region Fields
+        public const int WS_EX_TOOLWINDOW = 0x00000080;
+        public const int WS_EX_NOACTIVATE = 0x08000000;
+        public const int WS_EX_TRANSPARENT = 0x00000020;
+        public const int GWL_EXSTYLE = (-20);
+        #endregion
+
+        #region Ctor
         public NoticeWindow()
         {
             InitializeComponent();
             AddHandler(NoticeXCard.CloseEvent, new RoutedEventHandler(OnNoticeCardClose));
         }
+        #endregion
 
         #region Event Handler
         private void NoticeWindow_Initialized(object sender, EventArgs e)
@@ -54,9 +65,21 @@ namespace Panuon.UI.Silver.Internal.Controls
                 noticeCard.Opacity = 0;
                 noticeCard.Loaded += NoticeCard_Loaded;
                 AstpCard.Children.Add(noticeCard);
-
+                AstpCard.Width = noticeCard.Width;
              
             }));
+        }
+
+
+        #endregion
+
+        #region Event Handler
+        protected override void OnSourceInitialized(EventArgs e)
+        {
+            var hwnd = new WindowInteropHelper(this).Handle;
+            var extendedStyle = User32.GetWindowLong(hwnd, GWL_EXSTYLE);
+            User32.SetWindowLong(hwnd, GWL_EXSTYLE, extendedStyle | WS_EX_TOOLWINDOW | WS_EX_NOACTIVATE | WS_EX_TRANSPARENT);
+            base.OnSourceInitialized(e);
         }
 
         private void NoticeCard_Loaded(object sender, RoutedEventArgs e)
@@ -80,9 +103,6 @@ namespace Panuon.UI.Silver.Internal.Controls
             noticeCard.BeginAnimation(MarginProperty, marginAnimation);
 
         }
-        #endregion
-
-        #region Event Handler
         private void OnNoticeCardClose(object sender, RoutedEventArgs e)
         {
             Dispatcher.Invoke(new Action(() =>

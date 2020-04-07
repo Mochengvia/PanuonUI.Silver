@@ -9,14 +9,14 @@ namespace Panuon.UI.Silver
     {
         #region Events
         /// <summary>
-        /// Pending box closed.
+        /// Fired on pending box closed.
         /// </summary>
         event EventHandler Closed;
 
         /// <summary>
-        /// User canceled.
+        /// Fired on user click cancel button.
         /// </summary>
-        event CancelableEventHandler UserCancel;
+        event PendingBoxCancellingEventHandler UserCancelling;
         #endregion
 
         #region Methods

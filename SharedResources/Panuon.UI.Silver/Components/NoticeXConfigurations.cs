@@ -7,5 +7,7 @@ namespace Panuon.UI.Silver
     public class NoticeXConfigurations
     {
         public bool InvokeOnNewThread { get; set; } = true;
+
+        public bool InteractOwnerMask { get; set; } = true;
     }
 }

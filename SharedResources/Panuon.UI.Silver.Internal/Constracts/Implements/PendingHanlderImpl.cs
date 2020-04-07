@@ -15,19 +15,23 @@ namespace Panuon.UI.Silver.Internal.Constracts.Implements
         #endregion
 
         #region Ctor
-        public PendingHanlderImpl(PendingWindow pendingWindow)
+        public PendingHanlderImpl()
         {
-            _pendingWindow = pendingWindow;
         }
         #endregion
 
         #region Events
         public event EventHandler Closed;
 
-        public event CancelableEventHandler UserCancel;
+        public event PendingBoxCancellingEventHandler UserCancelling;
         #endregion
 
         #region Methods
+        public void SetWindow(PendingWindow pendingWindow)
+        {
+            _pendingWindow = pendingWindow;
+        }
+
         public void Close()
         {
             if (_pendingWindow.Dispatcher.CheckAccess())
@@ -36,7 +40,10 @@ namespace Panuon.UI.Silver.Internal.Constracts.Implements
             }
             else
             {
-                _pendingWindow.Dispatcher.Invoke(DispatcherPriority.Normal, new ThreadStart(_pendingWindow.Close));
+                _pendingWindow.Dispatcher.Invoke(DispatcherPriority.Normal, new ThreadStart(() =>
+                {
+                    _pendingWindow.Close();
+                }));
             }
         }
 
@@ -45,16 +52,16 @@ namespace Panuon.UI.Silver.Internal.Constracts.Implements
             _pendingWindow.UpdateMessage(message);
         }
 
-        public void RaiseClosedEvent(object sender, EventArgs e)
+        public void RaiseClosedEvent()
         {
-            Closed?.Invoke(sender, e);
+            Closed?.Invoke(this, null);
+
         }
 
-        public void RaiseCanceledEvent(object sender, CancelableEventArgs e)
+        public void RaiseCancellingEvent(object sender, PendingBoxCancellingEventArgs e)
         {
-            UserCancel?.Invoke(sender, e);
+            UserCancelling?.Invoke(this, e);
         }
-
         #endregion
     }
 }

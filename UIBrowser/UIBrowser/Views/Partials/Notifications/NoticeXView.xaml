@@ -37,6 +37,7 @@
                     cm:Message.Attach="[Event Click]=[Action Notice('image')]" />
             <Button Content="NoticeX (Always On)"
                     cm:Message.Attach="[Event Click]=[Action Notice('always')]" />
+
         </StackPanel>
     </Grid>
 </UserControl>

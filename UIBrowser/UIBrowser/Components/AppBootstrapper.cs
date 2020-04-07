@@ -74,6 +74,12 @@ namespace UIBrowser.Components
         {
             DisplayRootViewFor<IShell>();
         }
+
+        protected override void OnExit(object sender, EventArgs e)
+        {
+            NoticeX.Dispose();
+            base.OnExit(sender, e);
+        }
     }
 
 }

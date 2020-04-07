@@ -6,6 +6,19 @@ namespace Panuon.UI.Silver
 {
     public class PendingBoxConfigurations
     {
-        public bool InvokeOnNewThread { get; set; } = true;
+        #region Ctor
+        static PendingBoxConfigurations()
+        {
+
+        }
+        #endregion
+
+        #region Properties
+        public bool InvokeOnNewThread { get; set; }
+
+        public bool InteractOwnerMask { get; set; } = true;
+
+        public object CancelButtonContent { get; set; } = "Cancel";
+        #endregion
     }
 }

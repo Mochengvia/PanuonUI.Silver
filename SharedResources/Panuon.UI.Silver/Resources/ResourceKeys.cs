@@ -2,7 +2,6 @@
 {
     public static class ResourceKeys
     {
-
         #region Common
 
         public const string DisabledOpacity = nameof(DisabledOpacity);
@@ -95,6 +94,12 @@
 
         public const string PaginationOmitTextStyle = nameof(PaginationOmitTextStyle);
 
+        #endregion
+
+        #region PendingBox
+        public const string PendingBoxLoadingStyle = nameof(PendingBoxLoadingStyle);
+
+        public const string PendingBoxCancelButtonStyle = nameof(PendingBoxCancelButtonStyle);
         #endregion
 
     }

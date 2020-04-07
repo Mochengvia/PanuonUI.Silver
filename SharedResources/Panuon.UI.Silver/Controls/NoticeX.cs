@@ -71,6 +71,16 @@ namespace Panuon.UI.Silver
             CallNoticeWindow(message, caption, MessageBoxIcon.None, imageSource, intervalMs, canClose);
         }
 
+        public static void Dispose()
+        {
+            if(_noticeWindow != null)
+            {
+                _noticeWindow.Dispatcher.Invoke(() =>
+                {
+                    _noticeWindow.Close();
+                });
+            }
+        }
         #endregion
 
         #region Function

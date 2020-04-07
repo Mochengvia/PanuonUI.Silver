@@ -190,7 +190,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CalendarX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Card.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PendingBoxX.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\SpecialControls\NoticeXCard.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Components\NoticeXCard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Panels\AnimationStackPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Panels\CarouselPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CarouselViewer.cs" />
@@ -211,7 +211,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\RadioButtonGroup.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Rectangle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\SeperatorX.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\SpecialControls\PendingBoxXControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Components\PendingBoxXControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TextBlockX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\WaterfallPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\WindowX.cs" />

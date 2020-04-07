@@ -15,6 +15,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)EventHandler\CancelableRoutedEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EventHandler\CurrentIndexChangedRoutedEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EventHandler\DateTimeChangedRoutedEventHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EventHandler\PendingBoxCancellingEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EventHandler\RemovedRoutedEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EventHandler\RemovingRoutedEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EventHandler\CancelableEventHandler.cs" />

@@ -21,22 +21,8 @@
     </UserControl.Resources>
     <Grid>
         <StackPanel HorizontalAlignment="Left">
-            <Button Content="NoticeX"
-                    cm:Message.Attach="[Event Click]=[Action Notice('none')]" />
-            <Button Content="NoticeX (Info)"
-                    cm:Message.Attach="[Event Click]=[Action Notice('info')]" />
-            <Button Content="NoticeX (Warning)"
-                    cm:Message.Attach="[Event Click]=[Action Notice('warning')]" />
-            <Button Content="NoticeX (Error)"
-                    cm:Message.Attach="[Event Click]=[Action Notice('error')]" />
-            <Button Content="NoticeX (Question)"
-                    cm:Message.Attach="[Event Click]=[Action Notice('question')]" />
-            <Button Content="NoticeX (Success)"
-                    cm:Message.Attach="[Event Click]=[Action Notice('success')]" />
-            <Button Content="NoticeX (Image)"
-                    cm:Message.Attach="[Event Click]=[Action Notice('image')]" />
-            <Button Content="NoticeX (Always On)"
-                    cm:Message.Attach="[Event Click]=[Action Notice('always')]" />
+            <Button Content="PendingBoxX"
+                    cm:Message.Attach="[Event Click]=[Action PendingBox('normal')]" />
         </StackPanel>
     </Grid>
 </UserControl>

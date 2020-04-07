@@ -440,8 +440,6 @@
         <!--IconHelper-->
         <Setter Property="local:IconHelper.Foreground"
                 Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
-        <Setter Property="local:IconHelper.FontSize"
-                Value="{Binding FontSize, RelativeSource={RelativeSource Self}}" />
         <!--TreeViewHelper-->
         <Setter Property="local:TreeViewHelper.ItemHeight"
                 Value="{Binding Path=(local:TreeViewHelper.ItemsHeight),RelativeSource={RelativeSource AncestorType=TreeView}}" />

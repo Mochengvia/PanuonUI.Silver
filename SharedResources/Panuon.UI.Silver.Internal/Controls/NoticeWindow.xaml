@@ -11,9 +11,10 @@
         Topmost="True"
         WindowStyle="None"
         Background="Transparent"
+        WindowState="Maximized"
         AllowsTransparency="True"
-        Width="400"
         Initialized="NoticeWindow_Initialized">
-    <pu:AnimationStackPanel x:Name="AstpCard" 
+    <pu:AnimationStackPanel x:Name="AstpCard"
+                            HorizontalAlignment="Right"
                             Direction="Reverse"/>
 </Window>

@@ -8,6 +8,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/InternalResources.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Resources.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Button.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Loading.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
@@ -20,10 +21,6 @@
                     CornerRadius="{TemplateBinding CornerRadius}"
                     Effect="{Binding ShadowColor,Converter={StaticResource {x:Static i:ResourceKeys.NullableColorToShadowEffectConverter}}, RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
             <Grid Margin="{TemplateBinding Padding}">
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
                 <TextBlock Margin="0,10,0,0"
                            VerticalAlignment="Top"
                            HorizontalAlignment="Left"
@@ -37,15 +34,42 @@
                                VerticalAlignment="Center"
                                Text="{TemplateBinding Message}" />
                 </StackPanel>
+                <Button Visibility="{Binding CanCancel, Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        Content="{TemplateBinding CancelButtonContent}"
+                        Style="{TemplateBinding CancelButtonStyle}"
+                        Command="{TemplateBinding CancelCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}" />
             </Grid>
         </Grid>
     </ControlTemplate>
+
+    <Style x:Key="{x:Static rs:ResourceKeys.PendingBoxLoadingStyle}"
+           TargetType="local:Loading"
+           BasedOn="{StaticResource {x:Type local:Loading}}">
+        <Setter Property="Height"
+                Value="35" />
+        <Setter Property="Width"
+                Value="35" />
+        <Setter Property="local:Loading.LoadingStyle"
+                Value="Ring2" />
+    </Style>
+
+    <Style x:Key="{x:Static rs:ResourceKeys.PendingBoxCancelButtonStyle}" 
+           TargetType="Button"
+           BasedOn="{StaticResource {x:Type Button}}">
+        <Setter Property="VerticalAlignment"
+                Value="Bottom" />
+        <Setter Property="Margin"
+                Value="0,0,0,10" />
+        <Setter Property="local:ButtonHelper.ButtonStyle"
+                Value="Link" />
+    </Style>
 
     <Style TargetType="cp:PendingBoxXControl">
         <Setter Property="Width"
                 Value="400" />
         <Setter Property="Height"
-                Value="200" />
+                Value="250" />
         <Setter Property="Padding"
                 Value="10,0" />
         <Setter Property="Background"
@@ -56,19 +80,10 @@
                 Value="LightGray" />
         <Setter Property="FontSize"
                 Value="14" />
-        <Setter Property="LoadingStyle">
-            <Setter.Value>
-                <Style TargetType="local:Loading"
-                       BasedOn="{StaticResource {x:Type local:Loading}}">
-                    <Setter Property="Height"
-                            Value="35" />
-                    <Setter Property="Width"
-                            Value="35" />
-                    <Setter Property="local:Loading.LoadingStyle"
-                            Value="Ring2" />
-                </Style>
-            </Setter.Value>
-        </Setter>
+        <Setter Property="LoadingStyle"
+                Value="{StaticResource {x:Static rs:ResourceKeys.PendingBoxLoadingStyle}}"/>
+        <Setter Property="CancelButtonStyle"
+                Value="{StaticResource {x:Static rs:ResourceKeys.PendingBoxCancelButtonStyle}}" />
         <Setter Property="Template"
                 Value="{StaticResource PendingBoxXControlTemplate}" />
     </Style>

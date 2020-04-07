@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Panuon.UI.Silver.Core;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace Panuon.UI.Silver.Components
@@ -73,9 +75,42 @@ namespace Panuon.UI.Silver.Components
             DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(PendingBoxXControl));
         #endregion
 
+        #region CancelButtonStyle
+
+
+        public Style CancelButtonStyle
+        {
+            get { return (Style)GetValue(CancelButtonStyleProperty); }
+            set { SetValue(CancelButtonStyleProperty, value); }
+        }
+
+        public static readonly DependencyProperty CancelButtonStyleProperty =
+            DependencyProperty.Register("CancelButtonStyle", typeof(Style), typeof(PendingBoxXControl));
+        #endregion
+
+        #endregion
+
+        #region Commands
+        public static readonly DependencyProperty CancelCommandProperty =
+            DependencyProperty.Register("CancelCommand", typeof(ICommand), typeof(PendingBoxXControl), new PropertyMetadata(new RelayCommand(OnCancelCommandExecute)));
+        #endregion
+
+        #region Event
+        public event EventHandler PendingBoxCancelling;
         #endregion
 
         #region Internal Properties
+
+        #region CancelButtonContent
+        public object CancelButtonContent
+        {
+            get { return (object)GetValue(CancelButtonContentProperty); }
+            set { SetValue(CancelButtonContentProperty, value); }
+        }
+
+        public static readonly DependencyProperty CancelButtonContentProperty =
+            DependencyProperty.Register("CancelButtonContent", typeof(object), typeof(PendingBoxXControl));
+        #endregion
 
         #region IsLoading
         internal bool IsLoading
@@ -99,6 +134,14 @@ namespace Panuon.UI.Silver.Components
             DependencyProperty.Register("CanCancel", typeof(bool), typeof(PendingBoxXControl));
         #endregion
 
+        #endregion
+
+        #region Event Handlers
+        private static void OnCancelCommandExecute(object obj)
+        {
+            var control = obj as PendingBoxXControl;
+            control.PendingBoxCancelling?.Invoke(control, null);
+        }
         #endregion
     }
 }

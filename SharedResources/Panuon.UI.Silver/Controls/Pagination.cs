@@ -11,7 +11,6 @@ namespace Panuon.UI.Silver
 {
     public class Pagination : Control
     {
-
         #region Ctor
         static Pagination()
         {
