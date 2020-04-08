@@ -47,10 +47,10 @@ namespace UIBrowser.ViewModels.Partials.Notifications
                     NoticeX.Show("This is a message. This is a message. This is a message. This is a message. This is a message.", "Warning", MessageBoxIcon.Success, 3000);
                     break;
                 case "image":
-                    NoticeX.Show("123", "123", "/UIBrowser;component/Resources/Images/panuon.png", 3000);
+                    NoticeX.Show("This is a message.", "Image", "/UIBrowser;component/Resources/Images/panuon.png", 3000);
                     break;
                 case "always":
-                    NoticeX.Show("123", "123", "/UIBrowser;component/Resources/Images/panuon.png");
+                    NoticeX.Show("This is a message.", "Image", "/UIBrowser;component/Resources/Images/panuon.png");
                     break;
             }
         }

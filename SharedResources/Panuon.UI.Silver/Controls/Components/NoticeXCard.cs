@@ -130,7 +130,7 @@ namespace Panuon.UI.Silver.Components
         }
 
         public static readonly DependencyProperty CanCloseProperty =
-            DependencyProperty.Register("CanClose", typeof(bool), typeof(NoticeXCard));
+            DependencyProperty.Register("CanClose", typeof(bool), typeof(NoticeXCard), new PropertyMetadata(true));
         #endregion
 
         #region CloseCommand
@@ -174,6 +174,17 @@ namespace Panuon.UI.Silver.Components
 
         #endregion
 
+        #region CloseButtonStyle
+
+        public Style CloseButtonStyle
+        {
+            get { return (Style)GetValue(CloseButtonStyleProperty); }
+            set { SetValue(CloseButtonStyleProperty, value); }
+        }
+        public static readonly DependencyProperty CloseButtonStyleProperty =
+            DependencyProperty.Register("CloseButtonStyle", typeof(Style), typeof(NoticeXCard));
+
+        #endregion
         #endregion
 
         #region Event Handler

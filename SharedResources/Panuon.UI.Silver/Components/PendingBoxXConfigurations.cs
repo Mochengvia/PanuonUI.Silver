@@ -14,7 +14,7 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Properties
-        public bool InvokeOnNewThread { get; set; }
+        public bool CreateOnNewThread { get; set; }
 
         public bool InteractOwnerMask { get; set; } = true;
 

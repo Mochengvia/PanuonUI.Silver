@@ -49,7 +49,7 @@ namespace Panuon.UI.Silver
             var interact = Configurations.InteractOwnerMask;
             var content = Configurations.CancelButtonContent;
              InteractOwnerMask(owner, interact, true);
-            if (Configurations.InvokeOnNewThread)
+            if (Configurations.CreateOnNewThread)
             {
                 PendingWindow pendingWindow = null;
                 var autoReset = new AutoResetEvent(false);

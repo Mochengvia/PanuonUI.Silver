@@ -1,14 +1,6 @@
 ﻿using Panuon.UI.Silver.Internal.Controls;
-using Panuon.UI.Silver.Components;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
-using System.Windows;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Threading;
-using System.Collections.Concurrent;
 
 namespace Panuon.UI.Silver
 {
@@ -28,12 +20,12 @@ namespace Panuon.UI.Silver
 
         public static void Show(string message, string caption, bool canClose = true)
         {
-            CallNoticeWindow(message, caption, MessageBoxIcon.None, null, null, canClose);
+            CallNoticeWindow(message, caption, null, null, null, canClose);
         }
 
         public static void Show(string message, string caption, int? intervalMs, bool canClose = true)
         {
-            CallNoticeWindow(message, caption, MessageBoxIcon.None, null, intervalMs, canClose);
+            CallNoticeWindow(message, caption, null, null, intervalMs, canClose);
         }
 
         public static void Show(string message, MessageBoxIcon icon, bool canClose = true)
@@ -58,17 +50,17 @@ namespace Panuon.UI.Silver
 
         public static void Show(string message, string caption, string imageSource, bool canClose = true)
         {
-            CallNoticeWindow(message, caption, MessageBoxIcon.None, imageSource, null, canClose);
+            CallNoticeWindow(message, caption, null, imageSource, null, canClose);
         }
 
         public static void Show(string message, string imageSource, int intervalMs, bool canClose = true)
         {
-            CallNoticeWindow(message, null, MessageBoxIcon.None, imageSource, intervalMs, canClose);
+            CallNoticeWindow(message, null, null, imageSource, intervalMs, canClose);
         }
 
         public static void Show(string message, string caption, string imageSource, int intervalMs, bool canClose = true)
         {
-            CallNoticeWindow(message, caption, MessageBoxIcon.None, imageSource, intervalMs, canClose);
+            CallNoticeWindow(message, caption, null, imageSource, intervalMs, canClose);
         }
 
         public static void Dispose()
@@ -88,7 +80,7 @@ namespace Panuon.UI.Silver
         {
             if (_noticeWindow == null && _thread == null)
             {
-                if (Configurations.InvokeOnNewThread)
+                if (Configurations.CreateOnNewThread)
                 {
                     var autoReset = new AutoResetEvent(false);
                     _thread = new Thread(() =>

@@ -65,6 +65,8 @@
                             CommandParameter="{Binding Path=.,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}">
                         <Button.Style>
                             <Style TargetType="Button">
+                                <Setter Property="Foreground"
+                                        Value="{Binding Foreground ,RelativeSource={RelativeSource AncestorType=cp:NoticeXCard}, Mode=OneWay}" />
                                 <Setter Property="Template">
                                     <Setter.Value>
                                         <ControlTemplate TargetType="Button">
