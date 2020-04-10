@@ -202,6 +202,14 @@ namespace Panuon.UI.Silver
                     if (split == MatchText)
                         run.Foreground = MatchedForeground;
                     TxtContent.Inlines.Add(run);
+                    if(i != 0)
+                    {
+                        TxtContent.Inlines.Add(new Run()
+                        {
+                            Foreground = MatchedForeground,
+                            Text = MatchText,
+                        });
+                    }
                 }
             }
             else if(MatchRule == MatchRule.First)
