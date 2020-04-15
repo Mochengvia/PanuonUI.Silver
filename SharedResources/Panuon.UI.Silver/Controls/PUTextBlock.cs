@@ -97,7 +97,7 @@ namespace Panuon.UI.Silver
             var width = ActualWidth;
             var height = ActualHeight;
 
-            if (width == 0 || height == 0)
+            if (width == 0 || height == 0 || string.IsNullOrEmpty(Text))
             {
                 return;
             }

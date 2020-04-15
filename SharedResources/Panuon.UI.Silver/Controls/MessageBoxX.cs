@@ -20,7 +20,6 @@ namespace Panuon.UI.Silver
         public static IDictionary<string, MessageBoxXConfigurations> MessageBoxXConfigurations { get; }
         #endregion
 
-
         #region API
         public static MessageBoxResult Show(string message, string title = null)
         {
