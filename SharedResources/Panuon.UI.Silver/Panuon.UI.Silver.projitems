@@ -50,12 +50,10 @@
       <DependentUpon>ScreenshotWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiComboBoxItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\PUTextBlock.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TagItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\AnimateWrapPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TagControl.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\TextBlock.xaml.cs">
-      <DependentUpon>TextBlock.xaml</DependentUpon>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TimelineItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Timeline.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\WaterfallPanel.cs" />
@@ -180,10 +178,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Controls\NeonLabel.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Controls\TextBlock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

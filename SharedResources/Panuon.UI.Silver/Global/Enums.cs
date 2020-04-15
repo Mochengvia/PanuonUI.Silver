@@ -317,6 +317,14 @@
     }
     #endregion
 
+    #region TextAdaption
+    public enum TextAdaption
+    {
+        None,
+        ClipToBounds
+    }
+    #endregion
+
     #region TimelimeStripPlacement
     public enum TimelimeStripPlacement
     {
@@ -326,4 +334,5 @@
         Bottom,
     }
     #endregion
+
     }

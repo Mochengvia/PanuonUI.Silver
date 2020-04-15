@@ -22,6 +22,11 @@ Zhihu : @末城via
 提供完备的开发文档、代码示例与1.0升级指南（文档将转移到阿里的语雀平台）。https://www.yuque.com/mochengvia/silver2.0   
 下载方式：你可以在上方的Branch中切换2.0.0分支并下载开发版代码，但控件尚不齐全。开发版Nuget已经发行。  
 
+#### 2020-4-15 v1.1.0
+PUTextBlock重做。大幅提升计算性能，解决了可能出现的BUG。删除AutoAdaption属性，新增TextAdaption属性。AutoAdaption="True"应更改为TextAdaption="ClipToBounds"。  
+为DropDown新增了Opened和Closed事件。  
+
+
 #### 2020-3-25 v1.0.9.9
 [Re] 修复了Badge的Background和Foreground的绑定初始值未生效的BUG。  
 将PasswordBoxHelper.Password属性更改为默认双向绑定。

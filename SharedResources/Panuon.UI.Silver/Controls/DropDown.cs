@@ -1,5 +1,8 @@
-﻿using System.Windows;
+﻿using Panuon.UI.Silver.Controls.Internal;
+using System;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 
 namespace Panuon.UI.Silver
@@ -10,6 +13,31 @@ namespace Panuon.UI.Silver
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(DropDown), new FrameworkPropertyMetadata(typeof(DropDown)));
         }
+
+        public DropDown()
+        {
+            AddHandler(NotTopMostPopup.OpeningEvent, new RoutedEventHandler(OnOpening));
+            AddHandler(NotTopMostPopup.ClosingEvent, new RoutedEventHandler(OnClosing));
+        }
+
+        #region Event
+        public event EventHandler Opened;
+
+        public event EventHandler Closed;
+        #endregion
+
+        #region RoutedEvent 
+        private void OnOpening(object sender, RoutedEventArgs e)
+        {
+            Opened?.Invoke(this, null);
+        }
+
+        private void OnClosing(object sender, RoutedEventArgs e)
+        {
+            Closed?.Invoke(this, null);
+        }
+
+        #endregion
 
         #region Property
         /// <summary>

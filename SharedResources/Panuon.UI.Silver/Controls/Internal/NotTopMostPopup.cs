@@ -25,6 +25,7 @@ namespace Panuon.UI.Silver.Controls.Internal
             _window.PreviewMouseDown += Window_PreviewMouseDown;
             _window.LocationChanged -= Window_LocationChanged;
             _window.LocationChanged += Window_LocationChanged;
+            RaiseOpening();
         }
 
         private void Window_LocationChanged(object sender, EventArgs e)
@@ -39,6 +40,8 @@ namespace Panuon.UI.Silver.Controls.Internal
             base.OnClosed(e);
             if(_window != null)
                 _window.PreviewMouseDown -= Window_PreviewMouseDown;
+
+            RaiseClosing();
         }
 
 
@@ -48,6 +51,32 @@ namespace Panuon.UI.Silver.Controls.Internal
             if (!StaysOpen && !IsMouseOver && !element.IsMouseOver)
                 IsOpen = false;
         }
+
+        #region Event
+        public static readonly RoutedEvent OpeningEvent = EventManager.RegisterRoutedEvent("Opening", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(MultiComboBox));
+        public event RoutedEventHandler Opening
+        {
+            add { AddHandler(OpeningEvent, value); }
+            remove { RemoveHandler(OpeningEvent, value); }
+        }
+        void RaiseOpening()
+        {
+            var arg = new RoutedEventArgs(OpeningEvent);
+            RaiseEvent(arg);
+        }
+
+        public static readonly RoutedEvent ClosingEvent = EventManager.RegisterRoutedEvent("Closing", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(MultiComboBox));
+        public event RoutedEventHandler Closing
+        {
+            add { AddHandler(ClosingEvent, value); }
+            remove { RemoveHandler(ClosingEvent, value); }
+        }
+        void RaiseClosing()
+        {
+            var arg = new RoutedEventArgs(ClosingEvent);
+            RaiseEvent(arg);
+        }
+        #endregion
 
         #region P/Invoke imports & definitions
 
