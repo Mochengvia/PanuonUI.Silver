@@ -886,13 +886,7 @@ namespace Panuon.UI.Silver.Internal
 
         public const string TabControlBackground = nameof(TabControlBackground);
 
-        public const string TabControlStandardTopTemplate = nameof(TabControlStandardTopTemplate);
-
-        public const string TabControlStandardBottomTemplate = nameof(TabControlStandardBottomTemplate);
-
-        public const string TabControlStandardLeftTemplate = nameof(TabControlStandardLeftTemplate);
-
-        public const string TabControlStandardRightTemplate = nameof(TabControlStandardRightTemplate);
+        public const string TabControlStandardTemplate = nameof(TabControlStandardTemplate);
 
         public const string TabControlExpandableTopTemplate = nameof(TabControlExpandableTopTemplate);
 

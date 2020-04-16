@@ -1,5 +1,9 @@
 ﻿using Panuon.UI.Silver.Internal.Utils;
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Globalization;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -11,280 +15,246 @@ namespace Panuon.UI.Silver
     [ContentProperty(nameof(Text))]
     public class TextBlockX : Control
     {
-        #region Identifer
-        private TextBlock _textBlock;
-        #endregion
-
         #region Ctor
         static TextBlockX()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(TextBlockX), new FrameworkPropertyMetadata(typeof(TextBlockX)));
+            ClipToBoundsProperty.OverrideMetadata(typeof(TextBlockX), new PropertyMetadata(true));
         }
         #endregion
 
         #region Properties
 
         #region Text
-        /// <summary>
-        /// Gets or sets text of textBlockX.
-        /// </summary>
         public string Text
         {
             get { return (string)GetValue(TextProperty); }
             set { SetValue(TextProperty, value); }
         }
 
-        /// <summary>
-        /// Identifies the Panuon.UI.Silver.TextBlockX.Text dependency property.
-        /// </summary>
         public static readonly DependencyProperty TextProperty =
-            DependencyProperty.Register("Text", typeof(string), typeof(TextBlockX), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsMeasure | FrameworkPropertyMetadataOptions.AffectsArrange));
+            DependencyProperty.Register("Text", typeof(string), typeof(TextBlockX), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender));
         #endregion
 
-        #region MatchText
-        /// <summary>
-        /// Gets or sets the match text of the textblockX control. The matched text will be highlighted.
-        /// </summary>
-        public string MatchText
+        #region TextAdaption
+        public TextAdaption TextAdaption
         {
-            get { return (string)GetValue(MatchTextProperty); }
-            set { SetValue(MatchTextProperty, value); }
+            get { return (TextAdaption)GetValue(TextAdaptionProperty); }
+            set { SetValue(TextAdaptionProperty, value); }
         }
 
-        /// <summary>
-        /// Identifies the Panuon.UI.Silver.TextBlockX.MatchText dependency property.
-        /// </summary>
-        public static readonly DependencyProperty MatchTextProperty =
-            DependencyProperty.Register("MatchText", typeof(string), typeof(TextBlockX), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsArrange));
-
-        #endregion
-
-        #region MatchedForeground
-        /// <summary>
-        /// Gets or sets the foreground of the matched text when it's highlighted.
-        /// </summary>
-        public Brush MatchedForeground
-        {
-            get { return (Brush)GetValue(MatchedForegroundProperty); }
-            set { SetValue(MatchedForegroundProperty, value); }
-        }
-
-        /// <summary>
-        /// Identifies the Panuon.UI.Silver.TextBlockX.MatchedForeground dependency property.
-        /// </summary>
-        public static readonly DependencyProperty MatchedForegroundProperty =
-            DependencyProperty.Register("MatchedForeground", typeof(Brush), typeof(TextBlockX), new FrameworkPropertyMetadata(Brushes.Red, FrameworkPropertyMetadataOptions.AffectsArrange));
-
-        #endregion
-
-        #region AutoAdaptation
-        /// <summary>
-        /// Gets or sets whether the text is adaptive to the control size. 
-        /// Overflowing text will be cropped and filled with the value of the ExceededTextFiller property.
-        /// </summary>
-        public bool AutoAdaptation
-        {
-            get { return (bool)GetValue(AutoAdaptationProperty); }
-            set { SetValue(AutoAdaptationProperty, value); }
-        }
-
-        /// <summary>
-        /// Identifies the Panuon.UI.Silver.TextBlockX.AutoAdaptation dependency property.
-        /// </summary>
-        public static readonly DependencyProperty AutoAdaptationProperty =
-            DependencyProperty.Register("AutoAdaptation", typeof(bool), typeof(TextBlockX), new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.AffectsArrange));
-        #endregion
-
-        #region ExceededTextFiller
-        /// <summary>
-        /// Gets or sets the text appended to the cropped text when the text exceeds the size of the control.
-        /// Only works when the AutoAdaptation property is True.
-        /// </summary>
-        public string ExceededTextFiller
-        {
-            get { return (string)GetValue(ExceededTextFillerProperty); }
-            set { SetValue(ExceededTextFillerProperty, value); }
-        }
-
-        /// <summary>
-        /// Identifies the Panuon.UI.Silver.TextBlockX.ExceededTextFiller dependency property.
-        /// </summary>
-        public static readonly DependencyProperty ExceededTextFillerProperty =
-            DependencyProperty.Register("ExceededTextFiller", typeof(string), typeof(TextBlockX), new FrameworkPropertyMetadata("...", FrameworkPropertyMetadataOptions.AffectsArrange));
-        #endregion
-
-        #region MatchRule
-        /// <summary>
-        /// Gets or sets the match rule of the textblockX.
-        /// </summary>
-        public MatchRule MatchRule
-        {
-            get { return (MatchRule)GetValue(MatchRuleProperty); }
-            set { SetValue(MatchRuleProperty, value); }
-        }
-
-        /// <summary>
-        /// Identifies the Panuon.UI.Silver.TextBlockX.MatchRule dependency property.
-        /// </summary>
-        public static readonly DependencyProperty MatchRuleProperty =
-            DependencyProperty.Register("MatchRule", typeof(MatchRule), typeof(TextBlockX), new FrameworkPropertyMetadata(MatchRule.First, FrameworkPropertyMetadataOptions.AffectsArrange));
-
+        public static readonly DependencyProperty TextAdaptionProperty =
+            DependencyProperty.Register("TextAdaption", typeof(TextAdaption), typeof(TextBlockX), new FrameworkPropertyMetadata(TextAdaption.None, FrameworkPropertyMetadataOptions.AffectsRender));
         #endregion
 
         #region TextWrapping
-        /// <summary>
-        /// Gets or sets text wrapping of textblockX.
-        /// </summary>
         public TextWrapping TextWrapping
         {
             get { return (TextWrapping)GetValue(TextWrappingProperty); }
             set { SetValue(TextWrappingProperty, value); }
         }
 
-        /// <summary>
-        /// Identifies the Panuon.UI.Silver.TextBlockX.TextWrappingProperty dependency property.
-        /// </summary>
         public static readonly DependencyProperty TextWrappingProperty =
-            DependencyProperty.Register("TextWrapping", typeof(TextWrapping), typeof(TextBlockX), new FrameworkPropertyMetadata(TextWrapping.WrapWithOverflow, FrameworkPropertyMetadataOptions.AffectsArrange));
+            DependencyProperty.Register("TextWrapping", typeof(TextWrapping), typeof(TextBlockX));
         #endregion
 
-        #region TextAlignment
-        /// <summary>
-        /// Gets or sets text alignment of textblockX.
-        /// </summary>
-        public TextAlignment TextAlignment
+        #region MatchText
+        public string MatchText
         {
-            get { return (TextAlignment)GetValue(TextAlignmentProperty); }
-            set { SetValue(TextAlignmentProperty, value); }
+            get { return (string)GetValue(MatchTextProperty); }
+            set { SetValue(MatchTextProperty, value); }
         }
 
-        /// <summary>
-        /// Identifies the Panuon.UI.Silver.TextBlockX.TextAlignment dependency property.
-        /// </summary>
-        public static readonly DependencyProperty TextAlignmentProperty =
-            DependencyProperty.Register("TextAlignment", typeof(TextAlignment), typeof(TextBlockX), new FrameworkPropertyMetadata(TextAlignment.Left, FrameworkPropertyMetadataOptions.AffectsArrange));
+        public static readonly DependencyProperty MatchTextProperty =
+            DependencyProperty.Register("MatchText", typeof(string), typeof(TextBlockX), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender));
         #endregion
 
-        #region TextEffects
-        /// <summary>
-        /// Gets or sets text effects of textblockX.
-        /// </summary>
-        public TextEffectCollection TextEffects
+        #region MatchedForeground
+        public Brush MatchedForeground
         {
-            get { return (TextEffectCollection)GetValue(TextEffectsProperty); }
-            private set { SetValue(TextEffectsProperty, value); }
+            get { return (Brush)GetValue(MatchedForegroundProperty); }
+            set { SetValue(MatchedForegroundProperty, value); }
         }
 
-        /// <summary>
-        /// Identifies the Panuon.UI.Silver.TextBlockX.TextEffects dependency property.
-        /// </summary>
-        public static readonly DependencyProperty TextEffectsProperty =
-            DependencyProperty.Register("TextEffects", typeof(TextEffectCollection), typeof(TextBlockX), new FrameworkPropertyMetadata(new TextEffectCollection(), FrameworkPropertyMetadataOptions.AffectsArrange));
+        public static readonly DependencyProperty MatchedForegroundProperty =
+            DependencyProperty.Register("MatchedForeground", typeof(Brush), typeof(TextBlockX), new FrameworkPropertyMetadata(Brushes.Red, FrameworkPropertyMetadataOptions.AffectsRender));
         #endregion
 
-        #region TextDecorations
-        /// <summary>
-        /// Gets or sets text decorations of textblockX.
-        /// </summary>
-        public TextDecorationCollection TextDecorations
+        #region MatchRule
+        public MatchRule MatchRule
         {
-            get { return (TextDecorationCollection)GetValue(TextDecorationsProperty); }
-            private set { SetValue(TextDecorationsProperty, value); }
+            get { return (MatchRule)GetValue(MatchRuleProperty); }
+            set { SetValue(MatchRuleProperty, value); }
         }
 
-        /// <summary>
-        /// Identifies the Panuon.UI.Silver.TextBlockX.TextDecorations dependency property.
-        /// </summary>
-        public static readonly DependencyProperty TextDecorationsProperty =
-            DependencyProperty.Register("TextDecorations", typeof(TextDecorationCollection), typeof(TextBlockX), new FrameworkPropertyMetadata(new TextDecorationCollection(), FrameworkPropertyMetadataOptions.AffectsArrange));
+        public static readonly DependencyProperty MatchRuleProperty =
+            DependencyProperty.Register("MatchRule", typeof(MatchRule), typeof(TextBlockX), new FrameworkPropertyMetadata(MatchRule.First, FrameworkPropertyMetadataOptions.AffectsRender));
         #endregion
 
         #endregion
 
-        #region Override
-        protected override Size ArrangeOverride(Size arrangeBounds)
+        #region Methods
+        #endregion
+
+        #region Event Handlers
+        protected override void OnRender(DrawingContext drawingContext)
         {
-            if (_textBlock == null)
-                _textBlock = VisualTreeHelper.GetChild(this, 0) as TextBlock;
+            var width = ActualWidth;
+            var height = ActualHeight;
 
-            var width = arrangeBounds.Width;
-            var height = arrangeBounds.Height;
+            if(width == 0 || height == 0 || string.IsNullOrEmpty(Text))
+            {
+                return;
+            }
+
+            var matchedPointers = GetMatchedPointers();
+            var yOffset = 0.0;
+            var chars = 0;
 
             var text = Text;
+            var formattedText = CreateFormattedText(text);
+            var textHeight = formattedText.Height;
+            var charWidth = formattedText.Width / formattedText.Text.Length;
 
-            if (AutoAdaptation)
+            System.Drawing.Point? lastPointer = null;
+            while (true)
             {
-                if (!(width > 0 && height > 0))
+                var currentText = GetBoundedText(text, charWidth, width);
+                if(currentText.Text.Length == 0)
                 {
-                    throw new Exception($"Exception in TextBlockX : width or height value of arrange bounds must greater then 0 when using the AutoAdaption property. If you are using TextBlockX in DataTemplate, you must explicitly specify its width and height property value. ArrageBoundsSize:{width},{height}.");
+                    break;
                 }
-
-                var filler = ExceededTextFiller;
-                var fillerLength = filler?.Length ?? 0;
-
-                var size = TextUtils.MeasureTextSize(text, TextWrapping, FontFamily, FontStyle, FontWeight, FontStretch, FontSize, double.IsNaN(width) ? double.PositiveInfinity : width);
-                if (size.Width > width || size.Height > height)
+                if (TextAdaption == TextAdaption.ClipToBounds && (yOffset + textHeight * 2) > height)
                 {
-                    if ((size.Width / width) > 2 || (size.Height / height) > 2)
-                    {
-                        var index = BinaryMeasureSize(text + filler, width, height, filler, 0, text.Length + fillerLength);
-                        text = text.Remove(index + fillerLength) + filler;
-                    }
-                    else
-                    {
-                        int count = 0;
-                        while (size.Width > width || size.Height > height)
-                        {
-                            text = Text.Remove(Text.Length - fillerLength - count++) + filler;
-                            size = TextUtils.MeasureTextSize(text, TextWrapping, FontFamily, FontStyle, FontWeight, FontStretch, FontSize, double.IsNaN(width) ? double.PositiveInfinity : width);
-                        }
-                    }
+                    var lastText = CreateFormattedText(text);
+                    lastText.MaxTextHeight = textHeight;
+                    lastText.MaxTextWidth = width;
+                    RenderText(lastText, matchedPointers.Where(x => x >= chars && x < chars + currentText.Text.Length).Select(x => x - chars), ref lastPointer);
+                    drawingContext.DrawText(lastText, new Point(0, yOffset));
+                    break;
                 }
-            }
+                RenderText(currentText, matchedPointers.Where(x => x >= chars && x < chars + currentText.Text.Length).Select(x => x - chars), ref lastPointer);
+                drawingContext.DrawText(currentText, new Point(0, yOffset));
 
-            _textBlock.Inlines.Clear();
-
-            if (string.IsNullOrEmpty(MatchText) || text.IndexOf(MatchText) < 0)
-            {
-                _textBlock.Inlines.Add(new Run() { Text = text });
-            }
-            else
-            {
-                var splits = text.Split(new string[] { MatchText }, StringSplitOptions.None);
-                foreach (var split in splits)
+                if (text.Length <= currentText.Text.Length)
                 {
-                    if (string.IsNullOrEmpty(split))
-                        _textBlock.Inlines.Add(new Run() { Text = MatchText, Foreground = MatchedForeground });
-                    else
-                        _textBlock.Inlines.Add(new Run() { Text = split });
+                    break;
                 }
+                chars += currentText.Text.Length;
+                yOffset += textHeight;
+                text = text.Remove(0, currentText.Text.Length);
             }
-            return base.ArrangeOverride(arrangeBounds);
         }
         #endregion
 
         #region Function
-
-
-        private int BinaryMeasureSize(string text, double width, double height, string filler, int low, int high)
+        private FormattedText CreateFormattedText(string text)
         {
-            var middle = (high - low) / 2 + low;
-            var size = TextUtils.MeasureTextSize(text.Remove(middle + filler?.Length ?? 0) + filler, TextWrapping, FontFamily, FontStyle, FontWeight, FontStretch, FontSize, double.IsNaN(width) ? double.PositiveInfinity : width);
-            if (size.Width > width || size.Height > height)
+            return new FormattedText(text,
+                Dispatcher.Thread.CurrentUICulture, FlowDirection,
+                new Typeface(FontFamily, FontStyle, FontWeight, FontStretch)
+                , FontSize
+                , Foreground);
+        }
+
+        private FormattedText GetBoundedText(string text, double charWidth, double targetWidth)
+        {
+            var chars = (int)Math.Ceiling(targetWidth / charWidth) - 1;
+            var formattedText = CreateFormattedText(chars >= text.Length ? text : text.Remove(chars));
+
+            while (true)
             {
-                if (high - low == 2)
+                if (formattedText.Width > targetWidth)
                 {
-                    return middle - 1;
+                    chars--;
+                    formattedText = CreateFormattedText(text.Remove(chars));
+                    continue;
                 }
-                return BinaryMeasureSize(text, width, height, filler, low, middle);
+                else if (formattedText.Width < targetWidth)
+                {
+                    chars++;
+                    if (chars > text.Length - 1)
+                    {
+                        break;
+                    }
+                    var testText = CreateFormattedText(text.Remove(chars));
+                    if (testText.Width < targetWidth)
+                    {
+                        chars++;
+                        formattedText = testText;
+                        continue;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+            return formattedText;
+        }
+
+        private IList<int> GetMatchedPointers()
+        {
+            var list = new List<int>();
+            if (string.IsNullOrEmpty(Text) || string.IsNullOrEmpty(MatchText))
+            {
+                return list;
+            }
+
+            if (MatchRule == MatchRule.First)
+            {
+                var start = Text.IndexOf(MatchText);
+                if (start != -1)
+                {
+                    list.Add(start);
+                }
             }
             else
             {
-                if (high - low == 2)
+                var splits = Text.Split(new string[] { MatchText }, StringSplitOptions.None);
+                var start = splits[0].Length;
+                if (start != Text.Length)
                 {
-                    return middle;
+                    list.Add(start);
+                    for (int i = 1; i < splits.Length - 1; i++)
+                    {
+                        var text = splits[i];
+                        start += MatchText.Length;
+                        start += text.Length;
+                        list.Add(start);
+                    }
                 }
-                return BinaryMeasureSize(text, width, height, filler, middle, high);
+            }
+            return list;
+        }
+
+        private void RenderText(FormattedText formattedText, IEnumerable<int> pointers, ref System.Drawing.Point? lastPointer)
+        {
+            if(lastPointer != null)
+            {
+                var pointer = (System.Drawing.Point)lastPointer;
+                var count = pointer.Y;
+                if (count > formattedText.Text.Length - pointer.Y)
+                {
+                    count = formattedText.Text.Length - pointer.Y;
+                }
+                if(count > 0)
+                {
+                    formattedText.SetForegroundBrush(MatchedForeground, pointer.X, count);
+                }
+                lastPointer = null;
+            }
+            foreach(var pointer in pointers)
+            {
+                var count = MatchText.Length;
+                if(count > formattedText.Text.Length - pointer)
+                {
+                    count = formattedText.Text.Length - pointer;
+                    lastPointer = new System.Drawing.Point(0, MatchText.Length - count);
+                }
+                if (count > 0)
+                {
+                    formattedText.SetForegroundBrush(MatchedForeground, pointer, count);
+                }
             }
         }
         #endregion

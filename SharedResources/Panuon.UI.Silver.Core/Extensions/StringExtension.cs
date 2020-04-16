@@ -100,5 +100,14 @@ namespace Panuon.UI.Silver.Core
             return (ColorConverter.ConvertFromString(text) as Color?) ?? failedValue;
         }
         #endregion
+
+        #region Range
+        public static string Range(this string text, int index, int count)
+        {
+            var newText = text.Remove(0, index);
+            return (count >= newText.Length) ? newText : newText.Remove(count);
+        }
+        #endregion
+
     }
 }

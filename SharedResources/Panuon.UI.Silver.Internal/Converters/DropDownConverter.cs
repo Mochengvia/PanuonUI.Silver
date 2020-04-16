@@ -26,7 +26,7 @@ namespace Panuon.UI.Silver.Internal.Converters
             var cBottomLeft = cornerRadius.BottomLeft;
             var cBottomRight = cornerRadius.BottomRight;
             var angleHeight = 7;
-            var angleWidth = 7;
+            var angleWidth = 10;
 
             var path = new StringBuilder();
             switch (dropDownStyle)

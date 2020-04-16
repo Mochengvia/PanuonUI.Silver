@@ -9,7 +9,7 @@
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/InternalResources.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <ControlTemplate x:Key="{x:Static i:ResourceKeys.TabControlStandardTopTemplate}"
+    <ControlTemplate x:Key="{x:Static i:ResourceKeys.TabControlStandardTemplate}"
                      TargetType="TabControl">
         <Border Background="{TemplateBinding Background}"
                 BorderBrush="{TemplateBinding BorderBrush}"
@@ -17,89 +17,441 @@
             <Grid x:Name="GrdMain"
                   KeyboardNavigation.TabNavigation="Local">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
+                    <RowDefinition x:Name="Rd1" Height="Auto" />
+                    <RowDefinition x:Name="Rd2" />
+                    <RowDefinition x:Name="Rd3" Height="Auto"/>
+                    <RowDefinition x:Name="Rd4" />
+                    <RowDefinition x:Name="Rd5" Height="Auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition />
+                    <ColumnDefinition x:Name="Cd1" Width="Auto" />
+                    <ColumnDefinition x:Name="Cd2" />
+                    <ColumnDefinition x:Name="Cd3" Width="Auto" />
+                    <ColumnDefinition x:Name="Cd4"/>
+                    <ColumnDefinition x:Name="Cd5" Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <Rectangle  Grid.ColumnSpan="3"
-                            Fill="{Binding Path=(local:TabControlHelper.HeaderPanelBackground),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <ContentControl Content="{Binding Path=(local:TabControlHelper.FrontControl),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <TabPanel Grid.Column="1"
-                          IsItemsHost="True"
-                          Background="Transparent"
-                          MaxWidth="{Binding ActualWidth,ElementName=GrdMain}" />
-                <Border x:Name="BdrLine"
-                        Visibility="Collapsed"
-                        Grid.Column="2"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="0,0,0,1" />
-                <ContentControl Grid.Column="2"
+                <Rectangle x:Name="RectBack"
+                           Fill="{Binding Path=(local:TabControlHelper.HeaderPanelBackground),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"/>
+                <ContentControl x:Name="CcFront"
+                                Content="{Binding Path=(local:TabControlHelper.FrontControl),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"/>
+                <TabPanel x:Name="TpItems"
+                          IsItemsHost="True"/>
+                <ContentControl x:Name="CcEnd"
                                 Content="{Binding Path=(local:TabControlHelper.EndControl),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 <ContentPresenter x:Name="PART_SelectedContentHost"
                                   Margin="{TemplateBinding Padding}"
-                                  ContentSource="SelectedContent"
-                                  Grid.Row="1"
-                                  Grid.ColumnSpan="3" />
+                                  ContentSource="SelectedContent"/>
             </Grid>
         </Border>
         <ControlTemplate.Triggers>
-            <Trigger Property="local:TabControlHelper.TabControlStyle"
-                     Value="Standard">
-                <Setter TargetName="BdrLine"
-                        Property="Visibility"
-                        Value="Visible" />
+            <Trigger Property="TabStripPlacement"
+                     Value="Top">
+                <Setter TargetName="PART_SelectedContentHost"
+                        Property="Grid.Row"
+                        Value="1" />
+                <Setter TargetName="PART_SelectedContentHost"
+                        Property="Grid.RowSpan"
+                        Value="4" />
+                <Setter TargetName="PART_SelectedContentHost"
+                        Property="Grid.ColumnSpan"
+                        Value="5" />
+                <Setter TargetName="RectBack"
+                        Property="Grid.Row"
+                        Value="0" />
+                <Setter TargetName="RectBack"
+                        Property="Grid.ColumnSpan"
+                        Value="5" />
             </Trigger>
-        </ControlTemplate.Triggers>
-    </ControlTemplate>
-
-    <ControlTemplate x:Key="{x:Static i:ResourceKeys.TabControlStandardLeftTemplate}"
-                     TargetType="TabControl">
-        <Border Background="{TemplateBinding Background}"
-                BorderBrush="{TemplateBinding BorderBrush}"
-                BorderThickness="{TemplateBinding BorderThickness}">
-            <Grid x:Name="GrdMain"
-                  KeyboardNavigation.TabNavigation="Local">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <Rectangle  Grid.RowSpan="3"
-                            Fill="{Binding Path=(local:TabControlHelper.HeaderPanelBackground),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <ContentControl Content="{Binding Path=(local:TabControlHelper.FrontControl),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <TabPanel Grid.Row="1"
-                          IsItemsHost="True"
-                          Background="Transparent"
-                          MaxWidth="{Binding ActualWidth,ElementName=GrdMain}" />
-                <Border x:Name="BdrLine"
-                        Visibility="Collapsed"
-                        Grid.Row="2"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="0,0,1,0" />
-                <ContentControl Grid.Row="2"
-                                Content="{Binding Path=(local:TabControlHelper.EndControl),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <ContentPresenter x:Name="PART_SelectedContentHost"
-                                  Margin="{TemplateBinding Padding}"
-                                  ContentSource="SelectedContent"
-                                  Grid.Column="1"
-                                  Grid.RowSpan="3" />
-            </Grid>
-        </Border>
-        <ControlTemplate.Triggers>
-            <Trigger Property="local:TabControlHelper.TabControlStyle"
-                     Value="Standard">
-                <Setter TargetName="BdrLine"
-                        Property="Visibility"
-                        Value="Visible" />
+            <Trigger Property="TabStripPlacement"
+                     Value="Bottom">
+                <Setter TargetName="PART_SelectedContentHost"
+                        Property="Grid.Row"
+                        Value="0" />
+                <Setter TargetName="PART_SelectedContentHost"
+                        Property="Grid.RowSpan"
+                        Value="4" />
+                <Setter TargetName="PART_SelectedContentHost"
+                        Property="Grid.ColumnSpan"
+                        Value="5" />
+                <Setter TargetName="RectBack"
+                        Property="Grid.Row"
+                        Value="4" />
+                <Setter TargetName="RectBack"
+                        Property="Grid.ColumnSpan"
+                        Value="5" />
             </Trigger>
+            <Trigger Property="TabStripPlacement"
+                     Value="Left">
+                <Setter TargetName="PART_SelectedContentHost"
+                        Property="Grid.Column"
+                        Value="1" />
+                <Setter TargetName="PART_SelectedContentHost"
+                        Property="Grid.ColumnSpan"
+                        Value="4" />
+                <Setter TargetName="PART_SelectedContentHost"
+                        Property="Grid.RowSpan"
+                        Value="5" />
+                <Setter TargetName="RectBack"
+                        Property="Grid.Column"
+                        Value="0" />
+                <Setter TargetName="RectBack"
+                        Property="Grid.RowSpan"
+                        Value="5" />
+            </Trigger>
+            <Trigger Property="TabStripPlacement"
+                     Value="Right">
+                <Setter TargetName="PART_SelectedContentHost"
+                        Property="Grid.Column"
+                        Value="0" />
+                <Setter TargetName="PART_SelectedContentHost"
+                        Property="Grid.ColumnSpan"
+                        Value="4" />
+                <Setter TargetName="PART_SelectedContentHost"
+                        Property="Grid.RowSpan"
+                        Value="5" />
+                <Setter TargetName="RectBack"
+                        Property="Grid.Column"
+                        Value="4" />
+                <Setter TargetName="RectBack"
+                        Property="Grid.RowSpan"
+                        Value="5" />
+            </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="TabStripPlacement"
+                               Value="Top" />
+                    <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
+                               Value="Stretch" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="TpItems"
+                        Property="Grid.Column"
+                        Value="1" />
+                <Setter TargetName="TpItems"
+                        Property="Grid.Row"
+                        Value="0" />
+                <Setter TargetName="TpItems"
+                        Property="Grid.ColumnSpan"
+                        Value="3" />
+                <Setter TargetName="CcFront"
+                        Property="Grid.Column"
+                        Value="0" />
+                <Setter TargetName="CcFront"
+                        Property="Grid.Row"
+                        Value="0" />
+                <Setter TargetName="CcEnd"
+                        Property="Grid.Column"
+                        Value="4" />
+                <Setter TargetName="CcEnd"
+                        Property="Grid.Row"
+                        Value="0" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="TabStripPlacement"
+                               Value="Top" />
+                    <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
+                               Value="Center" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="TpItems"
+                        Property="Grid.Column"
+                        Value="2" />
+                <Setter TargetName="TpItems"
+                        Property="Grid.Row"
+                        Value="0" />
+                <Setter TargetName="CcFront"
+                        Property="Grid.Column"
+                        Value="0" />
+                <Setter TargetName="CcFront"
+                        Property="Grid.Row"
+                        Value="0" />
+                <Setter TargetName="CcEnd"
+                        Property="Grid.Column"
+                        Value="4" />
+                <Setter TargetName="CcEnd"
+                        Property="Grid.Row"
+                        Value="0" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="TabStripPlacement"
+                               Value="Top" />
+                    <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
+                               Value="Front" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="TpItems"
+                        Property="Grid.Column"
+                        Value="1" />
+                <Setter TargetName="TpItems"
+                        Property="Grid.Row"
+                        Value="0" />
+                <Setter TargetName="Cd2"
+                        Property="Width"
+                        Value="Auto" />
+                <Setter TargetName="CcFront"
+                        Property="Grid.Column"
+                        Value="0" />
+                <Setter TargetName="CcFront"
+                        Property="Grid.Row"
+                        Value="0" />
+                <Setter TargetName="CcEnd"
+                        Property="Grid.Column"
+                        Value="2" />
+                <Setter TargetName="CcEnd"
+                        Property="Grid.Row"
+                        Value="0" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="TabStripPlacement"
+                               Value="Bottom" />
+                    <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
+                               Value="Stretch" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="TpItems"
+                        Property="Grid.Column"
+                        Value="1" />
+                <Setter TargetName="TpItems"
+                        Property="Grid.Row"
+                        Value="4" />
+                <Setter TargetName="TpItems"
+                        Property="Grid.ColumnSpan"
+                        Value="3" />
+                <Setter TargetName="CcFront"
+                        Property="Grid.Column"
+                        Value="0" />
+                <Setter TargetName="CcFront"
+                        Property="Grid.Row"
+                        Value="4" />
+                <Setter TargetName="CcEnd"
+                        Property="Grid.Column"
+                        Value="4" />
+                <Setter TargetName="CcEnd"
+                        Property="Grid.Row"
+                        Value="4" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="TabStripPlacement"
+                               Value="Bottom" />
+                    <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
+                               Value="Center" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="TpItems"
+                        Property="Grid.Column"
+                        Value="2" />
+                <Setter TargetName="TpItems"
+                        Property="Grid.Row"
+                        Value="4" />
+                <Setter TargetName="CcFront"
+                        Property="Grid.Column"
+                        Value="0" />
+                <Setter TargetName="CcFront"
+                        Property="Grid.Row"
+                        Value="4" />
+                <Setter TargetName="CcEnd"
+                        Property="Grid.Column"
+                        Value="4" />
+                <Setter TargetName="CcEnd"
+                        Property="Grid.Row"
+                        Value="4" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="TabStripPlacement"
+                               Value="Bottom" />
+                    <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
+                               Value="Front" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="TpItems"
+                        Property="Grid.Column"
+                        Value="1" />
+                <Setter TargetName="TpItems"
+                        Property="Grid.Row"
+                        Value="4" />
+                <Setter TargetName="Cd2"
+                        Property="Width"
+                        Value="Auto" />
+                <Setter TargetName="CcFront"
+                        Property="Grid.Column"
+                        Value="0" />
+                <Setter TargetName="CcFront"
+                        Property="Grid.Row"
+                        Value="4" />
+                <Setter TargetName="CcEnd"
+                        Property="Grid.Column"
+                        Value="2" />
+                <Setter TargetName="CcEnd"
+                        Property="Grid.Row"
+                        Value="4" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="TabStripPlacement"
+                               Value="Left" />
+                    <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
+                               Value="Stretch" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="TpItems"
+                        Property="Grid.Row"
+                        Value="1" />
+                <Setter TargetName="TpItems"
+                        Property="Grid.Column"
+                        Value="0" />
+                <Setter TargetName="TpItems"
+                        Property="Grid.RowSpan"
+                        Value="3" />
+                <Setter TargetName="CcFront"
+                        Property="Grid.Row"
+                        Value="0" />
+                <Setter TargetName="CcFront"
+                        Property="Grid.Column"
+                        Value="0" />
+                <Setter TargetName="CcEnd"
+                        Property="Grid.Row"
+                        Value="4" />
+                <Setter TargetName="CcEnd"
+                        Property="Grid.Column"
+                        Value="0" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="TabStripPlacement"
+                               Value="Left" />
+                    <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
+                               Value="Center" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="TpItems"
+                        Property="Grid.Row"
+                        Value="2" />
+                <Setter TargetName="TpItems"
+                        Property="Grid.Column"
+                        Value="0" />
+                <Setter TargetName="CcFront"
+                        Property="Grid.Row"
+                        Value="0" />
+                <Setter TargetName="CcFront"
+                        Property="Grid.Column"
+                        Value="0" />
+                <Setter TargetName="CcEnd"
+                        Property="Grid.Row"
+                        Value="4" />
+                <Setter TargetName="CcEnd"
+                        Property="Grid.Column"
+                        Value="0" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="TabStripPlacement"
+                               Value="Left" />
+                    <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
+                               Value="Front" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="TpItems"
+                        Property="Grid.Row"
+                        Value="1" />
+                <Setter TargetName="TpItems"
+                        Property="Grid.Column"
+                        Value="0" />
+                <Setter TargetName="Rd2"
+                        Property="Height"
+                        Value="Auto" />
+                <Setter TargetName="CcFront"
+                        Property="Grid.Row"
+                        Value="0" />
+                <Setter TargetName="CcFront"
+                        Property="Grid.Column"
+                        Value="0" />
+                <Setter TargetName="CcEnd"
+                        Property="Grid.Row"
+                        Value="2" />
+                <Setter TargetName="CcEnd"
+                        Property="Grid.Column"
+                        Value="0" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="TabStripPlacement"
+                               Value="Right" />
+                    <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
+                               Value="Stretch" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="TpItems"
+                        Property="Grid.Row"
+                        Value="1" />
+                <Setter TargetName="TpItems"
+                        Property="Grid.Column"
+                        Value="4" />
+                <Setter TargetName="TpItems"
+                        Property="Grid.RowSpan"
+                        Value="3" />
+                <Setter TargetName="CcFront"
+                        Property="Grid.Row"
+                        Value="0" />
+                <Setter TargetName="CcFront"
+                        Property="Grid.Column"
+                        Value="4" />
+                <Setter TargetName="CcEnd"
+                        Property="Grid.Row"
+                        Value="4" />
+                <Setter TargetName="CcEnd"
+                        Property="Grid.Column"
+                        Value="4" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="TabStripPlacement"
+                               Value="Right" />
+                    <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
+                               Value="Center" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="TpItems"
+                        Property="Grid.Row"
+                        Value="2" />
+                <Setter TargetName="TpItems"
+                        Property="Grid.Column"
+                        Value="4" />
+                <Setter TargetName="CcFront"
+                        Property="Grid.Row"
+                        Value="0" />
+                <Setter TargetName="CcFront"
+                        Property="Grid.Column"
+                        Value="4" />
+                <Setter TargetName="CcEnd"
+                        Property="Grid.Row"
+                        Value="4" />
+                <Setter TargetName="CcEnd"
+                        Property="Grid.Column"
+                        Value="4" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="TabStripPlacement"
+                               Value="Right" />
+                    <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
+                               Value="Front" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="TpItems"
+                        Property="Grid.Row"
+                        Value="1" />
+                <Setter TargetName="TpItems"
+                        Property="Grid.Column"
+                        Value="4" />
+                <Setter TargetName="Rd2"
+                        Property="Height"
+                        Value="Auto" />
+                <Setter TargetName="CcFront"
+                        Property="Grid.Row"
+                        Value="0" />
+                <Setter TargetName="CcFront"
+                        Property="Grid.Column"
+                        Value="4" />
+                <Setter TargetName="CcEnd"
+                        Property="Grid.Row"
+                        Value="2" />
+                <Setter TargetName="CcEnd"
+                        Property="Grid.Column"
+                        Value="4" />
+            </MultiTrigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
@@ -133,103 +485,8 @@
         <Setter Property="BorderThickness"
                 Value="{StaticResource {x:Static i:ResourceKeys.TabControlBorderThickness}}" />
         <Setter Property="Template"
-                Value="{StaticResource {x:Static i:ResourceKeys.TabControlStandardTopTemplate}}" />
+                Value="{StaticResource {x:Static i:ResourceKeys.TabControlStandardTemplate}}" />
         <Style.Triggers>
-            <Trigger Property="TabStripPlacement"
-                     Value="Left">
-                <Setter Property="Template"
-                        Value="{StaticResource {x:Static i:ResourceKeys.TabControlStandardLeftTemplate}}" />
-            </Trigger>
-            <Trigger Property="TabStripPlacement"
-                     Value="Right">
-                <Setter Property="Template"
-                        Value="{StaticResource {x:Static i:ResourceKeys.TabControlStandardRightTemplate}}" />
-            </Trigger>
-            <Trigger Property="TabStripPlacement"
-                     Value="Bottom">
-                <Setter Property="Template"
-                        Value="{StaticResource {x:Static i:ResourceKeys.TabControlStandardBottomTemplate}}" />
-            </Trigger>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="TabStripPlacement"
-                               Value="Top" />
-                    <Condition Property="local:TabControlHelper.TabControlHeaderStyle"
-                               Value="Expandable" />
-                </MultiTrigger.Conditions>
-                <Setter Property="Template"
-                        Value="{StaticResource {x:Static i:ResourceKeys.TabControlExpandableTopTemplate}}" />
-            </MultiTrigger>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="TabStripPlacement"
-                               Value="Left" />
-                    <Condition Property="local:TabControlHelper.TabControlHeaderStyle"
-                               Value="Expandable" />
-                </MultiTrigger.Conditions>
-                <Setter Property="Template"
-                        Value="{StaticResource {x:Static i:ResourceKeys.TabControlExpandableLeftTemplate}}" />
-            </MultiTrigger>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="TabStripPlacement"
-                               Value="Right" />
-                    <Condition Property="local:TabControlHelper.TabControlHeaderStyle"
-                               Value="Expandable" />
-                </MultiTrigger.Conditions>
-                <Setter Property="Template"
-                        Value="{StaticResource {x:Static i:ResourceKeys.TabControlExpandableRightTemplate}}" />
-            </MultiTrigger>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="TabStripPlacement"
-                               Value="Bottom" />
-                    <Condition Property="local:TabControlHelper.TabControlHeaderStyle"
-                               Value="Expandable" />
-                </MultiTrigger.Conditions>
-                <Setter Property="Template"
-                        Value="{StaticResource {x:Static i:ResourceKeys.TabControlExpandableBottomTemplate}}" />
-            </MultiTrigger>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="TabStripPlacement"
-                               Value="Top" />
-                    <Condition Property="local:TabControlHelper.TabControlHeaderStyle"
-                               Value="Scrollable" />
-                </MultiTrigger.Conditions>
-                <Setter Property="Template"
-                        Value="{StaticResource {x:Static i:ResourceKeys.TabControlScrollableTopTemplate}}" />
-            </MultiTrigger>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="TabStripPlacement"
-                               Value="Left" />
-                    <Condition Property="local:TabControlHelper.TabControlHeaderStyle"
-                               Value="Scrollable" />
-                </MultiTrigger.Conditions>
-                <Setter Property="Template"
-                        Value="{StaticResource {x:Static i:ResourceKeys.TabControlScrollableLeftTemplate}}" />
-            </MultiTrigger>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="TabStripPlacement"
-                               Value="Right" />
-                    <Condition Property="local:TabControlHelper.TabControlHeaderStyle"
-                               Value="Scrollable" />
-                </MultiTrigger.Conditions>
-                <Setter Property="Template"
-                        Value="{StaticResource {x:Static i:ResourceKeys.TabControlScrollableRightTemplate}}" />
-            </MultiTrigger>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="TabStripPlacement"
-                               Value="Bottom" />
-                    <Condition Property="local:TabControlHelper.TabControlHeaderStyle"
-                               Value="Scrollable" />
-                </MultiTrigger.Conditions>
-                <Setter Property="Template"
-                        Value="{StaticResource {x:Static i:ResourceKeys.TabControlScrollableBottomTemplate}}" />
-            </MultiTrigger>
             <Trigger Property="local:TabControlHelper.TabControlStyle"
                      Value="Card">
                 <Setter Property="local:TabControlHelper.ItemsSelectedBackground"

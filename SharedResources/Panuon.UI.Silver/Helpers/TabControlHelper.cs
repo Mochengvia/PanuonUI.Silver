@@ -23,20 +23,20 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("TabControlStyle", typeof(TabControlStyle), typeof(TabControlHelper), new FrameworkPropertyMetadata(TabControlStyle.Standard, FrameworkPropertyMetadataOptions.Inherits));
         #endregion
 
-        #region TabControlHeaderStyle
-        public static TabControlHeaderStyle GetTabControlHeaderStyle(TabControl tabControl)
-        {
-            return (TabControlHeaderStyle)tabControl.GetValue(TabControlHeaderStyleProperty);
-        }
+        //#region TabControlHeaderStyle
+        //public static TabControlHeaderStyle GetTabControlHeaderStyle(TabControl tabControl)
+        //{
+        //    return (TabControlHeaderStyle)tabControl.GetValue(TabControlHeaderStyleProperty);
+        //}
 
-        public static void SetTabControlHeaderStyle(TabControl tabControl, TabControlHeaderStyle value)
-        {
-            tabControl.SetValue(TabControlHeaderStyleProperty, value);
-        }
+        //public static void SetTabControlHeaderStyle(TabControl tabControl, TabControlHeaderStyle value)
+        //{
+        //    tabControl.SetValue(TabControlHeaderStyleProperty, value);
+        //}
 
-        public static readonly DependencyProperty TabControlHeaderStyleProperty =
-            DependencyProperty.RegisterAttached("TabControlHeaderStyle", typeof(TabControlHeaderStyle), typeof(TabControlHelper));
-        #endregion
+        //public static readonly DependencyProperty TabControlHeaderStyleProperty =
+        //    DependencyProperty.RegisterAttached("TabControlHeaderStyle", typeof(TabControlHeaderStyle), typeof(TabControlHelper));
+        //#endregion
 
         #region HeaderPanelBackground
         public static Brush GetHeaderPanelBackground(TabControl tabControl)
@@ -51,6 +51,22 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty HeaderPanelBackgroundProperty =
             DependencyProperty.RegisterAttached("HeaderPanelBackground", typeof(Brush), typeof(TabControlHelper));
+        #endregion
+
+        #region HeaderPanelAlignment
+
+        public static HeaderPanelAlignment GetHeaderPanelAlignment(TabControl tabControl)
+        {
+            return (HeaderPanelAlignment)tabControl.GetValue(HeaderPanelAlignmentProperty);
+        }
+
+        public static void SetHeaderPanelAlignment(TabControl tabControl, HeaderPanelAlignment value)
+        {
+            tabControl.SetValue(HeaderPanelAlignmentProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderPanelAlignmentProperty =
+            DependencyProperty.RegisterAttached("HeaderPanelAlignment", typeof(HeaderPanelAlignment), typeof(TabControlHelper));
         #endregion
 
         #region ItemForeground

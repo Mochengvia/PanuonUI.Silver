@@ -77,46 +77,98 @@
                         Style="{DynamicResource {x:Static rs:ResourceKeys.TabItemStandardRemoveButtonStyle}}"
                         Visibility="{Binding Path=(local:TabControlHelper.ItemRemovable),Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
             </StackPanel>
-            <Rectangle x:Name="RectRibbon"
-                       Margin="4"/>
+            <Rectangle x:Name="RectRibbon" />
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="TabStripPlacement"
                      Value="Top">
                 <Setter TargetName="RectRibbon"
                         Property="Height"
-                        Value="4" />
-                <Setter TargetName="RectRibbon"
-                        Property="VerticalAlignment"
-                        Value="Bottom" />
-            </Trigger>
-            <Trigger Property="TabStripPlacement"
-                     Value="Bottom">
-                <Setter TargetName="RectRibbon"
-                        Property="Height"
-                        Value="4" />
+                        Value="3" />
                 <Setter TargetName="RectRibbon"
                         Property="VerticalAlignment"
                         Value="Top" />
             </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="TabStripPlacement"
+                               Value="Top" />
+                    <Condition Property="IsSelected"
+                               Value="True" />
+                </MultiTrigger.Conditions>
+                    <Setter TargetName="BdrBack"
+                            Property="BorderThickness"
+                            Value="1,1,1,0" />
+            </MultiTrigger>
+            <Trigger Property="TabStripPlacement"
+                     Value="Bottom">
+                <Setter TargetName="RectRibbon"
+                        Property="Height"
+                        Value="3" />
+                <Setter TargetName="RectRibbon"
+                        Property="VerticalAlignment"
+                        Value="Bottom" />
+                <Setter TargetName="BdrBack"
+                        Property="BorderThickness"
+                        Value="0,1,0,0" />
+            </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="TabStripPlacement"
+                               Value="Bottom" />
+                    <Condition Property="IsSelected"
+                               Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="BdrBack"
+                        Property="BorderThickness"
+                        Value="1,0,1,1" />
+            </MultiTrigger>
             <Trigger Property="TabStripPlacement"
                      Value="Left">
                 <Setter TargetName="RectRibbon"
                         Property="Width"
-                        Value="4" />
+                        Value="3" />
                 <Setter TargetName="RectRibbon"
                         Property="HorizontalAlignment"
-                        Value="Right" />
+                        Value="Left" />
+                <Setter TargetName="BdrBack"
+                        Property="BorderThickness"
+                        Value="0,0,1,0" />
             </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="TabStripPlacement"
+                               Value="Left" />
+                    <Condition Property="IsSelected"
+                               Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="BdrBack"
+                        Property="BorderThickness"
+                        Value="1,1,0,1" />
+            </MultiTrigger>
             <Trigger Property="TabStripPlacement"
                      Value="Right">
                 <Setter TargetName="RectRibbon"
                         Property="Width"
-                        Value="4" />
+                        Value="3" />
                 <Setter TargetName="RectRibbon"
                         Property="HorizontalAlignment"
-                        Value="Left" />
+                        Value="Right" />
+                <Setter TargetName="BdrBack"
+                        Property="BorderThickness"
+                        Value="1,0,0,0" />
             </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="TabStripPlacement"
+                               Value="Right" />
+                    <Condition Property="IsSelected"
+                               Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="BdrBack"
+                        Property="BorderThickness"
+                        Value="0,1,1,1" />
+            </MultiTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsSelected,RelativeSource={RelativeSource Self}}"
@@ -151,12 +203,7 @@
                         Property="TextElement.Foreground"
                         Value="{Binding Path=(local:TabControlHelper.ItemSelectedForeground),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
-            <Trigger Property="IsSelected"
-                     Value="True">
-                <Setter TargetName="BdrBack"
-                        Property="BorderThickness"
-                        Value="1,1,1,0" />
-            </Trigger>
+           
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
@@ -237,37 +284,37 @@
                      Value="Top">
                 <Setter TargetName="RectRibbon"
                         Property="Height"
-                        Value="4" />
-                <Setter TargetName="RectRibbon"
-                        Property="VerticalAlignment"
-                        Value="Top" />
-            </Trigger>
-            <Trigger Property="TabStripPlacement"
-                     Value="Bottom">
-                <Setter TargetName="RectRibbon"
-                        Property="Height"
-                        Value="4" />
+                        Value="3" />
                 <Setter TargetName="RectRibbon"
                         Property="VerticalAlignment"
                         Value="Bottom" />
             </Trigger>
             <Trigger Property="TabStripPlacement"
+                     Value="Bottom">
+                <Setter TargetName="RectRibbon"
+                        Property="Height"
+                        Value="3" />
+                <Setter TargetName="RectRibbon"
+                        Property="VerticalAlignment"
+                        Value="Top" />
+            </Trigger>
+            <Trigger Property="TabStripPlacement"
                      Value="Left">
                 <Setter TargetName="RectRibbon"
                         Property="Width"
-                        Value="4" />
+                        Value="3" />
                 <Setter TargetName="RectRibbon"
                         Property="HorizontalAlignment"
-                        Value="Left" />
+                        Value="Right" />
             </Trigger>
             <Trigger Property="TabStripPlacement"
                      Value="Right">
                 <Setter TargetName="RectRibbon"
                         Property="Width"
-                        Value="4" />
+                        Value="3" />
                 <Setter TargetName="RectRibbon"
                         Property="HorizontalAlignment"
-                        Value="Right" />
+                        Value="Left" />
             </Trigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>

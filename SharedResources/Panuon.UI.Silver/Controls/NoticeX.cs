@@ -1,4 +1,5 @@
 ﻿using Panuon.UI.Silver.Internal.Controls;
+using System;
 using System.Threading;
 using System.Windows.Threading;
 
@@ -67,10 +68,10 @@ namespace Panuon.UI.Silver
         {
             if(_noticeWindow != null)
             {
-                _noticeWindow.Dispatcher.Invoke(() =>
+                _noticeWindow.Dispatcher.Invoke(new Action(() =>
                 {
                     _noticeWindow.Close();
-                });
+                }));
             }
         }
         #endregion

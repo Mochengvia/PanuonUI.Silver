@@ -1,6 +1,7 @@
 ﻿using Panuon.UI.Silver.Internal.Constracts.Implements;
 using Panuon.UI.Silver.Internal.Controls;
 using Panuon.UI.Silver.Internal.Utils;
+using System;
 using System.Threading;
 using System.Windows;
 using System.Windows.Interop;
@@ -105,25 +106,25 @@ namespace Panuon.UI.Silver
             var rect = new Rect();
             if (owner != null)
             {
-                owner.Dispatcher.Invoke(() =>
+                owner.Dispatcher.Invoke(new Action(() =>
                 {
                     var handle = new WindowInteropHelper(owner).Handle;
                     rect = WindowUtils.GetWindowRect(handle);
-                });
+                }));
             }
             return rect;
         }
 
-        private static async void InteractOwnerMask(Window owner, bool interact, bool toOpen)
+        private static void InteractOwnerMask(Window owner, bool interact, bool toOpen)
         {
             if (owner == null || !interact || !(owner is WindowX))
             {
                 return;
             }
-            owner.Dispatcher.Invoke(() =>
+            owner.Dispatcher.Invoke(new Action(() =>
             {
                 (owner as WindowX).IsMaskVisible = toOpen;
-            });
+            }));
         }
         #endregion
     }

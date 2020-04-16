@@ -4,9 +4,9 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2.0.0.1</AssemblyVersion>
+    <AssemblyVersion>2.0.0.2</AssemblyVersion>
     <FileVersion>2.0.0.0</FileVersion>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Authors>Zeoun</Authors>
     <Company>Panuon</Company>
   </PropertyGroup>

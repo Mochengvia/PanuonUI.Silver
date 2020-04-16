@@ -202,8 +202,10 @@
                        TargetType="TextBox" />
             </Setter.Value>
         </Setter>
+        <Setter Property="HorizontalContentAlignment"
+                Value="Stretch" />
         <Setter Property="VerticalContentAlignment"
-                Value="Center" />
+                Value="Stretch" />
         <Setter Property="Focusable"
                 Value="False" />
         <Setter Property="HeaderTemplate">
@@ -258,13 +260,12 @@
                                 </StackPanel>
                             </Grid>
                             <TextBox Grid.Column="1"
-                                     Padding="{TemplateBinding Padding}"
                                      Text="{Binding Text,RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      local:TextBoxHelper.Watermark="{TemplateBinding Watermark}"
                                      IsReadOnly="{TemplateBinding IsReadOnly}"
                                      Style="{TemplateBinding TextBoxStyle}"
-                                     VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                     HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
@@ -325,13 +326,12 @@
                                         </StackPanel>
                                     </Grid>
                                     <TextBox Grid.Row="1"
-                                             Padding="{TemplateBinding Padding}"
                                              Text="{Binding Text,RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                              local:TextBoxHelper.Watermark="{TemplateBinding Watermark}"
                                              IsReadOnly="{TemplateBinding IsReadOnly}"
                                              Style="{TemplateBinding TextBoxStyle}"
-                                             VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                             HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
                                 </Grid>
                             </Border>
                             <ControlTemplate.Triggers>
@@ -437,7 +437,6 @@
                                 </StackPanel>
                             </Grid>
                             <CheckBox Grid.Column="1"
-                                      Padding="{TemplateBinding Padding}"
                                       IsChecked="{Binding IsChecked,RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                       local:CheckBoxHelper.CheckedContent="{TemplateBinding CheckedContent}"
                                       Content="{TemplateBinding Content}"
@@ -504,7 +503,6 @@
                                         </StackPanel>
                                     </Grid>
                                     <CheckBox Grid.Row="1"
-                                              Padding="{TemplateBinding Padding}"
                                               IsChecked="{Binding IsChecked,RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                               local:CheckBoxHelper.CheckedContent="{TemplateBinding CheckedContent}"
                                               Content="{TemplateBinding Content}"

@@ -149,10 +149,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\TextBlockX.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\TextBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -179,12 +175,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)Components\NoticeXConfigurations.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Components\PendingBoxXConfigurations.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums\HeaderPanelAlignment.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums\HorizontalHeaderAlignment.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums\LoadingSpeed.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums\LoadingStyle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums\ProgressBarStyle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums\ProgressDirection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums\StackDirection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums\TextAdaption.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constracts\Interfaces\IPendingHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Abstracts\FormGroup.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CalendarX.cs" />

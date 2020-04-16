@@ -28,37 +28,8 @@ namespace TestApp
             InitializeComponent();
         }
 
-        private int ints = 0;
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            switch (ints)
-            {
-                case 0:
-                    AstpPanel.Children.RemoveAt(1);
-                    break;
-                case 1:
-                    AstpPanel.Children.RemoveAt(1);
-                    break;
-                case 2:
-                    AstpPanel.Children.Insert(1, new Label()
-                    {
-                        Height = 30,
-                        Foreground = Brushes.White,
-                        Background = "#FFCFDB".ToColor().ToBrush(),
-                        Content = "Label"
-                    });
-                    break;
-                case 3:
-                    AstpPanel.Children.Insert(1, new Label()
-                    {
-                        Height = 30,
-                        Foreground = Brushes.White,
-                        Background = "#B1DEF1".ToColor().ToBrush(),
-                        Content = "Label"
-                    });
-                    break;
-            }
-            ints++;
         }
     }
 }
