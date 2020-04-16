@@ -26,6 +26,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)EventHandler\LongPressEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EventHandler\SelectedDateTimeChangedEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EventHandler\SelectedDateChangedEventHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\BrushAnimation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\IPendingingHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\PendingBoxConfigurations.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\MessageBoxXConfigurations.cs" />

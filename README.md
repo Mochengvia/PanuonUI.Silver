@@ -22,6 +22,11 @@ Zhihu : @末城via
 提供完备的开发文档、代码示例与1.0升级指南（文档将转移到阿里的语雀平台）。https://www.yuque.com/mochengvia/silver2.0   
 下载方式：你可以在上方的Branch中切换2.0.0分支并下载开发版代码，但控件尚不齐全。开发版Nuget已经发行。  
 
+#### 20202-4-16 V1.1.1
+[重要修复]修复了Button和RepeatButton无法换肤的问题。此问题是由于Foreground、Background、BorderBrush属性在动画执行结束时，没有释放对属性的占用，从而导致无法再更改这些属性的值。现已使用2.0的Button解决方案替代。  
+PUTextBlock已更名为TextBlockX。若要使用ClipToBounds效果，必须使TextBlockX或其容器拥有可计算的高度以及宽度。此外，修复了TextBlockX在极端情况下可能死循环的问题。  
+
+
 #### 2020-4-15 v1.1.0
 PUTextBlock重做。大幅提升计算性能，解决了可能出现的BUG。删除AutoAdaption属性，新增TextAdaption属性。AutoAdaption="True"应更改为TextAdaption="ClipToBounds"。  
 为DropDown新增了Opened和Closed事件。  

@@ -321,7 +321,7 @@
     public enum TextAdaption
     {
         None,
-        ClipToBounds
+        ClipToBounds,
     }
     #endregion
 

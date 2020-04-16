@@ -115,6 +115,10 @@ namespace Panuon.UI.Silver
             while (true)
             {
                 var currentText = GetBoundedText(text, charWidth, width);
+                if (currentText.Text.Length == 0)
+                {
+                    break;
+                }
                 if (TextAdaption == TextAdaption.ClipToBounds && (yOffset + textHeight * 2) > height)
                 {
                     var lastText = CreateFormattedText(text);

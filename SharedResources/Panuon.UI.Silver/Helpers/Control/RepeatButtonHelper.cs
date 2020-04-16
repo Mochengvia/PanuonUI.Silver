@@ -1,4 +1,5 @@
 ﻿using Panuon.UI.Silver.Utils;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
@@ -7,6 +8,15 @@ namespace Panuon.UI.Silver
 {
     public class RepeatButtonHelper
     {
+        #region Ctor
+        static RepeatButtonHelper()
+        {
+            EventManager.RegisterClassHandler(typeof(RepeatButton), RepeatButton.MouseEnterEvent, new RoutedEventHandler(OnRepeatButtonMouseEnter));
+            EventManager.RegisterClassHandler(typeof(RepeatButton), RepeatButton.MouseLeaveEvent, new RoutedEventHandler(OnRepeatButtonMouseLeave));
+        }
+
+        #endregion
+
         #region RepeatButtonStyle
         public static RepeatButtonStyle GetRepeatButtonStyle(DependencyObject obj)
         {
@@ -129,115 +139,75 @@ namespace Panuon.UI.Silver
 
         #endregion
 
-        #region (Internal) HoverBrushPercent
-        internal static double GetHoverBrushPercent(DependencyObject obj)
+        #region Event Handler
+
+        private static void OnRepeatButtonMouseEnter(object sender, RoutedEventArgs e)
         {
-            return (double)obj.GetValue(HoverBrushPercentProperty);
-        }
+            var repeatButton = sender as RepeatButton;
+            var repeatButtonStyle = GetRepeatButtonStyle(repeatButton);
+            var hoverBrush = GetHoverBrush(repeatButton);
 
-        internal static void SetHoverBrushPercent(DependencyObject obj, double value)
-        {
-            obj.SetValue(HoverBrushPercentProperty, value);
-        }
-
-        public static readonly DependencyProperty HoverBrushPercentProperty =
-            DependencyProperty.RegisterAttached("HoverBrushPercent", typeof(double), typeof(RepeatButtonHelper), new PropertyMetadata(OnHoverBrushPercentChanged));
-
-        private static void OnHoverBrushPercentChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var button = (RepeatButton)d;
-
-            if (button == null)
+            if (hoverBrush == null)
                 return;
 
-            var buttonStyle = GetRepeatButtonStyle(button);
-
-            var oldValue = (double)e.OldValue;
-            var newValue = (double)e.NewValue;
-
-            var previousForeground = GetPreviousForeground(button);
-            var previousBorderBrush = GetPreviousBorderBrush(button);
-            var previousBackground = GetPreviousBackground(button);
-
-            var hoverBrush = GetHoverBrush(button);
-
-            if (newValue == 0)
+            var dic = new Dictionary<DependencyProperty, Brush>();
+            switch (repeatButtonStyle)
             {
-                if (buttonStyle != RepeatButtonStyle.Standard)
-                    button.Foreground = previousForeground;
+                case RepeatButtonStyle.Standard:
+                    dic.Add(RepeatButton.BackgroundProperty, hoverBrush);
+                    break;
+                case RepeatButtonStyle.Hollow:
+                    dic.Add(RepeatButton.BackgroundProperty, hoverBrush);
+                    dic.Add(RepeatButton.ForegroundProperty, Brushes.White);
+                    dic.Add(IconHelper.ForegroundProperty, Brushes.White);
+                    break;
+                case RepeatButtonStyle.Outline:
+                    dic.Add(RepeatButton.BorderBrushProperty, hoverBrush);
+                    dic.Add(RepeatButton.ForegroundProperty, hoverBrush);
+                    dic.Add(IconHelper.ForegroundProperty, hoverBrush);
+                    break;
+                case RepeatButtonStyle.Link:
+                    dic.Add(RepeatButton.ForegroundProperty, hoverBrush);
+                    dic.Add(IconHelper.ForegroundProperty, hoverBrush);
+                    break;
+            }
+            StoryboardUtils.BeginBrushStoryboard(repeatButton, dic);
+        }
 
-                if (buttonStyle == RepeatButtonStyle.Standard || buttonStyle == RepeatButtonStyle.Hollow)
-                    button.Background = previousBackground;
 
-                button.BorderBrush = previousBorderBrush;
+        private static void OnRepeatButtonMouseLeave(object sender, RoutedEventArgs e)
+        {
+            var repeatButton = sender as RepeatButton;
+            var repeatButtonStyle = GetRepeatButtonStyle(repeatButton);
+            var hoverBrush = GetHoverBrush(repeatButton);
+
+            if (hoverBrush == null)
                 return;
-            }
-            if (oldValue == 0)
+
+            var list = new List<DependencyProperty>();
+            switch (repeatButtonStyle)
             {
-                previousForeground = button.Foreground;
-                previousBorderBrush = button.BorderBrush;
-                previousBackground = button.Background;
-
-                SetPreviousForeground(button, previousForeground);
-                SetPreviousBorderBrush(button, previousBorderBrush);
-                SetPreviousBackground(button, previousBackground);
+                case RepeatButtonStyle.Standard:
+                    list.Add(RepeatButton.BackgroundProperty);
+                    break;
+                case RepeatButtonStyle.Hollow:
+                    list.Add(RepeatButton.BackgroundProperty);
+                    list.Add(RepeatButton.ForegroundProperty);
+                    list.Add(IconHelper.ForegroundProperty);
+                    break;
+                case RepeatButtonStyle.Outline:
+                    list.Add(RepeatButton.BorderBrushProperty);
+                    list.Add(RepeatButton.ForegroundProperty);
+                    list.Add(IconHelper.ForegroundProperty);
+                    break;
+                case RepeatButtonStyle.Link:
+                    list.Add(RepeatButton.ForegroundProperty);
+                    list.Add(IconHelper.ForegroundProperty);
+                    break;
             }
-
-            if (buttonStyle == RepeatButtonStyle.Standard || buttonStyle == RepeatButtonStyle.Hollow)
-                button.Background = BrushUtils.GetBrush(newValue, previousBackground, hoverBrush);
-
-            if (buttonStyle == RepeatButtonStyle.Hollow)
-                button.Foreground = BrushUtils.GetBrush(newValue, previousForeground, Brushes.White);
-            else if (buttonStyle != RepeatButtonStyle.Standard)
-                button.Foreground = BrushUtils.GetBrush(newValue, previousForeground, hoverBrush);
-
-            button.BorderBrush = BrushUtils.GetBrush(newValue, previousBorderBrush, hoverBrush);
-        }
-        #endregion
-
-        #region (Internal) PreviousForeground
-        internal static Brush GetPreviousForeground(DependencyObject obj)
-        {
-            return (Brush)obj.GetValue(PreviousForegroundProperty);
+            StoryboardUtils.BeginBrushStoryboard(repeatButton, list);
         }
 
-        internal static void SetPreviousForeground(DependencyObject obj, Brush value)
-        {
-            obj.SetValue(PreviousForegroundProperty, value);
-        }
-
-        internal static readonly DependencyProperty PreviousForegroundProperty =
-            DependencyProperty.RegisterAttached("PreviousForeground", typeof(Brush), typeof(RepeatButtonHelper));
-        #endregion
-
-        #region (Internal) PreviousForeground
-        public static Brush GetPreviousBorderBrush(DependencyObject obj)
-        {
-            return (Brush)obj.GetValue(PreviousBorderBrushProperty);
-        }
-
-        public static void SetPreviousBorderBrush(DependencyObject obj, Brush value)
-        {
-            obj.SetValue(PreviousBorderBrushProperty, value);
-        }
-
-        public static readonly DependencyProperty PreviousBorderBrushProperty =
-            DependencyProperty.RegisterAttached("PreviousBorderBrush", typeof(Brush), typeof(RepeatButtonHelper));
-        #endregion
-
-        #region (Internal) PreviousBackground
-        public static Brush GetPreviousBackground(DependencyObject obj)
-        {
-            return (Brush)obj.GetValue(PreviousBackgroundProperty);
-        }
-
-        public static void SetPreviousBackground(DependencyObject obj, Brush value)
-        {
-            obj.SetValue(PreviousBackgroundProperty, value);
-        }
-
-        public static readonly DependencyProperty PreviousBackgroundProperty =
-            DependencyProperty.RegisterAttached("PreviousBackground", typeof(Brush), typeof(RepeatButtonHelper));
         #endregion
     }
 }

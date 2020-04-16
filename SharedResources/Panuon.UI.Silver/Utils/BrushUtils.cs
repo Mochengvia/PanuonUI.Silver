@@ -1,29 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace Panuon.UI.Silver.Utils
 {
     internal static class BrushUtils
     {
-        public static Brush GetBrush(double percent, Brush foreground, Brush hoverBrush)
+        public static VisualBrush GetVisualBrush(Brush background, Brush foreground, double opacity)
         {
-            if (percent == 0)
-                return foreground;
-            if (percent == 1)
-                return hoverBrush;
-
-            return new VisualBrush(new System.Windows.Controls.Border()
+            return new VisualBrush(new Border()
             {
                 Width = 1,
                 Height = 1,
-                Background = foreground,
-                Child = new System.Windows.Controls.Border()
+                Background = background,
+
+                Child = new Border()
                 {
-                    Background = hoverBrush,
-                    Opacity = percent,
+                    Background = foreground,
+                    Opacity = opacity
                 }
+
             });
         }
     }

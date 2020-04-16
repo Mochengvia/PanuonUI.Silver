@@ -50,7 +50,7 @@
       <DependentUpon>ScreenshotWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiComboBoxItem.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\PUTextBlock.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\TextBlockX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TagItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\AnimateWrapPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TagControl.cs" />
@@ -127,6 +127,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Utils\AnimationUtils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\BrushUtils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\GridLengthUtil.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\StoryboardUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)Control.xaml">

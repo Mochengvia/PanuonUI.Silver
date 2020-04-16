@@ -82,27 +82,6 @@
                                 </Grid>
                             </Grid>
                             <ControlTemplate.Triggers>
-                                <Trigger Property="IsMouseOver"
-                                         Value="True">
-                                    <Trigger.EnterActions>
-                                        <BeginStoryboard>
-                                            <Storyboard>
-                                                <DoubleAnimation Storyboard.TargetProperty="(local:ButtonHelper.HoverBrushPercent)"
-                                                                 To="1"
-                                                                 Duration="0:0:0.3" />
-                                            </Storyboard>
-                                        </BeginStoryboard>
-                                    </Trigger.EnterActions>
-                                    <Trigger.ExitActions>
-                                        <BeginStoryboard>
-                                            <Storyboard>
-                                                <DoubleAnimation Storyboard.TargetProperty="(local:ButtonHelper.HoverBrushPercent)"
-                                                                 Duration="0:0:0.3" />
-                                            </Storyboard>
-                                        </BeginStoryboard>
-
-                                    </Trigger.ExitActions>
-                                </Trigger>
                                 <Trigger Property="IsPressed"
                                          Value="True">
                                     <Setter TargetName="GrdMain"
@@ -218,28 +197,6 @@
                                 </Grid>
                             </Grid>
                             <ControlTemplate.Triggers>
-                                <Trigger Property="IsMouseOver"
-                                         Value="True">
-                                    <Trigger.EnterActions>
-                                        <BeginStoryboard>
-                                            <Storyboard>
-                                                
-                                                <DoubleAnimation Storyboard.TargetProperty="(local:ButtonHelper.HoverBrushPercent)"
-                                                                 To="1"
-                                                                 Duration="0:0:0.3" />
-                                            </Storyboard>
-                                        </BeginStoryboard>
-                                    </Trigger.EnterActions>
-                                    <Trigger.ExitActions>
-                                        <BeginStoryboard>
-                                            <Storyboard>
-                                                <DoubleAnimation Storyboard.TargetProperty="(local:ButtonHelper.HoverBrushPercent)"
-                                                                 Duration="0:0:0.3" />
-                                            </Storyboard>
-                                        </BeginStoryboard>
-
-                                    </Trigger.ExitActions>
-                                </Trigger>
                                 <Trigger Property="IsPressed"
                                          Value="True">
                                     <Setter TargetName="GrdMain"
@@ -354,27 +311,6 @@
                                 </Grid>
                             </Grid>
                             <ControlTemplate.Triggers>
-                                <Trigger Property="IsMouseOver"
-                                         Value="True">
-                                    <Trigger.EnterActions>
-                                        <BeginStoryboard>
-                                            <Storyboard>
-                                                <DoubleAnimation Storyboard.TargetProperty="(local:ButtonHelper.HoverBrushPercent)"
-                                                                 To="1"
-                                                                 Duration="0:0:0.3" />
-                                            </Storyboard>
-                                        </BeginStoryboard>
-                                    </Trigger.EnterActions>
-                                    <Trigger.ExitActions>
-                                        <BeginStoryboard>
-                                            <Storyboard>
-                                                <DoubleAnimation Storyboard.TargetProperty="(local:ButtonHelper.HoverBrushPercent)"
-                                                                 Duration="0:0:0.3" />
-                                            </Storyboard>
-                                        </BeginStoryboard>
-
-                                    </Trigger.ExitActions>
-                                </Trigger>
                                 <Trigger Property="IsPressed"
                                          Value="True">
                                     <Setter TargetName="GrdMain"
@@ -491,26 +427,6 @@
                                     <Setter TargetName="GrdMain"
                                             Property="Opacity"
                                             Value="{Binding Path=(local:ButtonHelper.ClickCoverOpacity),RelativeSource={RelativeSource AncestorType=Button},Mode=OneWay}"  />
-                                </Trigger>
-                                <Trigger Property="IsMouseOver"
-                                         Value="True">
-                                    <Trigger.EnterActions>
-                                        <BeginStoryboard>
-                                            <Storyboard>
-                                                <DoubleAnimation Storyboard.TargetProperty="(local:ButtonHelper.HoverBrushPercent)"
-                                                                 To="1"
-                                                                 Duration="0:0:0.3" />
-                                            </Storyboard>
-                                        </BeginStoryboard>
-                                    </Trigger.EnterActions>
-                                    <Trigger.ExitActions>
-                                        <BeginStoryboard>
-                                            <Storyboard>
-                                                <DoubleAnimation Storyboard.TargetProperty="(local:ButtonHelper.HoverBrushPercent)"
-                                                                 Duration="0:0:0.3" />
-                                            </Storyboard>
-                                        </BeginStoryboard>
-                                    </Trigger.ExitActions>
                                 </Trigger>
                                 <MultiDataTrigger>
                                     <MultiDataTrigger.Conditions>

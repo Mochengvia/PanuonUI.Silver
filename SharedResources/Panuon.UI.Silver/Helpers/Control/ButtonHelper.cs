@@ -1,4 +1,5 @@
 ﻿using Panuon.UI.Silver.Utils;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -7,6 +8,16 @@ namespace Panuon.UI.Silver
 {
     public class ButtonHelper
     {
+        #region Ctor
+        static ButtonHelper()
+        {
+            EventManager.RegisterClassHandler(typeof(Button), Button.MouseEnterEvent, new RoutedEventHandler(OnButtonMouseEnter));
+            EventManager.RegisterClassHandler(typeof(Button), Button.MouseLeaveEvent, new RoutedEventHandler(OnButtonMouseLeave));
+        }
+
+        #endregion
+
+
         #region ButtonStyle
         public static ButtonStyle GetButtonStyle(DependencyObject obj)
         {
@@ -129,115 +140,75 @@ namespace Panuon.UI.Silver
 
         #endregion
 
-        #region (Internal) HoverBrushPercent
-        internal static double GetHoverBrushPercent(DependencyObject obj)
+        #region Event Handler
+        private static void OnButtonMouseEnter(object sender, RoutedEventArgs e)
         {
-            return (double)obj.GetValue(HoverBrushPercentProperty);
-        }
-
-        internal static void SetHoverBrushPercent(DependencyObject obj, double value)
-        {
-            obj.SetValue(HoverBrushPercentProperty, value);
-        }
-
-        public static readonly DependencyProperty HoverBrushPercentProperty =
-            DependencyProperty.RegisterAttached("HoverBrushPercent", typeof(double), typeof(ButtonHelper), new PropertyMetadata(OnHoverBrushPercentChanged));
-
-        private static void OnHoverBrushPercentChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var button = (Button)d;
-            
-            if (button == null)
-                return;
-
+            var button = sender as Button;
             var buttonStyle = GetButtonStyle(button);
-
-            var oldValue = (double)e.OldValue;
-            var newValue = (double)e.NewValue;
-
-            var previousForeground = GetPreviousForeground(button);
-            var previousBorderBrush = GetPreviousBorderBrush(button);
-            var previousBackground = GetPreviousBackground(button);
-
             var hoverBrush = GetHoverBrush(button);
 
-            if (newValue == 0)
-            {
-                if(buttonStyle != ButtonStyle.Standard)
-                    button.Foreground = previousForeground;
-
-            if (buttonStyle == ButtonStyle.Standard || buttonStyle == ButtonStyle.Hollow)
-                    button.Background = previousBackground;
-
-                button.BorderBrush = previousBorderBrush;
+            if (hoverBrush == null)
                 return;
-            }
-            if (oldValue == 0)
+
+            var dic = new Dictionary<DependencyProperty, Brush>();
+            switch (buttonStyle)
             {
-                previousForeground = button.Foreground;
-                previousBorderBrush = button.BorderBrush;
-                previousBackground = button.Background;
+                case ButtonStyle.Standard:
+                    dic.Add(Button.BackgroundProperty, hoverBrush);
+                    break;
+                case ButtonStyle.Hollow:
+                    dic.Add(Button.BackgroundProperty, hoverBrush);
+                    dic.Add(Button.ForegroundProperty, Brushes.White);
+                    dic.Add(IconHelper.ForegroundProperty, Brushes.White);
 
-                SetPreviousForeground(button, previousForeground);
-                SetPreviousBorderBrush(button, previousBorderBrush);
-                SetPreviousBackground(button, previousBackground);
+                    break;
+                case ButtonStyle.Outline:
+                    dic.Add(Button.BorderBrushProperty, hoverBrush);
+                    dic.Add(Button.ForegroundProperty, hoverBrush);
+                    dic.Add(IconHelper.ForegroundProperty, hoverBrush);
+                    break;
+                case ButtonStyle.Link:
+                    dic.Add(Button.ForegroundProperty, hoverBrush);
+                    dic.Add(IconHelper.ForegroundProperty, hoverBrush);
+                    break;
             }
-
-            if (buttonStyle == ButtonStyle.Standard || buttonStyle == ButtonStyle.Hollow)
-                button.Background = BrushUtils.GetBrush(newValue, previousBackground, hoverBrush);
-
-            if (buttonStyle == ButtonStyle.Hollow)
-                button.Foreground = BrushUtils.GetBrush(newValue, previousForeground, Brushes.White);
-            else if (buttonStyle != ButtonStyle.Standard)
-                button.Foreground = BrushUtils.GetBrush(newValue, previousForeground, hoverBrush);
-
-            button.BorderBrush = BrushUtils.GetBrush(newValue, previousBorderBrush, hoverBrush);
+            StoryboardUtils.BeginBrushStoryboard(button, dic);
         }
-        #endregion
 
-        #region (Internal) PreviousForeground
-        internal static Brush GetPreviousForeground(DependencyObject obj)
+
+        private static void OnButtonMouseLeave(object sender, RoutedEventArgs e)
         {
-            return (Brush)obj.GetValue(PreviousForegroundProperty);
+            var button = sender as Button;
+            var buttonStyle = GetButtonStyle(button);
+            var hoverBrush = GetHoverBrush(button);
+
+            if (hoverBrush == null)
+                return;
+
+            var list = new List<DependencyProperty>();
+            switch (buttonStyle)
+            {
+                case ButtonStyle.Standard:
+                    list.Add(Button.BackgroundProperty);
+                    break;
+                case ButtonStyle.Hollow:
+                    list.Add(Button.BackgroundProperty);
+                    list.Add(Button.ForegroundProperty);
+                    list.Add(IconHelper.ForegroundProperty);
+                    break;
+                case ButtonStyle.Outline:
+                    list.Add(Button.BorderBrushProperty);
+                    list.Add(Button.ForegroundProperty);
+                    list.Add(IconHelper.ForegroundProperty);
+                    break;
+                case ButtonStyle.Link:
+                    list.Add(Button.ForegroundProperty);
+                    list.Add(IconHelper.ForegroundProperty);
+                    break;
+            }
+            StoryboardUtils.BeginBrushStoryboard(button, list);
         }
 
-        internal static void SetPreviousForeground(DependencyObject obj, Brush value)
-        {
-            obj.SetValue(PreviousForegroundProperty, value);
-        }
-
-        internal static readonly DependencyProperty PreviousForegroundProperty =
-            DependencyProperty.RegisterAttached("PreviousForeground", typeof(Brush), typeof(ButtonHelper));
-        #endregion
-
-        #region (Internal) PreviousForeground
-        public static Brush GetPreviousBorderBrush(DependencyObject obj)
-        {
-            return (Brush)obj.GetValue(PreviousBorderBrushProperty);
-        }
-
-        public static void SetPreviousBorderBrush(DependencyObject obj, Brush value)
-        {
-            obj.SetValue(PreviousBorderBrushProperty, value);
-        }
-
-        public static readonly DependencyProperty PreviousBorderBrushProperty =
-            DependencyProperty.RegisterAttached("PreviousBorderBrush", typeof(Brush), typeof(ButtonHelper));
-        #endregion
-
-        #region (Internal) PreviousBackground
-        public static Brush GetPreviousBackground(DependencyObject obj)
-        {
-            return (Brush)obj.GetValue(PreviousBackgroundProperty);
-        }
-
-        public static void SetPreviousBackground(DependencyObject obj, Brush value)
-        {
-            obj.SetValue(PreviousBackgroundProperty, value);
-        }
-
-        public static readonly DependencyProperty PreviousBackgroundProperty =
-            DependencyProperty.RegisterAttached("PreviousBackground", typeof(Brush), typeof(ButtonHelper));
         #endregion
     }
 }
