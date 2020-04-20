@@ -342,7 +342,7 @@ namespace Panuon.UI.Silver
 
         private void LoadOrUpdateMinutes()
         {
-            for (int i = 0; i < 6000; i++)
+            for (int i = 0; i < 60; i++)
             {
                 if (Minutes.Count <= i)
                 {
