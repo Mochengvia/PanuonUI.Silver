@@ -12,6 +12,10 @@ Email : zeoun@qq.com
 QQ Group : 718778191  
 Zhihu : @末城via
 
+GitHub地址: https://github.com/Panuon/PanuonUI.Silver
+码云地址: https://gitee.com/panuon/PanuonUI.Silver
+
+
 # News 动态  
 
 ## 2.0版本已在准备

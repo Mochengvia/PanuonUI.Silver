@@ -21,15 +21,15 @@
                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                               Margin="{TemplateBinding Padding}" />
             <Grid Grid.Column="1"
-                  Width="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.Minus3Converter}},RelativeSource={RelativeSource Self},Mode=OneWay}">
+                  Width="{Binding ActualHeight, Converter={StaticResource {x:Static rs:Converters.DoubleMinusConverter}}, ConverterParameter=3,RelativeSource={RelativeSource Self},Mode=OneWay}">
                 <TextBlock x:Name="TxtArrowDown"
                            Text="&#xe91f;"
-                           FontSize="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource {x:Static i:ResourceKeys.Minus5Converter}}}"
+                           FontSize="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource {x:Static rs:Converters.DoubleMinusConverter}}, ConverterParameter=5}"
                            FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center" />
                 <TextBlock x:Name="TxtArrowUp"
-                           FontSize="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource {x:Static i:ResourceKeys.Minus5Converter}}}"
+                           FontSize="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource {x:Static rs:Converters.DoubleMinusConverter}}, ConverterParameter=5}"
                            Opacity="0"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
@@ -196,7 +196,7 @@
                           Focusable="False"
                           PopupAnimation="Slide"
                           MaxHeight="{TemplateBinding MaxDropDownHeight}"
-                          MinWidth="{Binding ActualWidth, Converter={StaticResource {x:Static i:ResourceKeys.Add10Converter}}, ElementName=TgbContent}">
+                          MinWidth="{Binding ActualWidth, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=10, ElementName=TgbContent}">
                 <Border x:Name="BdrDropDown"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"

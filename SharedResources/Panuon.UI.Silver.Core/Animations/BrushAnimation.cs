@@ -61,11 +61,11 @@ namespace Panuon.UI.Silver.Core
                 if (defaultDestinationValue is SolidColorBrush && ((SolidColorBrush)defaultDestinationValue).Color.A < 255
                     && (!(defaultOriginValue is SolidColorBrush) || (((SolidColorBrush)defaultOriginValue).Color.A == 255)))
                 {
-                    return BrushUtils.GetVisualBrush(defaultDestinationValue, defaultOriginValue, 1 - animationClock.CurrentProgress.Value);
+                    return BrushUtils.GetSuperposedVisualBrush(defaultDestinationValue, defaultOriginValue, 1 - animationClock.CurrentProgress.Value);
                 }
                 else
                 {
-                    return BrushUtils.GetVisualBrush(defaultOriginValue, defaultDestinationValue, animationClock.CurrentProgress.Value);
+                    return BrushUtils.GetSuperposedVisualBrush(defaultOriginValue, defaultDestinationValue, animationClock.CurrentProgress.Value);
                 }
             }
             else
@@ -73,11 +73,11 @@ namespace Panuon.UI.Silver.Core
                 if (defaultOriginValue is SolidColorBrush && ((SolidColorBrush)defaultOriginValue).Color.A < 255
                     && (!(defaultDestinationValue is SolidColorBrush) || (((SolidColorBrush)defaultDestinationValue).Color.A == 255)))
                 {
-                    return BrushUtils.GetVisualBrush(defaultOriginValue, defaultDestinationValue, animationClock.CurrentProgress.Value);
+                    return BrushUtils.GetSuperposedVisualBrush(defaultOriginValue, defaultDestinationValue, animationClock.CurrentProgress.Value);
                 }
                 else
                 {
-                    return BrushUtils.GetVisualBrush(defaultDestinationValue, defaultOriginValue, 1 - animationClock.CurrentProgress.Value);
+                    return BrushUtils.GetSuperposedVisualBrush(defaultDestinationValue, defaultOriginValue, 1 - animationClock.CurrentProgress.Value);
                 }
             }
         }

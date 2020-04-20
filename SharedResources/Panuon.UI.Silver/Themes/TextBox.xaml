@@ -14,9 +14,9 @@
            TargetType="{x:Type local:Loading}"
            BasedOn="{StaticResource {x:Type local:Loading}}">
         <Setter Property="Height"
-                Value="{Binding FontSize, Converter={StaticResource {x:Static i:ResourceKeys.Add5Converter}},RelativeSource={RelativeSource  AncestorType=TextBox},Mode=OneWay}" />
+                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=5,RelativeSource={RelativeSource  AncestorType=TextBox},Mode=OneWay}" />
         <Setter Property="Width"
-                Value="{Binding FontSize, Converter={StaticResource {x:Static i:ResourceKeys.Add5Converter}},RelativeSource={RelativeSource  AncestorType=TextBox},Mode=OneWay}" />
+                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=5,RelativeSource={RelativeSource  AncestorType=TextBox},Mode=OneWay}" />
         <Setter Property="Foreground"
                 Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=TextBox},Mode=OneWay}" />
     </Style>
@@ -31,7 +31,7 @@
         <Setter Property="local:ButtonHelper.ButtonStyle"
                 Value="Link" />
         <Setter Property="Width"
-                Value="{Binding ActualHeight,Converter={StaticResource {x:Static i:ResourceKeys.Minus5Converter}},RelativeSource={RelativeSource AncestorType=TextBox},Mode=OneWay}" />
+                Value="{Binding ActualHeight,Converter={StaticResource {x:Static rs:Converters.DoubleMinusConverter}}, ConverterParameter=5,RelativeSource={RelativeSource AncestorType=TextBox},Mode=OneWay}" />
         <Setter Property="Height"
                 Value="{Binding ActualHeight,RelativeSource={RelativeSource AncestorType=TextBox},Mode=OneWay}" />
         <Style.Triggers>
@@ -109,7 +109,7 @@
             <Border x:Name="BdrWait"
                     
                     Grid.Column="2"
-                    Width="{Binding ActualHeight,Converter={StaticResource {x:Static i:ResourceKeys.Minus5Converter}},RelativeSource={RelativeSource AncestorType=TextBox},Mode=OneWay}"
+                    Width="{Binding ActualHeight,Converter={StaticResource {x:Static rs:Converters.DoubleMinusConverter}}, ConverterParameter=5,RelativeSource={RelativeSource AncestorType=TextBox},Mode=OneWay}"
                     Height="{Binding ActualHeight,RelativeSource={RelativeSource AncestorType=TextBox},Mode=OneWay}"
                     Visibility="Collapsed">
                 <local:Loading x:Name="LoadWait"
@@ -119,11 +119,11 @@
             </Border>
             <Grid x:Name="GrdError"
                   Grid.Column="2"
-                  Width="{Binding ActualHeight,Converter={StaticResource {x:Static i:ResourceKeys.Minus5Converter}},RelativeSource={RelativeSource AncestorType=TextBox},Mode=OneWay}"
+                  Width="{Binding ActualHeight,Converter={StaticResource {x:Static rs:Converters.DoubleMinusConverter}}, ConverterParameter=5,RelativeSource={RelativeSource AncestorType=TextBox},Mode=OneWay}"
                   Height="{Binding ActualHeight,RelativeSource={RelativeSource AncestorType=TextBox},Mode=OneWay}"
                   Visibility="Collapsed">
-                <Ellipse Width="{Binding FontSize,Converter={StaticResource {x:Static i:ResourceKeys.Add7Converter}},RelativeSource={RelativeSource AncestorType=TextBox},Mode=OneWay}"
-                         Height="{Binding FontSize,Converter={StaticResource {x:Static i:ResourceKeys.Add7Converter}},RelativeSource={RelativeSource AncestorType=TextBox},Mode=OneWay}"
+                <Ellipse Width="{Binding FontSize,Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=7,RelativeSource={RelativeSource AncestorType=TextBox},Mode=OneWay}"
+                         Height="{Binding FontSize,Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=7,RelativeSource={RelativeSource AncestorType=TextBox},Mode=OneWay}"
                          Margin="0,0,0,2"
                          VerticalAlignment="Center"
                          HorizontalAlignment="Center"

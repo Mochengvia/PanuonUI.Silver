@@ -10,6 +10,10 @@
 
     <icv:TrueToVisibleConverter x:Key="{x:Static rs:Converters.TrueToVisibleConverter}" />
     <icv:TrueToCollapseConverter x:Key="{x:Static rs:Converters.TrueToCollapseConverter}" />
+    <icv:DoubleMinusConverter x:Key="{x:Static rs:Converters.DoubleMinusConverter}" />
+    <icv:DoublePlusConverter x:Key="{x:Static rs:Converters.DoublePlusConverter}" />
+    <icv:DoubleMultiplyByConverter x:Key="{x:Static rs:Converters.DoubleMultiplyByConverter}" />
+    <icv:DoubleDivideByConverter x:Key="{x:Static rs:Converters.DoubleDivideByConverter}" />
     
     <FontFamily x:Key="PanuonIconFont">pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon</FontFamily>
     <sys:Double x:Key="{x:Static rs:ResourceKeys.DisabledOpacity}">0.4</sys:Double>

@@ -7,5 +7,6 @@ namespace Panuon.UI.Silver
     public enum ProgressBarStyle
     {
         Standard,
+        Ring,
     }
 }

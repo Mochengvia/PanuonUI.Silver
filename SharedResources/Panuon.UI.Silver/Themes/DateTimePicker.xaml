@@ -22,7 +22,7 @@
                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                               Margin="{TemplateBinding Padding}" />
             <Grid Grid.Column="1"
-                  Width="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.Minus3Converter}},RelativeSource={RelativeSource Self},Mode=OneWay}">
+                  Width="{Binding ActualHeight, Converter={StaticResource {x:Static rs:Converters.DoubleMinusConverter}}, ConverterParameter=3,RelativeSource={RelativeSource Self},Mode=OneWay}">
                 <TextBlock x:Name="TxtArrowDown"
                            Text="&#xe91f;"
                            FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"

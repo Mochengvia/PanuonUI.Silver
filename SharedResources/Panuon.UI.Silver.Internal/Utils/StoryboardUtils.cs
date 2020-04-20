@@ -11,6 +11,9 @@ namespace Panuon.UI.Silver.Internal.Utils
     internal static class StoryboardUtils
     {
         #region Methods
+
+        #region BeginBrushStoryboard
+
         public static void BeginBrushStoryboard(DependencyObject dependencyObj, IDictionary<DependencyProperty, Brush> toDictionary)
         {
             var storyboard = new Storyboard();
@@ -43,7 +46,7 @@ namespace Panuon.UI.Silver.Internal.Utils
             }
             storyboard.Begin();
         }
-
+        #endregion
 
         #endregion
     }

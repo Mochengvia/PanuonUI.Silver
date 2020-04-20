@@ -200,7 +200,7 @@
     <DataTemplate x:Key="{x:Static rs:ResourceKeys.GroupBoxFootnoteHeaderTemplate}">
         <ContentControl Margin="0,5"
                         Content="{Binding Header, RelativeSource={RelativeSource AncestorType=GroupBox}, Mode=OneWay}"
-                        FontSize="{Binding FontSize, Converter={StaticResource {x:Static i:ResourceKeys.Minus3Converter}},RelativeSource={RelativeSource AncestorType=GroupBox}, Mode=OneWay}" />
+                        FontSize="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoubleMinusConverter}}, ConverterParameter=3,RelativeSource={RelativeSource AncestorType=GroupBox}, Mode=OneWay}" />
     </DataTemplate>
 
     <Style TargetType="GroupBox">

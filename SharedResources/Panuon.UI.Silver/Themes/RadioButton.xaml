@@ -23,7 +23,7 @@
                     BorderBrush="{TemplateBinding BorderBrush}"
                     BorderThickness="{TemplateBinding BorderThickness}"
                     Background="{TemplateBinding Background}"
-                    CornerRadius="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy2Converter}},RelativeSource={RelativeSource Self}, Mode=OneWay}">
+                    CornerRadius="{Binding ActualHeight, Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=2,RelativeSource={RelativeSource Self}, Mode=OneWay}">
                 <Ellipse x:Name="EllToggle"
                          Fill="{Binding Path=(local:RadioButtonHelper.GlyphBrush),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
                          RenderTransformOrigin="0.5,0.5">
@@ -184,13 +184,13 @@
             <Grid Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
                   Width="{Binding Path=(local:RadioButtonHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}">
                 <Border x:Name="BdrMain"
-                        CornerRadius="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy2Converter}}, RelativeSource={RelativeSource Self}}"
+                        CornerRadius="{Binding ActualHeight, Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource Self}}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{Binding BorderThickness, RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
                         Background="{Binding Path=(local:RadioButtonHelper.CheckedBackground), RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}">
                     <Rectangle x:Name="RectBoxBack"
-                               RadiusX="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy2Converter}}, RelativeSource={RelativeSource Self}}"
-                               RadiusY="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy2Converter}}, RelativeSource={RelativeSource Self}}"
+                               RadiusX="{Binding ActualHeight, Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource Self}}"
+                               RadiusY="{Binding ActualHeight, Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource Self}}"
                                RenderTransformOrigin="0.5,0.5"
                                Fill="{TemplateBinding Background}">
                         <Rectangle.RenderTransform>
@@ -203,8 +203,8 @@
                 <Rectangle x:Name="EllToggle"
                            Stroke="Transparent"
                            Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
-                           RadiusX="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy2Converter}}, RelativeSource={RelativeSource Self}}"
-                           RadiusY="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy2Converter}}, RelativeSource={RelativeSource Self}}"
+                           RadiusX="{Binding ActualHeight, Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource Self}}"
+                           RadiusY="{Binding ActualHeight, Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource Self}}"
                            HorizontalAlignment="Right"
                            Fill="{Binding Path=(local:RadioButtonHelper.GlyphBrush), RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}">
                     <Rectangle.Margin>
@@ -475,13 +475,13 @@
             <Grid Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
                   Width="{Binding Path=(local:RadioButtonHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}">
                 <Border x:Name="BdrMain"
-                        CornerRadius="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy2Converter}}, RelativeSource={RelativeSource Self}}"
+                        CornerRadius="{Binding ActualHeight, Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource Self}}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{Binding BorderThickness, RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
                         Background="{TemplateBinding Background}">
                     <Rectangle x:Name="RectBoxBack"
-                               RadiusX="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy2Converter}}, RelativeSource={RelativeSource Self}}"
-                               RadiusY="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy2Converter}}, RelativeSource={RelativeSource Self}}"
+                               RadiusX="{Binding ActualHeight, Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource Self}}"
+                               RadiusY="{Binding ActualHeight, Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource Self}}"
                                RenderTransformOrigin="0.5,0.5"
                                Fill="{Binding Path=(local:RadioButtonHelper.CheckedBackground), RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
                                Opacity="0" />
@@ -490,8 +490,8 @@
                         Margin="{Binding Path=(local:RadioButtonHelper.BoxHeight),Converter={StaticResource {x:Static i:ResourceKeys.CheckBoxSwitch3ToggleTrackMarginConverter}},RelativeSource={RelativeSource AncestorType=RadioButton},Mode=OneWay}">
                     <Rectangle x:Name="EllToggle"
                                Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
-                               RadiusX="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy2Converter}}, RelativeSource={RelativeSource Self}}"
-                               RadiusY="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy2Converter}}, RelativeSource={RelativeSource Self}}"
+                               RadiusX="{Binding ActualHeight, Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource Self}}"
+                               RadiusY="{Binding ActualHeight, Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource Self}}"
                                HorizontalAlignment="Right"
                                Fill="{Binding Path=(local:RadioButtonHelper.GlyphBrush), RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}">
                         <Rectangle.Margin>
@@ -719,7 +719,7 @@
                     CornerRadius="{Binding Path=(local:RadioButtonHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}">
                 <Border x:Name="BdrGlyphRaw"
                         Width="{Binding ActualHeight,RelativeSource={RelativeSource Self},Mode=OneWay}"
-                        Height="{Binding ActualHeight, ElementName=BdrChecked, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy2_5Converter}},Mode=OneWay}"
+                        Height="{Binding ActualHeight, ElementName=BdrChecked, Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=2.5,Mode=OneWay}"
                         VerticalAlignment="Bottom"
                         HorizontalAlignment="Right"
                         Background="{TemplateBinding Background}">
@@ -747,7 +747,7 @@
                     CornerRadius="{Binding Path=(local:RadioButtonHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}">
                 <Border x:Name="BdrGlyph"
                         Width="{Binding ActualHeight,RelativeSource={RelativeSource Self},Mode=OneWay}"
-                        Height="{Binding ActualHeight, ElementName=BdrChecked, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy2_5Converter}},Mode=OneWay}"
+                        Height="{Binding ActualHeight, ElementName=BdrChecked, Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=2.5,Mode=OneWay}"
                         VerticalAlignment="Bottom"
                         HorizontalAlignment="Right"
                         Background="{Binding Path=(local:RadioButtonHelper.CheckedBackground), RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}">

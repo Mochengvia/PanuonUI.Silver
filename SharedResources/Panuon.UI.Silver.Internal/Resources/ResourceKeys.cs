@@ -39,57 +39,17 @@ namespace Panuon.UI.Silver.Internal
 
         public const string GridLengthIsAbsoluteOrAutoConverter = nameof(GridLengthIsAbsoluteOrAutoConverter);
 
-        public const string DividedBy2Converter = nameof(DividedBy2Converter);
-
-        public const string DividedBy2_5Converter = nameof(DividedBy2_5Converter);
-
-        public const string DividedByMinus2Converter = nameof(DividedByMinus2Converter);
-
-        public const string DividedBy3Converter = nameof(DividedBy3Converter);
-
-        public const string DividedBy4Converter = nameof(DividedBy4Converter);
-
-        public const string DividedBy5Converter = nameof(DividedBy5Converter);
-
-        public const string DividedBy6Converter = nameof(DividedBy6Converter);
-
-        public const string DividedBy7Converter = nameof(DividedBy7Converter);
-
-        public const string DividedBy10Converter = nameof(DividedBy10Converter);
-
-        public const string DividedBy12Converter = nameof(DividedBy12Converter);
-
-        public const string DividedBy15Converter = nameof(DividedBy15Converter);
-
-        public const string Add3Converter = nameof(Add3Converter);
-
-        public const string Add5Converter = nameof(Add5Converter);
-
-        public const string Add7Converter = nameof(Add7Converter);
-
-        public const string Add10Converter = nameof(Add10Converter);
-
-        public const string Add16Converter = nameof(Add16Converter);
-
-        public const string Minus1Converter = nameof(Minus1Converter);
-
-        public const string Minus0_5Converter = nameof(Minus0_5Converter);
-
-        public const string Minus2Converter = nameof(Minus2Converter);
-
-        public const string Minus3Converter = nameof(Minus3Converter);
-
-        public const string Minus5Converter = nameof(Minus5Converter);
-
-        public const string Minus7Converter = nameof(Minus7Converter);
-
-        public const string Minus10Converter = nameof(Minus10Converter);
-
         public const string DoubleMinConverter = nameof(DoubleMinConverter);
 
         public const string DoubleEqualsConverter = nameof(DoubleEqualsConverter);
 
+        public const string DoubleToLeftMarginConverter = nameof(DoubleToLeftMarginConverter);
+
         public const string DoubleToRightMarginConverter = nameof(DoubleToRightMarginConverter);
+
+        public const string DoubleToTopMarginConverter = nameof(DoubleToTopMarginConverter);
+
+        public const string DoubleToBottomMarginConverter = nameof(DoubleToBottomMarginConverter);
 
         public const string DoubleLimitMin1Converter = nameof(DoubleLimitMin1Converter);
         
@@ -107,6 +67,14 @@ namespace Panuon.UI.Silver.Internal
         
         public const string CornerRadiusToDoubleConverter = nameof(CornerRadiusToDoubleConverter);
 
+        public const string CornerRadiusWithLeftOnlyConverter = nameof(CornerRadiusWithLeftOnlyConverter);
+
+        public const string CornerRadiusWithRightOnlyConverter = nameof(CornerRadiusWithRightOnlyConverter);
+
+        public const string CornerRadiusWithTopOnlyConverter = nameof(CornerRadiusWithTopOnlyConverter);
+
+        public const string CornerRadiusWithBottomOnlyConverter = nameof(CornerRadiusWithBottomOnlyConverter);
+        
         public const string ThicknessToDoubleConverter = nameof(ThicknessToDoubleConverter);
 
         public const string ThicknessWithoutTopConverter = nameof(ThicknessWithoutTopConverter);
@@ -924,7 +892,6 @@ namespace Panuon.UI.Silver.Internal
 
         #endregion
 
-
         #region ListBox
         public const string ListBoxBorderBrush = nameof(ListBoxBorderBrush);
 
@@ -1066,6 +1033,22 @@ namespace Panuon.UI.Silver.Internal
 
         #region Drawer
         public const string DrawerTemplate = nameof(DrawerTemplate);
+        #endregion
+
+        #region ProgressBar
+        public const string ProgressBarProgressBarStandardTemplate = nameof(ProgressBarProgressBarStandardTemplate);
+
+        public const string ProgressBarProgressBarRingTemplate = nameof(ProgressBarProgressBarRingTemplate);
+
+        public const string ProgressBarWidthOrHeightConverter = nameof(ProgressBarWidthOrHeightConverter);
+
+        public const string ProgressBarPercentTextConverter = nameof(ProgressBarPercentTextConverter);
+
+        public const string ProgressBarPercentTextForegroundConverter = nameof(ProgressBarPercentTextForegroundConverter);
+
+        public const string ProgressBarProgressBarIndeterminateMarginTemplate = nameof(ProgressBarProgressBarIndeterminateMarginTemplate);
+
+        public const string ProgressBarProgressBarRingArcConverter = nameof(ProgressBarProgressBarRingArcConverter);
         #endregion
     }
 }

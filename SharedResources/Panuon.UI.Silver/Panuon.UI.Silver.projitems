@@ -77,6 +77,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\ProgressBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\RadioButtonGroup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -218,6 +222,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\DataGridHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\GroupBoxHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ListBoxHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ProgressBarHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ToggleButtonHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\RepeatButtonHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ButtonHelper.cs" />

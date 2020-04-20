@@ -45,7 +45,7 @@ namespace Panuon.UI.Silver.Internal.Converters
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
         {
-            return new object[] { DependencyProperty.UnsetValue };
+            return new object[] { DependencyProperty.UnsetValue, DependencyProperty.UnsetValue, DependencyProperty.UnsetValue };
         }
     }
 

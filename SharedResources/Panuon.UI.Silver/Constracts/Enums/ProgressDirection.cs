@@ -8,7 +8,7 @@ namespace Panuon.UI.Silver
     {
         LeftToRight,
         RightToLeft,
-        BottopToTop,
+        BottomToTop,
         TopToBottom,
     }
 }

@@ -1,0 +1,531 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver"
+                    xmlns:i="clr-namespace:Panuon.UI.Silver.Internal"
+                    xmlns:ic="clr-namespace:Panuon.UI.Silver.Internal.Controls"
+                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/InternalResources.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Resources.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <ControlTemplate x:Key="{x:Static i:ResourceKeys.ProgressBarProgressBarStandardTemplate}"
+                     TargetType="ProgressBar">
+        <Grid Background="Transparent">
+            <Grid.OpacityMask>
+                <VisualBrush>
+                    <VisualBrush.Visual>
+                        <Border Background="Black"
+                                Height="{Binding ActualHeight,RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                Width="{Binding ActualWidth,RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                CornerRadius="{Binding Path=(local:ProgressBarHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
+                    </VisualBrush.Visual>
+                </VisualBrush>
+            </Grid.OpacityMask>
+            <Rectangle x:Name="RectTrack"
+                       Fill="{TemplateBinding Background}" />
+            <Rectangle x:Name="RectIndicator"
+                       Fill="{TemplateBinding Foreground}" />
+            <Border BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{Binding Path=(local:ProgressBarHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
+            <TextBlock x:Name="TxtPercent"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Visibility="Collapsed" />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsIndeterminate"
+                               Value="False" />
+                    <Condition Property="local:ProgressBarHelper.IsPercentVisible"
+                               Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="TxtPercent"
+                        Property="Visibility"
+                        Value="Visible" />
+                <Setter TargetName="TxtPercent"
+                        Property="Text">
+                    <Setter.Value>
+                        <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.ProgressBarPercentTextConverter}}">
+                            <Binding Path="Minimum"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                            <Binding Path="Maximum"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                            <Binding Path="Value"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                            <Binding Path="(local:ProgressBarHelper.PercentStringFormat)"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                        </MultiBinding>
+                    </Setter.Value>
+                </Setter>
+                <Setter TargetName="TxtPercent"
+                        Property="Foreground">
+                    <Setter.Value>
+                        <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.ProgressBarPercentTextForegroundConverter}}">
+                            <Binding Path="(local:ProgressBarHelper.Direction)"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                            <Binding Path="Minimum"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                            <Binding Path="Maximum"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                            <Binding Path="Value"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                            <Binding Path="ActualWidth"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                            <Binding Path="ActualHeight"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                            <Binding Path="ActualWidth"
+                                     RelativeSource="{RelativeSource Self}"
+                                     Mode="OneWay" />
+                            <Binding Path="ActualHeight"
+                                     RelativeSource="{RelativeSource Self}"
+                                     Mode="OneWay" />
+                            <Binding Path="Foreground"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                        </MultiBinding>
+                    </Setter.Value>
+                </Setter>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsIndeterminate"
+                               Value="False" />
+                    <Condition Property="local:ProgressBarHelper.Direction"
+                               Value="LeftToRight" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="RectIndicator"
+                        Property="HorizontalAlignment"
+                        Value="Left" />
+                <Setter TargetName="RectIndicator"
+                        Property="Width">
+                    <Setter.Value>
+                        <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.ProgressBarWidthOrHeightConverter}}">
+                            <Binding Path="Minimum"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                            <Binding Path="Maximum"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                            <Binding Path="Value"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                            <Binding Path="ActualWidth"
+                                     ElementName="RectTrack"
+                                     Mode="OneWay" />
+                        </MultiBinding>
+                    </Setter.Value>
+                </Setter>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsIndeterminate"
+                               Value="False" />
+                    <Condition Property="local:ProgressBarHelper.Direction"
+                               Value="RightToLeft" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="RectIndicator"
+                        Property="HorizontalAlignment"
+                        Value="Right" />
+                <Setter TargetName="RectIndicator"
+                        Property="Width">
+                    <Setter.Value>
+                        <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.ProgressBarWidthOrHeightConverter}}">
+                            <Binding Path="Minimum"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                            <Binding Path="Maximum"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                            <Binding Path="Value"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                            <Binding Path="ActualWidth"
+                                     ElementName="RectTrack"
+                                     Mode="OneWay" />
+                        </MultiBinding>
+                    </Setter.Value>
+                </Setter>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsIndeterminate"
+                               Value="False" />
+                    <Condition Property="local:ProgressBarHelper.Direction"
+                               Value="BottomToTop" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="RectIndicator"
+                        Property="VerticalAlignment"
+                        Value="Bottom" />
+                <Setter TargetName="RectIndicator"
+                        Property="Height">
+                    <Setter.Value>
+                        <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.ProgressBarWidthOrHeightConverter}}">
+                            <Binding Path="Minimum"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                            <Binding Path="Maximum"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                            <Binding Path="Value"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                            <Binding Path="ActualHeight"
+                                     ElementName="RectTrack"
+                                     Mode="OneWay" />
+                        </MultiBinding>
+                    </Setter.Value>
+                </Setter>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsIndeterminate"
+                               Value="False" />
+                    <Condition Property="local:ProgressBarHelper.Direction"
+                               Value="TopToBottom" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="RectIndicator"
+                        Property="VerticalAlignment"
+                        Value="Top" />
+                <Setter TargetName="RectIndicator"
+                        Property="Height">
+                    <Setter.Value>
+                        <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.ProgressBarWidthOrHeightConverter}}">
+                            <Binding Path="Minimum"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                            <Binding Path="Maximum"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                            <Binding Path="Value"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                            <Binding Path="ActualHeight"
+                                     ElementName="RectTrack"
+                                     Mode="OneWay" />
+                        </MultiBinding>
+                    </Setter.Value>
+                </Setter>
+            </MultiTrigger>
+            <Trigger Property="IsIndeterminate"
+                     Value="True">
+                <Trigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard RepeatBehavior="Forever">
+                            <DoubleAnimation Storyboard.TargetProperty="(local:ProgressBarHelper.IndeterminatePercent)"
+                                             To="0.7"
+                                             Duration="0:0:2"
+                                             AutoReverse="True" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="(local:ProgressBarHelper.IndeterminatePercent)"
+                                             Duration="0:0:0" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.ExitActions>
+                <Setter TargetName="RectIndicator"
+                        Property="Margin">
+                    <Setter.Value>
+                        <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.ProgressBarProgressBarIndeterminateMarginTemplate}}">
+                            <Binding Path="(local:ProgressBarHelper.Direction)"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                            <Binding Path="ActualWidth"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                            <Binding Path="ActualHeight"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                            <Binding Path="(local:ProgressBarHelper.IndeterminatePercent)"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                        </MultiBinding>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsIndeterminate"
+                               Value="True" />
+                    <Condition Property="local:ProgressBarHelper.Direction"
+                               Value="LeftToRight" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="RectIndicator"
+                        Property="HorizontalAlignment"
+                        Value="Left" />
+                <Setter TargetName="RectIndicator"
+                        Property="Width"
+                        Value="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay, Converter={StaticResource {x:Static rs:Converters.DoubleMultiplyByConverter}}, ConverterParameter=0.3}" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsIndeterminate"
+                               Value="True" />
+                    <Condition Property="local:ProgressBarHelper.Direction"
+                               Value="RightToLeft" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="RectIndicator"
+                        Property="HorizontalAlignment"
+                        Value="Right" />
+                <Setter TargetName="RectIndicator"
+                        Property="Width"
+                        Value="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay, Converter={StaticResource {x:Static rs:Converters.DoubleMultiplyByConverter}}, ConverterParameter=0.3}" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsIndeterminate"
+                               Value="True" />
+                    <Condition Property="local:ProgressBarHelper.Direction"
+                               Value="BottomToTop" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="RectIndicator"
+                        Property="VerticalAlignment"
+                        Value="Bottom" />
+                <Setter TargetName="RectIndicator"
+                        Property="Height"
+                        Value="{Binding ActualHeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay, Converter={StaticResource {x:Static rs:Converters.DoubleMultiplyByConverter}}, ConverterParameter=0.3}" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsIndeterminate"
+                               Value="True" />
+                    <Condition Property="local:ProgressBarHelper.Direction"
+                               Value="TopToBottom" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="RectIndicator"
+                        Property="VerticalAlignment"
+                        Value="Top" />
+                <Setter TargetName="RectIndicator"
+                        Property="Height"
+                        Value="{Binding ActualHeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay, Converter={StaticResource {x:Static rs:Converters.DoubleMultiplyByConverter}}, ConverterParameter=0.3}" />
+            </MultiTrigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="{x:Static i:ResourceKeys.ProgressBarProgressBarRingTemplate}"
+                     TargetType="ProgressBar">
+        <Grid>
+            <Ellipse Stroke="{TemplateBinding BorderBrush}"
+                     Fill="{TemplateBinding Background}"
+                     StrokeThickness="{TemplateBinding BorderThickness,Converter={StaticResource {x:Static i:ResourceKeys.ThicknessToDoubleConverter}}}" />
+            <Path x:Name="PathIndicator"
+                  Stroke="{TemplateBinding Foreground}"
+                  StrokeThickness="{TemplateBinding BorderThickness,Converter={StaticResource ThicknessToDoubleConverter}}"
+                  StrokeStartLineCap="Round"
+                  StrokeEndLineCap="Round"
+                  RenderTransformOrigin="0.5,0.5">
+                <Path.Data>
+                    <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.ProgressBarProgressBarRingArcConverter}}">
+                        <Binding Path="ActualWidth"
+                                 RelativeSource="{RelativeSource AncestorType=ProgressBar}"></Binding>
+                        <Binding Path="ActualHeight"
+                                 RelativeSource="{RelativeSource AncestorType=ProgressBar}"></Binding>
+                        <Binding Path="BorderThickness"
+                                 RelativeSource="{RelativeSource AncestorType=ProgressBar}"></Binding>
+                        <Binding Path="Minimum"
+                                 RelativeSource="{RelativeSource AncestorType=ProgressBar}"></Binding>
+                        <Binding Path="Maximum"
+                                 RelativeSource="{RelativeSource AncestorType=ProgressBar}"></Binding>
+                        <Binding Path="Value"
+                                 RelativeSource="{RelativeSource AncestorType=ProgressBar}"></Binding>
+                    </MultiBinding>
+                </Path.Data>
+                <Path.RenderTransform>
+                    <RotateTransform x:Name="rotate" />
+                </Path.RenderTransform>
+            </Path>
+            <TextBlock x:Name="TxtPercent"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Visibility="Collapsed" />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsIndeterminate"
+                               Value="False" />
+                    <Condition Property="local:ProgressBarHelper.IsPercentVisible"
+                               Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="TxtPercent"
+                        Property="Visibility"
+                        Value="Visible" />
+                <Setter TargetName="TxtPercent"
+                        Property="Text">
+                    <Setter.Value>
+                        <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.ProgressBarPercentTextConverter}}">
+                            <Binding Path="Minimum"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                            <Binding Path="Maximum"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                            <Binding Path="Value"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                            <Binding Path="(local:ProgressBarHelper.PercentStringFormat)"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                        </MultiBinding>
+                    </Setter.Value>
+                </Setter>
+            </MultiTrigger>
+            <Trigger Property="local:ProgressBarHelper.Direction"
+                     Value="RightToLeft">
+                <Trigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="rotate"
+                                                           Storyboard.TargetProperty="Angle"
+                                                           Duration="0:0:0">
+                                <LinearDoubleKeyFrame Value="90"
+                                                      KeyTime="0:0:0" />
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="rotate"
+                                                           Storyboard.TargetProperty="Angle"
+                                                           Duration="0:0:0" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.ExitActions>
+            </Trigger>
+            <Trigger Property="local:ProgressBarHelper.Direction"
+                     Value="BottomToTop">
+                <Trigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="rotate"
+                                                           Storyboard.TargetProperty="Angle"
+                                                           Duration="0:0:0">
+                                <LinearDoubleKeyFrame Value="180"
+                                                      KeyTime="0:0:0" />
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="rotate"
+                                                           Storyboard.TargetProperty="Angle"
+                                                           Duration="0:0:0" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.ExitActions>
+            </Trigger>
+            <Trigger Property="local:ProgressBarHelper.Direction"
+                     Value="LeftToRight">
+                <Trigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="rotate"
+                                                           Storyboard.TargetProperty="Angle"
+                                                           Duration="0:0:0">
+                                <LinearDoubleKeyFrame Value="270"
+                                                      KeyTime="0:0:0" />
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="rotate"
+                                                           Storyboard.TargetProperty="Angle"
+                                                           Duration="0:0:0" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.ExitActions>
+            </Trigger>
+            <Trigger Property="IsIndeterminate"
+                     Value="True">
+                <Setter TargetName="PathIndicator"
+                        Property="Data">
+                    <Setter.Value>
+                        <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.ProgressBarProgressBarRingArcConverter}}">
+                            <Binding Path="ActualWidth"
+                                     RelativeSource="{RelativeSource AncestorType=ProgressBar}"></Binding>
+                            <Binding Path="ActualHeight"
+                                     RelativeSource="{RelativeSource AncestorType=ProgressBar}"></Binding>
+                            <Binding Path="BorderThickness"
+                                     RelativeSource="{RelativeSource AncestorType=ProgressBar}"></Binding>
+                        </MultiBinding>
+                    </Setter.Value>
+                </Setter>
+                <Trigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="rotate"
+                                             Storyboard.TargetProperty="Angle"
+                                             To="360"
+                                             RepeatBehavior="Forever"
+                                             Duration="0:0:2" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="rotate"
+                                             Storyboard.TargetProperty="Angle"
+                                             Duration="0:0:0" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.ExitActions>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style TargetType="ProgressBar">
+        <Setter Property="local:ProgressBarHelper.AnimationDuration"
+                Value="0:0:0.5" />
+        <Setter Property="local:ProgressBarHelper.AnimationEase"
+                Value="CubicOut" />
+        <Setter Property="Template"
+                Value="{StaticResource {x:Static i:ResourceKeys.ProgressBarProgressBarStandardTemplate}}" />
+        <Setter Property="Foreground"
+                Value="DimGray" />
+        <Setter Property="Background"
+                Value="#EEEEEE" />
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Style.Triggers>
+            <Trigger Property="local:ProgressBarHelper.ProgressBarStyle"
+                     Value="Ring">
+                <Setter Property="local:ProgressBarHelper.Direction"
+                        Value="TopToBottom" />
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static i:ResourceKeys.ProgressBarProgressBarRingTemplate}}" />
+                <Setter Property="BorderThickness"
+                        Value="5" />
+                <Setter Property="BorderBrush"
+                        Value="#EEEEEE" />
+                <Setter Property="Background"
+                        Value="Transparent" />
+                <Setter Property="Foreground"
+                        Value="DimGray" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

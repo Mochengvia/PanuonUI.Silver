@@ -72,14 +72,14 @@
                        Margin="0,0,10,0"
                        Foreground="{Binding MessageBoxIcon, Converter={StaticResource {x:Static i:ResourceKeys.MsgBoxIconForegroundConverter}}, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
                        Text="{Binding MessageBoxIcon, Converter={StaticResource {x:Static i:ResourceKeys.MsgBoxIconConverter}}, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
-                       FontSize="{Binding ContentHeight, Converter={StaticResource {x:Static i:ResourceKeys.Minus5Converter}}, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}" />
+                       FontSize="{Binding ContentHeight, Converter={StaticResource {x:Static rs:Converters.DoubleMinusConverter}}, ConverterParameter=5, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}" />
             <Grid Grid.Column="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <TextBlock FontWeight="Bold"
-                           FontSize="{Binding FontSize, Converter={StaticResource {x:Static i:ResourceKeys.Add5Converter}}, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
+                           FontSize="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=5, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
                            Text="{Binding Title, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}" />
                 <TextBox Grid.Row="1"
                          Style="{StaticResource {x:Static i:ResourceKeys.MsgBoxTextBoxStyle}}"
@@ -189,7 +189,7 @@
                        Margin="0,0,10,0"
                        Foreground="{Binding MessageBoxIcon, Converter={StaticResource {x:Static i:ResourceKeys.MsgBoxIconForegroundConverter}}, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
                        Text="{Binding MessageBoxIcon, Converter={StaticResource {x:Static i:ResourceKeys.MsgBoxIconConverter}}, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
-                       FontSize="{Binding ContentHeight, Converter={StaticResource {x:Static i:ResourceKeys.Minus5Converter}}, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}" />
+                       FontSize="{Binding ContentHeight, Converter={StaticResource {x:Static rs:Converters.DoubleMinusConverter}}, ConverterParameter=5, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}" />
             <TextBox Grid.Column="2"
                      Style="{StaticResource {x:Static i:ResourceKeys.MsgBoxTextBoxStyle}}"
                      Width="{Binding ContentWidth, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
@@ -291,12 +291,12 @@
                    Visibility="{Binding Text, Converter={StaticResource {x:Static i:ResourceKeys.NullToCollapseConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                    Foreground="{Binding MessageBoxIcon, Converter={StaticResource {x:Static i:ResourceKeys.MsgBoxIconForegroundConverter}}, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
                    Text="{Binding MessageBoxIcon, Converter={StaticResource {x:Static i:ResourceKeys.MsgBoxIconConverter}}, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
-                   FontSize="{Binding ContentHeight, Converter={StaticResource {x:Static i:ResourceKeys.Minus5Converter}}, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
+                   FontSize="{Binding ContentHeight, Converter={StaticResource {x:Static rs:Converters.DoubleMinusConverter}}, ConverterParameter=5, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
                    Margin="0,0,0,15" />
         <TextBlock Grid.Row="1"
                    HorizontalAlignment="Center"
                    FontWeight="Bold"
-                   FontSize="{Binding FontSize, Converter={StaticResource {x:Static i:ResourceKeys.Add5Converter}}, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
+                   FontSize="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=5, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
                    Text="{Binding Title, RelativeSource={RelativeSource AncestorType=ic:MsgBox}, Mode=OneWay}"
                    Margin="0,0,0,15" />
         <TextBox Grid.Row="2"

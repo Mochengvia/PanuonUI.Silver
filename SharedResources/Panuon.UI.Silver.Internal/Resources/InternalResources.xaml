@@ -8,6 +8,7 @@
                     xmlns:icv="clr-namespace:Panuon.UI.Silver.Internal.Converters">
 
     <!--Converters-->
+    
     <icv:CloneConverter x:Key="{x:Static i:ResourceKeys.CloneConverter}" />
     <icv:TrueToFalseConverter x:Key="{x:Static i:ResourceKeys.TrueToFalseConverter}" />
     <icv:NullToCollapseConverter x:Key="{x:Static i:ResourceKeys.NullToCollapseConverter}" />
@@ -20,29 +21,6 @@
     <icv:GridLengthConverter x:Key="{x:Static i:ResourceKeys.GridLengthConverter}" />
     <icv:GridLengthStringToDoubleConverter x:Key="{x:Static i:ResourceKeys.GridLengthStringToDoubleConverter}" />
     <icv:GridLengthIsAbsoluteOrAutoConverter x:Key="{x:Static i:ResourceKeys.GridLengthIsAbsoluteOrAutoConverter}" />
-    <icv:DividedBy2Converter x:Key="{x:Static i:ResourceKeys.DividedBy2Converter}" /> 
-    <icv:DividedByMinus2Converter x:Key="{x:Static i:ResourceKeys.DividedByMinus2Converter}" />
-    <icv:DividedBy2_5Converter x:Key="{x:Static i:ResourceKeys.DividedBy2_5Converter}" />
-    <icv:DividedBy3Converter x:Key="{x:Static i:ResourceKeys.DividedBy3Converter}" />
-    <icv:DividedBy4Converter x:Key="{x:Static i:ResourceKeys.DividedBy4Converter}" />
-    <icv:DividedBy5Converter x:Key="{x:Static i:ResourceKeys.DividedBy5Converter}" />
-    <icv:DividedBy6Converter x:Key="{x:Static i:ResourceKeys.DividedBy6Converter}" />
-    <icv:DividedBy7Converter x:Key="{x:Static i:ResourceKeys.DividedBy7Converter}" />
-    <icv:DividedBy10Converter x:Key="{x:Static i:ResourceKeys.DividedBy10Converter}" />
-    <icv:DividedBy12Converter x:Key="{x:Static i:ResourceKeys.DividedBy12Converter}" />
-    <icv:DividedBy15Converter x:Key="{x:Static i:ResourceKeys.DividedBy15Converter}" />
-    <icv:Add3Converter x:Key="{x:Static i:ResourceKeys.Add3Converter}" />
-    <icv:Add5Converter x:Key="{x:Static i:ResourceKeys.Add5Converter}" />
-    <icv:Add7Converter x:Key="{x:Static i:ResourceKeys.Add7Converter}" />
-    <icv:Add10Converter x:Key="{x:Static i:ResourceKeys.Add10Converter}" />
-    <icv:Add16Converter x:Key="{x:Static i:ResourceKeys.Add16Converter}" />
-    <icv:Minus0_5Converter x:Key="{x:Static i:ResourceKeys.Minus0_5Converter}" />
-    <icv:Minus1Converter x:Key="{x:Static i:ResourceKeys.Minus1Converter}" />
-    <icv:Minus2Converter x:Key="{x:Static i:ResourceKeys.Minus2Converter}" />
-    <icv:Minus3Converter x:Key="{x:Static i:ResourceKeys.Minus3Converter}" />
-    <icv:Minus5Converter x:Key="{x:Static i:ResourceKeys.Minus5Converter}" />
-    <icv:Minus7Converter x:Key="{x:Static i:ResourceKeys.Minus7Converter}" />
-    <icv:Minus10Converter x:Key="{x:Static i:ResourceKeys.Minus10Converter}" />
     <icv:IsGreaterThanZeroConverter x:Key="{x:Static i:ResourceKeys.IsGreaterThanZeroConverter}" />
     <icv:IsLessThanZeroConverter x:Key="{x:Static i:ResourceKeys.IsLessThanZeroConverter}" />
     <icv:ArcConverter x:Key="{x:Static i:ResourceKeys.ArcConverter}" />
@@ -53,8 +31,15 @@
     <icv:DoubleMinConverter x:Key="{x:Static i:ResourceKeys.DoubleMinConverter}" />
     <icv:DoubleEqualsConverter x:Key="{x:Static i:ResourceKeys.DoubleEqualsConverter}" />
     <icv:DoubleLimitMin1Converter x:Key="{x:Static i:ResourceKeys.DoubleLimitMin1Converter}" />
+    <icv:DoubleToLeftMarginConverter x:Key="{x:Static i:ResourceKeys.DoubleToLeftMarginConverter}" />
     <icv:DoubleToRightMarginConverter x:Key="{x:Static i:ResourceKeys.DoubleToRightMarginConverter}" />
+    <icv:DoubleToTopMarginConverter x:Key="{x:Static i:ResourceKeys.DoubleToTopMarginConverter}" />
+    <icv:DoubleToBottomMarginConverter x:Key="{x:Static i:ResourceKeys.DoubleToBottomMarginConverter}" />
     <icv:CornerRadiusToDoubleConverter x:Key="{x:Static i:ResourceKeys.CornerRadiusToDoubleConverter}" />
+    <icv:CornerRadiusWithLeftOnlyConverter x:Key="{x:Static i:ResourceKeys.CornerRadiusWithLeftOnlyConverter}" />
+    <icv:CornerRadiusWithRightOnlyConverter x:Key="{x:Static i:ResourceKeys.CornerRadiusWithRightOnlyConverter}" />
+    <icv:CornerRadiusWithTopOnlyConverter x:Key="{x:Static i:ResourceKeys.CornerRadiusWithTopOnlyConverter}" />
+    <icv:CornerRadiusWithBottomOnlyConverter x:Key="{x:Static i:ResourceKeys.CornerRadiusWithBottomOnlyConverter}" />
     <icv:ThicknessToDoubleConverter x:Key="{x:Static i:ResourceKeys.ThicknessToDoubleConverter}" />
     <icv:ThicknessWithoutTopConverter x:Key="{x:Static i:ResourceKeys.ThicknessWithoutTopConverter}" />
     <icv:ThicknessWithTopOnlyConverter x:Key="{x:Static i:ResourceKeys.ThicknessWithTopOnlyConverter}" />
@@ -74,6 +59,11 @@
     <icv:MsgBoxButtonIsDefaultConverter x:Key="{x:Static i:ResourceKeys.MsgBoxButtonIsDefaultConverter}" />
     <icv:MsgBoxButtonVisibilityConverter x:Key="{x:Static i:ResourceKeys.MsgBoxButtonVisibilityConverter}" />
     <icv:MsgBoxStackPanelFlowDirectionConverter x:Key="{x:Static i:ResourceKeys.MsgBoxStackPanelFlowDirectionConverter}" />
+    <icv:ProgressBarWidthOrHeightConverter x:Key="{x:Static i:ResourceKeys.ProgressBarWidthOrHeightConverter}" />
+    <icv:ProgressBarPercentTextConverter x:Key="{x:Static i:ResourceKeys.ProgressBarPercentTextConverter}" />
+    <icv:ProgressBarPercentTextForegroundConverter x:Key="{x:Static i:ResourceKeys.ProgressBarPercentTextForegroundConverter}" />
+    <icv:ProgressBarProgressBarIndeterminateMarginTemplate x:Key="{x:Static i:ResourceKeys.ProgressBarProgressBarIndeterminateMarginTemplate}" />
+    <icv:ProgressBarProgressBarRingArcConverter x:Key="{x:Static i:ResourceKeys.ProgressBarProgressBarRingArcConverter}" />
     <!--======Common======-->
     <Color x:Key="{x:Static i:ResourceKeys.DefaultForegroundColor}">#3E3E3E</Color>
 

@@ -15,7 +15,7 @@
         <Setter Property="Width"
                 Value="{Binding Thickness, RelativeSource={RelativeSource AncestorType=local:Loading},Mode=OneWay}" />
         <Setter Property="Height"
-                Value="{Binding ActualHeight,RelativeSource={RelativeSource AncestorType=local:Loading},Converter={StaticResource {x:Static i:ResourceKeys.DividedBy4Converter}},Mode=OneWay}" />
+                Value="{Binding ActualHeight,RelativeSource={RelativeSource AncestorType=local:Loading},Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=4,Mode=OneWay}" />
         <Setter Property="RadiusX"
                 Value="{Binding CornerRadius,RelativeSource={RelativeSource AncestorType=local:Loading},Mode=OneWay}" />
         <Setter Property="RadiusY"
@@ -2096,7 +2096,7 @@
 
     <Style TargetType="{x:Type local:Loading}">
         <Setter Property="Thickness"
-                Value="{Binding ActualWidth,RelativeSource={RelativeSource Self},Converter={StaticResource {x:Static i:ResourceKeys.DividedBy15Converter}},Mode=OneWay}" />
+                Value="{Binding ActualWidth,RelativeSource={RelativeSource Self},Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=15,Mode=OneWay}" />
         <Setter Property="CornerRadius"
                 Value="0" />
         <Setter Property="Template"
@@ -2109,7 +2109,7 @@
             <Trigger Property="LoadingStyle"
                      Value="Wave">
                 <Setter Property="Thickness"
-                        Value="{Binding ActualWidth,RelativeSource={RelativeSource Self},Converter={StaticResource {x:Static i:ResourceKeys.DividedBy7Converter}},Mode=OneWay}" />
+                        Value="{Binding ActualWidth,RelativeSource={RelativeSource Self},Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=7,Mode=OneWay}" />
                 <Setter Property="Template"
                         Value="{StaticResource {x:Static i:ResourceKeys.LoadingWaveTemplate}}" />
             </Trigger>
@@ -2118,21 +2118,21 @@
                 <Setter Property="Percent"
                         Value="0.5" />
                 <Setter Property="Thickness"
-                        Value="{Binding ActualWidth,RelativeSource={RelativeSource Self},Converter={StaticResource {x:Static i:ResourceKeys.DividedBy12Converter}},Mode=OneWay}" />
+                        Value="{Binding ActualWidth,RelativeSource={RelativeSource Self},Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=12,Mode=OneWay}" />
                 <Setter Property="Template"
                         Value="{StaticResource {x:Static i:ResourceKeys.LoadingRingTemplate}}" />
             </Trigger>
             <Trigger Property="LoadingStyle"
                      Value="Ring2">
                 <Setter Property="Thickness"
-                        Value="{Binding ActualWidth,RelativeSource={RelativeSource Self},Converter={StaticResource {x:Static i:ResourceKeys.DividedBy12Converter}},Mode=OneWay}" />
+                        Value="{Binding ActualWidth,RelativeSource={RelativeSource Self},Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=12,Mode=OneWay}" />
                 <Setter Property="Template"
                         Value="{StaticResource {x:Static i:ResourceKeys.LoadingRing2Template}}" />
             </Trigger>
             <Trigger Property="LoadingStyle"
                      Value="Classic">
                 <Setter Property="Thickness"
-                        Value="{Binding ActualWidth,RelativeSource={RelativeSource Self},Converter={StaticResource {x:Static i:ResourceKeys.DividedBy10Converter}}}" />
+                        Value="{Binding ActualWidth,RelativeSource={RelativeSource Self},Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=10}" />
                 <Setter Property="Template"
                         Value="{StaticResource {x:Static i:ResourceKeys.LoadingClassicTemplate}}" />
             </Trigger>

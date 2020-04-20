@@ -14,9 +14,9 @@
            TargetType="{x:Type local:Loading}"
            BasedOn="{StaticResource {x:Type local:Loading}}">
         <Setter Property="Height"
-                Value="{Binding FontSize, Converter={StaticResource {x:Static i:ResourceKeys.Add5Converter}},RelativeSource={RelativeSource  AncestorType=Button},Mode=OneWay}" />
+                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=5,RelativeSource={RelativeSource  AncestorType=Button},Mode=OneWay}" />
         <Setter Property="Width"
-                Value="{Binding FontSize, Converter={StaticResource {x:Static i:ResourceKeys.Add5Converter}},RelativeSource={RelativeSource  AncestorType=Button},Mode=OneWay}" />
+                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=5,RelativeSource={RelativeSource  AncestorType=Button},Mode=OneWay}" />
         <Setter Property="Foreground"
                 Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button},Mode=OneWay}" />
     </Style>

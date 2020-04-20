@@ -86,12 +86,12 @@
                         <Button x:Name="BtnMonth"
                                 Style="{TemplateBinding ControlButtonStyle}"
                                 Margin="0,0,15,0"
-                                FontSize="{Binding FontSize, Converter={StaticResource {x:Static i:ResourceKeys.Add3Converter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                FontSize="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=3, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                 Command="{Binding CalendarXMonthButtonCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                 CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                 Content="{TemplateBinding MonthButton}" />
                         <Button Style="{TemplateBinding ControlButtonStyle}"
-                                FontSize="{Binding FontSize, Converter={StaticResource {x:Static i:ResourceKeys.Add3Converter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                FontSize="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=3, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                 Command="{Binding CalendarXYearButtonCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                 CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                 Content="{TemplateBinding YearButton}" />
@@ -125,7 +125,7 @@
                             <RowDefinition />
                         </Grid.RowDefinitions>
                         <ItemsControl x:Name="IcWeeks"
-                                      Height="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy7Converter}}, ElementName=GrdDays, Mode=OneWay}"
+                                      Height="{Binding ActualHeight, Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=7, ElementName=GrdDays, Mode=OneWay}"
                                       ItemsSource="{Binding Weeks, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
@@ -134,7 +134,7 @@
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Border Width="{Binding ActualWidth, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy7Converter}}, ElementName=GrdDays, Mode=OneWay}">
+                                    <Border Width="{Binding ActualWidth, Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=7, ElementName=GrdDays, Mode=OneWay}">
                                         <TextBlock VerticalAlignment="Center"
                                                    HorizontalAlignment="Center"
                                                    Text="{Binding DisplayName}"
@@ -159,8 +159,8 @@
                                                         IsChecked="{Binding IsChecked, Mode=OneWay}"
                                                         IsEnabled="{Binding IsEnabled, Mode=OneWay}"
                                                         Content="{Binding DisplayName, Mode=OneWay}"
-                                                        Height="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy7Converter}}, ElementName=GrdDays, Mode=OneWay}"
-                                                        Width="{Binding ActualWidth, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy7Converter}}, ElementName=GrdDays, Mode=OneWay}" />
+                                                        Height="{Binding ActualHeight, Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=7, ElementName=GrdDays, Mode=OneWay}"
+                                                        Width="{Binding ActualWidth, Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=7, ElementName=GrdDays, Mode=OneWay}" />
                                     <DataTemplate.Triggers>
                                         <DataTrigger Binding="{Binding IsNotCurrentMonth}"
                                                      Value="True">
@@ -195,8 +195,8 @@
                                                         IsChecked="{Binding IsChecked, Mode=OneWay}"
                                                         IsEnabled="{Binding IsEnabled, Mode=OneWay}"
                                                         Content="{Binding DisplayName, Mode=OneWay}"
-                                                        Height="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy4Converter}}, ElementName=GrdMonths, Mode=OneWay}"
-                                                        Width="{Binding ActualWidth, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy3Converter}}, ElementName=GrdMonths, Mode=OneWay}" />
+                                                        Height="{Binding ActualHeight, Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=4, ElementName=GrdMonths, Mode=OneWay}"
+                                                        Width="{Binding ActualWidth, Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=3, ElementName=GrdMonths, Mode=OneWay}" />
                                     <DataTemplate.Triggers>
                                         <DataTrigger Binding="{Binding IsNotCurrentMonth}"
                                                      Value="True">
@@ -232,8 +232,8 @@
                                                         IsChecked="{Binding IsChecked, Mode=OneWay}"
                                                         IsEnabled="{Binding IsEnabled, Mode=OneWay}"
                                                         Content="{Binding DisplayName, Mode=OneWay}"
-                                                        Height="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy5Converter}}, ElementName=GrdYears, Mode=OneWay}"
-                                                        Width="{Binding ActualWidth, Converter={StaticResource {x:Static i:ResourceKeys.DividedBy3Converter}}, ElementName=GrdYears, Mode=OneWay}" />
+                                                        Height="{Binding ActualHeight, Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=5, ElementName=GrdYears, Mode=OneWay}"
+                                                        Width="{Binding ActualWidth, Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=3, ElementName=GrdYears, Mode=OneWay}" />
                                     <DataTemplate.Triggers>
                                         <DataTrigger Binding="{Binding IsNotCurrentMonth}"
                                                      Value="True">
