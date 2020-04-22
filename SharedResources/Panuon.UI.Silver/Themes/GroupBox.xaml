@@ -37,7 +37,7 @@
                 <Border VerticalAlignment="Bottom"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{Binding BorderThickness, Converter={StaticResource {x:Static i:ResourceKeys.ThicknessWithBottomOnlyConverter}},RelativeSource={RelativeSource AncestorType=GroupBox}, Mode=OneWay}" />
-                <Grid>
+                <Grid Margin="{TemplateBinding Padding}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition />

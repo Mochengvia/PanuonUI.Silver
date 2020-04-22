@@ -64,6 +64,9 @@
     <icv:ProgressBarPercentTextForegroundConverter x:Key="{x:Static i:ResourceKeys.ProgressBarPercentTextForegroundConverter}" />
     <icv:ProgressBarProgressBarIndeterminateMarginTemplate x:Key="{x:Static i:ResourceKeys.ProgressBarProgressBarIndeterminateMarginTemplate}" />
     <icv:ProgressBarProgressBarRingArcConverter x:Key="{x:Static i:ResourceKeys.ProgressBarProgressBarRingArcConverter}" />
+    <icv:ProgressBarProgressBarWavePathConverter x:Key="{x:Static i:ResourceKeys.ProgressBarProgressBarWavePathConverter}" />
+    <icv:ProgressBarProgressBarWaveMarginConverter x:Key="{x:Static i:ResourceKeys.ProgressBarProgressBarWaveMarginConverter}" />
+    
     <!--======Common======-->
     <Color x:Key="{x:Static i:ResourceKeys.DefaultForegroundColor}">#3E3E3E</Color>
 

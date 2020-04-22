@@ -56,7 +56,7 @@ namespace Panuon.UI.Silver.Internal.Converters
             var totalWidth = ((direction == ProgressDirection.LeftToRight || direction == ProgressDirection.RightToLeft) ? values[4] : values[5]) as double? ?? 0;
             var actualWidth = ((direction == ProgressDirection.LeftToRight || direction == ProgressDirection.RightToLeft) ? values[6] : values[7]) as double? ?? 0;
             var foreground = values[8] as Brush;
-            if(totalWidth == 0 || actualWidth == 0) 
+            if (totalWidth == 0 || actualWidth == 0)
             {
                 return foreground;
             }
@@ -64,11 +64,11 @@ namespace Panuon.UI.Silver.Internal.Converters
             var totalPercent = ((value - min) / (max - min));
             var percentWidth = totalWidth * totalPercent;
             var innerWidth = percentWidth - ((totalWidth - actualWidth) / 2);
-            if(innerWidth <= 0)
+            if (innerWidth <= 0)
             {
                 return foreground;
             }
-            else if(innerWidth >= actualWidth)
+            else if (innerWidth >= actualWidth)
             {
                 return Brushes.White;
             }
@@ -77,7 +77,7 @@ namespace Panuon.UI.Silver.Internal.Converters
             switch (direction)
             {
                 case ProgressDirection.RightToLeft:
-                    return BrushUtils.GetStackedVisualBrush(foreground, Brushes.White, System.Windows.Controls.Orientation.Horizontal, 1- innerPercent);
+                    return BrushUtils.GetStackedVisualBrush(foreground, Brushes.White, System.Windows.Controls.Orientation.Horizontal, 1 - innerPercent);
                 case ProgressDirection.BottomToTop:
                     return BrushUtils.GetStackedVisualBrush(foreground, Brushes.White, System.Windows.Controls.Orientation.Vertical, 1 - innerPercent);
                 case ProgressDirection.TopToBottom:
@@ -169,5 +169,73 @@ namespace Panuon.UI.Silver.Internal.Converters
             return new object[] { DependencyProperty.UnsetValue };
         }
     }
-    
+
+    internal class ProgressBarProgressBarWavePathConverter : IMultiValueConverter
+    {
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        {
+            var direction = values[0] as ProgressDirection? ?? ProgressDirection.LeftToRight;
+            var min = values[1] as double? ?? 0;
+            var max = values[2] as double? ?? 0;
+            var value = values[3] as double? ?? 0;
+            var w = values[4] as double? ?? 0;
+            var h = values[5] as double? ?? 0;
+            var percent = ((value - min) / (max - min));
+            var percentW = percent * w;
+            var percentH = percent * h;
+
+            if (w == 0 || h == 0)
+            {
+                return null;
+            }
+            var dataBuilder = new StringBuilder();
+            switch (direction)
+            {
+                case ProgressDirection.LeftToRight:
+                    dataBuilder.Append($"M 0,0 V{2 * h} H {percentW} A {h / 2},{h / 2} 0 0 1 {percentW},{1.5 * h} A {h / 2},{h / 2} 0 0 0 {percentW},{h} A {h / 2},{h / 2} 0 0 1 {percentW},{0.5 * h} A {h / 2},{h / 2} 0 0 0 {percentW},0 ");
+                    break;
+                case ProgressDirection.RightToLeft:
+                    dataBuilder.Append($"M {w},0 V{2 * h} H {w - percentW} A {h / 2},{h / 2} 0 0 1 {w - percentW},{1.5 * h} A {h / 2},{h / 2} 0 0 0 {w - percentW},{h} A {h / 2},{h / 2} 0 0 1 {w - percentW},{0.5 * h} A {h / 2},{h / 2} 0 0 0 {w - percentW},0 ");
+                    break;
+                case ProgressDirection.TopToBottom:
+                    dataBuilder.Append($"M 0,0 H {2 * w} V {percentH} A {w / 2},{w / 2} 0 0 1 {1.5 * w},{percentH} A {w / 2},{w / 2} 0 0 0 {1 * w},{percentH} A {w / 2},{w / 2} 0 0 1 {0.5 * w},{percentH} A {w / 2},{w / 2} 0 0 0 0,{percentH}");
+                    break;
+                default:
+                    dataBuilder.Append($"M 0,{h} H {2 * w} V {h - percentH} A {w / 2},{w / 2} 0 0 1 {1.5 * w},{h - percentH} A {w / 2},{w / 2} 0 0 0 {1 * w},{h - percentH} A {w / 2},{w / 2} 0 0 1 {0.5 * w},{h - percentH} A {w / 2},{w / 2} 0 0 0 0,{h - percentH}");
+                    break;
+            }
+            return Geometry.Parse(dataBuilder.ToString());
+        }
+
+        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        {
+            return new object[] { DependencyProperty.UnsetValue, DependencyProperty.UnsetValue };
+        }
+    }
+
+    internal class ProgressBarProgressBarWaveMarginConverter : IMultiValueConverter
+    {
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        {
+            var direction = values[0] as ProgressDirection? ?? ProgressDirection.LeftToRight;
+            var w = values[1] as double? ?? 0;
+            var h = values[2] as double? ?? 0;
+
+            switch (direction)
+            {
+                case ProgressDirection.LeftToRight:
+                case ProgressDirection.RightToLeft:
+                    return new Thickness(0, -h, 0, 0);
+                default:
+                    return new Thickness(-w, 0, 0, 0);
+            }
+        }
+
+        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        {
+            return new object[] { DependencyProperty.UnsetValue, DependencyProperty.UnsetValue };
+        }
+    }
+
+
 }

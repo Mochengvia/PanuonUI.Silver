@@ -44,6 +44,8 @@ namespace TestApp
                 ProgressBarHelper.SetAnimateTo(Pgb2, value);
                 ProgressBarHelper.SetAnimateTo(Pgb3, value);
                 ProgressBarHelper.SetAnimateTo(Pgb4, value);
+                ProgressBarHelper.SetAnimateTo(Pgb5, value);
+                ProgressBarHelper.SetAnimateTo(Pgb6, value);
             }
         }
 
@@ -57,6 +59,8 @@ namespace TestApp
                 ProgressBarHelper.SetAnimateTo(Pgb2, value);
                 ProgressBarHelper.SetAnimateTo(Pgb3, value);
                 ProgressBarHelper.SetAnimateTo(Pgb4, value);
+                ProgressBarHelper.SetAnimateTo(Pgb5, value);
+                ProgressBarHelper.SetAnimateTo(Pgb6, value);
             }
         }
 
@@ -70,6 +74,8 @@ namespace TestApp
                 ProgressBarHelper.SetAnimateTo(Pgb2, value);
                 ProgressBarHelper.SetAnimateTo(Pgb3, value);
                 ProgressBarHelper.SetAnimateTo(Pgb4, value);
+                ProgressBarHelper.SetAnimateTo(Pgb5, value);
+                ProgressBarHelper.SetAnimateTo(Pgb6, value);
 
             }
         }
@@ -82,11 +88,14 @@ namespace TestApp
                 ProgressBarHelper.SetAnimationEase(Pgb2, AnimationEase.CubicOut);
                 ProgressBarHelper.SetAnimationEase(Pgb3, AnimationEase.CubicOut);
                 ProgressBarHelper.SetAnimationEase(Pgb4, AnimationEase.CubicOut);
+                ProgressBarHelper.SetAnimationEase(Pgb5, AnimationEase.CubicOut);
+                ProgressBarHelper.SetAnimationEase(Pgb6, AnimationEase.CubicOut);
                 ProgressBarHelper.SetAnimationDuration(Pgb1, TimeSpan.FromSeconds(0.5));
                 ProgressBarHelper.SetAnimationDuration(Pgb2, TimeSpan.FromSeconds(0.5));
                 ProgressBarHelper.SetAnimationDuration(Pgb3, TimeSpan.FromSeconds(0.5));
                 ProgressBarHelper.SetAnimationDuration(Pgb4, TimeSpan.FromSeconds(0.5));
-
+                ProgressBarHelper.SetAnimationDuration(Pgb5, TimeSpan.FromSeconds(0.5));
+                ProgressBarHelper.SetAnimationDuration(Pgb6, TimeSpan.FromSeconds(0.5));
             }
             else
             {
@@ -94,10 +103,16 @@ namespace TestApp
                 ProgressBarHelper.SetAnimationEase(Pgb2, AnimationEase.None);
                 ProgressBarHelper.SetAnimationEase(Pgb3, AnimationEase.None);
                 ProgressBarHelper.SetAnimationEase(Pgb4, AnimationEase.None);
+                ProgressBarHelper.SetAnimationEase(Pgb5, AnimationEase.None);
+                ProgressBarHelper.SetAnimationEase(Pgb6, AnimationEase.None);
+
                 ProgressBarHelper.SetAnimationDuration(Pgb1, TimeSpan.FromSeconds(5));
                 ProgressBarHelper.SetAnimationDuration(Pgb2, TimeSpan.FromSeconds(5));
                 ProgressBarHelper.SetAnimationDuration(Pgb3, TimeSpan.FromSeconds(5));
                 ProgressBarHelper.SetAnimationDuration(Pgb4, TimeSpan.FromSeconds(5));
+                ProgressBarHelper.SetAnimationDuration(Pgb5, TimeSpan.FromSeconds(5));
+                ProgressBarHelper.SetAnimationDuration(Pgb6, TimeSpan.FromSeconds(5));
+
             }
         }
     }

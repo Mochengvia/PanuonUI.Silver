@@ -59,7 +59,7 @@ namespace Panuon.UI.Silver.Internal.Controls
                 noticeCard.Loaded += NoticeCard_Loaded;
                 AstpCard.Children.Add(noticeCard);
                 AstpCard.Width = noticeCard.Width;
-                Left = Screen.PrimaryScreen.WorkingArea.Width - noticeCard.Width;
+                Left = SystemParameters.WorkArea.Width - noticeCard.Width;
             }));
         }
 

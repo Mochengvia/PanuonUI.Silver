@@ -1040,6 +1040,8 @@ namespace Panuon.UI.Silver.Internal
 
         public const string ProgressBarProgressBarRingTemplate = nameof(ProgressBarProgressBarRingTemplate);
 
+        public const string ProgressBarProgressBarWaveTemplate = nameof(ProgressBarProgressBarWaveTemplate);
+
         public const string ProgressBarWidthOrHeightConverter = nameof(ProgressBarWidthOrHeightConverter);
 
         public const string ProgressBarPercentTextConverter = nameof(ProgressBarPercentTextConverter);
@@ -1049,6 +1051,11 @@ namespace Panuon.UI.Silver.Internal
         public const string ProgressBarProgressBarIndeterminateMarginTemplate = nameof(ProgressBarProgressBarIndeterminateMarginTemplate);
 
         public const string ProgressBarProgressBarRingArcConverter = nameof(ProgressBarProgressBarRingArcConverter);
+
+        public const string ProgressBarProgressBarWavePathConverter = nameof(ProgressBarProgressBarWavePathConverter);
+
+        public const string ProgressBarProgressBarWaveMarginConverter = nameof(ProgressBarProgressBarWaveMarginConverter);
+        
         #endregion
     }
 }

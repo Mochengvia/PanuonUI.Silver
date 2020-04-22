@@ -497,6 +497,89 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
+    <ControlTemplate x:Key="{x:Static i:ResourceKeys.ProgressBarProgressBarWaveTemplate}"
+                     TargetType="ProgressBar">
+        <Grid Background="Transparent">
+            <Grid.OpacityMask>
+                <VisualBrush>
+                    <VisualBrush.Visual>
+                        <Border Background="Black"
+                                Height="{Binding ActualHeight,RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                Width="{Binding ActualWidth,RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                CornerRadius="{Binding Path=(local:ProgressBarHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
+                    </VisualBrush.Visual>
+                </VisualBrush>
+            </Grid.OpacityMask>
+            <Rectangle x:Name="PathTrack"
+                       Fill="{TemplateBinding Background}" />
+            <Canvas Height="{Binding ActualHeight,RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    Width="{Binding ActualWidth,RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    ClipToBounds="True">
+                <Path x:Name="PathIndicator"
+                      Fill="{TemplateBinding Foreground}" />
+            </Canvas>
+            <Border BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{Binding Path=(local:ProgressBarHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsIndeterminate"
+                     Value="False">
+                <Setter TargetName="PathIndicator"
+                        Property="Data">
+                    <Setter.Value>
+                        <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.ProgressBarProgressBarWavePathConverter}}">
+                            <Binding Path="(local:ProgressBarHelper.Direction)"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                            <Binding Path="Minimum"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                            <Binding Path="Maximum"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                            <Binding Path="Value"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                            <Binding Path="ActualWidth"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                            <Binding Path="ActualHeight"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                        </MultiBinding>
+                    </Setter.Value>
+                </Setter>
+                <Setter TargetName="PathIndicator"
+                        Property="Margin">
+                    <Setter.Value>
+                        <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.ProgressBarProgressBarWaveMarginConverter}}">
+                            <Binding Path="(local:ProgressBarHelper.Direction)"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                            <Binding Path="ActualWidth"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                            <Binding Path="ActualHeight"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                        </MultiBinding>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <EventTrigger RoutedEvent="Loaded">
+                <BeginStoryboard>
+                    <Storyboard RepeatBehavior="Forever">
+                        <ThicknessAnimation Storyboard.TargetName="PathIndicator"
+                                            Storyboard.TargetProperty="Margin"
+                                            To="0,0,0,0"
+                                            Duration="0:0:1" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
     <Style TargetType="ProgressBar">
         <Setter Property="local:ProgressBarHelper.AnimationDuration"
                 Value="0:0:0.5" />
@@ -525,6 +608,13 @@
                         Value="Transparent" />
                 <Setter Property="Foreground"
                         Value="DimGray" />
+            </Trigger>
+            <Trigger Property="local:ProgressBarHelper.ProgressBarStyle"
+                     Value="Wave">
+                <Setter Property="local:ProgressBarHelper.Direction"
+                        Value="BottomToTop" />
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static i:ResourceKeys.ProgressBarProgressBarWaveTemplate}}" />
             </Trigger>
         </Style.Triggers>
     </Style>

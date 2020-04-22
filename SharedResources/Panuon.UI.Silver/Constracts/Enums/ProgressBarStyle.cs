@@ -8,5 +8,6 @@ namespace Panuon.UI.Silver
     {
         Standard,
         Ring,
+        Wave,
     }
 }
