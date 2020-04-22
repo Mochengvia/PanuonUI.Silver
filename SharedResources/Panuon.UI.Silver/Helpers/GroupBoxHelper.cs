@@ -9,7 +9,6 @@ namespace Panuon.UI.Silver
 {
     public static class GroupBoxHelper
     {
-
         #region Properties
 
         #region GroupBoxStyle
@@ -25,6 +24,66 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty GroupBoxStyleProperty =
             DependencyProperty.RegisterAttached("GroupBoxStyle", typeof(GroupBoxStyle), typeof(GroupBoxHelper));
+        #endregion
+
+        #region HeaderBackground
+        public static Brush GetHeaderBackground(GroupBox groupBox)
+        {
+            return (Brush)groupBox.GetValue(HeaderBackgroundProperty);
+        }
+
+        public static void SetHeaderBackground(GroupBox groupBox, Brush value)
+        {
+            groupBox.SetValue(HeaderBackgroundProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderBackgroundProperty =
+            DependencyProperty.RegisterAttached("HeaderBackground", typeof(Brush), typeof(GroupBoxHelper));
+        #endregion
+
+        #region HeaderForeground
+        public static Brush GetHeaderForeground(GroupBox groupBox)
+        {
+            return (Brush)groupBox.GetValue(HeaderForegroundProperty);
+        }
+
+        public static void SetHeaderForeground(GroupBox groupBox, Brush value)
+        {
+            groupBox.SetValue(HeaderForegroundProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderForegroundProperty =
+            DependencyProperty.RegisterAttached("HeaderForeground", typeof(Brush), typeof(GroupBoxHelper));
+        #endregion
+
+        #region HeaderHeight
+        public static double GetHeaderHeight(GroupBox groupBox)
+        {
+            return (double)groupBox.GetValue(HeaderHeightProperty);
+        }
+
+        public static void SetHeaderHeight(GroupBox groupBox, double value)
+        {
+            groupBox.SetValue(HeaderHeightProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderHeightProperty =
+            DependencyProperty.RegisterAttached("HeaderHeight", typeof(double), typeof(GroupBoxHelper));
+        #endregion
+
+        #region HeaderPadding
+        public static Thickness GetHeaderPadding(GroupBox groupBox)
+        {
+            return (Thickness)groupBox.GetValue(HeaderPaddingProperty);
+        }
+
+        public static void SetHeaderPadding(GroupBox groupBox, Thickness value)
+        {
+            groupBox.SetValue(HeaderPaddingProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderPaddingProperty =
+            DependencyProperty.RegisterAttached("HeaderPadding", typeof(Thickness), typeof(GroupBoxHelper));
         #endregion
 
         #region Icon

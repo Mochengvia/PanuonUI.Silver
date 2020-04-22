@@ -1,4 +1,5 @@
-﻿<Window x:Class="TestApp.MainWindow"
+﻿
+<Window x:Class="TestApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -10,83 +11,5 @@
         Height="800"
         Width="800">
     <Grid>
-
-        <StackPanel VerticalAlignment="Center"
-                    HorizontalAlignment="Center">
-            <StackPanel  Orientation="Horizontal">
-                <ProgressBar x:Name="Pgb1"
-                             pu:ProgressBarHelper.Direction="LeftToRight"
-                             pu:ProgressBarHelper.IsPercentVisible="True"
-                             pu:ProgressBarHelper.CornerRadius="15"
-                             Height="30"
-                             Width="150"
-                             Background="#22ACCD9D"
-                             Foreground="#ACCD9D" />
-                <ProgressBar x:Name="Pgb2"
-                             Margin="10,0,0,0"
-                             pu:ProgressBarHelper.PercentStringFormat="{}{0:P2}"
-                             pu:ProgressBarHelper.IsPercentVisible="True"
-                             pu:ProgressBarHelper.CornerRadius="50"
-                             pu:ProgressBarHelper.Direction="BottomToTop"
-                             Height="100"
-                             Width="100"
-                             Background="#2299D7F1"
-                             Foreground="#99D7F1" />
-                <ProgressBar x:Name="Pgb4"
-                             Margin="10,0,0,0"
-                             pu:ProgressBarHelper.ProgressBarStyle="Ring"
-                             pu:ProgressBarHelper.IsPercentVisible="True"
-                             pu:ProgressBarHelper.CornerRadius="50"
-                             Height="100"
-                             Width="100"
-                             BorderBrush="#22FFB9CA"
-                             Foreground="#FFB9CA" />
-                <ProgressBar x:Name="Pgb5"
-                             Margin="10,0,0,0"
-                             pu:ProgressBarHelper.ProgressBarStyle="Ring"
-                             pu:ProgressBarHelper.PercentStringFormat="{}{0:P2}"
-                             pu:ProgressBarHelper.IsPercentVisible="True"
-                             pu:ProgressBarHelper.CornerRadius="50"
-                             pu:ProgressBarHelper.Direction="BottomToTop"
-                             Height="100"
-                             Width="100"
-                             BorderBrush="#22FFD895"
-                             Foreground="#FFD895" />
-                <ProgressBar x:Name="Pgb3"
-                             Margin="10,0,0,0"
-                             pu:ProgressBarHelper.ProgressBarStyle="Wave"
-                             pu:ProgressBarHelper.CornerRadius="50"
-                             Height="100"
-                             Width="100"
-                             Background="#22ACCD9D"
-                             Foreground="#ACCD9D" />
-                <ProgressBar x:Name="Pgb6"
-                             Margin="10,0,0,0"
-                             pu:ProgressBarHelper.ProgressBarStyle="Wave"
-                             pu:ProgressBarHelper.CornerRadius="5"
-                             pu:ProgressBarHelper.Direction="LeftToRight"
-                             Height="30"
-                             Width="150"
-                             Background="#2299D7F1"
-                             Foreground="#99D7F1"  />
-            </StackPanel>
-            <Grid Margin="0,20,0,0">
-                <Button Height="30"
-                        Width="30"
-                        HorizontalAlignment="Left"
-                        Content="+"
-                        Click="BtnAdd_Click" />
-                <Button Height="30"
-                        Width="30"
-                        HorizontalAlignment="Center"
-                        Content="GO"
-                        Click="BtnGO_Click" />
-                <Button Height="30"
-                        Width="30"
-                        HorizontalAlignment="Right"
-                        Content="-"
-                        Click="BtnDec_Click" />
-            </Grid>
-        </StackPanel>
     </Grid>
 </Window>

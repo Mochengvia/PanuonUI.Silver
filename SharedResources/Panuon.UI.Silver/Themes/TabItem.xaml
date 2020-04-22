@@ -62,6 +62,7 @@
                                 Margin="{Binding Path=(local:IconHelper.Margin),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
                                 Visibility="{Binding Path=(local:TabControlHelper.ItemIcon),Converter={StaticResource {x:Static i:ResourceKeys.NullToCollapseConverter}},RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
                                 Content="{Binding Path=(local:TabControlHelper.ItemIcon),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
                                 FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
                                 FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
                                 VerticalAlignment="Center"
@@ -349,23 +350,13 @@
                 <Setter TargetName="IcIcon"
                         Property="TextElement.Foreground"
                         Value="{Binding Path=(local:TabControlHelper.ItemSelectedForeground),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-
             </MultiDataTrigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
 
     <Style TargetType="TabItem">
-        <!--IconHelper-->
-        <Setter Property="local:IconHelper.Foreground"
-                Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
-        <Setter Property="local:IconHelper.FontSize"
-                Value="{Binding FontSize, RelativeSource={RelativeSource Self}}" />
         <!--TabControlHelper-->
-        <Setter Property="Background"
-                Value="{Binding Path=(local:TabControlHelper.ItemsBackground), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
-        <Setter Property="local:TabControlHelper.ItemForeground"
-                Value="{Binding Path=(local:TabControlHelper.ItemsForeground), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <Setter Property="local:TabControlHelper.ItemSelectedForeground"
                 Value="{Binding Path=(local:TabControlHelper.ItemsSelectedForeground), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <Setter Property="local:TabControlHelper.ItemSelectedBackground"
@@ -378,7 +369,12 @@
                 Value="{Binding Path=(local:TabControlHelper.ItemsIcon), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <!--IconHelper-->
         <Setter Property="local:IconHelper.Foreground"
-                Value="{Binding Path=(local:TabControlHelper.ItemForeground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+                Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
+        
+        <Setter Property="Background"
+                Value="{Binding Path=(local:TabControlHelper.ItemsBackground), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="Foreground"
+                Value="{Binding Path=(local:TabControlHelper.ItemsForeground), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <Setter Property="Height"
                 Value="{Binding Path=(local:TabControlHelper.ItemsHeight), RelativeSource={RelativeSource AncestorType=TabControl}}" />
         <Setter Property="Width"

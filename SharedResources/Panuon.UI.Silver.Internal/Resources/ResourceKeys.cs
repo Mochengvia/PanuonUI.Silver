@@ -1035,6 +1035,15 @@ namespace Panuon.UI.Silver.Internal
         public const string DrawerTemplate = nameof(DrawerTemplate);
         #endregion
 
+        #region GroupBox
+        public const string GroupBoxStandardHeaderTemplate = nameof(GroupBoxStandardHeaderTemplate);
+
+        public const string GroupBoxPostHeaderTemplate = nameof(GroupBoxPostHeaderTemplate);
+
+        public const string GroupBoxFootnoteHeaderTemplate = nameof(GroupBoxFootnoteHeaderTemplate);
+
+        #endregion
+
         #region ProgressBar
         public const string ProgressBarProgressBarStandardTemplate = nameof(ProgressBarProgressBarStandardTemplate);
 

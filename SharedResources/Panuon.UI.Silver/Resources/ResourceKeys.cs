@@ -77,14 +77,6 @@
         public const string ClockItemStyle = nameof(ClockItemStyle);
         #endregion
 
-        #region GroupBox
-        public const string GroupBoxStandardHeaderTemplate = nameof(GroupBoxStandardHeaderTemplate);
-
-        public const string GroupBoxPostHeaderTemplate = nameof(GroupBoxPostHeaderTemplate);
-
-        public const string GroupBoxFootnoteHeaderTemplate = nameof(GroupBoxFootnoteHeaderTemplate);
-
-        #endregion
 
         #region Pagination
 
