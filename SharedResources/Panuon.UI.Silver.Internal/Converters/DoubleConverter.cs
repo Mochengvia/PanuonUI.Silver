@@ -25,9 +25,9 @@ namespace Panuon.UI.Silver.Internal.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var doubleValue = value as double? ?? 0;
-            if(parameter == null)
+            if (parameter == null)
             {
-                return doubleValue;
+                return new Thickness(doubleValue, 0, 0, 0);
             }
             var para = double.Parse(parameter.ToString());
             return new Thickness(doubleValue * para, 0, 0, 0);
@@ -46,7 +46,7 @@ namespace Panuon.UI.Silver.Internal.Converters
             var doubleValue = value as double? ?? 0;
             if (parameter == null)
             {
-                return doubleValue;
+                return new Thickness(0, 0, doubleValue, 0);
             }
             var para = double.Parse(parameter.ToString());
             return new Thickness(0, 0, doubleValue * para, 0);
@@ -65,7 +65,7 @@ namespace Panuon.UI.Silver.Internal.Converters
             var doubleValue = value as double? ?? 0;
             if (parameter == null)
             {
-                return doubleValue;
+                return new Thickness(0, doubleValue, 0, 0);
             }
             var para = double.Parse(parameter.ToString());
             return new Thickness(0, doubleValue * para, 0, 0);
@@ -84,7 +84,7 @@ namespace Panuon.UI.Silver.Internal.Converters
             var doubleValue = value as double? ?? 0;
             if (parameter == null)
             {
-                return doubleValue;
+                return new Thickness(0, 0, 0, doubleValue);
             }
             var para = double.Parse(parameter.ToString());
             return new Thickness(0, 0, 0, doubleValue * para);
@@ -100,13 +100,13 @@ namespace Panuon.UI.Silver.Internal.Converters
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            for(int i = 1; i < values.Length; i++)
+            for (int i = 1; i < values.Length; i++)
             {
-                if((values[i - 1] != null && values[i] == null) || (values[i - 1] == null && values[i] != null))
+                if ((values[i - 1] != null && values[i] == null) || (values[i - 1] == null && values[i] != null))
                 {
                     return false;
                 }
-                if((values[i - 1] != null && values[i] != null) && !values[i - 1].Equals(values[i]))
+                if ((values[i - 1] != null && values[i] != null) && !values[i - 1].Equals(values[i]))
                 {
                     return false;
                 }
