@@ -71,7 +71,7 @@ namespace UIBrowser.ViewModels.Partials.Miscellaneous
         private void LoadFonts()
         {
             var start = Convert.ToInt32("e900", 16);
-            for (int i = 0; i < 231; i++)
+            for (int i = 0; i < 235; i++)
             {
                 var value = start + i;
                 var icon = value.ToString("X4").ToLower();
