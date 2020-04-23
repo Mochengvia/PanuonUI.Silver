@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Panuon.UI.Silver.Core
 {
-    public class ComboBoxNumberRange
+    public class NumberRange
     {
-        public double Min { get; set; } = 0;
+        public double Minimum { get; set; } = 0;
 
-        public double Max { get; set; }
+        public double Maximum { get; set; } = 1;
 
         public double Interval { get; set; } = 1;
     }

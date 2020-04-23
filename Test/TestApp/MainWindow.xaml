@@ -5,11 +5,45 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:pu="clr-namespace:Panuon.UI.Silver;assembly=Panuon.UI.Silver"
+        xmlns:pucore="clr-namespace:Panuon.UI.Silver.Core;assembly=Panuon.UI.Silver"
+        
         xmlns:local="clr-namespace:TestApp"
         mc:Ignorable="d"
         Title="MainWindow"
         Height="800"
         Width="800">
     <Grid>
+        <ComboBox Height="30"
+                  Width="200"
+                  VerticalAlignment="Top"
+                  Margin="0,50,0,0">
+            <pu:ComboBoxHelper.BindToNumberRange>
+                <pucore:NumberRange Minimum="0"
+                                    Interval="0.5"
+                                    Maximum="5"/>
+            </pu:ComboBoxHelper.BindToNumberRange>
+        </ComboBox>
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+            <ComboBox Height="30"
+                      Width="200"
+                      pu:ComboBoxHelper.CornerRadius="2"
+                      pu:ComboBoxHelper.DropDownCornerRadius="2"
+                      pu:ComboBoxHelper.DropDownPadding="0,5"
+                      pu:ComboBoxHelper.ItemsRemovable="True">
+                <ComboBoxItem Content="Item1" />
+                <ComboBoxItem Content="Item2" />
+                <ComboBoxItem Content="Item3" />
+            </ComboBox>
+            <ComboBox Margin="10,0,0,0"
+                      Height="30"
+                      Width="200"
+                      pu:ComboBoxHelper.ComboBoxStyle="Simple"
+                      pu:ComboBoxHelper.Watermark="Simple">
+                <ComboBoxItem Content="Item1" />
+                <ComboBoxItem Content="Item2" />
+                <ComboBoxItem Content="Item3" />
+            </ComboBox>
+        </StackPanel>
     </Grid>
 </Window>

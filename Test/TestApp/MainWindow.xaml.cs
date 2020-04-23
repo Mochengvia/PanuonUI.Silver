@@ -2,6 +2,7 @@
 using Panuon.UI.Silver.Core;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -28,5 +29,13 @@ namespace TestApp
             InitializeComponent();
         }
 
+    }
+
+    public enum Language
+    {
+        [Description("English")]
+        English,
+        [Description("中文")]
+        Chinese,
     }
 }

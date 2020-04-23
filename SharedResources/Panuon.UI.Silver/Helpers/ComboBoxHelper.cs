@@ -101,7 +101,7 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("ComboBoxStyle", typeof(ComboBoxStyle), typeof(ComboBoxHelper));
         #endregion
 
-        #region ItemHeight
+        #region ItemsHeight
         public static double GetItemsHeight(ComboBox comboBox)
         {
             return (double)comboBox.GetValue(ItemsHeightProperty);
@@ -130,12 +130,12 @@ namespace Panuon.UI.Silver
         public static readonly DependencyProperty ItemsRemovableProperty =
             DependencyProperty.RegisterAttached("ItemsRemovable", typeof(bool), typeof(ComboBoxHelper));
 
-        public static bool GetItemRemovable(ComboBox comboBoxItem)
+        public static bool GetItemRemovable(ComboBoxItem comboBoxItem)
         {
             return (bool)comboBoxItem.GetValue(ItemRemovableProperty);
         }
 
-        public static void SetItemRemovable(ComboBox comboBoxItem, bool value)
+        public static void SetItemRemovable(ComboBoxItem comboBoxItem, bool value)
         {
             comboBoxItem.SetValue(ItemRemovableProperty, value);
         }
@@ -415,21 +415,6 @@ namespace Panuon.UI.Silver
 
         #endregion
 
-        #region DropDownPlacement
-        public static DropDownPlacement GetDropDownPlacement(ComboBox comboBox)
-        {
-            return (DropDownPlacement)comboBox.GetValue(DropDownPlacementProperty);
-        }
-
-        public static void SetDropDownPlacement(ComboBox comboBox, DropDownPlacement value)
-        {
-            comboBox.SetValue(DropDownPlacementProperty, value);
-        }
-
-        public static readonly DependencyProperty DropDownPlacementProperty =
-            DependencyProperty.RegisterAttached("DropDownPlacement", typeof(DropDownPlacement), typeof(ComboBoxHelper));
-        #endregion
-
         #region ShadowColor
 
 
@@ -468,18 +453,18 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region BindToNumberRange
-        public static ComboBoxNumberRange GetBindToNumberRange(ComboBox comboBox)
+        public static NumberRange GetBindToNumberRange(ComboBox comboBox)
         {
-            return (ComboBoxNumberRange)comboBox.GetValue(BindToNumberRangeProperty);
+            return (NumberRange)comboBox.GetValue(BindToNumberRangeProperty);
         }
 
-        public static void SetBindToNumberRange(ComboBox comboBox, ComboBoxNumberRange value)
+        public static void SetBindToNumberRange(ComboBox comboBox, NumberRange value)
         {
             comboBox.SetValue(BindToNumberRangeProperty, value);
         }
 
         public static readonly DependencyProperty BindToNumberRangeProperty =
-            DependencyProperty.RegisterAttached("BindToNumberRange", typeof(ComboBoxNumberRange), typeof(ComboBoxHelper), new PropertyMetadata(OnNumberRangeChanged));
+            DependencyProperty.RegisterAttached("BindToNumberRange", typeof(NumberRange), typeof(ComboBoxHelper), new PropertyMetadata(OnNumberRangeChanged));
 
         #endregion
 
@@ -495,17 +480,17 @@ namespace Panuon.UI.Silver
         private static void OnNumberRangeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var comboBox = d as ComboBox;
-            var numberRange = e.NewValue as ComboBoxNumberRange;
+            var numberRange = e.NewValue as NumberRange;
             if(numberRange == null)
             {
                 comboBox.ItemsSource = null;
                 return;
             }
-            if((numberRange.Max % 1) == 0 && (numberRange.Min % 1) == 0 && (numberRange.Interval % 1) == 0)
+            if((numberRange.Maximum % 1) == 0 && (numberRange.Minimum % 1) == 0 && (numberRange.Interval % 1) == 0)
             {
                 var dataList = new List<int>();
-                var max = (int)numberRange.Max;
-                var min = (int)numberRange.Min;
+                var max = (int)numberRange.Maximum;
+                var min = (int)numberRange.Minimum;
                 var interval = (int)numberRange.Interval;
                 for(var i = min; i <= max; i += interval)
                 {
@@ -517,8 +502,8 @@ namespace Panuon.UI.Silver
             else
             {
                 var dataList = new List<double>();
-                var max = numberRange.Max;
-                var min = numberRange.Min;
+                var max = numberRange.Maximum;
+                var min = numberRange.Minimum;
                 var interval = numberRange.Interval;
                 for (var i = min; i <= max; i += interval)
                 {

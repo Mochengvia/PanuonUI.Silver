@@ -24,12 +24,12 @@
                   Width="{Binding ActualHeight, Converter={StaticResource {x:Static rs:Converters.DoubleMinusConverter}}, ConverterParameter=3,RelativeSource={RelativeSource Self},Mode=OneWay}">
                 <TextBlock x:Name="TxtArrowDown"
                            Text="&#xe91f;"
-                           FontSize="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource {x:Static rs:Converters.DoubleMinusConverter}}, ConverterParameter=5}"
+                           FontSize="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource {x:Static rs:Converters.DoubleMinusConverter}}, ConverterParameter=2}"
                            FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center" />
                 <TextBlock x:Name="TxtArrowUp"
-                           FontSize="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource {x:Static rs:Converters.DoubleMinusConverter}}, ConverterParameter=5}"
+                           FontSize="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource {x:Static rs:Converters.DoubleMinusConverter}}, ConverterParameter=2}"
                            Opacity="0"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
@@ -177,7 +177,8 @@
                                    Visibility="{Binding Text,Converter={StaticResource {x:Static i:ResourceKeys.NullOrEmptyToVisibleConverter}},RelativeSource={RelativeSource AncestorType=ComboBox},Mode=OneWay}"
                                    Text="{Binding Path=(local:ComboBoxHelper.Watermark),RelativeSource={RelativeSource AncestorType=ComboBox},Mode=OneWay}"
                                    VerticalAlignment="Center"
-                                   Padding="2,0" />
+                                   Padding="2,0"
+                                   Opacity="0.6" />
                     </Grid>
                     <TextBox x:Name="PART_EditableTextBox"
                              Grid.Column="1"
@@ -189,7 +190,6 @@
                 </Grid>
             </ToggleButton>
             <local:PopupX x:Name="PopDropDown"
-                          Placement="{Binding Path=(local:ComboBoxHelper.DropDownPlacement),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                           IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
                           PartnerElement="{Binding ElementName=TgbContent}"
                           AllowsTransparency="True"
@@ -219,19 +219,6 @@
                         Property="Style"
                         Value="{StaticResource {x:Static i:ResourceKeys.ComboBoxSimpleToggleButtonStyle}}" />
             </Trigger>
-            <DataTrigger Binding="{Binding ActualPlacement, ElementName=PopDropDown, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                         Value="Bottom">
-                <Setter TargetName="BdrDropDown"
-                        Property="Margin"
-                        Value="5,0,5,5" />
-            </DataTrigger>
-            <DataTrigger Binding="{Binding ActualPlacement, ElementName=PopDropDown, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                         Value="Top">
-                <Setter TargetName="BdrDropDown"
-                        Property="Margin"
-                        Value="5,5,5,0" />
-            </DataTrigger>
-         
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
@@ -264,7 +251,7 @@
         <Setter Property="MaxDropDownHeight"
                 Value="{StaticResource {x:Static i:ResourceKeys.ComboBoxMaxDropDownHeight}}" />
         <Setter Property="HorizontalContentAlignment"
-                Value="Left" />
+                Value="Stretch" />
         <Setter Property="VerticalContentAlignment"
                 Value="Center" />
         <Setter Property="VirtualizingStackPanel.IsVirtualizing"
