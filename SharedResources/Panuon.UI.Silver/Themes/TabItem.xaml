@@ -373,7 +373,7 @@
         
         <Setter Property="Background"
                 Value="{Binding Path=(local:TabControlHelper.ItemsBackground), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
-        <Setter Property="Foreground"
+        <Setter Property="local:TabControlHelper.ItemForeground"
                 Value="{Binding Path=(local:TabControlHelper.ItemsForeground), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <Setter Property="Height"
                 Value="{Binding Path=(local:TabControlHelper.ItemsHeight), RelativeSource={RelativeSource AncestorType=TabControl}}" />

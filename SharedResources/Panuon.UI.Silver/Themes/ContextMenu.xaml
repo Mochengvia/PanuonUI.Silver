@@ -165,6 +165,10 @@
                 Value="0" />
         <Setter Property="Padding"
                 Value="0,2" />
+        <Setter Property="FontFamily"
+                Value="{Binding PlacementTarget.FontFamily, Mode=OneWay}" />
+        <Setter Property="FontSize"
+                Value="{Binding PlacementTarget.FontSize, Mode=OneWay}" />
         <Setter Property="Template"
                 Value="{StaticResource ContextMenuTemplate}" />
         <Style.Resources>
