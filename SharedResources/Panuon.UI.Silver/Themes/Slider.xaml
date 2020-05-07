@@ -81,6 +81,9 @@
                                                         </Grid>
                                                     </ControlTemplate>
                                                 </RepeatButton.Template>
+                                                <RepeatButton.Style>
+                                                    <Style TargetType="RepeatButton" />
+                                                </RepeatButton.Style>
                                             </RepeatButton>
                                         </Track.DecreaseRepeatButton>
                                         <Track.Thumb>
@@ -130,6 +133,9 @@
                                                         </Grid>
                                                     </ControlTemplate>
                                                 </RepeatButton.Template>
+                                                <RepeatButton.Style>
+                                                    <Style TargetType="RepeatButton" />
+                                                </RepeatButton.Style>
                                             </RepeatButton>
                                         </Track.IncreaseRepeatButton>
                                     </Track>
@@ -232,6 +238,9 @@
                                                     </Grid>
                                                 </ControlTemplate>
                                             </RepeatButton.Template>
+                                            <RepeatButton.Style>
+                                                <Style TargetType="RepeatButton" />
+                                            </RepeatButton.Style>
                                         </RepeatButton>
                                     </Track.DecreaseRepeatButton>
                                     <Track.Thumb>
@@ -280,6 +289,9 @@
                                                     </Grid>
                                                 </ControlTemplate>
                                             </RepeatButton.Template>
+                                            <RepeatButton.Style>
+                                                <Style TargetType="RepeatButton" />
+                                            </RepeatButton.Style>
                                         </RepeatButton>
                                     </Track.IncreaseRepeatButton>
                                 </Track>
@@ -391,6 +403,9 @@
                                                         </Grid>
                                                     </ControlTemplate>
                                                 </RepeatButton.Template>
+                                                <RepeatButton.Style>
+                                                    <Style TargetType="RepeatButton" />
+                                                </RepeatButton.Style>
                                             </RepeatButton>
                                         </Track.DecreaseRepeatButton>
                                         <Track.Thumb>
@@ -443,6 +458,9 @@
                                                         </Grid>
                                                     </ControlTemplate>
                                                 </RepeatButton.Template>
+                                                <RepeatButton.Style>
+                                                    <Style TargetType="RepeatButton" />
+                                                </RepeatButton.Style>
                                             </RepeatButton>
                                         </Track.IncreaseRepeatButton>
                                     </Track>
@@ -546,6 +564,9 @@
                                                     </Grid>
                                                 </ControlTemplate>
                                             </RepeatButton.Template>
+                                            <RepeatButton.Style>
+                                                <Style TargetType="RepeatButton" />
+                                            </RepeatButton.Style>
                                         </RepeatButton>
                                     </Track.DecreaseRepeatButton>
                                     <Track.Thumb>
@@ -597,6 +618,9 @@
                                                     </Grid>
                                                 </ControlTemplate>
                                             </RepeatButton.Template>
+                                            <RepeatButton.Style>
+                                                <Style TargetType="RepeatButton" />
+                                            </RepeatButton.Style>
                                         </RepeatButton>
                                     </Track.IncreaseRepeatButton>
                                 </Track>

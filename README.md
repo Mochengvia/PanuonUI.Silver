@@ -24,6 +24,11 @@ GitHub地址：https://github.com/Panuon/PanuonUI.Silver
 提供完备的开发文档、代码示例与1.0升级指南（文档将转移到阿里的语雀平台）。https://www.yuque.com/mochengvia/silver2.0   
 下载方式：你可以在上方的Branch中切换2.0.0分支并下载开发版代码，但控件尚不齐全。开发版Nuget已经发行。  
 
+#### 20202-5-7 V1.1.2
+优化ComboBox的阴影效果。  
+修复在TreeView的Chain样式中，即使子项内没有子项也能展开的BUG。  
+修复Slider控件的显示效果。  
+
 #### 20202-4-16 V1.1.1
 [重要修复]修复了Button和RepeatButton无法换肤的问题。此问题是由于Foreground、Background、BorderBrush属性在动画执行结束时，没有释放对属性的占用，从而导致无法再更改这些属性的值。现已使用2.0的Button解决方案替代。  
 PUTextBlock已更名为TextBlockX。若要使用ClipToBounds效果，必须使TextBlockX或其容器拥有可计算的高度以及宽度。此外，修复了TextBlockX在极端情况下可能死循环的问题。  
@@ -33,20 +38,6 @@ PUTextBlock已更名为TextBlockX。若要使用ClipToBounds效果，必须使Te
 PUTextBlock重做。大幅提升计算性能，解决了可能出现的BUG。删除AutoAdaption属性，新增TextAdaption属性。AutoAdaption="True"应更改为TextAdaption="ClipToBounds"。  
 为DropDown新增了Opened和Closed事件。  
 
-
-#### 2020-3-25 v1.0.9.9
-[Re] 修复了Badge的Background和Foreground的绑定初始值未生效的BUG。  
-将PasswordBoxHelper.Password属性更改为默认双向绑定。
-
-#### 2020-3-11 v1.0.9.8
-修复了Badge的Background和Foreground的绑定初始值未生效的BUG。  
-修复了ContextMenu中的MenuItem无法识别AccessKey的BUG。  
-修复了WindowX会在SizeToContent="WidthAndHeight"时出现白边的BUG。  
-修复了DateTimePicker的SelectedDate赋值为new DateTime时会报错的问题。SelectedDate的年份最小值已被限定为5（与MinDate无关）。  
-
-#### 2020-2-17 v1.0.9.6
-修复了部分控件可能会在后台抛出错误的问题。
-新增了MessageBoxX的Question图标。
 
 # ReleaseNote 发布文档  
 

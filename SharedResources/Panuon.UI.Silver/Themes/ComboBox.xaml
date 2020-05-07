@@ -220,48 +220,50 @@
                                    Focusable="False"
                                    AllowsTransparency="True"
                                    PopupAnimation="Slide">
-                                <Grid MaxHeight="{TemplateBinding MaxDropDownHeight}"
-                                      MinWidth="{Binding ActualWidth,ElementName=ToggleButton}"
-                                      x:Name="DropDown">
                                     <Border x:Name="DropDownBorder"
-                                            Margin="0,0,0,10"
-                                            Background="{TemplateBinding Background}"
+                                            Margin="5,0,5,5"
+                                        MinWidth="{Binding ActualWidth,ElementName=ToggleButton}"
+                                        MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                                        Background="{TemplateBinding Background}"
                                             BorderBrush="{TemplateBinding BorderBrush}"
                                             CornerRadius="{Binding Path=(local:ComboBoxHelper.DropDownCornerRadius),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                                             BorderThickness="{TemplateBinding BorderThickness}">
                                         <Border.Effect>
                                             <DropShadowEffect ShadowDepth="0"
-                                                              BlurRadius="10"
-                                                              Opacity="1"
+                                                              BlurRadius="5"
+                                                              Opacity="0.6"
                                                               Color="{Binding Path=(local:ComboBoxHelper.ShadowColor),Converter={StaticResource NullableColorToColoConverter},RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"></DropShadowEffect>
                                         </Border.Effect>
-                                    </Border>
-                                    <Grid  Margin="{Binding Path=(local:ComboBoxHelper.DropDownPadding),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="*" />
-                                        </Grid.RowDefinitions>
-                                        <TextBox x:Name="TbSearch"
-                                                 Visibility="Collapsed"
-                                                 Height="30"
-                                                 Padding="5,0,0,0"
-                                                 BorderBrush="Transparent"
-                                                 BorderThickness="0"
-                                                 local:TextBoxHelper.FocusedShadowColor="Transparent"
-                                                 Foreground="{TemplateBinding Foreground}"
-                                                 local:TextBoxHelper.Watermark="{Binding Path=(local:ComboBoxHelper.SearchTextBoxWatermark),RelativeSource={RelativeSource AncestorType=ComboBox}}"
-                                                 Text="{Binding Path=(local:ComboBoxHelper.SearchText),RelativeSource={RelativeSource AncestorType=ComboBox},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                                                 Margin="1,5,1,0" />
-                                        <ScrollViewer Grid.Row="1"
-                                                      VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
-                                                      HorizontalScrollBarVisibility="{Binding Path=(ScrollViewer.HorizontalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
-                                                      local:ScrollViewerHelper.ScrollBarThickness="{Binding Path=(local:ScrollViewerHelper.ScrollBarThickness),RelativeSource={RelativeSource AncestorType=ComboBox},Mode=OneWay}"
-                                                      local:ScrollViewerHelper.ScrollBarCornerRadius="{Binding Path=(local:ScrollViewerHelper.ScrollBarCornerRadius),RelativeSource={RelativeSource AncestorType=ComboBox},Mode=OneWay}"
-                                                      Margin="1,5,1,15">
-                                            <ItemsPresenter />
-                                        </ScrollViewer>
+                                    <Grid 
+                                          x:Name="DropDown">
+                                        <Grid  Margin="{Binding Path=(local:ComboBoxHelper.DropDownPadding),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <TextBox x:Name="TbSearch"
+                                                     Visibility="Collapsed"
+                                                     Height="30"
+                                                     Padding="5,0,0,0"
+                                                     BorderBrush="Transparent"
+                                                     BorderThickness="0"
+                                                     local:TextBoxHelper.FocusedShadowColor="Transparent"
+                                                     Foreground="{TemplateBinding Foreground}"
+                                                     local:TextBoxHelper.Watermark="{Binding Path=(local:ComboBoxHelper.SearchTextBoxWatermark),RelativeSource={RelativeSource AncestorType=ComboBox}}"
+                                                     Text="{Binding Path=(local:ComboBoxHelper.SearchText),RelativeSource={RelativeSource AncestorType=ComboBox},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                     Margin="1,5,1,0" />
+                                            <ScrollViewer Grid.Row="1"
+                                                          VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
+                                                          HorizontalScrollBarVisibility="{Binding Path=(ScrollViewer.HorizontalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
+                                                          local:ScrollViewerHelper.ScrollBarThickness="{Binding Path=(local:ScrollViewerHelper.ScrollBarThickness),RelativeSource={RelativeSource AncestorType=ComboBox},Mode=OneWay}"
+                                                          local:ScrollViewerHelper.ScrollBarCornerRadius="{Binding Path=(local:ScrollViewerHelper.ScrollBarCornerRadius),RelativeSource={RelativeSource AncestorType=ComboBox},Mode=OneWay}"
+                                                          Margin="1,5,1,15">
+                                                <ItemsPresenter />
+                                            </ScrollViewer>
+                                        </Grid>
                                     </Grid>
-                                </Grid>
+
+                                </Border>
                             </Popup>
 
                         </Grid>

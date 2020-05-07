@@ -673,8 +673,13 @@
                                             Property="Visibility"
                                             Value="Collapsed" />
                                 </DataTrigger>
-                                <Trigger Property="IsExpanded"
-                                         Value="True">
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="IsExpanded"
+                                                   Value="True" />
+                                        <Condition Property="HasItems"
+                                                   Value="True" />
+                                    </MultiTrigger.Conditions>
                                     <Setter TargetName="ItemsHost"
                                             Property="Visibility"
                                             Value="Visible" />
@@ -687,7 +692,7 @@
                                     <Setter TargetName="arrow2"
                                             Property="Opacity"
                                             Value="1" />
-                                </Trigger>
+                                </MultiTrigger>
                                 <Trigger Property="HasItems"
                                          Value="False">
                                     <Setter TargetName="Toggle"
