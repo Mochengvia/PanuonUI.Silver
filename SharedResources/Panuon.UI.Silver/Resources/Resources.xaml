@@ -8,6 +8,7 @@
                     xmlns:icv="clr-namespace:Panuon.UI.Silver.Internal.Converters"
                     xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources">
 
+    <icv:TrueToFalseConverter x:Key="{x:Static rs:Converters.TrueToFalseConverter}" />
     <icv:TrueToVisibleConverter x:Key="{x:Static rs:Converters.TrueToVisibleConverter}" />
     <icv:TrueToCollapseConverter x:Key="{x:Static rs:Converters.TrueToCollapseConverter}" />
     <icv:DoubleMinusConverter x:Key="{x:Static rs:Converters.DoubleMinusConverter}" />

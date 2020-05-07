@@ -41,12 +41,12 @@
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                            Value="True" />
-                                <Condition Binding="{Binding Path=(local:TreeViewHelper.ItemSelectedToggleBrush),Converter={StaticResource {x:Static i:ResourceKeys.IsNotNullConverter}},RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
+                                <Condition Binding="{Binding Path=(local:TreeViewHelper.ItemExpandedToggleBrush),Converter={StaticResource {x:Static i:ResourceKeys.IsNotNullConverter}},RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
                                            Value="True" />
                             </MultiDataTrigger.Conditions>
                             <Setter TargetName="TxtToggle"
                                     Property="Foreground"
-                                    Value="{Binding Path=(local:TreeViewHelper.ItemSelectedToggleBrush),RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}" />
+                                    Value="{Binding Path=(local:TreeViewHelper.ItemExpandedToggleBrush),RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}" />
                         </MultiDataTrigger>
 
                     </ControlTemplate.Triggers>
@@ -173,12 +173,12 @@
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding IsSelected,RelativeSource={RelativeSource AncestorType=TreeViewItem},Mode=OneWay}"
                                            Value="True" />
-                                <Condition Binding="{Binding Path=(local:TreeViewHelper.ItemSelectedToggleBrush),Converter={StaticResource {x:Static i:ResourceKeys.IsNotNullConverter}},RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
+                                <Condition Binding="{Binding Path=(local:TreeViewHelper.ItemExpandedToggleBrush),Converter={StaticResource {x:Static i:ResourceKeys.IsNotNullConverter}},RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
                                            Value="True" />
                             </MultiDataTrigger.Conditions>
                             <Setter TargetName="RectRectangle"
                                     Property="Fill"
-                                    Value="{Binding Path=(local:TreeViewHelper.ItemSelectedToggleBrush),RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}" />
+                                    Value="{Binding Path=(local:TreeViewHelper.ItemExpandedToggleBrush),RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}" />
                         </MultiDataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -307,12 +307,12 @@
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                            Value="True" />
-                                <Condition Binding="{Binding Path=(local:TreeViewHelper.ItemSelectedToggleBrush),Converter={StaticResource {x:Static i:ResourceKeys.IsNotNullConverter}},RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
+                                <Condition Binding="{Binding Path=(local:TreeViewHelper.ItemExpandedToggleBrush),Converter={StaticResource {x:Static i:ResourceKeys.IsNotNullConverter}},RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
                                            Value="True" />
                             </MultiDataTrigger.Conditions>
                             <Setter TargetName="TxtToggle"
                                     Property="Foreground"
-                                    Value="{Binding Path=(local:TreeViewHelper.ItemSelectedToggleBrush),RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}" />
+                                    Value="{Binding Path=(local:TreeViewHelper.ItemExpandedToggleBrush),RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}" />
                         </MultiDataTrigger>
 
                     </ControlTemplate.Triggers>
@@ -453,7 +453,7 @@
                 Value="{Binding Path=(local:TreeViewHelper.ItemsToggleBrush),RelativeSource={RelativeSource AncestorType=TreeView}}" />
         <Setter Property="local:TreeViewHelper.ItemHoverToggleBrush"
                 Value="{Binding Path=(local:TreeViewHelper.ItemsHoverToggleBrush),RelativeSource={RelativeSource AncestorType=TreeView}}" />
-        <Setter Property="local:TreeViewHelper.ItemSelectedToggleBrush"
+        <Setter Property="local:TreeViewHelper.ItemExpandedToggleBrush"
                 Value="{Binding Path=(local:TreeViewHelper.ItemsSelectedToggleBrush),RelativeSource={RelativeSource AncestorType=TreeView}}" />
         <Setter Property="local:TreeViewHelper.ItemHoverForeground"
                 Value="{Binding Path=(local:TreeViewHelper.ItemsHoverForeground),RelativeSource={RelativeSource AncestorType=TreeView}}" />

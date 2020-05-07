@@ -22,20 +22,24 @@ namespace TestApp
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = this;
         }
 
-    }
+        private string _text = "123456";
 
-    public enum Language
-    {
-        [Description("English")]
-        English,
-        [Description("中文")]
-        Chinese,
+        public string Text
+        {
+            get { return _text; }
+            set { _text = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Text))); }
+        }
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
+    
 }

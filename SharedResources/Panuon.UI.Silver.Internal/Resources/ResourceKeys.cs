@@ -13,8 +13,6 @@ namespace Panuon.UI.Silver.Internal
 
         public const string NullToVisibleConverter = nameof(NullToVisibleConverter);
 
-        public const string TrueToFalseConverter = nameof(TrueToFalseConverter);
-
         public const string NullOrEmptyToVisibleConverter = nameof(NullOrEmptyToVisibleConverter);
 
         public const string NullToCollapseConverter = nameof(NullToCollapseConverter);

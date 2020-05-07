@@ -12,6 +12,11 @@ namespace Panuon.UI.Silver.Resources
         public const string TrueToCollapseConverter = nameof(TrueToCollapseConverter);
         #endregion
 
+        #region Reverse
+        public const string TrueToFalseConverter = nameof(TrueToFalseConverter);
+
+        #endregion
+
         #region Math
         public const string DoubleMinusConverter = nameof(DoubleMinusConverter);
 

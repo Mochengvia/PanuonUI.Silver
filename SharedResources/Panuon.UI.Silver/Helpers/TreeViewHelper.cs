@@ -193,32 +193,32 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("ItemHoverToggleBrush", typeof(Brush), typeof(TreeViewHelper));
         #endregion
 
-        #region ItemSelectedToggleBrush
+        #region ItemExpandedToggleBrush
         public static Brush GetItemsSelectedToggleBrush(TreeView treeView)
         {
-            return (Brush)treeView.GetValue(ItemSelectedToggleBrushProperty);
+            return (Brush)treeView.GetValue(ItemExpandedToggleBrushProperty);
         }
 
-        public static void SetItemsSelectedToggleBrush(TreeView treeView, Brush value)
+        public static void ItemsExpandedToggleBrush(TreeView treeView, Brush value)
         {
-            treeView.SetValue(ItemSelectedToggleBrushProperty, value);
+            treeView.SetValue(ItemExpandedToggleBrushProperty, value);
         }
 
         public static readonly DependencyProperty ItemsSelectedToggleBrushProperty =
             DependencyProperty.RegisterAttached("ItemsSelectedToggleBrush", typeof(Brush), typeof(TreeViewHelper));
 
-        public static Brush GetItemSelectedToggleBrush(TreeViewItem treeViewItem)
+        public static Brush GetItemExpandedToggleBrush(TreeViewItem treeViewItem)
         {
-            return (Brush)treeViewItem.GetValue(ItemSelectedToggleBrushProperty);
+            return (Brush)treeViewItem.GetValue(ItemExpandedToggleBrushProperty);
         }
 
-        public static void SetItemSelectedToggleBrush(TreeViewItem treeViewItem, Brush value)
+        public static void SetItemExpandedToggleBrush(TreeViewItem treeViewItem, Brush value)
         {
-            treeViewItem.SetValue(ItemSelectedToggleBrushProperty, value);
+            treeViewItem.SetValue(ItemExpandedToggleBrushProperty, value);
         }
 
-        public static readonly DependencyProperty ItemSelectedToggleBrushProperty =
-            DependencyProperty.RegisterAttached("ItemSelectedToggleBrush", typeof(Brush), typeof(TreeViewHelper));
+        public static readonly DependencyProperty ItemExpandedToggleBrushProperty =
+            DependencyProperty.RegisterAttached("ItemExpandedToggleBrush", typeof(Brush), typeof(TreeViewHelper));
         #endregion
 
         #region ItemHoverForeground

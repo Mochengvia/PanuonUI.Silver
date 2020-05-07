@@ -10,7 +10,6 @@
     <!--Converters-->
     
     <icv:CloneConverter x:Key="{x:Static i:ResourceKeys.CloneConverter}" />
-    <icv:TrueToFalseConverter x:Key="{x:Static i:ResourceKeys.TrueToFalseConverter}" />
     <icv:NullToCollapseConverter x:Key="{x:Static i:ResourceKeys.NullToCollapseConverter}" />
     <icv:NullOrEmptyToCollapseConverter x:Key="{x:Static i:ResourceKeys.NullOrEmptyToCollapseConverter}" />
     <icv:NullToVisibleConverter x:Key="{x:Static i:ResourceKeys.NullToVisibleConverter}" />

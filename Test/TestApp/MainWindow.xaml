@@ -1,41 +1,21 @@
-﻿
-
-<Window x:Class="TestApp.MainWindow"
+﻿<Window x:Class="TestApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:pu="clr-namespace:Panuon.UI.Silver;assembly=Panuon.UI.Silver"
         xmlns:pucore="clr-namespace:Panuon.UI.Silver.Core;assembly=Panuon.UI.Silver"
-        
+        FontFamily="{StaticResource PanuonIconFont}"
         xmlns:local="clr-namespace:TestApp"
         mc:Ignorable="d"
         Title="MainWindow"
         Height="800"
         Width="800">
     <Grid>
-        <StackPanel Orientation="Horizontal"
-                    HorizontalAlignment="Center">
-            <ComboBox Height="30"
-                      Width="200"
-                      pu:ComboBoxHelper.CornerRadius="2"
-                      pu:ComboBoxHelper.DropDownCornerRadius="2"
-                      pu:ComboBoxHelper.DropDownPadding="0,5"
-                      pu:ComboBoxHelper.ItemsRemovable="True">
-                <ComboBoxItem Content="Item1" 
-                              pu:ComboBoxHelper.ItemRemovable="False"/>
-                <ComboBoxItem Content="Item2" />
-                <ComboBoxItem Content="Item3" />
-            </ComboBox>
-            <ComboBox Margin="10,0,0,0"
-                      Height="30"
-                      Width="200"
-                      pu:ComboBoxHelper.ComboBoxStyle="Simple"
-                      pu:ComboBoxHelper.Watermark="Simple">
-                <ComboBoxItem Content="Item1" />
-                <ComboBoxItem Content="Item2" />
-                <ComboBoxItem Content="Item3" />
-            </ComboBox>
-        </StackPanel>
+
+        <pu:TextBlockX x:Name="TbText"
+                       Height="14"
+                       Text="123456789"
+                       VerticalAlignment="Center" />
     </Grid>
 </Window>

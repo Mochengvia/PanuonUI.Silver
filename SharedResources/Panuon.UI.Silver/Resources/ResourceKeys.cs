@@ -77,7 +77,6 @@
         public const string ClockItemStyle = nameof(ClockItemStyle);
         #endregion
 
-
         #region Pagination
 
         public const string PaginationItemStyle = nameof(PaginationItemStyle);
