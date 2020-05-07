@@ -23,6 +23,8 @@ GitHub地址：https://github.com/Panuon/PanuonUI.Silver
 请注意，2.0版本中不再集成FontAwesome，改为内置Panuon独家设计的IconFont字体库。目前已有200多个图标，你可以在UIBrowser中看到它们。Panuon IconFont会保持更新。  
 提供完备的开发文档、代码示例与1.0升级指南（文档将转移到阿里的语雀平台）。https://www.yuque.com/mochengvia/silver2.0   
 下载方式：你可以在上方的Branch中切换2.0.0分支并下载开发版代码，但控件尚不齐全。开发版Nuget已经发行。  
+Panuon Iconfont已在阿里图标字体库开放。你可以在1.x版本中使用这些图标。  
+https://www.iconfont.cn/user/detail?spm=a313x.7781069.1998910419.d9bd4f23f&uid=4788435
 
 #### 20202-5-7 V1.1.2
 优化ComboBox的阴影效果。  
