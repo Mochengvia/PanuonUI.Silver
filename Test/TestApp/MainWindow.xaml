@@ -12,10 +12,18 @@
         Height="800"
         Width="800">
     <Grid>
-
-        <pu:TextBlockX x:Name="TbText"
-                       Height="14"
-                       Text="123456789"
-                       VerticalAlignment="Center" />
+        <StackPanel>
+            <TabControl HorizontalContentAlignment="Left"
+                        pu:TabControlHelper.ItemsWidth="100"
+                        pu:TabControlHelper.ItemsRemovable="True"
+                        pu:TabControlHelper.TabControlStyle="Card"
+                        Height="200">
+                <TabItem Header="123456">
+                </TabItem>
+                <TabItem Header="123456" />
+                <TabItem Header="123456" />
+                <TabItem Header="123456" />
+            </TabControl>
+        </StackPanel>
     </Grid>
 </Window>

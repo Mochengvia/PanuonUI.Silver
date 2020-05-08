@@ -172,17 +172,8 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Internal Properties
+
         #region (Internal) ClearTextBoxCommand
-        internal static ICommand GetClearTextBoxCommand(TextBox textBox)
-        {
-            return (ICommand)textBox.GetValue(ClearTextBoxCommandProperty);
-        }
-
-        internal static void SetClearTextBoxCommand(TextBox textBox, ICommand value)
-        {
-            textBox.SetValue(ClearTextBoxCommandProperty, value);
-        }
-
         internal static readonly DependencyProperty ClearTextBoxCommandProperty =
             DependencyProperty.RegisterAttached("ClearTextBoxCommand", typeof(ICommand), typeof(TextBoxHelper), new PropertyMetadata(new RelayCommand(OnClearTextBoxCommandExecute)));
 

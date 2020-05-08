@@ -5,40 +5,10 @@
                     xmlns:ic="clr-namespace:Panuon.UI.Silver.Internal.Controls"
                     xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources">
     <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Resources.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/InternalResources.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Button.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{x:Static rs:ResourceKeys.TabItemStandardRemoveButtonStyle}"
-           TargetType="Button"
-           BasedOn="{StaticResource {x:Type Button}}">
-        <Setter Property="local:ButtonHelper.ButtonStyle"
-                Value="Hollow" />
-        <Style.Triggers>
-            <Trigger Property="local:ButtonHelper.ButtonStyle"
-                     Value="Hollow">
-                <Setter Property="Margin"
-                        Value="2,0,0,0" />
-                <Setter Property="BorderThickness"
-                        Value="0" />
-                <Setter Property="local:ButtonHelper.HoverBrush"
-                        Value="#FF4C4C" />
-                <Setter Property="Foreground"
-                        Value="{Binding Foreground,RelativeSource={RelativeSource TemplatedParent},Mode=OneTime}" />
-                <Setter Property="FontFamily"
-                        Value="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon" />
-                <Setter Property="Content"
-                        Value="&#xe92d;" />
-                <Setter Property="HorizontalAlignment"
-                        Value="Center" />
-                <Setter Property="VerticalAlignment"
-                        Value="Center" />
-                <Setter Property="FontSize"
-                        Value="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
-            </Trigger>
-        </Style.Triggers>
-
-    </Style>
 
     <ControlTemplate x:Key="{x:Static i:ResourceKeys.TabItemStandardTemplate}"
                      TargetType="TabItem">
@@ -48,36 +18,53 @@
                     Background="{TemplateBinding Background}"
                     BorderThickness="0,0,0,1"
                     BorderBrush="{TemplateBinding BorderBrush}" />
-            <StackPanel Orientation="Horizontal"
-                        Margin="{TemplateBinding Padding}"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center">
-                <ic:IconControl x:Name="IcIcon"
-                                Width="{Binding Path=(local:IconHelper.Width),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                Height="{Binding Path=(local:IconHelper.Height),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                MinWidth="{Binding Path=(local:IconHelper.MinWidth),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                MinHeight="{Binding Path=(local:IconHelper.MinHeight),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                MaxWidth="{Binding Path=(local:IconHelper.MaxWidth),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                MaxHeight="{Binding Path=(local:IconHelper.MaxHeight),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                Margin="{Binding Path=(local:IconHelper.Margin),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                Visibility="{Binding Path=(local:TabControlHelper.ItemIcon),Converter={StaticResource {x:Static i:ResourceKeys.NullToCollapseConverter}},RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                Content="{Binding Path=(local:TabControlHelper.ItemIcon),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center" />
-                <ContentPresenter x:Name="CpHeader"
-                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                  TextBlock.Foreground="{Binding Path=(local:TabControlHelper.ItemForeground),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                  TextElement.Foreground="{Binding Path=(local:TabControlHelper.ItemForeground),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                  ContentSource="Header"
-                                  RecognizesAccessKey="True" />
+            <Grid Margin="{TemplateBinding Padding}"
+                 >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal"
+                            VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}"
+                            HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}">
+                    <ic:IconControl x:Name="IcIcon"
+                                    Width="{Binding Path=(local:IconHelper.Width),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                    Height="{Binding Path=(local:IconHelper.Height),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                    MinWidth="{Binding Path=(local:IconHelper.MinWidth),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                    MinHeight="{Binding Path=(local:IconHelper.MinHeight),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                    MaxWidth="{Binding Path=(local:IconHelper.MaxWidth),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                    MaxHeight="{Binding Path=(local:IconHelper.MaxHeight),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                    Margin="{Binding Path=(local:IconHelper.Margin),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                    Visibility="{Binding Path=(local:TabControlHelper.ItemIcon),Converter={StaticResource {x:Static i:ResourceKeys.NullToCollapseConverter}},RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                    Content="{Binding Path=(local:TabControlHelper.ItemIcon),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                    Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                    FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                    FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center" />
+                    <ContentPresenter x:Name="CpHeader"
+                                      VerticalAlignment="Center"
+                                      HorizontalAlignment="Center"
+                                      TextBlock.Foreground="{Binding Path=(local:TabControlHelper.ItemForeground),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                      TextElement.Foreground="{Binding Path=(local:TabControlHelper.ItemForeground),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                      ContentSource="Header"
+                                      RecognizesAccessKey="True" />
+                </StackPanel>
                 <Button x:Name="BtnRemove"
-                        Style="{DynamicResource {x:Static rs:ResourceKeys.TabItemStandardRemoveButtonStyle}}"
-                        Visibility="{Binding Path=(local:TabControlHelper.ItemRemovable),Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
-            </StackPanel>
+                        Grid.Column="1"
+                        Style="{Binding Path=(local:TabControlHelper.RemoveButtonStyle), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}"
+                        Visibility="{Binding Path=(local:TabControlHelper.ItemRemovable),Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                        Command="{Binding Path=(local:TabControlHelper.RemoveCommand), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                    <Button.CommandParameter>
+                        <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.CombineToArrayConverter}}">
+                            <Binding Path="."
+                                     RelativeSource="{RelativeSource AncestorType=TabItem}" />
+                            <Binding Path="."
+                                     RelativeSource="{RelativeSource AncestorType=TabControl}" />
+                        </MultiBinding>
+                    </Button.CommandParameter>
+                </Button>
+            </Grid>
             <Rectangle x:Name="RectRibbon" />
         </Grid>
         <ControlTemplate.Triggers>
@@ -208,37 +195,6 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <Style x:Key="{x:Static rs:ResourceKeys.TabItemCardRemoveButtonStyle}"
-           TargetType="Button"
-           BasedOn="{StaticResource {x:Type Button}}">
-        <Setter Property="local:ButtonHelper.ButtonStyle"
-                Value="Hollow" />
-        <Style.Triggers>
-            <Trigger Property="local:ButtonHelper.ButtonStyle"
-                     Value="Hollow">
-                <Setter Property="Margin"
-                        Value="2,0,0,0" />
-                <Setter Property="BorderThickness"
-                        Value="0" />
-                <Setter Property="local:ButtonHelper.HoverBrush"
-                        Value="#FF4C4C" />
-                <Setter Property="Foreground"
-                        Value="{Binding Foreground,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
-                <Setter Property="FontFamily"
-                        Value="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon" />
-                <Setter Property="Content"
-                        Value="&#xe92d;" />
-                <Setter Property="HorizontalAlignment"
-                        Value="Center" />
-                <Setter Property="VerticalAlignment"
-                        Value="Center" />
-                <Setter Property="FontSize"
-                        Value="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
-            </Trigger>
-        </Style.Triggers>
-
-    </Style>
-
     <ControlTemplate x:Key="{x:Static i:ResourceKeys.TabItemCardTemplate}"
                      TargetType="TabItem">
         <Grid x:Name="GrdMain"
@@ -247,37 +203,53 @@
                     Background="{TemplateBinding Background}"
                     BorderThickness="{TemplateBinding BorderThickness}"
                     BorderBrush="{TemplateBinding BorderBrush}" />
-            <StackPanel Orientation="Horizontal"
-                        Margin="{TemplateBinding Padding}"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center">
-                <ic:IconControl x:Name="IcIcon"
-                                Width="{Binding Path=(local:IconHelper.Width),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                Height="{Binding Path=(local:IconHelper.Height),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                MinWidth="{Binding Path=(local:IconHelper.MinWidth),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                MinHeight="{Binding Path=(local:IconHelper.MinHeight),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                MaxWidth="{Binding Path=(local:IconHelper.MaxWidth),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                MaxHeight="{Binding Path=(local:IconHelper.MaxHeight),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                Margin="{Binding Path=(local:IconHelper.Margin),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                Visibility="{Binding Path=(local:TabControlHelper.ItemIcon),Converter={StaticResource {x:Static i:ResourceKeys.NullToCollapseConverter}},RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                Content="{Binding Path=(local:TabControlHelper.ItemIcon),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center" />
-                <ContentPresenter x:Name="CpHeader"
-                                  VerticalAlignment="Center"
-                                  HorizontalAlignment="Center"
-                                  TextBlock.Foreground="{Binding Path=(local:TabControlHelper.ItemForeground),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                  TextElement.Foreground="{Binding Path=(local:TabControlHelper.ItemForeground),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                  ContentSource="Header"
-                                  RecognizesAccessKey="True"
-                                  IsHitTestVisible="False" />
+            <Grid Margin="{TemplateBinding Padding}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal"
+                            VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}"
+                            HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}">
+                    <ic:IconControl x:Name="IcIcon"
+                                    Width="{Binding Path=(local:IconHelper.Width),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                    Height="{Binding Path=(local:IconHelper.Height),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                    MinWidth="{Binding Path=(local:IconHelper.MinWidth),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                    MinHeight="{Binding Path=(local:IconHelper.MinHeight),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                    MaxWidth="{Binding Path=(local:IconHelper.MaxWidth),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                    MaxHeight="{Binding Path=(local:IconHelper.MaxHeight),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                    Margin="{Binding Path=(local:IconHelper.Margin),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                    Visibility="{Binding Path=(local:TabControlHelper.ItemIcon),Converter={StaticResource {x:Static i:ResourceKeys.NullToCollapseConverter}},RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                    Content="{Binding Path=(local:TabControlHelper.ItemIcon),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                    Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                    FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                    FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center" />
+                    <ContentPresenter x:Name="CpHeader"
+                                      VerticalAlignment="Center"
+                                      HorizontalAlignment="Center"
+                                      TextBlock.Foreground="{Binding Path=(local:TabControlHelper.ItemForeground),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                      TextElement.Foreground="{Binding Path=(local:TabControlHelper.ItemForeground),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                      ContentSource="Header"
+                                      RecognizesAccessKey="True"
+                                      IsHitTestVisible="False" />
+                </StackPanel>
                 <Button x:Name="BtnRemove"
-                        Style="{DynamicResource {x:Static rs:ResourceKeys.TabItemCardRemoveButtonStyle}}"
-                        Visibility="{Binding Path=(local:TabControlHelper.ItemRemovable),Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
-            </StackPanel>
+                        Grid.Column="1"
+                        Style="{Binding Path=(local:TabControlHelper.RemoveButtonStyle), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}"
+                        Visibility="{Binding Path=(local:TabControlHelper.ItemRemovable),Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                        Command="{Binding Path=(local:TabControlHelper.RemoveCommand), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                    <Button.CommandParameter>
+                        <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.CombineToArrayConverter}}">
+                            <Binding Path="."
+                                     RelativeSource="{RelativeSource AncestorType=TabItem}" />
+                            <Binding Path="."
+                                     RelativeSource="{RelativeSource AncestorType=TabControl}" />
+                        </MultiBinding>
+                    </Button.CommandParameter>
+                </Button>
+            </Grid>
             <Rectangle x:Name="RectRibbon" />
         </Grid>
         <ControlTemplate.Triggers>
@@ -386,11 +358,11 @@
         <Setter Property="Template"
                 Value="{StaticResource {x:Static i:ResourceKeys.TabItemStandardTemplate}}" />
         <Style.Triggers>
-            <Trigger Property="local:TabControlHelper.TabControlStyle"
+            <DataTrigger Binding="{Binding Path=(local:TabControlHelper.TabControlStyle), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}"
                      Value="Card">
                 <Setter Property="Template"
                         Value="{StaticResource {x:Static i:ResourceKeys.TabItemCardTemplate}}" />
-            </Trigger>
+            </DataTrigger>
             <Trigger Property="IsEnabled"
                      Value="False">
                 <Setter Property="Opacity"

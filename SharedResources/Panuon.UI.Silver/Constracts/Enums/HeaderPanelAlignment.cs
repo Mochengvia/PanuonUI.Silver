@@ -9,5 +9,6 @@ namespace Panuon.UI.Silver
         Front,
         Stretch,
         Center,
+        End
     }
 }

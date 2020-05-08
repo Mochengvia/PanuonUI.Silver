@@ -1,11 +1,73 @@
-﻿using System.Windows;
+﻿using Panuon.UI.Silver.Core;
+using System;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace Panuon.UI.Silver
 {
     public static class TabControlHelper
     {
+        #region Routed Event
+        #region ItemRemoving
+        public static readonly RoutedEvent ItemRemovingEvent = EventManager.RegisterRoutedEvent("ItemRemoving", RoutingStrategy.Bubble, typeof(RemovingRoutedEventHandler), typeof(TabControlHelper));
+
+        public static void AddItemRemovingHandler(DependencyObject d, RemovingRoutedEventHandler handler)
+        {
+            UIElement uie = d as UIElement;
+            if (uie != null)
+            {
+                uie.AddHandler(ItemRemovingEvent, handler);
+            }
+        }
+
+        public static void RemoveItemRemovingHandler(DependencyObject d, RemovingRoutedEventHandler handler)
+        {
+            UIElement uie = d as UIElement;
+            if (uie != null)
+            {
+                uie.RemoveHandler(ItemRemovingEvent, handler);
+            }
+        }
+
+        internal static bool RaiseItemRemoving(UIElement uie, object item)
+        {
+            var arg = new RemovingRoutedEventArgs(item, ItemRemovingEvent);
+            uie.RaiseEvent(arg);
+            return !arg.Cancel;
+        }
+        #endregion
+
+        #region ItemRemoved
+        public static readonly RoutedEvent ItemRemovedEvent = EventManager.RegisterRoutedEvent("ItemRemoved", RoutingStrategy.Bubble, typeof(RemovedRoutedEventHandler), typeof(TabControlHelper));
+
+        public static void AddItemRemovedHandler(DependencyObject d, RemovedRoutedEventHandler handler)
+        {
+            UIElement uie = d as UIElement;
+            if (uie != null)
+            {
+                uie.AddHandler(ItemRemovedEvent, handler);
+            }
+        }
+
+        public static void RemoveItemRemovedHandler(DependencyObject d, RemovedRoutedEventHandler handler)
+        {
+            UIElement uie = d as UIElement;
+            if (uie != null)
+            {
+                uie.RemoveHandler(ItemRemovedEvent, handler);
+            }
+        }
+
+        internal static void RaiseItemRemoved(UIElement uie, object item, bool hasRemovedFromSource)
+        {
+            var arg = new RemovedRoutedEventArgs(item, hasRemovedFromSource, ItemRemovedEvent);
+            uie.RaiseEvent(arg);
+        }
+        #endregion
+        #endregion
+
         #region Properties
 
         #region TabControlStyle
@@ -20,7 +82,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty TabControlStyleProperty =
-            DependencyProperty.RegisterAttached("TabControlStyle", typeof(TabControlStyle), typeof(TabControlHelper), new FrameworkPropertyMetadata(TabControlStyle.Standard, FrameworkPropertyMetadataOptions.Inherits));
+            DependencyProperty.RegisterAttached("TabControlStyle", typeof(TabControlStyle), typeof(TabControlHelper));
         #endregion
 
         //#region TabControlHeaderStyle
@@ -51,6 +113,21 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty HeaderPanelBackgroundProperty =
             DependencyProperty.RegisterAttached("HeaderPanelBackground", typeof(Brush), typeof(TabControlHelper));
+        #endregion
+
+        #region HeaderPanelRibbonLineVisibility
+        public static Visibility GetHeaderPanelRibbonLineVisibility(DependencyObject obj)
+        {
+            return (Visibility)obj.GetValue(HeaderPanelRibbonLineVisibilityProperty);
+        }
+
+        public static void SetHeaderPanelRibbonLineVisibility(DependencyObject obj, Visibility value)
+        {
+            obj.SetValue(HeaderPanelRibbonLineVisibilityProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderPanelRibbonLineVisibilityProperty =
+            DependencyProperty.RegisterAttached("HeaderPanelRibbonLineVisibility", typeof(Visibility), typeof(TabControlHelper));
         #endregion
 
         #region HeaderPanelAlignment
@@ -212,7 +289,7 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty ItemsHeightProperty =
             DependencyProperty.RegisterAttached("ItemsHeight", typeof(double), typeof(TabControlHelper), new FrameworkPropertyMetadata(double.NaN, FrameworkPropertyMetadataOptions.Inherits));
- #endregion
+        #endregion
 
         #region ItemWidth
         public static double GetItemsWidth(TabControl tabControl)
@@ -256,7 +333,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty ItemsRemovableProperty =
-            DependencyProperty.RegisterAttached("ItemsRemovable", typeof(bool), typeof(TabControlHelper), new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.Inherits));
+            DependencyProperty.RegisterAttached("ItemsRemovable", typeof(bool), typeof(TabControlHelper));
 
         public static bool GetItemRemovable(TabItem tabItem)
         {
@@ -269,7 +346,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty ItemRemovableProperty =
-            DependencyProperty.RegisterAttached("ItemRemovable", typeof(bool), typeof(TabControlHelper), new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.Inherits));
+            DependencyProperty.RegisterAttached("ItemRemovable", typeof(bool), typeof(TabControlHelper));
 
 
         #endregion
@@ -332,6 +409,63 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("EndControl", typeof(object), typeof(TabControlHelper));
         #endregion
 
+        #region RemoveButtonStyle
+        public static Style GetRemoveButtonStyle(DependencyObject obj)
+        {
+            return (Style)obj.GetValue(RemoveButtonStyleProperty);
+        }
+
+        public static void SetRemoveButtonStyle(DependencyObject obj, Style value)
+        {
+            obj.SetValue(RemoveButtonStyleProperty, value);
+        }
+
+        public static readonly DependencyProperty RemoveButtonStyleProperty =
+            DependencyProperty.RegisterAttached("RemoveButtonStyle", typeof(Style), typeof(TabControlHelper));
+        #endregion
+
+        #endregion
+
+        #region Internal Properties
+
+        #region (Internal) RemoveCommand
+        internal static readonly DependencyProperty RemoveCommandProperty =
+            DependencyProperty.RegisterAttached("RemoveCommand", typeof(ICommand), typeof(TabControlHelper), new PropertyMetadata(new RelayCommand(OnRemoveCommandExecute)));
+        #endregion
+
+        #endregion
+
+        #region Event Handlers
+        private static void OnRemoveCommandExecute(object obj)
+        {
+            var parameters = obj as object[];
+            var tabItem = parameters[0] as TabItem;
+            var tabControl = parameters[1] as TabControl;
+
+            var dataObject = tabControl.ItemContainerGenerator.ItemFromContainer(tabItem);
+            var result = TabControlHelper.RaiseItemRemoving(tabControl, dataObject);
+            if (!result)
+            {
+                return;
+            }
+            else
+            {
+                bool hasRemovedFromSource = false;
+                if (dataObject is TabItem)
+                {
+                    try
+                    {
+                        tabControl.Items.Remove(tabItem);
+                        hasRemovedFromSource = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        System.Diagnostics.Debug.WriteLine(ex);
+                    }
+                }
+                TabControlHelper.RaiseItemRemoved(tabControl, dataObject, hasRemovedFromSource);
+            }
+        }
         #endregion
     }
 }

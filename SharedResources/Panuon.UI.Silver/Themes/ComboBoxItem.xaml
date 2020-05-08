@@ -51,7 +51,7 @@
                 <Button x:Name="BtnRemove"
                         Grid.Column="1"
                         Foreground="{TemplateBinding Foreground}"
-                        Visibility="Collapsed"
+                        Visibility="{Binding Path=(local:ComboBoxHelper.ItemRemovable),Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
                         Margin="0,0,5,0"
                         Style="{DynamicResource {x:Static rs:ResourceKeys.ComboBoxItemRemoveButtonStyle}}"
                         Command="{Binding Path=(local:ComboBoxHelper.RemoveCommand), RelativeSource={RelativeSource AncestorType=ComboBoxItem}, Mode=OneWay}">
@@ -106,12 +106,6 @@
                         Property="Foreground"
                         Value="{Binding Path=(local:ComboBoxHelper.ItemSelectedForeground),RelativeSource={RelativeSource AncestorType=ComboBoxItem}, Mode=OneWay}" />
             </MultiDataTrigger>
-            <Trigger Property="local:ComboBoxHelper.ItemRemovable"
-                     Value="True">
-                <Setter TargetName="BtnRemove"
-                        Property="Visibility"
-                        Value="Visible" />
-            </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 

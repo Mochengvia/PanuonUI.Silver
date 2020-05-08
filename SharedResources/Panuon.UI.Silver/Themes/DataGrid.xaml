@@ -466,7 +466,7 @@
                           Padding="{TemplateBinding Padding}"
                           VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                           HorizontalScrollBarVisibility="{Binding Path=(ScrollViewer.HorizontalScrollBarVisibility),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                          CanContentScroll="True">
+                          CanContentScroll="{Binding Path=(ScrollViewer.CanContentScroll),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                 <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
             </ScrollViewer>
         </Border>

@@ -15,8 +15,25 @@ namespace Panuon.UI.Silver.Core
         }
         #endregion
 
+        #region Range
+        public static IEnumerable<T> Range<T>(this IEnumerable<T> items, int index, int count)
+        {
+            var i = 0;
+            foreach (var item in items)
+            {
+                if (i < index || i >= (index + count))
+                {
+                    i++;
+                    continue;
+                }
+                i++;
+                yield return item;
+            }
+        }
+        #endregion
+
         #region Count
-       
+
         #endregion
     }
 }

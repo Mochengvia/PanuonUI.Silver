@@ -81,6 +81,10 @@ namespace Panuon.UI.Silver.Internal
 
         public const string ThicknessWithBottomOnlyConverter = nameof(ThicknessWithBottomOnlyConverter);
 
+        public const string ThicknessWithLeftOnlyConverter = nameof(ThicknessWithLeftOnlyConverter);
+
+        public const string ThicknessWithRightOnlyConverter = nameof(ThicknessWithRightOnlyConverter);
+
         public const string CheckBoxStandardGlyphPathConverter = nameof(CheckBoxStandardGlyphPathConverter);
 
         public const string CheckBoxSwitchToggleMarginConverter = nameof(CheckBoxSwitchToggleMarginConverter);

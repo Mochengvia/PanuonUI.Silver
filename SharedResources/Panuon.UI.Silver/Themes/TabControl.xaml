@@ -7,7 +7,39 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Resources.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/InternalResources.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Button.xaml" />
     </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="{x:Static rs:ResourceKeys.TabItemStandardRemoveButtonStyle}"
+           TargetType="Button"
+           BasedOn="{StaticResource {x:Type Button}}">
+        <Setter Property="local:ButtonHelper.ButtonStyle"
+                Value="Hollow" />
+        <Style.Triggers>
+            <Trigger Property="local:ButtonHelper.ButtonStyle"
+                     Value="Hollow">
+                <Setter Property="Margin"
+                        Value="2,0,0,0" />
+                <Setter Property="BorderThickness"
+                        Value="0" />
+                <Setter Property="local:ButtonHelper.HoverBrush"
+                        Value="#FF4C4C" />
+                <Setter Property="Foreground"
+                        Value="{Binding Foreground,RelativeSource={RelativeSource TemplatedParent},Mode=OneTime}" />
+                <Setter Property="FontFamily"
+                        Value="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon" />
+                <Setter Property="Content"
+                        Value="&#xe92d;" />
+                <Setter Property="HorizontalAlignment"
+                        Value="Center" />
+                <Setter Property="VerticalAlignment"
+                        Value="Center" />
+                <Setter Property="FontSize"
+                        Value="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
+            </Trigger>
+        </Style.Triggers>
+
+    </Style>
 
     <ControlTemplate x:Key="{x:Static i:ResourceKeys.TabControlStandardTemplate}"
                      TargetType="TabControl">
@@ -38,6 +70,12 @@
                           IsItemsHost="True"/>
                 <ContentControl x:Name="CcEnd"
                                 Content="{Binding Path=(local:TabControlHelper.EndControl),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Border x:Name="BdrFront"
+                                  BorderBrush="{TemplateBinding BorderBrush}"
+                                  Visibility="Collapsed"/>
+                <Border x:Name="BdrEnd"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                                  Visibility="Collapsed"/>
                 <ContentPresenter x:Name="PART_SelectedContentHost"
                                   Margin="{TemplateBinding Padding}"
                                   ContentSource="SelectedContent"/>
@@ -129,9 +167,21 @@
                 <Setter TargetName="TpItems"
                         Property="Grid.Row"
                         Value="0" />
-                <Setter TargetName="TpItems"
+                <Setter TargetName="Cd2"
+                        Property="Width"
+                        Value="Auto" />
+                <Setter TargetName="BdrEnd"
+                        Property="Visibility"
+                        Value="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="BdrEnd"
+                        Property="Grid.Column"
+                        Value="2" />
+                <Setter TargetName="BdrEnd"
                         Property="Grid.ColumnSpan"
-                        Value="3" />
+                        Value="2" />
+                <Setter TargetName="BdrEnd"
+                        Property="BorderThickness"
+                        Value="0,0,0,1" />
                 <Setter TargetName="CcFront"
                         Property="Grid.Column"
                         Value="0" />
@@ -158,6 +208,24 @@
                 <Setter TargetName="TpItems"
                         Property="Grid.Row"
                         Value="0" />
+                <Setter TargetName="BdrFront"
+                        Property="Visibility"
+                        Value="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="BdrEnd"
+                        Property="Visibility"
+                        Value="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="BdrFront"
+                        Property="Grid.Column"
+                        Value="1" />
+                <Setter TargetName="BdrEnd"
+                        Property="Grid.Column"
+                        Value="3" />
+                <Setter TargetName="BdrFront"
+                        Property="BorderThickness"
+                        Value="0,0,0,1" />
+                <Setter TargetName="BdrEnd"
+                        Property="BorderThickness"
+                        Value="0,0,0,1" />
                 <Setter TargetName="CcFront"
                         Property="Grid.Column"
                         Value="0" />
@@ -170,7 +238,7 @@
                 <Setter TargetName="CcEnd"
                         Property="Grid.Row"
                         Value="0" />
-            </MultiTrigger>
+            </MultiTrigger>                 
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="TabStripPlacement"
@@ -196,6 +264,50 @@
                 <Setter TargetName="CcEnd"
                         Property="Grid.Column"
                         Value="2" />
+                <Setter TargetName="CcEnd"
+                        Property="Grid.Row"
+                        Value="0" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="TabStripPlacement"
+                               Value="Top" />
+                    <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
+                               Value="End" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="TpItems"
+                        Property="Grid.Column"
+                        Value="3" />
+                <Setter TargetName="Cd4"
+                        Property="Width"
+                        Value="Auto" />
+                <Setter TargetName="TpItems"
+                        Property="Grid.Row"
+                        Value="0" />
+                <Setter TargetName="BdrFront"
+                        Property="Visibility"
+                        Value="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="BdrFront"
+                        Property="Grid.Column"
+                        Value="1" />
+                <Setter TargetName="BdrFront"
+                        Property="Grid.ColumnSpan"
+                        Value="2" />
+                <Setter TargetName="BdrFront"
+                        Property="BorderThickness"
+                        Value="0,0,0,1" />
+                <Setter TargetName="CcFront"
+                        Property="Grid.Column"
+                        Value="0" />
+                <Setter TargetName="CcFront"
+                        Property="Grid.Row"
+                        Value="0" />
+                <Setter TargetName="CcFront"
+                        Property="Grid.ColumnSpan"
+                        Value="3" />
+                <Setter TargetName="CcEnd"
+                        Property="Grid.Column"
+                        Value="4" />
                 <Setter TargetName="CcEnd"
                         Property="Grid.Row"
                         Value="0" />
@@ -213,9 +325,25 @@
                 <Setter TargetName="TpItems"
                         Property="Grid.Row"
                         Value="4" />
-                <Setter TargetName="TpItems"
+                <Setter TargetName="Cd2"
+                        Property="Width"
+                        Value="Auto" />
+                <Setter TargetName="BdrEnd"
+                        Property="Grid.Row"
+                        Value="4" />
+                <Setter TargetName="BdrEnd"
+                        Property="Visibility"
+                        Value="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="BdrEnd"
+                        Property="Grid.Column"
+                        Value="2" />
+                <Setter TargetName="BdrEnd"
                         Property="Grid.ColumnSpan"
-                        Value="3" />
+                        Value="2" />
+                <Setter TargetName="BdrEnd"
+                        Property="BorderThickness"
+                        Value="0,0,0,1" />
+
                 <Setter TargetName="CcFront"
                         Property="Grid.Column"
                         Value="0" />
@@ -242,6 +370,30 @@
                 <Setter TargetName="TpItems"
                         Property="Grid.Row"
                         Value="4" />
+                <Setter TargetName="BdrFront"
+                        Property="Grid.Row"
+                        Value="4" />
+                <Setter TargetName="BdrEnd"
+                        Property="Grid.Row"
+                        Value="4" />
+                <Setter TargetName="BdrFront"
+                        Property="Visibility"
+                        Value="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="BdrEnd"
+                        Property="Visibility"
+                        Value="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="BdrFront"
+                        Property="Grid.Column"
+                        Value="1" />
+                <Setter TargetName="BdrEnd"
+                        Property="Grid.Column"
+                        Value="3" />
+                <Setter TargetName="BdrFront"
+                        Property="BorderThickness"
+                        Value="0,0,0,1" />
+                <Setter TargetName="BdrEnd"
+                        Property="BorderThickness"
+                        Value="0,0,0,1" />
                 <Setter TargetName="CcFront"
                         Property="Grid.Column"
                         Value="0" />
@@ -280,6 +432,53 @@
                 <Setter TargetName="CcEnd"
                         Property="Grid.Column"
                         Value="2" />
+                <Setter TargetName="CcEnd"
+                        Property="Grid.Row"
+                        Value="4" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="TabStripPlacement"
+                               Value="Bottom" />
+                    <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
+                               Value="End" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="TpItems"
+                        Property="Grid.Column"
+                        Value="3" />
+                <Setter TargetName="TpItems"
+                        Property="Grid.Row"
+                        Value="4" />
+                <Setter TargetName="Cd4"
+                        Property="Width"
+                        Value="Auto" />
+                <Setter TargetName="BdrFront"
+                        Property="Grid.Row"
+                        Value="4" />
+                <Setter TargetName="BdrFront"
+                        Property="Visibility"
+                        Value="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="BdrFront"
+                        Property="Grid.Column"
+                        Value="1" />
+                <Setter TargetName="BdrFront"
+                        Property="Grid.ColumnSpan"
+                        Value="2" />
+                <Setter TargetName="BdrFront"
+                        Property="BorderThickness"
+                        Value="0,0,0,1" />
+                <Setter TargetName="CcFront"
+                        Property="Grid.Column"
+                        Value="0" />
+                <Setter TargetName="CcFront"
+                        Property="Grid.Row"
+                        Value="4" />
+                <Setter TargetName="CcFront"
+                        Property="Grid.ColumnSpan"
+                        Value="3" />
+                <Setter TargetName="CcEnd"
+                        Property="Grid.Column"
+                        Value="4" />
                 <Setter TargetName="CcEnd"
                         Property="Grid.Row"
                         Value="4" />
@@ -297,11 +496,23 @@
                 <Setter TargetName="TpItems"
                         Property="Grid.Column"
                         Value="0" />
-                <Setter TargetName="TpItems"
+                <Setter TargetName="Rd2"
+                        Property="Height"
+                        Value="Auto" />
+                <Setter TargetName="BdrEnd"
+                        Property="Visibility"
+                        Value="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="BdrEnd"
+                        Property="Grid.Row"
+                        Value="2" />
+                <Setter TargetName="BdrEnd"
                         Property="Grid.RowSpan"
-                        Value="3" />
+                        Value="2" />
+                <Setter TargetName="BdrEnd"
+                        Property="BorderThickness"
+                        Value="0,0,1,0" />
                 <Setter TargetName="CcFront"
-                        Property="Grid.Row"
+                        Property="Grid.Column"
                         Value="0" />
                 <Setter TargetName="CcFront"
                         Property="Grid.Column"
@@ -326,6 +537,24 @@
                 <Setter TargetName="TpItems"
                         Property="Grid.Column"
                         Value="0" />
+                <Setter TargetName="BdrFront"
+                        Property="Visibility"
+                        Value="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="BdrEnd"
+                        Property="Visibility"
+                        Value="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="BdrFront"
+                        Property="Grid.Row"
+                        Value="1" />
+                <Setter TargetName="BdrEnd"
+                        Property="Grid.Row"
+                        Value="3" />
+                <Setter TargetName="BdrFront"
+                        Property="BorderThickness"
+                        Value="0,0,1,0" />
+                <Setter TargetName="BdrEnd"
+                        Property="BorderThickness"
+                        Value="0,0,1,0" />
                 <Setter TargetName="CcFront"
                         Property="Grid.Row"
                         Value="0" />
@@ -371,6 +600,50 @@
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="TabStripPlacement"
+                               Value="Left" />
+                    <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
+                               Value="End" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="TpItems"
+                        Property="Grid.Row"
+                        Value="3" />
+                <Setter TargetName="TpItems"
+                        Property="Grid.Column"
+                        Value="0" />
+                <Setter TargetName="Rd4"
+                        Property="Height"
+                        Value="Auto" />
+                <Setter TargetName="BdrFront"
+                        Property="Visibility"
+                        Value="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="BdrFront"
+                        Property="Grid.Row"
+                        Value="1" />
+                <Setter TargetName="BdrFront"
+                        Property="Grid.RowSpan"
+                        Value="2" />
+                <Setter TargetName="BdrFront"
+                        Property="BorderThickness"
+                        Value="0,0,1,0" />
+                <Setter TargetName="CcFront"
+                        Property="Grid.Row"
+                        Value="0" />
+                <Setter TargetName="CcFront"
+                        Property="Grid.Column"
+                        Value="0" />
+                <Setter TargetName="CcFront"
+                        Property="Grid.RowSpan"
+                        Value="3" />
+                <Setter TargetName="CcEnd"
+                        Property="Grid.Row"
+                        Value="4" />
+                <Setter TargetName="CcEnd"
+                        Property="Grid.Column"
+                        Value="0" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="TabStripPlacement"
                                Value="Right" />
                     <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
                                Value="Stretch" />
@@ -381,9 +654,24 @@
                 <Setter TargetName="TpItems"
                         Property="Grid.Column"
                         Value="4" />
-                <Setter TargetName="TpItems"
+                <Setter TargetName="Rd2"
+                        Property="Height"
+                        Value="Auto" />
+                <Setter TargetName="BdrEnd"
+                        Property="Grid.Column"
+                        Value="4" />
+                <Setter TargetName="BdrEnd"
+                        Property="Visibility"
+                        Value="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="BdrEnd"
+                        Property="Grid.Row"
+                        Value="2" />
+                <Setter TargetName="BdrEnd"
                         Property="Grid.RowSpan"
-                        Value="3" />
+                        Value="2" />
+                <Setter TargetName="BdrEnd"
+                        Property="BorderThickness"
+                        Value="1,0,0,0" />
                 <Setter TargetName="CcFront"
                         Property="Grid.Row"
                         Value="0" />
@@ -410,6 +698,31 @@
                 <Setter TargetName="TpItems"
                         Property="Grid.Column"
                         Value="4" />
+                <Setter TargetName="BdrFront"
+                        Property="Visibility"
+                        Value="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="BdrEnd"
+                        Property="Visibility"
+                        Value="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="BdrFront"
+                        Property="Grid.Column"
+                        Value="4" />
+                <Setter TargetName="BdrEnd"
+                        Property="Grid.Column"
+                        Value="4" />
+                <Setter TargetName="BdrFront"
+                        Property="Grid.Row"
+                        Value="1" />
+                <Setter TargetName="BdrEnd"
+                        Property="Grid.Row"
+                        Value="3" />
+                <Setter TargetName="BdrFront"
+                        Property="BorderThickness"
+                        Value="1,0,0,0" />
+                <Setter TargetName="BdrEnd"
+                        Property="BorderThickness"
+                        Value="1,0,0,0" />
+
                 <Setter TargetName="CcFront"
                         Property="Grid.Row"
                         Value="0" />
@@ -448,6 +761,56 @@
                 <Setter TargetName="CcEnd"
                         Property="Grid.Row"
                         Value="2" />
+                <Setter TargetName="CcEnd"
+                        Property="Grid.Column"
+                        Value="4" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="TabStripPlacement"
+                               Value="Right" />
+                    <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
+                               Value="End" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="TpItems"
+                        Property="Grid.Row"
+                        Value="3" />
+                <Setter TargetName="TpItems"
+                        Property="Grid.Column"
+                        Value="4" />
+                <Setter TargetName="TpItems"
+                        Property="Grid.RowSpan"
+                        Value="1" />
+                <Setter TargetName="Rd4"
+                        Property="Height"
+                        Value="Auto" />
+                <Setter TargetName="BdrFront"
+                        Property="Visibility"
+                        Value="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="BdrFront"
+                        Property="Grid.Row"
+                        Value="1" />
+                <Setter TargetName="BdrFront"
+                        Property="Grid.Column"
+                        Value="4" />
+                <Setter TargetName="BdrFront"
+                        Property="Grid.RowSpan"
+                        Value="2" />
+                <Setter TargetName="BdrFront"
+                        Property="BorderThickness"
+                        Value="1,0,0,0" />
+                <Setter TargetName="CcFront"
+                        Property="Grid.Row"
+                        Value="0" />
+                <Setter TargetName="CcFront"
+                        Property="Grid.RowSpan"
+                        Value="3" />
+                <Setter TargetName="CcFront"
+                        Property="Grid.Column"
+                        Value="4" />
+                <Setter TargetName="CcEnd"
+                        Property="Grid.Row"
+                        Value="4" />
                 <Setter TargetName="CcEnd"
                         Property="Grid.Column"
                         Value="4" />
@@ -467,6 +830,8 @@
 
     <Style TargetType="TabControl">
         <!--TabControlHelper-->
+        <Setter Property="local:TabControlHelper.RemoveButtonStyle"
+                Value="{StaticResource {x:Static rs:ResourceKeys.TabItemStandardRemoveButtonStyle}}" />
         <Setter Property="local:TabControlHelper.ItemsForeground"
                 Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
         <Setter Property="local:TabControlHelper.ItemsHeight"
@@ -475,6 +840,10 @@
                 Value="15,0" />
         <Setter Property="local:TabControlHelper.ItemsBackground"
                 Value="Transparent" />
+        <Setter Property="local:TabControlHelper.HeaderPanelAlignment"
+                Value="Stretch" />
+        <Setter Property="local:TabControlHelper.HeaderPanelRibbonLineVisibility"
+                Value="Visible" />
         <!--Properties-->
         <Setter Property="Padding"
                 Value="{StaticResource {x:Static i:ResourceKeys.TabControlPadding}}" />
@@ -489,6 +858,10 @@
         <Style.Triggers>
             <Trigger Property="local:TabControlHelper.TabControlStyle"
                      Value="Card">
+                <Setter Property="local:TabControlHelper.RemoveButtonStyle"
+                        Value="{StaticResource {x:Static rs:ResourceKeys.TabItemStandardRemoveButtonStyle}}" />
+                <Setter Property="local:TabControlHelper.HeaderPanelRibbonLineVisibility"
+                        Value="Collapsed" />
                 <Setter Property="local:TabControlHelper.ItemsSelectedBackground"
                         Value="#3E3E3E" />
                 <Setter Property="local:TabControlHelper.ItemsSelectedForeground"

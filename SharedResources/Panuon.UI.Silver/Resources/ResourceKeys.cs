@@ -60,11 +60,6 @@
 
         public const string TabItemStandardRemoveButtonStyle = nameof(TabItemStandardRemoveButtonStyle);
 
-        public const string TabItemModernRemoveButtonStyle = nameof(TabItemModernRemoveButtonStyle);
-
-        public const string TabItemModern2RemoveButtonStyle = nameof(TabItemModern2RemoveButtonStyle);
-
-        public const string TabItemCardRemoveButtonStyle = nameof(TabItemCardRemoveButtonStyle);
         #endregion
 
         #region CalendarX

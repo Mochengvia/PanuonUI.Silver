@@ -43,6 +43,8 @@
     <icv:ThicknessWithoutTopConverter x:Key="{x:Static i:ResourceKeys.ThicknessWithoutTopConverter}" />
     <icv:ThicknessWithTopOnlyConverter x:Key="{x:Static i:ResourceKeys.ThicknessWithTopOnlyConverter}" />
     <icv:ThicknessWithBottomOnlyConverter x:Key="{x:Static i:ResourceKeys.ThicknessWithBottomOnlyConverter}" />
+    <icv:ThicknessWithLeftOnlyConverter x:Key="{x:Static i:ResourceKeys.ThicknessWithLeftOnlyConverter}" />
+    <icv:ThicknessWithRightOnlyConverter x:Key="{x:Static i:ResourceKeys.ThicknessWithRightOnlyConverter}" />
     <icv:CheckBoxStandardGlyphPathConverter x:Key="{x:Static i:ResourceKeys.CheckBoxStandardGlyphPathConverter}" />
     <icv:CheckBoxSwitchToggleMarginConverter x:Key="{x:Static i:ResourceKeys.CheckBoxSwitchToggleMarginConverter}" />
     <icv:CheckBoxSwitch2DecorationMarginConverter x:Key="{x:Static i:ResourceKeys.CheckBoxSwitch2DecorationMarginConverter}" />
