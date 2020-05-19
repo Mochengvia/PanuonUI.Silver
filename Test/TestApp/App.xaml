@@ -1,23 +1,51 @@
-﻿<Application x:Class="TestApp.App"
+﻿
+
+<Application x:Class="TestApp.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:TestApp"
+             xmlns:pu="clr-namespace:Panuon.UI.Silver;assembly=Panuon.UI.Silver"
+             xmlns:purs="clr-namespace:Panuon.UI.Silver.Resources;assembly=Panuon.UI.Silver"
              xmlns:pucp="clr-namespace:Panuon.UI.Silver.Components;assembly=Panuon.UI.Silver"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Control.xaml" />
-                <ResourceDictionary>
-                    <Style TargetType="pucp:NoticeXCard"
-                           BasedOn="{StaticResource {x:Type pucp:NoticeXCard}}">
-                        <Setter Property="BorderThickness"
-                                Value="1" />
-                    </Style>
-                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
+
+            <Style TargetType="pucp:NoticeXCard"
+                   BasedOn="{StaticResource {x:Type pucp:NoticeXCard}}">
+                <Setter Property="BorderThickness"
+                        Value="1" />
+            </Style>
+
+            <Style TargetType="pucp:MessageBoxX"
+                   BasedOn="{StaticResource {x:Static purs:ResourceKeys.MessageBoxXPosterStyle}}">
+                <Setter Property="FontSize"
+                        Value="14" />
+                <Setter Property="ButtonStyle">
+                    <Setter.Value>
+                        <Style TargetType="Button"
+                               BasedOn="{StaticResource {x:Static purs:ResourceKeys.MessageBoxXButtonStyle}}">
+                            <Style.Triggers>
+                                <Trigger Property="IsDefault"
+                                         Value="True">
+                                    <Setter Property="Foreground"
+                                            Value="White" />
+                                    <Setter Property="Background"
+                                            Value="#01A1E7" />
+                                    <Setter Property="pu:ButtonHelper.HoverBrush"
+                                            Value="#01A1E7" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
         </ResourceDictionary>
     </Application.Resources>
-    
-    
+
+
 </Application>

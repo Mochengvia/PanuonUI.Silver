@@ -1,0 +1,84 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver"
+                    xmlns:i="clr-namespace:Panuon.UI.Silver.Internal"
+                    xmlns:ic="clr-namespace:Panuon.UI.Silver.Internal.Controls"
+                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
+                    xmlns:cp="clr-namespace:Panuon.UI.Silver.Components">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/InternalResources.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Resources.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="cp:MessageBoxIconControl">
+        <Setter Property="FontFamily"
+                Value="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon" />
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalAlignment"
+                Value="Left" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="cp:MessageBoxIconControl">
+                    <TextBlock x:Name="TxtIcon"
+                               FontSize="{TemplateBinding FontSize}" />
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="MessageBoxIcon"
+                                 Value="Info">
+                            <Setter TargetName="TxtIcon"
+                                    Property="Foreground"
+                                    Value="{Binding InfoBrush, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                            <Setter TargetName="TxtIcon"
+                                    Property="Text"
+                                    Value="{Binding InfoIcon, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        </Trigger>
+                        <Trigger Property="MessageBoxIcon"
+                                 Value="Warning">
+                            <Setter TargetName="TxtIcon"
+                                    Property="Foreground"
+                                    Value="{Binding WarningBrush, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                            <Setter TargetName="TxtIcon"
+                                    Property="Text"
+                                    Value="{Binding WarningIcon, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        </Trigger>
+                        <Trigger Property="MessageBoxIcon"
+                                 Value="Question">
+                            <Setter TargetName="TxtIcon"
+                                    Property="Foreground"
+                                    Value="{Binding QuestionBrush, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                            <Setter TargetName="TxtIcon"
+                                    Property="Text"
+                                    Value="{Binding QuestionIcon, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        </Trigger>
+                        <Trigger Property="MessageBoxIcon"
+                                 Value="Success">
+                            <Setter TargetName="TxtIcon"
+                                    Property="Foreground"
+                                    Value="{Binding SuccessBrush, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                            <Setter TargetName="TxtIcon"
+                                    Property="Text"
+                                    Value="{Binding SuccessIcon, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        </Trigger>
+                        <Trigger Property="MessageBoxIcon"
+                                 Value="Error">
+                            <Setter TargetName="TxtIcon"
+                                    Property="Foreground"
+                                    Value="{Binding ErrorBrush, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                            <Setter TargetName="TxtIcon"
+                                    Property="Text"
+                                    Value="{Binding  ErrorIcon, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="MessageBoxIcon"
+                     Value="None">
+                <Setter Property="Visibility"
+                        Value="Collapsed" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

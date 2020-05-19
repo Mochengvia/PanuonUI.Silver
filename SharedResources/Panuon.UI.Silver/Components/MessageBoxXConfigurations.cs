@@ -13,85 +13,41 @@ namespace Panuon.UI.Silver
 
         #region Properties
         /// <summary>
-        /// Gets or sets the basic style.
+        /// Allow the user to close the window by pressing the Esc key. Only works  when MessageBoxButton is OK , OKCancel or YesNoCancel.
         /// </summary>
-        public MessageBoxStyle MessageBoxStyle { get; set; } = MessageBoxStyle.Standard;
-
-        /// <summary>
-        /// Gets or sets the background of the default button.
-        /// </summary>
-        public Brush DefaultButtonBrush { get; set; } = "#80BEE8".ToColor().ToBrush();
-
-        /// <summary>
-        /// Gets or sets the min height of MessageBoxX.
-        /// </summary>
-        public double MinHeight { get; set; } = 250;
-
-        /// <summary>
-        /// Gets or sets the min width of MessageBoxX.
-        /// </summary>
-        public double MinWidth { get; set; } = 500;
-
-        /// <summary>
-        /// Gets or sets the font size of MessageBoxX.
-        /// </summary>
-        public double FontSize { get; set; } = 16;
-
-        /// <summary>
-        /// Gets or sets the content height of MessageBoxX.
-        /// </summary>
-        public double ContentHeight { get; set; } = 100;
-
-        /// <summary>
-        /// Gets or sets the content width of MessageBoxX.
-        /// </summary>
-        public double ContentWidth { get; set; } = 300;
-
-        /// <summary>
-        /// Gets or sets whether MessageBoxX is displayed in the taskbar
-        /// </summary>
-        public bool ShowInTaskbar { get; set; } = true;
-
-        /// <summary>
-        /// Gets or sets whether MessageBoxX is placed on top of all windows
-        /// </summary>
-        public bool Topmost { get; set; } = true;
-
-        /// <summary>
-        /// Gets or sets the startup position of MessageBoxX.
-        /// </summary>
-        public WindowStartupLocation WindowStartupLocation { get; set; } = WindowStartupLocation.CenterOwner;
+        public bool IsEscEnabled { get; set; } = true;
 
         /// <summary>
         /// Gets or sets whether to open the mask layer of the owner window when MessageBoxX pops up. Mask layer will be closed after MessageBoxX closed.
-        /// <para>Only works when Owner is of WindowX type.</para>
+        /// <para>Only works when Owner is WindowX type.</para>
         /// </summary>
         public bool InteractOwnerMask { get; set; } = true;
 
         /// <summary>
         /// Gets or sets the content text of the Yes button.
         /// </summary>
-        public string YesButton { get; set; } = LocalizationUtils.Yes;
+        public object YesButton { get; set; } = LocalizationUtils.Yes;
 
         /// <summary>
         /// Gets or sets the content text of the No button.
         /// </summary>
-        public string NoButton { get; set; } = LocalizationUtils.No;
+        public object NoButton { get; set; } = LocalizationUtils.No;
 
         /// <summary>
         /// Gets or sets the content text of the OK button.
         /// </summary>
-        public string OKButton { get; set; } = LocalizationUtils.OK;
+        public object OKButton { get; set; } = LocalizationUtils.OK;
 
         /// <summary>
         /// Gets or sets the content text of the Cancel button.
         /// </summary>
-        public string CancelButton { get; set; } = LocalizationUtils.Cancel;
+        public object CancelButton { get; set; } = LocalizationUtils.Cancel;
 
         /// <summary>
-        /// Gets or sets whether to reverse the sequence of the buttons group.
+        /// Arrangement order of buttons.
         /// </summary>
-        public bool ReverseButtonSequence { get; set; }
+        public MessageBoxButtonArrangement ButtonArrangement { get; set; } = MessageBoxButtonArrangement.Standard;
+
         #endregion
     }
 }

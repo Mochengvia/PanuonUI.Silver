@@ -163,12 +163,12 @@
                 Value="White" />
         <Setter Property="BorderThickness"
                 Value="0" />
+        <Setter Property="FontFamily"
+                Value="{Binding Source={x:Static i:GlobalHelper.FontFamily}}" />
+        <Setter Property="FontSize"
+                Value="{Binding Source={x:Static i:GlobalHelper.FontSize}}" />
         <Setter Property="Padding"
                 Value="0,2" />
-        <Setter Property="FontFamily"
-                Value="{Binding PlacementTarget.FontFamily, Mode=OneWay}" />
-        <Setter Property="FontSize"
-                Value="{Binding PlacementTarget.FontSize, Mode=OneWay}" />
         <Setter Property="Template"
                 Value="{StaticResource ContextMenuTemplate}" />
         <Style.Resources>

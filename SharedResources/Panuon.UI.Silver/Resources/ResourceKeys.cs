@@ -88,5 +88,14 @@
         public const string PendingBoxCancelButtonStyle = nameof(PendingBoxCancelButtonStyle);
         #endregion
 
+        #region MessageBoxX
+        public const string MessageBoxXButtonStyle = nameof(MessageBoxXButtonStyle);
+
+        public const string MessageBoxXStandardStyle = nameof(MessageBoxXStandardStyle);
+
+        public const string MessageBoxXPosterStyle = nameof(MessageBoxXPosterStyle);
+
+        #endregion
+
     }
 }

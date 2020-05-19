@@ -102,17 +102,6 @@ namespace Panuon.UI.Silver.Internal
         public const string CombineToArrayConverter = nameof(CombineToArrayConverter);
 
         public const string DropDownPathDataConverter = nameof(DropDownPathDataConverter);
-
-        public const string MsgBoxIconConverter = nameof(MsgBoxIconConverter);
-
-        public const string MsgBoxIconForegroundConverter = nameof(MsgBoxIconForegroundConverter);
-
-        public const string MsgBoxButtonVisibilityConverter = nameof(MsgBoxButtonVisibilityConverter);
-
-        public const string MsgBoxButtonIsDefaultConverter = nameof(MsgBoxButtonIsDefaultConverter);
-
-        public const string MsgBoxStackPanelFlowDirectionConverter = nameof(MsgBoxStackPanelFlowDirectionConverter);
-
         #endregion
 
         #region Common
@@ -120,6 +109,8 @@ namespace Panuon.UI.Silver.Internal
         #endregion
 
         #region WindowX
+        public const string WindowXStyle = nameof(WindowXStyle);
+
         public const string WindowXTemplate = nameof(WindowXTemplate);
 
         public const string WindowXToolWindowTemplate = nameof(WindowXToolWindowTemplate);
@@ -1066,7 +1057,8 @@ namespace Panuon.UI.Silver.Internal
         public const string ProgressBarProgressBarWavePathConverter = nameof(ProgressBarProgressBarWavePathConverter);
 
         public const string ProgressBarProgressBarWaveMarginConverter = nameof(ProgressBarProgressBarWaveMarginConverter);
-        
+
         #endregion
+
     }
 }

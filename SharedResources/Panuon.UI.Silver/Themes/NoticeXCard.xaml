@@ -26,14 +26,10 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <TextBlock x:Name="TxtIcon"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
-                           Margin="15,0,15,0"
-                           FontSize="60"
-                           Foreground="{Binding Icon, Converter={StaticResource {x:Static i:ResourceKeys.MsgBoxIconForegroundConverter}}, RelativeSource={RelativeSource AncestorType=cp:NoticeXCard}, Mode=OneWay}"
-                           Text="{Binding Icon, Converter={StaticResource {x:Static i:ResourceKeys.MsgBoxIconConverter}}, RelativeSource={RelativeSource AncestorType=cp:NoticeXCard}, Mode=OneWay}"/>
+                <cp:MessageBoxIconControl x:Name="mbicIcon"
+                                          Margin="15,0"
+                                          FontSize="60"
+                                          MessageBoxIcon="{Binding Icon,RelativeSource={RelativeSource AncestorType=cp:NoticeXCard}, Mode=OneWay}" />
                 <Image x:Name="ImgIcon"
                        Visibility="Collapsed"
                        Height="{Binding ActualHeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -49,7 +45,7 @@
                     <TextBlock Text="{TemplateBinding Caption}"
                                Margin="0,15,0,5"
                                TextWrapping="Wrap"
-                               FontWeight="Bold"/>
+                               FontWeight="Bold" />
                     <TextBlock Text="{TemplateBinding Message}"
                                Grid.Row="1"
                                Margin="0,5,0,15"
@@ -83,22 +79,12 @@
             </Grid>
         </Grid>
         <ControlTemplate.Triggers>
-            <DataTrigger Binding="{Binding Icon, Converter={StaticResource {x:Static i:ResourceKeys.IsNullConverter}}, RelativeSource={RelativeSource Self}}"
+            <DataTrigger Binding="{Binding ImageSource, Converter={StaticResource {x:Static i:ResourceKeys.IsNullOrEmptyConverter}}, RelativeSource={RelativeSource Self}}"
                          Value="False">
-                <Setter TargetName="TxtIcon"
+                <Setter TargetName="ImgIcon"
                         Property="Visibility"
                         Value="Visible" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding ImageSource, Converter={StaticResource {x:Static i:ResourceKeys.IsNullOrEmptyConverter}}, RelativeSource={RelativeSource Self}}"
-                         Value="False">
-                <Setter TargetName="TxtIcon"
-                        Property="Visibility"
-                        Value="Collapsed" />
-                <Setter TargetName="ImgIcon"
-                        Property="Visibility" 
-                        Value="Visible"/>
-            </DataTrigger>
-           
         </ControlTemplate.Triggers>
     </ControlTemplate>
 

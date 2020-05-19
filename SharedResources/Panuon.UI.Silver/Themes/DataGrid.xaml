@@ -149,7 +149,8 @@
                     <ColumnDefinition />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <ContentPresenter x:Name="CpHeader" />
+                <ContentPresenter x:Name="CpContent" 
+                                  ContentSource="Content"/>
                 <TextBlock x:Name="TxtAsc"
                            Grid.Column="1"
                            Margin="3,0,-3,0"

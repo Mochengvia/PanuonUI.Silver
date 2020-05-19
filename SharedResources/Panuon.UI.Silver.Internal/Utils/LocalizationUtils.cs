@@ -35,7 +35,7 @@ namespace Panuon.UI.Silver.Internal.Utils
             });
             _localizedStringDictionary.Add(nameof(OK), new Dictionary<string, string>()
             {
-                { "zh-CN", "好" },
+                { "zh-CN", "确 定" },
                 { "ja-JP", "了 解" },
                 { "en-US", "OK" },
             });

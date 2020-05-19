@@ -49,7 +49,17 @@ namespace Panuon.UI.Silver.Internal.Constracts.Implements
 
         public void UpdateMessage(string message)
         {
-            _pendingWindow.UpdateMessage(message);
+            if (_pendingWindow.Dispatcher.CheckAccess())
+            {
+                _pendingWindow.UpdateMessage(message);
+            }
+            else
+            {
+                _pendingWindow.Dispatcher.Invoke(DispatcherPriority.Normal, new ThreadStart(() =>
+                {
+                    _pendingWindow.UpdateMessage(message);
+                }));
+            }
         }
 
         public void RaiseClosedEvent()

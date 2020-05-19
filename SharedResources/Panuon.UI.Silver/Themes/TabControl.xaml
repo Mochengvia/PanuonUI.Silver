@@ -230,6 +230,9 @@
                         Property="Grid.Column"
                         Value="0" />
                 <Setter TargetName="CcFront"
+                        Property="Grid.ColumnSpan"
+                        Value="2" />
+                <Setter TargetName="CcFront"
                         Property="Grid.Row"
                         Value="0" />
                 <Setter TargetName="CcEnd"
@@ -238,6 +241,9 @@
                 <Setter TargetName="CcEnd"
                         Property="Grid.Row"
                         Value="0" />
+                <Setter TargetName="CcEnd"
+                        Property="Grid.ColumnSpan"
+                        Value="2" />
             </MultiTrigger>                 
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -302,9 +308,6 @@
                 <Setter TargetName="CcFront"
                         Property="Grid.Row"
                         Value="0" />
-                <Setter TargetName="CcFront"
-                        Property="Grid.ColumnSpan"
-                        Value="3" />
                 <Setter TargetName="CcEnd"
                         Property="Grid.Column"
                         Value="4" />
@@ -398,6 +401,9 @@
                         Property="Grid.Column"
                         Value="0" />
                 <Setter TargetName="CcFront"
+                        Property="Grid.ColumnSpan"
+                        Value="2" />
+                <Setter TargetName="CcFront"
                         Property="Grid.Row"
                         Value="4" />
                 <Setter TargetName="CcEnd"
@@ -406,6 +412,9 @@
                 <Setter TargetName="CcEnd"
                         Property="Grid.Row"
                         Value="4" />
+                <Setter TargetName="CcEnd"
+                        Property="Grid.ColumnSpan"
+                        Value="2" />
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -473,9 +482,6 @@
                 <Setter TargetName="CcFront"
                         Property="Grid.Row"
                         Value="4" />
-                <Setter TargetName="CcFront"
-                        Property="Grid.ColumnSpan"
-                        Value="3" />
                 <Setter TargetName="CcEnd"
                         Property="Grid.Column"
                         Value="4" />
@@ -559,6 +565,9 @@
                         Property="Grid.Row"
                         Value="0" />
                 <Setter TargetName="CcFront"
+                        Property="Grid.RowSpan"
+                        Value="2" />
+                <Setter TargetName="CcFront"
                         Property="Grid.Column"
                         Value="0" />
                 <Setter TargetName="CcEnd"
@@ -567,6 +576,9 @@
                 <Setter TargetName="CcEnd"
                         Property="Grid.Column"
                         Value="0" />
+                <Setter TargetName="CcEnd"
+                        Property="Grid.RowSpan"
+                        Value="2" />
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -631,9 +643,6 @@
                 <Setter TargetName="CcFront"
                         Property="Grid.Column"
                         Value="0" />
-                <Setter TargetName="CcFront"
-                        Property="Grid.RowSpan"
-                        Value="3" />
                 <Setter TargetName="CcEnd"
                         Property="Grid.Row"
                         Value="4" />
@@ -722,11 +731,13 @@
                 <Setter TargetName="BdrEnd"
                         Property="BorderThickness"
                         Value="1,0,0,0" />
-
                 <Setter TargetName="CcFront"
                         Property="Grid.Row"
                         Value="0" />
                 <Setter TargetName="CcFront"
+                        Property="Grid.RowSpan"
+                        Value="2" />
+                <Setter TargetName="CcFront"
                         Property="Grid.Column"
                         Value="4" />
                 <Setter TargetName="CcEnd"
@@ -735,6 +746,9 @@
                 <Setter TargetName="CcEnd"
                         Property="Grid.Column"
                         Value="4" />
+                <Setter TargetName="CcEnd"
+                        Property="Grid.RowSpan"
+                        Value="2" />
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -802,9 +816,6 @@
                 <Setter TargetName="CcFront"
                         Property="Grid.Row"
                         Value="0" />
-                <Setter TargetName="CcFront"
-                        Property="Grid.RowSpan"
-                        Value="3" />
                 <Setter TargetName="CcFront"
                         Property="Grid.Column"
                         Value="4" />

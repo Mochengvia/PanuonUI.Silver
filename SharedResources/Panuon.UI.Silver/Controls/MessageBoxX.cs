@@ -1,4 +1,5 @@
-﻿using Panuon.UI.Silver.Internal.Controls;
+﻿using Panuon.UI.Silver.Components;
+using Panuon.UI.Silver.Internal.Controls;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,8 +13,7 @@ namespace Panuon.UI.Silver
         #region Ctor
         static MessageBoxX()
         {
-            DefaultMessageBoxXConfigurations = new MessageBoxXConfigurations();
-            MessageBoxXConfigurations = new Dictionary<string, MessageBoxXConfigurations>();
+            Configurations = new MessageBoxXConfigurations();
         }
         #endregion
 
@@ -24,7 +24,110 @@ namespace Panuon.UI.Silver
         /// <param name="messageBoxText">Text to display.</param>
         public static MessageBoxResult Show(string messageBoxText)
         {
-            return CallMessageBox(null, messageBoxText, null, MessageBoxButton.OK, MessageBoxIcon.None, DefaultButton.YesOK, messageBoxXConfigurationsKey: null);
+            return CallMessageBox(null, messageBoxText, null, MessageBoxButton.OK, MessageBoxIcon.None, DefaultButton.YesOK);
+        }
+
+        /// <summary>
+        /// Open a message box and return the result selected by the user.
+        /// </summary>
+        /// <param name="owner">The owner of message box.</param>
+        /// <param name="messageBoxText">Text to display.</param>
+        public static MessageBoxResult Show(Window owner, string messageBoxText)
+        {
+            return CallMessageBox(owner, messageBoxText, null, MessageBoxButton.OK, MessageBoxIcon.None, DefaultButton.YesOK);
+        }
+
+        /// <summary>
+        /// Open a message box and return the result selected by the user.
+        /// </summary>
+        /// <param name="messageBoxText">Text to display.</param>
+        /// <param name="caption">The title of message box.</param>
+        public static MessageBoxResult Show(string messageBoxText, string caption)
+        {
+            return CallMessageBox(null, messageBoxText, caption, MessageBoxButton.OK, MessageBoxIcon.None, DefaultButton.YesOK);
+        }
+
+        /// <summary>
+        /// Open a message box and return the result selected by the user.
+        /// </summary>
+        /// <param name="owner">The owner of message box.</param>
+        /// <param name="messageBoxText">Text to display.</param>
+        /// <param name="caption">The title of message box.</param>
+        public static MessageBoxResult Show(Window owner, string messageBoxText, string caption)
+        {
+            return CallMessageBox(owner, messageBoxText, caption, MessageBoxButton.OK, MessageBoxIcon.None, DefaultButton.YesOK);
+        }
+   
+        /// <summary>
+        /// Open a message box and return the result selected by the user.
+        /// </summary>
+        /// <param name="messageBoxText">Text to display.</param>
+        /// <param name="caption">The title of message box.</param>
+        /// <param name="button">The group of buttons to display in the message box.</param>
+        public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button)
+        {
+            return CallMessageBox(null, messageBoxText, caption, button, MessageBoxIcon.None, DefaultButton.YesOK);
+        }
+
+        /// <summary>
+        /// Open a message box and return the result selected by the user.
+        /// </summary>
+        /// <param name="owner">The owner of message box.</param>
+        /// <param name="messageBoxText">Text to display.</param>
+        /// <param name="caption">The title of message box.</param>
+        /// <param name="button">The group of buttons to display in the message box.</param>
+        public static MessageBoxResult Show(Window owner, string messageBoxText, string caption, MessageBoxButton button)
+        {
+            return CallMessageBox(owner, messageBoxText, caption, button, MessageBoxIcon.None, DefaultButton.YesOK);
+        }
+
+        /// <summary>
+        /// Open a message box and return the result selected by the user.
+        /// </summary>
+        /// <param name="messageBoxText">Text to display.</param>
+        /// <param name="caption">The title of message box.</param>
+        /// <param name="icon">Large icon displayed on the left side of the message box.</param>
+        public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxIcon icon)
+        {
+            return CallMessageBox(null, messageBoxText, caption, MessageBoxButton.OK, icon, DefaultButton.YesOK);
+        }
+
+        /// <summary>
+        /// Open a message box and return the result selected by the user.
+        /// </summary>
+        /// <param name="owner">The owner of message box.</param>
+        /// <param name="messageBoxText">Text to display.</param>
+        /// <param name="caption">The title of message box.</param>
+        /// <param name="icon">Large icon displayed on the left side of the message box.</param>
+        public static MessageBoxResult Show(Window owner, string messageBoxText, string caption, MessageBoxIcon icon)
+        {
+            return CallMessageBox(owner, messageBoxText, caption, MessageBoxButton.OK, icon, DefaultButton.YesOK);
+        }
+
+
+        /// <summary>
+        /// Open a message box and return the result selected by the user.
+        /// </summary>
+        /// <param name="messageBoxText">Text to display.</param>
+        /// <param name="caption">The title of message box.</param>
+        /// <param name="button">The group of buttons to display in the message box.</param>
+        /// <param name="icon">Large icon displayed on the left side of the message box.</param>
+        public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button, MessageBoxIcon icon)
+        {
+            return CallMessageBox(null, messageBoxText, caption, button, icon, DefaultButton.YesOK);
+        }
+
+        /// <summary>
+        /// Open a message box and return the result selected by the user.
+        /// </summary>
+        /// <param name="owner">The owner of message box.</param>
+        /// <param name="messageBoxText">Text to display.</param>
+        /// <param name="caption">The title of message box.</param>
+        /// <param name="button">The group of buttons to display in the message box.</param>
+        /// <param name="icon">Large icon displayed on the left side of the message box.</param>
+        public static MessageBoxResult Show(Window owner, string messageBoxText, string caption, MessageBoxButton button, MessageBoxIcon icon)
+        {
+            return CallMessageBox(owner, messageBoxText, caption, button, icon, DefaultButton.YesOK);
         }
 
         /// <summary>
@@ -35,131 +138,9 @@ namespace Panuon.UI.Silver
         /// <param name="button">The group of buttons to display in the message box.</param>
         /// <param name="icon">Large icon displayed on the left side of the message box.</param>
         /// <param name="defaultButton">The default button. Buttons set as default will be highlighted.</param>
-        /// <param name="messageBoxXConfigurations">Message box customization details. If the value is null, the value of MessageBoxX.DefaultMessageBoxXConfigurations static property will be used instead.</param>
-        public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button, MessageBoxIcon icon, DefaultButton defaultButton, MessageBoxXConfigurations messageBoxXConfigurations)
+        public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button, MessageBoxIcon icon, DefaultButton defaultButton)
         {
-            return CallMessageBox(null, messageBoxText, caption, button, icon, defaultButton, messageBoxXConfigurations);
-        }
-
-        /// <summary>
-        /// Open a message box and return the result selected by the user.
-        /// </summary>
-        /// <param name="messageBoxText">Text to display.</param>
-        /// <param name="caption">The title of message box.</param>
-        /// <param name="button">The group of buttons to display in the message box.</param>
-        /// <param name="icon">Large icon displayed on the left side of the message box.</param>
-        /// <param name="defaultButton">The default button. Buttons set as default will be highlighted.</param>
-        /// <param name="messageBoxXConfigurationsKey">The key stored in the MessageBoxX.MessageBoxConfigurations static property. You can get the MessageBoxXConfigurations by the pre-defined key anywhere in the current AppDomain. If the value is null, the value of MessageBoxX.DefaultMessageBoxXConfigurations static property will be used instead.</param>
-        public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button, MessageBoxIcon icon, DefaultButton defaultButton, string messageBoxXConfigurationsKey = null)
-        {
-            return CallMessageBox(null, messageBoxText, caption, button, icon, defaultButton, messageBoxXConfigurationsKey);
-        }
-
-        /// <summary>
-        /// Open a message box and return the result selected by the user.
-        /// </summary>
-        /// <param name="messageBoxText">Text to display.</param>
-        /// <param name="caption">The title of message box.</param>
-        /// <param name="button">The group of buttons to display in the message box.</param>
-        /// <param name="icon">Large icon displayed on the left side of the message box.</param>
-        /// <param name="messageBoxXConfigurations">Message box customization details. If the value is null, the value of MessageBoxX.DefaultMessageBoxXConfigurations static property will be used instead.</param>
-
-        public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button, MessageBoxIcon icon, MessageBoxXConfigurations messageBoxXConfigurations)
-        {
-            return CallMessageBox(null, messageBoxText, caption, button, icon, DefaultButton.YesOK, messageBoxXConfigurations);
-        }
-
-        /// <summary>
-        /// Open a message box and return the result selected by the user.
-        /// </summary>
-        /// <param name="messageBoxText">Text to display.</param>
-        /// <param name="caption">The title of message box.</param>
-        /// <param name="button">The group of buttons to display in the message box.</param>
-        /// <param name="icon">Large icon displayed on the left side of the message box.</param>
-        /// <param name="messageBoxXConfigurationsKey">The key stored in the MessageBoxX.MessageBoxConfigurations static property. You can get the MessageBoxXConfigurations by the pre-defined key anywhere in the current AppDomain. If the value is null, the value of MessageBoxX.DefaultMessageBoxXConfigurations static property will be used instead.</param>
-        public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button, MessageBoxIcon icon, string messageBoxXConfigurationsKey = null)
-        {
-            return CallMessageBox(null, messageBoxText, caption, button, icon, DefaultButton.YesOK, messageBoxXConfigurationsKey);
-        }
-
-        /// <summary>
-        /// Open a message box and return the result selected by the user.
-        /// </summary>
-        /// <param name="messageBoxText">Text to display.</param>
-        /// <param name="caption">The title of message box.</param>
-        /// <param name="button">The group of buttons to display in the message box.</param>
-        /// <param name="messageBoxXConfigurations">Message box customization details. If the value is null, the value of MessageBoxX.DefaultMessageBoxXConfigurations static property will be used instead.</param>
-        public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button, MessageBoxXConfigurations messageBoxXConfigurations)
-        {
-            return CallMessageBox(null, messageBoxText, caption, button, MessageBoxIcon.None, DefaultButton.YesOK, messageBoxXConfigurations);
-        }
-
-        /// <summary>
-        /// Open a message box and return the result selected by the user.
-        /// </summary>
-        /// <param name="messageBoxText">Text to display.</param>
-        /// <param name="caption">The title of message box.</param>
-        /// <param name="button">The group of buttons to display in the message box.</param>
-        /// <param name="messageBoxXConfigurationsKey">The key stored in the MessageBoxX.MessageBoxConfigurations static property. You can get the MessageBoxXConfigurations by the pre-defined key anywhere in the current AppDomain. If the value is null, the value of MessageBoxX.DefaultMessageBoxXConfigurations static property will be used instead.</param>
-        public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button, string messageBoxXConfigurationsKey = null)
-        {
-            return CallMessageBox(null, messageBoxText, caption, button, MessageBoxIcon.None, DefaultButton.YesOK, messageBoxXConfigurationsKey);
-        }
-
-        /// <summary>
-        /// Open a message box and return the result selected by the user.
-        /// </summary>
-        /// <param name="messageBoxText">Text to display.</param>
-        /// <param name="caption">The title of message box.</param>
-        /// <param name="icon">Large icon displayed on the left side of the message box.</param>
-        /// <param name="messageBoxXConfigurations">Message box customization details. If the value is null, the value of MessageBoxX.DefaultMessageBoxXConfigurations static property will be used instead.</param>
-        public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxIcon icon, MessageBoxXConfigurations messageBoxXConfigurations)
-        {
-            return CallMessageBox(null, messageBoxText, caption, MessageBoxButton.OK, icon, DefaultButton.YesOK, messageBoxXConfigurations);
-        }
-
-        /// <summary>
-        /// Open a message box and return the result selected by the user.
-        /// </summary>
-        /// <param name="messageBoxText">Text to display.</param>
-        /// <param name="caption">The title of message box.</param>
-        /// <param name="icon">Large icon displayed on the left side of the message box.</param>
-        /// <param name="messageBoxXConfigurationsKey">The key stored in the MessageBoxX.MessageBoxConfigurations static property. You can get the MessageBoxXConfigurations by the pre-defined key anywhere in the current AppDomain. If the value is null, the value of MessageBoxX.DefaultMessageBoxXConfigurations static property will be used instead.</param>
-        public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxIcon icon, string messageBoxXConfigurationsKey = null)
-        {
-            return CallMessageBox(null, messageBoxText, caption, MessageBoxButton.OK, icon, DefaultButton.YesOK, messageBoxXConfigurationsKey);
-        }
-
-        /// <summary>
-        /// Open a message box and return the result selected by the user.
-        /// </summary>
-        /// <param name="messageBoxText">Text to display.</param>
-        /// <param name="caption">The title of message box.</param>
-        /// <param name="messageBoxXConfigurations">Message box customization details. If the value is null, the value of MessageBoxX.DefaultMessageBoxXConfigurations static property will be used instead.</param>
-        public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxXConfigurations messageBoxXConfigurations)
-        {
-            return CallMessageBox(null, messageBoxText, caption, MessageBoxButton.OK, MessageBoxIcon.None, DefaultButton.YesOK, messageBoxXConfigurations);
-        }
-
-        /// <summary>
-        /// Open a message box and return the result selected by the user.
-        /// </summary>
-        /// <param name="messageBoxText">Text to display.</param>
-        /// <param name="caption">The title of message box.</param>
-        /// <param name="messageBoxXConfigurationsKey">The key stored in the MessageBoxX.MessageBoxConfigurations static property. You can get the MessageBoxXConfigurations by the pre-defined key anywhere in the current AppDomain. If the value is null, the value of MessageBoxX.DefaultMessageBoxXConfigurations static property will be used instead.</param>
-        public static MessageBoxResult Show(string messageBoxText, string caption, string messageBoxXConfigurationsKey = null)
-        {
-            return CallMessageBox(null, messageBoxText, caption, MessageBoxButton.OK, MessageBoxIcon.None, DefaultButton.YesOK, messageBoxXConfigurationsKey);
-        }
-
-        /// <summary>
-        /// Open a message box and return the result selected by the user.
-        /// </summary>
-        /// <param name="messageBoxText">Text to display.</param>
-        /// <param name="messageBoxXConfigurations">Message box customization details. If the value is null, the value of MessageBoxX.DefaultMessageBoxXConfigurations static property will be used instead.</param>
-        public static MessageBoxResult Show(string messageBoxText, MessageBoxXConfigurations messageBoxXConfigurations)
-        {
-            return CallMessageBox(null, messageBoxText, null, MessageBoxButton.OK, MessageBoxIcon.None, DefaultButton.YesOK, messageBoxXConfigurations);
+            return CallMessageBox(null, messageBoxText, caption, button, icon, defaultButton);
         }
 
         /// <summary>
@@ -171,167 +152,35 @@ namespace Panuon.UI.Silver
         /// <param name="button">The group of buttons to display in the message box.</param>
         /// <param name="icon">Large icon displayed on the left side of the message box.</param>
         /// <param name="defaultButton">The default button. Buttons set as default will be highlighted.</param>
-        /// <param name="messageBoxXConfigurations">Message box customization details. If the value is null, the value of MessageBoxX.DefaultMessageBoxXConfigurations static property will be used instead.</param>
-        public static MessageBoxResult Show(Window owner, string messageBoxText, string caption, MessageBoxButton button, MessageBoxIcon icon, DefaultButton defaultButton, MessageBoxXConfigurations messageBoxXConfigurations)
+        public static MessageBoxResult Show(Window owner, string messageBoxText, string caption, MessageBoxButton button, MessageBoxIcon icon, DefaultButton defaultButton)
         {
-            return CallMessageBox(owner, messageBoxText, caption, button, icon, defaultButton, messageBoxXConfigurations);
+            return CallMessageBox(owner, messageBoxText, caption, button, icon, defaultButton);
         }
 
-        /// <summary>
-        /// Open a message box and return the result selected by the user.
-        /// </summary>
-        /// <param name="owner">The owner of message box.</param>
-        /// <param name="messageBoxText">Text to display.</param>
-        /// <param name="caption">The title of message box.</param>
-        /// <param name="button">The group of buttons to display in the message box.</param>
-        /// <param name="icon">Large icon displayed on the left side of the message box.</param>
-        /// <param name="defaultButton">The default button. Buttons set as default will be highlighted.</param>
-        /// <param name="messageBoxXConfigurationsKey">The key stored in the MessageBoxX.MessageBoxConfigurations static property. You can get the MessageBoxXConfigurations by the pre-defined key anywhere in the current AppDomain. If the value is null, the value of MessageBoxX.DefaultMessageBoxXConfigurations static property will be used instead.</param>
-        public static MessageBoxResult Show(Window owner, string messageBoxText, string caption, MessageBoxButton button, MessageBoxIcon icon, DefaultButton defaultButton, string messageBoxXConfigurationsKey = null)
-        {
-            return CallMessageBox(owner, messageBoxText, caption, button, icon, defaultButton, messageBoxXConfigurationsKey);
-        }
-
-        /// <summary>
-        /// Open a message box and return the result selected by the user.
-        /// </summary>
-        /// <param name="owner">The owner of message box.</param>
-        /// <param name="messageBoxText">Text to display.</param>
-        /// <param name="caption">The title of message box.</param>
-        /// <param name="button">The group of buttons to display in the message box.</param>
-        /// <param name="icon">Large icon displayed on the left side of the message box.</param>
-        /// <param name="messageBoxXConfigurations">Message box customization details. If the value is null, the value of MessageBoxX.DefaultMessageBoxXConfigurations static property will be used instead.</param>
-        public static MessageBoxResult Show(Window owner, string messageBoxText, string caption, MessageBoxButton button, MessageBoxIcon icon, MessageBoxXConfigurations messageBoxXConfigurations)
-        {
-            return CallMessageBox(owner, messageBoxText, caption, button, icon, DefaultButton.YesOK, messageBoxXConfigurations);
-        }
-
-        /// <summary>
-        /// Open a message box and return the result selected by the user.
-        /// </summary>
-        /// <param name="owner">The owner of message box.</param>
-        /// <param name="messageBoxText">Text to display.</param>
-        /// <param name="caption">The title of message box.</param>
-        /// <param name="button">The group of buttons to display in the message box.</param>
-        /// <param name="icon">Large icon displayed on the left side of the message box.</param>
-        /// <param name="messageBoxXConfigurationsKey">The key stored in the MessageBoxX.MessageBoxConfigurations static property. You can get the MessageBoxXConfigurations by the pre-defined key anywhere in the current AppDomain. If the value is null, the value of MessageBoxX.DefaultMessageBoxXConfigurations static property will be used instead.</param>
-        public static MessageBoxResult Show(Window owner, string messageBoxText, string caption, MessageBoxButton button, MessageBoxIcon icon, string messageBoxXConfigurationsKey = null)
-        {
-            return CallMessageBox(owner, messageBoxText, caption, button, icon, DefaultButton.YesOK, messageBoxXConfigurationsKey);
-        }
-
-        /// <summary>
-        /// Open a message box and return the result selected by the user.
-        /// </summary>
-        /// <param name="owner">The owner of message box.</param>
-        /// <param name="messageBoxText">Text to display.</param>
-        /// <param name="caption">The title of message box.</param>
-        /// <param name="button">The group of buttons to display in the message box.</param>
-        /// <param name="messageBoxXConfigurations">Message box customization details. If the value is null, the value of MessageBoxX.DefaultMessageBoxXConfigurations static property will be used instead.</param>
-        public static MessageBoxResult Show(Window owner, string messageBoxText, string caption, MessageBoxButton button, MessageBoxXConfigurations messageBoxXConfigurations)
-        {
-            return CallMessageBox(owner, messageBoxText, caption, button, MessageBoxIcon.None, DefaultButton.YesOK, messageBoxXConfigurations);
-        }
-
-        /// <summary>
-        /// Open a message box and return the result selected by the user.
-        /// </summary>
-        /// <param name="owner">The owner of message box.</param>
-        /// <param name="messageBoxText">Text to display.</param>
-        /// <param name="caption">The title of message box.</param>
-        /// <param name="button">The group of buttons to display in the message box.</param>
-        /// <param name="messageBoxXConfigurationsKey">The key stored in the MessageBoxX.MessageBoxConfigurations static property. You can get the MessageBoxXConfigurations by the pre-defined key anywhere in the current AppDomain. If the value is null, the value of MessageBoxX.DefaultMessageBoxXConfigurations static property will be used instead.</param>
-        public static MessageBoxResult Show(Window owner, string messageBoxText, string caption, MessageBoxButton button, string messageBoxXConfigurationsKey = null)
-        {
-            return CallMessageBox(owner, messageBoxText, caption, button, MessageBoxIcon.None, DefaultButton.YesOK, messageBoxXConfigurationsKey);
-        }
-
-        /// <summary>
-        /// Open a message box and return the result selected by the user.
-        /// </summary>
-        /// <param name="owner">The owner of message box.</param>
-        /// <param name="messageBoxText">Text to display.</param>
-        /// <param name="caption">The title of message box.</param>
-        /// <param name="messageBoxXConfigurations">Message box customization details. If the value is null, the value of MessageBoxX.DefaultMessageBoxXConfigurations static property will be used instead.</param>
-        public static MessageBoxResult Show(Window owner, string messageBoxText, string caption, MessageBoxXConfigurations messageBoxXConfigurations)
-        {
-            return CallMessageBox(owner, messageBoxText, caption, MessageBoxButton.OK, MessageBoxIcon.None, DefaultButton.YesOK, messageBoxXConfigurations);
-        }
-
-        /// <summary>
-        /// Open a message box and return the result selected by the user.
-        /// </summary>
-        /// <param name="owner">The owner of message box.</param>
-        /// <param name="messageBoxText">Text to display.</param>
-        /// <param name="caption">The title of message box.</param>
-        /// <param name="messageBoxXConfigurationsKey">The key stored in the MessageBoxX.MessageBoxConfigurations static property. You can get the MessageBoxXConfigurations by the pre-defined key anywhere in the current AppDomain. If the value is null, the value of MessageBoxX.DefaultMessageBoxXConfigurations static property will be used instead.</param>
-        public static MessageBoxResult Show(Window owner, string messageBoxText, string caption, string messageBoxXConfigurationsKey = null)
-        {
-            return CallMessageBox(owner, messageBoxText, caption, MessageBoxButton.OK, MessageBoxIcon.None, DefaultButton.YesOK, messageBoxXConfigurationsKey);
-        }
-
-        /// <summary>
-        /// Open a message box and return the result selected by the user.
-        /// </summary>
-        /// <param name="owner">The owner of message box.</param>
-        /// <param name="messageBoxText">Text to display.</param>
-        /// <param name="messageBoxXConfigurations">Message box customization details. If the value is null, the value of MessageBoxX.DefaultMessageBoxXConfigurations static property will be used instead.</param>
-        public static MessageBoxResult Show(Window owner, string messageBoxText, MessageBoxXConfigurations messageBoxXConfigurations)
-        {
-            return CallMessageBox(owner, messageBoxText, null, MessageBoxButton.OK, MessageBoxIcon.None, DefaultButton.YesOK, messageBoxXConfigurations);
-        }
-
-        /// <summary>
-        /// Open a message box and return the result selected by the user.
-        /// </summary>
-        /// <param name="owner">The owner of message box.</param>
-        /// <param name="messageBoxText">Text to display.</param>
-        /// <param name="messageBoxXConfigurationsKey">The key stored in the MessageBoxX.MessageBoxConfigurations static property. You can get the MessageBoxXConfigurations by the pre-defined key anywhere in the current AppDomain. If the value is null, the value of MessageBoxX.DefaultMessageBoxXConfigurations static property will be used instead.</param>
-        public static MessageBoxResult Show(Window owner, string messageBoxText, string messageBoxXConfigurationsKey = null)
-        {
-            return CallMessageBox(owner, messageBoxText, null, MessageBoxButton.OK, MessageBoxIcon.None, DefaultButton.YesOK, messageBoxXConfigurationsKey);
-        }
         #endregion
 
         #region Property
         public static Dispatcher Dispatcher { get; set; } = Application.Current?.Dispatcher;
 
-        public static MessageBoxXConfigurations DefaultMessageBoxXConfigurations { get; }
-
-        public static IDictionary<string, MessageBoxXConfigurations> MessageBoxXConfigurations { get; }
+        public static MessageBoxXConfigurations Configurations { get; }
         #endregion
 
         #region Function
-        private static MessageBoxResult CallMessageBox(Window owner, string messageBoxText, string caption, MessageBoxButton button, MessageBoxIcon icon, DefaultButton defaultButton, MessageBoxXConfigurations messageBoxXConfigurations)
-        {
-            if (messageBoxXConfigurations == null)
-            {
-                messageBoxXConfigurations = DefaultMessageBoxXConfigurations;
-            }
-            return CallMsgBox(owner, messageBoxText, caption, button, icon, defaultButton, messageBoxXConfigurations);
-        }
-
-        private static MessageBoxResult CallMessageBox(Window owner, string messageBoxText, string caption, MessageBoxButton button, MessageBoxIcon icon, DefaultButton defaultButton, string messageBoxXConfigurationsKey)
-        {
-            var messageBoxXConfigurations = DefaultMessageBoxXConfigurations;
-
-            if (!string.IsNullOrEmpty(messageBoxXConfigurationsKey))
-            {
-                if (!MessageBoxXConfigurations.ContainsKey(messageBoxXConfigurationsKey))
-                {
-                    throw new Exception($"Exception in MessageBoxX : key {messageBoxXConfigurationsKey} does not exist. Please use `MessageBoxX.MessageBoxXConfigurations[\"{messageBoxXConfigurationsKey}\"] = new MessageBoxXConfigurations();` to define.");
-                }
-                messageBoxXConfigurations = MessageBoxXConfigurations[messageBoxXConfigurationsKey];
-            }
-            return CallMsgBox(owner, messageBoxText, caption, button, icon, defaultButton, messageBoxXConfigurations);
-        }
-
-        private static MessageBoxResult CallMsgBox(Window owner, string messageBoxText, string caption, MessageBoxButton button, MessageBoxIcon icon, DefaultButton defaultButton, MessageBoxXConfigurations messageBoxXConfigurations)
+        private static MessageBoxResult CallMessageBox(Window owner, string messageBoxText, string caption, MessageBoxButton button, MessageBoxIcon icon, DefaultButton defaultButton)
         {
             var func = new Func<MessageBoxResult>(() =>
             {
-                var msgBox = new MsgBox(owner, messageBoxText, caption, button, icon, defaultButton, messageBoxXConfigurations);
+                var ownerX = owner as WindowX;
+                if(Configurations.InteractOwnerMask && ownerX != null)
+                {
+                    ownerX.IsMaskVisible = true;
+                }
+                var msgBox = new Components.MessageBoxX(messageBoxText, caption, button, icon, defaultButton, Configurations.ButtonArrangement, Configurations.IsEscEnabled, owner, Configurations.YesButton, Configurations.NoButton, Configurations.CancelButton, Configurations.OKButton);
                 msgBox.ShowDialog();
+                if (Configurations.InteractOwnerMask && ownerX != null)
+                {
+                    ownerX.IsMaskVisible = false;
+                }
                 return msgBox.MessageBoxResult;
             });
 

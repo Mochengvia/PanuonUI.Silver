@@ -34,6 +34,7 @@ namespace Panuon.UI.Silver.Internal.Controls
             : this(message, caption, canCancel, cancelButtonContent)
         {
             _owner = owner;
+            SetOwner();
         }
 
         public PendingWindow(string message, string caption, bool canCancel, Rect ownerRect, object cancelButtonContent)

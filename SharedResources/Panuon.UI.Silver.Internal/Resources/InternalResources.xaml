@@ -55,11 +55,6 @@
     <icv:NullableColorToShadowEffectConverter x:Key="{x:Static i:ResourceKeys.NullableColorToShadowEffectConverter}" />
     <icv:CombineToArrayConverter x:Key="{x:Static i:ResourceKeys.CombineToArrayConverter}" />
     <icv:DropDownPathDataConverter x:Key="{x:Static i:ResourceKeys.DropDownPathDataConverter}" />
-    <icv:MsgBoxIconConverter x:Key="{x:Static i:ResourceKeys.MsgBoxIconConverter}" />
-    <icv:MsgBoxIconForegroundConverter x:Key="{x:Static i:ResourceKeys.MsgBoxIconForegroundConverter}" />
-    <icv:MsgBoxButtonIsDefaultConverter x:Key="{x:Static i:ResourceKeys.MsgBoxButtonIsDefaultConverter}" />
-    <icv:MsgBoxButtonVisibilityConverter x:Key="{x:Static i:ResourceKeys.MsgBoxButtonVisibilityConverter}" />
-    <icv:MsgBoxStackPanelFlowDirectionConverter x:Key="{x:Static i:ResourceKeys.MsgBoxStackPanelFlowDirectionConverter}" />
     <icv:ProgressBarWidthOrHeightConverter x:Key="{x:Static i:ResourceKeys.ProgressBarWidthOrHeightConverter}" />
     <icv:ProgressBarPercentTextConverter x:Key="{x:Static i:ResourceKeys.ProgressBarPercentTextConverter}" />
     <icv:ProgressBarPercentTextForegroundConverter x:Key="{x:Static i:ResourceKeys.ProgressBarPercentTextForegroundConverter}" />

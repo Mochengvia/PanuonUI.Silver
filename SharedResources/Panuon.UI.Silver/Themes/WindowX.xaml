@@ -19,7 +19,7 @@
         <Setter Property="Content"
                 Value="&#xe92a;" />
         <Setter Property="FontSize"
-                Value="16" />
+                Value="14" />
         <Setter Property="HorizontalAlignment"
                 Value="Right" />
         <Setter Property="VerticalAlignment"
@@ -44,13 +44,14 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    
     <Style x:Key="{x:Static rs:ResourceKeys.WindowXMaximizeButtonStyle}"
            TargetType="Button"
            BasedOn="{StaticResource {x:Type Button}}">
         <Setter Property="FontFamily"
                 Value="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon" />
         <Setter Property="FontSize"
-                Value="16" />
+                Value="14" />
         <Setter Property="Content"
                 Value="&#xe92b;" />
         <Setter Property="HorizontalAlignment"
@@ -75,6 +76,11 @@
                 <Setter Property="local:ButtonHelper.HoverBrush"
                         Value="{StaticResource {x:Static i:ResourceKeys.WindowXCaptionMaximizeButtonHoverBrush}}" />
             </Trigger>
+            <DataTrigger Binding="{Binding WindowState, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}"
+                         Value="Maximized">
+                <Setter Property="Content"
+                        Value="&#xe92c;" />
+            </DataTrigger>
         </Style.Triggers>
     </Style>
     <Style x:Key="{x:Static rs:ResourceKeys.WindowXCloseButtonStyle}"
@@ -83,7 +89,7 @@
         <Setter Property="FontFamily"
                 Value="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon" />
         <Setter Property="FontSize"
-                Value="16" />
+                Value="14" />
         <Setter Property="Content"
                 Value="&#xe92d;" />
         <Setter Property="HorizontalAlignment"
@@ -411,8 +417,12 @@
                    Text="{Binding Title,RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
     </StackPanel>
 
-    <Style x:Key="BaseWindowXStyle"
+    <Style x:Key="{x:Static i:ResourceKeys.WindowXStyle}"
            TargetType="local:WindowX">
+        <Setter Property="FontFamily"
+                Value="{Binding Source={x:Static i:GlobalHelper.FontFamily}}" />
+        <Setter Property="FontSize"
+                Value="{Binding Source={x:Static i:GlobalHelper.FontSize}}" />
         <Setter Property="Background"
                 Value="#FFFFFF" />
         <Setter Property="Foreground"

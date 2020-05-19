@@ -34,25 +34,6 @@ namespace UIBrowser.ViewModels.Partials.Notifications
                 case "normal":
                     handler = PendingBoxX.Show("Processing .....", "Normal", Application.Current.MainWindow);
                     break;
-                case "info":
-                    break;
-                case "warning":
-                    break;
-                case "error":
-                    NoticeX.Show("This is a message. This is a message. This is a message. This is a message. This is a message.", "Error", MessageBoxIcon.Error, 3000);
-                    break;
-                case "question":
-                    NoticeX.Show("This is a message. This is a message. This is a message. This is a message. This is a message.", "Question", MessageBoxIcon.Question, 3000);
-                    break;
-                case "success":
-                    NoticeX.Show("This is a message. This is a message. This is a message. This is a message. This is a message.", "Warning", MessageBoxIcon.Success, 3000);
-                    break;
-                case "image":
-                    NoticeX.Show("123", "123", "/UIBrowser;component/Resources/Images/panuon.png", 3000);
-                    break;
-                case "always":
-                    NoticeX.Show("123", "123", "/UIBrowser;component/Resources/Images/panuon.png");
-                    break;
             }
             if (handler != null)
             {

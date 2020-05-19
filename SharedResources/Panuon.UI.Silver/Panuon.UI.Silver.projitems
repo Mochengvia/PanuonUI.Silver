@@ -65,6 +65,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\MessageBoxIconControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\MessageBoxX.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\NoticeXCard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -183,6 +191,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums\HorizontalHeaderAlignment.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums\LoadingSpeed.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums\LoadingStyle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums\MessageBoxButtonArrangement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums\ProgressBarStyle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums\ProgressDirection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums\StackDirection.cs" />
@@ -191,6 +200,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Abstracts\FormGroup.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CalendarX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Card.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Components\MessageBoxIconControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Components\MessageBoxX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PendingBoxX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Components\NoticeXCard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Panels\AnimationStackPanel.cs" />
@@ -220,6 +231,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\WindowXCaption.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ContextMenuHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\DataGridHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\GlobalSettings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\GroupBoxHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ListBoxHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ProgressBarHelper.cs" />

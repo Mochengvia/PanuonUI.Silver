@@ -27,6 +27,10 @@
     </ControlTemplate>
     
     <Style TargetType="ToolTip">
+        <Setter Property="FontFamily"
+                Value="{Binding Source={x:Static i:GlobalHelper.FontFamily}}" />
+        <Setter Property="FontSize"
+                Value="{Binding Source={x:Static i:GlobalHelper.FontSize}}" />
         <Setter Property="local:ToolTipHelper.Foreground"
                 Value="#3E3E3E" />
         <Setter Property="local:ToolTipHelper.Background"

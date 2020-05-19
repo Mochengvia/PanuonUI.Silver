@@ -13,7 +13,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums\FormItemCategory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constracts\Implements\PendingHanlderImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\IconControl.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\MsgBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NoticeWindow.xaml.cs">
       <DependentUpon>NoticeWindow.xaml</DependentUpon>
     </Compile>
@@ -26,7 +25,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DropDownConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\BoolConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\MessageBoxConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\MiscellaneousConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ProgressBarConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ThicknessConverter.cs" />
@@ -39,9 +37,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\TreeViewConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CornerRadiusConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\VisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\GlobalHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\ClockModelItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\CalendarModelItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\NeonNext.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\RadioButtonGroupItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\ResourceKeys.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TemplateSelectors\IconControlDataTemplateSelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\AnimationUtils.cs" />
@@ -65,10 +65,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Resources\InternalResources.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\MessageBoxX.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

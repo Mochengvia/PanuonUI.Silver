@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Panuon.UI.Silver.Internal.Models;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -45,28 +47,46 @@ namespace Panuon.UI.Silver
 
         #endregion
 
+        #region IsSelectedMemberPath
+        public string IsSelectedMemberPath
+        {
+            get { return (string)GetValue(IsSelectedMemberPathProperty); }
+            set { SetValue(IsSelectedMemberPathProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsSelectedMemberPathProperty =
+            DependencyProperty.Register("IsSelectedMemberPath", typeof(string), typeof(RadioButtonGroup));
+        #endregion
+
         #endregion
 
         #region Overrides
-
         protected override void PrepareContainerForItemOverride(DependencyObject element, object item)
         {
             var radioButton = element as RadioButton;
             if (radioButton != null)
             {
-                if(!(item is RadioButton))
+                if (!(item is RadioButton))
                 {
-                    var binding = new Binding()
+                    if (string.IsNullOrEmpty(radioButton.GroupName))
+                    {
+                        radioButton.GroupName = _groupName;
+                    }
+                    var displayNameBinding = new Binding()
                     {
                         Path = new PropertyPath(DisplayMemberPath),
                         Source = item,
                     };
-                    radioButton.SetBinding(RadioButton.ContentProperty, binding);
+                    radioButton.SetBinding(RadioButton.ContentProperty, displayNameBinding);
+                    var isSelectedBinding = new Binding()
+                    {
+                        Path = new PropertyPath(IsSelectedMemberPath),
+                        Source = item,
+                        Mode = BindingMode.TwoWay,
+                    };
+                    radioButton.SetBinding(RadioButton.IsCheckedProperty, isSelectedBinding);
                 }
-                if (string.IsNullOrEmpty(radioButton.GroupName))
-                {
-                    radioButton.GroupName = _groupName;
-                }
+               
             }
         }
 
@@ -82,19 +102,35 @@ namespace Panuon.UI.Silver
 
         protected override void OnSelectionChanged(SelectionChangedEventArgs e)
         {
-            if(e.AddedItems.Count == 0 && e.RemovedItems.Count > 0)
+            if (e.AddedItems.Count == 0 && e.RemovedItems.Count > 0)
             {
                 return;
             }
+            
+            foreach(var item in e.AddedItems)
+            {
+                if(item is RadioButton)
+                {
+                    (item as RadioButton).IsChecked = true;
+                }
+                else if(!string.IsNullOrEmpty(IsSelectedMemberPath))
+                {
+                    var selectedPropertyInfo = item.GetType().GetProperty(IsSelectedMemberPath);
+                    if(selectedPropertyInfo != null)
+                    {
+                        selectedPropertyInfo.SetValue(item, true, null);
+                    }
+                }
+            }
             base.OnSelectionChanged(e);
         }
+
         #endregion
 
         #region Event Handler
         private static void OnBindToEnumChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var radioButtonGroup = d as RadioButtonGroup;
-           
 
             var type = e.NewValue.GetType();
 
@@ -114,23 +150,26 @@ namespace Panuon.UI.Silver
                         var descriptions = field.GetCustomAttributes(typeof(DescriptionAttribute), true) as DescriptionAttribute[];
                         if (descriptions.Length > 0)
                         {
-                            enumList.Add(new
+                            enumList.Add(new RadioButtonGroupItem
                             {
                                 Name = descriptions[0].Description,
                                 Enum = item,
+                                IsSelected = true,
                             });
                         }
                         else
-                            enumList.Add(new
+                            enumList.Add(new RadioButtonGroupItem
                             {
                                 Name = item.ToString(),
                                 Enum = item,
+                                IsSelected = false,
                             });
                     }
                 }
                 radioButtonGroup.ItemsSource = enumList;
                 radioButtonGroup.DisplayMemberPath = "Name";
                 radioButtonGroup.SelectedValuePath = "Enum";
+                radioButtonGroup.IsSelectedMemberPath = "IsSelected";
                 radioButtonGroup.SelectedValue = radioButtonGroup.SelectedValue ?? e.NewValue;
             }
         }
