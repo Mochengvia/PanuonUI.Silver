@@ -20,7 +20,7 @@
         <Setter Property="Background"
                 Value="Transparent" />
         <Setter Property="Template"
-                Value="{StaticResource DataGridResizeThumbTemplate}" />
+                Value="{StaticResource {x:Static i:ResourceKeys.DataGridResizeThumbTemplate}}" />
     </Style>
 
     <ControlTemplate x:Key="{x:Static i:ResourceKeys.DataGridSelectAllButtonTemplate}"
@@ -133,11 +133,14 @@
         <Grid>
             <Grid x:Name="GrdFill"
                   Background="{TemplateBinding Background}">
-                <local:Rectangle StrokeThickness="0,0,1,1"
-                                 TopStroke="{Binding HorizontalGridLinesBrush, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
-                                 BottomStroke="{Binding HorizontalGridLinesBrush, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
-                                 LeftStroke="{Binding VerticalGridLinesBrush, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
-                                 RightStroke="{Binding VerticalGridLinesBrush, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+                <Rectangle Height="1"
+                           VerticalAlignment="Bottom"
+                           Fill="{Binding HorizontalGridLinesBrush, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                           Visibility="{Binding HorizontalScrollBarVisibility, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+                <Rectangle Width="1"
+                           HorizontalAlignment="Right"
+                           Fill="{Binding VerticalGridLinesBrush, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                           Visibility="{Binding VerticalScrollBarVisibility, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
                 <Rectangle x:Name="RectCover"
                            Fill="#0A000000"
                            Visibility="Collapsed" />
@@ -149,8 +152,8 @@
                     <ColumnDefinition />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <ContentPresenter x:Name="CpContent" 
-                                  ContentSource="Content"/>
+                <ContentPresenter x:Name="CpContent"
+                                  ContentSource="Content" />
                 <TextBlock x:Name="TxtAsc"
                            Grid.Column="1"
                            Margin="3,0,-3,0"
@@ -224,6 +227,16 @@
                         Property="Background"
                         Value="{Binding Path=(local:DataGridHelper.HeaderHoverBackground), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
             </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsMouseOver,RelativeSource={RelativeSource Self}}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.HeaderHoverForeground),Converter={StaticResource {x:Static i:ResourceKeys.IsNotNullConverter}},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Foreground"
+                        Value="{Binding Path=(local:DataGridHelper.HeaderHoverForeground), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+            </MultiDataTrigger>
             <Trigger Property="IsPressed"
                      Value="True">
                 <Setter TargetName="RectCover"
@@ -254,8 +267,12 @@
                      TargetType="DataGridRowHeader">
         <Grid x:Name="GrdMain"
               Background="{TemplateBinding Background}">
-            <Border BorderBrush="{TemplateBinding SeparatorBrush}"
-                    BorderThickness="1" />
+            <Rectangle Height="1"
+                       VerticalAlignment="Bottom"
+                       Fill="{TemplateBinding SeparatorBrush}" />
+            <Rectangle Width="1"
+                       HorizontalAlignment="Right"
+                       Fill="{TemplateBinding SeparatorBrush}" />
             <ContentPresenter />
             <Control SnapsToDevicePixels="False"
                      Template="{Binding ValidationErrorTemplate, RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}"
@@ -516,6 +533,8 @@
                 Value="LightGray" />
         <Setter Property="BorderThickness"
                 Value="1" />
+        <Setter Property="RowHeaderWidth"
+                Value="0" />
         <Setter Property="Background"
                 Value="Transparent" />
         <Setter Property="VerticalContentAlignment"

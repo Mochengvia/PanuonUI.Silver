@@ -415,21 +415,21 @@ namespace Panuon.UI.Silver
 
         #endregion
 
-        #region ShadowColor
+        #region DropDownShadowColor
 
 
-        public static Color? GetShadowColor(ComboBox comboBox)
+        public static Color? GetDropDownShadowColor(ComboBox comboBox)
         {
-            return (Color?)comboBox.GetValue(ShadowColorProperty);
+            return (Color?)comboBox.GetValue(DropDownShadowColorProperty);
         }
 
-        public static void SetShadowColor(ComboBox comboBox, Color? value)
+        public static void SetDropDownShadowColor(ComboBox comboBox, Color? value)
         {
-            comboBox.SetValue(ShadowColorProperty, value);
+            comboBox.SetValue(DropDownShadowColorProperty, value);
         }
 
-        public static readonly DependencyProperty ShadowColorProperty =
-            DependencyProperty.RegisterAttached("ShadowColor", typeof(Color?), typeof(ComboBoxHelper));
+        public static readonly DependencyProperty DropDownShadowColorProperty =
+            DependencyProperty.RegisterAttached("DropDownShadowColor", typeof(Color?), typeof(ComboBoxHelper));
 
 
         #endregion

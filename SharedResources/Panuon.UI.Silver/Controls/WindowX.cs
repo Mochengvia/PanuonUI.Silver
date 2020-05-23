@@ -20,7 +20,18 @@ namespace Panuon.UI.Silver
         }
         #endregion
 
-        #region Property
+        #region Properties
+
+        #region IsEscEnabled
+        public bool IsEscEnabled
+        {
+            get { return (bool)GetValue(IsEscEnabledProperty); }
+            set { SetValue(IsEscEnabledProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsEscEnabledProperty =
+            DependencyProperty.Register("IsEscEnabled", typeof(bool), typeof(WindowX));
+        #endregion
 
         #region DisableForceClosing
         /// <summary>

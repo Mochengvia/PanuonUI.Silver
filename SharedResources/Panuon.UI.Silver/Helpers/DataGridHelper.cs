@@ -23,7 +23,6 @@ namespace Panuon.UI.Silver
 
         #region Properties
 
-
         #region HeaderPadding
         public static Thickness GetHeaderPadding(DataGrid dataGrid)
         {

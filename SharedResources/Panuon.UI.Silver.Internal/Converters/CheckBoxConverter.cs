@@ -6,8 +6,6 @@ using System.Windows.Media;
 
 namespace Panuon.UI.Silver.Internal.Converters
 {
-    
-   
     internal class CheckBoxStandardGlyphPathConverter : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)

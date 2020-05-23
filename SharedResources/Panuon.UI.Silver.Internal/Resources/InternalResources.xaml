@@ -433,7 +433,7 @@
     <Thickness x:Key="{x:Static i:ResourceKeys.ComboBoxBorderThickness}">1</Thickness>
     <SolidColorBrush x:Key="{x:Static i:ResourceKeys.ComboBoxBackground}"
                      Color="White" />
-    <Color x:Key="{x:Static i:ResourceKeys.ComboBoxShadowColor}">#EAEAEA</Color>
+    <Color x:Key="{x:Static i:ResourceKeys.ComboBoxDropDownShadowColor}">#EAEAEA</Color>
     <CornerRadius x:Key="{x:Static i:ResourceKeys.ComboBoxCornerRadius}" />
     <sys:Double x:Key="{x:Static i:ResourceKeys.ComboBoxMaxDropDownHeight}">180</sys:Double>
     <CornerRadius x:Key="{x:Static i:ResourceKeys.ComboBoxDropDownCornerRadius}">0</CornerRadius>
@@ -509,6 +509,16 @@
     <SolidColorBrush x:Key="{x:Static i:ResourceKeys.ListBoxItemsSelectedBackground}"
                      Color="#F1F1F1" />
 
+    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.ListViewBackground}"
+                     Color="Transparent" />
+    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.ListViewBorderBrush}"
+                     Color="LightGray" />
+    <Thickness x:Key="{x:Static i:ResourceKeys.ListViewBorderThickness}">0</Thickness>
+    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.ListViewItemsHoverBackground}"
+                     Color="#FAFAFA" />
+    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.ListViewItemsSelectedBackground}"
+                     Color="#F1F1F1" />
+    
     <!--CalendarX-->
     <SolidColorBrush x:Key="{x:Static i:ResourceKeys.CalendarXBorderBrush}" 
                      Color="LightGray"/>

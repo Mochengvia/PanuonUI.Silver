@@ -203,7 +203,7 @@
                         BorderThickness="{Binding BorderThickness,Converter={StaticResource {x:Static i:ResourceKeys.ThicknessWithoutTopConverter}},RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                         CornerRadius="{Binding Path=(local:ComboBoxHelper.DropDownCornerRadius),RelativeSource={RelativeSource AncestorType=ComboBox},Mode=OneWay}"
                         Margin="5,0,5,5"
-                        Effect="{Binding Path=(local:ComboBoxHelper.ShadowColor), Converter={StaticResource {x:Static i:ResourceKeys.NullableColorToShadowEffectConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                        Effect="{Binding Path=(local:ComboBoxHelper.DropDownShadowColor), Converter={StaticResource {x:Static i:ResourceKeys.NullableColorToShadowEffectConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                     <ScrollViewer VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                   HorizontalScrollBarVisibility="{Binding Path=(ScrollViewer.HorizontalScrollBarVisibility),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                   Margin="{Binding Path=(local:ComboBoxHelper.DropDownPadding),RelativeSource={RelativeSource AncestorType=ComboBox},Mode=OneWay}">
@@ -230,8 +230,8 @@
                 Value="{StaticResource {x:Static i:ResourceKeys.ComboBoxDropDownCornerRadius}}" />
         <Setter Property="local:ComboBoxHelper.DropDownPadding"
                 Value="{StaticResource {x:Static i:ResourceKeys.ComboBoxDropDownPadding}}" />
-        <Setter Property="local:ComboBoxHelper.ShadowColor"
-                Value="{StaticResource {x:Static i:ResourceKeys.ComboBoxShadowColor}}" />
+        <Setter Property="local:ComboBoxHelper.DropDownShadowColor"
+                Value="{StaticResource {x:Static i:ResourceKeys.ComboBoxDropDownShadowColor}}" />
         <Setter Property="local:ComboBoxHelper.ItemsHoverBackground"
                 Value="{StaticResource {x:Static i:ResourceKeys.ComboBoxItemsHoverBackground}}" />
         <Setter Property="local:ComboBoxHelper.ItemsSelectedBackground"

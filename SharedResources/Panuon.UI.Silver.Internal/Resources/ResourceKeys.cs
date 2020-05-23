@@ -713,7 +713,7 @@ namespace Panuon.UI.Silver.Internal
 
         public const string ComboBoxDropDownPadding = nameof(ComboBoxDropDownPadding);
 
-        public const string ComboBoxShadowColor = nameof(ComboBoxShadowColor);
+        public const string ComboBoxDropDownShadowColor = nameof(ComboBoxDropDownShadowColor);
 
         public const string ComboBoxStandardToggleButtonTemplate = nameof(ComboBoxStandardToggleButtonTemplate);
 
@@ -897,6 +897,18 @@ namespace Panuon.UI.Silver.Internal
         public const string ListBoxItemsSelectedBackground = nameof(ListBoxItemsSelectedBackground);
         #endregion
 
+        #region ListView
+        public const string ListViewBorderBrush = nameof(ListViewBorderBrush);
+
+        public const string ListViewBorderThickness = nameof(ListViewBorderThickness);
+
+        public const string ListViewBackground = nameof(ListViewBackground);
+
+        public const string ListViewItemsHoverBackground = nameof(ListViewItemsHoverBackground);
+
+        public const string ListViewItemsSelectedBackground = nameof(ListViewItemsSelectedBackground);
+        #endregion
+
         #region MsgBox
         public const string MsgBoxButtonStyle = nameof(MsgBoxButtonStyle);
 
@@ -975,6 +987,15 @@ namespace Panuon.UI.Silver.Internal
         public const string ListBoxItemStandardBorderThickness = nameof(ListBoxItemStandardBorderThickness);
         #endregion
 
+        #region ListView
+        public const string ListViewStandardTemplate = nameof(ListViewStandardTemplate);
+
+        public const string ListViewItemStandardTemplate = nameof(ListViewItemStandardTemplate);
+
+
+        public const string ListViewItemStandardBorderThickness = nameof(ListViewItemStandardBorderThickness);
+        #endregion
+
         #region DataGrid
         public const string DataGridBorderBrush = nameof(DataGridBorderBrush);
 
@@ -1005,6 +1026,14 @@ namespace Panuon.UI.Silver.Internal
         public const string DataGridCellTemplate = nameof(DataGridCellTemplate);
 
         public const string DataGridStandardTemplate = nameof(DataGridStandardTemplate);
+        #endregion
+
+        #region ListView
+        public const string ListViewScrollViewerTemplate = nameof(ListViewScrollViewerTemplate);
+
+        public const string ListViewResizeThumbTemplate = nameof(ListViewResizeThumbTemplate);
+
+        public const string ListViewResizeThumbStyle = nameof(ListViewResizeThumbStyle);
         #endregion
 
         #region Pagination

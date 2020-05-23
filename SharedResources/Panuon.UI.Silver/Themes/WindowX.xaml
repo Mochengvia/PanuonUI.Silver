@@ -173,7 +173,6 @@
                         CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                         IsEnabled="{Binding Path=(local:WindowXCaption.DisableCloseButton), Converter={StaticResource {x:Static rs:Converters.TrueToFalseConverter}}, RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}"
                         Style="{Binding Path=(local:WindowXCaption.CloseButtonStyle),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
-                
                 <Rectangle x:Name="RectMask"
                            Grid.RowSpan="2"
                            Grid.ColumnSpan="5"
@@ -183,6 +182,12 @@
             </Grid>
         </Border>
         <ControlTemplate.Triggers>
+            <Trigger Property="IsEscEnabled"
+                     Value="True">
+                <Setter TargetName="BtnClose"
+                        Property="IsCancel"
+                        Value="True" />
+            </Trigger>
             <Trigger Property="ResizeMode"
                      Value="CanMinimize">
                 <Setter TargetName="BtnMaximize"
@@ -328,6 +333,12 @@
             </Grid>
         </Border>
         <ControlTemplate.Triggers>
+            <Trigger Property="IsEscEnabled"
+                     Value="True">
+                <Setter TargetName="BtnClose"
+                        Property="IsCancel"
+                        Value="True" />
+            </Trigger>
             <Trigger Property="IsBackstageVisible"
                      Value="True">
                 <Setter TargetName="CcBackstage"

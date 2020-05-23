@@ -1,4 +1,6 @@
 ﻿using Panuon.UI.Silver;
+using Panuon.UI.Silver.Core;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 
@@ -7,36 +9,46 @@ namespace TestApp
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : WindowX, INotifyPropertyChanged
+    public partial class MainWindow : WindowX
     {
         public MainWindow()
         {
             InitializeComponent();
             DataContext = this;
+            Models.Add(new Model()
+            {
+                Message = "1",
+                Name = "1",
+                Value = "1",
+            });
+            Models.Add(new Model()
+            {
+                Message = "2",
+                Name = "2",
+                Value = "2",
+            });
+            Models.Add(new Model()
+            {
+                Message = "3",
+                Name = "3",
+                Value = "3",
+            });
         }
 
-        private string _text = "123456";
+        public ObservableCollection<Model> Models { get; set; } = new ObservableCollection<Model>();
+    }
 
-        public string Text
-        {
-            get { return _text; }
-            set { _text = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Text))); }
-        }
-
-        public ButtonStyle ButtonStyle
-        {
-            get { return _buttonStyle; }
-            set { _buttonStyle = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ButtonStyle))); }
-        }
-        private ButtonStyle _buttonStyle = ButtonStyle.Hollow;
+    public class Model : PropertyChangedBase
+    {
+        public string Name { get => _name; set => SetValue(ref _name, value); }
+        private string _name;
 
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public string Message { get => _message; set => SetValue(ref _message, value); }
+        private string _message;
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBoxX.Show("This is a error message. ", "Error", MessageBoxButton.OK, MessageBoxIcon.Error);
-        }
+        public string Value { get => _value; set => SetValue(ref _value, value); }
+        private string _value;
     }
     
 }
