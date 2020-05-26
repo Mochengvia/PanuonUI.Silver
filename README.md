@@ -26,6 +26,11 @@ GitHub地址：https://github.com/Panuon/PanuonUI.Silver
 Panuon Iconfont已在阿里图标字体库开放。你可以在1.x版本中使用这些图标。  
 https://www.iconfont.cn/user/detail?spm=a313x.7781069.1998910419.d9bd4f23f&uid=4788435
 
+#### 20202-5-26 V1.1.3
+修复ComboBox的Padding右边距过大造成的显示问题。  
+修复在修改MenuHelper.SubmenuWidth属性时出现的显示异常BUG。
+修复PendingBox无法从CenterOwner启动的BUG。 
+
 #### 20202-5-7 V1.1.2
 优化ComboBox的阴影效果。  
 修复在TreeView的Chain样式中，即使子项内没有子项也能展开的BUG。  
@@ -34,11 +39,6 @@ https://www.iconfont.cn/user/detail?spm=a313x.7781069.1998910419.d9bd4f23f&uid=4
 #### 20202-4-16 V1.1.1
 [重要修复]修复了Button和RepeatButton无法换肤的问题。此问题是由于Foreground、Background、BorderBrush属性在动画执行结束时，没有释放对属性的占用，从而导致无法再更改这些属性的值。现已使用2.0的Button解决方案替代。  
 PUTextBlock已更名为TextBlockX。若要使用ClipToBounds效果，必须使TextBlockX或其容器拥有可计算的高度以及宽度。此外，修复了TextBlockX在极端情况下可能死循环的问题。  
-
-
-#### 2020-4-15 v1.1.0
-PUTextBlock重做。大幅提升计算性能，解决了可能出现的BUG。删除AutoAdaption属性，新增TextAdaption属性。AutoAdaption="True"应更改为TextAdaption="ClipToBounds"。  
-为DropDown新增了Opened和Closed事件。  
 
 
 # ReleaseNote 发布文档  

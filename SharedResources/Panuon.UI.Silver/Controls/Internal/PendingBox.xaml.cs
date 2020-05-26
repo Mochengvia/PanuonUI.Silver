@@ -43,7 +43,7 @@ namespace Panuon.UI.Silver.Controls.Internal
                 GrdClassic.Visibility = Visibility.Visible;
             }
 
-
+            Owner = owner;
             Cancelable = cancelable;
             Message = message;
             CancelButton = configurations.CancelButton;

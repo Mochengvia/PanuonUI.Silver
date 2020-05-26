@@ -29,6 +29,8 @@
                 Value="#3E3E3E" />
         <Setter Property="local:MenuHelper.SubmenuItemHeight"
                 Value="35" />
+        <Setter Property="local:MenuHelper.SubmenuWidth"
+                Value="250" />
         <Setter Property="local:IconHelper.FontSize"
                 Value="{Binding FontSize, Converter={StaticResource Add3Converter},RelativeSource={RelativeSource Self},Mode=OneWay}" />
         <Setter Property="local:IconHelper.Foreground"
@@ -41,6 +43,8 @@
                 Value="6" />
         <Setter Property="local:ScrollViewerHelper.ScrollBarCornerRadius"
                 Value="3" />
+        <Setter Property="local:MenuHelper.SubmenuCornerRadius"
+                Value="0" />
         <Setter Property="local:MenuHelper.CheckableCheckboxStyle">
             <Setter.Value>
                 <Style TargetType="{x:Type CheckBox}"
@@ -473,7 +477,6 @@
                                                 SnapsToDevicePixels="True"
                                                 BorderThickness="{Binding BorderThickness,RelativeSource={RelativeSource AncestorType=Menu}}"
                                                 BorderBrush="{Binding BorderBrush,RelativeSource={RelativeSource AncestorType=Menu}}"
-                                                Width="{Binding Width,RelativeSource={RelativeSource AncestorType=Menu}}"
                                                 Background="{Binding Background,RelativeSource={RelativeSource AncestorType=Menu}}"
                                                 CornerRadius="{Binding Path=(local:MenuHelper.SubmenuCornerRadius),RelativeSource={RelativeSource AncestorType=Menu},Mode=OneWay}">
                                             <Border.Effect>
@@ -1016,7 +1019,6 @@
                                                 SnapsToDevicePixels="True"
                                                 BorderThickness="{Binding BorderThickness,RelativeSource={RelativeSource AncestorType=Menu}}"
                                                 BorderBrush="{Binding BorderBrush,RelativeSource={RelativeSource AncestorType=Menu}}"
-                                                Width="{Binding Width,RelativeSource={RelativeSource AncestorType=Menu}}"
                                                 Background="{Binding Background,RelativeSource={RelativeSource AncestorType=Menu}}"
                                                 CornerRadius="{Binding Path=(local:MenuHelper.SubmenuCornerRadius),RelativeSource={RelativeSource AncestorType=Menu},Mode=OneWay}">
                                             <Border.Effect>
