@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -347,6 +348,42 @@ namespace Panuon.UI.Silver
 
         internal static readonly DependencyProperty IsMouseOverProperty =
             DependencyProperty.RegisterAttached("IsMouseOver", typeof(bool), typeof(TreeViewHelper));
+        #endregion
+
+        #region RightClickToSelect
+        public static bool GetCanMouseRightButtonSelect(TreeView treeView)
+        {
+            return (bool)treeView.GetValue(CanMouseRightButtonSelectProperty);
+        }
+
+        public static void SetCanMouseRightButtonSelect(TreeView treeView, bool value)
+        {
+            treeView.SetValue(CanMouseRightButtonSelectProperty, value);
+        }
+
+        public static readonly DependencyProperty CanMouseRightButtonSelectProperty =
+            DependencyProperty.RegisterAttached("CanMouseRightButtonSelect", typeof(bool), typeof(TreeViewHelper), new PropertyMetadata(OnCanMouseRightButtonSelectChanged));
+
+        private static void OnCanMouseRightButtonSelectChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var treeView = d as TreeView;
+            treeView.RemoveHandler(TreeViewItem.PreviewMouseRightButtonDownEvent, new RoutedEventHandler(OnTreeViewItemPreviewMouseRightButtonDown));
+            if((bool)e.NewValue)
+            {
+                treeView.AddHandler(TreeViewItem.PreviewMouseRightButtonDownEvent, new RoutedEventHandler(OnTreeViewItemPreviewMouseRightButtonDown));
+            }
+        }
+
+        private static void OnTreeViewItemPreviewMouseRightButtonDown(object sender, RoutedEventArgs e)
+        {
+            var treeViewItem = e.Source as TreeViewItem;
+            if(treeViewItem != null)
+            {
+                treeViewItem.IsSelected = true;
+            }
+        }
+
+
         #endregion
 
         #endregion

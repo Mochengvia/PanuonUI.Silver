@@ -688,7 +688,7 @@
                         Property="Opacity"
                         Value="1" />
                 <Setter Property="Foreground"
-                        Value="White" />
+                        Value="{Binding Path=(local:RadioButtonHelper.CheckedGlyphBrush),RelativeSource={RelativeSource Self}, Mode=OneWay}" />
             </Trigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>

@@ -292,7 +292,8 @@
     <SolidColorBrush x:Key="{x:Static i:ResourceKeys.CheckBoxButtonDefaultCheckedBackground}"
                      Color="{StaticResource {x:Static i:ResourceKeys.DefaultForegroundColor}}" />
     <!--<SolidColorBrush x:Key="{x:Static i:ResourceKeys.CheckBoxButtonDefaultGlyphBrush}" />-->
-    <!--<SolidColorBrush x:Key="{x:Static i:ResourceKeys.CheckBoxButtonDefaultCheckedGlyphBrush}" />-->
+    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.CheckBoxButtonDefaultCheckedGlyphBrush}" 
+                     Color="White"/>
     <CornerRadius x:Key="{x:Static i:ResourceKeys.CheckBoxButtonDefaultCornerRadius}">0</CornerRadius>
     <!--<SolidColorBrush x:Key="{x:Static i:ResourceKeys.CheckBoxButtonDefaultCheckedBorderBrush}" />-->
     <sys:Double x:Key="{x:Static i:ResourceKeys.CheckBoxButtonDefaultBoxHeight}">30</sys:Double>
@@ -385,7 +386,8 @@
     <SolidColorBrush x:Key="{x:Static i:ResourceKeys.RadioButtonButtonDefaultCheckedBackground}"
                      Color="{StaticResource {x:Static i:ResourceKeys.DefaultForegroundColor}}" />
     <!--<SolidColorBrush x:Key="{x:Static i:ResourceKeys.RadioButtonButtonDefaultGlyphBrush}" />-->
-    <!--<SolidColorBrush x:Key="{x:Static i:ResourceKeys.RadioButtonButtonDefaultCheckedGlyphBrush}" />-->
+    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.RadioButtonButtonDefaultCheckedGlyphBrush}"
+                     Color="White"/>
     <CornerRadius x:Key="{x:Static i:ResourceKeys.RadioButtonButtonDefaultCornerRadius}">0</CornerRadius>
     <!--<SolidColorBrush x:Key="{x:Static i:ResourceKeys.RadioButtonButtonDefaultCheckedBorderBrush}" />-->
     <sys:Double x:Key="{x:Static i:ResourceKeys.RadioButtonButtonDefaultBoxHeight}">30</sys:Double>
@@ -523,17 +525,13 @@
     <SolidColorBrush x:Key="{x:Static i:ResourceKeys.CalendarXBorderBrush}" 
                      Color="LightGray"/>
     <Thickness x:Key="{x:Static i:ResourceKeys.CalendarXBorderThickness}">1</Thickness>
-    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.CalendarXThemeBrush}"
-                     Color="Black" />
-    <sys:Double x:Key="{x:Static i:ResourceKeys.CalendarXHeaderPanelHeight}">45.0</sys:Double>
+    <sys:Double x:Key="{x:Static i:ResourceKeys.CalendarXHeaderPanelHeight}">40.0</sys:Double>
     <SolidColorBrush x:Key="{x:Static i:ResourceKeys.CalendarXHeaderPanelBackground}" 
                      Color="Transparent"/>
 
     <!--Clock-->
     <SolidColorBrush x:Key="{x:Static i:ResourceKeys.ClockBackground}"
                      Color="Transparent" />
-    <SolidColorBrush x:Key="{x:Static i:ResourceKeys.ClockThemeBrush}" 
-                     Color="#3E3E3E" />
     <SolidColorBrush x:Key="{x:Static i:ResourceKeys.ClockBorderBrush}"
                      Color="Gray" />
     <Thickness x:Key="{x:Static i:ResourceKeys.ClockBorderThickness}">2</Thickness>

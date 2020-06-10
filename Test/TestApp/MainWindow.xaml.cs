@@ -36,6 +36,11 @@ namespace TestApp
         }
 
         public ObservableCollection<Model> Models { get; set; } = new ObservableCollection<Model>();
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
     public class Model : PropertyChangedBase

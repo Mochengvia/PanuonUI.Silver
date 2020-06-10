@@ -23,7 +23,7 @@ namespace Panuon.UI.Silver.Internal.Constracts.Implements
         #region Events
         public event EventHandler Closed;
 
-        public event PendingBoxCancellingEventHandler UserCancelling;
+        public event PendingBoxCancellingEventHandler Cancelling;
         #endregion
 
         #region Methods
@@ -70,7 +70,7 @@ namespace Panuon.UI.Silver.Internal.Constracts.Implements
 
         public void RaiseCancellingEvent(object sender, PendingBoxCancellingEventArgs e)
         {
-            UserCancelling?.Invoke(this, e);
+            Cancelling?.Invoke(this, e);
         }
         #endregion
     }

@@ -15,7 +15,7 @@ namespace Panuon.UI.Silver
        
         public static IPendingHandler Show(string message)
         {
-            return CallPendingBox(message, null, true, null);
+            return CallPendingBox(message, null, false, null);
         }
 
         public static IPendingHandler Show(string message, bool canCancel, Window owner = null)
@@ -25,12 +25,12 @@ namespace Panuon.UI.Silver
 
         public static IPendingHandler Show(string message, string caption)
         {
-            return CallPendingBox(message, caption, true, null);
+            return CallPendingBox(message, caption, false, null);
         }
 
         public static IPendingHandler Show(string message, string caption, Window owner = null)
         {
-            return CallPendingBox(message, caption, true, owner);
+            return CallPendingBox(message, caption, false, owner);
         }
 
         public static IPendingHandler Show(string message, string caption, bool canCancel, Window owner = null)

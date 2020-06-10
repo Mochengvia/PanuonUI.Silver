@@ -1,11 +1,12 @@
 ﻿using Panuon.UI.Silver.Internal;
+using System.Windows;
 using System.Windows.Media;
 
 namespace Panuon.UI.Silver
 {
     public class GlobalSettings
     {
-        public FontFamily FontFamily 
+        public FontFamily FontFamily
         {
             get
             {
@@ -15,7 +16,7 @@ namespace Panuon.UI.Silver
             {
                 GlobalHelper.FontFamily = value;
             }
-        }
+        } 
 
 
         public int FontSize

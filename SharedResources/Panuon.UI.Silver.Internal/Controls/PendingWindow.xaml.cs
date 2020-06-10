@@ -1,12 +1,14 @@
-﻿using Panuon.UI.Silver.Core;
+﻿using Panuon.UI.Silver.Components;
+using Panuon.UI.Silver.Core;
 using System;
 using System.Windows;
-using System.Windows.Forms;
+using System.Windows.Controls;
+using System.Windows.Threading;
 
 namespace Panuon.UI.Silver.Internal.Controls
 {
     /// <summary>
-    /// MainWindow.xaml 的交互逻辑
+    /// PendingWindow.xaml 的交互逻辑
     /// </summary>
     internal partial class PendingWindow : Window
     {
@@ -16,17 +18,19 @@ namespace Panuon.UI.Silver.Internal.Controls
         private Rect _ownerRect;
 
         private bool _canClose;
+
+        private Button _cancelButton;
+
+        private PendingBoxXControl _pendingBoxXControl;
         #endregion
 
         #region Ctor
         public PendingWindow(string message, string caption, bool canCancel, object cancelButtonContent)
         {
             InitializeComponent();
-            PbcControl.Message = message;
-            PbcControl.Caption = caption;
-            PbcControl.CanCancel = canCancel;
-            PbcControl.CancelButtonContent = cancelButtonContent;
-
+            _pendingBoxXControl = new PendingBoxXControl(message, caption, canCancel, cancelButtonContent);
+            _pendingBoxXControl.Cancel += PendingBoxXControl_Cancel;
+            Content = _pendingBoxXControl;
         }
 
 
@@ -51,13 +55,15 @@ namespace Panuon.UI.Silver.Internal.Controls
 
         #endregion
 
+    
+
         #region Events
         public event PendingBoxCancellingEventHandler UserCancelling;
         #endregion
 
         #region Event Handlers
 
-        private void PendingControlControl_PendingBoxCancelling(object sender, EventArgs e)
+        private void PendingBoxXControl_Cancel(object sender, EventArgs e)
         {
             var args = new PendingBoxCancellingEventArgs();
             UserCancelling?.Invoke(null, args);
@@ -75,12 +81,6 @@ namespace Panuon.UI.Silver.Internal.Controls
                 e.Cancel = true;
             }
         }
-
-        private void PendingWindow_Loaded(object sender, RoutedEventArgs e)
-        {
-            PbcControl.IsLoading = true;
-        }
-
         #endregion
 
         #region Methods
@@ -89,20 +89,21 @@ namespace Panuon.UI.Silver.Internal.Controls
             _canClose = true;
             base.Close();
         }
+
         internal void UpdateMessage(string message)
         {
             if (Dispatcher.CheckAccess())
             {
                 Dispatcher.Invoke(new Action(() =>
                 {
-                    PbcControl.Message = message;
+                        _pendingBoxXControl.Message = message;
                 }));
             }
         }
         #endregion
 
         #region Function
-    
+  
         private void SetOwner()
         {
             if (_owner != null)

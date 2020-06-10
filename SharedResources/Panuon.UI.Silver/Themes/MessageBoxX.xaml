@@ -35,7 +35,6 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-
     
     <Style  x:Key="{x:Static rs:ResourceKeys.MessageBoxXStandardStyle}"
             TargetType="cp:MessageBoxX"
@@ -58,6 +57,8 @@
                 Value="NoResize" />
         <Setter Property="Padding"
                 Value="15" />
+        <Setter Property="ButtonStyle"
+                Value="{StaticResource {x:Static rs:ResourceKeys.MessageBoxXButtonStyle}}" />
         <Setter Property="ContentTemplate">
             <Setter.Value>
                 <DataTemplate>
@@ -76,6 +77,8 @@
                                                       MessageBoxIcon="{Binding MessageBoxIcon, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}" />
                             <ScrollViewer Grid.Column="1"
                                           Focusable="False"
+                                          MaxHeight="{Binding MaxContentHeight, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}"
+                                          MaxWidth="{Binding MaxContentWidth, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}"
                                           VerticalScrollBarVisibility="Auto"
                                           HorizontalScrollBarVisibility="Disabled">
                                 <TextBlock Text="{Binding Message, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}"
@@ -170,6 +173,8 @@
                 Value="NoResize" />
         <Setter Property="Padding"
                 Value="15" />
+        <Setter Property="ButtonStyle"
+                Value="{StaticResource {x:Static rs:ResourceKeys.MessageBoxXButtonStyle}}" />
         <Setter Property="ContentTemplate">
             <Setter.Value>
                 <DataTemplate>
@@ -270,8 +275,6 @@
 
     <Style  TargetType="cp:MessageBoxX"
             BasedOn="{StaticResource {x:Static rs:ResourceKeys.MessageBoxXStandardStyle}}">
-        <Setter Property="ButtonStyle"
-                Value="{StaticResource {x:Static rs:ResourceKeys.MessageBoxXButtonStyle}}" />
     </Style>
 
 </ResourceDictionary>

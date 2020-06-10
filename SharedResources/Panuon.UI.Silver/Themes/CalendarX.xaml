@@ -21,7 +21,7 @@
             <Trigger Property="local:RadioButtonHelper.RadioButtonStyle"
                      Value="Button">
                 <Setter Property="local:RadioButtonHelper.CheckedBackground"
-                        Value="{Binding ThemeBrush, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}" />
+                        Value="#3E3E3E" />
             </Trigger>
             <Trigger Property="IsEnabled"
                      Value="False">
@@ -40,9 +40,9 @@
             <Trigger Property="local:ButtonHelper.ButtonStyle"
                      Value="Link">
                 <Setter Property="Foreground"
-                        Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}" />
+                        Value="#3E3E3E" />
                 <Setter Property="local:ButtonHelper.HoverBrush"
-                        Value="{Binding ThemeBrush, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}" />
+                        Value="#888888" />
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -125,8 +125,8 @@
                             <RowDefinition />
                         </Grid.RowDefinitions>
                         <ItemsControl x:Name="IcWeeks"
-                                      Height="{Binding ActualHeight, Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=7, ElementName=GrdDays, Mode=OneWay}"
-                                      ItemsSource="{Binding Weeks, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                                      ItemsSource="{Binding Weeks, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                      Margin="0,5,0,10">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <StackPanel Orientation="Horizontal" />
@@ -159,8 +159,8 @@
                                                         IsChecked="{Binding IsChecked, Mode=OneWay}"
                                                         IsEnabled="{Binding IsEnabled, Mode=OneWay}"
                                                         Content="{Binding DisplayName, Mode=OneWay}"
-                                                        Height="{Binding ActualHeight, Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=7, ElementName=GrdDays, Mode=OneWay}"
-                                                        Width="{Binding ActualWidth, Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=7, ElementName=GrdDays, Mode=OneWay}" />
+                                                 Height="{Binding ActualHeight, Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=6, ElementName=IcDays, Mode=OneWay}"
+                                                 Width="{Binding ActualWidth, Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=7, ElementName=IcDays, Mode=OneWay}" />
                                     <DataTemplate.Triggers>
                                         <DataTrigger Binding="{Binding IsNotCurrentMonth}"
                                                      Value="True">
@@ -527,12 +527,12 @@
     </ControlTemplate>
 
     <Style TargetType="local:CalendarX">
+        <Setter Property="Padding"
+                Value="5" />
         <Setter Property="BorderBrush"
                 Value="{StaticResource {x:Static i:ResourceKeys.CalendarXBorderBrush}}" />
         <Setter Property="BorderThickness"
                 Value="{StaticResource {x:Static i:ResourceKeys.CalendarXBorderThickness}}" />
-        <Setter Property="ThemeBrush"
-                Value="{StaticResource {x:Static i:ResourceKeys.CalendarXThemeBrush}}" />
         <Setter Property="ControlButtonStyle"
                 Value="{StaticResource {x:Static rs:ResourceKeys.CalendarXControlButtonStyle}}" />
         <Setter Property="CalendarXItemStyle"

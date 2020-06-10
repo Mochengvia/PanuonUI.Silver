@@ -15,7 +15,7 @@
     <icv:DoublePlusConverter x:Key="{x:Static rs:Converters.DoublePlusConverter}" />
     <icv:DoubleMultiplyByConverter x:Key="{x:Static rs:Converters.DoubleMultiplyByConverter}" />
     <icv:DoubleDivideByConverter x:Key="{x:Static rs:Converters.DoubleDivideByConverter}" />
-    
+    <icv:StringFormatConverter x:Key="{x:Static rs:Converters.StringFormatConverter}" />
     <FontFamily x:Key="PanuonIconFont">pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon</FontFamily>
     <sys:Double x:Key="{x:Static rs:ResourceKeys.DisabledOpacity}">0.4</sys:Double>
     <SolidColorBrush x:Key="{x:Static rs:ResourceKeys.TextBoxValidationErrorBrush}"

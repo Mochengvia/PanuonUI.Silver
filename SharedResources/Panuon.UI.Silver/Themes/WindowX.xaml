@@ -279,6 +279,18 @@
                         Property="Margin"
                         Value="5" />
             </Trigger>
+            <Trigger Property="local:WindowXCaption.HideBasicButtons"
+                     Value="True">
+                <Setter TargetName="BtnMinimize"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="BtnMaximize"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="BtnClose"
+                        Property="Visibility"
+                        Value="Collapsed" />
+            </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
@@ -353,6 +365,12 @@
                 <Setter TargetName="BtnClose"
                         Property="Style"
                         Value="{Binding Path=(local:WindowXCaption.BackstageCloseButtonStyle),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
+            </Trigger>
+            <Trigger Property="local:WindowXCaption.HideBasicButtons"
+                     Value="True">
+                <Setter TargetName="BtnClose"
+                        Property="Visibility"
+                        Value="Collapsed" />
             </Trigger>
             <Trigger Property="IsMaskVisible"
                      Value="True">

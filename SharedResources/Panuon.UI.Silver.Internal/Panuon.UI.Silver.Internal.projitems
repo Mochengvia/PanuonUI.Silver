@@ -19,6 +19,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PendingWindow.xaml.cs">
       <DependentUpon>PendingWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\StringConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CheckBoxConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ColorConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CombineConverter.cs" />
@@ -52,6 +53,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Utils\LocalizationUtils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\StoryboardUtils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\TextUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\VisualUtils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\WindowUtils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Win32\User32.cs" />
   </ItemGroup>

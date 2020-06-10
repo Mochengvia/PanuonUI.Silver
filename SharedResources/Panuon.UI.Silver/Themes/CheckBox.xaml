@@ -726,7 +726,7 @@
                         Property="Opacity"
                         Value="1" />
                 <Setter Property="Foreground"
-                        Value="White" />
+                        Value="{Binding Path=(local:CheckBoxHelper.CheckedGlyphBrush),RelativeSource={RelativeSource Self}, Mode=OneWay}" />
             </Trigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
@@ -1008,7 +1008,7 @@
                 <Setter Property="local:CheckBoxHelper.GlyphBrush"
                         Value="{x:Null}" />
                 <Setter Property="local:CheckBoxHelper.CheckedGlyphBrush"
-                        Value="{x:Null}" />
+                        Value="{StaticResource {x:Static i:ResourceKeys.CheckBoxButtonDefaultCheckedGlyphBrush}}" />
                 <Setter Property="local:CheckBoxHelper.CheckedBorderBrush"
                         Value="{x:Null}" />
                 <Setter Property="Height"

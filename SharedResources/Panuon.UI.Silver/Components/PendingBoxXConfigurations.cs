@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Panuon.UI.Silver.Internal.Utils;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -18,7 +19,7 @@ namespace Panuon.UI.Silver
 
         public bool InteractOwnerMask { get; set; } = true;
 
-        public object CancelButtonContent { get; set; } = "Cancel";
+        public object CancelButtonContent { get; set; } = LocalizationUtils.Cancel;
         #endregion
     }
 }

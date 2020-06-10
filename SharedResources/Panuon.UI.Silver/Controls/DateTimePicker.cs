@@ -53,26 +53,15 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("DropDownPlacement", typeof(DropDownPlacement), typeof(DateTimePicker), new PropertyMetadata(DropDownPlacement.BottomRight));
         #endregion
 
-        #region TextTemplate
-        public DataTemplate TextTemplate
+        #region TextStringFormat
+        public string TextStringFormat
         {
-            get { return (DataTemplate)GetValue(TextTemplateProperty); }
-            set { SetValue(TextTemplateProperty, value); }
+            get { return (string)GetValue(TextStringFormatProperty); }
+            set { SetValue(TextStringFormatProperty, value); }
         }
 
-        public static readonly DependencyProperty TextTemplateProperty =
-            DependencyProperty.Register("TextTemplate", typeof(DataTemplate), typeof(DateTimePicker));
-        #endregion
-
-        #region TextTemplateSelector
-        public DataTemplateSelector TextTemplateSelector
-        {
-            get { return (DataTemplateSelector)GetValue(TextTemplateSelectorProperty); }
-            set { SetValue(TextTemplateSelectorProperty, value); }
-        }
-
-        public static readonly DependencyProperty TextTemplateSelectorProperty =
-            DependencyProperty.Register("TextTemplateSelector", typeof(DataTemplateSelector), typeof(DateTimePicker));
+        public static readonly DependencyProperty TextStringFormatProperty =
+            DependencyProperty.Register("TextStringFormat", typeof(string), typeof(DateTimePicker));
         #endregion
 
         #region CornerRadius
@@ -175,17 +164,6 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty CalendarXStyleProperty =
             DependencyProperty.Register("CalendarXStyle", typeof(Style), typeof(DateTimePicker));
-        #endregion
-
-        #region ThemeBrush
-        public Brush ThemeBrush
-        {
-            get { return (Brush)GetValue(ThemeBrushProperty); }
-            set { SetValue(ThemeBrushProperty, value); }
-        }
-
-        public static readonly DependencyProperty ThemeBrushProperty =
-            DependencyProperty.Register("ThemeBrush", typeof(Brush), typeof(DateTimePicker));
         #endregion
 
         #endregion

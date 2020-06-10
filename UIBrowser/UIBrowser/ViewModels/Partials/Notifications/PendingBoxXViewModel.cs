@@ -32,12 +32,12 @@ namespace UIBrowser.ViewModels.Partials.Notifications
             switch (cap)
             {
                 case "normal":
-                    handler = PendingBoxX.Show("Processing .....", "Normal", Application.Current.MainWindow);
+                    handler = PendingBoxX.Show("Processing .....", "Normal", true, Application.Current.MainWindow);
                     break;
             }
             if (handler != null)
             {
-                handler.UserCancelling += Handler_UserCancelling;
+                handler.Cancelling += Handler_Cancelling;
                 await Task.Delay(2000);
                 handler.UpdateMessage("Almost complete ...");
                 await Task.Delay(4000);
@@ -48,9 +48,9 @@ namespace UIBrowser.ViewModels.Partials.Notifications
         #endregion
 
         #region Event Handler
-        private void Handler_UserCancelling(IPendingHandler sender, Panuon.UI.Silver.Core.PendingBoxCancellingEventArgs e)
+        private void Handler_Cancelling(IPendingHandler sender, Panuon.UI.Silver.Core.PendingBoxCancellingEventArgs e)
         {
-            //e.Cancel = true;
+            sender.Close();
         }
         #endregion
     }

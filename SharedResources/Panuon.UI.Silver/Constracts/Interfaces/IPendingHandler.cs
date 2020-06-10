@@ -16,7 +16,7 @@ namespace Panuon.UI.Silver
         /// <summary>
         /// Fired on user click cancel button.
         /// </summary>
-        event PendingBoxCancellingEventHandler UserCancelling;
+        event PendingBoxCancellingEventHandler Cancelling;
         #endregion
 
         #region Methods

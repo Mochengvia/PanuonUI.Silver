@@ -28,5 +28,9 @@ namespace Panuon.UI.Silver.Resources
 
         #endregion
 
+        #region Convert
+        public const string StringFormatConverter = nameof(StringFormatConverter);
+        #endregion
+
     }
 }

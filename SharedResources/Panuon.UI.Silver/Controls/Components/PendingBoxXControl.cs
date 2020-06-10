@@ -6,15 +6,45 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Threading;
 
 namespace Panuon.UI.Silver.Components
 {
     public class PendingBoxXControl : Control
     {
+        #region Fields
+        private Button _cancelButton;
+
+        private object _cancelButtonContent;
+
+        private bool _canCancel;
+        #endregion
+
         #region Ctor
         static PendingBoxXControl()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(PendingBoxXControl), new FrameworkPropertyMetadata(typeof(PendingBoxXControl)));
+        }
+
+        public PendingBoxXControl(string message,  string caption, bool canCancel, object cancelButtonContent)
+        {
+            Message = message;
+            Caption = caption;
+            _cancelButtonContent = cancelButtonContent;
+            _canCancel = canCancel;
+        }
+        #endregion
+
+        #region Overrides
+
+        protected override void OnInitialized(EventArgs e)
+        {
+            base.OnInitialized(e);
+            Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() =>
+            {
+                _cancelButton = Template.FindName("PART_CancelButton", this) as Button;
+                UpdateState();
+            }));
         }
         #endregion
 
@@ -76,8 +106,6 @@ namespace Panuon.UI.Silver.Components
         #endregion
 
         #region CancelButtonStyle
-
-
         public Style CancelButtonStyle
         {
             get { return (Style)GetValue(CancelButtonStyleProperty); }
@@ -90,28 +118,13 @@ namespace Panuon.UI.Silver.Components
 
         #endregion
 
-        #region Commands
-        public static readonly DependencyProperty CancelCommandProperty =
-            DependencyProperty.Register("CancelCommand", typeof(ICommand), typeof(PendingBoxXControl), new PropertyMetadata(new RelayCommand(OnCancelCommandExecute)));
-        #endregion
-
         #region Event
-        public event EventHandler PendingBoxCancelling;
+        public event EventHandler Cancel;
         #endregion
 
         #region Internal Properties
 
-        #region CancelButtonContent
-        public object CancelButtonContent
-        {
-            get { return (object)GetValue(CancelButtonContentProperty); }
-            set { SetValue(CancelButtonContentProperty, value); }
-        }
-
-        public static readonly DependencyProperty CancelButtonContentProperty =
-            DependencyProperty.Register("CancelButtonContent", typeof(object), typeof(PendingBoxXControl));
-        #endregion
-
+   
         #region IsLoading
         internal bool IsLoading
         {
@@ -123,25 +136,30 @@ namespace Panuon.UI.Silver.Components
             DependencyProperty.Register("IsLoading", typeof(bool), typeof(PendingBoxXControl));
         #endregion
 
-        #region CanCancel
-        internal bool CanCancel
-        {
-            get { return (bool)GetValue(CanCancelProperty); }
-            set { SetValue(CanCancelProperty, value); }
-        }
-
-        internal static readonly DependencyProperty CanCancelProperty =
-            DependencyProperty.Register("CanCancel", typeof(bool), typeof(PendingBoxXControl));
-        #endregion
-
         #endregion
 
         #region Event Handlers
-        private static void OnCancelCommandExecute(object obj)
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            var control = obj as PendingBoxXControl;
-            control.PendingBoxCancelling?.Invoke(control, null);
+            Cancel?.Invoke(this, null);
         }
+        #endregion
+
+        #region Function
+        private void UpdateState()
+        {
+            if (_cancelButton != null)
+            {
+                _cancelButton.Content = _cancelButtonContent;
+                _cancelButton.Visibility = _canCancel ? Visibility.Visible : Visibility.Collapsed;
+                _cancelButton.IsCancel = true;
+                _cancelButton.Click -= CancelButton_Click;
+                _cancelButton.Click += CancelButton_Click;
+            }
+        }
+
+      
         #endregion
     }
 }

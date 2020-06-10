@@ -212,17 +212,6 @@ namespace Panuon.UI.Silver
 
         #endregion
 
-        #region ThemeBrush
-        public Brush ThemeBrush
-        {
-            get { return (Brush)GetValue(ThemeBrushProperty); }
-            set { SetValue(ThemeBrushProperty, value); }
-        }
-
-        public static readonly DependencyProperty ThemeBrushProperty =
-            DependencyProperty.Register("ThemeBrush", typeof(Brush), typeof(CalendarX));
-        #endregion
-
         #region HeaderPanelBackground
         public Brush HeaderPanelBackground
         {
@@ -494,7 +483,7 @@ namespace Panuon.UI.Silver
                     date = (DateTime)radioButton.Tag;
                     if (!(SelectedDate.Year == date.Year && SelectedDate.Month == date.Month))
                     {
-                        var dayInMonth = DateTime.DaysInMonth(SelectedDate.Year, SelectedDate.Month);
+                        var dayInMonth = DateTime.DaysInMonth(date.Year, date.Month);
                         var day = SelectedDate.Day > dayInMonth ? dayInMonth : SelectedDate.Day;
                         SelectedDate = new DateTime(SelectedDate.Year, date.Month, day);
                     }

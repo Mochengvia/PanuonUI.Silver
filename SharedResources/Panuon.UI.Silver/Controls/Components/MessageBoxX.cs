@@ -1,4 +1,5 @@
 ﻿using Panuon.UI.Silver.Core;
+using Panuon.UI.Silver.Internal.Utils;
 using System;
 using System.ComponentModel;
 using System.Windows;
@@ -40,12 +41,15 @@ namespace Panuon.UI.Silver.Components
         internal MessageBoxX(string message, string caption, MessageBoxButton button, MessageBoxIcon icon, DefaultButton defaultButton, MessageBoxButtonArrangement buttonArrangement, bool isEscEnabled, Window owner, object yesButton, object noButton, object cancelButton, object okButton)
         {
             Message = message;
-            Title = caption;
+            if (!string.IsNullOrEmpty(caption))
+            {
+                Title = caption;
+            }
 
             _yesButtonContent = yesButton;
             _noButtonContent = noButton;
-            _okButtonContent = cancelButton;
-            _cancelButtonContent = okButton;
+            _okButtonContent = okButton;
+            _cancelButtonContent = cancelButton;
 
             _messageBoxButton = button;
             _defaultButton = defaultButton;
@@ -72,14 +76,13 @@ namespace Panuon.UI.Silver.Components
             base.OnInitialized(e);
             Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() =>
             {
-                var presenter = GetVisualChild<ContentPresenter>(this);
+                var presenter = VisualUtils.GetVisualChild<ContentPresenter>(this);
                 _yesButton = ContentTemplate?.FindName("PART_YesButton", presenter) as Button;
                 _noButton = ContentTemplate?.FindName("PART_NoButton", presenter) as Button;
                 _okButton = ContentTemplate?.FindName("PART_OKButton", presenter) as Button;
                 _cancelButton = ContentTemplate?.FindName("PART_CancelButton", presenter) as Button;
                 UpdateState();
             }));
-
         }
 
         protected override void OnClosing(CancelEventArgs e)
@@ -184,25 +187,6 @@ namespace Panuon.UI.Silver.Components
         #endregion
 
         #region Function
-        private T GetVisualChild<T>(DependencyObject parent) where T : FrameworkElement
-        {
-            var child = default(T);
-            var count = VisualTreeHelper.GetChildrenCount(parent);
-            for (int i = 0; i < count; i++)
-            {
-                var element = (FrameworkElement)VisualTreeHelper.GetChild(parent, i);
-                child = element as T;
-                if (child == null)
-                {
-                    child = GetVisualChild<T>(element);
-                }
-                if (child != null)
-                {
-                    break;
-                }
-            }
-            return child;
-        }
 
         private void UpdateState()
         {
@@ -227,7 +211,7 @@ namespace Panuon.UI.Silver.Components
 
             if (_cancelButton != null)
             {
-                _cancelButton.Content = _okButtonContent;
+                _cancelButton.Content = _cancelButtonContent;
                 _cancelButton.Visibility = _messageBoxButton.IsIncluded(MessageBoxButton.OKCancel, MessageBoxButton.YesNoCancel) ? Visibility.Visible : Visibility.Collapsed;
                 _cancelButton.IsDefault = _messageBoxButton == MessageBoxButton.YesNoCancel ? _defaultButton == DefaultButton.CancelNo : _defaultButton == DefaultButton.NoCancel;
                 _cancelButton.IsCancel = _isEscEnabled ? _messageBoxButton.IsIncluded(MessageBoxButton.OKCancel, MessageBoxButton.YesNoCancel) : false;
@@ -238,7 +222,7 @@ namespace Panuon.UI.Silver.Components
 
             if (_okButton != null)
             {
-                _okButton.Content = _cancelButtonContent;
+                _okButton.Content = _okButtonContent;
                 _okButton.Visibility = _messageBoxButton.IsIncluded(MessageBoxButton.OK, MessageBoxButton.OKCancel) ? Visibility.Visible : Visibility.Collapsed;
                 _okButton.IsDefault = _defaultButton == DefaultButton.YesOK;
                 _okButton.IsCancel = _isEscEnabled ? _messageBoxButton == MessageBoxButton.OK : false;

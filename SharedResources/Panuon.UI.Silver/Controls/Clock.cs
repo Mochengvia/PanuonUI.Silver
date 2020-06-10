@@ -15,9 +15,9 @@ namespace Panuon.UI.Silver
     public class Clock : Control
     {
         #region Fields
-        private const string _Clock_GROUP_SECONDS = "Clock_GROUP_SECONDS";
-        private const string _Clock_GROUP_MINUTES = "Clock_GROUP_MINUTES";
-        private const string _Clock_GROUP_HOURS = "Clock_GROUP_HOURS";
+        private const string _CLOCK_GROUP_SECONDS = "CLOCK_GROUP_SECONDS";
+        private const string _CLOCK_GROUP_MINUTES = "CLOCK_GROUP_MINUTES";
+        private const string _CLOCK_GROUP_HOURS = "CLOCK_GROUP_HOURS";
         #endregion
 
         #region Ctor
@@ -106,19 +106,6 @@ namespace Panuon.UI.Silver
 
         #endregion
 
-        #region ThemeBrush
-
-
-        public Brush ThemeBrush
-        {
-            get { return (Brush)GetValue(ThemeBrushProperty); }
-            set { SetValue(ThemeBrushProperty, value); }
-        }
-
-        public static readonly DependencyProperty ThemeBrushProperty =
-            DependencyProperty.Register("ThemeBrush", typeof(Brush), typeof(Clock));
-        #endregion
-
         #endregion
 
         #region Internal Properties
@@ -171,23 +158,23 @@ namespace Panuon.UI.Silver
             var groupName = radioButton.GroupName;
             switch (groupName)
             {
-                case _Clock_GROUP_SECONDS:
+                case _CLOCK_GROUP_SECONDS:
                     var seconds = (int)radioButton.Tag;
                     if (seconds != SelectedTime.Second)
                     {
                         SelectedTime = new DateTime(SelectedTime.Year, SelectedTime.Month, SelectedTime.Day, SelectedTime.Hour, SelectedTime.Minute, seconds);
                     }
                     break;
-                case _Clock_GROUP_MINUTES:
+                case _CLOCK_GROUP_MINUTES:
                     var minutes = (int)radioButton.Tag;
-                    if (minutes != SelectedTime.Second)
+                    if (minutes != SelectedTime.Minute)
                     {
                         SelectedTime = new DateTime(SelectedTime.Year, SelectedTime.Month, SelectedTime.Day, SelectedTime.Hour, minutes, SelectedTime.Second);
                     }
                     break;
-                case _Clock_GROUP_HOURS:
+                case _CLOCK_GROUP_HOURS:
                     var hours = (int)radioButton.Tag;
-                    if (hours != SelectedTime.Second)
+                    if (hours != SelectedTime.Hour)
                     {
                         SelectedTime = new DateTime(SelectedTime.Year, SelectedTime.Month, SelectedTime.Day, hours, SelectedTime.Minute, SelectedTime.Second);
                     }

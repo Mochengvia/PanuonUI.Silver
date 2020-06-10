@@ -53,7 +53,7 @@
                 <Setter Property="Height"
                         Value="35" />
                 <Setter Property="local:RadioButtonHelper.CheckedBackground"
-                        Value="{Binding ThemeBrush, RelativeSource={RelativeSource AncestorType=local:Clock}, Mode=OneWay}" />
+                        Value="#3E3E3E" />
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -71,7 +71,7 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <RadioButton Style="{Binding ClockItemStyle, RelativeSource={RelativeSource AncestorType=local:Clock}, Mode=OneWay}"
-                                     GroupName="Clock_GROUP_HOURS"
+                                     GroupName="CLOCK_GROUP_HOURS"
                                      Content="{Binding DisplayName}"
                                      Tag="{Binding Value}"
                                      IsChecked="{Binding IsChecked, Mode=OneWay}"
@@ -91,7 +91,7 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <RadioButton Style="{Binding ClockItemStyle, RelativeSource={RelativeSource AncestorType=local:Clock}, Mode=OneWay}"
-                                     GroupName="Clock_GROUP_MINUTES"
+                                     GroupName="CLOCK_GROUP_MINUTES"
                                      Content="{Binding DisplayName}"
                                      Tag="{Binding Value}"
                                      IsChecked="{Binding IsChecked, Mode=OneWay}"
@@ -111,7 +111,7 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <RadioButton Style="{Binding ClockItemStyle, RelativeSource={RelativeSource AncestorType=local:Clock}, Mode=OneWay}"
-                                     GroupName="Clock_GROUP_SECONDS"
+                                     GroupName="CLOCK_GROUP_SECONDS"
                                      Content="{Binding DisplayName}"
                                      Tag="{Binding Value}"
                                      IsChecked="{Binding IsChecked, Mode=OneWay}"
@@ -131,8 +131,6 @@
                 Value="{StaticResource {x:Static rs:ResourceKeys.ClockItemStyle}}" />
         <Setter Property="Background"
                 Value="{StaticResource {x:Static i:ResourceKeys.ClockBackground}}" />
-        <Setter Property="ThemeBrush"
-                Value="{StaticResource {x:Static i:ResourceKeys.ClockThemeBrush}}" />
         <Setter Property="BorderBrush"
                 Value="{StaticResource {x:Static i:ResourceKeys.ClockBorderBrush}}" />
         <Setter Property="BorderThickness"

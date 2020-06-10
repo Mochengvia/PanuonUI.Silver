@@ -13,7 +13,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Control.xaml" />
             </ResourceDictionary.MergedDictionaries>
-
+            
             <Style TargetType="pucp:NoticeXCard"
                    BasedOn="{StaticResource {x:Type pucp:NoticeXCard}}">
                 <Setter Property="BorderThickness"

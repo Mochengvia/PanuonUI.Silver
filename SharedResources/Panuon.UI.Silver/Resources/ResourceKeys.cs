@@ -83,9 +83,11 @@
         #endregion
 
         #region PendingBox
-        public const string PendingBoxLoadingStyle = nameof(PendingBoxLoadingStyle);
+        public const string PendingBoxXLoadingStyle = nameof(PendingBoxXLoadingStyle);
 
-        public const string PendingBoxCancelButtonStyle = nameof(PendingBoxCancelButtonStyle);
+        public const string PendingBoxXCancelButtonStyle = nameof(PendingBoxXCancelButtonStyle);
+
+        public const string PendingBoxXControlStandardStyle = nameof(PendingBoxXControlStandardStyle);
         #endregion
 
         #region MessageBoxX

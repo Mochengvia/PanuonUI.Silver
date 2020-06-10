@@ -12,20 +12,38 @@
             Height="500"
             Width="700"
             BorderBrush="#0099FF">
-    <ListView Margin="20"
-              ItemsSource="{Binding Models}">
-        <ListView.View>
-            <GridView>
-                <GridViewColumn Header="序列号"
-                                DisplayMemberBinding="{Binding Name}"
-                                Width="120" />
-                <GridViewColumn Header="库存"
-                                DisplayMemberBinding="{Binding Message}"
-                                Width="60" />
-                <GridViewColumn Header="库存"
-                                DisplayMemberBinding="{Binding Value}"
-                                Width="60" />
-            </GridView>
-        </ListView.View>
-    </ListView>
+    <StackPanel>
+        <pu:CalendarX Width="300"
+                      Height="300"
+                      VerticalAlignment="Center"
+                      HorizontalAlignment="Center">
+            <pu:CalendarX.CalendarXItemStyle>
+                <Style TargetType="RadioButton"
+                       BasedOn="{StaticResource {x:Static purs:ResourceKeys.CalendarXItemStyle}}">
+                    <Style.Triggers>
+                        <Trigger Property="pu:RadioButtonHelper.RadioButtonStyle"
+                                 Value="Button">
+                            <Setter Property="pu:RadioButtonHelper.CornerRadius"
+                                    Value="2" />
+                            <Setter Property="pu:RadioButtonHelper.CheckedBackground"
+                                    Value="#0099FF" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </pu:CalendarX.CalendarXItemStyle>
+            <pu:CalendarX.ControlButtonStyle>
+                <Style TargetType="Button"
+                       BasedOn="{StaticResource {x:Static purs:ResourceKeys.CalendarXControlButtonStyle}}">
+                    <Style.Triggers>
+                        <Trigger Property="pu:ButtonHelper.ButtonStyle"
+                                 Value="Link">
+                            <Setter Property="pu:ButtonHelper.HoverBrush"
+                                    Value="#0099FF" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </pu:CalendarX.ControlButtonStyle>
+        </pu:CalendarX>
+
+    </StackPanel>
 </pu:WindowX>

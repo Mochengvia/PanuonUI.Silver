@@ -21,11 +21,15 @@
                     CornerRadius="{TemplateBinding CornerRadius}"
                     Effect="{Binding ShadowColor,Converter={StaticResource {x:Static i:ResourceKeys.NullableColorToShadowEffectConverter}}, RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
             <Grid Margin="{TemplateBinding Padding}">
-                <TextBlock Margin="0,10,0,0"
-                           VerticalAlignment="Top"
-                           HorizontalAlignment="Left"
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock HorizontalAlignment="Left"
                            Text="{TemplateBinding Caption}" />
-                <StackPanel Orientation="Horizontal"
+                <StackPanel Grid.Row="1"
+                            Orientation="Horizontal"
                             VerticalAlignment="Center"
                             HorizontalAlignment="Center">
                     <local:Loading Style="{TemplateBinding LoadingStyle}"
@@ -34,44 +38,64 @@
                                VerticalAlignment="Center"
                                Text="{TemplateBinding Message}" />
                 </StackPanel>
-                <Button Visibility="{Binding CanCancel, Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                        Content="{TemplateBinding CancelButtonContent}"
-                        Style="{TemplateBinding CancelButtonStyle}"
-                        Command="{TemplateBinding CancelCommand}"
-                        CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}" />
+                <Button x:Name="PART_CancelButton"
+                        Grid.Row="2"
+                        Style="{TemplateBinding CancelButtonStyle}" />
             </Grid>
         </Grid>
     </ControlTemplate>
 
-    <Style x:Key="{x:Static rs:ResourceKeys.PendingBoxLoadingStyle}"
+    <Style x:Key="{x:Static rs:ResourceKeys.PendingBoxXLoadingStyle}"
            TargetType="local:Loading"
            BasedOn="{StaticResource {x:Type local:Loading}}">
         <Setter Property="Height"
-                Value="35" />
+                Value="45" />
         <Setter Property="Width"
-                Value="35" />
+                Value="45" />
         <Setter Property="local:Loading.LoadingStyle"
                 Value="Ring2" />
+        <Style.Triggers>
+            <Trigger Property="local:Loading.LoadingStyle"
+                     Value="Ring2">
+                <Setter Property="Thickness"
+                        Value="2" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
-    <Style x:Key="{x:Static rs:ResourceKeys.PendingBoxCancelButtonStyle}" 
+    <Style x:Key="{x:Static rs:ResourceKeys.PendingBoxXCancelButtonStyle}" 
            TargetType="Button"
            BasedOn="{StaticResource {x:Type Button}}">
-        <Setter Property="VerticalAlignment"
-                Value="Bottom" />
         <Setter Property="Margin"
-                Value="0,0,0,10" />
-        <Setter Property="local:ButtonHelper.ButtonStyle"
-                Value="Link" />
+                Value="0,0,5,0" />
+        <Setter Property="Height"
+                Value="30" />
+        <Setter Property="Width"
+                Value="70" />
+        <Setter Property="local:ButtonHelper.CornerRadius"
+                Value="2" />
+        <Style.Triggers>
+            <Trigger Property="IsDefault"
+                     Value="True">
+                <Setter Property="Background"
+                        Value="#E1E1E1" />
+                <Setter Property="local:ButtonHelper.HoverBrush"
+                        Value="#EAEAEA" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
     <Style TargetType="cp:PendingBoxXControl">
+        <Setter Property="FontFamily"
+                Value="{Binding Source={x:Static i:GlobalHelper.FontFamily}}" />
+        <Setter Property="FontSize"
+                Value="{Binding Source={x:Static i:GlobalHelper.FontSize}}" />
         <Setter Property="Width"
                 Value="400" />
         <Setter Property="Height"
                 Value="220" />
         <Setter Property="Padding"
-                Value="10,0" />
+                Value="15" />
         <Setter Property="Background"
                 Value="White" />
         <Setter Property="BorderBrush"
@@ -81,9 +105,9 @@
         <Setter Property="FontSize"
                 Value="14" />
         <Setter Property="LoadingStyle"
-                Value="{StaticResource {x:Static rs:ResourceKeys.PendingBoxLoadingStyle}}"/>
+                Value="{StaticResource {x:Static rs:ResourceKeys.PendingBoxXLoadingStyle}}"/>
         <Setter Property="CancelButtonStyle"
-                Value="{StaticResource {x:Static rs:ResourceKeys.PendingBoxCancelButtonStyle}}" />
+                Value="{StaticResource {x:Static rs:ResourceKeys.PendingBoxXCancelButtonStyle}}" />
         <Setter Property="Template"
                 Value="{StaticResource PendingBoxXControlTemplate}" />
     </Style>
