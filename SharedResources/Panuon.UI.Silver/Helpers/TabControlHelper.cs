@@ -276,6 +276,38 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("ItemSelectedRibbonBrush", typeof(Brush), typeof(TabControlHelper));
         #endregion
 
+        #region ItemRibbonThickness
+        public static double GetItemRibbonThickness(TabItem tabItem)
+        {
+            return (double)tabItem.GetValue(ItemRibbonThicknessProperty);
+        }
+
+        public static void SetItemRibbonThickness(TabItem tabItem, double value)
+        {
+            tabItem.SetValue(ItemRibbonThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemRibbonThicknessProperty =
+            DependencyProperty.RegisterAttached("ItemRibbonThickness", typeof(double), typeof(TabControlHelper));
+
+
+
+        public static double GetItemsRibbonThickness(TabControl tabControl)
+        {
+            return (double)tabControl.GetValue(ItemsRibbonThicknessProperty);
+        }
+
+        public static void SetItemsRibbonThickness(TabControl tabControl, double value)
+        {
+            tabControl.SetValue(ItemsRibbonThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsRibbonThicknessProperty =
+            DependencyProperty.RegisterAttached("ItemsRibbonThickness", typeof(double), typeof(TabControlHelper));
+
+
+        #endregion
+
         #region ItemHeight
         public static double GetItemsHeight(TabControl tabControl)
         {

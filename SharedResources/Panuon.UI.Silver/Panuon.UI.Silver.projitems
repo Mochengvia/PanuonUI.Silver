@@ -233,7 +233,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Rectangle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\SeperatorX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Components\PendingBoxXControl.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\TextBlockX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\WaterfallPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\WindowX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\WindowXCaption.cs" />
@@ -244,6 +243,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ListViewHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ListBoxHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ProgressBarHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\TextBlockHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ToggleButtonHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\RepeatButtonHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ButtonHelper.cs" />

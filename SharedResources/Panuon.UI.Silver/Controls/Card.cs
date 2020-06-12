@@ -1,22 +1,61 @@
-﻿using System;
+﻿using Panuon.UI.Silver.Internal.Utils;
 using System.Collections.Generic;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 
 namespace Panuon.UI.Silver
 {
-    public class Card : ContentControl
+    public class Card : ButtonBase
     {
         #region Ctor
         static Card()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(Card), new FrameworkPropertyMetadata(typeof(Card)));
         }
+
+        public Card()
+        {
+            MouseEnter += Card_MouseEnter;
+            MouseLeave += Card_MouseLeave;
+        }
+
+        private void Card_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            if(HoverBorderBrush == null)
+            {
+                return;
+            }
+            var dic = new Dictionary<DependencyProperty, Brush>();
+            dic.Add(BorderBrushProperty, HoverBorderBrush);
+            StoryboardUtils.BeginBrushStoryboard(this, dic);
+        }
+
+        private void Card_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            if (HoverBorderBrush == null)
+            {
+                return;
+            }
+            var list = new List<DependencyProperty>();
+            list.Add(BorderBrushProperty);
+            StoryboardUtils.BeginBrushStoryboard(this, list);
+        }
         #endregion
 
         #region Properties
+
+        #region HoverBorderBrush
+        public Brush HoverBorderBrush
+        {
+            get { return (Brush)GetValue(HoverBorderBrushProperty); }
+            set { SetValue(HoverBorderBrushProperty, value); }
+        }
+
+        public static readonly DependencyProperty HoverBorderBrushProperty =
+            DependencyProperty.Register("HoverBorderBrush", typeof(Brush), typeof(Card));
+        #endregion
 
         #region ShadowColor
         /// <summary>

@@ -855,6 +855,8 @@
                 Value="Stretch" />
         <Setter Property="local:TabControlHelper.HeaderPanelRibbonLineVisibility"
                 Value="Visible" />
+        <Setter Property="local:TabControlHelper.ItemsRibbonThickness"
+                Value="3" />
         <!--Properties-->
         <Setter Property="Padding"
                 Value="{StaticResource {x:Static i:ResourceKeys.TabControlPadding}}" />
@@ -877,6 +879,21 @@
                         Value="#3E3E3E" />
                 <Setter Property="local:TabControlHelper.ItemsSelectedForeground"
                         Value="#FFFFFF" />
+            </Trigger>
+            <Trigger Property="local:TabControlHelper.TabControlStyle"
+                     Value="Modern">
+                <Setter Property="local:TabControlHelper.RemoveButtonStyle"
+                        Value="{StaticResource {x:Static rs:ResourceKeys.TabItemStandardRemoveButtonStyle}}" />
+                <Setter Property="local:TabControlHelper.HeaderPanelRibbonLineVisibility"
+                        Value="Collapsed" />
+                <Setter Property="local:TabControlHelper.ItemsSelectedBackground"
+                        Value="Transparent" />
+                <Setter Property="local:TabControlHelper.ItemsSelectedForeground"
+                        Value="#3E3E3E" />
+                <Setter Property="local:TabControlHelper.ItemsSelectedRibbonBrush"
+                        Value="#3E3E3E" />
+                <Setter Property="local:TabControlHelper.ItemsRibbonThickness"
+                        Value="2" />
             </Trigger>
             <Trigger Property="IsEnabled"
                      Value="False">

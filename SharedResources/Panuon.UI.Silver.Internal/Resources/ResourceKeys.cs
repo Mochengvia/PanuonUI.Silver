@@ -869,10 +869,8 @@ namespace Panuon.UI.Silver.Internal
 
         public const string TabItemModernTemplate = nameof(TabItemModernTemplate);
 
-        public const string TabItemModern2Template = nameof(TabItemModern2Template);
-
         public const string TabItemCardTemplate = nameof(TabItemCardTemplate);
-
+        
         #endregion
 
         #region DropDown

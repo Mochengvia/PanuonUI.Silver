@@ -38,11 +38,11 @@
     }
     #endregion
 
-    #region TextBlockX
-    public enum MatchRule
+    #region TextBlock
+    public enum HighlightRule
     {
-        First,
         All,
+        First,
     }
     #endregion
 
@@ -121,6 +121,7 @@
     {
         Standard,
         Card,
+        Modern,
     }
 
     public enum TabControlHeaderStyle
