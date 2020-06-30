@@ -35,122 +35,6 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    
-    <Style  x:Key="{x:Static rs:ResourceKeys.MessageBoxXStandardStyle}"
-            TargetType="cp:MessageBoxX"
-            BasedOn="{StaticResource {x:Static i:ResourceKeys.WindowXStyle}}">
-        <Setter Property="local:ScrollViewerHelper.ScrollBarThickness"
-                Value="6" />
-        <Setter Property="local:ScrollViewerHelper.ScrollBarCornerRadius"
-                Value="3" />
-        <Setter Property="MinHeight"
-                Value="200" />
-        <Setter Property="MinWidth"
-                Value="300" />
-        <Setter Property="MaxContentHeight"
-                Value="100" />
-        <Setter Property="MaxContentWidth"
-                Value="400" />
-        <Setter Property="SizeToContent"
-                Value="WidthAndHeight" />
-        <Setter Property="ResizeMode"
-                Value="NoResize" />
-        <Setter Property="Padding"
-                Value="15" />
-        <Setter Property="ButtonStyle"
-                Value="{StaticResource {x:Static rs:ResourceKeys.MessageBoxXButtonStyle}}" />
-        <Setter Property="ContentTemplate">
-            <Setter.Value>
-                <DataTemplate>
-                    <Grid Margin="{Binding Padding, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <Grid Margin="0,0,0,10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition  Width="Auto" />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-                            <cp:MessageBoxIconControl FontSize="40"
-                                                      Margin="0,0,20,0"
-                                                      MessageBoxIcon="{Binding MessageBoxIcon, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}" />
-                            <ScrollViewer Grid.Column="1"
-                                          Focusable="False"
-                                          MaxHeight="{Binding MaxContentHeight, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}"
-                                          MaxWidth="{Binding MaxContentWidth, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}"
-                                          VerticalScrollBarVisibility="Auto"
-                                          HorizontalScrollBarVisibility="Disabled">
-                                <TextBlock Text="{Binding Message, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}"
-                                           VerticalAlignment="Center"
-                                           TextWrapping="Wrap" />
-                            </ScrollViewer>
-                        </Grid>
-                        <StackPanel Grid.Row="1"
-                                    Orientation="Horizontal"
-                                    HorizontalAlignment="Right">
-                            <Button x:Name="PART_YesButton"
-                                    Style="{Binding ButtonStyle, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}" />
-                            <Button x:Name="PART_NoButton"
-                                    Style="{Binding ButtonStyle, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}" />
-                            <Button x:Name="PART_OKButton"
-                                    Style="{Binding ButtonStyle, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}" />
-                            <Button x:Name="PART_CancelButton"
-                                    Style="{Binding ButtonStyle, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}" />
-                        </StackPanel>
-                    </Grid>
-                </DataTemplate>
-            </Setter.Value>
-        </Setter>
-        <Style.Triggers>
-            <Trigger Property="ButtonArrangement"
-                     Value="Reverse">
-                <Setter Property="ContentTemplate">
-                    <Setter.Value>
-                        <DataTemplate>
-                            <Grid Margin="{Binding Padding, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition />
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
-                                <Grid Margin="0,0,0,10">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition  Width="Auto" />
-                                        <ColumnDefinition />
-                                    </Grid.ColumnDefinitions>
-                                    <cp:MessageBoxIconControl FontSize="40"
-                                                              Margin="0,0,20,0"
-                                                              MessageBoxIcon="{Binding MessageBoxIcon, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}" />
-                                    <ScrollViewer Grid.Column="1"
-                                                  Focusable="False"
-                                                  MaxHeight="200"
-                                                  VerticalScrollBarVisibility="Auto"
-                                                  HorizontalScrollBarVisibility="Disabled">
-                                        <TextBlock Text="{Binding Message, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}"
-                                                   VerticalAlignment="Center"
-                                                   TextWrapping="Wrap" />
-                                    </ScrollViewer>
-                                </Grid>
-                                <StackPanel Grid.Row="1"
-                                            Orientation="Horizontal"
-                                            HorizontalAlignment="Right">
-                                    <Button x:Name="PART_CancelButton"
-                                            Style="{Binding ButtonStyle, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}" />
-                                    <Button x:Name="PART_OKButton"
-                                            Style="{Binding ButtonStyle, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}" />
-                                    <Button x:Name="PART_NoButton"
-                                            Style="{Binding ButtonStyle, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}" />
-                                    <Button x:Name="PART_YesButton"
-                                            Style="{Binding ButtonStyle, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}" />
-                                </StackPanel>
-                            </Grid>
-                        </DataTemplate>
-                    </Setter.Value>
-                </Setter>
-
-            </Trigger>
-        </Style.Triggers>
-    </Style>
 
     <Style  x:Key="{x:Static rs:ResourceKeys.MessageBoxXPosterStyle}"
             TargetType="cp:MessageBoxX"
@@ -272,6 +156,123 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+
+    <Style  x:Key="{x:Static rs:ResourceKeys.MessageBoxXStandardStyle}"
+            TargetType="cp:MessageBoxX"
+            BasedOn="{StaticResource {x:Static i:ResourceKeys.WindowXStyle}}">
+        <Setter Property="local:ScrollViewerHelper.ScrollBarThickness"
+                Value="6" />
+        <Setter Property="local:ScrollViewerHelper.ScrollBarCornerRadius"
+                Value="3" />
+        <Setter Property="MinHeight"
+                Value="200" />
+        <Setter Property="MinWidth"
+                Value="300" />
+        <Setter Property="MaxContentHeight"
+                Value="100" />
+        <Setter Property="MaxContentWidth"
+                Value="400" />
+        <Setter Property="SizeToContent"
+                Value="WidthAndHeight" />
+        <Setter Property="ResizeMode"
+                Value="NoResize" />
+        <Setter Property="Padding"
+                Value="15" />
+        <Setter Property="ButtonStyle"
+                Value="{StaticResource {x:Static rs:ResourceKeys.MessageBoxXButtonStyle}}" />
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Grid Margin="{Binding Padding, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid Margin="0,0,0,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition  Width="Auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <cp:MessageBoxIconControl FontSize="40"
+                                                      Margin="0,0,20,0"
+                                                      MessageBoxIcon="{Binding MessageBoxIcon, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}" />
+                            <ScrollViewer Grid.Column="1"
+                                          Focusable="False"
+                                          MaxHeight="{Binding MaxContentHeight, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}"
+                                          MaxWidth="{Binding MaxContentWidth, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}"
+                                          VerticalScrollBarVisibility="Auto"
+                                          HorizontalScrollBarVisibility="Disabled">
+                                <TextBlock Text="{Binding Message, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}"
+                                           VerticalAlignment="Center"
+                                           TextWrapping="Wrap" />
+                            </ScrollViewer>
+                        </Grid>
+                        <StackPanel Grid.Row="1"
+                                    Orientation="Horizontal"
+                                    HorizontalAlignment="Right">
+                            <Button x:Name="PART_YesButton"
+                                    Style="{Binding ButtonStyle, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}" />
+                            <Button x:Name="PART_NoButton"
+                                    Style="{Binding ButtonStyle, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}" />
+                            <Button x:Name="PART_OKButton"
+                                    Style="{Binding ButtonStyle, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}" />
+                            <Button x:Name="PART_CancelButton"
+                                    Style="{Binding ButtonStyle, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}" />
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="ButtonArrangement"
+                     Value="Reverse">
+                <Setter Property="ContentTemplate">
+                    <Setter.Value>
+                        <DataTemplate>
+                            <Grid Margin="{Binding Padding, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid Margin="0,0,0,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition  Width="Auto" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <cp:MessageBoxIconControl FontSize="40"
+                                                              Margin="0,0,20,0"
+                                                              MessageBoxIcon="{Binding MessageBoxIcon, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}" />
+                                    <ScrollViewer Grid.Column="1"
+                                                  Focusable="False"
+                                                  MaxHeight="200"
+                                                  VerticalScrollBarVisibility="Auto"
+                                                  HorizontalScrollBarVisibility="Disabled">
+                                        <TextBlock Text="{Binding Message, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}"
+                                                   VerticalAlignment="Center"
+                                                   TextWrapping="Wrap" />
+                                    </ScrollViewer>
+                                </Grid>
+                                <StackPanel Grid.Row="1"
+                                            Orientation="Horizontal"
+                                            HorizontalAlignment="Right">
+                                    <Button x:Name="PART_CancelButton"
+                                            Style="{Binding ButtonStyle, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}" />
+                                    <Button x:Name="PART_OKButton"
+                                            Style="{Binding ButtonStyle, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}" />
+                                    <Button x:Name="PART_NoButton"
+                                            Style="{Binding ButtonStyle, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}" />
+                                    <Button x:Name="PART_YesButton"
+                                            Style="{Binding ButtonStyle, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}" />
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </Setter.Value>
+                </Setter>
+
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
 
     <Style  TargetType="cp:MessageBoxX"
             BasedOn="{StaticResource {x:Static rs:ResourceKeys.MessageBoxXStandardStyle}}">

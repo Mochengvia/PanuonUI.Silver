@@ -16,6 +16,6 @@
     <Window.Resources>
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Control.xaml" />
     </Window.Resources>
-    <pu:Pagination Height="30"/>
+    <Button Click="Button_Click"/>
 
 </pu:WindowX>
