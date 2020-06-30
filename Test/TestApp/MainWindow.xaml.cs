@@ -23,7 +23,7 @@ namespace TestApp
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxX.Show("123456");
+
         }
 
         private void TextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
