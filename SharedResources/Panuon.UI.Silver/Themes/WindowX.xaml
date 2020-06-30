@@ -137,7 +137,7 @@
                 </Grid.ColumnDefinitions>
                 <AdornerDecorator Grid.Row="1"
                                   Grid.ColumnSpan="5">
-                    <ContentPresenter Margin="{TemplateBinding Padding}"/>
+                    <ContentPresenter />
                 </AdornerDecorator>
                 <Rectangle Fill="{Binding Path=(local:WindowXCaption.Background),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}"
                            Grid.ColumnSpan="5" />
@@ -312,7 +312,7 @@
                 </Grid.ColumnDefinitions>
                 <AdornerDecorator Grid.Row="1"
                                   Grid.ColumnSpan="3">
-                    <ContentPresenter Margin="{TemplateBinding Padding}" />
+                    <ContentPresenter />
                 </AdornerDecorator>
                 <Rectangle Fill="{Binding Path=(local:WindowXCaption.Background),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" 
                            Grid.ColumnSpan="3"/>

@@ -166,7 +166,6 @@ namespace Panuon.UI.Silver
         {
             if (DisableForceClosing && _closeHandler)
             {
-                e.Cancel = true;
                 return;
             }
             base.OnClosing(e);

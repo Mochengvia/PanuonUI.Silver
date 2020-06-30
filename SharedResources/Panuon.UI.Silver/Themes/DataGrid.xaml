@@ -133,16 +133,14 @@
         <Grid>
             <Grid x:Name="GrdFill"
                   Background="{TemplateBinding Background}">
-                <Rectangle x:Name="RectHorizontal"
-                           Height="1"
+                <Rectangle Height="1"
                            VerticalAlignment="Bottom"
                            Fill="{Binding HorizontalGridLinesBrush, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
-                           Visibility="Collapsed"/>
-                <Rectangle x:Name="RectVertical"
-                           Width="1"
+                           Visibility="{Binding HorizontalScrollBarVisibility, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+                <Rectangle Width="1"
                            HorizontalAlignment="Right"
                            Fill="{Binding VerticalGridLinesBrush, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
-                           Visibility="Collapsed"/>
+                           Visibility="{Binding VerticalScrollBarVisibility, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
                 <Rectangle x:Name="RectCover"
                            Fill="#0A000000"
                            Visibility="Collapsed" />
@@ -151,7 +149,7 @@
                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <ContentPresenter x:Name="CpContent"
@@ -187,27 +185,6 @@
                    Style="{StaticResource {x:Static i:ResourceKeys.DataGridResizeThumbStyle}}" />
         </Grid>
         <ControlTemplate.Triggers>
-            <DataTrigger Binding="{Binding Path=GridLinesVisibility, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
-                         Value="All">
-                <Setter TargetName="RectVertical"
-                        Property="Visibility"
-                        Value="Visible" />
-                <Setter TargetName="RectHorizontal"
-                        Property="Visibility"
-                        Value="Visible" />
-            </DataTrigger>
-            <DataTrigger Binding="{Binding Path=GridLinesVisibility, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
-                         Value="Vertical">
-                <Setter TargetName="RectVertical"
-                        Property="Visibility"
-                        Value="Visible" />
-            </DataTrigger>
-            <DataTrigger Binding="{Binding Path=GridLinesVisibility, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
-                         Value="Horizontal">
-                <Setter TargetName="RectHorizontal"
-                        Property="Visibility"
-                        Value="Visible" />
-            </DataTrigger>
             <Trigger Property="CanUserSort"
                      Value="True">
                 <Setter TargetName="TxtAsc"
@@ -401,8 +378,6 @@
     </ControlTemplate>
 
     <Style TargetType="DataGridRow">
-        <Setter Property="Background"
-                Value="Transparent" />
         <Setter Property="MinHeight"
                 Value="{Binding MinRowHeight,RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
         <Setter Property="Template"
@@ -516,8 +491,6 @@
     </ControlTemplate>
 
     <Style TargetType="DataGrid">
-        <Setter Property="AutoGenerateColumns"
-                Value="False" />
         <Setter Property="local:DataGridHelper.DataGridHook"
                 Value="True" />
         <Setter Property="local:ScrollViewerHelper.ScrollBarThickness"

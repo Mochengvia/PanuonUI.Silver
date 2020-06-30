@@ -173,8 +173,6 @@
                 Value="{StaticResource ContextMenuTemplate}" />
         <Style.Resources>
             <Style TargetType="MenuItem">
-                <Setter Property="local:IconHelper.Foreground"
-                        Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
                 <Setter Property="local:ContextMenuHelper.ItemHoverBackground"
                         Value="{Binding Path=(local:ContextMenuHelper.ItemsHoverBackground), RelativeSource={RelativeSource AncestorType=ContextMenu}}" />
                 <Setter Property="local:ContextMenuHelper.ItemHoverBorderBrush"

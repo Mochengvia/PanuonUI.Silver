@@ -107,6 +107,7 @@
                     Style="{DynamicResource {x:Static rs:ResourceKeys.TextBoxClearButtonStyle}}"
                     Visibility="{Binding Path=(local:TextBoxHelper.CanClear),Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}},RelativeSource={RelativeSource AncestorType=TextBox},Mode=OneWay}" />
             <Border x:Name="BdrWait"
+                    
                     Grid.Column="2"
                     Width="{Binding ActualHeight,Converter={StaticResource {x:Static rs:Converters.DoubleMinusConverter}}, ConverterParameter=5,RelativeSource={RelativeSource AncestorType=TextBox},Mode=OneWay}"
                     Height="{Binding ActualHeight,RelativeSource={RelativeSource AncestorType=TextBox},Mode=OneWay}"
