@@ -39,7 +39,16 @@ namespace TestApp
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-         
+            TbText.Text = "";
+            for (int i = 0;i < 10; i++)
+            {
+                var st = Stopwatch.StartNew();
+                var test = new TestWindow();
+                test.Show();
+                st.Stop();
+                test.Close();
+                TbText.Text += $"{st.ElapsedMilliseconds}\n";
+            }
             
         }
     }

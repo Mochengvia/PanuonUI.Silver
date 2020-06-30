@@ -16,6 +16,12 @@
     <Window.Resources>
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Control.xaml" />
     </Window.Resources>
-    <pu:Pagination Height="30"/>
-
+    <StackPanel>
+        <Button Height="300"
+                Width="300"
+                Click="Button_Click_1"
+                pu:ButtonHelper.ClickStyle="Sink"/>
+        <TextBox x:Name="TbText"/>
+    </StackPanel>
+    
 </pu:WindowX>
