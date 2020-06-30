@@ -11,14 +11,17 @@
             Title="Window"
             Height="500"
             Width="700"
+            DisableForceClosing="True"
             BorderBrush="#0099FF">
-    <TabControl TabStripPlacement="Left"
-                pu:TabControlHelper.TabControlStyle="Modern"
-                pu:TabControlHelper.ItemsSelectedForeground="Red"
-                pu:TabControlHelper.ItemsSelectedRibbonBrush="Red"
-                pu:TabControlHelper.HeaderPanelRibbonLineVisibility="Visible"
-                pu:TabControlHelper.ItemsRibbonThickness="2">
-        <TabItem Header="Hello" />
-        <TabItem Header="Hello" />
-    </TabControl>
+    <Window.Resources>
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Control.xaml" />
+    </Window.Resources>
+    <StackPanel>
+        <Button Height="300"
+                Width="300"
+                Click="Button_Click_1"
+                pu:ButtonHelper.ClickStyle="Sink"/>
+        <TextBox x:Name="TbText"/>
+    </StackPanel>
+    
 </pu:WindowX>

@@ -1,7 +1,10 @@
 ﻿using Panuon.UI.Silver;
 using Panuon.UI.Silver.Core;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
 using System.Windows;
 
 namespace TestApp
@@ -14,25 +17,6 @@ namespace TestApp
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = this;
-            Models.Add(new Model()
-            {
-                Message = "1",
-                Name = "1",
-                Value = "1",
-            });
-            Models.Add(new Model()
-            {
-                Message = "2",
-                Name = "2",
-                Value = "2",
-            });
-            Models.Add(new Model()
-            {
-                Message = "3",
-                Name = "3",
-                Value = "3",
-            });
         }
 
         public ObservableCollection<Model> Models { get; set; } = new ObservableCollection<Model>();
@@ -46,6 +30,27 @@ namespace TestApp
         {
         }
 
+        public static string GetRelativePath(string rootPath, string targetPath)
+        {
+            var targetUri = new Uri(targetPath);
+            var rootUri = new Uri(rootPath);
+            return Uri.UnescapeDataString(rootUri.MakeRelativeUri(targetUri)?.ToString()?.Replace('/', Path.DirectorySeparatorChar));
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            TbText.Text = "";
+            for (int i = 0;i < 10; i++)
+            {
+                var st = Stopwatch.StartNew();
+                var test = new TestWindow();
+                test.Show();
+                st.Stop();
+                test.Close();
+                TbText.Text += $"{st.ElapsedMilliseconds}\n";
+            }
+            
+        }
     }
 
     public class Model : PropertyChangedBase

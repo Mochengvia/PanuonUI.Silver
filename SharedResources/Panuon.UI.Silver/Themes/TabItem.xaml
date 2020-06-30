@@ -9,7 +9,6 @@
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/InternalResources.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-
     <ControlTemplate x:Key="{x:Static i:ResourceKeys.TabItemStandardTemplate}"
                      TargetType="TabItem">
         <Grid x:Name="GrdMain"
@@ -191,7 +190,6 @@
                         Property="TextElement.Foreground"
                         Value="{Binding Path=(local:TabControlHelper.ItemSelectedForeground),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
-           
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
@@ -475,7 +473,8 @@
         <!--IconHelper-->
         <Setter Property="local:IconHelper.Foreground"
                 Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
-        
+        <Setter Property="Foreground"
+                Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <Setter Property="Background"
                 Value="{Binding Path=(local:TabControlHelper.ItemsBackground), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <Setter Property="local:TabControlHelper.ItemForeground"

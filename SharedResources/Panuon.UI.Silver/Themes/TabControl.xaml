@@ -67,7 +67,10 @@
                 <ContentControl x:Name="CcFront"
                                 Content="{Binding Path=(local:TabControlHelper.FrontControl),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"/>
                 <TabPanel x:Name="TpItems"
-                          IsItemsHost="True"/>
+                          Panel.ZIndex="1"
+                          IsItemsHost="True"
+                          KeyboardNavigation.TabIndex="1"
+                          Background="Transparent" />
                 <ContentControl x:Name="CcEnd"
                                 Content="{Binding Path=(local:TabControlHelper.EndControl),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 <Border x:Name="BdrFront"

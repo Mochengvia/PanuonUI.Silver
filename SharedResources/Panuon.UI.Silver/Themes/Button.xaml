@@ -79,34 +79,23 @@
                         Property="Content"
                         Value="{Binding Path=(local:ButtonHelper.WaitingContent),RelativeSource={RelativeSource AncestorType=Button},Mode=OneWay}" />
             </Trigger>
-            <MultiDataTrigger>
-                <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}"
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsPressed"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:ButtonHelper.ClickStyle), RelativeSource={RelativeSource Self}}"
+                    <Condition Property="local:ButtonHelper.ClickStyle"
                                Value="Sink" />
-                </MultiDataTrigger.Conditions>
+                </MultiTrigger.Conditions>
                 <Setter TargetName="BdrMain"
                         Property="Margin"
                         Value="0,1,0,-1" />
-            </MultiDataTrigger>
+            </MultiTrigger>
             <Trigger Property="IsPressed"
                      Value="True">
                 <Setter TargetName="BdrMain"
                         Property="Opacity"
                         Value="0.8" />
             </Trigger>
-            <MultiDataTrigger>
-                <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}"
-                               Value="True" />
-                    <Condition Binding="{Binding Path=(local:ButtonHelper.ClickStyle), RelativeSource={RelativeSource Self}}"
-                               Value="Sink" />
-                </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrMain"
-                        Property="Margin"
-                        Value="0,1,0,-1" />
-            </MultiDataTrigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
