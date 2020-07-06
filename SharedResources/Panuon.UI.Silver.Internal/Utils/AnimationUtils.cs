@@ -8,7 +8,6 @@ namespace Panuon.UI.Silver.Internal.Utils
 {
     internal class AnimationUtils
     {
-
         public static IEasingFunction CreateEasingFunction(AnimationEase animationEasing)
         {
             switch (animationEasing)
@@ -46,7 +45,6 @@ namespace Panuon.UI.Silver.Internal.Utils
             }
             return null;
         }
-
 
         public static void BeginAnimation(UIElement uiElement, DependencyProperty dependencyProperty, double to, TimeSpan animationDuration, AnimationEase animationEase = AnimationEase.None, bool repeatForever = false)
         {

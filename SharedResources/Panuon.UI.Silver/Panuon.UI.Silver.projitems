@@ -101,6 +101,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Slider.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\TabItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -202,6 +206,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums\MessageBoxButtonArrangement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums\ProgressBarStyle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums\ProgressDirection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums\SliderStyle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums\StackDirection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums\TextAdaption.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constracts\Interfaces\IPendingHandler.cs" />
@@ -243,6 +248,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ListViewHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ListBoxHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ProgressBarHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\SliderHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\TextBlockHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ToggleButtonHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\RepeatButtonHelper.cs" />

@@ -176,7 +176,6 @@ namespace Panuon.UI.Silver
             StoryboardUtils.BeginBrushStoryboard(button, dic);
         }
 
-
         private static void OnButtonMouseLeave(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;

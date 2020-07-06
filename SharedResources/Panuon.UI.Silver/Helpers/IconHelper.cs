@@ -34,7 +34,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty WidthProperty =
-            DependencyProperty.RegisterAttached("Width", typeof(double), typeof(IconHelper), new PropertyMetadata(double.NaN));
+            DependencyProperty.RegisterAttached("Width", typeof(double), typeof(IconHelper), new FrameworkPropertyMetadata(double.NaN, FrameworkPropertyMetadataOptions.Inherits));
         #endregion
 
         #region Height

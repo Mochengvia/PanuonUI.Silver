@@ -12,13 +12,25 @@
             Height="500"
             Width="700"
             BorderBrush="#0099FF">
-    <TabControl TabStripPlacement="Left"
-                pu:TabControlHelper.TabControlStyle="Modern"
-                pu:TabControlHelper.ItemsSelectedForeground="Red"
-                pu:TabControlHelper.ItemsSelectedRibbonBrush="Red"
-                pu:TabControlHelper.HeaderPanelRibbonLineVisibility="Visible"
-                pu:TabControlHelper.ItemsRibbonThickness="2">
-        <TabItem Header="Hello" />
-        <TabItem Header="Hello" />
-    </TabControl>
+    <StackPanel>
+        <Slider Foreground="#ACCD9D"
+                Background="#22ACCD9D"
+                Value="7" />
+        <Slider Margin="0,10,0,0"
+                Foreground="#99D7F1"
+                Background="#2299D7F1"
+                pu:SliderHelper.ThumbCornerRadius="2"
+                Value="4" />
+        <Slider Margin="0,10,0,0"
+                Foreground="#FFB9CA"
+                Background="#22FFB9CA"
+                pu:SliderHelper.SliderStyle="Modern"
+                Value="5" />
+        <Slider Margin="0,10,0,0"
+                Foreground="#FFD895"
+                Background="#22FFD895"
+                pu:SliderHelper.SliderStyle="Modern"
+                pu:SliderHelper.ThumbCornerRadius="2"
+                Value="6" />
+    </StackPanel>
 </pu:WindowX>
