@@ -156,6 +156,7 @@ namespace Panuon.UI.Silver
         public static readonly DependencyProperty ForegroundProperty =
             DependencyProperty.RegisterAttached("Foreground", typeof(Brush), typeof(IconHelper), new PropertyMetadata(Brushes.Black));
         #endregion
+
         #endregion
     }
 }

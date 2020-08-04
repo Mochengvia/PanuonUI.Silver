@@ -1,182 +1,99 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Panuon.UI.Silver"
-                    xmlns:i="clr-namespace:Panuon.UI.Silver.Internal"
-                    xmlns:ic="clr-namespace:Panuon.UI.Silver.Internal.Controls"
-                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources">
+                    xmlns:core="clr-namespace:Panuon.UI.Silver.Core"
+                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
+                    xmlns:ic="clr-namespace:Panuon.UI.Silver.Internal.Controls">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/InternalResources.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Resources.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Loading.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{x:Static rs:ResourceKeys.ButtonWaitingLoadingStyle}"
-           TargetType="{x:Type local:Loading}"
-           BasedOn="{StaticResource {x:Type local:Loading}}">
-        <Setter Property="Height"
-                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=5,RelativeSource={RelativeSource  AncestorType=Button},Mode=OneWay}" />
-        <Setter Property="Width"
-                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=5,RelativeSource={RelativeSource  AncestorType=Button},Mode=OneWay}" />
-        <Setter Property="Foreground"
-                Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button},Mode=OneWay}" />
-    </Style>
-
-    <ControlTemplate x:Key="{x:Static i:ResourceKeys.ButtonTemplate}"
-                     TargetType="Button">
-        <Border x:Name="BdrMain"
-                BorderBrush="{TemplateBinding BorderBrush}"
-                BorderThickness="{TemplateBinding BorderThickness}"
-                Background="{TemplateBinding Background}"
-                CornerRadius="{Binding Path=(local:ButtonHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=Button},Mode=OneWay}">
-            <StackPanel Orientation="{Binding Path=(local:ButtonHelper.IconPosition),Converter={StaticResource {x:Static i:ResourceKeys.IconPositionToOrientationConverter}},RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
-                        Margin="{TemplateBinding Padding}"
-                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
-                <ic:IconControl x:Name="IcIcon"
-                                Width="{Binding Path=(local:IconHelper.Width),RelativeSource={RelativeSource AncestorType=Button},Mode=OneWay}"
-                                Height="{Binding Path=(local:IconHelper.Height),RelativeSource={RelativeSource AncestorType=Button},Mode=OneWay}"
-                                MinWidth="{Binding Path=(local:IconHelper.MinWidth),RelativeSource={RelativeSource AncestorType=Button},Mode=OneWay}"
-                                MinHeight="{Binding Path=(local:IconHelper.MinHeight),RelativeSource={RelativeSource AncestorType=Button},Mode=OneWay}"
-                                MaxWidth="{Binding Path=(local:IconHelper.MaxWidth),RelativeSource={RelativeSource AncestorType=Button},Mode=OneWay}"
-                                MaxHeight="{Binding Path=(local:IconHelper.MaxHeight),RelativeSource={RelativeSource AncestorType=Button},Mode=OneWay}"
-                                Margin="{Binding Path=(local:IconHelper.Margin),RelativeSource={RelativeSource AncestorType=Button},Mode=OneWay}"
-                                Visibility="{Binding Path=(local:ButtonHelper.Icon),Converter={StaticResource {x:Static i:ResourceKeys.NullToCollapseConverter}},RelativeSource={RelativeSource AncestorType=Button},Mode=OneWay}"
-                                Content="{Binding Path=(local:ButtonHelper.Icon),RelativeSource={RelativeSource AncestorType=Button},Mode=OneWay}"
-                                Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource AncestorType=Button},Mode=OneWay}"
-                                FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource AncestorType=Button},Mode=OneWay}"
-                                FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource AncestorType=Button},Mode=OneWay}"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center" />
-                <StackPanel Orientation="Horizontal"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Center">
-                    <local:Loading x:Name="LoadWait"
-                                   Margin="0,0,5,0"
-                                   Style="{DynamicResource {x:Static rs:ResourceKeys.ButtonWaitingLoadingStyle}}"
-                                   Visibility="Collapsed" />
-                    <ContentPresenter x:Name="Presenter"
-                                      RecognizesAccessKey="True"
-                                      VerticalAlignment="Center"
-                                      HorizontalAlignment="Center" />
-                </StackPanel>
-            </StackPanel>
-        </Border>
-        <ControlTemplate.Triggers>
+    <Style TargetType="Button">
+        <Setter Property="local:ButtonHelper.Hook"
+                Value="True" />
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="Background"
+                Value="#F1F1F1" />
+        <Setter Property="local:IconHelper.Foreground"
+                Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.Margin"
+                Value="0,0,5,0" />
+        <Setter Property="Padding"
+                Value="5,0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="BdrMain"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{Binding Path=(local:ButtonHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                        <StackPanel x:Name="StkContent"
+                                    Orientation="Horizontal"
+                                    Margin="{TemplateBinding Padding}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+                            <ic:IconControl x:Name="icIcon"
+                                            Content="{Binding Path=(local:ButtonHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                            Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                            <ContentPresenter x:Name="CpContent"
+                                              RecognizesAccessKey="True"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Center" />
+                        </StackPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed"
+                                 Value="True">
+                            <Setter TargetName="BdrMain"
+                                    Property="Opacity"
+                                    Value="0.8" />
+                        </Trigger>
+                        <Trigger Property="local:ButtonHelper.IconPlacement"
+                                 Value="Top">
+                            <Setter TargetName="StkContent"
+                                    Property="Orientation"
+                                    Value="Vertical" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsPressed"
+                                           Value="True" />
+                                <Condition Property="local:ButtonHelper.ClickStyle"
+                                           Value="Sink" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="BdrMain"
+                                    Property="Margin"
+                                    Value="0,1,0,-1" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
             <Trigger Property="local:ButtonHelper.IsWaiting"
                      Value="True">
                 <Setter Property="IsEnabled"
                         Value="False" />
-                <Setter TargetName="LoadWait"
-                        Property="Visibility"
-                        Value="Visible" />
-                <Setter TargetName="IcIcon"
-                        Property="Visibility"
-                        Value="Collapsed" />
-                <Setter TargetName="LoadWait"
-                        Property="IsLoading"
-                        Value="True" />
-                <Setter TargetName="Presenter"
-                        Property="Content"
-                        Value="{Binding Path=(local:ButtonHelper.WaitingContent),RelativeSource={RelativeSource AncestorType=Button},Mode=OneWay}" />
-            </Trigger>
-            <MultiDataTrigger>
-                <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}"
-                               Value="True" />
-                    <Condition Binding="{Binding Path=(local:ButtonHelper.ClickStyle), RelativeSource={RelativeSource Self}}"
-                               Value="Sink" />
-                </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrMain"
-                        Property="Margin"
-                        Value="0,1,0,-1" />
-            </MultiDataTrigger>
-            <Trigger Property="IsPressed"
-                     Value="True">
-                <Setter TargetName="BdrMain"
-                        Property="Opacity"
-                        Value="0.8" />
-            </Trigger>
-            <MultiDataTrigger>
-                <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}"
-                               Value="True" />
-                    <Condition Binding="{Binding Path=(local:ButtonHelper.ClickStyle), RelativeSource={RelativeSource Self}}"
-                               Value="Sink" />
-                </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrMain"
-                        Property="Margin"
-                        Value="0,1,0,-1" />
-            </MultiDataTrigger>
-        </ControlTemplate.Triggers>
-    </ControlTemplate>
-
-    <Style TargetType="Button">
-        <!--Properties-->
-        <Setter Property="Background"
-                Value="{StaticResource {x:Static i:ResourceKeys.ButtonStandardDefaultBackground}}" />
-        <Setter Property="BorderBrush"
-                Value="{x:Null}" />
-        <Setter Property="Foreground"
-                Value="{StaticResource {x:Static i:ResourceKeys.ButtonStandardDefaultForeground}}" />
-        <Setter Property="BorderThickness"
-                Value="{StaticResource {x:Static i:ResourceKeys.ButtonStandardDefaultBorderThickness}}" />
-        <Setter Property="Template"
-                Value="{StaticResource {x:Static i:ResourceKeys.ButtonTemplate}}" />
-        <!--ButtonHelper-->
-        <Setter Property="local:ButtonHelper.WaitingContent"
-                Value="{StaticResource {x:Static i:ResourceKeys.ButtonDefaultWaitingContent}}" />
-        <Setter Property="local:ButtonHelper.CornerRadius"
-                Value="{StaticResource {x:Static i:ResourceKeys.ButtonDefaultCornerRadius}}" />
-        <Setter Property="local:ButtonHelper.IconPosition"
-                Value="{StaticResource {x:Static i:ResourceKeys.ButtonDefaultIconPosition}}" />
-        <Setter Property="local:ButtonHelper.ClickStyle"
-                Value="{StaticResource {x:Static i:ResourceKeys.ButtonDefaultClickStyle}}" />
-        <Setter Property="local:ButtonHelper.HoverBrush"
-                Value="{StaticResource {x:Static i:ResourceKeys.ButtonStandardDefaultHoverBrush}}" />
-        <!--IconHelper-->
-        <Setter Property="local:IconHelper.Foreground"
-                Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
-        <Setter Property="local:IconHelper.FontSize"
-                Value="{Binding FontSize, RelativeSource={RelativeSource Self}}" />
-        <Style.Triggers>
-            <Trigger Property="local:ButtonHelper.ButtonStyle"
-                     Value="Outline">
-                <Setter Property="Background"
-                        Value="{StaticResource {x:Static i:ResourceKeys.ButtonOutlineDefaultBackground}}" />
-                <Setter Property="BorderBrush"
-                        Value="{StaticResource {x:Static i:ResourceKeys.ButtonOutlineDefaultBorderBrush}}" />
-                <Setter Property="Foreground"
-                        Value="{StaticResource {x:Static i:ResourceKeys.ButtonOutlineDefaultForeground}}" />
-                <Setter Property="BorderThickness"
-                        Value="{StaticResource {x:Static i:ResourceKeys.ButtonOutlineDefaultBorderThickness}}" />
-                <Setter Property="local:ButtonHelper.HoverBrush"
-                        Value="{StaticResource {x:Static i:ResourceKeys.ButtonOutlineDefaultHoverBrush}}" />
-            </Trigger>
-            <Trigger Property="local:ButtonHelper.ButtonStyle"
-                     Value="Hollow">
-                <Setter Property="Background"
-                        Value="{StaticResource {x:Static i:ResourceKeys.ButtonHollowDefaultBackground}}" />
-                <Setter Property="BorderBrush"
-                        Value="{StaticResource {x:Static i:ResourceKeys.ButtonHollowDefaultBorderBrush}}" />
-                <Setter Property="Foreground"
-                        Value="{StaticResource {x:Static i:ResourceKeys.ButtonHollowDefaultForeground}}" />
-                <Setter Property="BorderThickness"
-                        Value="{StaticResource {x:Static i:ResourceKeys.ButtonHollowDefaultBorderThickness}}" />
-                <Setter Property="local:ButtonHelper.HoverBrush"
-                        Value="{StaticResource {x:Static i:ResourceKeys.ButtonHollowDefaultHoverBrush}}" />
-            </Trigger>
-            <Trigger Property="local:ButtonHelper.ButtonStyle"
-                     Value="Link">
-                <Setter Property="Background"
-                        Value="{StaticResource {x:Static i:ResourceKeys.ButtonLinkDefaultBackground}}" />
-                <Setter Property="BorderBrush"
-                        Value="{x:Null}" />
-                <Setter Property="Foreground"
-                        Value="{StaticResource {x:Static i:ResourceKeys.ButtonLinkDefaultForeground}}" />
-                <Setter Property="BorderThickness"
-                        Value="{StaticResource {x:Static i:ResourceKeys.ButtonLinkDefaultBorderThickness}}" />
-                <Setter Property="local:ButtonHelper.HoverBrush"
-                        Value="{StaticResource {x:Static i:ResourceKeys.ButtonLinkDefaultHoverBrush}}" />
+                <Setter Property="ContentTemplate">
+                    <Setter.Value>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <local:Loading Width="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=5, RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
+                                               Height="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=5, RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
+                                               Foreground="{Binding Foreground, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=5, RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
+                                               IsLoading="True"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Center" />
+                                <ContentControl Margin="5,0,0,0"
+                                                Content="{Binding Content, RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Center" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </Setter.Value>
+                </Setter>
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -186,9 +103,8 @@
                                Value="False" />
                 </MultiTrigger.Conditions>
                 <Setter Property="Opacity"
-                        Value="{StaticResource {x:Static rs:ResourceKeys.DisabledOpacity}}" />
+                        Value="0.4" />
             </MultiTrigger>
         </Style.Triggers>
     </Style>
-
 </ResourceDictionary>

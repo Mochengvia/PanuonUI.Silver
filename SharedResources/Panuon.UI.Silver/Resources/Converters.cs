@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Panuon.UI.Silver.Resources
+﻿namespace Panuon.UI.Silver.Resources
 {
     public static class Converters
     {
-        #region Visibility
+        #region Object
+        public const string IsNullConverter = nameof(IsNullConverter);
+
+        public const string IsNotNullConverter = nameof(IsNotNullConverter);
+
         public const string TrueToVisibleConverter = nameof(TrueToVisibleConverter);
 
         public const string TrueToCollapseConverter = nameof(TrueToCollapseConverter);
-        #endregion
-
-        #region Reverse
-        public const string TrueToFalseConverter = nameof(TrueToFalseConverter);
-
         #endregion
 
         #region Math
@@ -25,11 +20,15 @@ namespace Panuon.UI.Silver.Resources
         public const string DoubleMultiplyByConverter = nameof(DoubleMultiplyByConverter);
 
         public const string DoubleDivideByConverter = nameof(DoubleDivideByConverter);
-
         #endregion
 
-        #region Convert
-        public const string StringFormatConverter = nameof(StringFormatConverter);
+
+        #region Visibility
+
+        public const string NullToVisibleConverter = nameof(NullToVisibleConverter);
+
+        public const string NullToCollapseConverter = nameof(NullToCollapseConverter);
+
         #endregion
 
     }

@@ -1,7 +1,4 @@
 ﻿using Panuon.UI.Silver.Core;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -11,14 +8,6 @@ namespace Panuon.UI.Silver
 {
     public static class ScrollViewerHelper
     {
-        #region Ctor
-        static ScrollViewerHelper()
-        {
-            EventManager.RegisterClassHandler(typeof(ScrollViewer), ScrollViewer.PreviewMouseWheelEvent, new RoutedEventHandler(OnScrollViewerPreviewMouseWheel));
-        }
-
-        #endregion
-
         #region Properties
 
         #region TrackBrush
@@ -82,9 +71,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty ScrollBarCornerRadiusProperty =
-            DependencyProperty.RegisterAttached("ScrollBarCornerRadius", typeof(CornerRadius), typeof(ScrollViewerHelper), new FrameworkPropertyMetadata(new CornerRadius(7), FrameworkPropertyMetadataOptions.Inherits));
-
-
+            DependencyProperty.RegisterAttached("ScrollBarCornerRadius", typeof(CornerRadius), typeof(ScrollViewerHelper), new FrameworkPropertyMetadata(new CornerRadius(0), FrameworkPropertyMetadataOptions.Inherits));
         #endregion
 
         #region ScrollButtons
@@ -102,8 +89,22 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("ScrollButtons", typeof(ScrollButtons), typeof(ScrollViewerHelper), new FrameworkPropertyMetadata(ScrollButtons.None, FrameworkPropertyMetadataOptions.Inherits));
         #endregion
 
-        #region HandleMouseWheel
+        #region ScrollButtonStyle
+        public static Style GetScrollButtonStyle(DependencyObject obj)
+        {
+            return (Style)obj.GetValue(ScrollButtonStyleProperty);
+        }
 
+        public static void SetScrollButtonStyle(DependencyObject obj, Style value)
+        {
+            obj.SetValue(ScrollButtonStyleProperty, value);
+        }
+
+        public static readonly DependencyProperty ScrollButtonStyleProperty =
+            DependencyProperty.RegisterAttached("ScrollButtonStyle", typeof(Style), typeof(ScrollViewerHelper), new FrameworkPropertyMetadata(default, FrameworkPropertyMetadataOptions.Inherits));
+        #endregion
+
+        #region HandleMouseWheel
         public static bool GetHandleMouseWheel(DependencyObject obj)
         {
             return (bool)obj.GetValue(HandleMouseWheelProperty);
@@ -115,13 +116,24 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty HandleMouseWheelProperty =
-            DependencyProperty.RegisterAttached("HandleMouseWheel", typeof(bool), typeof(ScrollViewerHelper));
-
+            DependencyProperty.RegisterAttached("HandleMouseWheel", typeof(bool), typeof(ScrollViewerHelper), new PropertyMetadata(OnHandleMouseWheelChanged));
         #endregion
 
         #endregion
 
         #region Event Handler
+        private static void OnHandleMouseWheelChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var scrollViewer = d as ScrollViewer;
+            scrollViewer.PreviewMouseWheel -= OnScrollViewerPreviewMouseWheel;
+
+            if ((bool)e.NewValue)
+            {
+                scrollViewer.PreviewMouseWheel += OnScrollViewerPreviewMouseWheel;
+            }
+        }
+
+
         private static void OnScrollViewerPreviewMouseWheel(object sender, RoutedEventArgs e)
         {
             var scrollViewer = sender as ScrollViewer;
@@ -133,7 +145,7 @@ namespace Panuon.UI.Silver
             if (handleMouseWheel)
             {
                 var args = e as MouseWheelEventArgs;
-                if(args.Delta > 0)
+                if (args.Delta > 0)
                 {
                     scrollViewer.LineUp();
                 }
@@ -146,6 +158,5 @@ namespace Panuon.UI.Silver
             }
         }
         #endregion
-
     }
 }

@@ -10,6 +10,7 @@ namespace Panuon.UI.Silver
     public static class TabControlHelper
     {
         #region Routed Event
+
         #region ItemRemoving
         public static readonly RoutedEvent ItemRemovingEvent = EventManager.RegisterRoutedEvent("ItemRemoving", RoutingStrategy.Bubble, typeof(RemovingRoutedEventHandler), typeof(TabControlHelper));
 
@@ -66,39 +67,10 @@ namespace Panuon.UI.Silver
             uie.RaiseEvent(arg);
         }
         #endregion
+
         #endregion
 
         #region Properties
-
-        #region TabControlStyle
-        public static TabControlStyle GetTabControlStyle(TabControl tabControl)
-        {
-            return (TabControlStyle)tabControl.GetValue(TabControlStyleProperty);
-        }
-
-        public static void SetTabControlStyle(TabControl tabControl, TabControlStyle value)
-        {
-            tabControl.SetValue(TabControlStyleProperty, value);
-        }
-
-        public static readonly DependencyProperty TabControlStyleProperty =
-            DependencyProperty.RegisterAttached("TabControlStyle", typeof(TabControlStyle), typeof(TabControlHelper));
-        #endregion
-
-        //#region TabControlHeaderStyle
-        //public static TabControlHeaderStyle GetTabControlHeaderStyle(TabControl tabControl)
-        //{
-        //    return (TabControlHeaderStyle)tabControl.GetValue(TabControlHeaderStyleProperty);
-        //}
-
-        //public static void SetTabControlHeaderStyle(TabControl tabControl, TabControlHeaderStyle value)
-        //{
-        //    tabControl.SetValue(TabControlHeaderStyleProperty, value);
-        //}
-
-        //public static readonly DependencyProperty TabControlHeaderStyleProperty =
-        //    DependencyProperty.RegisterAttached("TabControlHeaderStyle", typeof(TabControlHeaderStyle), typeof(TabControlHelper));
-        //#endregion
 
         #region HeaderPanelBackground
         public static Brush GetHeaderPanelBackground(TabControl tabControl)
@@ -130,8 +102,22 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("HeaderPanelRibbonLineVisibility", typeof(Visibility), typeof(TabControlHelper));
         #endregion
 
-        #region HeaderPanelAlignment
+        #region HeaderPanelRibbonLineBrush
+        public static Brush GetHeaderPanelRibbonLineBrush(DependencyObject obj)
+        {
+            return (Brush)obj.GetValue(HeaderPanelRibbonLineBrushProperty);
+        }
 
+        public static void SetHeaderPanelRibbonLineBrush(DependencyObject obj, Brush value)
+        {
+            obj.SetValue(HeaderPanelRibbonLineBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderPanelRibbonLineBrushProperty =
+            DependencyProperty.RegisterAttached("HeaderPanelRibbonLineBrush", typeof(Brush), typeof(TabControlHelper));
+        #endregion
+
+        #region HeaderPanelAlignment
         public static HeaderPanelAlignment GetHeaderPanelAlignment(TabControl tabControl)
         {
             return (HeaderPanelAlignment)tabControl.GetValue(HeaderPanelAlignmentProperty);
@@ -188,7 +174,67 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty ItemsBackgroundProperty =
             DependencyProperty.RegisterAttached("ItemsBackground", typeof(Brush), typeof(TabControlHelper));
-     
+
+        #endregion
+
+        #region ItemBorderBrush
+        public static Brush GetItemsBorderBrush(TabControl tabControl)
+        {
+            return (Brush)tabControl.GetValue(ItemsBorderBrushProperty);
+        }
+
+        public static void SetItemsBorderBrush(TabControl tabControl, Brush value)
+        {
+            tabControl.SetValue(ItemsBorderBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsBorderBrushProperty =
+            DependencyProperty.RegisterAttached("ItemsBorderBrush", typeof(Brush), typeof(TabControlHelper));
+
+        #endregion
+
+        #region ItemBorderThickness
+        public static Thickness? GetItemsBorderThickness(TabControl tabControl)
+        {
+            return (Thickness?)tabControl.GetValue(ItemsBorderThicknessProperty);
+        }
+
+        public static void SetItemsBorderThickness(TabControl tabControl, Thickness? value)
+        {
+            tabControl.SetValue(ItemsBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsBorderThicknessProperty =
+            DependencyProperty.RegisterAttached("ItemsBorderThickness", typeof(Thickness?), typeof(TabControlHelper));
+
+        #endregion
+
+        #region ItemCornerRadius
+        public static CornerRadius GetItemsCornerRadius(TabControl tabControl)
+        {
+            return (CornerRadius)tabControl.GetValue(ItemsCornerRadiusProperty);
+        }
+
+        public static void SetItemsCornerRadius(TabControl tabControl, CornerRadius value)
+        {
+            tabControl.SetValue(ItemsCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("ItemsCornerRadius", typeof(CornerRadius), typeof(TabControlHelper));
+
+        public static CornerRadius GetItemCornerRadius(TabItem tabControl)
+        {
+            return (CornerRadius)tabControl.GetValue(ItemCornerRadiusProperty);
+        }
+
+        public static void SetItemCornerRadius(TabItem tabItem, CornerRadius value)
+        {
+            tabItem.SetValue(ItemCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("ItemCornerRadius", typeof(CornerRadius), typeof(TabControlHelper));
         #endregion
 
         #region ItemSelectedForeground
@@ -247,33 +293,118 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("ItemSelectedBackground", typeof(Brush), typeof(TabControlHelper));
         #endregion
 
-        #region ItemSelectedRibbonBrush
-        public static Brush GetItemsSelectedRibbonBrush(TabControl tabControl)
+        #region ItemSelectedBorderBrush
+        public static Brush GetItemsSelectedBorderBrush(TabControl tabControl)
         {
-            return (Brush)tabControl.GetValue(ItemsSelectedRibbonBrushProperty);
+            return (Brush)tabControl.GetValue(ItemsSelectedBorderBrushProperty);
         }
 
-        public static void SetItemsSelectedRibbonBrush(TabControl tabControl, Brush value)
+        public static void SetItemsSelectedBorderBrush(TabControl tabControl, Brush value)
         {
-            tabControl.SetValue(ItemsSelectedRibbonBrushProperty, value);
+            tabControl.SetValue(ItemsSelectedBorderBrushProperty, value);
         }
 
-        public static readonly DependencyProperty ItemsSelectedRibbonBrushProperty =
-            DependencyProperty.RegisterAttached("ItemsSelectedRibbonBrush", typeof(Brush), typeof(TabControlHelper));
+        public static readonly DependencyProperty ItemsSelectedBorderBrushProperty =
+            DependencyProperty.RegisterAttached("ItemsSelectedBorderBrush", typeof(Brush), typeof(TabControlHelper));
 
-
-        public static Brush GetItemSelectedRibbonBrush(TabItem tabItem)
+        public static Brush GetItemSelectedBorderBrush(TabItem tabItem)
         {
-            return (Brush)tabItem.GetValue(ItemSelectedRibbonBrushProperty);
+            return (Brush)tabItem.GetValue(ItemSelectedBorderBrushProperty);
         }
 
-        public static void SetItemSelectedRibbonBrush(TabItem tabItem, Brush value)
+        public static void SetItemSelectedBorderBrush(TabItem tabItem, Brush value)
         {
-            tabItem.SetValue(ItemSelectedRibbonBrushProperty, value);
+            tabItem.SetValue(ItemSelectedBorderBrushProperty, value);
         }
 
-        public static readonly DependencyProperty ItemSelectedRibbonBrushProperty =
-            DependencyProperty.RegisterAttached("ItemSelectedRibbonBrush", typeof(Brush), typeof(TabControlHelper));
+        public static readonly DependencyProperty ItemSelectedBorderBrushProperty =
+            DependencyProperty.RegisterAttached("ItemSelectedBorderBrush", typeof(Brush), typeof(TabControlHelper));
+        #endregion
+
+        #region ItemSelectedBorderThickness
+        public static Thickness? GetItemsSelectedBorderThickness(TabControl tabControl)
+        {
+            return (Thickness?)tabControl.GetValue(ItemsSelectedBorderThicknessProperty);
+        }
+
+        public static void SetItemsSelectedBorderThickness(TabControl tabControl, Thickness? value)
+        {
+            tabControl.SetValue(ItemsSelectedBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsSelectedBorderThicknessProperty =
+            DependencyProperty.RegisterAttached("ItemsSelectedBorderThickness", typeof(Thickness?), typeof(TabControlHelper));
+
+        public static Thickness? GetItemSelectedBorderThickness(TabItem tabControl)
+        {
+            return (Thickness?)tabControl.GetValue(ItemSelectedBorderThicknessProperty);
+        }
+
+        public static void SetItemSelectedBorderThickness(TabItem tabItem, Thickness? value)
+        {
+            tabItem.SetValue(ItemSelectedBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemSelectedBorderThicknessProperty =
+            DependencyProperty.RegisterAttached("ItemSelectedBorderThickness", typeof(Thickness?), typeof(TabControlHelper));
+        #endregion
+
+        #region ItemRibbonBrush
+        public static Brush GetItemsRibbonBrush(TabControl tabControl)
+        {
+            return (Brush)tabControl.GetValue(ItemsRibbonBrushProperty);
+        }
+
+        public static void SetItemsRibbonBrush(TabControl tabControl, Brush value)
+        {
+            tabControl.SetValue(ItemsRibbonBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsRibbonBrushProperty =
+            DependencyProperty.RegisterAttached("ItemsRibbonBrush", typeof(Brush), typeof(TabControlHelper));
+
+
+        public static Brush GetItemRibbonBrush(TabItem tabItem)
+        {
+            return (Brush)tabItem.GetValue(ItemRibbonBrushProperty);
+        }
+
+        public static void SetItemRibbonBrush(TabItem tabItem, Brush value)
+        {
+            tabItem.SetValue(ItemRibbonBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemRibbonBrushProperty =
+            DependencyProperty.RegisterAttached("ItemRibbonBrush", typeof(Brush), typeof(TabControlHelper));
+        #endregion
+
+        #region ItemRibbonPlacement
+        public static Dock GetItemsRibbonPlacement(TabControl tabControl)
+        {
+            return (Dock)tabControl.GetValue(ItemsRibbonPlacementProperty);
+        }
+
+        public static void SetItemsRibbonPlacement(TabControl tabControl, Dock value)
+        {
+            tabControl.SetValue(ItemsRibbonPlacementProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsRibbonPlacementProperty =
+            DependencyProperty.RegisterAttached("ItemsRibbonPlacement", typeof(Dock), typeof(TabControlHelper));
+
+
+        public static Dock GetItemRibbonPlacement(TabItem tabItem)
+        {
+            return (Dock)tabItem.GetValue(ItemRibbonPlacementProperty);
+        }
+
+        public static void SetItemRibbonPlacement(TabItem tabItem, Dock value)
+        {
+            tabItem.SetValue(ItemRibbonPlacementProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemRibbonPlacementProperty =
+            DependencyProperty.RegisterAttached("ItemRibbonPlacement", typeof(Dock), typeof(TabControlHelper));
         #endregion
 
         #region ItemRibbonThickness
@@ -304,8 +435,35 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty ItemsRibbonThicknessProperty =
             DependencyProperty.RegisterAttached("ItemsRibbonThickness", typeof(double), typeof(TabControlHelper));
+        #endregion
+
+        #region ItemSelectedRibbonBrush
+        public static Brush GetItemsSelectedRibbonBrush(TabControl tabControl)
+        {
+            return (Brush)tabControl.GetValue(ItemsSelectedRibbonBrushProperty);
+        }
+
+        public static void SetItemsSelectedRibbonBrush(TabControl tabControl, Brush value)
+        {
+            tabControl.SetValue(ItemsSelectedRibbonBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsSelectedRibbonBrushProperty =
+            DependencyProperty.RegisterAttached("ItemsSelectedRibbonBrush", typeof(Brush), typeof(TabControlHelper));
 
 
+        public static Brush GetItemSelectedRibbonBrush(TabItem tabItem)
+        {
+            return (Brush)tabItem.GetValue(ItemSelectedRibbonBrushProperty);
+        }
+
+        public static void SetItemSelectedRibbonBrush(TabItem tabItem, Brush value)
+        {
+            tabItem.SetValue(ItemSelectedRibbonBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemSelectedRibbonBrushProperty =
+            DependencyProperty.RegisterAttached("ItemSelectedRibbonBrush", typeof(Brush), typeof(TabControlHelper));
         #endregion
 
         #region ItemHeight

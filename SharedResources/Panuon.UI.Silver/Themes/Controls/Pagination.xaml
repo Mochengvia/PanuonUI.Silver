@@ -1,0 +1,172 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver"
+                    xmlns:core="clr-namespace:Panuon.UI.Silver.Core"
+                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
+                    xmlns:ic="clr-namespace:Panuon.UI.Silver.Internal.Converters"
+                    xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="local:Pagination">
+        <Setter Property="Spacing"
+                Value="5" />
+        <Setter Property="HorizontalAlignment"
+                Value="Left" />
+        <Setter Property="ItemContainerStyle">
+            <Setter.Value>
+                <Style TargetType="RadioButton"
+                       BasedOn="{StaticResource {x:Type RadioButton}}">
+                    <Setter Property="Background"
+                            Value="Transparent" />
+                    <Setter Property="MinWidth"
+                            Value="{Binding ActualHeight,RelativeSource={RelativeSource Self}}" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="RadioButton">
+                                <Border Background="{TemplateBinding Background}"
+                                        CornerRadius="2">
+                                    <ContentPresenter Margin="5,0"
+                                                      VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsChecked"
+                                 Value="True">
+                            <Setter Property="Background"
+                                    Value="#E1E1E1" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver"
+                                 Value="True">
+                            <Setter Property="Background"
+                                    Value="#E1E1E1" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="SideRepeatButtonStyle">
+            <Setter.Value>
+                <Style TargetType="RepeatButton">
+                    <Setter Property="Width"
+                            Value="{Binding ActualHeight,RelativeSource={RelativeSource TemplatedParent}}" />
+                    <Setter Property="local:RepeatButtonHelper.Hook"
+                            Value="True" />
+                    <Setter Property="Background"
+                            Value="#F1F1F1" />
+                    <Setter Property="local:RepeatButtonHelper.HoverBackground"
+                            Value="#E1E1E1" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="RepeatButton">
+                                <Border Background="{TemplateBinding Background}"
+                                        CornerRadius="2">
+                                    <ContentPresenter Margin="5,0"
+                                                      VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="OmitTextBlockStyle">
+            <Setter.Value>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Width"
+                            Value="{Binding ActualHeight,RelativeSource={RelativeSource TemplatedParent}}" />
+                    <Setter Property="VerticalAlignment"
+                            Value="Stretch" />
+                    <Setter Property="TextAlignment"
+                            Value="Center" />
+                    <Setter Property="Text"
+                            Value="..." />
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:Pagination">
+                    <Border x:Name="BdrMain"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <RepeatButton Margin="{Binding Spacing, Converter={StaticResource {x:Static irs:Converters.DoubleToRightMarginConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                          Style="{TemplateBinding SideRepeatButtonStyle}"
+                                          Content="&#xe900;"
+                                          FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon"
+                                          Command="{Binding PreviousCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                          CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}" />
+                            <ItemsControl ItemsSource="{Binding IndexList, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                          Grid.Column="1">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal" />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Margin="{Binding Spacing, Converter={StaticResource {x:Static irs:Converters.DoubleToRightMarginConverter}}, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}">
+                                            <RadioButton x:Name="RdbIndex"
+                                                         GroupName="RADIOGROUP_Pagination"
+                                                         Style="{Binding ItemContainerStyle, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}"
+                                                         Content="{Binding}" />
+                                            <TextBlock x:Name="TxtText"
+                                                       Style="{Binding OmitTextBlockStyle, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}"
+                                                       Visibility="Collapsed"
+                                                       Text="..."
+                                                       VerticalAlignment="Bottom" />
+                                        </Grid>
+                                        <DataTemplate.Triggers>
+                                            <DataTrigger Binding="{Binding}"
+                                                         Value="{x:Null}">
+                                                <Setter TargetName="RdbIndex"
+                                                        Property="Visibility"
+                                                        Value="Collapsed" />
+                                                <Setter TargetName="TxtText"
+                                                        Property="Visibility"
+                                                        Value="Visible" />
+                                            </DataTrigger>
+                                            <DataTrigger Value="True">
+                                                <DataTrigger.Binding>
+                                                    <MultiBinding Converter="{StaticResource {x:Static irs:Converters.DoubleEqualsConverter}}">
+                                                        <Binding Path="." />
+                                                        <Binding Path="CurrentIndex"
+                                                                 RelativeSource="{RelativeSource AncestorType=local:Pagination}"
+                                                                 Mode="OneWay" />
+                                                    </MultiBinding>
+                                                </DataTrigger.Binding>
+                                                <Setter TargetName="RdbIndex"
+                                                        Property="IsChecked"
+                                                        Value="True" />
+                                            </DataTrigger>
+                                        </DataTemplate.Triggers>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                            <RepeatButton Grid.Column="2"
+                                          Style="{TemplateBinding SideRepeatButtonStyle}"
+                                          Content="&#xe902;"
+                                          FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon"
+                                          Command="{Binding NextCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                          CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}" />
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+</ResourceDictionary>

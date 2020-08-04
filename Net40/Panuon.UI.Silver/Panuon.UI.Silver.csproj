@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7823DA22-6993-4B67-B989-AF9C8B61C9B8}</ProjectGuid>
+    <ProjectGuid>{8604F7A7-0AC0-4123-824C-F7BD7034358F}</ProjectGuid>
     <OutputType>library</OutputType>
     <RootNamespace>Panuon.UI.Silver</RootNamespace>
     <AssemblyName>Panuon.UI.Silver</AssemblyName>
@@ -32,13 +32,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Windows.Shell, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Windows.Shell.3.0.1.0\lib\net40\Microsoft.Windows.Shell.dll</HintPath>
+    <Reference Include="Microsoft.Windows.Shell">
+      <HintPath>..\packages\Microsoft.Windows.Shell.3.0.1.0\lib\net40\Microsoft.Windows.Shell.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.12.0.3\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -53,8 +55,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Attributes\CallerMemberName.cs" />
-    <Compile Include="Controls\WindowX.cs" />
-    <Compile Include="Helpers\WindowXCaption.cs" />
     <Compile Include="Core\Models\PropertyChangedBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -69,6 +69,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Utils\WindowChromeUtils.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -78,7 +79,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Resource Include="Resources\PanuonIcon.ttf" />
+    <Resource Include="Resources\Fonts\PanuonIcon.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Themes\Generic.xaml">
@@ -86,9 +87,8 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="..\..\SharedResources\Panuon.UI.Silver\Panuon.UI.Silver.projitems" Label="Shared" />
-  <Import Project="..\..\SharedResources\Panuon.UI.Silver.Internal\Panuon.UI.Silver.Internal.projitems" Label="Shared" />
   <Import Project="..\..\SharedResources\Panuon.UI.Silver.Core\Panuon.UI.Silver.Core.projitems" Label="Shared" />
+  <Import Project="..\..\SharedResources\Panuon.UI.Silver.Internal\Panuon.UI.Silver.Internal.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

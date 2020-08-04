@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace Panuon.UI.Silver.Internal.Utils
 {
-    internal static class BrushUtils
+    static class BrushUtils
     {
         public static VisualBrush GetSuperposedVisualBrush(Brush background, Brush foreground, double opacity)
         {
@@ -16,9 +14,9 @@ namespace Panuon.UI.Silver.Internal.Utils
                 Height = 1,
                 Background = background,
 
-                Child = new Border()
+                Child = new Rectangle()
                 {
-                    Background = foreground,
+                    Fill = foreground,
                     Opacity = opacity
                 }
 
@@ -32,7 +30,7 @@ namespace Panuon.UI.Silver.Internal.Utils
                 Width = 1,
                 Height = 1,
             };
-            if(oritention == Orientation.Horizontal)
+            if (oritention == Orientation.Horizontal)
             {
                 grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new System.Windows.GridLength(offset, System.Windows.GridUnitType.Star) });
                 grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new System.Windows.GridLength(1 - offset, System.Windows.GridUnitType.Star) });
@@ -56,9 +54,10 @@ namespace Panuon.UI.Silver.Internal.Utils
                 Grid.SetRow(rectangle2, 1);
                 grid.Children.Add(rectangle2);
             }
-            
+
 
             return new VisualBrush(grid);
         }
+
     }
 }

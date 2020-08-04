@@ -1,0 +1,163 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver"
+                    xmlns:core="clr-namespace:Panuon.UI.Silver.Core"
+                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
+                    xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources"
+                    xmlns:ic="clr-namespace:Panuon.UI.Silver.Internal.Controls">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="local:Drawer">
+        <Setter Property="BorderBrush"
+                Value="LightGray" />
+        <Setter Property="BorderThickness"
+                Value="1" />
+        <Setter Property="Background"
+                Value="White" />
+        <Setter Property="Placement"
+                Value="Left" />
+        <Setter Property="ContentPlacement"
+                Value="{Binding Placement, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="AnimationDuration"
+                Value="0:0:0.3" />
+        <Setter Property="AnimationEase"
+                Value="CubicOut" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:Drawer">
+                    <Grid>
+                        <Border x:Name="BdrMain"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="{TemplateBinding CornerRadius}"
+                                Effect="{Binding ShadowColor, Converter={StaticResource {x:Static irs:Converters.DropShadowEffectCoverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        <ContentPresenter x:Name="CpContent" />
+                        <Thumb x:Name="PART_Thumb"
+                               >
+                            <Thumb.Style>
+                                <Style TargetType="Thumb">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="Thumb">
+                                                <Rectangle Fill="Transparent"/>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Thumb.Style>
+                        </Thumb>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="ContentPlacement"
+                                 Value="Left">
+                            <Setter TargetName="CpContent"
+                                    Property="HorizontalAlignment"
+                                    Value="Right" />
+                            <Setter TargetName="CpContent"
+                                    Property="Width"
+                                    Value="{Binding MaxWidth, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        </Trigger>
+                        <Trigger Property="ContentPlacement"
+                                 Value="Right">
+                            <Setter TargetName="CpContent"
+                                    Property="HorizontalAlignment"
+                                    Value="Left" />
+                            <Setter TargetName="CpContent"
+                                    Property="Width"
+                                    Value="{Binding MaxWidth, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        </Trigger>
+                        <Trigger Property="ContentPlacement"
+                                 Value="Top">
+                            <Setter TargetName="CpContent"
+                                    Property="VerticalAlignment"
+                                    Value="Bottom" />
+                            <Setter TargetName="CpContent"
+                                    Property="Height"
+                                    Value="{Binding MaxHeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        </Trigger>
+                        <Trigger Property="ContentPlacement"
+                                 Value="Bottom">
+                            <Setter TargetName="CpContent"
+                                    Property="VerticalAlignment"
+                                    Value="Top" />
+                            <Setter TargetName="CpContent"
+                                    Property="Height"
+                                    Value="{Binding MaxHeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        </Trigger>
+                        <Trigger Property="Placement"
+                                 Value="Left">
+                            <Setter TargetName="PART_Thumb"
+                                    Property="Width"
+                                    Value="2" />
+                            <Setter TargetName="PART_Thumb"
+                                    Property="HorizontalAlignment"
+                                    Value="Right" />
+                            <Setter TargetName="PART_Thumb"
+                                    Property="Cursor"
+                                    Value="SizeWE" />
+                        </Trigger>
+                        <Trigger Property="Placement"
+                                 Value="Right">
+                            <Setter TargetName="PART_Thumb"
+                                    Property="Width"
+                                    Value="2" />
+                            <Setter TargetName="PART_Thumb"
+                                    Property="HorizontalAlignment"
+                                    Value="Left" />
+                            <Setter TargetName="PART_Thumb"
+                                    Property="Cursor"
+                                    Value="SizeWE" />
+                        </Trigger>
+                        <Trigger Property="Placement"
+                                 Value="Top">
+                            <Setter TargetName="PART_Thumb"
+                                    Property="Height"
+                                    Value="2" />
+                            <Setter TargetName="PART_Thumb"
+                                    Property="VerticalAlignment"
+                                    Value="Bottom" />
+                            <Setter TargetName="PART_Thumb"
+                                    Property="Cursor"
+                                    Value="SizeNS" />
+                        </Trigger>
+                        <Trigger Property="Placement"
+                                 Value="Bottom">
+                            <Setter TargetName="PART_Thumb"
+                                    Property="Height"
+                                    Value="2" />
+                            <Setter TargetName="PART_Thumb"
+                                    Property="VerticalAlignment"
+                                    Value="Top" />
+                            <Setter TargetName="PART_Thumb"
+                                    Property="Cursor"
+                                    Value="SizeNS" />
+                        </Trigger>
+                        <Trigger Property="CanResize"
+                                 Value="False">
+                            <Setter TargetName="PART_Thumb" 
+                                    Property="Visibility"
+                                    Value="Collapsed"/>
+                        </Trigger>
+                        <Trigger Property="IsOpen"
+                                 Value="False">
+                            <Setter TargetName="PART_Thumb"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled"
+                     Value="False">
+                <Setter Property="Opacity"
+                        Value="0.4" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

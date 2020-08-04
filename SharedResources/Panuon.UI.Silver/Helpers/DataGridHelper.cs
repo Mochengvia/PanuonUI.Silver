@@ -1,8 +1,6 @@
 ﻿using Panuon.UI.Silver.Core;
-using Panuon.UI.Silver.Internal.Utils;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
@@ -15,10 +13,6 @@ namespace Panuon.UI.Silver
     public static class DataGridHelper
     {
         #region Ctor
-        static DataGridHelper()
-        {
-
-        }
         #endregion
 
         #region Properties
@@ -39,8 +33,6 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region HeaderBackground
-
-
         public static Brush GetHeaderBackground(DataGrid dataGrid)
         {
             return (Brush)dataGrid.GetValue(HeaderBackgroundProperty);
@@ -53,13 +45,9 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty HeaderBackgroundProperty =
             DependencyProperty.RegisterAttached("HeaderBackground", typeof(Brush), typeof(DataGridHelper));
-
-
         #endregion
 
         #region HeaderForeground
-
-
         public static Brush GetHeaderForeground(DataGrid dataGrid)
         {
             return (Brush)dataGrid.GetValue(HeaderForegroundProperty);
@@ -77,8 +65,6 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region HeaderHoverBackground
-
-
         public static Brush GetHeaderHoverBackground(DataGrid dataGrid)
         {
             return (Brush)dataGrid.GetValue(HeaderHoverBackgroundProperty);
@@ -96,8 +82,6 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region HeaderHoverForeground
-
-
         public static Brush GetHeaderHoverForeground(DataGrid dataGrid)
         {
             return (Brush)dataGrid.GetValue(HeaderHoverForegroundProperty);
@@ -115,8 +99,6 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region UnitPadding
-
-
         public static Thickness GetUnitPadding(DataGrid dataGrid)
         {
             return (Thickness)dataGrid.GetValue(UnitPaddingProperty);
@@ -134,8 +116,6 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region UnitHoverBackground
-
-
         public static Brush GetUnitHoverBackground(DataGrid dataGrid)
         {
             return (Brush)dataGrid.GetValue(UnitHoverBackgroundProperty);
@@ -153,8 +133,6 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region UnitHoverForeground
-
-
         public static Brush GetUnitHoverForeground(DataGrid dataGrid)
         {
             return (Brush)dataGrid.GetValue(UnitHoverForegroundProperty);
@@ -172,8 +150,6 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region UnitSelectedBackground
-
-
         public static Brush GetUnitSelectedBackground(DataGrid dataGrid)
         {
             return (Brush)dataGrid.GetValue(UnitSelectedBackgroundProperty);
@@ -191,8 +167,6 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region UnitSelectedForeground
-
-
         public static Brush GetUnitSelectedForeground(DataGrid dataGrid)
         {
             return (Brush)dataGrid.GetValue(UnitSelectedForegroundProperty);
@@ -210,8 +184,6 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region RowHeaderBackground
-
-
         public static Brush GetRowHeaderBackground(DataGrid dataGrid)
         {
             return (Brush)dataGrid.GetValue(RowHeaderBackgroundProperty);
@@ -229,8 +201,6 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region RowHeaderHoverBackground
-
-
         public static Brush GetRowHeaderHoverBackground(DataGrid dataGrid)
         {
             return (Brush)dataGrid.GetValue(RowHeaderHoverBackgroundProperty);
@@ -263,8 +233,6 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region CellFocusedHightlightBorderBrush
-
-
         public static Brush GetCellFocusedHightlightBorderBrush(DataGrid dataGrid)
         {
             return (Brush)dataGrid.GetValue(CellFocusedHightlightBorderBrushProperty);
@@ -277,7 +245,6 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty CellFocusedHightlightBorderBrushProperty =
             DependencyProperty.RegisterAttached("CellFocusedHightlightBorderBrush", typeof(Brush), typeof(DataGridHelper));
-
         #endregion
 
         #region SelectedItems
@@ -293,6 +260,36 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty SelectedItemsProperty =
             DependencyProperty.RegisterAttached("SelectedItems", typeof(IList), typeof(DataGridHelper));
+        #endregion
+
+        #region HeaderGridLinesVisibility
+        public static DataGridGridLinesVisibility GetHeaderGridLinesVisibility(DataGrid dataGrid)
+        {
+            return (DataGridGridLinesVisibility)dataGrid.GetValue(HeaderGridLinesVisibilityProperty);
+        }
+
+        public static void SetHeaderGridLinesVisibility(DataGrid dataGrid, DataGridGridLinesVisibility value)
+        {
+            dataGrid.SetValue(HeaderGridLinesVisibilityProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderGridLinesVisibilityProperty =
+            DependencyProperty.RegisterAttached("HeaderGridLinesVisibility", typeof(DataGridGridLinesVisibility), typeof(DataGridHelper));
+        #endregion
+
+        #region HeaderVerticalGridLinesBrush
+        public static Brush GetHeaderVerticalGridLinesBrush(DataGrid dataGrid)
+        {
+            return (Brush)dataGrid.GetValue(HeaderVerticalGridLinesBrushProperty);
+        }
+
+        public static void SetHeaderVerticalGridLinesBrush(DataGrid dataGrid, Brush value)
+        {
+            dataGrid.SetValue(HeaderVerticalGridLinesBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderVerticalGridLinesBrushProperty =
+            DependencyProperty.RegisterAttached("HeaderVerticalGridLinesBrush", typeof(Brush), typeof(DataGridHelper));
         #endregion
 
         #endregion
@@ -317,164 +314,216 @@ namespace Panuon.UI.Silver
         private static void OnDataGridHookChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var dataGrid = d as DataGrid;
-            dataGrid.AutoGeneratingColumn += DataGrid_AutoGeneratingColumn;
-            SetSelectedItems(dataGrid, dataGrid.SelectedItems);
+            if (dataGrid != null)
+            {
+                dataGrid.AutoGeneratingColumn -= DataGrid_AutoGeneratingColumn;
+                dataGrid.AutoGeneratingColumn += DataGrid_AutoGeneratingColumn;
+                SetSelectedItems(dataGrid, dataGrid.SelectedItems);
+            }
         }
 
         private static void DataGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
             var dataGrid = sender as DataGrid;
 
-            #region Get User Custom DataGridColumnAttribute
-
-            var visibility = e.Column.Visibility;
-            var width = dataGrid.ColumnWidth;
-            var header = e.Column.Header;
-            var readOnly = e.Column.IsReadOnly;
-            var bindingMode = e.Column.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay;
-            var updateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
-
             var descriptor = e.PropertyDescriptor as PropertyDescriptor;
-            foreach (Attribute attribute in descriptor.Attributes)
+            var ignoreAttribute = descriptor.Attributes.OfType<ColumnIgnoreAttribute>().FirstOrDefault();
+            if (ignoreAttribute != null)
             {
-                if (attribute is DataGridColumnAttribute)
-                {
-                    var dgcAttribute = attribute as DataGridColumnAttribute;
-                    if (dgcAttribute.ReadOnly)
-                    {
-                        readOnly = true;
-                    }
-                    if (dgcAttribute.Ignore)
-                    {
-                        visibility = Visibility.Collapsed;
-                    }
-                    if (!string.IsNullOrEmpty(dgcAttribute.ColumnWidth))
-                    {
-                        width = GridLengthUtils.ConvertToDataGridLength(dgcAttribute.ColumnWidth);
-                    }
-                    if (dgcAttribute.BindingMode != null)
-                    {
-                        bindingMode = (BindingMode)dgcAttribute.BindingMode;
-                    }
-                    if (dgcAttribute.UpdateSourceTrigger != null)
-                    {
-                        updateSourceTrigger = (UpdateSourceTrigger)dgcAttribute.UpdateSourceTrigger;
-                    }
-                }
-                if (attribute is DisplayNameAttribute)
-                {
-                    header = (attribute as DisplayNameAttribute).DisplayName;
-                }
+                e.Cancel = true;
+                return;
             }
-            #endregion
 
-            if (e.PropertyType.IsEnum)
+            var readOnlyAttribute = descriptor.Attributes.OfType<ReadOnlyAttribute>().FirstOrDefault();
+            var displayNameAttribute = descriptor.Attributes.OfType<DisplayNameAttribute>().FirstOrDefault();
+            var columnWidthAttribute = descriptor.Attributes.OfType<ColumnWidthAttribute>().FirstOrDefault();
+            var templateAttribute = descriptor.Attributes.OfType<ColumnTemplateAttribute>().FirstOrDefault();
+            var bindingAttribute = descriptor.Attributes.OfType<ColumnBindingAttribute>().FirstOrDefault();
+            var canSortAttribute = descriptor.Attributes.OfType<ColumnSortAttribute>().FirstOrDefault();
+
+            if (templateAttribute != null)
             {
-                var newColumn = new DataGridComboBoxColumn()
-                {
-                    Width = width,
-                    Header = header,
-                    IsReadOnly = readOnly,
-                    Visibility = visibility,
-                };
+                var bindingMode = bindingAttribute == null
+                    ? (e.Column.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay)
+                    : bindingAttribute.BindingMode;
 
-                newColumn.ItemsSource = Enum.GetValues(e.PropertyType).Cast<Enum>();
-                newColumn.SelectedItemBinding = new Binding(e.PropertyName) { Mode = bindingMode, UpdateSourceTrigger = updateSourceTrigger };
-                newColumn.EditingElementStyle = new Style(typeof(ComboBox))
+                var updateSourceTrigger = bindingAttribute == null
+                    ? UpdateSourceTrigger.Default
+                    : bindingAttribute.UpdateSourceTrigger;
+
+                var cellTemplate = templateAttribute.ElementType == null
+                    ? CreateDefaultElementTemplated(dataGrid, e.PropertyName, bindingMode, updateSourceTrigger)
+                    : CreateTemplate(templateAttribute.ElementType, templateAttribute.BindingProperty, e.PropertyName, bindingMode, updateSourceTrigger);
+
+                var cellEditingTemplate = CreateTemplate(templateAttribute.EditingElementType, templateAttribute.EditingElementBindingProperty, e.PropertyName, bindingMode, updateSourceTrigger);
+
+                e.Column = new DataGridTemplateColumn()
+                {
+                    Header = e.Column.Header,
+                    Width = e.Column.Width,
+                    IsReadOnly = e.Column.IsReadOnly,
+                    CanUserSort = e.Column.CanUserSort,
+                    SortMemberPath = e.Column.SortMemberPath,
+                    SortDirection = e.Column.SortDirection,
+                    CellTemplate = cellTemplate,
+                    CellEditingTemplate = cellEditingTemplate,
+                };
+            }
+
+            if (readOnlyAttribute != null)
+            {
+                e.Column.IsReadOnly = readOnlyAttribute.IsReadOnly;
+            }
+            if (displayNameAttribute != null)
+            {
+                e.Column.Header = displayNameAttribute.DisplayName;
+            }
+            if (columnWidthAttribute != null)
+            {
+                e.Column.Width = columnWidthAttribute.Width;
+            }
+            if (canSortAttribute != null)
+            {
+                e.Column.CanUserSort = canSortAttribute.CanUserSort;
+            }
+
+
+            if (e.Column is DataGridComboBoxColumn)
+            {
+                var comboBoxColumn = e.Column as DataGridComboBoxColumn;
+                if (bindingAttribute != null)
+                {
+                    comboBoxColumn.SelectedItemBinding = new Binding(e.PropertyName)
+                    {
+                        Mode = bindingAttribute.BindingMode,
+                        UpdateSourceTrigger = bindingAttribute.UpdateSourceTrigger
+                    };
+                }
+
+                var elementStyle = new Style(typeof(ComboBox))
+                {
+                    BasedOn = (Style)dataGrid.FindResource(Internal.Resources.ResourceKeys.DataGridComboBoxStyle)
+                };
+                if (dataGrid.HorizontalContentAlignment != HorizontalAlignment.Stretch)
+                {
+                    elementStyle.Setters.Add(new Setter(ComboBox.HorizontalContentAlignmentProperty, dataGrid.HorizontalContentAlignment));
+                }
+                comboBoxColumn.ElementStyle = elementStyle;
+
+                var editingElementStyle = new Style(typeof(ComboBox))
                 {
                     BasedOn = (Style)dataGrid.FindResource(typeof(ComboBox))
                 };
-                newColumn.EditingElementStyle.Setters.Add(new Setter(ComboBox.HeightProperty, 30.0));
-                newColumn.EditingElementStyle.Setters.Add(new Setter(ComboBox.PaddingProperty, new Thickness(5, 0, 20, 0)));
-
-                e.Column = newColumn;
+                editingElementStyle.Setters.Add(new Setter(ComboBox.VerticalContentAlignmentProperty, VerticalAlignment.Center));
+                comboBoxColumn.EditingElementStyle = editingElementStyle;
             }
-            else if (e.PropertyType == typeof(bool))
+            else if (e.Column is DataGridCheckBoxColumn)
             {
-                var newColumn = new DataGridCheckBoxColumn()
+                var checkBoxColumn = e.Column as DataGridCheckBoxColumn;
+                if (bindingAttribute != null)
                 {
-                    Width = width,
-                    Header = header,
-                    IsReadOnly = readOnly,
-                    Visibility = visibility,
-                };
-
-                newColumn.Binding = new Binding(e.PropertyName) { Mode = bindingMode, UpdateSourceTrigger = updateSourceTrigger };
-
-
-                newColumn.ElementStyle = new Style(typeof(CheckBox))
-                {
-                    BasedOn = (Style)dataGrid.FindResource(typeof(CheckBox))
-                };
-                newColumn.ElementStyle.Setters.Add(new Setter(CheckBox.BorderThicknessProperty, new Thickness(1)));
-                newColumn.ElementStyle.Setters.Add(new Setter(CheckBox.BackgroundProperty, Colors.Transparent.ToBrush()));
-                newColumn.ElementStyle.Setters.Add(new Setter(CheckBoxHelper.GlyphBrushProperty, Colors.Transparent.ToBrush()));
-
-
-                newColumn.EditingElementStyle = new Style(typeof(CheckBox))
-                {
-                    BasedOn = (Style)dataGrid.FindResource(typeof(CheckBox))
-                };
-                newColumn.EditingElementStyle.Setters.Add(new Setter(CheckBox.BorderThicknessProperty, new Thickness(1)));
-                newColumn.EditingElementStyle.Setters.Add(new Setter(CheckBox.BackgroundProperty, Colors.Transparent.ToBrush()));
-                newColumn.EditingElementStyle.Setters.Add(new Setter(CheckBoxHelper.GlyphBrushProperty, Colors.Transparent.ToBrush()));
-
-                if (dataGrid.IsReadOnly)
-                {
-                    newColumn.ElementStyle.Setters.Add(new Setter(CheckBox.IsEnabledProperty, false));
-                    newColumn.ElementStyle.Setters.Add(new Setter(CheckBox.OpacityProperty, 1.0));
+                    checkBoxColumn.Binding = new Binding(e.PropertyName)
+                    {
+                        Mode = bindingAttribute.BindingMode,
+                        UpdateSourceTrigger = bindingAttribute.UpdateSourceTrigger
+                    };
                 }
 
-                newColumn.CellStyle = new Style(typeof(DataGridCell))
+                var elementStyle = new Style(typeof(CheckBox))
                 {
-                    BasedOn = (Style)dataGrid.FindResource(typeof(DataGridCell)),
+                    BasedOn = (Style)dataGrid.FindResource(typeof(CheckBox))
                 };
+                elementStyle.Setters.Add(new Setter(CheckBox.VerticalAlignmentProperty, VerticalAlignment.Center));
+                checkBoxColumn.ElementStyle = elementStyle;
+                var editingElementStyle = new Style(typeof(CheckBox))
+                {
+                    BasedOn = (Style)dataGrid.FindResource(typeof(CheckBox))
+                };
+                editingElementStyle.Setters.Add(new Setter(CheckBox.VerticalAlignmentProperty, VerticalAlignment.Center));
+                checkBoxColumn.EditingElementStyle = editingElementStyle;
 
-                e.Column = newColumn;
             }
-            else
+            else if (e.Column is DataGridTextColumn)
             {
-                var newColumn = new DataGridTextColumn()
+                var textColumn = e.Column as DataGridTextColumn;
+                if (bindingAttribute != null)
                 {
-                    Width = width,
-                    Header = header,
-                    IsReadOnly = readOnly,
-                    Visibility = visibility,
-                };
+                    textColumn.Binding = new Binding(e.PropertyName)
+                    {
+                        Mode = bindingAttribute.BindingMode,
+                        UpdateSourceTrigger = bindingAttribute.UpdateSourceTrigger
+                    };
+                }
 
-                newColumn.Binding = new Binding(e.PropertyName) { Mode = bindingMode, UpdateSourceTrigger = updateSourceTrigger };
+                textColumn.ElementStyle = CreateDefaultElementStyle(dataGrid);
 
-                newColumn.ElementStyle = new Style(typeof(TextBlock))
-                {
-                    BasedOn = (Style)dataGrid.FindResource(typeof(TextBlock))
-                };
-
-                newColumn.ElementStyle.Setters.Add(new Setter(TextBox.MaxHeightProperty, 100.0));
-
-                newColumn.EditingElementStyle = new Style(typeof(TextBox))
+                var editingElementStyle = new Style(typeof(TextBox))
                 {
                     BasedOn = (Style)dataGrid.FindResource(typeof(TextBox))
                 };
+                editingElementStyle.Setters.Add(new Setter(TextBox.MaxHeightProperty, 100.0));
+                editingElementStyle.Setters.Add(new Setter(TextBox.VerticalContentAlignmentProperty, VerticalAlignment.Center));
+                textColumn.EditingElementStyle = editingElementStyle;
 
-                newColumn.EditingElementStyle.Setters.Add(new Setter(TextBox.MaxHeightProperty, 100.0));
-                newColumn.EditingElementStyle.Setters.Add(new Setter(TextBox.VerticalScrollBarVisibilityProperty, ScrollBarVisibility.Auto));
-                newColumn.EditingElementStyle.Setters.Add(new Setter(TextBox.HorizontalScrollBarVisibilityProperty, ScrollBarVisibility.Auto));
-                newColumn.EditingElementStyle.Setters.Add(new Setter(TextBox.MarginProperty, new Thickness(2)));
-                newColumn.EditingElementStyle.Setters.Add(new Setter(TextBoxHelper.FocusedShadowColorProperty, Colors.Transparent));
-
-                newColumn.CellStyle = new Style(typeof(DataGridCell))
-                {
-                    BasedOn = (Style)dataGrid.FindResource(typeof(DataGridCell)),
-                };
-                newColumn.CellStyle.Setters.Add(new Setter(DataGridCell.PaddingProperty, new Thickness(0, 0, 10, 0)));
-
-                e.Column = newColumn;
             }
+
         }
 
         #endregion
 
         #endregion
 
+        #region Functions
+
+        private static Style CreateDefaultElementStyle(DataGrid dataGrid)
+        {
+            var style = new Style(typeof(TextBlock))
+            {
+                BasedOn = (Style)dataGrid.FindResource(typeof(TextBlock))
+            };
+            style.Setters.Add(new Setter(TextBlock.PaddingProperty, new Thickness(7, 0, 7, 0)));
+            style.Setters.Add(new Setter(TextBlock.VerticalAlignmentProperty, VerticalAlignment.Center));
+
+            style.Setters.Add(new Setter(TextBlock.MaxHeightProperty, 100.0));
+            return style;
+        }
+
+
+        private static DataTemplate CreateTemplate(Type elementType, 
+            DependencyProperty property,
+            string propertyName,
+            BindingMode bindingMode,
+            UpdateSourceTrigger updateSourceTrigger)
+        {
+            var factory = new FrameworkElementFactory(elementType);
+            factory.SetBinding(property, new Binding(propertyName)
+            {
+                Mode = bindingMode,
+                UpdateSourceTrigger = updateSourceTrigger,
+            });
+            return new DataTemplate()
+            {
+                VisualTree = factory,
+            };
+        }
+
+        private static DataTemplate CreateDefaultElementTemplated(DataGrid dataGrid,
+            string propertyName,
+            BindingMode bindingMode,
+            UpdateSourceTrigger updateSourceTrigger)
+        {
+            var factory = new FrameworkElementFactory(typeof(TextBlock));
+            factory.SetValue(TextBlock.StyleProperty, CreateDefaultElementStyle(dataGrid));
+            factory.SetBinding(TextBlock.TextProperty, new Binding(propertyName)
+            {
+                Mode = bindingMode,
+                UpdateSourceTrigger = updateSourceTrigger,
+            });
+            return new DataTemplate()
+            {
+                VisualTree = factory,
+            };
+        }
+        #endregion
     }
 }

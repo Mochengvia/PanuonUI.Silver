@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -80,7 +77,7 @@ namespace Panuon.UI.Silver
         private static void OnHighlightTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var textBlock = d as TextBlock;
-            if(textBlock == null)
+            if (textBlock == null)
             {
                 return;
             }
@@ -90,7 +87,7 @@ namespace Panuon.UI.Silver
             var background = GetHighlightBackground(textBlock);
             var rule = GetHighlightRule(textBlock);
 
-            if(string.IsNullOrEmpty(text) || string.IsNullOrEmpty(highlightText))
+            if (string.IsNullOrEmpty(text) || string.IsNullOrEmpty(highlightText))
             {
                 textBlock.Inlines.Clear();
                 textBlock.Inlines.Add(new Run(text));

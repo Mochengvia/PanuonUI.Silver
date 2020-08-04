@@ -1,189 +1,99 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Panuon.UI.Silver"
-                    xmlns:i="clr-namespace:Panuon.UI.Silver.Internal"
-                    xmlns:ic="clr-namespace:Panuon.UI.Silver.Internal.Controls"
-                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources">
+                    xmlns:core="clr-namespace:Panuon.UI.Silver.Core"
+                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
+                    xmlns:ic="clr-namespace:Panuon.UI.Silver.Internal.Controls">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/InternalResources.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Resources.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Loading.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    
-    <Style x:Key="{x:Static rs:ResourceKeys.RepeatButtonWaitingLoadingStyle}"
-           TargetType="{x:Type local:Loading}"
-           BasedOn="{StaticResource {x:Type local:Loading}}">
-        <Setter Property="Height"
-                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=5,RelativeSource={RelativeSource  AncestorType=RepeatButton},Mode=OneWay}" />
-        <Setter Property="Width"
-                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=5,RelativeSource={RelativeSource  AncestorType=RepeatButton},Mode=OneWay}" />
-        <Setter Property="Foreground"
-                Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=RepeatButton},Mode=OneWay}" />
-    </Style>
-    
-    <ControlTemplate x:Key="{x:Static i:ResourceKeys.RepeatButtonTemplate}"
-                     TargetType="RepeatButton">
-        <Border x:Name="BdrMain"
-                
-                BorderBrush="{TemplateBinding BorderBrush}"
-                BorderThickness="{TemplateBinding BorderThickness}"
-                Background="{TemplateBinding Background}"
-                CornerRadius="{Binding Path=(local:RepeatButtonHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=RepeatButton},Mode=OneWay}">
-            <StackPanel Orientation="{Binding Path=(local:RepeatButtonHelper.IconPosition),Converter={StaticResource {x:Static i:ResourceKeys.IconPositionToOrientationConverter}},RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
-                        Margin="{TemplateBinding Padding}"
-                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
-                <ic:IconControl x:Name="IcIcon" 
-                                Width="{Binding Path=(local:IconHelper.Width),RelativeSource={RelativeSource AncestorType=RepeatButton},Mode=OneWay}"
-                                Height="{Binding Path=(local:IconHelper.Height),RelativeSource={RelativeSource AncestorType=RepeatButton},Mode=OneWay}"
-                                MinWidth="{Binding Path=(local:IconHelper.MinWidth),RelativeSource={RelativeSource AncestorType=RepeatButton},Mode=OneWay}"
-                                MinHeight="{Binding Path=(local:IconHelper.MinHeight),RelativeSource={RelativeSource AncestorType=RepeatButton},Mode=OneWay}"
-                                MaxWidth="{Binding Path=(local:IconHelper.MaxWidth),RelativeSource={RelativeSource AncestorType=RepeatButton},Mode=OneWay}"
-                                MaxHeight="{Binding Path=(local:IconHelper.MaxHeight),RelativeSource={RelativeSource AncestorType=RepeatButton},Mode=OneWay}"
-                                Margin="{Binding Path=(local:IconHelper.Margin),RelativeSource={RelativeSource AncestorType=RepeatButton},Mode=OneWay}"
-                                Visibility="{Binding Path=(local:RepeatButtonHelper.Icon),Converter={StaticResource {x:Static i:ResourceKeys.NullToCollapseConverter}},RelativeSource={RelativeSource AncestorType=RepeatButton},Mode=OneWay}"
-                                Content="{Binding Path=(local:RepeatButtonHelper.Icon),RelativeSource={RelativeSource AncestorType=RepeatButton},Mode=OneWay}"
-                                Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource AncestorType=RepeatButton},Mode=OneWay}"
-                                FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource AncestorType=RepeatButton},Mode=OneWay}"
-                                FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource AncestorType=RepeatButton},Mode=OneWay}"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center" />
-                <StackPanel Orientation="Horizontal"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Center">
-                    <local:Loading x:Name="LoadWait"
-                                   Margin="0,0,5,0"
-                                   Style="{DynamicResource {x:Static rs:ResourceKeys.RepeatButtonWaitingLoadingStyle}}"
-                                   Visibility="Collapsed" />
-                    <ContentPresenter x:Name="Presenter"
-                                      RecognizesAccessKey="True"
-                                      VerticalAlignment="Center"
-                                      HorizontalAlignment="Center" />
-                </StackPanel>
-            </StackPanel>
-        </Border>
-        <ControlTemplate.Triggers>
+
+    <Style TargetType="RepeatButton">
+        <Setter Property="local:RepeatButtonHelper.Hook"
+                Value="True" />
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="Background"
+                Value="#F1F1F1" />
+        <Setter Property="local:IconHelper.Foreground"
+                Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.Margin"
+                Value="0,0,5,0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RepeatButton">
+                    <Border x:Name="BdrMain"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{Binding Path=(local:RepeatButtonHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                        <StackPanel x:Name="StkContent"
+                                    Orientation="Horizontal"
+                                    Margin="{TemplateBinding Padding}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+                            <ic:IconControl x:Name="icIcon"
+                                            Content="{Binding Path=(local:RepeatButtonHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                            Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                            <ContentPresenter x:Name="CpContent"
+                                              RecognizesAccessKey="True"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Center" />
+                        </StackPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed"
+                                 Value="True">
+                            <Setter TargetName="BdrMain"
+                                    Property="Opacity"
+                                    Value="0.8" />
+                        </Trigger>
+                        <Trigger Property="local:RepeatButtonHelper.IconPlacement"
+                                 Value="Top">
+                            <Setter TargetName="StkContent"
+                                    Property="Orientation"
+                                    Value="Vertical" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsPressed"
+                                           Value="True" />
+                                <Condition Property="local:RepeatButtonHelper.ClickStyle"
+                                           Value="Sink" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="BdrMain"
+                                    Property="Margin"
+                                    Value="0,1,0,-1" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
             <Trigger Property="local:RepeatButtonHelper.IsWaiting"
                      Value="True">
                 <Setter Property="IsEnabled"
                         Value="False" />
-                <Setter TargetName="LoadWait"
-                        Property="Visibility"
-                        Value="Visible" />
-                <Setter TargetName="IcIcon"
-                        Property="Visibility"
-                        Value="Collapsed" />
-                <Setter TargetName="LoadWait"
-                        Property="IsLoading"
-                        Value="True" />
-                <Setter TargetName="Presenter"
-                        Property="Content"
-                        Value="{Binding Path=(local:RepeatButtonHelper.WaitingContent),RelativeSource={RelativeSource AncestorType=RepeatButton},Mode=OneWay}" />
+                <Setter Property="ContentTemplate">
+                    <Setter.Value>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <local:Loading Width="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=5, RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
+                                               Height="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=5, RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
+                                               Foreground="{Binding Foreground, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=5, RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
+                                               IsLoading="True"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Center" />
+                                <ContentControl Margin="5,0,0,0"
+                                                Content="{Binding Content, RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Center" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </Setter.Value>
+                </Setter>
             </Trigger>
-            <MultiDataTrigger>
-                <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}"
-                                                   Value="True" />
-                    <Condition Binding="{Binding Path=(local:RepeatButtonHelper.ClickStyle), RelativeSource={RelativeSource Self}}"
-                                                   Value="Sink" />
-                </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrMain"
-                        Property="Margin"
-                        Value="0,1,0,-1" />
-            </MultiDataTrigger>
-            <Trigger Property="IsPressed"
-                     Value="True">
-                <Setter TargetName="BdrMain"
-                        Property="Opacity"
-                        Value="0.8" />
-            </Trigger>
-            <MultiDataTrigger>
-                <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}"
-                               Value="True" />
-                    <Condition Binding="{Binding Path=(local:RepeatButtonHelper.ClickStyle), RelativeSource={RelativeSource Self}}"
-                               Value="Sink" />
-                </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrMain"
-                        Property="Margin"
-                        Value="0,1,0,-1" />
-            </MultiDataTrigger>
-        </ControlTemplate.Triggers>
 
-    </ControlTemplate>
-
-    <Style TargetType="RepeatButton">
-        <!--Properties-->
-        <Setter Property="Background"
-                Value="{StaticResource {x:Static i:ResourceKeys.RepeatButtonStandardDefaultBackground}}" />
-        <Setter Property="BorderBrush"
-                Value="{x:Null}" />
-        <Setter Property="Foreground"
-                Value="{StaticResource {x:Static i:ResourceKeys.RepeatButtonStandardDefaultForeground}}" />
-        <Setter Property="BorderThickness"
-                Value="{StaticResource {x:Static i:ResourceKeys.RepeatButtonStandardDefaultBorderThickness}}" />
-        <Setter Property="Template"
-                Value="{StaticResource {x:Static i:ResourceKeys.RepeatButtonTemplate}}" />
-        <!--RepeatButtonHelper-->
-        <Setter Property="local:RepeatButtonHelper.WaitingContent"
-                Value="{StaticResource {x:Static i:ResourceKeys.RepeatButtonDefaultWaitingContent}}" />
-        <Setter Property="local:RepeatButtonHelper.CornerRadius"
-                Value="{StaticResource {x:Static i:ResourceKeys.RepeatButtonDefaultCornerRadius}}" />
-        <Setter Property="local:RepeatButtonHelper.IconPosition"
-                Value="{StaticResource {x:Static i:ResourceKeys.RepeatButtonDefaultIconPosition}}" />
-        <Setter Property="local:RepeatButtonHelper.ClickStyle"
-                Value="{StaticResource {x:Static i:ResourceKeys.RepeatButtonDefaultClickStyle}}" />
-        <Setter Property="local:RepeatButtonHelper.HoverBrush"
-                Value="{StaticResource {x:Static i:ResourceKeys.RepeatButtonStandardDefaultHoverBrush}}" />
-        <Setter Property="local:IconHelper.Foreground"
-                Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
-        <Setter Property="local:IconHelper.FontSize"
-                Value="{Binding FontSize, RelativeSource={RelativeSource Self}}" />
-        <!--IconHelper-->
-        <Setter Property="local:IconHelper.Foreground"
-                Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
-        <Setter Property="local:IconHelper.FontSize"
-                Value="{Binding FontSize, RelativeSource={RelativeSource Self}}" />
-        <Style.Triggers>
-            <Trigger Property="local:RepeatButtonHelper.RepeatButtonStyle"
-                     Value="Outline">
-                <Setter Property="Background"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RepeatButtonOutlineDefaultBackground}}" />
-                <Setter Property="BorderBrush"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RepeatButtonOutlineDefaultBorderBrush}}" />
-                <Setter Property="Foreground"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RepeatButtonOutlineDefaultForeground}}" />
-                <Setter Property="BorderThickness"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RepeatButtonOutlineDefaultBorderThickness}}" />
-                <Setter Property="local:RepeatButtonHelper.HoverBrush"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RepeatButtonOutlineDefaultHoverBrush}}" />
-            </Trigger>
-            <Trigger Property="local:RepeatButtonHelper.RepeatButtonStyle"
-                     Value="Hollow">
-                <Setter Property="Background"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RepeatButtonHollowDefaultBackground}}" />
-                <Setter Property="BorderBrush"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RepeatButtonHollowDefaultBorderBrush}}" />
-                <Setter Property="Foreground"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RepeatButtonHollowDefaultForeground}}" />
-                <Setter Property="BorderThickness"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RepeatButtonHollowDefaultBorderThickness}}" />
-                <Setter Property="local:RepeatButtonHelper.HoverBrush"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RepeatButtonHollowDefaultHoverBrush}}" />
-            </Trigger>
-            <Trigger Property="local:RepeatButtonHelper.RepeatButtonStyle"
-                     Value="Link">
-                <Setter Property="Background"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RepeatButtonLinkDefaultBackground}}" />
-                <Setter Property="BorderBrush"
-                        Value="{x:Null}" />
-                <Setter Property="Foreground"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RepeatButtonLinkDefaultForeground}}" />
-                <Setter Property="BorderThickness"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RepeatButtonLinkDefaultBorderThickness}}" />
-                <Setter Property="local:RepeatButtonHelper.HoverBrush"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RepeatButtonLinkDefaultHoverBrush}}" />
-            </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="local:RepeatButtonHelper.IsWaiting"
@@ -192,9 +102,8 @@
                                Value="False" />
                 </MultiTrigger.Conditions>
                 <Setter Property="Opacity"
-                        Value="{StaticResource {x:Static rs:ResourceKeys.DisabledOpacity}}" />
+                        Value="0.4" />
             </MultiTrigger>
         </Style.Triggers>
     </Style>
-
 </ResourceDictionary>

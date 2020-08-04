@@ -1,22 +1,20 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Panuon.UI.Silver"
-                    xmlns:i="clr-namespace:Panuon.UI.Silver.Internal"
-                    xmlns:ic="clr-namespace:Panuon.UI.Silver.Internal.Controls"
-                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources">
+                    xmlns:core="clr-namespace:Panuon.UI.Silver.Core"
+                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
+                    xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/InternalResources.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Resources.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    
     <Style TargetType="Slider">
-        <Setter Property="local:SliderHelper.ThumbBrush"
+        <Setter Property="local:SliderHelper.ThumbBackground"
                 Value="White" />
         <Setter Property="local:SliderHelper.ThumbSize"
                 Value="20" />
         <Setter Property="local:SliderHelper.ThumbCornerRadius"
-                Value="{Binding Path=(local:SliderHelper.ThumbSize), Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+                Value="10" />
         <Setter Property="local:SliderHelper.TrackThickness"
                 Value="2" />
         <Setter Property="local:SliderHelper.ThumbShadowColor"
@@ -84,15 +82,14 @@
                             <Track.Thumb>
                                 <Thumb x:Name="TmbDrag"
                                        Width="{Binding Path=(local:SliderHelper.ThumbSize), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                       Height="{Binding Path=(local:SliderHelper.ThumbSize), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                       Background="{Binding Path=(local:SliderHelper.ThumbBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                       Foreground="{TemplateBinding Foreground}">
+                                       Height="{Binding Path=(local:SliderHelper.ThumbSize), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                                     <Thumb.Template>
                                         <ControlTemplate TargetType="Thumb">
-                                            <Rectangle RadiusX="{Binding Path=(local:SliderHelper.ThumbCornerRadius), RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}"
-                                                       RadiusY="{Binding Path=(local:SliderHelper.ThumbCornerRadius), RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}"
-                                                       Fill="{TemplateBinding Background}"
-                                                       Effect="{Binding Path=(local:SliderHelper.ThumbShadowColor), Converter={StaticResource {x:Static i:ResourceKeys.NullableColorToShadowEffectConverter}}, RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}" />
+                                            <Border CornerRadius="{Binding Path=(local:SliderHelper.ThumbCornerRadius), RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}"
+                                                    BorderThickness="{Binding Path=(local:SliderHelper.ThumbBorderThickness), RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}"
+                                                    BorderBrush="{Binding Path=(local:SliderHelper.ThumbBorderBrush), RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}"
+                                                    Background="{Binding Path=(local:SliderHelper.ThumbBackground), RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}"
+                                                    Effect="{Binding Path=(local:SliderHelper.ThumbShadowColor), Converter={StaticResource {x:Static irs:Converters.DropShadowEffectCoverter}}, RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}" />
                                         </ControlTemplate>
                                     </Thumb.Template>
                                 </Thumb>
@@ -106,25 +103,6 @@
                                  Visibility="Collapsed" />
                     </Grid>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="local:SliderHelper.SliderStyle"
-                                 Value="Modern">
-                            <Setter TargetName="TmbDrag"
-                                    Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="Thumb">
-                                        <Grid>
-                                            <Rectangle RadiusX="{Binding Path=(local:SliderHelper.ThumbCornerRadius), RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}"
-                                                       RadiusY="{Binding Path=(local:SliderHelper.ThumbCornerRadius), RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}"
-                                                       Fill="{TemplateBinding Background}" />
-                                            <Rectangle RadiusX="{Binding Path=(local:SliderHelper.ThumbCornerRadius), RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}"
-                                                       RadiusY="{Binding Path=(local:SliderHelper.ThumbCornerRadius), RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}"
-                                                       Stroke="{TemplateBinding Foreground}"
-                                                       StrokeThickness="{Binding Path=(local:SliderHelper.TrackThickness), RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}" />
-                                        </Grid>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                        </Trigger>
                         <Trigger Property="TickPlacement"
                                  Value="TopLeft">
                             <Setter TargetName="TkbTop"
@@ -150,6 +128,118 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <Trigger Property="Orientation"
+                     Value="Vertical">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Slider">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TickBar x:Name="TkbTop"
+                                         Fill="{TemplateBinding Foreground}"
+                                         Placement="Top"
+                                         Width="4"
+                                         Visibility="Collapsed" />
+                                <Track Grid.Column="1"
+                                       x:Name="PART_Track"
+                                       Orientation="Vertical">
+                                    <Track.DecreaseRepeatButton>
+                                        <RepeatButton Command="Slider.DecreaseLarge"
+                                                      Background="{TemplateBinding Foreground}">
+                                            <RepeatButton.Style>
+                                                <Style TargetType="RepeatButton">
+                                                    <Setter Property="Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate TargetType="RepeatButton">
+                                                                <Border Background="Transparent">
+                                                                    <Rectangle Fill="{TemplateBinding Background}"
+                                                                               HorizontalAlignment="Center"
+                                                                               Width="{Binding Path=(local:SliderHelper.TrackThickness), RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}" />
+                                                                </Border>
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Style>
+                                            </RepeatButton.Style>
+                                        </RepeatButton>
+                                    </Track.DecreaseRepeatButton>
+                                    <Track.IncreaseRepeatButton>
+                                        <RepeatButton Command="Slider.IncreaseLarge"
+                                                      Background="{TemplateBinding Background}">
+                                            <RepeatButton.Style>
+                                                <Style TargetType="RepeatButton">
+                                                    <Setter Property="Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate TargetType="RepeatButton">
+                                                                <Border Background="Transparent">
+                                                                    <Rectangle Fill="{TemplateBinding Background}"
+                                                                               HorizontalAlignment="Center"
+                                                                               Width="{Binding Path=(local:SliderHelper.TrackThickness), RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}" />
+                                                                </Border>
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Style>
+                                            </RepeatButton.Style>
+                                        </RepeatButton>
+                                    </Track.IncreaseRepeatButton>
+                                    <Track.Thumb>
+                                        <Thumb x:Name="TmbDrag"
+                                               Width="{Binding Path=(local:SliderHelper.ThumbSize), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                               Height="{Binding Path=(local:SliderHelper.ThumbSize), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                                            <Thumb.Template>
+                                                <ControlTemplate TargetType="Thumb">
+                                                    <Border CornerRadius="{Binding Path=(local:SliderHelper.ThumbCornerRadius), RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}"
+                                                            BorderThickness="{Binding Path=(local:SliderHelper.ThumbBorderThickness), RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}"
+                                                            BorderBrush="{Binding Path=(local:SliderHelper.ThumbBorderBrush), RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}"
+                                                            Background="{Binding Path=(local:SliderHelper.ThumbBackground), RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}"
+                                                            Effect="{Binding Path=(local:SliderHelper.ThumbShadowColor), Converter={StaticResource {x:Static irs:Converters.DropShadowEffectCoverter}}, RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}" />
+                                                </ControlTemplate>
+                                            </Thumb.Template>
+                                        </Thumb>
+                                    </Track.Thumb>
+                                </Track>
+                                <TickBar x:Name="TkbBottom"
+                                         Grid.Column="2"
+                                         Fill="{TemplateBinding Foreground}"
+                                         Placement="Bottom"
+                                         Width="4"
+                                         Visibility="Collapsed" />
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="TickPlacement"
+                                         Value="TopLeft">
+                                    <Setter TargetName="TkbTop"
+                                            Property="Visibility"
+                                            Value="Visible" />
+                                </Trigger>
+                                <Trigger Property="TickPlacement"
+                                         Value="BottomRight">
+                                    <Setter TargetName="TkbBottom"
+                                            Property="Visibility"
+                                            Value="Visible" />
+                                </Trigger>
+                                <Trigger Property="TickPlacement"
+                                         Value="Both">
+                                    <Setter TargetName="TkbTop"
+                                            Property="Visibility"
+                                            Value="Visible" />
+                                    <Setter TargetName="TkbBottom"
+                                            Property="Visibility"
+                                            Value="Visible" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
 </ResourceDictionary>

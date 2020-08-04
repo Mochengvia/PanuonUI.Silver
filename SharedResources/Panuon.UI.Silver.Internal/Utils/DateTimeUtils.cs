@@ -1,52 +1,67 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Panuon.UI.Silver.Internal.Utils
 {
     internal static class DateTimeUtils
     {
-        public static int GetDayOfWeek(DayOfWeek dayOfWeek)
+        internal static DateTime GetDate(DateTime? date)
         {
-            switch (dayOfWeek)
+            return date == null ? DateTime.Now.Date : ((DateTime)date).Date;
+        }
+
+        internal static DateTime GetFirstDayDate(DateTime date)
+        {
+            return new DateTime(date.Year, date.Month, 1);
+        }
+
+        internal static DateTime GetFirstMonthDate(DateTime date)
+        {
+            return new DateTime(date.Year, 1, 1);
+        }
+
+        internal static DayOfWeek GetNextDayOfWeek(DayOfWeek daysOfWeek)
+        {
+            var days = (int)daysOfWeek;
+            days++;
+            if(days == 7)
             {
-                case DayOfWeek.Sunday:
-                    return 7;
-                default:
-                    return (int)dayOfWeek;
+                days = 0;
             }
+            return (DayOfWeek)days;
         }
 
-        public static DateTime GetFirstDayDate(DateTime dateTime)
+        internal static int GetDayInMonth(DateTime? date)
         {
-            return new DateTime(dateTime.Year, dateTime.Month, 1);
-        }
-
-        public static DayOfWeek GetNextDayOfWeek(DayOfWeek daysOfWeek)
-        {
-            switch (daysOfWeek)
-            {
-                case DayOfWeek.Monday:
-                    return DayOfWeek.Tuesday;
-                case DayOfWeek.Tuesday:
-                    return DayOfWeek.Wednesday;
-                case DayOfWeek.Wednesday:
-                    return DayOfWeek.Thursday;
-                case DayOfWeek.Thursday:
-                    return DayOfWeek.Friday;
-                case DayOfWeek.Friday:
-                    return DayOfWeek.Saturday;
-                case DayOfWeek.Saturday:
-                    return DayOfWeek.Sunday;
-                case DayOfWeek.Sunday:
-                    return DayOfWeek.Monday;
-            }
-            throw new NotImplementedException();
-        }
-
-        public static int GetDayInMonth(DateTime dateTime)
-        {
+            var dateTime = GetDate(date);
             return DateTime.DaysInMonth(dateTime.Year, dateTime.Month);
+        }
+
+        internal static DateTime VerifyDateTime(int year, int month, int day)
+        {
+            if(year < 0)
+            {
+                year = 0;
+            }
+
+            if(month > 12)
+            {
+                month = 12;
+            }
+            else if (month < 1)
+            {
+                month = 1;
+            }
+
+            var days = DateTime.DaysInMonth(year, month);
+            if(day < 1)
+            {
+                day = 1;
+            }
+            else if(day > days)
+            {
+                day = days;
+            }
+            return new DateTime(year, month, day);
         }
     }
 }

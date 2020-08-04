@@ -1,7 +1,4 @@
-﻿using Panuon.UI.Silver.Internal.Utils;
-using System;
-using System.Collections.Generic;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -127,7 +124,7 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty ItemHoverBackgroundProperty =
             DependencyProperty.RegisterAttached("ItemHoverBackground", typeof(Brush), typeof(ListBoxHelper));
-#endregion
+        #endregion
 
         #region ItemHoverForeground
         public static Brush GetItemsHoverForeground(ListBox listBox)
@@ -277,8 +274,6 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region ItemsHeight
-
-
         public static double GetItemsHeight(ListBox listBox)
         {
             return (double)listBox.GetValue(ItemsHeightProperty);
@@ -291,8 +286,21 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty ItemsHeightProperty =
             DependencyProperty.RegisterAttached("ItemsHeight", typeof(double), typeof(ListBoxHelper));
+        #endregion
 
+        #region ItemsWidth
+        public static double GetItemsWidth(ListBox listBox)
+        {
+            return (double)listBox.GetValue(ItemsWidthProperty);
+        }
 
+        public static void SetItemsWidth(ListBox listBox, double value)
+        {
+            listBox.SetValue(ItemsWidthProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsWidthProperty =
+            DependencyProperty.RegisterAttached("ItemsWidth", typeof(double), typeof(ListBoxHelper));
         #endregion
 
         #region ItemIcon

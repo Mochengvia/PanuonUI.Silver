@@ -1,80 +1,16 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Panuon.UI.Silver"
-                    xmlns:i="clr-namespace:Panuon.UI.Silver.Internal"
+                    xmlns:core="clr-namespace:Panuon.UI.Silver.Core"
+                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
                     xmlns:ic="clr-namespace:Panuon.UI.Silver.Internal.Controls"
-                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources">
+                    xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/InternalResources.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Resources.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/ScrollViewer.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <ControlTemplate x:Key="{x:Static i:ResourceKeys.ComboBoxStandardToggleButtonTemplate}"
-                     TargetType="ToggleButton">
-        <Grid Background="{TemplateBinding Background}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                              Margin="{TemplateBinding Padding}" />
-            <Grid Grid.Column="1"
-                  Width="{Binding ActualHeight, Converter={StaticResource {x:Static rs:Converters.DoubleMinusConverter}}, ConverterParameter=3,RelativeSource={RelativeSource Self},Mode=OneWay}">
-                <TextBlock x:Name="TxtArrowDown"
-                           Text="&#xe91f;"
-                           FontSize="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource {x:Static rs:Converters.DoubleMinusConverter}}, ConverterParameter=2}"
-                           FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center" />
-                <TextBlock x:Name="TxtArrowUp"
-                           FontSize="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource {x:Static rs:Converters.DoubleMinusConverter}}, ConverterParameter=2}"
-                           Opacity="0"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           Text="&#xe91d;"
-                           FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon" />
-            </Grid>
-        </Grid>
-        <ControlTemplate.Triggers>
-            <Trigger Property="IsChecked"
-                     Value="True">
-                <Trigger.EnterActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimation Storyboard.TargetName="TxtArrowDown"
-                                             Storyboard.TargetProperty="Opacity"
-                                             To="0"
-                                             Duration="0:0:0.2"></DoubleAnimation>
-                            <DoubleAnimation Storyboard.TargetName="TxtArrowUp"
-                                             Storyboard.TargetProperty="Opacity"
-                                             To="1"
-                                             Duration="0:0:0.2"></DoubleAnimation>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </Trigger.EnterActions>
-                <Trigger.ExitActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimation Storyboard.TargetName="TxtArrowDown"
-                                             Storyboard.TargetProperty="Opacity"
-                                             Duration="0:0:0.2"></DoubleAnimation>
-                            <DoubleAnimation Storyboard.TargetName="TxtArrowUp"
-                                             Storyboard.TargetProperty="Opacity"
-                                             Duration="0:0:0.2"></DoubleAnimation>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </Trigger.ExitActions>
-            </Trigger>
-
-        </ControlTemplate.Triggers>
-    </ControlTemplate>
-
-    <Style x:Key="{x:Static i:ResourceKeys.ComboBoxStandardToggleButtonStyle}"
+    <Style x:Key="{x:Static irs:ResourceKeys.ComboBoxStandardToggleButtonStyle}"
            TargetType="ToggleButton">
-        <Setter Property="Background"
-                Value="Transparent" />
         <Setter Property="Focusable"
                 Value="False" />
         <Setter Property="ClickMode"
@@ -83,23 +19,72 @@
                 Value="Stretch" />
         <Setter Property="HorizontalContentAlignment"
                 Value="Stretch" />
-        <Setter Property="Template"
-                Value="{StaticResource {x:Static i:ResourceKeys.ComboBoxStandardToggleButtonTemplate}}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Grid Background="Transparent">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          Margin="{TemplateBinding Padding}" />
+                        <Grid Grid.Column="1"
+                              Width="{Binding ActualHeight, Converter={StaticResource {x:Static rs:Converters.DoubleMinusConverter}}, ConverterParameter=3,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}">
+                            <TextBlock x:Name="TxtArrowDown"
+                                       Text="&#xe91f;"
+                                       FontSize="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoubleMinusConverter}}, ConverterParameter=1, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                       FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center" />
+                            <TextBlock x:Name="TxtArrowUp"
+                                       Opacity="0"
+                                       Text="&#xe91d;"
+                                       FontSize="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoubleMinusConverter}}, ConverterParameter=1, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                       FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center" />
+                        </Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked"
+                                 Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="TxtArrowDown"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0"
+                                                         Duration="0:0:0.2"></DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="TxtArrowUp"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1"
+                                                         Duration="0:0:0.2"></DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="TxtArrowDown"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         Duration="0:0:0.2"></DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="TxtArrowUp"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         Duration="0:0:0.2"></DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 
-    <ControlTemplate x:Key="{x:Static i:ResourceKeys.ComboBoxSimpleToggleButtonTemplate}"
-                     TargetType="ToggleButton">
-        <Grid Background="{TemplateBinding Background}">
-            <ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                              Margin="{TemplateBinding Padding}" />
-        </Grid>
-    </ControlTemplate>
-
-    <Style x:Key="{x:Static i:ResourceKeys.ComboBoxSimpleToggleButtonStyle}"
+    <Style x:Key="{x:Static irs:ResourceKeys.ComboBoxModernToggleButtonStyle}"
            TargetType="ToggleButton">
-        <Setter Property="Background"
-                Value="Transparent" />
         <Setter Property="Focusable"
                 Value="False" />
         <Setter Property="ClickMode"
@@ -108,180 +93,436 @@
                 Value="Stretch" />
         <Setter Property="HorizontalContentAlignment"
                 Value="Stretch" />
-        <Setter Property="Template"
-                Value="{StaticResource {x:Static i:ResourceKeys.ComboBoxSimpleToggleButtonTemplate}}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Grid Background="Transparent">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          Margin="{TemplateBinding Padding}" />
+                        <Grid Grid.Column="1"
+                              Width="{Binding ActualHeight, Converter={StaticResource {x:Static rs:Converters.DoubleMinusConverter}}, ConverterParameter=3, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                            <TextBlock x:Name="TxtArrowDown"
+                                       Text="&#xe903;"
+                                       FontSize="{Binding FontSize, RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
+                                       FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center" />
+                            <TextBlock x:Name="TxtArrowUp"
+                                       Opacity="0"
+                                       Text="&#xe901;"
+                                       FontSize="{Binding FontSize, RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
+                                       FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center" />
+                        </Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked"
+                                 Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="TxtArrowDown"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0"
+                                                         Duration="0:0:0.2"></DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="TxtArrowUp"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1"
+                                                         Duration="0:0:0.2"></DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="TxtArrowDown"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         Duration="0:0:0.2"></DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="TxtArrowUp"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         Duration="0:0:0.2"></DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 
-    <ControlTemplate x:Key="{x:Static i:ResourceKeys.ComboBoxEditableTextBoxTemplate}"
-                     TargetType="TextBox">
-        <ScrollViewer x:Name="PART_ContentHost"
-                      VerticalAlignment="Stretch"
-                      VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                      HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                      VerticalScrollBarVisibility="{TemplateBinding VerticalScrollBarVisibility}"
-                      HorizontalScrollBarVisibility="{TemplateBinding HorizontalScrollBarVisibility}" />
-    </ControlTemplate>
+    <Style x:Key="{x:Static irs:ResourceKeys.ComboBoxNoneArrowToggleButtonStyle}"
+           TargetType="ToggleButton">
+        <Setter Property="Focusable"
+                Value="False" />
+        <Setter Property="ClickMode"
+                Value="Press" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Stretch" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Border Background="Transparent">
+                        <ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          Margin="{TemplateBinding Padding}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
-    <Style x:Key="{x:Static i:ResourceKeys.ComboBoxEditableTextBoxStyle}"
+    <Style x:Key="{x:Static irs:ResourceKeys.ComboBoxEditableTextBoxStyle}"
            TargetType="TextBox">
         <Setter Property="HorizontalAlignment"
                 Value="Stretch" />
         <Setter Property="VerticalAlignment"
                 Value="Stretch" />
-        <Setter Property="Template"
-                Value="{StaticResource {x:Static i:ResourceKeys.ComboBoxEditableTextBoxTemplate}}" />
-    </Style>
-
-    <ControlTemplate x:Key="{x:Static i:ResourceKeys.ComboBoxTemplate}"
-                     TargetType="ComboBox">
-        <Grid>
-            <Border x:Name="BdrBorder"
-                    BorderBrush="{TemplateBinding BorderBrush}"
-                    BorderThickness="{TemplateBinding BorderThickness}"
-                    Background="{TemplateBinding Background}"
-                    CornerRadius="{Binding Path=(local:ComboBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=ComboBox},Mode=OneWay}" />
-            <ToggleButton x:Name="TgbContent"
-                          Style="{StaticResource {x:Static i:ResourceKeys.ComboBoxStandardToggleButtonStyle}}"
-                          Foreground="{TemplateBinding Foreground}"
-                          IsChecked="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <ic:IconControl x:Name="IcIcon"
-                                    Width="{Binding Path=(local:IconHelper.Width),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                    Height="{Binding Path=(local:IconHelper.Height),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                    MinWidth="{Binding Path=(local:IconHelper.MinWidth),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                    MinHeight="{Binding Path=(local:IconHelper.MinHeight),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                    MaxWidth="{Binding Path=(local:IconHelper.MaxWidth),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                    MaxHeight="{Binding Path=(local:IconHelper.MaxHeight),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                    Margin="{Binding Path=(local:IconHelper.Margin),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                    Visibility="{Binding Path=(local:ComboBoxHelper.Icon),Converter={StaticResource {x:Static i:ResourceKeys.NullToCollapseConverter}},RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                    Content="{Binding Path=(local:ComboBoxHelper.Icon),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                    Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                    FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                    FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                    VerticalAlignment="Center"
-                                    HorizontalAlignment="Center" />
-                    <Grid Margin="{TemplateBinding Padding}"
-                          Grid.Column="1"
-                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
-                        <ContentPresenter x:Name="ContentSite"
-                                          Content="{TemplateBinding SelectionBoxItem}"
-                                          ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
-                                          ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                                          VerticalAlignment="Center" />
-                        <TextBlock x:Name="TxtWatermark"
-                                   Visibility="{Binding Text,Converter={StaticResource {x:Static i:ResourceKeys.NullOrEmptyToVisibleConverter}},RelativeSource={RelativeSource AncestorType=ComboBox},Mode=OneWay}"
-                                   Text="{Binding Path=(local:ComboBoxHelper.Watermark),RelativeSource={RelativeSource AncestorType=ComboBox},Mode=OneWay}"
-                                   VerticalAlignment="Center"
-                                   Padding="2,0"
-                                   Opacity="0.6" />
-                    </Grid>
-                    <TextBox x:Name="PART_EditableTextBox"
-                             Grid.Column="1"
-                             Visibility="{Binding IsEditable, Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}}, RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
-                             Margin="{TemplateBinding Padding}"
-                             VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                             HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                             Style="{StaticResource {x:Static i:ResourceKeys.ComboBoxEditableTextBoxStyle}}" />
-                </Grid>
-            </ToggleButton>
-            <local:PopupX x:Name="PopDropDown"
-                          IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
-                          PartnerElement="{Binding ElementName=TgbContent}"
-                          AllowsTransparency="True"
-                          Focusable="False"
-                          PopupAnimation="Slide"
-                          MaxHeight="{TemplateBinding MaxDropDownHeight}"
-                          MinWidth="{Binding ActualWidth, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=10, ElementName=TgbContent}">
-                <Border x:Name="BdrDropDown"
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{Binding BorderThickness,Converter={StaticResource {x:Static i:ResourceKeys.ThicknessWithoutTopConverter}},RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
-                        CornerRadius="{Binding Path=(local:ComboBoxHelper.DropDownCornerRadius),RelativeSource={RelativeSource AncestorType=ComboBox},Mode=OneWay}"
-                        Margin="5,0,5,5"
-                        Effect="{Binding Path=(local:ComboBoxHelper.DropDownShadowColor), Converter={StaticResource {x:Static i:ResourceKeys.NullableColorToShadowEffectConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-                    <ScrollViewer VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                  HorizontalScrollBarVisibility="{Binding Path=(ScrollViewer.HorizontalScrollBarVisibility),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                  Margin="{Binding Path=(local:ComboBoxHelper.DropDownPadding),RelativeSource={RelativeSource AncestorType=ComboBox},Mode=OneWay}">
-                        <ItemsPresenter />
-                    </ScrollViewer>
-                </Border>
-            </local:PopupX>
-        </Grid>
-        <ControlTemplate.Triggers>
-            <Trigger Property="local:ComboBoxHelper.ComboBoxStyle"
-                     Value="Simple">
-                <Setter TargetName="TgbContent"
-                        Property="Style"
-                        Value="{StaticResource {x:Static i:ResourceKeys.ComboBoxSimpleToggleButtonStyle}}" />
-            </Trigger>
-        </ControlTemplate.Triggers>
-    </ControlTemplate>
-
-    <Style TargetType="ComboBox">
-        <!--ComboBoxHelper-->
-        <Setter Property="local:ComboBoxHelper.CornerRadius"
-                Value="{StaticResource {x:Static i:ResourceKeys.ComboBoxCornerRadius}}" />
-        <Setter Property="local:ComboBoxHelper.DropDownCornerRadius"
-                Value="{StaticResource {x:Static i:ResourceKeys.ComboBoxDropDownCornerRadius}}" />
-        <Setter Property="local:ComboBoxHelper.DropDownPadding"
-                Value="{StaticResource {x:Static i:ResourceKeys.ComboBoxDropDownPadding}}" />
-        <Setter Property="local:ComboBoxHelper.DropDownShadowColor"
-                Value="{StaticResource {x:Static i:ResourceKeys.ComboBoxDropDownShadowColor}}" />
-        <Setter Property="local:ComboBoxHelper.ItemsHoverBackground"
-                Value="{StaticResource {x:Static i:ResourceKeys.ComboBoxItemsHoverBackground}}" />
-        <Setter Property="local:ComboBoxHelper.ItemsSelectedBackground"
-                Value="{StaticResource {x:Static i:ResourceKeys.ComboBoxItemsSelectedBackground}}" />
-        <Setter Property="local:ComboBoxHelper.ItemsHeight"
-                Value="{StaticResource {x:Static i:ResourceKeys.ComboBoxItemsHeight}}" />
-        <!--IconHelper-->
         <Setter Property="local:IconHelper.Foreground"
-                Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
-        <!--Property-->
-        <Setter Property="BorderBrush"
-                Value="{StaticResource {x:Static i:ResourceKeys.ComboBoxBorderBrush}}" />
-        <Setter Property="BorderThickness"
-                Value="{StaticResource {x:Static i:ResourceKeys.ComboBoxBorderThickness}}" />
-        <Setter Property="Background"
-                Value="{StaticResource {x:Static i:ResourceKeys.ComboBoxBackground}}" />
-        <Setter Property="MaxDropDownHeight"
-                Value="{StaticResource {x:Static i:ResourceKeys.ComboBoxMaxDropDownHeight}}" />
-        <Setter Property="HorizontalContentAlignment"
-                Value="Stretch" />
-        <Setter Property="VerticalContentAlignment"
-                Value="Center" />
-        <Setter Property="VirtualizingStackPanel.IsVirtualizing"
-                Value="True" />
-        <Setter Property="VirtualizingStackPanel.VirtualizationMode"
-                Value="Recycling" />
-        <Setter Property="local:ScrollViewerHelper.ScrollBarThickness"
-                Value="4" />
-        <Setter Property="local:ScrollViewerHelper.ScrollBarCornerRadius"
-                Value="2" />
-        <Setter Property="local:IconHelper.Margin"
-                Value="7,0,0,0" />
-        <Setter Property="local:ScrollViewerHelper.TrackBrush"
-                Value="Transparent" />
-        <Setter Property="ItemsPanel">
+                Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="Template">
             <Setter.Value>
-                <ItemsPanelTemplate>
-                    <VirtualizingStackPanel IsVirtualizing="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(VirtualizingStackPanel.IsVirtualizing)}"
-                                            VirtualizationMode="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(VirtualizingStackPanel.VirtualizationMode)}" />
-                </ItemsPanelTemplate>
+                <ControlTemplate TargetType="TextBox">
+                    <ScrollViewer x:Name="PART_ContentHost"
+                                  VerticalAlignment="Stretch"
+                                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                  VerticalScrollBarVisibility="{TemplateBinding VerticalScrollBarVisibility}"
+                                  HorizontalScrollBarVisibility="{TemplateBinding HorizontalScrollBarVisibility}" />
+                </ControlTemplate>
+
             </Setter.Value>
         </Setter>
-        <Setter Property="Template"
-                Value="{StaticResource {x:Static i:ResourceKeys.ComboBoxTemplate}}" />
+    </Style>
+
+    <Style x:Key="{x:Static irs:ResourceKeys.DataGridComboBoxStyle}" 
+           TargetType="ComboBox">
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="Background"
+                Value="Transparent" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="IsEnabled"
+                Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ComboBox">
+                    <Grid>
+                        <Border x:Name="BdrBorder"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}" />
+                            <ContentPresenter x:Name="ContentSite"
+                                              Margin="{TemplateBinding Padding}"
+                                              Content="{TemplateBinding SelectionBoxItem}"
+                                              ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                              ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="HorizontalContentAlignment"
+                     Value="Left">
+                <Setter Property="Padding"
+                        Value="5,0,30,0" />
+            </Trigger>
+            <Trigger Property="HorizontalContentAlignment"
+                     Value="Center">
+                <Setter Property="Padding"
+                        Value="11,0,11,0" />
+            </Trigger>
+            <Trigger Property="HorizontalContentAlignment"
+                     Value="Right">
+                <Setter Property="Padding"
+                        Value="30,0,5,0" />
+            </Trigger>
+            <Trigger Property="HorizontalContentAlignment"
+                     Value="Stretch">
+                <Setter Property="Padding"
+                        Value="5,0,5,0" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+    <Style TargetType="ComboBox">
+        <Setter Property="local:ComboBoxHelper.ItemsHoverBackground"
+                Value="#FAFAFA" />
+        <Setter Property="local:ComboBoxHelper.ItemsSelectedBackground"
+                Value="#F1F1F1" />
+        <Setter Property="Background"
+                Value="White" />
+        <Setter Property="BorderBrush"
+                Value="LightGray" />
+        <Setter Property="BorderThickness"
+                Value="1" />
+        <Setter Property="Padding"
+                Value="5,0,0,0" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Stretch" />
+        <Setter Property="local:ComboBoxHelper.DropDownShadowColor"
+                Value="LightGray" />
+        <Setter Property="local:ComboBoxHelper.ItemsRemoveButtonStyle"
+                Value="{StaticResource {x:Static irs:ResourceKeys.ComboBoxItemRemoveButtonStyle}}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ComboBox">
+                    <Grid>
+                        <Border x:Name="BdrBorder"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="{Binding Path=(local:ComboBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=ComboBox},Mode=OneWay}" />
+                        <ToggleButton x:Name="TgbContent"
+                                      Foreground="{TemplateBinding Foreground}"
+                                      IsChecked="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                      Style="{StaticResource {x:Static irs:ResourceKeys.ComboBoxStandardToggleButtonStyle}}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <ic:IconControl x:Name="icIcon"
+                                                Content="{Binding Path=(local:ComboBoxHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                                Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                                <Grid Margin="{TemplateBinding Padding}"
+                                      Grid.Column="1"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+                                    <ContentPresenter x:Name="ContentSite"
+                                                      Content="{TemplateBinding SelectionBoxItem}"
+                                                      ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                                      ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                                      VerticalAlignment="Center" />
+                                    <TextBlock x:Name="TxtWatermark"
+                                               Visibility="{Binding Text, Converter={StaticResource {x:Static irs:Converters.StringNullOrEmptyToVisibleConverter}}, RelativeSource={RelativeSource AncestorType=ComboBox},Mode=OneWay}"
+                                               Text="{Binding Path=(local:ComboBoxHelper.Watermark), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
+                                               VerticalAlignment="Center"
+                                               Padding="2,0"
+                                               Opacity="0.6" />
+                                </Grid>
+                                <TextBox x:Name="PART_EditableTextBox"
+                                         Grid.Column="1"
+                                         Focusable="True"
+                                         IsReadOnly="{TemplateBinding IsReadOnly}"
+                                         Margin="{TemplateBinding Padding}"
+                                         VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                         HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                         Visibility="{Binding IsEditable, Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                         Style="{StaticResource {x:Static irs:ResourceKeys.ComboBoxEditableTextBoxStyle}}" />
+                            </Grid>
+                        </ToggleButton>
+                        <local:PopupX x:Name="PopDropDown"
+                                      IsOpen="{Binding IsDropDownOpen,RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                      PlacementTarget="{Binding ElementName=TgbContent}"
+                                      PopupAnimation="Slide"
+                                      Placement="Bottom"
+                                      AllowsTransparency="True"
+                                      Focusable="False"
+                                      MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                                      MinWidth="{Binding ActualWidth, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=10, ElementName=TgbContent, Mode=OneWay}">
+                            <Border>
+                                <Grid x:Name="GrdDropDown"
+                                      Margin="5,0,5,5">
+                                    <Border Background="{TemplateBinding Background}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            CornerRadius="{Binding Path=(local:ComboBoxHelper.DropDownCornerRadius),RelativeSource={RelativeSource AncestorType=ComboBox},Mode=OneWay}"
+                                            Effect="{Binding Path=(local:ComboBoxHelper.DropDownShadowColor), Converter={StaticResource {x:Static irs:Converters.DropShadowEffectCoverter}}, RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
+                                    <ScrollViewer VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
+                                                  HorizontalScrollBarVisibility="{Binding Path=(ScrollViewer.HorizontalScrollBarVisibility),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
+                                                  Margin="{Binding Path=(local:ComboBoxHelper.DropDownPadding),RelativeSource={RelativeSource AncestorType=ComboBox},Mode=OneWay}">
+                                        <ItemsPresenter />
+                                    </ScrollViewer>
+                                </Grid>
+                            </Border>
+                        </local:PopupX>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger SourceName="PopDropDown"
+                                 Property="ActualPlacement"
+                                 Value="Top">
+                            <Setter TargetName="GrdDropDown"
+                                    Property="Margin"
+                                    Value="5,5,5,0" />
+                        </Trigger>
+                        <Trigger Property="local:ComboBoxHelper.ToggleArrow"
+                                 Value="Modern">
+                            <Setter TargetName="TgbContent"
+                                    Property="Style"
+                                    Value="{StaticResource {x:Static irs:ResourceKeys.ComboBoxModernToggleButtonStyle}}" />
+                        </Trigger>
+                        <Trigger Property="local:ComboBoxHelper.ToggleArrow"
+                                 Value="None">
+                            <Setter TargetName="TgbContent"
+                                    Property="Style"
+                                    Value="{StaticResource {x:Static irs:ResourceKeys.ComboBoxNoneArrowToggleButtonStyle}}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
         <Style.Triggers>
             <Trigger Property="IsEnabled"
                      Value="False">
                 <Setter Property="Opacity"
-                        Value="{StaticResource {x:Static rs:ResourceKeys.DisabledOpacity}}" />
+                        Value="0.4" />
             </Trigger>
         </Style.Triggers>
     </Style>
+
+    <Style x:Key="{x:Static irs:ResourceKeys.ComboBoxItemRemoveButtonStyle}"
+           TargetType="Button">
+        <Setter Property="Margin"
+                Value="0,0,5,0" />
+        <Setter Property="FontFamily"
+                Value="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon" />
+        <Setter Property="Content"
+                Value="&#xe92d;" />
+        <Setter Property="Foreground"
+                Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=TextBox},Mode=OneWay}" />
+        <Setter Property="Width"
+                Value="{Binding ActualHeight,Converter={StaticResource {x:Static rs:Converters.DoubleMinusConverter}}, ConverterParameter=5,RelativeSource={RelativeSource AncestorType=TextBox},Mode=OneWay}" />
+        <Setter Property="Height"
+                Value="{Binding ActualHeight,RelativeSource={RelativeSource AncestorType=TextBox},Mode=OneWay}" />
+    </Style>
+
+    <Style TargetType="ComboBoxItem">
+        <Setter Property="local:ComboBoxHelper.ItemRemovable"
+                Value="{Binding Path=(local:ComboBoxHelper.ItemsRemovable), RelativeSource={RelativeSource AncestorType=ComboBox}}" />
+        <Setter Property="local:ComboBoxHelper.ItemRemoveButtonStyle"
+                Value="{Binding Path=(local:ComboBoxHelper.ItemsRemoveButtonStyle), RelativeSource={RelativeSource AncestorType=ComboBox}}" />
+        <Setter Property="local:ComboBoxHelper.ItemHoverBackground"
+                Value="{Binding Path=(local:ComboBoxHelper.ItemsHoverBackground), RelativeSource={RelativeSource AncestorType=ComboBox}}" />
+        <Setter Property="local:ComboBoxHelper.ItemHoverForeground"
+                Value="{Binding Path=(local:ComboBoxHelper.ItemsHoverForeground), RelativeSource={RelativeSource AncestorType=ComboBox}}" />
+        <Setter Property="local:ComboBoxHelper.ItemHoverBorderBrush"
+                Value="{Binding Path=(local:ComboBoxHelper.ItemsHoverBorderBrush), RelativeSource={RelativeSource AncestorType=ComboBox}}" />
+        <Setter Property="local:ComboBoxHelper.ItemSelectedBackground"
+                Value="{Binding Path=(local:ComboBoxHelper.ItemsSelectedBackground), RelativeSource={RelativeSource AncestorType=ComboBox}}" />
+        <Setter Property="local:ComboBoxHelper.ItemSelectedForeground"
+                Value="{Binding Path=(local:ComboBoxHelper.ItemsSelectedForeground), RelativeSource={RelativeSource AncestorType=ComboBox}}" />
+        <Setter Property="local:ComboBoxHelper.ItemSelectedBorderBrush"
+                Value="{Binding Path=(local:ComboBoxHelper.ItemsSelectedBorderBrush), RelativeSource={RelativeSource AncestorType=ComboBox}}" />
+        <Setter Property="Height"
+                Value="{Binding Path=(local:ComboBoxHelper.ItemsHeight), RelativeSource={RelativeSource AncestorType=ComboBox}}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ComboBoxItem">
+                    <Border BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}">
+                        <Grid VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <ContentPresenter Margin="{TemplateBinding Padding}" />
+                            <Button Grid.Column="1"
+                                    Foreground="{TemplateBinding Foreground}"
+                                    Visibility="{Binding Path=(local:ComboBoxHelper.ItemRemovable),Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}},RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                    Style="{Binding Path=(local:ComboBoxHelper.ItemRemoveButtonStyle), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                    Command="{Binding Path=(local:ComboBoxHelper.RemoveCommand), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                                <Button.CommandParameter>
+                                    <MultiBinding Converter="{StaticResource {x:Static irs:Converters.CombineToArrayConverter}}">
+                                        <Binding Path="."
+                                                 RelativeSource="{RelativeSource AncestorType=ComboBoxItem}" />
+                                        <Binding Path="."
+                                                 RelativeSource="{RelativeSource AncestorType=ComboBox}" />
+                                    </MultiBinding>
+                                </Button.CommandParameter>
+                            </Button>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="False" />
+                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:ComboBoxHelper.ItemHoverBackground),Converter={StaticResource {x:Static rs:Converters.IsNotNullConverter}},RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Background"
+                        Value="{Binding Path=(local:ComboBoxHelper.ItemHoverBackground),RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="False" />
+                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:ComboBoxHelper.ItemHoverBorderBrush),Converter={StaticResource {x:Static rs:Converters.IsNotNullConverter}},RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="BorderBrush"
+                        Value="{Binding Path=(local:ComboBoxHelper.ItemHoverBorderBrush),RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="False" />
+                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition  Binding="{Binding Path=(local:ComboBoxHelper.ItemHoverForeground),Converter={StaticResource {x:Static rs:Converters.IsNotNullConverter}},RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                                Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Foreground"
+                        Value="{Binding Path=(local:ComboBoxHelper.ItemHoverForeground),RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:ComboBoxHelper.ItemSelectedBackground),Converter={StaticResource {x:Static rs:Converters.IsNotNullConverter}},RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Background"
+                        Value="{Binding Path=(local:ComboBoxHelper.ItemSelectedBackground),RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:ComboBoxHelper.ItemSelectedBorderBrush),Converter={StaticResource {x:Static rs:Converters.IsNotNullConverter}},RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="BorderBrush"
+                        Value="{Binding Path=(local:ComboBoxHelper.ItemSelectedBorderBrush),RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition  Binding="{Binding Path=(local:ComboBoxHelper.ItemSelectedForeground),Converter={StaticResource {x:Static rs:Converters.IsNotNullConverter}},RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                                Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Foreground"
+                        Value="{Binding Path=(local:ComboBoxHelper.ItemSelectedForeground),RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <Trigger Property="IsEnabled"
+                     Value="False">
+                <Setter Property="Opacity"
+                        Value="0.4" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
 </ResourceDictionary>

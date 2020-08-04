@@ -10,16 +10,8 @@ namespace Panuon.UI.Silver
 {
     public static class PasswordBoxHelper
     {
-        #region Ctor
-        static PasswordBoxHelper()
-        {
-            EventManager.RegisterClassHandler(typeof(PasswordBox), PasswordBox.GotFocusEvent, new RoutedEventHandler(OnPasswordBoxGotFocus));
-            EventManager.RegisterClassHandler(typeof(PasswordBox), PasswordBox.LostFocusEvent, new RoutedEventHandler(OnPasswordBoxLostFocus));
-        }
-
-        #endregion
-
         #region Properties
+
         #region Icon
         public static object GetIcon(PasswordBox passwordBox)
         {
@@ -48,14 +40,6 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty PasswordProperty =
             DependencyProperty.RegisterAttached("Password", typeof(string), typeof(PasswordBoxHelper), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnPasswordChanged));
-
-        private static void OnPasswordChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var passwordBox = d as PasswordBox;
-            var newPassword = (string)e.NewValue;
-            if (newPassword != passwordBox.Password)
-                passwordBox.Password = newPassword;
-        }
         #endregion
 
         #region FocusedBorderBrush
@@ -162,36 +146,6 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("CanClear", typeof(bool), typeof(PasswordBoxHelper));
         #endregion
 
-        #region IsWaiting
-        public static bool GetIsWaiting(PasswordBox passwordBox)
-        {
-            return (bool)passwordBox.GetValue(IsWaitingProperty);
-        }
-
-        public static void SetIsWaiting(PasswordBox passwordBox, bool value)
-        {
-            passwordBox.SetValue(IsWaitingProperty, value);
-        }
-
-        public static readonly DependencyProperty IsWaitingProperty =
-            DependencyProperty.RegisterAttached("IsWaiting", typeof(bool), typeof(PasswordBoxHelper));
-        #endregion
-
-        #region ValidationErrorTips
-        public static string GetValidationErrorTips(PasswordBox passwordBox)
-        {
-            return (string)passwordBox.GetValue(ValidationErrorTipsProperty);
-        }
-
-        public static void SetValidationErrorTips(PasswordBox passwordBox, string value)
-        {
-            passwordBox.SetValue(ValidationErrorTipsProperty, value);
-        }
-
-        public static readonly DependencyProperty ValidationErrorTipsProperty =
-            DependencyProperty.RegisterAttached("ValidationErrorTips", typeof(string), typeof(PasswordBoxHelper));
-        #endregion
-
         #region CanPlain
         public static bool GetCanPlain(PasswordBox passwordBox)
         {
@@ -206,59 +160,65 @@ namespace Panuon.UI.Silver
         public static readonly DependencyProperty CanPlainProperty =
             DependencyProperty.RegisterAttached("CanPlain", typeof(bool), typeof(PasswordBoxHelper));
         #endregion
+
         #endregion
 
         #region Internal Properties
 
+        #region Hook
+        internal static bool GetHook(PasswordBox passwordBox)
+        {
+            return (bool)passwordBox.GetValue(HookProperty);
+        }
+
+        internal static void SetHook(PasswordBox passwordBox, bool value)
+        {
+            passwordBox.SetValue(HookProperty, value);
+        }
+
+        public static readonly DependencyProperty HookProperty =
+            DependencyProperty.RegisterAttached("Hook", typeof(bool), typeof(PasswordBoxHelper), new PropertyMetadata(OnHookChanged));
+        #endregion
+
         #region (Internal) ClearPasswordBoxCommand
-        internal static ICommand GetClearPasswordBoxCommand(PasswordBox passwordBox)
-        {
-            return (ICommand)passwordBox.GetValue(ClearPasswordBoxCommandProperty);
-        }
-
-        internal static void SetClearPasswordBoxCommand(PasswordBox passwordBox, ICommand value)
-        {
-            passwordBox.SetValue(ClearPasswordBoxCommandProperty, value);
-        }
-
         internal static readonly DependencyProperty ClearPasswordBoxCommandProperty =
             DependencyProperty.RegisterAttached("ClearPasswordBoxCommand", typeof(ICommand), typeof(PasswordBoxHelper), new PropertyMetadata(new RelayCommand(OnClearPasswordBoxCommandExecute)));
+        #endregion
 
         #endregion
 
-        #region (Internal) PasswordBoxHook
-        public static bool GetPasswordBoxHook(PasswordBox passwordBox)
-        {
-            return (bool)passwordBox.GetValue(PasswordBoxHookProperty);
-        }
-
-        public static void SetPasswordBoxHook(PasswordBox passwordBox, bool value)
-        {
-            passwordBox.SetValue(PasswordBoxHookProperty, value);
-        }
-
-        public static readonly DependencyProperty PasswordBoxHookProperty =
-            DependencyProperty.RegisterAttached("PasswordBoxHook", typeof(bool), typeof(PasswordBoxHelper), new PropertyMetadata(OnPasswordBoxHookChanged));
-
-        private static void OnPasswordBoxHookChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        #region Event Handler
+        private static void OnPasswordChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var passwordBox = d as PasswordBox;
-            passwordBox.PasswordChanged -= PasswordBox_PasswordChanged;
-            if ((bool)e.NewValue)
-                passwordBox.PasswordChanged += PasswordBox_PasswordChanged;
+            var newPassword = (string)e.NewValue;
+            if (newPassword != passwordBox.Password)
+            {
+                passwordBox.Password = newPassword;
+            }
         }
 
-        private static void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        private static void OnHookChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var passwordBox = d as PasswordBox;
+            passwordBox.GotFocus -= OnPasswordBoxGotFocus;
+            passwordBox.LostFocus -= OnPasswordBoxLostFocus;
+            passwordBox.PasswordChanged -= OnPasswordChanged;
+
+            if ((bool)e.NewValue)
+            {
+                passwordBox.GotFocus += OnPasswordBoxGotFocus;
+                passwordBox.LostFocus += OnPasswordBoxLostFocus;
+                passwordBox.PasswordChanged += OnPasswordChanged; ;
+            }
+        }
+
+        private static void OnPasswordChanged(object sender, RoutedEventArgs e)
         {
             var passwordBox = sender as PasswordBox;
             SetPassword(passwordBox, passwordBox.Password);
         }
-        #endregion
-        #endregion
 
-        #region Event Handler
-
-       
         private static void OnPasswordBoxGotFocus(object sender, RoutedEventArgs e)
         {
             var passwordBox = sender as PasswordBox;
@@ -274,7 +234,7 @@ namespace Panuon.UI.Silver
             if (fcForeground != null)
                 dic.Add(PasswordBox.ForegroundProperty, fcForeground);
 
-            StoryboardUtils.BeginBrushStoryboard(passwordBox, dic);
+            UIElementUtils.BeginStoryboard(passwordBox, dic);
         }
 
         private static void OnPasswordBoxLostFocus(object sender, RoutedEventArgs e)
@@ -292,15 +252,14 @@ namespace Panuon.UI.Silver
             if (fcForeground != null)
                 list.Add(PasswordBox.ForegroundProperty);
 
-            StoryboardUtils.BeginBrushStoryboard(passwordBox, list);
+            UIElementUtils.BeginStoryboard(passwordBox, list);
         }
 
-        private static void OnClearPasswordBoxCommandExecute(object obj)
+        private static void OnClearPasswordBoxCommandExecute(object passwordBox)
         {
-            var passwordBox = (obj as PasswordBox);
-            passwordBox.Password = null;
+            var textbox = (passwordBox as PasswordBox);
+            textbox.Password = null;
         }
-
         #endregion
     }
 }

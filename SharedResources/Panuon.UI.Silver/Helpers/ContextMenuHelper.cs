@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -190,21 +187,20 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("ItemsHeight", typeof(double), typeof(ContextMenuHelper));
         #endregion
 
-        #region ItemMinWidth
-        public static double GetItemsMinWidth(ContextMenu contextMenu)
+        #region ItemsWidth
+        public static double GetItemsWidth(ContextMenu contextMneu)
         {
-            return (double)contextMenu.GetValue(ItemsMinWidthProperty);
+            return (double)contextMneu.GetValue(ItemsWidthProperty);
         }
 
-        public static void SetItemsMinWidth(ContextMenu contextMenu, double value)
+        public static void SetItemsWidth(ContextMenu contextMenu, double value)
         {
-            contextMenu.SetValue(ItemsMinWidthProperty, value);
+            contextMenu.SetValue(ItemsWidthProperty, value);
         }
 
-        public static readonly DependencyProperty ItemsMinWidthProperty =
-            DependencyProperty.RegisterAttached("ItemsMinWidth", typeof(double), typeof(ContextMenuHelper));
+        public static readonly DependencyProperty ItemsWidthProperty =
+            DependencyProperty.RegisterAttached("ItemsWidth", typeof(double), typeof(ContextMenuHelper));
         #endregion
-
 
         #region ItemIcon
         public static object GetItemsIcon(ContextMenu contextMenu)

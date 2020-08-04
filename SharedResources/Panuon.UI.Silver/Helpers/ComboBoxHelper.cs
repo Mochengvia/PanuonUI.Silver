@@ -1,5 +1,4 @@
 ﻿using Panuon.UI.Silver.Core;
-using Panuon.UI.Silver.Internal.Utils;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,21 +8,12 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
-
 namespace Panuon.UI.Silver
 {
     public static class ComboBoxHelper
     {
-        #region Ctor
-        static ComboBoxHelper()
-        {
-            EventManager.RegisterClassHandler(typeof(ComboBoxItem), ComboBoxItem.MouseEnterEvent, new RoutedEventHandler(OnComboBoxItemMouseEnter));
-            EventManager.RegisterClassHandler(typeof(ComboBoxItem), ComboBoxItem.MouseLeaveEvent, new RoutedEventHandler(OnComboBoxItemMouseLeave));
-        }
-     
-        #endregion
-
         #region Routed Event
+
         #region ItemRemoving
         public static readonly RoutedEvent ItemRemovingEvent = EventManager.RegisterRoutedEvent("ItemRemoving", RoutingStrategy.Bubble, typeof(RemovingRoutedEventHandler), typeof(ComboBoxHelper));
 
@@ -80,25 +70,24 @@ namespace Panuon.UI.Silver
             uie.RaiseEvent(arg);
         }
         #endregion
+
         #endregion
 
         #region Properties
 
-        #region ComboBoxStyle
-
-
-        public static ComboBoxStyle GetComboBoxStyle(ComboBox comboBox)
+        #region ToggleArrow
+        public static ToggleArrow GetToggleArrow(ComboBox comboBox)
         {
-            return (ComboBoxStyle)comboBox.GetValue(ComboBoxStyleProperty);
+            return (ToggleArrow)comboBox.GetValue(ToggleArrowProperty);
         }
 
-        public static void SetComboBoxStyle(ComboBox comboBox, ComboBoxStyle value)
+        public static void SetToggleArrow(ComboBox comboBox, ToggleArrow value)
         {
-            comboBox.SetValue(ComboBoxStyleProperty, value);
+            comboBox.SetValue(ToggleArrowProperty, value);
         }
 
-        public static readonly DependencyProperty ComboBoxStyleProperty =
-            DependencyProperty.RegisterAttached("ComboBoxStyle", typeof(ComboBoxStyle), typeof(ComboBoxHelper));
+        public static readonly DependencyProperty ToggleArrowProperty =
+            DependencyProperty.RegisterAttached("ToggleArrow", typeof(ToggleArrow), typeof(ComboBoxHelper));
         #endregion
 
         #region ItemsHeight
@@ -142,6 +131,34 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty ItemRemovableProperty =
             DependencyProperty.RegisterAttached("ItemRemovable", typeof(bool), typeof(ComboBoxHelper));
+        #endregion
+
+        #region ItemRemoveButtonStyle
+        public static Style GetItemsRemoveButtonStyle(ComboBox comboBox)
+        {
+            return (Style)comboBox.GetValue(ItemsRemoveButtonStyleProperty);
+        }
+
+        public static void SetItemsRemoveButtonStyle(ComboBox comboBox, Style value)
+        {
+            comboBox.SetValue(ItemsRemoveButtonStyleProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsRemoveButtonStyleProperty =
+            DependencyProperty.RegisterAttached("ItemsRemoveButtonStyle", typeof(Style), typeof(ComboBoxHelper));
+
+        public static Style GetItemRemoveButtonStyle(ComboBoxItem comboBoxItem)
+        {
+            return (Style)comboBoxItem.GetValue(ItemRemoveButtonStyleProperty);
+        }
+
+        public static void SetItemRemoveButtonStyle(ComboBoxItem comboBoxItem, Style value)
+        {
+            comboBoxItem.SetValue(ItemRemoveButtonStyleProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemRemoveButtonStyleProperty =
+            DependencyProperty.RegisterAttached("ItemRemoveButtonStyle", typeof(Style), typeof(ComboBoxHelper));
         #endregion
 
         #region ItemHoverBackground
@@ -322,8 +339,6 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Icon
-
-
         public static object GetIcon(ComboBox comboBox)
         {
             return (object)comboBox.GetValue(IconProperty);
@@ -336,12 +351,9 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty IconProperty =
             DependencyProperty.RegisterAttached("Icon", typeof(object), typeof(ComboBoxHelper));
-
-
         #endregion
 
         #region Watermark
-
         public static string GetWatermark(ComboBox comboBox)
         {
             return (string)comboBox.GetValue(WatermarkProperty);
@@ -354,13 +366,9 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty WatermarkProperty =
             DependencyProperty.RegisterAttached("Watermark", typeof(string), typeof(ComboBoxHelper));
-
-
         #endregion
 
         #region CornerRadius
-
-
         public static CornerRadius GetCornerRadius(ComboBox comboBox)
         {
             return (CornerRadius)comboBox.GetValue(CornerRadiusProperty);
@@ -373,13 +381,9 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(ComboBoxHelper));
-
-
         #endregion
 
         #region DropDownCornerRadius
-
-
         public static CornerRadius GetDropDownCornerRadius(ComboBox comboBox)
         {
             return (CornerRadius)comboBox.GetValue(DropDownCornerRadiusProperty);
@@ -392,13 +396,9 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty DropDownCornerRadiusProperty =
             DependencyProperty.RegisterAttached("DropDownCornerRadius", typeof(CornerRadius), typeof(ComboBoxHelper));
-
-
         #endregion
 
         #region DropDownPadding
-
-
         public static Thickness GetDropDownPadding(ComboBox comboBox)
         {
             return (Thickness)comboBox.GetValue(DropDownPaddingProperty);
@@ -411,13 +411,9 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty DropDownPaddingProperty =
             DependencyProperty.RegisterAttached("DropDownPadding", typeof(Thickness), typeof(ComboBoxHelper));
-
-
         #endregion
 
         #region DropDownShadowColor
-
-
         public static Color? GetDropDownShadowColor(ComboBox comboBox)
         {
             return (Color?)comboBox.GetValue(DropDownShadowColorProperty);
@@ -430,13 +426,9 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty DropDownShadowColorProperty =
             DependencyProperty.RegisterAttached("DropDownShadowColor", typeof(Color?), typeof(ComboBoxHelper));
-
-
         #endregion
 
         #region BindToEnum
-
-
         public static Enum GetBindToEnum(ComboBox comboBox)
         {
             return (Enum)comboBox.GetValue(BindToEnumProperty);
@@ -449,7 +441,6 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty BindToEnumProperty =
             DependencyProperty.RegisterAttached("BindToEnum", typeof(Enum), typeof(ComboBoxHelper), new PropertyMetadata(OnBindToEnumChanged));
-
         #endregion
 
         #region BindToNumberRange
@@ -481,18 +472,18 @@ namespace Panuon.UI.Silver
         {
             var comboBox = d as ComboBox;
             var numberRange = e.NewValue as NumberRange;
-            if(numberRange == null)
+            if (numberRange == null)
             {
                 comboBox.ItemsSource = null;
                 return;
             }
-            if((numberRange.Maximum % 1) == 0 && (numberRange.Minimum % 1) == 0 && (numberRange.Interval % 1) == 0)
+            if ((numberRange.To % 1) == 0 && (numberRange.From % 1) == 0 && (numberRange.Interval % 1) == 0)
             {
                 var dataList = new List<int>();
-                var max = (int)numberRange.Maximum;
-                var min = (int)numberRange.Minimum;
+                var max = (int)numberRange.To;
+                var min = (int)numberRange.From;
                 var interval = (int)numberRange.Interval;
-                for(var i = min; i <= max; i += interval)
+                for (var i = min; i <= max; i += interval)
                 {
                     dataList.Add(i);
                 }
@@ -502,8 +493,8 @@ namespace Panuon.UI.Silver
             else
             {
                 var dataList = new List<double>();
-                var max = numberRange.Maximum;
-                var min = numberRange.Minimum;
+                var max = numberRange.To;
+                var min = numberRange.From;
                 var interval = numberRange.Interval;
                 for (var i = min; i <= max; i += interval)
                 {
@@ -512,42 +503,6 @@ namespace Panuon.UI.Silver
                 comboBox.ItemsSource = dataList;
                 comboBox.SelectedValuePath = ".";
             }
-        }
-
-        private static void OnComboBoxItemMouseEnter(object sender, RoutedEventArgs e)
-        {
-            var button = sender as ComboBoxItem;
-            var hoverBackground = GetItemHoverBackground(button);
-            var hoverBorderBrush = GetItemHoverBorderBrush(button);
-            var hoverForeground = GetItemHoverForeground(button);
-
-            if (hoverBackground == null && hoverBorderBrush == null && hoverForeground == null)
-                return;
-
-            var dic = new Dictionary<DependencyProperty, Brush>();
-            dic.Add(ComboBoxItem.BackgroundProperty, hoverBackground);
-            dic.Add(ComboBoxItem.ForegroundProperty, hoverForeground);
-            dic.Add(ComboBoxItem.BorderBrushProperty, hoverBorderBrush);
-
-            StoryboardUtils.BeginBrushStoryboard(button, dic);
-        }
-
-        private static void OnComboBoxItemMouseLeave(object sender, RoutedEventArgs e)
-        {
-            var button = sender as ComboBoxItem;
-            var hoverBackground = GetItemHoverBackground(button);
-            var hoverBorderBrush = GetItemHoverBorderBrush(button);
-            var hoverForeground = GetItemHoverForeground(button);
-
-            if (hoverBackground == null && hoverBorderBrush == null && hoverForeground == null)
-                return;
-
-            var list = new List<DependencyProperty>();
-            list.Add(ComboBoxItem.BackgroundProperty);
-            list.Add(ComboBoxItem.ForegroundProperty);
-            list.Add(ComboBoxItem.BorderBrushProperty);
-
-            StoryboardUtils.BeginBrushStoryboard(button, list);
         }
 
         private static void OnRemoveCommandExecute(object obj)

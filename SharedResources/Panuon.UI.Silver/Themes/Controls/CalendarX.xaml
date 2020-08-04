@@ -1,0 +1,201 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver"
+                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
+                    xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources"
+                    xmlns:ic="clr-namespace:Panuon.UI.Silver.Internal.Controls"
+                    xmlns:core="clr-namespace:Panuon.UI.Silver.Core">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="{x:Static irs:ResourceKeys.CalendarXButtonStyle}"
+           TargetType="Button">
+        <Setter Property="local:ButtonHelper.Hook"
+                Value="True" />
+        <Setter Property="local:ButtonHelper.HoverForeground"
+                Value="Gray" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="Transparent">
+                        <ContentPresenter VerticalAlignment="Center"
+                                          HorizontalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <ControlTemplate x:Key="{x:Static irs:ResourceKeys.CalendarXTemplate}"
+                     TargetType="local:CalendarX">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Border Grid.RowSpan="2"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    Background="{TemplateBinding Background}"
+                    Effect="{Binding ShadowColor, Converter={StaticResource {x:Static irs:Converters.DropShadowEffectCoverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            <Grid Height="{TemplateBinding CaptionHeight}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Button x:Name="PART_Backward"
+                        Style="{TemplateBinding ButtonStyle}"
+                        Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                        Content="&#xe924;"
+                        FontSize="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon"/>
+                <Button x:Name="PART_Previous"
+                        Grid.Column="1"
+                        Style="{TemplateBinding ButtonStyle}"
+                        Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                        Content="&#xe900;"
+                        FontSize="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon" />
+                <StackPanel Grid.Column="2"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Center">
+                    <Button x:Name="PART_Month"
+                            Content="{TemplateBinding MonthButton}"
+                            Style="{TemplateBinding ButtonStyle}"
+                            FontSize="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                            Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+                    <Button x:Name="PART_Year"
+                            Content="{TemplateBinding YearButton}"
+                            Style="{TemplateBinding ButtonStyle}"
+                            FontSize="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                            Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+                </StackPanel>
+                <Button x:Name="PART_Next"
+                        Grid.Column="3"
+                        Style="{TemplateBinding ButtonStyle}"
+                        Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                        Content="&#xe902;"
+                        FontSize="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon" />
+                <Button x:Name="PART_Forward"
+                        Grid.Column="4"
+                        Style="{TemplateBinding ButtonStyle}"
+                        Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                        Content="&#xe926;"
+                        FontSize="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon" />
+            </Grid>
+            <local:StickyPanel Grid.Row="1"
+                               CurrentIndex="{TemplateBinding CurrentPanel}"
+                               Animation="Scale"
+                               AnimationDuration="{TemplateBinding AnimationDuration}"
+                               AnimationEase="{TemplateBinding AnimationEase}">
+                <ic:CalendarXDayControl x:Name="PART_DayControl" />
+                <ic:CalendarXMonthControl x:Name="PART_MonthControl" />
+                <ic:CalendarXYearControl x:Name="PART_YearControl" />
+            </local:StickyPanel>
+        </Grid>
+    </ControlTemplate>
+
+
+    <Style TargetType="local:CalendarXItem">
+        <Setter Property="FocusVisualStyle"
+                Value="{x:Null}" />
+        <Setter Property="Background"
+                Value="Transparent" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Center" />
+        <Setter Property="CheckedBackground"
+                Value="#3E3E3E" />
+        <Setter Property="CheckedForeground"
+                Value="#FFFFFF" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:CalendarXItem">
+                    <Grid>
+                        <Border BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="{TemplateBinding CornerRadius}" />
+                        <Border x:Name="BdrBack"
+                                Opacity="0"
+                                Background="{TemplateBinding CheckedBackground}"
+                                CornerRadius="{TemplateBinding CornerRadius}" />
+                        <ContentPresenter Margin="{TemplateBinding Margin}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked"
+                                 Value="True">
+                            <Setter TargetName="BdrBack"
+                                    Property="Opacity"
+                                    Value="1" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver"
+                                           Value="True" />
+                                <Condition Property="IsChecked"
+                                           Value="False" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="BdrBack"
+                                    Property="Opacity"
+                                    Value="0.4" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsChecked"
+                     Value="True">
+                <Setter Property="Foreground"
+                        Value="{Binding CheckedForeground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            </Trigger>
+            <Trigger Property="IsEnabled"
+                     Value="False">
+                <Setter Property="Opacity"
+                        Value="0.2" />
+            </Trigger>
+            <Trigger Property="IsWeakenDisplay"
+                     Value="True">
+                <Setter Property="Opacity"
+                        Value="0.4" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="local:CalendarX">
+        <Setter Property="BorderThickness"
+                Value="1" />
+        <Setter Property="BorderBrush"
+                Value="Gray" />
+        <Setter Property="AnimationEase"
+                Value="CubicOut" />
+        <Setter Property="AnimationDuration"
+                Value="0:0:0.5" />
+        <Setter Property="CaptionHeight"
+                Value="40" />
+        <Setter Property="CalendarXItemStyle"
+                Value="{StaticResource {x:Type local:CalendarXItem}}" />
+        <Setter Property="ButtonStyle"
+                Value="{StaticResource {x:Static irs:ResourceKeys.CalendarXButtonStyle}}" />
+        <Setter Property="Template"
+                Value="{StaticResource {x:Static irs:ResourceKeys.CalendarXTemplate}}" />
+        <Style.Triggers>
+            <Trigger Property="IsEnabled"
+                     Value="False">
+                <Setter Property="Opacity"
+                        Value="0.4" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

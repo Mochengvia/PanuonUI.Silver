@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -11,34 +8,34 @@ namespace Panuon.UI.Silver
     {
         #region Properties
 
-        #region GroupBoxStyle
-        public static GroupBoxStyle GetGroupBoxStyle(GroupBox groupBox)
+        #region HorizontalHeaderAlignment
+        public static HorizontalAlignment GetHorizontalHeaderAlignment(GroupBox groupBox)
         {
-            return (GroupBoxStyle)groupBox.GetValue(GroupBoxStyleProperty);
+            return (HorizontalAlignment)groupBox.GetValue(HorizontalHeaderAlignmentProperty);
         }
 
-        public static void SetGroupBoxStyle(GroupBox groupBox, GroupBoxStyle value)
+        public static void SetHorizontalHeaderAlignment(GroupBox groupBox, HorizontalAlignment value)
         {
-            groupBox.SetValue(GroupBoxStyleProperty, value);
+            groupBox.SetValue(HorizontalHeaderAlignmentProperty, value);
         }
 
-        public static readonly DependencyProperty GroupBoxStyleProperty =
-            DependencyProperty.RegisterAttached("GroupBoxStyle", typeof(GroupBoxStyle), typeof(GroupBoxHelper));
+        public static readonly DependencyProperty HorizontalHeaderAlignmentProperty =
+            DependencyProperty.RegisterAttached("HorizontalHeaderAlignment", typeof(HorizontalAlignment), typeof(GroupBoxHelper));
         #endregion
 
-        #region HeaderBackground
-        public static Brush GetHeaderBackground(GroupBox groupBox)
+        #region VerticalHeaderAlignment
+        public static GroupBoxVerticalHeaderAlignment GetVerticalHeaderAlignment(GroupBox groupBox)
         {
-            return (Brush)groupBox.GetValue(HeaderBackgroundProperty);
+            return (GroupBoxVerticalHeaderAlignment)groupBox.GetValue(VerticalHeaderAlignmentProperty);
         }
 
-        public static void SetHeaderBackground(GroupBox groupBox, Brush value)
+        public static void SetVerticalHeaderAlignment(GroupBox groupBox, GroupBoxVerticalHeaderAlignment value)
         {
-            groupBox.SetValue(HeaderBackgroundProperty, value);
+            groupBox.SetValue(VerticalHeaderAlignmentProperty, value);
         }
 
-        public static readonly DependencyProperty HeaderBackgroundProperty =
-            DependencyProperty.RegisterAttached("HeaderBackground", typeof(Brush), typeof(GroupBoxHelper));
+        public static readonly DependencyProperty VerticalHeaderAlignmentProperty =
+            DependencyProperty.RegisterAttached("VerticalHeaderAlignment", typeof(GroupBoxVerticalHeaderAlignment), typeof(GroupBoxHelper));
         #endregion
 
         #region HeaderForeground
@@ -56,6 +53,21 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("HeaderForeground", typeof(Brush), typeof(GroupBoxHelper));
         #endregion
 
+        #region HeaderBackground
+        public static Brush GetHeaderBackground(GroupBox groupBox)
+        {
+            return (Brush)groupBox.GetValue(HeaderBackgroundProperty);
+        }
+
+        public static void SetHeaderBackground(GroupBox groupBox, Brush value)
+        {
+            groupBox.SetValue(HeaderBackgroundProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderBackgroundProperty =
+            DependencyProperty.RegisterAttached("HeaderBackground", typeof(Brush), typeof(GroupBoxHelper));
+        #endregion
+
         #region HeaderHeight
         public static double GetHeaderHeight(GroupBox groupBox)
         {
@@ -71,6 +83,21 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("HeaderHeight", typeof(double), typeof(GroupBoxHelper));
         #endregion
 
+        #region HeaderFontSize
+        public static int GetFontSize(GroupBox groupBox)
+        {
+            return (int)groupBox.GetValue(FontSizeProperty);
+        }
+
+        public static void SetFontSize(GroupBox groupBox, int value)
+        {
+            groupBox.SetValue(FontSizeProperty, value);
+        }
+
+        public static readonly DependencyProperty FontSizeProperty =
+            DependencyProperty.RegisterAttached("FontSize", typeof(int), typeof(GroupBoxHelper));
+        #endregion
+
         #region HeaderPadding
         public static Thickness GetHeaderPadding(GroupBox groupBox)
         {
@@ -84,6 +111,51 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty HeaderPaddingProperty =
             DependencyProperty.RegisterAttached("HeaderPadding", typeof(Thickness), typeof(GroupBoxHelper));
+        #endregion
+
+        #region HeaderRibbonLineVisibility
+        public static Visibility GetHeaderRibbonLineVisibility(GroupBox groupBox)
+        {
+            return (Visibility)groupBox.GetValue(HeaderRibbonLineVisibilityProperty);
+        }
+
+        public static void SetHeaderRibbonLineVisibility(GroupBox groupBox, Visibility value)
+        {
+            groupBox.SetValue(HeaderRibbonLineVisibilityProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderRibbonLineVisibilityProperty =
+            DependencyProperty.RegisterAttached("HeaderRibbonLineVisibility", typeof(Visibility), typeof(GroupBoxHelper));
+        #endregion
+
+        #region HeaderRibbonLineBrush
+        public static Brush GetHeaderRibbonLineBrush(GroupBox groupBox)
+        {
+            return (Brush)groupBox.GetValue(HeaderRibbonLineBrushProperty);
+        }
+
+        public static void SetHeaderRibbonLineBrush(GroupBox groupBox, Brush value)
+        {
+            groupBox.SetValue(HeaderRibbonLineBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderRibbonLineBrushProperty =
+            DependencyProperty.RegisterAttached("HeaderRibbonLineBrush", typeof(Brush), typeof(GroupBoxHelper));
+        #endregion
+
+        #region HeaderRibbonLineThickness
+        public static double GetHeaderRibbonLineThickness(GroupBox groupBox)
+        {
+            return (double)groupBox.GetValue(HeaderRibbonLineThicknessProperty);
+        }
+
+        public static void SetHeaderRibbonLineThickness(GroupBox groupBox, double value)
+        {
+            groupBox.SetValue(HeaderRibbonLineThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderRibbonLineThicknessProperty =
+            DependencyProperty.RegisterAttached("HeaderRibbonLineThickness", typeof(double), typeof(GroupBoxHelper));
         #endregion
 
         #region Icon

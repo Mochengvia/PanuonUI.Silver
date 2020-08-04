@@ -1,7 +1,7 @@
 ﻿using Panuon.UI.Silver.Internal.Utils;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 
@@ -9,101 +9,107 @@ namespace Panuon.UI.Silver
 {
     public static class RepeatButtonHelper
     {
-        #region Ctor
-        static RepeatButtonHelper()
-        {
-            EventManager.RegisterClassHandler(typeof(RepeatButton), RepeatButton.MouseEnterEvent, new RoutedEventHandler(OnRepeatButtonMouseEnter));
-            EventManager.RegisterClassHandler(typeof(RepeatButton), RepeatButton.MouseLeaveEvent, new RoutedEventHandler(OnRepeatButtonMouseLeave));
-        }
-
-        #endregion
-
         #region Properties
 
         #region Icon
-        public static object GetIcon(RepeatButton repeatButton)
+        public static object GetIcon(RepeatButton button)
         {
-            return (object)repeatButton.GetValue(IconProperty);
+            return (object)button.GetValue(IconProperty);
         }
 
-        public static void SetIcon(RepeatButton repeatButton, object value)
+        public static void SetIcon(RepeatButton button, object value)
         {
-            repeatButton.SetValue(IconProperty, value);
+            button.SetValue(IconProperty, value);
         }
 
         public static readonly DependencyProperty IconProperty =
             DependencyProperty.RegisterAttached("Icon", typeof(object), typeof(RepeatButtonHelper));
         #endregion
 
-        #region IconPosition
-        public static IconPosition GetIconPosition(RepeatButton repeatButton)
+        #region IconPlacement
+        public static IconPlacement GetIconPlacement(RepeatButton button)
         {
-            return (IconPosition)repeatButton.GetValue(IconPositionProperty);
+            return (IconPlacement)button.GetValue(IconPlacementProperty);
         }
 
-        public static void SetIconPosition(RepeatButton repeatButton, IconPosition value)
+        public static void SetIconPlacement(RepeatButton button, IconPlacement value)
         {
-            repeatButton.SetValue(IconPositionProperty, value);
+            button.SetValue(IconPlacementProperty, value);
         }
 
-        public static readonly DependencyProperty IconPositionProperty =
-            DependencyProperty.RegisterAttached("IconPosition", typeof(IconPosition), typeof(RepeatButtonHelper));
-        #endregion
-
-        #region RepeatButtonStyle
-        public static RepeatButtonStyle GetRepeatButtonStyle(RepeatButton repeatButton)
-        {
-            return (RepeatButtonStyle)repeatButton.GetValue(RepeatButtonStyleProperty);
-        }
-
-        public static void SetRepeatButtonStyle(RepeatButton repeatButton, RepeatButtonStyle value)
-        {
-            repeatButton.SetValue(RepeatButtonStyleProperty, value);
-        }
-
-        public static readonly DependencyProperty RepeatButtonStyleProperty =
-            DependencyProperty.RegisterAttached("RepeatButtonStyle", typeof(RepeatButtonStyle), typeof(RepeatButtonHelper));
+        public static readonly DependencyProperty IconPlacementProperty =
+            DependencyProperty.RegisterAttached("IconPlacement", typeof(IconPlacement), typeof(RepeatButtonHelper));
         #endregion
 
         #region ClickStyle
-        public static ClickStyle GetClickStyle(RepeatButton repeatButton)
+        public static ClickStyle GetClickStyle(RepeatButton button)
         {
-            return (ClickStyle)repeatButton.GetValue(ClickStyleProperty);
+            return (ClickStyle)button.GetValue(ClickStyleProperty);
         }
 
-        public static void SetClickStyle(RepeatButton repeatButton, ClickStyle value)
+        public static void SetClickStyle(RepeatButton button, ClickStyle value)
         {
-            repeatButton.SetValue(ClickStyleProperty, value);
+            button.SetValue(ClickStyleProperty, value);
         }
 
         public static readonly DependencyProperty ClickStyleProperty =
             DependencyProperty.RegisterAttached("ClickStyle", typeof(ClickStyle), typeof(RepeatButtonHelper));
         #endregion
 
-        #region HoverBrush
-        public static Brush GetHoverBrush(RepeatButton repeatButton)
+        #region HoverBackground
+        public static Brush GetHoverBackground(RepeatButton button)
         {
-            return (Brush)repeatButton.GetValue(HoverBrushProperty);
+            return (Brush)button.GetValue(HoverBackgroundProperty);
         }
 
-        public static void SetHoverBrush(RepeatButton repeatButton, Brush value)
+        public static void SetHoverBackground(RepeatButton button, Brush value)
         {
-            repeatButton.SetValue(HoverBrushProperty, value);
+            button.SetValue(HoverBackgroundProperty, value);
         }
 
-        public static readonly DependencyProperty HoverBrushProperty =
-            DependencyProperty.RegisterAttached("HoverBrush", typeof(Brush), typeof(RepeatButtonHelper));
+        public static readonly DependencyProperty HoverBackgroundProperty =
+            DependencyProperty.RegisterAttached("HoverBackground", typeof(Brush), typeof(RepeatButtonHelper));
+        #endregion
+
+        #region HoverForeground
+        public static Brush GetHoverForeground(RepeatButton button)
+        {
+            return (Brush)button.GetValue(HoverForegroundProperty);
+        }
+
+        public static void SetHoverForeground(RepeatButton button, Brush value)
+        {
+            button.SetValue(HoverForegroundProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverForegroundProperty =
+            DependencyProperty.RegisterAttached("HoverForeground", typeof(Brush), typeof(RepeatButtonHelper));
+        #endregion
+
+        #region HoverBorderBrush
+        public static Brush GetHoverBorderBrush(RepeatButton button)
+        {
+            return (Brush)button.GetValue(HoverBorderBrushProperty);
+        }
+
+        public static void SetHoverBorderBrush(RepeatButton button, Brush value)
+        {
+            button.SetValue(HoverBorderBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverBorderBrushProperty =
+            DependencyProperty.RegisterAttached("HoverBorderBrush", typeof(Brush), typeof(RepeatButtonHelper));
         #endregion
 
         #region CornerRadius
-        public static CornerRadius GetCornerRadius(RepeatButton repeatButton)
+        public static CornerRadius GetCornerRadius(RepeatButton button)
         {
-            return (CornerRadius)repeatButton.GetValue(CornerRadiusProperty);
+            return (CornerRadius)button.GetValue(CornerRadiusProperty);
         }
 
-        public static void SetCornerRadius(RepeatButton repeatButton, CornerRadius value)
+        public static void SetCornerRadius(RepeatButton button, CornerRadius value)
         {
-            repeatButton.SetValue(CornerRadiusProperty, value);
+            button.SetValue(CornerRadiusProperty, value);
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
@@ -111,106 +117,115 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region IsWaiting
-        public static bool GetIsWaiting(RepeatButton repeatButton)
+        public static bool GetIsWaiting(RepeatButton button)
         {
-            return (bool)repeatButton.GetValue(IsWaitingProperty);
+            return (bool)button.GetValue(IsWaitingProperty);
         }
 
-        public static void SetIsWaiting(RepeatButton repeatButton, bool value)
+        public static void SetIsWaiting(RepeatButton button, bool value)
         {
-            repeatButton.SetValue(IsWaitingProperty, value);
+            button.SetValue(IsWaitingProperty, value);
         }
 
         public static readonly DependencyProperty IsWaitingProperty =
             DependencyProperty.RegisterAttached("IsWaiting", typeof(bool), typeof(RepeatButtonHelper));
         #endregion
 
-        #region WaitingContent
-        public static object GetWaitingContent(RepeatButton repeatButton)
+        #endregion
+
+        #region Internal Properties
+
+        #region Hook
+        internal static bool GetHook(RepeatButton repeatButton)
         {
-            return (object)repeatButton.GetValue(WaitingContentProperty);
+            return (bool)repeatButton.GetValue(HookProperty);
         }
 
-        public static void SetWaitingContent(RepeatButton repeatButton, object value)
+        internal static void SetHook(RepeatButton repeatButton, bool value)
         {
-            repeatButton.SetValue(WaitingContentProperty, value);
+            repeatButton.SetValue(HookProperty, value);
         }
 
-        public static readonly DependencyProperty WaitingContentProperty =
-            DependencyProperty.RegisterAttached("WaitingContent", typeof(object), typeof(RepeatButtonHelper));
+         internal static readonly DependencyProperty HookProperty =
+            DependencyProperty.RegisterAttached("Hook", typeof(bool), typeof(RepeatButtonHelper), new PropertyMetadata(OnHookChanged));
         #endregion
 
         #endregion
 
-        #region Event Handler
+        #region Event Handlers
+        private static void OnHookChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var button = d as RepeatButton;
+            if (button == null)
+            {
+                return;
+            }
+
+            button.MouseEnter -= OnRepeatButtonMouseEnter;
+            button.MouseLeave -= OnRepeatButtonMouseLeave;
+
+            if ((bool)e.NewValue)
+            {
+                button.MouseEnter += OnRepeatButtonMouseEnter;
+                button.MouseLeave += OnRepeatButtonMouseLeave;
+            }
+        }
 
         private static void OnRepeatButtonMouseEnter(object sender, RoutedEventArgs e)
         {
-            var repeatButton = sender as RepeatButton;
-            var repeatButtonStyle = GetRepeatButtonStyle(repeatButton);
-            var hoverBrush = GetHoverBrush(repeatButton);
-
-            if (hoverBrush == null)
-                return;
+            var button = sender as RepeatButton;
+            var hoverBackground = GetHoverBackground(button);
+            var hoverForeground = GetHoverForeground(button);
+            var hoverBorderBrush = GetHoverBorderBrush(button);
 
             var dic = new Dictionary<DependencyProperty, Brush>();
-            switch (repeatButtonStyle)
+            if (hoverBackground != null)
             {
-                case RepeatButtonStyle.Standard:
-                    dic.Add(RepeatButton.BackgroundProperty, hoverBrush);
-                    break;
-                case RepeatButtonStyle.Hollow:
-                    dic.Add(RepeatButton.BackgroundProperty, hoverBrush);
-                    dic.Add(RepeatButton.ForegroundProperty, Brushes.White);
-                    dic.Add(IconHelper.ForegroundProperty, Brushes.White);
-                    break;
-                case RepeatButtonStyle.Outline:
-                    dic.Add(RepeatButton.BorderBrushProperty, hoverBrush);
-                    dic.Add(RepeatButton.ForegroundProperty, hoverBrush);
-                    dic.Add(IconHelper.ForegroundProperty, hoverBrush);
-                    break;
-                case RepeatButtonStyle.Link:
-                    dic.Add(RepeatButton.ForegroundProperty, hoverBrush);
-                    dic.Add(IconHelper.ForegroundProperty, hoverBrush);
-                    break;
+                dic.Add(RepeatButton.BackgroundProperty, hoverBackground);
             }
-            StoryboardUtils.BeginBrushStoryboard(repeatButton, dic);
+            if (hoverForeground != null)
+            {
+                dic.Add(RepeatButton.ForegroundProperty, hoverForeground);
+            }
+            if (hoverBorderBrush != null)
+            {
+                dic.Add(RepeatButton.BorderBrushProperty, hoverBorderBrush);
+            }
+            if (dic.Any())
+            {
+                UIElementUtils.BeginStoryboard(button, dic);
+            }
         }
-
 
         private static void OnRepeatButtonMouseLeave(object sender, RoutedEventArgs e)
         {
-            var repeatButton = sender as RepeatButton;
-            var repeatButtonStyle = GetRepeatButtonStyle(repeatButton);
-            var hoverBrush = GetHoverBrush(repeatButton);
-
-            if (hoverBrush == null)
-                return;
+            var button = sender as RepeatButton;
+            var hoverBackground = GetHoverBackground(button);
+            var hoverForeground = GetHoverForeground(button);
+            var hoverBorderBrush = GetHoverBorderBrush(button);
 
             var list = new List<DependencyProperty>();
-            switch (repeatButtonStyle)
+            if (hoverBackground != null)
             {
-                case RepeatButtonStyle.Standard:
-                    list.Add(RepeatButton.BackgroundProperty);
-                    break;
-                case RepeatButtonStyle.Hollow:
-                    list.Add(RepeatButton.BackgroundProperty);
-                    list.Add(RepeatButton.ForegroundProperty);
-                    list.Add(IconHelper.ForegroundProperty);
-                    break;
-                case RepeatButtonStyle.Outline:
-                    list.Add(RepeatButton.BorderBrushProperty);
-                    list.Add(RepeatButton.ForegroundProperty);
-                    list.Add(IconHelper.ForegroundProperty);
-                    break;
-                case RepeatButtonStyle.Link:
-                    list.Add(RepeatButton.ForegroundProperty);
-                    list.Add(IconHelper.ForegroundProperty);
-                    break;
+                list.Add(RepeatButton.BackgroundProperty);
             }
-            StoryboardUtils.BeginBrushStoryboard(repeatButton, list);
+            if (hoverForeground != null)
+            {
+                list.Add(RepeatButton.ForegroundProperty);
+            }
+            if (hoverBorderBrush != null)
+            {
+                list.Add(RepeatButton.BorderBrushProperty);
+            }
+            if (list.Any())
+            {
+                UIElementUtils.BeginStoryboard(button, list);
+            }
         }
 
+        #endregion
+
+        #region Functions
         #endregion
     }
 }

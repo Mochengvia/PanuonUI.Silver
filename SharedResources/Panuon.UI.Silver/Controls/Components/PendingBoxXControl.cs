@@ -1,23 +1,16 @@
-﻿using Panuon.UI.Silver.Core;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
 
 namespace Panuon.UI.Silver.Components
 {
-    public class PendingBoxXControl : Control
+    public sealed class PendingBoxXControl : Control
     {
         #region Fields
-        private Button _cancelButton;
-
-        private object _cancelButtonContent;
-
-        private bool _canCancel;
+        internal Button _cancelButton;
         #endregion
 
         #region Ctor
@@ -25,51 +18,34 @@ namespace Panuon.UI.Silver.Components
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(PendingBoxXControl), new FrameworkPropertyMetadata(typeof(PendingBoxXControl)));
         }
-
-        public PendingBoxXControl(string message,  string caption, bool canCancel, object cancelButtonContent)
-        {
-            Message = message;
-            Caption = caption;
-            _cancelButtonContent = cancelButtonContent;
-            _canCancel = canCancel;
-        }
         #endregion
 
-        #region Overrides
-
-        protected override void OnInitialized(EventArgs e)
-        {
-            base.OnInitialized(e);
-            Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() =>
-            {
-                _cancelButton = Template.FindName("PART_CancelButton", this) as Button;
-                UpdateState();
-            }));
-        }
+        #region Events
+        internal event EventHandler OnTemplatedChanged;
         #endregion
 
         #region Properties
 
-        #region Caption
-        public string Caption
-        {
-            get { return (string)GetValue(CaptionProperty); }
-            set { SetValue(CaptionProperty, value); }
-        }
-
-        public static readonly DependencyProperty CaptionProperty =
-            DependencyProperty.Register("Caption", typeof(string), typeof(PendingBoxXControl));
-        #endregion
-
         #region Message
-        public string Message
+        public object Message
         {
-            get { return (string)GetValue(MessageProperty); }
+            get { return (object)GetValue(MessageProperty); }
             set { SetValue(MessageProperty, value); }
         }
 
         public static readonly DependencyProperty MessageProperty =
-            DependencyProperty.Register("Message", typeof(string), typeof(PendingBoxXControl));
+            DependencyProperty.Register("Message", typeof(object), typeof(PendingBoxXControl));
+        #endregion
+
+        #region ImageSource
+        public string ImageSource
+        {
+            get { return (string)GetValue(ImageSourceProperty); }
+            set { SetValue(ImageSourceProperty, value); }
+        }
+
+        public static readonly DependencyProperty ImageSourceProperty =
+            DependencyProperty.Register("ImageSource", typeof(string), typeof(PendingBoxXControl));
         #endregion
 
         #region LoadingStyle
@@ -81,28 +57,6 @@ namespace Panuon.UI.Silver.Components
 
         public static readonly DependencyProperty LoadingStyleProperty =
             DependencyProperty.Register("LoadingStyle", typeof(Style), typeof(PendingBoxXControl));
-        #endregion
-
-        #region ShadowColor
-        public Color? ShadowColor
-        {
-            get { return (Color?)GetValue(ShadowColorProperty); }
-            set { SetValue(ShadowColorProperty, value); }
-        }
-
-        public static readonly DependencyProperty ShadowColorProperty =
-            DependencyProperty.Register("ShadowColor", typeof(Color?), typeof(PendingBoxXControl));
-        #endregion
-
-        #region CornerRadius
-        public CornerRadius CornerRadius
-        {
-            get { return (CornerRadius)GetValue(CornerRadiusProperty); }
-            set { SetValue(CornerRadiusProperty, value); }
-        }
-
-        public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(PendingBoxXControl));
         #endregion
 
         #region CancelButtonStyle
@@ -118,48 +72,25 @@ namespace Panuon.UI.Silver.Components
 
         #endregion
 
-        #region Event
-        public event EventHandler Cancel;
-        #endregion
-
-        #region Internal Properties
-
-   
-        #region IsLoading
-        internal bool IsLoading
+        #region Override
+        protected override void OnTemplateChanged(ControlTemplate oldTemplate, ControlTemplate newTemplate)
         {
-            get { return (bool)GetValue(IsLoadingProperty); }
-            set { SetValue(IsLoadingProperty, value); }
+            base.OnTemplateChanged(oldTemplate, newTemplate);
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                _cancelButton = newTemplate?.FindName("PART_CancelButton", this) as Button;
+                OnTemplatedChanged?.Invoke(this, new EventArgs());
+            }), DispatcherPriority.DataBind);
         }
-
-        internal static readonly DependencyProperty IsLoadingProperty =
-            DependencyProperty.Register("IsLoading", typeof(bool), typeof(PendingBoxXControl));
         #endregion
 
+        #region Methods
         #endregion
 
         #region Event Handlers
-
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
-        {
-            Cancel?.Invoke(this, null);
-        }
         #endregion
 
-        #region Function
-        private void UpdateState()
-        {
-            if (_cancelButton != null)
-            {
-                _cancelButton.Content = _cancelButtonContent;
-                _cancelButton.Visibility = _canCancel ? Visibility.Visible : Visibility.Collapsed;
-                _cancelButton.IsCancel = true;
-                _cancelButton.Click -= CancelButton_Click;
-                _cancelButton.Click += CancelButton_Click;
-            }
-        }
-
-      
+        #region Functions
         #endregion
     }
 }

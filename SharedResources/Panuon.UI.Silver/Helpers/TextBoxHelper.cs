@@ -10,15 +10,6 @@ namespace Panuon.UI.Silver
 {
     public static class TextBoxHelper
     {
-
-        #region Ctor
-        static TextBoxHelper()
-        {
-            EventManager.RegisterClassHandler(typeof(TextBox), TextBox.GotFocusEvent, new RoutedEventHandler(OnTextBoxGotFocus));
-            EventManager.RegisterClassHandler(typeof(TextBox), TextBox.LostFocusEvent, new RoutedEventHandler(OnTextBoxLostFocus));
-        }
-        #endregion
-
         #region Properties
 
         #region Icon
@@ -140,48 +131,45 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("CanClear", typeof(bool), typeof(TextBoxHelper));
         #endregion
 
-        #region IsWaiting
-        public static bool GetIsWaiting(TextBox textBox)
-        {
-            return (bool)textBox.GetValue(IsWaitingProperty);
-        }
-
-        public static void SetIsWaiting(TextBox textBox, bool value)
-        {
-            textBox.SetValue(IsWaitingProperty, value);
-        }
-
-        public static readonly DependencyProperty IsWaitingProperty =
-            DependencyProperty.RegisterAttached("IsWaiting", typeof(bool), typeof(TextBoxHelper));
-        #endregion
-
-        #region ValidationErrorTips
-        public static string GetValidationErrorTips(TextBox textBox)
-        {
-            return (string)textBox.GetValue(ValidationErrorTipsProperty);
-        }
-
-        public static void SetValidationErrorTips(TextBox textBox, string value)
-        {
-            textBox.SetValue(ValidationErrorTipsProperty, value);
-        }
-
-        public static readonly DependencyProperty ValidationErrorTipsProperty =
-            DependencyProperty.RegisterAttached("ValidationErrorTips", typeof(string), typeof(TextBoxHelper));
-        #endregion
         #endregion
 
         #region Internal Properties
 
+        #region Hook
+        internal static bool GetHook(TextBox textBox)
+        {
+            return (bool)textBox.GetValue(HookProperty);
+        }
+
+        internal static void SetHook(TextBox textBox, bool value)
+        {
+            textBox.SetValue(HookProperty, value);
+        }
+
+        public static readonly DependencyProperty HookProperty =
+            DependencyProperty.RegisterAttached("Hook", typeof(bool), typeof(TextBoxHelper), new PropertyMetadata(OnHookChanged));
+        #endregion
+
         #region (Internal) ClearTextBoxCommand
         internal static readonly DependencyProperty ClearTextBoxCommandProperty =
             DependencyProperty.RegisterAttached("ClearTextBoxCommand", typeof(ICommand), typeof(TextBoxHelper), new PropertyMetadata(new RelayCommand(OnClearTextBoxCommandExecute)));
-
         #endregion
 
         #endregion
 
         #region Event Handler
+        private static void OnHookChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var textBox = d as TextBox;
+            textBox.GotFocus -= OnTextBoxGotFocus;
+            textBox.LostFocus -= OnTextBoxLostFocus;
+
+            if ((bool)e.NewValue)
+            {
+                textBox.GotFocus += OnTextBoxGotFocus;
+                textBox.LostFocus += OnTextBoxLostFocus;
+            }
+        }
 
         private static void OnTextBoxGotFocus(object sender, RoutedEventArgs e)
         {
@@ -198,7 +186,7 @@ namespace Panuon.UI.Silver
             if (fcForeground != null)
                 dic.Add(TextBox.ForegroundProperty, fcForeground);
 
-            StoryboardUtils.BeginBrushStoryboard(textBox, dic);
+            UIElementUtils.BeginStoryboard(textBox, dic);
         }
 
         private static void OnTextBoxLostFocus(object sender, RoutedEventArgs e)
@@ -216,7 +204,7 @@ namespace Panuon.UI.Silver
             if (fcForeground != null)
                 list.Add(TextBox.ForegroundProperty);
 
-            StoryboardUtils.BeginBrushStoryboard(textBox, list);
+            UIElementUtils.BeginStoryboard(textBox, list);
         }
 
         private static void OnClearTextBoxCommandExecute(object textBox)
@@ -225,6 +213,5 @@ namespace Panuon.UI.Silver
             textbox.Text = null;
         }
         #endregion
-
     }
 }

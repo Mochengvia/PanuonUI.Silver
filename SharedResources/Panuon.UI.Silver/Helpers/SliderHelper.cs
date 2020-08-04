@@ -8,21 +8,6 @@ namespace Panuon.UI.Silver
     {
         #region Properties
         
-        #region SliderStyle
-        public static SliderStyle GetSliderStyle(Slider slider)
-        {
-            return (SliderStyle)slider.GetValue(SliderStyleProperty);
-        }
-
-        public static void SetSliderStyle(Slider slider, SliderStyle value)
-        {
-            slider.SetValue(SliderStyleProperty, value);
-        }
-
-        public static readonly DependencyProperty SliderStyleProperty =
-            DependencyProperty.RegisterAttached("SliderStyle", typeof(SliderStyle), typeof(SliderHelper));
-        #endregion
-
         #region TrackThickness
         public static double GetTrackThickness(Slider slider)
         {
@@ -54,33 +39,63 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region ThumbCornerRadius
-        public static double GetThumbCornerRadius(Slider slider)
+        public static CornerRadius GetThumbCornerRadius(Slider slider)
         {
-            return (double)slider.GetValue(ThumbCornerRadiusProperty);
+            return (CornerRadius)slider.GetValue(ThumbCornerRadiusProperty);
         }
 
-        public static void SetThumbCornerRadius(Slider slider, double value)
+        public static void SetThumbCornerRadius(Slider slider, CornerRadius value)
         {
             slider.SetValue(ThumbCornerRadiusProperty, value);
         }
 
         public static readonly DependencyProperty ThumbCornerRadiusProperty =
-            DependencyProperty.RegisterAttached("ThumbCornerRadius", typeof(double), typeof(SliderHelper));
+            DependencyProperty.RegisterAttached("ThumbCornerRadius", typeof(CornerRadius), typeof(SliderHelper));
         #endregion
 
-        #region ThumbBrush
-        public static Brush GetThumbBrush(Slider slider)
+        #region ThumbBackground
+        public static Brush GetThumbBackground(Slider slider)
         {
-            return (Brush)slider.GetValue(ThumbBrushProperty);
+            return (Brush)slider.GetValue(ThumbBackgroundProperty);
         }
 
-        public static void SetThumbBrush(Slider slider, Brush value)
+        public static void SetThumbBackground(Slider slider, Brush value)
         {
-            slider.SetValue(ThumbBrushProperty, value);
+            slider.SetValue(ThumbBackgroundProperty, value);
         }
 
-        public static readonly DependencyProperty ThumbBrushProperty =
-            DependencyProperty.RegisterAttached("ThumbBrush", typeof(Brush), typeof(SliderHelper));
+        public static readonly DependencyProperty ThumbBackgroundProperty =
+            DependencyProperty.RegisterAttached("ThumbBackground", typeof(Brush), typeof(SliderHelper));
+        #endregion
+
+        #region ThumbBorderBrush
+        public static Brush GetThumbBorderBrush(DependencyObject obj)
+        {
+            return (Brush)obj.GetValue(ThumbBorderBrushProperty);
+        }
+
+        public static void SetThumbBorderBrush(DependencyObject obj, Brush value)
+        {
+            obj.SetValue(ThumbBorderBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty ThumbBorderBrushProperty =
+            DependencyProperty.RegisterAttached("ThumbBorderBrush", typeof(Brush), typeof(SliderHelper));
+        #endregion
+
+        #region ThumbBorderThickness
+        public static double GetThumbBorderThickness(DependencyObject obj)
+        {
+            return (double)obj.GetValue(ThumbBorderThicknessProperty);
+        }
+
+        public static void SetThumbBorderThickness(DependencyObject obj, double value)
+        {
+            obj.SetValue(ThumbBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty ThumbBorderThicknessProperty =
+            DependencyProperty.RegisterAttached("ThumbBorderThickness", typeof(double), typeof(SliderHelper));
         #endregion
 
         #region ThumbShadowColor

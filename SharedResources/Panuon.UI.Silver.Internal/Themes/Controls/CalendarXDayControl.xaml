@@ -1,0 +1,58 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver"
+                    xmlns:ic="clr-namespace:Panuon.UI.Silver.Internal.Controls">
+    
+    <Style TargetType="ic:CalendarXDayControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ic:CalendarXDayControl">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition Height="6*"/>
+                        </Grid.RowDefinitions>
+                        <ItemsControl ItemsSource="{TemplateBinding Weeks}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid Columns="7" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Center"
+                                               FontWeight="Bold"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+                        <ItemsControl Grid.Row="1"
+                                      ItemsSource="{TemplateBinding Days}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid Rows="6"
+                                                 Columns="7" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <local:CalendarXItem Style="{Binding CalendarXItemStyle, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}"
+                                                         IsChecked="{Binding IsChecked}"
+                                                         Content="{Binding Content}"
+                                                         Value="{Binding Value}"
+                                                         IsEnabled="{Binding IsEnabled}"
+                                                         IsToday="{Binding IsToday}"
+                                                         IsWeakenDisplay="{Binding IsWeakenDisplay}" 
+                                                         Category="Day"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Grid>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

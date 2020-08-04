@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C4566056-4AD7-42A8-BF27-3116EAD887F5}</ProjectGuid>
+    <ProjectGuid>{10232B0B-092D-4D68-A076-7576E8F4E808}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>UIBrowser</RootNamespace>
     <AssemblyName>UIBrowser</AssemblyName>
@@ -33,24 +33,21 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationIcon>Resources\Images\panuon.ico</ApplicationIcon>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Caliburn.Micro, Version=3.2.0.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Caliburn.Micro.Core.3.2.0\lib\net45\Caliburn.Micro.dll</HintPath>
+      <HintPath>..\packages\Caliburn.Micro.Core.3.2.0\lib\net45\Caliburn.Micro.dll</HintPath>
     </Reference>
     <Reference Include="Caliburn.Micro.Platform, Version=3.2.0.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Caliburn.Micro.3.2.0\lib\net45\Caliburn.Micro.Platform.dll</HintPath>
+      <HintPath>..\packages\Caliburn.Micro.3.2.0\lib\net45\Caliburn.Micro.Platform.dll</HintPath>
     </Reference>
     <Reference Include="Caliburn.Micro.Platform.Core, Version=3.2.0.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Caliburn.Micro.3.2.0\lib\net45\Caliburn.Micro.Platform.Core.dll</HintPath>
+      <HintPath>..\packages\Caliburn.Micro.3.2.0\lib\net45\Caliburn.Micro.Platform.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Caliburn.Micro.3.2.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <HintPath>..\packages\Caliburn.Micro.3.2.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -75,14 +72,13 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Components\AppBootstrapper.cs" />
-    <Compile Include="Models\FontItem.cs" />
-    <Compile Include="Models\PartialViewItem.cs" />
-    <Compile Include="Models\ViewInfo.cs" />
-    <Compile Include="Utils\ViewUtils.cs" />
-    <Compile Include="ViewModels\Partials\Customs\WindowXViewModel.cs" />
-    <Compile Include="ViewModels\Partials\Miscellaneous\IconFontViewModel.cs" />
-    <Compile Include="ViewModels\Partials\Notifications\PendingBoxXViewModel.cs" />
-    <Compile Include="ViewModels\Partials\Notifications\NoticeXViewModel.cs" />
+    <Compile Include="Components\Enums\Sex.cs" />
+    <Compile Include="Models\DataItem.cs" />
+    <Compile Include="Models\PartialViewltem.cs" />
+    <Compile Include="ViewModels\Partials\TabControlViewModel.cs" />
+    <Compile Include="ViewModels\Partials\SliderViewModel.cs" />
+    <Compile Include="ViewModels\Partials\DataGridViewModel.cs" />
+    <Compile Include="ViewModels\Partials\ButtonViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -104,54 +100,51 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\panuon.png" />
+    <Resource Include="Resources\Images\Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Net45\Panuon.UI.Silver\Panuon.UI.Silver.csproj">
+      <Project>{cad12043-ed7a-4c3f-b4e6-7e0fd6b17d80}</Project>
+      <Name>Panuon.UI.Silver</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UIBrowser.Core\UIBrowser.Core.csproj">
+      <Project>{6ade9678-962e-45eb-a38e-c1dac87a1014}</Project>
+      <Name>UIBrowser.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UIBrowser.Examples\UIBrowser.Examples.csproj">
+      <Project>{f75dec4a-b23d-4958-ac5c-4da3b15172aa}</Project>
+      <Name>UIBrowser.Examples</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UIBrowser.Palette\UIBrowser.Palette.csproj">
+      <Project>{441175a2-ab53-4520-9d6c-5cb10c37fdb9}</Project>
+      <Name>UIBrowser.Palette</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Page Include="Resources\Control.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Partials\Customs\WindowXView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Partials\Miscellaneous\IconFontView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Partials\Notifications\PendingBoxXView.xaml">
+    <Page Include="Views\Partials\TabControlView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Partials\Notifications\NoticeXView.xaml">
+    <Page Include="Views\Partials\SliderView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Partials\DataGridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Partials\ButtonView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ShellView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Net45\Panuon.UI.Silver\Panuon.UI.Silver.csproj">
-      <Project>{9ce564ba-ae91-4350-8b91-ec21d4752b69}</Project>
-      <Name>Panuon.UI.Silver</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UIBrowser.Core\UIBrowser.Core.csproj">
-      <Project>{fb4e69b7-5e34-48f1-ada4-f8feaf9e1a6d}</Project>
-      <Name>UIBrowser.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UIBrowser.Localization\UIBrowser.Localization.csproj">
-      <Project>{d4f108e4-a0d9-4939-abe0-be6c4b49fdde}</Project>
-      <Name>UIBrowser.Localization</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UIBrowser.Palette\UIBrowser.Palette.csproj">
-      <Project>{1a779466-81a4-4ca2-9e04-09713ffc41c9}</Project>
-      <Name>UIBrowser.Palette</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\panuon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

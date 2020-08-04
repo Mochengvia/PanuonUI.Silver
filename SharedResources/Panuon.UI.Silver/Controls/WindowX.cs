@@ -1,4 +1,5 @@
 ﻿using Panuon.UI.Silver.Core;
+using Panuon.UI.Silver.Utils;
 using System;
 using System.ComponentModel;
 using System.Windows;
@@ -7,16 +8,33 @@ using System.Windows.Media;
 
 namespace Panuon.UI.Silver
 {
-    public partial class WindowX : Window
+    public class WindowX : Window
     {
         #region Identifer
-        private bool _closeHandler = true;
+        private WindowState _lastWindowState;
         #endregion
 
         #region Ctor
         static WindowX()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(WindowX), new FrameworkPropertyMetadata(typeof(WindowX)));
+        }
+        #endregion
+
+        #region Overrides
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            if (!CanClose)
+            {
+                e.Cancel = true;
+            }
+            base.OnClosing(e);
+        }
+
+        protected override void OnContentRendered(EventArgs e)
+        {
+            base.OnContentRendered(e);
+            InvalidateVisual();
         }
         #endregion
 
@@ -33,24 +51,18 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("IsEscEnabled", typeof(bool), typeof(WindowX));
         #endregion
 
-        #region DisableForceClosing
-        /// <summary>
-        /// Gets or sets is force closing disabled.
-        /// </summary>
-        public bool DisableForceClosing
+        #region CanClose
+      public bool CanClose
         {
-            get { return (bool)GetValue(DisableForceClosingProperty); }
-            set { SetValue(DisableForceClosingProperty, value); }
+            get { return (bool)GetValue(CanCloseProperty); }
+            set { SetValue(CanCloseProperty, value); }
         }
 
-        public static readonly DependencyProperty DisableForceClosingProperty =
-            DependencyProperty.Register("DisableForceClosing", typeof(bool), typeof(WindowX));
+        public static readonly DependencyProperty CanCloseProperty =
+            DependencyProperty.Register("CanClose", typeof(bool), typeof(WindowX), new PropertyMetadata(true));
         #endregion
 
         #region IsMaskVisible
-        /// <summary>
-        /// Gets or sets is mask visible.
-        /// </summary>
         public bool IsMaskVisible
         {
             get { return (bool)GetValue(IsMaskVisibleProperty); }
@@ -62,9 +74,6 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region MaskBrush
-        /// <summary>
-        /// Gets or sets mask brush.
-        /// </summary>
         public Brush MaskBrush
         {
             get { return (Brush)GetValue(MaskBrushProperty); }
@@ -76,9 +85,6 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Backstage
-        /// <summary>
-        /// Gets or sets backstage.
-        /// </summary>
         public object Backstage
         {
             get { return (object)GetValue(BackstageProperty); }
@@ -90,9 +96,6 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region IsBackstageVisible
-        /// <summary>
-        /// Gets or sets is backstage visible.
-        /// </summary>
         public bool IsBackstageVisible
         {
             get { return (bool)GetValue(IsBackstageVisibleProperty); }
@@ -103,9 +106,7 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("IsBackstageVisible", typeof(bool), typeof(WindowX));
         #endregion
 
-        #endregion
-
-        #region Attached Property
+        #region IsDragMoveArea
         public static bool? GetIsDragMoveArea(DependencyObject obj)
         {
             return (bool?)obj.GetValue(IsDragMoveAreaProperty);
@@ -120,6 +121,74 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("IsDragMoveArea", typeof(bool?), typeof(WindowX), new PropertyMetadata(OnIsDragMoveAreaChanged));
         #endregion
 
+        #endregion
+
+        #region Methods
+
+        #region Close
+        public new void Close()
+        {
+            CanClose = true;
+            base.Close();
+        }
+        #endregion
+
+        #region Minimize
+        public void Minimize()
+        {
+            _lastWindowState = WindowState;
+            WindowState = WindowState.Minimized;
+        }
+        #endregion
+
+        #region Maximize
+        public void Maximize()
+        {
+            _lastWindowState = WindowState;
+            WindowState = WindowState.Maximized;
+        }
+        #endregion
+
+        #region Normalmize
+        public void Normalmize()
+        {
+            _lastWindowState = WindowState;
+            WindowState = WindowState.Normal;
+        }
+        #endregion
+
+        #region MaximizeOrRestore
+        public void MaximizeOrRestore()
+        {
+            _lastWindowState = WindowState;
+            if (WindowState == WindowState.Maximized)
+            {
+                WindowState = _lastWindowState;
+            }
+            else
+            {
+                Maximize();
+            }
+        }
+        #endregion
+
+        #region MinimizeOrRestore
+        public void MinimizeOrRestore()
+        {
+            _lastWindowState = WindowState;
+            if (WindowState == WindowState.Minimized)
+            {
+                WindowState = _lastWindowState;
+            }
+            else
+            {
+                Minimize();
+            }
+        }
+        #endregion
+
+        #endregion
+
         #region Commands
         public static readonly DependencyProperty MinimizeCommandProperty =
             DependencyProperty.Register("MinimizeCommand", typeof(ICommand), typeof(WindowX), new PropertyMetadata(new RelayCommand(OnMinimizeCommandExecute)));
@@ -131,13 +200,16 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("CloseCommand", typeof(ICommand), typeof(WindowX), new PropertyMetadata(new RelayCommand(OnCloseCommandExecute)));
         #endregion
 
-        #region Event Handler
+
+        #region Event Handlers
         private static void OnIsDragMoveAreaChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var element = d as UIElement;
-            SetIsHitTestVisibleInChrome(element, true);
+            WindowChromeUtils.SetIsHitTestVisibleInChrome(element, true);
             if ((bool)e.NewValue)
-                SetIsHitTestVisibleInChrome(element, false);
+            {
+                WindowChromeUtils.SetIsHitTestVisibleInChrome(element, false);
+            }
         }
 
         private static void OnMinimizeCommandExecute(object obj)
@@ -149,7 +221,14 @@ namespace Panuon.UI.Silver
         private static void OnMaximizeCommandExecute(object obj)
         {
             var window = (obj as WindowX);
-            window.MaximizeOrNormalmize();
+            if (window.WindowState == WindowState.Maximized)
+            {
+                window.WindowState = WindowState.Normal;
+            }
+            else
+            {
+                window.WindowState = WindowState.Maximized;
+            }
         }
 
 
@@ -159,54 +238,6 @@ namespace Panuon.UI.Silver
             windowX.Close();
         }
 
-        #endregion
-
-        #region Override
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            if (DisableForceClosing && _closeHandler)
-            {
-                return;
-            }
-            base.OnClosing(e);
-        }
-
-        protected override void OnContentRendered(EventArgs e)
-        {
-            base.OnContentRendered(e);
-            InvalidateVisual();
-        }
-        #endregion
-
-        #region Methods
-        public new void Close()
-        {
-            _closeHandler = false;
-            base.Close();
-        }
-
-        public void Minimize()
-        {
-            WindowState = WindowState.Minimized;
-        }
-
-        public void Maximize()
-        {
-            WindowState = WindowState.Maximized;
-        }
-
-        public void Normalmize()
-        {
-            WindowState = WindowState.Normal;
-        }
-
-        public void MaximizeOrNormalmize()
-        {
-            if (WindowState == WindowState.Maximized)
-                Normalmize();
-            else
-                Maximize();
-        }
         #endregion
     }
 }

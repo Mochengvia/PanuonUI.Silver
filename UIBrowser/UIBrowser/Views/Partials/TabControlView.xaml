@@ -1,0 +1,75 @@
+﻿<UserControl x:Class="UIBrowser.Views.Partials.TabControlView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:UIBrowser.Views.Partials"
+             xmlns:pu="clr-namespace:Panuon.UI.Silver;assembly=Panuon.UI.Silver"
+             xmlns:corep="clr-namespace:UIBrowser.Core.Properties;assembly=UIBrowser.Core"
+             xmlns:plt="clr-namespace:UIBrowser.Palette;assembly=UIBrowser.Palette"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <ScrollViewer HorizontalScrollBarVisibility="Auto">
+        <StackPanel>
+            <TabControl BorderThickness="0"
+                        pu:TabControlHelper.HeaderPanelRibbonLineBrush="{DynamicResource Blue}"
+                        pu:TabControlHelper.ItemsBorderBrush="{DynamicResource Blue}"
+                        pu:TabControlHelper.ItemsSelectedForeground="{DynamicResource Blue}">
+                <TabItem Header="Item1"/>
+                <TabItem Header="Item2"/>
+                <TabItem Header="Item3"/>
+            </TabControl>
+            <TabControl Margin="0,10,0,0"
+                        BorderThickness="0"
+                        pu:TabControlHelper.ItemsBorderThickness="0"
+                        pu:TabControlHelper.ItemsSelectedBorderThickness="0"
+                        pu:TabControlHelper.HeaderPanelAlignment="Front"
+                        pu:TabControlHelper.HeaderPanelRibbonLineVisibility="Collapsed"
+                        pu:TabControlHelper.ItemsCornerRadius="4"
+                        pu:TabControlHelper.HeaderPanelBackground="{DynamicResource TranslucentGreen}"
+                        pu:TabControlHelper.ItemsSelectedBackground="{DynamicResource Green}"
+                        pu:TabControlHelper.ItemsSelectedForeground="White">
+                <TabItem Header="Item1" />
+                <TabItem Header="Item2" />
+                <TabItem Header="Item3" />
+            </TabControl>
+            <TabControl Margin="0,10,0,0"
+                        BorderThickness="0"
+                        pu:TabControlHelper.ItemsPadding="10,0,10,2"
+                        pu:TabControlHelper.ItemsBorderThickness="0,0,0,1"
+                        pu:TabControlHelper.ItemsBorderBrush="{DynamicResource TranslucentPink}"
+                        pu:TabControlHelper.ItemsSelectedBorderThickness="0"
+                        pu:TabControlHelper.HeaderPanelRibbonLineVisibility="Collapsed"
+                        pu:TabControlHelper.ItemsRibbonBrush="{DynamicResource TranslucentPink}"
+                        pu:TabControlHelper.ItemsRibbonPlacement="Bottom"
+                        pu:TabControlHelper.ItemsSelectedRibbonBrush="{DynamicResource Pink}"
+                        pu:TabControlHelper.ItemsRibbonThickness="2">
+                <TabItem Header="Item1" />
+                <TabItem Header="Item2" />
+                <TabItem Header="Item3" />
+            </TabControl>
+            <TabControl Margin="0,10,0,0"
+                        TabStripPlacement="Left"
+                        BorderThickness="0"
+                        pu:TabControlHelper.ItemsPadding="10,0,10,2"
+                        pu:TabControlHelper.ItemsBorderThickness="0"
+                        pu:TabControlHelper.ItemsSelectedBorderThickness="0"
+                        pu:TabControlHelper.HeaderPanelRibbonLineVisibility="Collapsed"
+                        pu:TabControlHelper.ItemsRibbonBrush="{DynamicResource TranslucentOrange}"
+                        pu:TabControlHelper.ItemsRibbonPlacement="Left"
+                        pu:TabControlHelper.ItemsSelectedRibbonBrush="{DynamicResource Orange}"
+                        pu:TabControlHelper.ItemsRibbonThickness="3">
+                <TabItem Header="Item1" />
+                <TabItem Header="Item2" />
+                <TabItem Header="Item3" />
+            </TabControl>
+
+            <TextBlock Grid.Row="1"
+                       Margin="0,10,0,0"
+                       Foreground="Gray"
+                       TextWrapping="Wrap"
+                       Text="{x:Static corep:Resources.PaletteTips}" />
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

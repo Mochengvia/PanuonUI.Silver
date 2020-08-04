@@ -1,40 +1,45 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Panuon.UI.Silver"
-                    xmlns:i="clr-namespace:Panuon.UI.Silver.Internal"
-                    xmlns:ic="clr-namespace:Panuon.UI.Silver.Internal.Controls"
+                    xmlns:core="clr-namespace:Panuon.UI.Silver.Core"
+                    xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources"
                     xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/InternalResources.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Resources.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <ControlTemplate x:Key="{x:Static i:ResourceKeys.RadioButtonStandardTemplate}"
+    <ControlTemplate x:Key="{x:Static irs:ResourceKeys.RadioButtonStandardTemplate}"
                      TargetType="RadioButton">
         <StackPanel Orientation="Horizontal"
                     Background="Transparent"
                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                    >
-            <Border x:Name="BdrBox"
-                    Opacity="0.8"
-                    Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                    Width="{Binding Path=(local:RadioButtonHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                    BorderBrush="{TemplateBinding BorderBrush}"
-                    BorderThickness="{TemplateBinding BorderThickness}"
-                    Background="{TemplateBinding Background}"
-                    CornerRadius="{Binding ActualHeight, Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=2,RelativeSource={RelativeSource Self}, Mode=OneWay}">
-                <Ellipse x:Name="EllToggle"
-                         Fill="{Binding Path=(local:RadioButtonHelper.GlyphBrush),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                         RenderTransformOrigin="0.5,0.5">
-                    <Ellipse.RenderTransform>
-                        <ScaleTransform x:Name="ScaleToggle"
-                                        ScaleX="0.4"
-                                        ScaleY="0.4" />
-                    </Ellipse.RenderTransform>
-                </Ellipse>
-            </Border>
-            <ContentPresenter x:Name="Presenter"
+                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+            <Grid Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                  Width="{Binding Path=(local:RadioButtonHelper.BoxWidth),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                <Border x:Name="BdrBoxBorder"
+                        Opacity="0.6"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{Binding Path=(local:RadioButtonHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Border x:Name="BdrBoxFill"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        Background="{TemplateBinding Background}"
+                        CornerRadius="{Binding Path=(local:RadioButtonHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Border x:Name="BrdBoxNull"
+                        Background="{Binding Path=(local:RadioButtonHelper.NullableGlyphBrush),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        Height="{Binding Path=(local:RadioButtonHelper.BoxHeight), Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        Width="{Binding Path=(local:RadioButtonHelper.BoxWidth), Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        CornerRadius="{Binding Path=(local:RadioButtonHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        Visibility="Collapsed" />
+                <TextBlock x:Name="TxtGlyph"
+                           Text="&#xe92e;"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon"
+                           Foreground="{Binding Path=(local:RadioButtonHelper.GlyphBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           FontSize="{Binding Path=(local:RadioButtonHelper.BoxWidth), Converter={StaticResource {x:Static rs:Converters.DoubleMinusConverter}}, ConverterParameter=3, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </Grid>
+            <ContentPresenter x:Name="CpContent"
                               RecognizesAccessKey="True"
                               Margin="{TemplateBinding Padding}"
                               VerticalAlignment="Center" />
@@ -47,149 +52,87 @@
                     <Condition Property="IsChecked"
                                Value="False" />
                 </MultiTrigger.Conditions>
-                <Setter TargetName="BdrBox"
+                <Setter TargetName="BdrBoxBorder"
                         Property="Opacity"
                         Value="1" />
-                <MultiTrigger.EnterActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimation Storyboard.TargetName="ScaleToggle"
-                                             Storyboard.TargetProperty="ScaleX"
-                                             To="0.45"
-                                             Duration="0:0:0.1" />
-                            <DoubleAnimation Storyboard.TargetName="ScaleToggle"
-                                             Storyboard.TargetProperty="ScaleY"
-                                             To="0.45"
-                                             Duration="0:0:0.1" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </MultiTrigger.EnterActions>
-                <MultiTrigger.ExitActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimation Storyboard.TargetName="ScaleToggle"
-                                             Storyboard.TargetProperty="ScaleX"
-                                             Duration="0:0:0.1" />
-                            <DoubleAnimation Storyboard.TargetName="ScaleToggle"
-                                             Storyboard.TargetProperty="ScaleY"
-                                             Duration="0:0:0.1" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </MultiTrigger.ExitActions>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver"
+                               Value="False" />
+                    <Condition Property="IsChecked"
+                               Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="BdrBoxBorder"
+                        Property="Opacity"
+                        Value="1" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver"
+                               Value="False" />
+                    <Condition Property="IsChecked"
+                               Value="{x:Null}" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="BdrBoxBorder"
+                        Property="Opacity"
+                        Value="1" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver"
+                               Value="True" />
+                    <Condition Property="IsChecked"
+                               Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="BdrBoxBorder"
+                        Property="Opacity"
+                        Value="0.6" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver"
+                               Value="True" />
+                    <Condition Property="IsChecked"
+                               Value="{x:Null}" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="BdrBoxBorder"
+                        Property="Opacity"
+                        Value="0.6" />
             </MultiTrigger>
             <Trigger Property="IsChecked"
-                     Value="True">
-                <Setter TargetName="BdrBox"
-                        Property="Opacity"
-                        Value="1" />
-                <Trigger.EnterActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimation Storyboard.TargetName="ScaleToggle"
-                                             Storyboard.TargetProperty="ScaleX"
-                                             To="0.55"
-                                             Duration="0:0:0.3">
-                                <DoubleAnimation.EasingFunction>
-                                    <BackEase EasingMode="EaseOut"></BackEase>
-                                </DoubleAnimation.EasingFunction>
-                            </DoubleAnimation>
-                            <DoubleAnimation Storyboard.TargetName="ScaleToggle"
-                                             Storyboard.TargetProperty="ScaleY"
-                                             To="0.55"
-                                             Duration="0:0:0.3">
-                                <DoubleAnimation.EasingFunction>
-                                    <BackEase EasingMode="EaseOut"></BackEase>
-                                </DoubleAnimation.EasingFunction>
-                            </DoubleAnimation>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </Trigger.EnterActions>
-                <Trigger.ExitActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimation Storyboard.TargetName="ScaleToggle"
-                                             Storyboard.TargetProperty="ScaleX"
-                                             Duration="0:0:0.3">
-                                <DoubleAnimation.EasingFunction>
-                                    <BackEase EasingMode="EaseOut"></BackEase>
-                                </DoubleAnimation.EasingFunction>
-                            </DoubleAnimation>
-                            <DoubleAnimation Storyboard.TargetName="ScaleToggle"
-                                             Storyboard.TargetProperty="ScaleY"
-                                             Duration="0:0:0.3">
-                                <DoubleAnimation.EasingFunction>
-                                    <BackEase EasingMode="EaseOut"></BackEase>
-                                </DoubleAnimation.EasingFunction>
-                            </DoubleAnimation>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </Trigger.ExitActions>
+                     Value="{x:Null}">
+                <Setter TargetName="BrdBoxNull"
+                        Property="Visibility"
+                        Value="Visible" />
             </Trigger>
-
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
+                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:RadioButtonHelper.CheckedBorderBrush), Converter={StaticResource {x:Static i:ResourceKeys.IsNotNullConverter}}, RelativeSource={RelativeSource Self}}"
-                               Value="True" />
-                </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrBox"
-                        Property="BorderBrush"
-                        Value="{Binding Path=(local:RadioButtonHelper.CheckedBorderBrush),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}" />
-            </MultiDataTrigger>
-            <MultiDataTrigger>
-                <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
-                               Value="True" />
-                    <Condition Binding="{Binding Path=(local:RadioButtonHelper.CheckedBackground), Converter={StaticResource {x:Static i:ResourceKeys.IsNotNullConverter}}, RelativeSource={RelativeSource Self}}"
+                    <Condition Binding="{Binding Path=(local:RadioButtonHelper.CheckedContent), Converter={StaticResource {x:Static rs:Converters.IsNotNullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrBox"
-                        Property="Background"
-                        Value="{Binding Path=(local:RadioButtonHelper.CheckedBackground),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}" />
-            </MultiDataTrigger>
-            <MultiDataTrigger>
-                <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
-                               Value="True" />
-                    <Condition Binding="{Binding Path=(local:RadioButtonHelper.CheckedGlyphBrush), Converter={StaticResource {x:Static i:ResourceKeys.IsNotNullConverter}}, RelativeSource={RelativeSource Self}}"
-                               Value="True" />
-                </MultiDataTrigger.Conditions>
-                <Setter TargetName="EllToggle"
-                        Property="Fill"
-                        Value="{Binding Path=(local:RadioButtonHelper.CheckedGlyphBrush),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}" />
-            </MultiDataTrigger>
-            <MultiDataTrigger>
-                <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
-                               Value="True" />
-                    <Condition Binding="{Binding Path=(local:RadioButtonHelper.CheckedContent), Converter={StaticResource {x:Static i:ResourceKeys.IsNotNullConverter}}, RelativeSource={RelativeSource Self}}"
-                               Value="True" />
-                </MultiDataTrigger.Conditions>
-                <Setter TargetName="Presenter"
+                <Setter TargetName="CpContent"
                         Property="Content"
-                        Value="{Binding Path=(local:RadioButtonHelper.CheckedContent),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}" />
+                        Value="{Binding Path=(local:RadioButtonHelper.CheckedContent),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
-
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <ControlTemplate x:Key="{x:Static i:ResourceKeys.RadioButtonSwitchTemplate}"
+    <ControlTemplate x:Key="{x:Static irs:ResourceKeys.RadioButtonSwitchTemplate}"
                      TargetType="RadioButton">
         <StackPanel Orientation="Horizontal"
                     Background="Transparent"
                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                    >
-            <Grid Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                  Width="{Binding Path=(local:RadioButtonHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}">
-                <Border x:Name="BdrMain"
-                        CornerRadius="{Binding ActualHeight, Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource Self}}"
+                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+            <Grid Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                  Width="{Binding Path=(local:RadioButtonHelper.BoxWidth),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                <Border  CornerRadius="{Binding ActualHeight, Converter={StaticResource {x:Static irs:Converters.RoundCornerConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                         BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{Binding BorderThickness, RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                        Background="{Binding Path=(local:RadioButtonHelper.CheckedBackground), RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}">
-                    <Rectangle x:Name="RectBoxBack"
-                               RadiusX="{Binding ActualHeight, Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource Self}}"
+                        BorderThickness="{Binding BorderThickness, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        Background="{Binding Path=(local:RadioButtonHelper.CheckedBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                    <Rectangle RadiusX="{Binding ActualHeight, Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource Self}}"
                                RadiusY="{Binding ActualHeight, Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource Self}}"
                                RenderTransformOrigin="0.5,0.5"
                                Fill="{TemplateBinding Background}">
@@ -200,17 +143,17 @@
                         </Rectangle.RenderTransform>
                     </Rectangle>
                 </Border>
-                <Rectangle x:Name="EllToggle"
+                <Rectangle x:Name="RectToggle"
                            Stroke="Transparent"
                            Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                            RadiusX="{Binding ActualHeight, Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource Self}}"
                            RadiusY="{Binding ActualHeight, Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource Self}}"
                            HorizontalAlignment="Right"
-                           Fill="{Binding Path=(local:RadioButtonHelper.GlyphBrush), RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}">
+                           Fill="{Binding Path=(local:RadioButtonHelper.GlyphBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                     <Rectangle.Margin>
-                        <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.CheckBoxSwitchToggleMarginConverter}}">
+                        <MultiBinding Converter="{StaticResource {x:Static irs:Converters.CheckBoxSwitchToggleMarginConverter}}">
                             <Binding Path="(local:RadioButtonHelper.BoxWidth)"
-                                     RelativeSource="{RelativeSource AncestorType=RadioButton}"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
                                      Mode="OneWay" />
                             <Binding Path="ActualWidth"
                                      RelativeSource="{RelativeSource Self}"
@@ -226,7 +169,7 @@
                     </Rectangle.Effect>
                 </Rectangle>
             </Grid>
-            <ContentPresenter x:Name="Presenter"
+            <ContentPresenter x:Name="CpContent"
                               RecognizesAccessKey="True"
                               Margin="{TemplateBinding Padding}"
                               VerticalAlignment="Center" />
@@ -237,7 +180,7 @@
                 <Trigger.EnterActions>
                     <BeginStoryboard>
                         <Storyboard>
-                            <ThicknessAnimation Storyboard.TargetName="EllToggle"
+                            <ThicknessAnimation Storyboard.TargetName="RectToggle"
                                                 Storyboard.TargetProperty="Margin"
                                                 To="0"
                                                 Duration="0:0:0.3">
@@ -267,7 +210,7 @@
                 <Trigger.ExitActions>
                     <BeginStoryboard>
                         <Storyboard>
-                            <ThicknessAnimation Storyboard.TargetName="EllToggle"
+                            <ThicknessAnimation Storyboard.TargetName="RectToggle"
                                                 Storyboard.TargetProperty="Margin"
                                                 Duration="0:0:0.3">
                                 <ThicknessAnimation.EasingFunction>
@@ -294,87 +237,72 @@
             </Trigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
+                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:RadioButtonHelper.CheckedBorderBrush), Converter={StaticResource {x:Static i:ResourceKeys.IsNotNullConverter}}, RelativeSource={RelativeSource Self}}"
-                               Value="True" />
-                </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrMain"
-                        Property="BorderBrush"
-                        Value="{Binding Path=(local:RadioButtonHelper.CheckedBorderBrush),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}" />
-            </MultiDataTrigger>
-            <MultiDataTrigger>
-                <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
-                               Value="True" />
-                    <Condition Binding="{Binding Path=(local:RadioButtonHelper.CheckedContent), Converter={StaticResource {x:Static i:ResourceKeys.IsNotNullConverter}}, RelativeSource={RelativeSource Self}}"
+                    <Condition Binding="{Binding Path=(local:RadioButtonHelper.CheckedContent), Converter={StaticResource {x:Static rs:Converters.IsNotNullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="Presenter"
+                <Setter TargetName="CpContent"
                         Property="Content"
-                        Value="{Binding Path=(local:RadioButtonHelper.CheckedContent),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}" />
+                        Value="{Binding Path=(local:RadioButtonHelper.CheckedContent),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <ControlTemplate x:Key="{x:Static i:ResourceKeys.RadioButtonSwitch2Template}"
+    <ControlTemplate x:Key="{x:Static irs:ResourceKeys.RadioButtonSwitch2Template}"
                      TargetType="RadioButton">
         <StackPanel Orientation="Horizontal"
                     Background="Transparent"
                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                    >
-            <Grid Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                  Width="{Binding Path=(local:RadioButtonHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}">
+                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+            <Grid Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                  Width="{Binding Path=(local:RadioButtonHelper.BoxWidth),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                 <Border x:Name="BdrMain"
-                        CornerRadius="{Binding Path=(local:RadioButtonHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                        CornerRadius="{Binding Path=(local:RadioButtonHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                         BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{Binding BorderThickness, RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                        Background="{Binding Path=(local:RadioButtonHelper.CheckedBackground), RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}">
-                    <Rectangle x:Name="RectBoxBack"
-                               RadiusX="{Binding Path=(local:RadioButtonHelper.CornerRadius), Converter={StaticResource {x:Static i:ResourceKeys.CornerRadiusToDoubleConverter}}, RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                               RadiusY="{Binding Path=(local:RadioButtonHelper.CornerRadius), Converter={StaticResource {x:Static i:ResourceKeys.CornerRadiusToDoubleConverter}}, RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                        BorderThickness="{Binding BorderThickness, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        Background="{Binding Path=(local:RadioButtonHelper.CheckedBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                    <Border x:Name="RectBoxBack"
+                            CornerRadius="{Binding Path=(local:RadioButtonHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                RenderTransformOrigin="0.5,0.5"
-                               Fill="{TemplateBinding Background}">
-                        <Rectangle.RenderTransform>
+                               Background="{TemplateBinding Background}">
+                        <Border.RenderTransform>
                             <ScaleTransform x:Name="ScaleBoxBack"
                                             ScaleX="1"
                                             ScaleY="1" />
-                        </Rectangle.RenderTransform>
-                    </Rectangle>
+                        </Border.RenderTransform>
+                    </Border>
                 </Border>
                 <Rectangle HorizontalAlignment="Left"
-                           Fill="White"
+                           Fill="{Binding Path=(local:RadioButtonHelper.GlyphBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            Width="3"
-                           Margin="{Binding ActualHeight, Converter={StaticResource {x:Static i:ResourceKeys.CheckBoxSwitch2DecorationMarginConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-
-                <Rectangle x:Name="EllToggle"
-                           Stroke="Transparent"
+                           Margin="{Binding ActualHeight, Converter={StaticResource {x:Static irs:Converters.CheckBoxSwitch2DecorationMarginConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+                <Border x:Name="BdrToggle"
+                           BorderBrush="Transparent"
                            Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
-                           RadiusX="{Binding Path=(local:RadioButtonHelper.CornerRadius), Converter={StaticResource {x:Static i:ResourceKeys.CornerRadiusToDoubleConverter}}, RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                           RadiusY="{Binding Path=(local:RadioButtonHelper.CornerRadius), Converter={StaticResource {x:Static i:ResourceKeys.CornerRadiusToDoubleConverter}}, RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                           HorizontalAlignment="Right"
-                           Fill="{Binding Path=(local:RadioButtonHelper.GlyphBrush), RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}">
-                    <Rectangle.Margin>
-                        <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.CheckBoxSwitchToggleMarginConverter}}">
+                        CornerRadius="{Binding Path=(local:RadioButtonHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        HorizontalAlignment="Right"
+                           Background="{Binding Path=(local:RadioButtonHelper.GlyphBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                    <Border.Margin>
+                        <MultiBinding Converter="{StaticResource {x:Static irs:Converters.CheckBoxSwitchToggleMarginConverter}}">
                             <Binding Path="(local:RadioButtonHelper.BoxWidth)"
-                                     RelativeSource="{RelativeSource AncestorType=RadioButton}"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
                                      Mode="OneWay" />
                             <Binding Path="ActualWidth"
                                      RelativeSource="{RelativeSource Self}"
                                      Mode="OneWay" />
                         </MultiBinding>
-                    </Rectangle.Margin>
-                    <Rectangle.Effect>
+                    </Border.Margin>
+                    <Border.Effect>
                         <DropShadowEffect Color="DimGray"
                                           Opacity="0.4"
                                           BlurRadius="3"
                                           ShadowDepth="1"
                                           Direction="275" />
-                    </Rectangle.Effect>
-                </Rectangle>
+                    </Border.Effect>
+                </Border>
             </Grid>
-            <ContentPresenter x:Name="Presenter"
+            <ContentPresenter x:Name="CpContent"
                               RecognizesAccessKey="True"
                               Margin="{TemplateBinding Padding}"
                               VerticalAlignment="Center" />
@@ -385,7 +313,7 @@
                 <Trigger.EnterActions>
                     <BeginStoryboard>
                         <Storyboard>
-                            <ThicknessAnimation Storyboard.TargetName="EllToggle"
+                            <ThicknessAnimation Storyboard.TargetName="BdrToggle"
                                                 Storyboard.TargetProperty="Margin"
                                                 To="0"
                                                 Duration="0:0:0.3">
@@ -415,7 +343,7 @@
                 <Trigger.ExitActions>
                     <BeginStoryboard>
                         <Storyboard>
-                            <ThicknessAnimation Storyboard.TargetName="EllToggle"
+                            <ThicknessAnimation Storyboard.TargetName="BdrToggle"
                                                 Storyboard.TargetProperty="Margin"
                                                 Duration="0:0:0.3">
                                 <ThicknessAnimation.EasingFunction>
@@ -442,60 +370,49 @@
             </Trigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
+                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:RadioButtonHelper.CheckedBorderBrush), Converter={StaticResource {x:Static i:ResourceKeys.IsNotNullConverter}}, RelativeSource={RelativeSource Self}}"
-                               Value="True" />
-                </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrMain"
-                        Property="BorderBrush"
-                        Value="{Binding Path=(local:RadioButtonHelper.CheckedBorderBrush),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}" />
-            </MultiDataTrigger>
-            <MultiDataTrigger>
-                <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
-                               Value="True" />
-                    <Condition Binding="{Binding Path=(local:RadioButtonHelper.CheckedContent), Converter={StaticResource {x:Static i:ResourceKeys.IsNotNullConverter}}, RelativeSource={RelativeSource Self}}"
+                    <Condition Binding="{Binding Path=(local:RadioButtonHelper.CheckedContent), Converter={StaticResource {x:Static rs:Converters.IsNotNullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="Presenter"
+                <Setter TargetName="CpContent"
                         Property="Content"
-                        Value="{Binding Path=(local:RadioButtonHelper.CheckedContent),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}" />
+                        Value="{Binding Path=(local:RadioButtonHelper.CheckedContent),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <ControlTemplate x:Key="{x:Static i:ResourceKeys.RadioButtonSwitch3Template}"
+    <ControlTemplate x:Key="{x:Static irs:ResourceKeys.RadioButtonSwitch3Template}"
                      TargetType="RadioButton">
         <StackPanel Orientation="Horizontal"
                     Background="Transparent"
                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                    >
-            <Grid Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                  Width="{Binding Path=(local:RadioButtonHelper.BoxWidth),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}">
+                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+            <Grid Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                  Width="{Binding Path=(local:RadioButtonHelper.BoxWidth),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                 <Border x:Name="BdrMain"
-                        CornerRadius="{Binding ActualHeight, Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource Self}}"
+                        CornerRadius="{Binding ActualHeight, Converter={StaticResource {x:Static irs:Converters.RoundCornerConverter}}, RelativeSource={RelativeSource Self}}"
                         BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{Binding BorderThickness, RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                        BorderThickness="{Binding BorderThickness, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                         Background="{TemplateBinding Background}">
                     <Rectangle x:Name="RectBoxBack"
                                RadiusX="{Binding ActualHeight, Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource Self}}"
                                RadiusY="{Binding ActualHeight, Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource Self}}"
                                RenderTransformOrigin="0.5,0.5"
-                               Fill="{Binding Path=(local:RadioButtonHelper.CheckedBackground), RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
+                               Fill="{Binding Path=(local:RadioButtonHelper.CheckedBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                Opacity="0" />
                 </Border>
                 <Border x:Name="BdrToggleTrack"
-                        Margin="{Binding Path=(local:RadioButtonHelper.BoxHeight),Converter={StaticResource {x:Static i:ResourceKeys.CheckBoxSwitch3ToggleTrackMarginConverter}},RelativeSource={RelativeSource AncestorType=RadioButton},Mode=OneWay}">
+                        Margin="{Binding Path=(local:RadioButtonHelper.BoxHeight),Converter={StaticResource {x:Static irs:Converters.CheckBoxSwitch3ToggleTrackMarginConverter}},RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}">
                     <Rectangle x:Name="EllToggle"
+                               Stroke="Transparent"
                                Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                RadiusX="{Binding ActualHeight, Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource Self}}"
                                RadiusY="{Binding ActualHeight, Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource Self}}"
                                HorizontalAlignment="Right"
-                               Fill="{Binding Path=(local:RadioButtonHelper.GlyphBrush), RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}">
+                               Fill="{Binding Path=(local:RadioButtonHelper.GlyphBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                         <Rectangle.Margin>
-                            <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.CheckBoxSwitch3ToggleMarginConverter}}">
+                            <MultiBinding Converter="{StaticResource {x:Static irs:Converters.CheckBoxSwitch3ToggleMarginConverter}}">
                                 <Binding Path="ActualWidth"
                                          ElementName="BdrToggleTrack"
                                          Mode="OneWay" />
@@ -507,7 +424,7 @@
                     </Rectangle>
                 </Border>
             </Grid>
-            <ContentPresenter x:Name="Presenter"
+            <ContentPresenter x:Name="CpContent"
                               RecognizesAccessKey="True"
                               Margin="{TemplateBinding Padding}"
                               VerticalAlignment="Center" />
@@ -560,216 +477,35 @@
             </Trigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
+                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:RadioButtonHelper.CheckedGlyphBrush), Converter={StaticResource {x:Static i:ResourceKeys.IsNotNullConverter}}, RelativeSource={RelativeSource Self}}"
-                               Value="True" />
-                </MultiDataTrigger.Conditions>
-                <Setter TargetName="EllToggle"
-                        Property="Fill"
-                        Value="{Binding Path=(local:RadioButtonHelper.CheckedGlyphBrush), RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}" />
-            </MultiDataTrigger>
-            <MultiDataTrigger>
-                <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
-                               Value="True" />
-                    <Condition Binding="{Binding Path=(local:RadioButtonHelper.CheckedBorderBrush), Converter={StaticResource {x:Static i:ResourceKeys.IsNotNullConverter}}, RelativeSource={RelativeSource Self}}"
+                    <Condition Binding="{Binding Path=(local:RadioButtonHelper.CheckedContent), Converter={StaticResource {x:Static rs:Converters.IsNotNullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrMain"
-                        Property="BorderBrush"
-                        Value="{Binding Path=(local:RadioButtonHelper.CheckedBorderBrush),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}" />
-            </MultiDataTrigger>
-            <MultiDataTrigger>
-                <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
-                               Value="True" />
-                    <Condition Binding="{Binding Path=(local:RadioButtonHelper.CheckedContent), Converter={StaticResource {x:Static i:ResourceKeys.IsNotNullConverter}}, RelativeSource={RelativeSource Self}}"
-                               Value="True" />
-                </MultiDataTrigger.Conditions>
-                <Setter TargetName="Presenter"
+                <Setter TargetName="CpContent"
                         Property="Content"
-                        Value="{Binding Path=(local:RadioButtonHelper.CheckedContent),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}" />
+                        Value="{Binding Path=(local:RadioButtonHelper.CheckedContent),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <ControlTemplate x:Key="{x:Static i:ResourceKeys.RadioButtonButtonTemplate}"
+    <ControlTemplate x:Key="{x:Static irs:ResourceKeys.RadioButtonButtonTemplate}"
                      TargetType="RadioButton">
-        <Grid x:Name="GrdMain"
-              Background="Transparent">
-            <Rectangle x:Name="RectBack"
-                       Stroke="{TemplateBinding BorderBrush}"
-                       StrokeThickness="{Binding BorderThickness, Converter={StaticResource {x:Static i:ResourceKeys.ThicknessToDoubleConverter}}, RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                       Fill="{TemplateBinding Background}"
-                       RadiusX="{Binding Path=(local:RadioButtonHelper.CornerRadius), Converter={StaticResource {x:Static i:ResourceKeys.CornerRadiusToDoubleConverter}}, RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                       RadiusY="{Binding Path=(local:RadioButtonHelper.CornerRadius), Converter={StaticResource {x:Static i:ResourceKeys.CornerRadiusToDoubleConverter}}, RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}" />
-            <Rectangle x:Name="RectChecked"
-                       Fill="{Binding Path=(local:RadioButtonHelper.CheckedBackground), RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                       StrokeThickness="{Binding BorderThickness, Converter={StaticResource {x:Static i:ResourceKeys.ThicknessToDoubleConverter}}, RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                       RadiusX="{Binding Path=(local:RadioButtonHelper.CornerRadius), Converter={StaticResource {x:Static i:ResourceKeys.CornerRadiusToDoubleConverter}}, RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                       RadiusY="{Binding Path=(local:RadioButtonHelper.CornerRadius), Converter={StaticResource {x:Static i:ResourceKeys.CornerRadiusToDoubleConverter}}, RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                       Opacity="0" />
-            <ContentPresenter x:Name="Presenter"
-                              RecognizesAccessKey="True"
-                              VerticalAlignment="Center"
-                              HorizontalAlignment="Center"
-                               />
-        </Grid>
-        <ControlTemplate.Triggers>
-            <MultiDataTrigger>
-                <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
-                               Value="True" />
-                    <Condition Binding="{Binding Path=(local:RadioButtonHelper.CheckedBorderBrush), Converter={StaticResource {x:Static i:ResourceKeys.IsNotNullConverter}}, RelativeSource={RelativeSource Self}}"
-                               Value="True" />
-                </MultiDataTrigger.Conditions>
-                <Setter TargetName="RectBack"
-                        Property="Stroke"
-                        Value="{Binding Path=(local:RadioButtonHelper.CheckedBorderBrush),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}" />
-            </MultiDataTrigger>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="IsMouseOver"
-                               Value="True" />
-                    <Condition Property="IsChecked"
-                               Value="True" />
-                </MultiTrigger.Conditions>
-                <MultiTrigger.EnterActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimation Storyboard.TargetName="RectChecked"
-                                             Storyboard.TargetProperty="Opacity"
-                                             To="0.8"
-                                             Duration="0:0:0.1" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </MultiTrigger.EnterActions>
-                <MultiTrigger.ExitActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimation Storyboard.TargetName="RectChecked"
-                                             Storyboard.TargetProperty="Opacity"
-                                             Duration="0:0:0.1" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </MultiTrigger.ExitActions>
-            </MultiTrigger>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="IsMouseOver"
-                               Value="True" />
-                    <Condition Property="IsChecked"
-                               Value="False" />
-                </MultiTrigger.Conditions>
-                <MultiTrigger.EnterActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimation Storyboard.TargetName="RectChecked"
-                                             Storyboard.TargetProperty="Opacity"
-                                             To="0.2"
-                                             Duration="0:0:0.1" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </MultiTrigger.EnterActions>
-                <MultiTrigger.ExitActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimation Storyboard.TargetName="RectChecked"
-                                             Storyboard.TargetProperty="Opacity"
-                                             Duration="0:0:0.1" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </MultiTrigger.ExitActions>
-            </MultiTrigger>
-            <Trigger Property="IsChecked"
-                     Value="True">
-                <Setter TargetName="RectChecked"
-                        Property="Opacity"
-                        Value="1" />
-                <Setter Property="Foreground"
-                        Value="{Binding Path=(local:RadioButtonHelper.CheckedGlyphBrush),RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-            </Trigger>
-            <MultiDataTrigger>
-                <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
-                               Value="True" />
-                    <Condition Binding="{Binding Path=(local:RadioButtonHelper.CheckedContent), Converter={StaticResource {x:Static i:ResourceKeys.IsNotNullConverter}}, RelativeSource={RelativeSource Self}}"
-                               Value="True" />
-                </MultiDataTrigger.Conditions>
-                <Setter TargetName="Presenter"
-                        Property="Content"
-                        Value="{Binding Path=(local:RadioButtonHelper.CheckedContent),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}" />
-            </MultiDataTrigger>
-        </ControlTemplate.Triggers>
-    </ControlTemplate>
-
-    <ControlTemplate x:Key="{x:Static i:ResourceKeys.RadioButtonSelectorTemplate}"
-                     TargetType="RadioButton">
-        <Grid x:Name="GrdMain"
-              Background="Transparent">
-            <ContentPresenter x:Name="Presenter"
-                              RecognizesAccessKey="True"
-                              VerticalAlignment="Center"
-                              HorizontalAlignment="Center"
-                               />
-            <Border x:Name="BdrRaw"
-                    BorderThickness="{TemplateBinding BorderThickness}"
+        <Grid Background="Transparent">
+            <Border x:Name="BdrBack"
                     BorderBrush="{TemplateBinding BorderBrush}"
-                    CornerRadius="{Binding Path=(local:RadioButtonHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}">
-                <Border x:Name="BdrGlyphRaw"
-                        Width="{Binding ActualHeight,RelativeSource={RelativeSource Self},Mode=OneWay}"
-                        Height="{Binding ActualHeight, ElementName=BdrChecked, Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=2.5,Mode=OneWay}"
-                        VerticalAlignment="Bottom"
-                        HorizontalAlignment="Right"
-                        Background="{TemplateBinding Background}">
-                    <Path x:Name="PathGlyphRaw"
-                          Stroke="{Binding Path=(local:RadioButtonHelper.GlyphBrush),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                          StrokeThickness="{Binding BorderThickness, Converter={StaticResource {x:Static i:ResourceKeys.ThicknessToDoubleConverter}}, RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                          StrokeDashCap="Round">
-                        <Path.Data>
-                            <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.CheckBoxStandardGlyphPathConverter}}">
-                                <Binding Path="ActualWidth"
-                                         ElementName="BdrGlyph"
-                                         Mode="OneWay" />
-                                <Binding Path="ActualHeight"
-                                         ElementName="BdrGlyph"
-                                         Mode="OneWay" />
-                            </MultiBinding>
-                        </Path.Data>
-                    </Path>
-                </Border>
-            </Border>
+                    BorderThickness="{Binding BorderThickness, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    Background="{TemplateBinding Background}"
+                    CornerRadius="{Binding Path=(local:RadioButtonHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             <Border x:Name="BdrChecked"
-                    Opacity="0"
-                    BorderThickness="{TemplateBinding BorderThickness}"
-                    BorderBrush="{Binding Path=(local:RadioButtonHelper.CheckedBorderBrush), RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                    CornerRadius="{Binding Path=(local:RadioButtonHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}">
-                <Border x:Name="BdrGlyph"
-                        Width="{Binding ActualHeight,RelativeSource={RelativeSource Self},Mode=OneWay}"
-                        Height="{Binding ActualHeight, ElementName=BdrChecked, Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=2.5,Mode=OneWay}"
-                        VerticalAlignment="Bottom"
-                        HorizontalAlignment="Right"
-                        Background="{Binding Path=(local:RadioButtonHelper.CheckedBackground), RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}">
-                    <Path x:Name="PathGlyph"
-                          VerticalAlignment="Center"
-                          HorizontalAlignment="Center"
-                          Stroke="{Binding Path=(local:RadioButtonHelper.CheckedGlyphBrush),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                          StrokeThickness="{Binding BorderThickness, Converter={StaticResource {x:Static i:ResourceKeys.ThicknessToDoubleConverter}}, RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}"
-                          StrokeDashCap="Round">
-                        <Path.Data>
-                            <MultiBinding Converter="{StaticResource {x:Static i:ResourceKeys.CheckBoxStandardGlyphPathConverter}}">
-                                <Binding Path="ActualWidth"
-                                         ElementName="BdrGlyph"
-                                         Mode="OneWay" />
-                                <Binding Path="ActualHeight"
-                                         ElementName="BdrGlyph"
-                                         Mode="OneWay" />
-                            </MultiBinding>
-                        </Path.Data>
-                    </Path>
-                </Border>
-            </Border>
+                       Background="{Binding Path=(local:RadioButtonHelper.CheckedBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    BorderThickness="{Binding BorderThickness, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                       CornerRadius="{Binding Path=(local:RadioButtonHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                       Opacity="0" />
+            <ContentPresenter x:Name="CpContent"
+                              RecognizesAccessKey="True"
+                              VerticalAlignment="Center"
+                              HorizontalAlignment="Center" />
         </Grid>
         <ControlTemplate.Triggers>
             <MultiTrigger>
@@ -828,9 +564,6 @@
             </MultiTrigger>
             <Trigger Property="IsChecked"
                      Value="True">
-                <Setter TargetName="BdrGlyph"
-                        Property="Opacity"
-                        Value="1" />
                 <Setter TargetName="BdrChecked"
                         Property="Opacity"
                         Value="1" />
@@ -839,176 +572,211 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:RadioButtonHelper.CheckedContent), Converter={StaticResource {x:Static i:ResourceKeys.IsNotNullConverter}}, RelativeSource={RelativeSource Self}}"
+                    <Condition Binding="{Binding Path=(local:RadioButtonHelper.CheckedContent), Converter={StaticResource {x:Static rs:Converters.IsNotNullConverter}}, RelativeSource={RelativeSource Self}}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="Presenter"
+                <Setter TargetName="CpContent"
                         Property="Content"
-                        Value="{Binding Path=(local:RadioButtonHelper.CheckedContent),RelativeSource={RelativeSource AncestorType=RadioButton}, Mode=OneWay}" />
+                        Value="{Binding Path=(local:RadioButtonHelper.CheckedContent),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </MultiDataTrigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="{x:Static irs:ResourceKeys.RadioButtonSelectorTemplate}"
+                     TargetType="RadioButton">
+        <Grid Background="Transparent">
+            <ContentPresenter x:Name="CpContent"
+                              RecognizesAccessKey="True"
+                              VerticalAlignment="Center"
+                              HorizontalAlignment="Center" />
+            <Border BorderThickness="{TemplateBinding BorderThickness}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    CornerRadius="{Binding Path=(local:RadioButtonHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            <Border Background="{TemplateBinding Background}"
+                    Height="{Binding Path=(local:RadioButtonHelper.BoxHeight),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    Width="{Binding Path=(local:RadioButtonHelper.BoxWidth),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    VerticalAlignment="Bottom"
+                    HorizontalAlignment="Right">
+                <TextBlock x:Name="TxtCheckIcon"
+                           Text="&#xe92e;"
+                           Foreground="{Binding Path=(local:RadioButtonHelper.GlyphBrush),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           FontSize="{Binding Path=(local:RadioButtonHelper.BoxHeight), Converter={StaticResource {x:Static rs:Converters.DoubleMinusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center" />
+            </Border>
+            
+        </Grid>
+        <ControlTemplate.Triggers>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:RadioButtonHelper.CheckedContent), Converter={StaticResource {x:Static rs:Converters.IsNotNullConverter}}, RelativeSource={RelativeSource Self}}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="CpContent"
+                        Property="Content"
+                        Value="{Binding Path=(local:RadioButtonHelper.CheckedContent),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
 
     <Style TargetType="RadioButton">
-        <!--Properties-->
         <Setter Property="Padding"
                 Value="5,0,0,0" />
-        <Setter Property="Background"
-                Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonStandardDefaultBackground}}" />
-        <Setter Property="BorderBrush"
-                Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonStandardDefaultBorderBrush}}" />
-        <Setter Property="BorderThickness"
-                Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonStandardDefaultBorderThickness}}" />
-        <Setter Property="Template"
-                Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonStandardTemplate}}" />
-        <!--RadioButtonHelper-->
-        <Setter Property="local:RadioButtonHelper.CornerRadius"
-                Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonStandardDefaultCornerRadius}}" />
-        <Setter Property="local:RadioButtonHelper.CheckedBackground"
-                Value="{x:Null}" />
-        <Setter Property="local:RadioButtonHelper.GlyphBrush"
-                Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonStandardDefaultGlyphBrush}}" />
-        <Setter Property="local:RadioButtonHelper.CheckedGlyphBrush"
-                Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonStandardDefaultCheckedGlyphBrush}}" />
-        <Setter Property="local:RadioButtonHelper.CheckedBorderBrush"
-                Value="{x:Null}" />
-        <Setter Property="local:RadioButtonHelper.BoxHeight"
-                Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonStandardDefaultBoxHeight}}" />
-        <Setter Property="local:RadioButtonHelper.BoxWidth"
-                Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonStandardDefaultBoxWidth}}" />
         <Style.Triggers>
             <Trigger Property="local:RadioButtonHelper.RadioButtonStyle"
-                     Value="Switch">
-                <Setter Property="Template"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSwitchTemplate}}" />
-                <Setter Property="Background"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSwitchDefaultBackground}}" />
+                     Value="Standard">
                 <Setter Property="BorderBrush"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSwitchDefaultBorderBrush}}" />
+                        Value="LightGray" />
                 <Setter Property="BorderThickness"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSwitchDefaultBorderThickness}}" />
-                <Setter Property="local:RadioButtonHelper.CornerRadius"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSwitchDefaultCornerRadius}}" />
-                <Setter Property="local:RadioButtonHelper.CheckedBackground"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSwitchDefaultCheckedBackground}}" />
-                <Setter Property="local:RadioButtonHelper.GlyphBrush"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSwitchDefaultGlyphBrush}}" />
+                        Value="1" />
+                <Setter Property="local:RadioButtonHelper.NullableGlyphBrush"
+                        Value="#888888" />
                 <Setter Property="local:RadioButtonHelper.CheckedGlyphBrush"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSwitchDefaultCheckedGlyphBrush}}" />
-                <Setter Property="local:RadioButtonHelper.CheckedBorderBrush"
-                        Value="{x:Null}" />
+                        Value="#888888" />
                 <Setter Property="local:RadioButtonHelper.BoxHeight"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSwitchDefaultBoxHeight}}" />
+                        Value="16" />
                 <Setter Property="local:RadioButtonHelper.BoxWidth"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSwitchDefaultBoxWidth}}" />
-
+                        Value="16" />
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:ResourceKeys.RadioButtonStandardTemplate}}" />
+            </Trigger>
+            <Trigger Property="local:RadioButtonHelper.RadioButtonStyle"
+                     Value="Switch">
+                <Setter Property="BorderBrush"
+                        Value="LightGray" />
+                <Setter Property="BorderThickness"
+                        Value="1" />
+                <Setter Property="local:RadioButtonHelper.BoxHeight"
+                        Value="20" />
+                <Setter Property="local:RadioButtonHelper.BoxWidth"
+                        Value="30" />
+                <Setter Property="Background"
+                        Value="White" />
+                <Setter Property="local:RadioButtonHelper.GlyphBrush"
+                        Value="White" />
+                <Setter Property="local:RadioButtonHelper.CheckedBackground"
+                        Value="#AAAAAA" />
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:ResourceKeys.RadioButtonSwitchTemplate}}" />
             </Trigger>
             <Trigger Property="local:RadioButtonHelper.RadioButtonStyle"
                      Value="Switch2">
-                <Setter Property="Template"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSwitch2Template}}" />
-                <Setter Property="Background"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSwitch2DefaultBackground}}" />
                 <Setter Property="BorderBrush"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSwitch2DefaultBorderBrush}}" />
+                        Value="LightGray" />
                 <Setter Property="BorderThickness"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSwitch2DefaultBorderThickness}}" />
-                <Setter Property="local:RadioButtonHelper.CornerRadius"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSwitch2DefaultCornerRadius}}" />
-                <Setter Property="local:RadioButtonHelper.CheckedBackground"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSwitch2DefaultCheckedBackground}}" />
-                <Setter Property="local:RadioButtonHelper.GlyphBrush"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSwitch2DefaultGlyphBrush}}" />
-                <Setter Property="local:RadioButtonHelper.CheckedGlyphBrush"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSwitch2DefaultCheckedGlyphBrush}}" />
-                <Setter Property="local:RadioButtonHelper.CheckedBorderBrush"
-                        Value="{x:Null}" />
+                        Value="1" />
                 <Setter Property="local:RadioButtonHelper.BoxHeight"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSwitch2DefaultBoxHeight}}" />
+                        Value="20" />
                 <Setter Property="local:RadioButtonHelper.BoxWidth"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSwitch2DefaultBoxWidth}}" />
+                        Value="40" />
+                <Setter Property="Background"
+                        Value="White" />
+                <Setter Property="local:RadioButtonHelper.GlyphBrush"
+                        Value="White" />
+                <Setter Property="local:RadioButtonHelper.CheckedBackground"
+                        Value="#AAAAAA" />
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:ResourceKeys.RadioButtonSwitch2Template}}" />
             </Trigger>
             <Trigger Property="local:RadioButtonHelper.RadioButtonStyle"
                      Value="Switch3">
-                <Setter Property="Template"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSwitch3Template}}" />
-                <Setter Property="Background"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSwitch3DefaultBackground}}" />
                 <Setter Property="BorderBrush"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSwitch3DefaultBorderBrush}}" />
+                        Value="LightGray" />
                 <Setter Property="BorderThickness"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSwitch3DefaultBorderThickness}}" />
-                <Setter Property="local:RadioButtonHelper.CornerRadius"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSwitch3DefaultCornerRadius}}" />
-                <Setter Property="local:RadioButtonHelper.CheckedBackground"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSwitch3DefaultCheckedBackground}}" />
-                <Setter Property="local:RadioButtonHelper.GlyphBrush"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSwitch3DefaultGlyphBrush}}" />
-                <Setter Property="local:RadioButtonHelper.CheckedGlyphBrush"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSwitch3DefaultCheckedGlyphBrush}}" />
-                <Setter Property="local:RadioButtonHelper.CheckedBorderBrush"
-                        Value="{x:Null}" />
+                        Value="1" />
                 <Setter Property="local:RadioButtonHelper.BoxHeight"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSwitch3DefaultBoxHeight}}" />
+                        Value="16" />
                 <Setter Property="local:RadioButtonHelper.BoxWidth"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSwitch3DefaultBoxWidth}}" />
+                        Value="30" />
+                <Setter Property="Background"
+                        Value="White" />
+                <Setter Property="local:RadioButtonHelper.GlyphBrush"
+                        Value="LightGray" />
+                <Setter Property="local:RadioButtonHelper.CheckedGlyphBrush"
+                        Value="White" />
+                <Setter Property="local:RadioButtonHelper.CheckedBackground"
+                        Value="#AAAAAA" />
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:ResourceKeys.RadioButtonSwitch3Template}}" />
             </Trigger>
             <Trigger Property="local:RadioButtonHelper.RadioButtonStyle"
                      Value="Button">
-                <Setter Property="Template"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonButtonTemplate}}" />
-                <Setter Property="Background"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonButtonDefaultBackground}}" />
-                <Setter Property="BorderBrush"
-                        Value="{x:Null}" />
                 <Setter Property="BorderThickness"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonButtonDefaultBorderThickness}}" />
-                <Setter Property="local:RadioButtonHelper.CornerRadius"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonButtonDefaultCornerRadius}}" />
+                        Value="0" />
                 <Setter Property="local:RadioButtonHelper.CheckedBackground"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonButtonDefaultCheckedBackground}}" />
-                <Setter Property="local:RadioButtonHelper.GlyphBrush"
-                        Value="{x:Null}" />
-                <Setter Property="local:RadioButtonHelper.CheckedGlyphBrush"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonButtonDefaultCheckedGlyphBrush}}" />
-                <Setter Property="local:RadioButtonHelper.CheckedBorderBrush"
-                        Value="{x:Null}" />
-                <Setter Property="Height"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonButtonDefaultBoxHeight}}" />
-                <!--<Setter Property="Width"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonButtonDefaultBoxWidth}}" />-->
+                        Value="#EAEAEA" />
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:ResourceKeys.RadioButtonButtonTemplate}}" />
             </Trigger>
             <Trigger Property="local:RadioButtonHelper.RadioButtonStyle"
                      Value="Selector">
-                <Setter Property="Template"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSelectorTemplate}}" />
-                <Setter Property="Background"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSelectorDefaultBackground}}" />
-                <Setter Property="BorderBrush"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSelectorDefaultBorderBrush}}" />
+                <Setter Property="local:RadioButtonHelper.BoxHeight"
+                        Value="10" />
+                <Setter Property="local:RadioButtonHelper.BoxWidth"
+                        Value="10" />
                 <Setter Property="BorderThickness"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSelectorDefaultBorderThickness}}" />
-                <Setter Property="local:RadioButtonHelper.CornerRadius"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSelectorDefaultCornerRadius}}" />
-                <Setter Property="local:RadioButtonHelper.CheckedBackground"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSelectorDefaultCheckedBackground}}" />
+                        Value="1.5" />
+                <Setter Property="BorderBrush"
+                        Value="LightGray" />
+                <Setter Property="Background"
+                        Value="LightGray" />
                 <Setter Property="local:RadioButtonHelper.GlyphBrush"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSelectorDefaultGlyphBrush}}" />
+                        Value="White" />
                 <Setter Property="local:RadioButtonHelper.CheckedGlyphBrush"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSelectorDefaultCheckedGlyphBrush}}" />
+                        Value="White" />
                 <Setter Property="local:RadioButtonHelper.CheckedBorderBrush"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSelectorDefaultCheckedBorderBrush}}" />
-                <Setter Property="Height"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSelectorDefaultBoxHeight}}" />
-                <Setter Property="Width"
-                        Value="{StaticResource {x:Static i:ResourceKeys.RadioButtonSelectorDefaultBoxWidth}}" />
+                        Value="#888888" />
+                <Setter Property="local:RadioButtonHelper.CheckedBackground"
+                        Value="#888888" />
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:ResourceKeys.RadioButtonSelectorTemplate}}" />
             </Trigger>
-            <Trigger Property="IsEnabled"
-                     Value="False">
-                <Setter Property="Opacity"
-                        Value="{StaticResource {x:Static rs:ResourceKeys.DisabledOpacity}}" />
-            </Trigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self},Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:RadioButtonHelper.CheckedGlyphBrush), Converter={StaticResource {x:Static rs:Converters.IsNotNullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter  Property="local:RadioButtonHelper.GlyphBrush"
+                         Value="{Binding Path=(local:RadioButtonHelper.CheckedGlyphBrush),RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:RadioButtonHelper.CheckedForeground), Converter={StaticResource {x:Static rs:Converters.IsNotNullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter  Property="Foreground"
+                         Value="{Binding Path=(local:RadioButtonHelper.CheckedForeground),RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:RadioButtonHelper.CheckedBackground), Converter={StaticResource {x:Static rs:Converters.IsNotNullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter  Property="Background"
+                         Value="{Binding Path=(local:RadioButtonHelper.CheckedBackground),RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:RadioButtonHelper.CheckedBorderBrush), Converter={StaticResource {x:Static rs:Converters.IsNotNullConverter}}, RelativeSource={RelativeSource Self},Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="BorderBrush"
+                        Value="{Binding Path=(local:RadioButtonHelper.CheckedBorderBrush),RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            </MultiDataTrigger>
+          
         </Style.Triggers>
     </Style>
+    
 </ResourceDictionary>

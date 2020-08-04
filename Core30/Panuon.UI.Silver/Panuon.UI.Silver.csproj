@@ -3,37 +3,18 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <UseWPF>true</UseWPF>
-    <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2.0.0.9</AssemblyVersion>
-    <FileVersion>2.0.0.9</FileVersion>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Authors>Zeoun</Authors>
-    <Company>Panuon</Company>
+    <AssemblyVersion>2.1.1.0</AssemblyVersion>
+    <FileVersion>2.1.1.0</FileVersion>
   </PropertyGroup>
 
-  <Import Project="..\..\SharedResources\Panuon.UI.Silver.Core\Panuon.UI.Silver.Core.projitems" Label="Shared" />
-
   <Import Project="..\..\SharedResources\Panuon.UI.Silver\Panuon.UI.Silver.projitems" Label="Shared" />
+
+  <Import Project="..\..\SharedResources\Panuon.UI.Silver.Core\Panuon.UI.Silver.Core.projitems" Label="Shared" />
 
   <Import Project="..\..\SharedResources\Panuon.UI.Silver.Internal\Panuon.UI.Silver.Internal.projitems" Label="Shared" />
 
   <ItemGroup>
-    <None Remove="Resources\PanuonIcon.ttf" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Resources\PanuonIcon.ttf" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Update="Themes\Generic.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
 
 </Project>

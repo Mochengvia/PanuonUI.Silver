@@ -1,6 +1,21 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:UIBrowser.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Control.xaml" />
+    </ResourceDictionary.MergedDictionaries>
 
-    <SolidColorBrush x:Key="ThemeBrush"
-                     Color="#FF4F96DE" />
+    <SolidColorBrush x:Key="Blue">#6CBCEA</SolidColorBrush>
+    <SolidColorBrush x:Key="LightBlue">#80CCF7</SolidColorBrush>
+    <SolidColorBrush x:Key="TranslucentBlue">#226CBCEA</SolidColorBrush>
+    <SolidColorBrush x:Key="Green">#90B87E</SolidColorBrush>
+    <SolidColorBrush x:Key="LightGreen">#ACCD9D</SolidColorBrush>
+    <SolidColorBrush x:Key="TranslucentGreen">#2290B87E</SolidColorBrush>
+    <SolidColorBrush x:Key="Pink">#EEA2B4</SolidColorBrush>
+    <SolidColorBrush x:Key="LightPink">#FFB9CA</SolidColorBrush>
+    <SolidColorBrush x:Key="TranslucentPink">#22EEA2B4</SolidColorBrush>
+    <SolidColorBrush x:Key="Orange">#FFD081</SolidColorBrush>
+    <SolidColorBrush x:Key="LightOrange">#FFD895</SolidColorBrush>
+    <SolidColorBrush x:Key="TranslucentOrange">#22FFD081</SolidColorBrush>
+
 </ResourceDictionary>

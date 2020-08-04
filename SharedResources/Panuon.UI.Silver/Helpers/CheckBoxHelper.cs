@@ -23,21 +23,6 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("CheckBoxStyle", typeof(CheckBoxStyle), typeof(CheckBoxHelper));
         #endregion
 
-        #region CheckedBackground
-        public static Brush GetCheckedBackground(CheckBox checkBox)
-        {
-            return (Brush)checkBox.GetValue(CheckedBackgroundProperty);
-        }
-
-        public static void SetCheckedBackground(CheckBox checkBox, Brush value)
-        {
-            checkBox.SetValue(CheckedBackgroundProperty, value);
-        }
-
-        public static readonly DependencyProperty CheckedBackgroundProperty =
-            DependencyProperty.RegisterAttached("CheckedBackground", typeof(Brush), typeof(CheckBoxHelper));
-        #endregion
-
         #region GlyphBrush
         public static Brush GetGlyphBrush(CheckBox checkBox)
         {
@@ -53,6 +38,21 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("GlyphBrush", typeof(Brush), typeof(CheckBoxHelper));
         #endregion
 
+        #region NullableGlyphBrush
+        public static Brush GetNullableGlyphBrush(CheckBox checkBox)
+        {
+            return (Brush)checkBox.GetValue(NullableGlyphBrushProperty);
+        }
+
+        public static void SetNullableGlyphBrush(CheckBox checkBox, Brush value)
+        {
+            checkBox.SetValue(NullableGlyphBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty NullableGlyphBrushProperty =
+            DependencyProperty.RegisterAttached("NullableGlyphBrush", typeof(Brush), typeof(CheckBoxHelper));
+        #endregion
+
         #region CheckedGlyphBrush
         public static Brush GetCheckedGlyphBrush(CheckBox checkBox)
         {
@@ -66,6 +66,36 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty CheckedGlyphBrushProperty =
             DependencyProperty.RegisterAttached("CheckedGlyphBrush", typeof(Brush), typeof(CheckBoxHelper));
+        #endregion
+
+        #region CheckedForeground
+        public static Brush GetCheckedForeground(CheckBox checkBox)
+        {
+            return (Brush)checkBox.GetValue(CheckedForegroundProperty);
+        }
+
+        public static void SetCheckedForeground(CheckBox checkBox, Brush value)
+        {
+            checkBox.SetValue(CheckedForegroundProperty, value);
+        }
+
+        public static readonly DependencyProperty CheckedForegroundProperty =
+            DependencyProperty.RegisterAttached("CheckedForeground", typeof(Brush), typeof(CheckBoxHelper));
+        #endregion
+
+        #region CheckedBackground
+        public static Brush GetCheckedBackground(CheckBox checkBox)
+        {
+            return (Brush)checkBox.GetValue(CheckedBackgroundProperty);
+        }
+
+        public static void SetCheckedBackground(CheckBox checkBox, Brush value)
+        {
+            checkBox.SetValue(CheckedBackgroundProperty, value);
+        }
+
+        public static readonly DependencyProperty CheckedBackgroundProperty =
+            DependencyProperty.RegisterAttached("CheckedBackground", typeof(Brush), typeof(CheckBoxHelper));
         #endregion
 
         #region CheckedBorderBrush

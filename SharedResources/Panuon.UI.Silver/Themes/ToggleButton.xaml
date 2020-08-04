@@ -1,255 +1,111 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Panuon.UI.Silver"
-                    xmlns:i="clr-namespace:Panuon.UI.Silver.Internal"
-                    xmlns:ic="clr-namespace:Panuon.UI.Silver.Internal.Controls"
-                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources">
+                    xmlns:core="clr-namespace:Panuon.UI.Silver.Core"
+                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
+                    xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources"
+                    xmlns:ic="clr-namespace:Panuon.UI.Silver.Internal.Controls">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/InternalResources.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Resources.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Loading.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    
-    <Style x:Key="{x:Static rs:ResourceKeys.ToggleButtonWaitingLoadingStyle}"
-           TargetType="{x:Type local:Loading}"
-           BasedOn="{StaticResource {x:Type local:Loading}}">
-        <Setter Property="Height"
-                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=5,RelativeSource={RelativeSource  AncestorType=ToggleButton},Mode=OneWay}" />
-        <Setter Property="Width"
-                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=5,RelativeSource={RelativeSource  AncestorType=ToggleButton},Mode=OneWay}" />
-        <Setter Property="Foreground"
-                Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton},Mode=OneWay}" />
-    </Style>
-    
-    <ControlTemplate x:Key="{x:Static i:ResourceKeys.ToggleButtonTemplate}"
-                     TargetType="ToggleButton">
-        <Border x:Name="BdrMain"
-                
-                BorderBrush="{TemplateBinding BorderBrush}"
-                BorderThickness="{TemplateBinding BorderThickness}"
-                Background="{TemplateBinding Background}"
-                CornerRadius="{Binding Path=(local:ToggleButtonHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=ToggleButton},Mode=OneWay}">
-            <StackPanel Orientation="{Binding Path=(local:ToggleButtonHelper.IconPosition),Converter={StaticResource {x:Static i:ResourceKeys.IconPositionToOrientationConverter}},RelativeSource={RelativeSource AncestorType=ToggleButton}, Mode=OneWay}"
-                        Margin="{TemplateBinding Padding}"
-                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
-                <ic:IconControl x:Name="IcIcon" 
-                                Width="{Binding Path=(local:IconHelper.Width),RelativeSource={RelativeSource AncestorType=ToggleButton},Mode=OneWay}"
-                                Height="{Binding Path=(local:IconHelper.Height),RelativeSource={RelativeSource AncestorType=ToggleButton},Mode=OneWay}"
-                                MinWidth="{Binding Path=(local:IconHelper.MinWidth),RelativeSource={RelativeSource AncestorType=ToggleButton},Mode=OneWay}"
-                                MinHeight="{Binding Path=(local:IconHelper.MinHeight),RelativeSource={RelativeSource AncestorType=ToggleButton},Mode=OneWay}"
-                                MaxWidth="{Binding Path=(local:IconHelper.MaxWidth),RelativeSource={RelativeSource AncestorType=ToggleButton},Mode=OneWay}"
-                                MaxHeight="{Binding Path=(local:IconHelper.MaxHeight),RelativeSource={RelativeSource AncestorType=ToggleButton},Mode=OneWay}"
-                                Margin="{Binding Path=(local:IconHelper.Margin),RelativeSource={RelativeSource AncestorType=ToggleButton},Mode=OneWay}"
-                                Visibility="{Binding Path=(local:ToggleButtonHelper.Icon),Converter={StaticResource {x:Static i:ResourceKeys.NullToCollapseConverter}},RelativeSource={RelativeSource AncestorType=ToggleButton},Mode=OneWay}"
-                                Content="{Binding Path=(local:ToggleButtonHelper.Icon),RelativeSource={RelativeSource AncestorType=ToggleButton},Mode=OneWay}"
-                                Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource AncestorType=ToggleButton},Mode=OneWay}"
-                                FontFamily="{Binding Path=(local:IconHelper.FontFamily),RelativeSource={RelativeSource AncestorType=ToggleButton},Mode=OneWay}"
-                                FontSize="{Binding Path=(local:IconHelper.FontSize),RelativeSource={RelativeSource AncestorType=ToggleButton},Mode=OneWay}"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center" />
-                <StackPanel Orientation="Horizontal"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Center">
-                    <local:Loading x:Name="LoadWait"
-                                   Margin="0,0,5,0"
-                                   Style="{DynamicResource {x:Static rs:ResourceKeys.ToggleButtonWaitingLoadingStyle}}"
-                                   Visibility="Collapsed" />
-                    <ContentPresenter x:Name="Presenter"
-                                      RecognizesAccessKey="True"
-                                      VerticalAlignment="Center"
-                                      HorizontalAlignment="Center" />
-                </StackPanel>
-            </StackPanel>
-        </Border>
-        <ControlTemplate.Triggers>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="IsChecked"
-                               Value="True" />
-                    <Condition Property="local:ToggleButtonHelper.ToggleButtonStyle"
-                               Value="Standard" />
-                </MultiTrigger.Conditions>
-                <Setter TargetName="BdrMain"
-                        Property="Background"
-                        Value="{Binding Path=(local:ToggleButtonHelper.CheckedBrush),RelativeSource={RelativeSource AncestorType=ToggleButton}, Mode=OneWay}" />
-            </MultiTrigger>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="IsChecked"
-                               Value="True" />
-                    <Condition Property="local:ToggleButtonHelper.ToggleButtonStyle"
-                               Value="Hollow" />
-                </MultiTrigger.Conditions>
-                <Setter TargetName="BdrMain"
-                        Property="TextElement.Foreground"
-                        Value="White" />
-                <Setter TargetName="BdrMain"
-                        Property="Background"
-                        Value="{Binding Path=(local:ToggleButtonHelper.CheckedBrush),RelativeSource={RelativeSource AncestorType=ToggleButton}, Mode=OneWay}" />
-                <Setter TargetName="BdrMain"
-                        Property="BorderBrush"
-                        Value="{Binding Path=(local:ToggleButtonHelper.CheckedBrush),RelativeSource={RelativeSource AncestorType=ToggleButton}, Mode=OneWay}" />
-            </MultiTrigger>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="IsChecked"
-                               Value="True" />
-                    <Condition Property="local:ToggleButtonHelper.ToggleButtonStyle"
-                               Value="Outline" />
-                </MultiTrigger.Conditions>
-                <Setter TargetName="BdrMain"
-                        Property="TextElement.Foreground"
-                        Value="{Binding Path=(local:ToggleButtonHelper.CheckedBrush),RelativeSource={RelativeSource AncestorType=ToggleButton}, Mode=OneWay}" />
-                <Setter TargetName="BdrMain"
-                        Property="BorderBrush"
-                        Value="{Binding Path=(local:ToggleButtonHelper.CheckedBrush),RelativeSource={RelativeSource AncestorType=ToggleButton}, Mode=OneWay}" />
-            </MultiTrigger>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="IsChecked"
-                               Value="True" />
-                    <Condition Property="local:ToggleButtonHelper.ToggleButtonStyle"
-                               Value="Link" />
-                </MultiTrigger.Conditions>
-                <Setter TargetName="BdrMain"
-                        Property="TextElement.Foreground"
-                        Value="{Binding Path=(local:ToggleButtonHelper.CheckedBrush),RelativeSource={RelativeSource AncestorType=ToggleButton}, Mode=OneWay}" />
-            </MultiTrigger>
-            <MultiDataTrigger>
-                <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
-                               Value="True" />
-                    <Condition Binding="{Binding Path=(local:ToggleButtonHelper.CheckedContent), Converter={StaticResource {x:Static i:ResourceKeys.IsNotNullConverter}}, RelativeSource={RelativeSource Self}}"
-                               Value="True" />
-                </MultiDataTrigger.Conditions>
-                <Setter TargetName="Presenter"
-                        Property="Content"
-                        Value="{Binding Path=(local:ToggleButtonHelper.CheckedContent),RelativeSource={RelativeSource AncestorType=ToggleButton}, Mode=OneWay}" />
-            </MultiDataTrigger>
+
+    <Style TargetType="ToggleButton">
+        <Setter Property="local:ToggleButtonHelper.Hook"
+                Value="True" />
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="Background"
+                Value="#F1F1F1" />
+        <Setter Property="local:ToggleButtonHelper.CheckedBackground"
+                Value="#EAEAEA" />
+        <Setter Property="local:IconHelper.Foreground"
+                Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.Margin"
+                Value="0,0,5,0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Border x:Name="BdrMain"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{Binding Path=(local:ToggleButtonHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                        <StackPanel x:Name="StkContent"
+                                    Orientation="Horizontal"
+                                    Margin="{TemplateBinding Padding}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+                            <ic:IconControl x:Name="icIcon"
+                                            Content="{Binding Path=(local:ToggleButtonHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                            Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                            <ContentPresenter x:Name="CpContent"
+                                              RecognizesAccessKey="True"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Center" />
+                        </StackPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed"
+                                 Value="True">
+                            <Setter TargetName="BdrMain"
+                                    Property="Opacity"
+                                    Value="0.8" />
+                        </Trigger>
+                        <Trigger Property="local:ToggleButtonHelper.IconPlacement"
+                                 Value="Top">
+                            <Setter TargetName="StkContent"
+                                    Property="Orientation"
+                                    Value="Vertical" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsPressed"
+                                           Value="True" />
+                                <Condition Property="local:ToggleButtonHelper.ClickStyle"
+                                           Value="Sink" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="BdrMain"
+                                    Property="Margin"
+                                    Value="0,1,0,-1" />
+                        </MultiTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                                           Value="True" />
+                                <Condition Binding="{Binding Path=(local:ToggleButtonHelper.CheckedContent), Converter={StaticResource {x:Static rs:Converters.IsNotNullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                                           Value="True" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="CpContent"
+                                    Property="Content"
+                                    Value="{Binding Path=(local:ToggleButtonHelper.CheckedContent),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        </MultiDataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
             <Trigger Property="local:ToggleButtonHelper.IsWaiting"
                      Value="True">
                 <Setter Property="IsEnabled"
                         Value="False" />
-                <Setter TargetName="LoadWait"
-                        Property="Visibility"
-                        Value="Visible" />
-                <Setter TargetName="IcIcon"
-                        Property="Visibility"
-                        Value="Collapsed" />
-                <Setter TargetName="LoadWait"
-                        Property="IsLoading"
-                        Value="True" />
-                <Setter TargetName="Presenter"
-                        Property="Content"
-                        Value="{Binding Path=(local:ToggleButtonHelper.WaitingContent),RelativeSource={RelativeSource AncestorType=ToggleButton},Mode=OneWay}" />
-            </Trigger>
-            <MultiDataTrigger>
-                <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}"
-                                                   Value="True" />
-                    <Condition Binding="{Binding Path=(local:ToggleButtonHelper.ClickStyle), RelativeSource={RelativeSource Self}}"
-                                                   Value="Sink" />
-                </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrMain"
-                        Property="Margin"
-                        Value="0,1,0,-1" />
-            </MultiDataTrigger>
-            <Trigger Property="IsPressed"
-                     Value="True">
-                <Setter TargetName="BdrMain"
-                        Property="Opacity"
-                        Value="0.8" />
-            </Trigger>
-            <MultiDataTrigger>
-                <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}"
-                               Value="True" />
-                    <Condition Binding="{Binding Path=(local:ToggleButtonHelper.ClickStyle), RelativeSource={RelativeSource Self}}"
-                               Value="Sink" />
-                </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrMain"
-                        Property="Margin"
-                        Value="0,1,0,-1" />
-            </MultiDataTrigger>
-        </ControlTemplate.Triggers>
-    </ControlTemplate>
-
-    <Style TargetType="ToggleButton">
-        <!--Properties-->
-        <Setter Property="Background"
-                Value="{StaticResource {x:Static i:ResourceKeys.ToggleButtonStandardDefaultBackground}}" />
-        <Setter Property="BorderBrush"
-                Value="{x:Null}" />
-        <Setter Property="Foreground"
-                Value="{StaticResource {x:Static i:ResourceKeys.ToggleButtonStandardDefaultForeground}}" />
-        <Setter Property="BorderThickness"
-                Value="{StaticResource {x:Static i:ResourceKeys.ToggleButtonStandardDefaultBorderThickness}}" />
-        <Setter Property="Template"
-                Value="{StaticResource {x:Static i:ResourceKeys.ToggleButtonTemplate}}" />
-        <!--ToggleButtonHelper-->
-        <Setter Property="local:ToggleButtonHelper.WaitingContent"
-                Value="{StaticResource {x:Static i:ResourceKeys.ToggleButtonDefaultWaitingContent}}" />
-        <Setter Property="local:ToggleButtonHelper.CornerRadius"
-                Value="{StaticResource {x:Static i:ResourceKeys.ToggleButtonDefaultCornerRadius}}" />
-        <Setter Property="local:ToggleButtonHelper.IconPosition"
-                Value="{StaticResource {x:Static i:ResourceKeys.ToggleButtonDefaultIconPosition}}" />
-        <Setter Property="local:ToggleButtonHelper.ClickStyle"
-                Value="{StaticResource {x:Static i:ResourceKeys.ToggleButtonDefaultClickStyle}}" />
-        <Setter Property="local:ToggleButtonHelper.HoverBrush"
-                Value="{StaticResource {x:Static i:ResourceKeys.ToggleButtonStandardDefaultHoverBrush}}" />
-        <Setter Property="local:ToggleButtonHelper.CheckedBrush"
-                Value="{StaticResource {x:Static i:ResourceKeys.ToggleButtonStandardCheckedBrush}}" />
-        <!--IconHelper-->
-        <Setter Property="local:IconHelper.Foreground"
-                Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
-        <Setter Property="local:IconHelper.FontSize"
-                Value="{Binding FontSize, RelativeSource={RelativeSource Self}}" />
-        <Style.Triggers>
-            <Trigger Property="local:ToggleButtonHelper.ToggleButtonStyle"
-                     Value="Outline">
-                <Setter Property="Background"
-                        Value="{StaticResource {x:Static i:ResourceKeys.ToggleButtonOutlineDefaultBackground}}" />
-                <Setter Property="BorderBrush"
-                        Value="{StaticResource {x:Static i:ResourceKeys.ToggleButtonOutlineDefaultBorderBrush}}" />
-                <Setter Property="Foreground"
-                        Value="{StaticResource {x:Static i:ResourceKeys.ToggleButtonOutlineDefaultForeground}}" />
-                <Setter Property="BorderThickness"
-                        Value="{StaticResource {x:Static i:ResourceKeys.ToggleButtonOutlineDefaultBorderThickness}}" />
-                <Setter Property="local:ToggleButtonHelper.HoverBrush"
-                        Value="{StaticResource {x:Static i:ResourceKeys.ToggleButtonOutlineDefaultHoverBrush}}" />
-                <Setter Property="local:ToggleButtonHelper.CheckedBrush"
-                        Value="{StaticResource {x:Static i:ResourceKeys.ToggleButtonOutlineCheckedBrush}}" />
-            </Trigger>
-            <Trigger Property="local:ToggleButtonHelper.ToggleButtonStyle"
-                     Value="Hollow">
-                <Setter Property="Background"
-                        Value="{StaticResource {x:Static i:ResourceKeys.ToggleButtonHollowDefaultBackground}}" />
-                <Setter Property="BorderBrush"
-                        Value="{StaticResource {x:Static i:ResourceKeys.ToggleButtonHollowDefaultBorderBrush}}" />
-                <Setter Property="Foreground"
-                        Value="{StaticResource {x:Static i:ResourceKeys.ToggleButtonHollowDefaultForeground}}" />
-                <Setter Property="BorderThickness"
-                        Value="{StaticResource {x:Static i:ResourceKeys.ToggleButtonHollowDefaultBorderThickness}}" />
-                <Setter Property="local:ToggleButtonHelper.HoverBrush"
-                        Value="{StaticResource {x:Static i:ResourceKeys.ToggleButtonHollowDefaultHoverBrush}}" />
-                <Setter Property="local:ToggleButtonHelper.CheckedBrush"
-                        Value="{StaticResource {x:Static i:ResourceKeys.ToggleButtonHollowCheckedBrush}}" />
-            </Trigger>
-            <Trigger Property="local:ToggleButtonHelper.ToggleButtonStyle"
-                     Value="Link">
-                <Setter Property="Background"
-                        Value="{StaticResource {x:Static i:ResourceKeys.ToggleButtonLinkDefaultBackground}}" />
-                <Setter Property="BorderBrush"
-                        Value="{x:Null}" />
-                <Setter Property="Foreground"
-                        Value="{StaticResource {x:Static i:ResourceKeys.ToggleButtonLinkDefaultForeground}}" />
-                <Setter Property="BorderThickness"
-                        Value="{StaticResource {x:Static i:ResourceKeys.ToggleButtonLinkDefaultBorderThickness}}" />
-                <Setter Property="local:ToggleButtonHelper.HoverBrush"
-                        Value="{StaticResource {x:Static i:ResourceKeys.ToggleButtonLinkDefaultHoverBrush}}" />
-                <Setter Property="local:ToggleButtonHelper.CheckedBrush"
-                        Value="{StaticResource {x:Static i:ResourceKeys.ToggleButtonLinkCheckedBrush}}" />
+                <Setter Property="ContentTemplate">
+                    <Setter.Value>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <local:Loading Width="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=5, RelativeSource={RelativeSource AncestorType=ToggleButton}, Mode=OneWay}"
+                                               Height="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=5, RelativeSource={RelativeSource AncestorType=ToggleButton}, Mode=OneWay}"
+                                               Foreground="{Binding Foreground, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=5, RelativeSource={RelativeSource AncestorType=ToggleButton}, Mode=OneWay}"
+                                               IsLoading="True"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Center" />
+                                <ContentControl Margin="5,0,0,0"
+                                                Content="{Binding Content, RelativeSource={RelativeSource AncestorType=ToggleButton}, Mode=OneWay}"
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Center" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </Setter.Value>
+                </Setter>
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -259,9 +115,38 @@
                                Value="False" />
                 </MultiTrigger.Conditions>
                 <Setter Property="Opacity"
-                        Value="{StaticResource {x:Static rs:ResourceKeys.DisabledOpacity}}" />
+                        Value="0.4" />
             </MultiTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=(local:ToggleButtonHelper.CheckedBackground), Converter={StaticResource {x:Static rs:Converters.IsNotNullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True"/>
+                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True"/>
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Background"
+                        Value="{Binding Path=(local:ToggleButtonHelper.CheckedBackground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=(local:ToggleButtonHelper.CheckedForeground), Converter={StaticResource {x:Static rs:Converters.IsNotNullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Foreground"
+                        Value="{Binding Path=(local:ToggleButtonHelper.CheckedForeground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=(local:ToggleButtonHelper.CheckedBorderBrush), Converter={StaticResource {x:Static rs:Converters.IsNotNullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="BorderBrush"
+                        Value="{Binding Path=(local:ToggleButtonHelper.CheckedBorderBrush), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            </MultiDataTrigger>
         </Style.Triggers>
     </Style>
-
 </ResourceDictionary>

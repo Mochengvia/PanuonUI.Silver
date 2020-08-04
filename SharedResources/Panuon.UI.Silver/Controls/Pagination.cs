@@ -1,8 +1,5 @@
 ﻿using Panuon.UI.Silver.Core;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -22,51 +19,41 @@ namespace Panuon.UI.Silver
             AddHandler(RadioButton.ClickEvent, new RoutedEventHandler(OnClicked));
             IndexList = new ObservableCollection<int?>();
         }
-
-        private void OnClicked(object sender, RoutedEventArgs e)
-        {
-            var radioButton = e.OriginalSource as RadioButton;
-            if(radioButton == null)
-            {
-                return;
-            }
-            CurrentIndex = (int)radioButton.Content;
-        }
         #endregion
 
         #region Properties
 
-        #region PaginationItemStyle
-        public Style PaginationItemStyle
+        #region ItemContainerStyle
+        public Style ItemContainerStyle
         {
-            get { return (Style)GetValue(PaginationItemStyleProperty); }
-            set { SetValue(PaginationItemStyleProperty, value); }
+            get { return (Style)GetValue(ItemContainerStyleProperty); }
+            set { SetValue(ItemContainerStyleProperty, value); }
         }
 
-        public static readonly DependencyProperty PaginationItemStyleProperty =
-            DependencyProperty.Register("PaginationItemStyle", typeof(Style), typeof(Pagination));
+        public static readonly DependencyProperty ItemContainerStyleProperty =
+            DependencyProperty.Register("ItemContainerStyle", typeof(Style), typeof(Pagination));
         #endregion
 
-        #region SideButtonStyle
-        public Style SideButtonStyle
+        #region SideRepeatButtonStyle
+        public Style SideRepeatButtonStyle
         {
-            get { return (Style)GetValue(SideButtonStyleProperty); }
-            set { SetValue(SideButtonStyleProperty, value); }
+            get { return (Style)GetValue(SideRepeatButtonStyleProperty); }
+            set { SetValue(SideRepeatButtonStyleProperty, value); }
         }
 
-        public static readonly DependencyProperty SideButtonStyleProperty =
-            DependencyProperty.Register("SideButtonStyle", typeof(Style), typeof(Pagination));
+        public static readonly DependencyProperty SideRepeatButtonStyleProperty =
+            DependencyProperty.Register("SideRepeatButtonStyle", typeof(Style), typeof(Pagination));
         #endregion
 
-        #region OmitTextStyle
-        public Style OmitTextStyle
+        #region OmitTextBlockStyle
+        public Style OmitTextBlockStyle
         {
-            get { return (Style)GetValue(OmitTextStyleProperty); }
-            set { SetValue(OmitTextStyleProperty, value); }
+            get { return (Style)GetValue(OmitTextBlockStyleProperty); }
+            set { SetValue(OmitTextBlockStyleProperty, value); }
         }
 
-        public static readonly DependencyProperty OmitTextStyleProperty =
-            DependencyProperty.Register("OmitTextStyle", typeof(Style), typeof(Pagination));
+        public static readonly DependencyProperty OmitTextBlockStyleProperty =
+            DependencyProperty.Register("OmitTextBlockStyle", typeof(Style), typeof(Pagination));
         #endregion
 
         #region CurrentIndex
@@ -79,7 +66,7 @@ namespace Panuon.UI.Silver
         public static readonly DependencyProperty CurrentIndexProperty =
             DependencyProperty.Register("CurrentIndex", typeof(int), typeof(Pagination), new PropertyMetadata(1, OnCurrentIndexChanged, OnCurrentIndexCoerceValue));
 
-      
+
         #endregion
 
         #region TotalIndex
@@ -109,42 +96,39 @@ namespace Panuon.UI.Silver
         #region Internal Properties
         internal ObservableCollection<int?> IndexList
         {
-            get { return ( ObservableCollection<int?>)GetValue(IndexListProperty); }
+            get { return (ObservableCollection<int?>)GetValue(IndexListProperty); }
             set { SetValue(IndexListProperty, value); }
         }
 
         internal static readonly DependencyProperty IndexListProperty =
-            DependencyProperty.Register("IndexList", typeof( ObservableCollection<int?>), typeof(Pagination));
+            DependencyProperty.Register("IndexList", typeof(ObservableCollection<int?>), typeof(Pagination));
         #endregion
 
         #region Commands
-        internal ICommand PreviousCommand
-        {
-            get { return (ICommand)GetValue(PreviousCommandProperty); }
-            set { SetValue(PreviousCommandProperty, value); }
-        }
-
+        
         internal static readonly DependencyProperty PreviousCommandProperty =
             DependencyProperty.Register("PreviousCommand", typeof(ICommand), typeof(Pagination), new PropertyMetadata(new RelayCommand(OnPreviousCommandExecute)));
 
-
-
-        internal ICommand NextCommand
-        {
-            get { return (ICommand)GetValue(NextCommandProperty); }
-            set { SetValue(NextCommandProperty, value); }
-        }
-
         internal static readonly DependencyProperty NextCommandProperty =
             DependencyProperty.Register("NextCommand", typeof(ICommand), typeof(Pagination), new PropertyMetadata(new RelayCommand(OnNextCommandExecute)));
-
         #endregion
 
         #region Event Handler
+
+        private void OnClicked(object sender, RoutedEventArgs e)
+        {
+            var radioButton = e.OriginalSource as RadioButton;
+            if (radioButton == null)
+            {
+                return;
+            }
+            CurrentIndex = (int)radioButton.Content;
+        }
+
         private static object OnTotalIndexCoerceValue(DependencyObject d, object baseValue)
         {
             var result = (int)baseValue;
-            if(result <= 0)
+            if (result <= 0)
             {
                 result = 1;
             }
@@ -166,7 +150,7 @@ namespace Panuon.UI.Silver
             {
                 result = 1;
             }
-            else if(result > pagination.TotalIndex)
+            else if (result > pagination.TotalIndex)
             {
                 result = pagination.TotalIndex;
             }

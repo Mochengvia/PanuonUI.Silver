@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 
 namespace Panuon.UI.Silver.Core
 {
@@ -10,7 +7,7 @@ namespace Panuon.UI.Silver.Core
         #region Fill
         public static void Fill<T>(this T[] array, T value)
         {
-            for(int i = 0; i < array.Length; i++)
+            for (int i = 0; i < array.Length; i++)
             {
                 array[i] = value;
             }
@@ -18,9 +15,9 @@ namespace Panuon.UI.Silver.Core
         #endregion
 
         #region IsIncluded
-        public static bool IsIncluded<T>(this T value, params T[] values)
+        public static bool IsIncludedIn<T>(this T value, params T[] values)
         {
-            if(values == null)
+            if (values == null)
             {
                 return false;
             }
@@ -28,4 +25,5 @@ namespace Panuon.UI.Silver.Core
         }
         #endregion
     }
+
 }

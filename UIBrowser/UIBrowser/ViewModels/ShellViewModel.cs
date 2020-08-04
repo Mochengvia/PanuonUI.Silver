@@ -3,120 +3,158 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
+using System.Reflection;
+using System.Windows.Input;
 using UIBrowser.Core;
 using UIBrowser.Models;
-using UIBrowser.Palette.ViewModels;
-using UIBrowser.Utils;
 
 namespace UIBrowser.ViewModels
 {
-    [Export(typeof(IShell))]
-    public class ShellViewModel : Conductor<IShell>.Collection.OneActive, IShell
+    [Export(typeof(IPartialView))]
+    public class ShellViewModel : Conductor<IPartialView>.Collection.OneActive
     {
         #region Fields
-        private static List<Type> _viewIndexList;
+        private static IEnumerable<IPartialView> _partialViews;
         #endregion
 
         #region Ctor
+        static ShellViewModel()
+        {
+            _partialViews = Assembly.GetExecutingAssembly()
+                .GetTypes()
+                .Where(x => typeof(IPartialView).IsAssignableFrom(x))
+                .Select(x => (IPartialView)Activator.CreateInstance(x))
+                .OrderBy(x => x.Caption);
+        }
+
         [ImportingConstructor]
         public ShellViewModel()
         {
-            LoadPartialViews();
-        }
-
-        static ShellViewModel()
-        {
-            _viewIndexList = new List<Type>()
+            if (_partialViews != null)
             {
-                typeof(Views.Partials.Customs.WindowXView)
-            };
+                InitPartialViewItems(_partialViews);
+            }
         }
-
         #endregion
 
         #region Properties
 
-        #region PartialViews
-        public BindableCollection<PartialViewItem> PartialViews { get; private set; } = new BindableCollection<PartialViewItem>();
-        #endregion
-
-        #region SelectedPartialView
-        public PartialViewItem SelectedPartialView
-        {
-            get { return _selectedPartialView; }
-            set { _selectedPartialView = value; NotifyOfPropertyChange(); ActivateView(value.ViewType); }
-        }
-        private PartialViewItem _selectedPartialView;
-        #endregion
-
-        #region SearchText
-        public string SearchText
-        {
-            get { return _searchText; }
-            set { _searchText = value; NotifyOfPropertyChange(); }
-        }
-        private string _searchText;
-        #endregion
-
-        #region PaletteViewModel
-        public PaletteViewModel PaletteViewModel { get; private set; } = new PaletteViewModel();
+        #region IsPaletteEnabled
+        public bool IsPaletteEnabled { get => _isPaletteEnabled; set => Set(ref _isPaletteEnabled, value); }
+        private bool _isPaletteEnabled;
         #endregion
 
         #region IsPaletteOpen
-        public bool IsPaletteOpen
-        {
-            get { return _isPaletteOpen; }
-            set { _isPaletteOpen = value; NotifyOfPropertyChange(); }
-        }
+        public bool IsPaletteOpen { get => _isPaletteOpen; set => Set(ref _isPaletteOpen, value); }
         private bool _isPaletteOpen;
-        #endregion
+        #endregion 
 
-        #region IsPaletteEnabled
-        public bool IsPaletteEnabled
-        {
-            get { return _isPaletteEnabled; }
-            set { _isPaletteEnabled = value; NotifyOfPropertyChange(); }
-        }
-        private bool _isPaletteEnabled;
+        #region PartialViews
+        public BindableCollection<PartialViewltem> PartialViewItems { get => _partialViewItems; set => Set(ref _partialViewItems, value); }
+        private BindableCollection<PartialViewltem> _partialViewItems;
         #endregion
 
         #endregion
 
         #region Methods
+
+        #region ActivateView
+        public void ActivateView(PartialViewltem partialViewltem)
+        {
+            if(partialViewltem == null || partialViewltem.ViewType == null)
+            {
+                return;
+            }
+            ActivateItem(partialViewltem.Instance);
+            IsPaletteEnabled = partialViewltem.Instance is IPaletteView;
+        }
         #endregion
 
-        #region Function
-        private void LoadPartialViews()
-        {
-            ViewUtils.GetViewInfos()
-                .OrderBy(x => _viewIndexList.IndexOf(x.ViewType)).ToList()
-               .ForEach(x => PartialViews.Add(new PartialViewItem() { DisplayName = Localization.Properties.Resources.ResourceManager.GetString(x.DisplayName), ViewType = x.ViewType }));
+        #endregion
 
-            SelectedPartialView = PartialViews.FirstOrDefault();
-        }
-
-        private void ActivateView(Type viewType)
+        #region Event Handlers
+        public void OnKeyboradKeyDown(KeyEventArgs args)
         {
-            var view = Activator.CreateInstance(viewType);
-            ActivateItem(view as IShell);
-            if(view is IPartialView)
+            if (args.Key == Key.LeftCtrl || args.Key == Key.RightCtrl)
             {
-                PaletteViewModel.PaletteControlType = (view as IPartialView).PaletteControlType;
-                IsPaletteEnabled = (view as IPartialView).IsPaletteEnabled;
-                if (!(view as IPartialView).IsPaletteEnabled)
-                {
-                    IsPaletteOpen = false;
-                }
-
-                (view as IPartialView).UpdatePalette -= ShellViewModel_UpdatePalette;
-                (view as IPartialView).UpdatePalette += ShellViewModel_UpdatePalette;
+                (GetView() as System.Windows.Window).Cursor = Cursors.Pen;
             }
         }
 
-        private void ShellViewModel_UpdatePalette(object sender, UpdatePaletteEventArgs e)
+        public void OnKeyboradKeyUp(KeyEventArgs args)
         {
-            PaletteViewModel.UpdateValues(e.Values);
+            if(args.Key == Key.LeftCtrl || args.Key == Key.RightCtrl)
+            {
+                (GetView() as System.Windows.Window).Cursor = Cursors.Arrow;
+            }
         }
+        #endregion
+
+        #region Functions
+
+        #region InitPartialViewltem
+
+
+        private void InitPartialViewItems(IEnumerable<IPartialView> views)
+        {
+            PartialViewItems = new BindableCollection<PartialViewltem>();
+
+            foreach (var view in views)
+            {
+                AddPartialViewItem(null, view, view.LabelLevels.ToList());
+            }
+        }
+
+        private void AddPartialViewItem(PartialViewltem parentItem, IPartialView view, IList<string> labelLevels)
+        {
+            if (labelLevels == null || !labelLevels.Any())
+            {
+                var childItem = new PartialViewltem()
+                {
+                    DisplayName = view.Caption,
+                    ViewType = view.GetType(),
+                };
+                if(parentItem == null)
+                {
+                    PartialViewItems.Add(childItem);
+                    return;
+                }
+                else
+                {
+                    if(parentItem.Items == null)
+                    {
+                        parentItem.Items = new BindableCollection<PartialViewltem>();
+                    }
+                    parentItem.Items.Add(childItem);
+                    return;
+                }
+            }
+            else
+            {
+                if(parentItem == null)
+                {
+                    parentItem = PartialViewItems.FirstOrDefault(x => x.DisplayName == labelLevels.First());
+                }
+                else
+                {
+                    parentItem = parentItem.Items.FirstOrDefault(x => x.DisplayName == labelLevels.First());
+                }
+                
+                if (parentItem == null)
+                {
+                    parentItem = new PartialViewltem()
+                    {
+                        DisplayName = labelLevels.First(),
+                        IsExpanded = true,
+                    };
+                    PartialViewItems.Add(parentItem);
+                }
+                labelLevels.RemoveAt(0);
+                AddPartialViewItem(parentItem, view, labelLevels);
+            }
+        }
+
+        #endregion
 
         #endregion
     }

@@ -1,22 +1,16 @@
-﻿using Panuon.UI.Silver.Core;
-using Panuon.UI.Silver.Internal;
-using Panuon.UI.Silver.Internal.Models;
-using Panuon.UI.Silver.Internal.Utils;
+﻿using Panuon.UI.Silver.Internal.Utils;
 using System;
-using System.Collections.ObjectModel;
-using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Markup;
+using System.Windows.Controls.Primitives;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
+using System.Windows.Threading;
 
 namespace Panuon.UI.Silver
 {
     public class Drawer : ContentControl
     {
-        #region Ctorcdasd
+        #region Ctor
         static Drawer()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(Drawer), new FrameworkPropertyMetadata(typeof(Drawer)));
@@ -25,7 +19,18 @@ namespace Panuon.UI.Silver
 
         #region Properties
 
-        #region DrawePlacement
+        #region ContentPlacement
+        public DrawerPlacement ContentPlacement
+        {
+            get { return (DrawerPlacement)GetValue(ContentPlacementProperty); }
+            set { SetValue(ContentPlacementProperty, value); }
+        }
+
+        public static readonly DependencyProperty ContentPlacementProperty =
+            DependencyProperty.Register("ContentPlacement", typeof(DrawerPlacement), typeof(Drawer));
+        #endregion
+
+        #region Placement
         public DrawerPlacement Placement
         {
             get { return (DrawerPlacement)GetValue(PlacementProperty); }
@@ -34,6 +39,17 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty PlacementProperty =
             DependencyProperty.Register("Placement", typeof(DrawerPlacement), typeof(Drawer));
+        #endregion
+
+        #region CanResize
+        public bool CanResize
+        {
+            get { return (bool)GetValue(CanResizeProperty); }
+            set { SetValue(CanResizeProperty, value); }
+        }
+
+        public static readonly DependencyProperty CanResizeProperty =
+            DependencyProperty.Register("CanResize", typeof(bool), typeof(Drawer));
         #endregion
 
         #region IsOpen
@@ -96,94 +112,187 @@ namespace Panuon.UI.Silver
 
         #endregion
 
+        #region Overrides
+        protected override void OnInitialized(EventArgs e)
+        {
+            base.OnInitialized(e);
+            UpdateState();
+        }
+
+        protected override void OnTemplateChanged(ControlTemplate oldTemplate, ControlTemplate newTemplate)
+        {
+            base.OnTemplateChanged(oldTemplate, newTemplate);
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                var thumb = newTemplate?.FindName("PART_Thumb", this) as Thumb;
+                if (thumb != null)
+                {
+                    thumb.DragStarted -= Thumb_DragStarted;
+                    thumb.DragStarted += Thumb_DragStarted;
+                    thumb.DragDelta -= Thumb_DragDelta;
+                    thumb.DragDelta += Thumb_DragDelta;
+                    thumb.DragCompleted -= Thumb_DragCompleted;
+                    thumb.DragCompleted += Thumb_DragCompleted;
+                }
+            }), DispatcherPriority.DataBind);
+        }
+
+        private void Thumb_DragCompleted(object sender, DragCompletedEventArgs e)
+        {
+            switch (Placement)
+            {
+                case DrawerPlacement.Top:
+                case DrawerPlacement.Bottom:
+                    MaxHeight = ActualHeight;
+                    break;
+                default:
+                    MaxWidth = ActualWidth;
+                    break;
+            }
+        }
+
+        private void Thumb_DragStarted(object sender, DragStartedEventArgs e)
+        {
+            switch (Placement)
+            {
+                case DrawerPlacement.Top:
+                case DrawerPlacement.Bottom:
+                    var height = ActualHeight;
+                    BeginAnimation(HeightProperty, null);
+                    Height = height;
+                    MaxHeight = double.PositiveInfinity;
+                    break;
+                default:
+                    var width = ActualWidth;
+                    BeginAnimation(WidthProperty, null);
+                    Width = width;
+                    MaxWidth = double.PositiveInfinity;
+                    break;
+            }
+        }
+
+        private void Thumb_DragDelta(object sender, DragDeltaEventArgs e)
+        {
+
+            bool isVertical = Placement == DrawerPlacement.Bottom
+                || Placement == DrawerPlacement.Top;
+
+            var value = isVertical
+                ? (Placement == DrawerPlacement.Top ?
+                    ActualHeight + e.VerticalChange : ActualHeight - e.VerticalChange)
+                : (Placement == DrawerPlacement.Left ?
+                    ActualWidth + e.HorizontalChange : ActualWidth - e.HorizontalChange);
+
+
+            if (isVertical)
+            {
+                value = value < MinHeight ? MinHeight : value;
+                Height = value;
+            }
+            else
+            {
+                value = value < MinWidth ? MinWidth : value;
+                Width = value;
+            }
+
+        }
+        #endregion
+
         #region Methods
 
         private static void OnIsOpenChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var drawer = d as Drawer;
-            switch (drawer.Placement)
+            drawer.UpdateState();
+        }
+        #endregion
+
+        #region Function
+        private void UpdateState()
+        {
+            if (!IsInitialized)
+            {
+                return;
+            }
+            switch (ContentPlacement)
             {
                 case DrawerPlacement.Left:
                 case DrawerPlacement.Right:
-                    if (double.IsNaN(drawer.MaxWidth))
+                    if (double.IsNaN(MaxWidth))
                     {
                         throw new Exception("Drawer Exception : value of MaxWidth property can not be Auto.");
                     }
-                    if (!drawer.IsLoaded || drawer.AnimationDuration.TotalMilliseconds == 0)
+                    if (!IsLoaded || AnimationDuration.TotalMilliseconds == 0)
                     {
-                        if ((bool)e.NewValue)
+                        if (IsOpen)
                         {
-                            drawer.Width = drawer.MaxWidth;
+                            Width = MaxWidth;
                         }
                         else
                         {
-                            drawer.Width = 0;
+                            Width = 0;
                         }
                     }
                     else
                     {
-                        if ((bool)e.NewValue)
+                        if (IsOpen)
                         {
-                            if (double.IsNaN(drawer.Width))
+                            if (double.IsNaN(Width))
                             {
-                                drawer.Width = drawer.ActualWidth;
+                                Width = ActualWidth;
                             }
-                            AnimationUtils.BeginAnimation(drawer, WidthProperty, drawer.MaxWidth, drawer.AnimationDuration, drawer.AnimationEase);
+                            UIElementUtils.BeginAnimation(this, WidthProperty, MaxWidth, AnimationDuration, AnimationEase);
                         }
                         else
                         {
-                            if (double.IsNaN(drawer.Width))
+                            if (double.IsNaN(Width))
                             {
-                                drawer.Width = drawer.ActualWidth;
+                                Width = ActualWidth;
                             }
-                            AnimationUtils.BeginAnimation(drawer, WidthProperty, 0, drawer.AnimationDuration, drawer.AnimationEase);
+                            UIElementUtils.BeginAnimation(this, WidthProperty, 0, AnimationDuration, AnimationEase);
                         }
                     }
                     break;
                 case DrawerPlacement.Top:
                 case DrawerPlacement.Bottom:
-                    if (double.IsNaN(drawer.MaxWidth))
+                    if (double.IsNaN(MaxWidth))
                     {
                         throw new Exception("Drawer Exception : value of MaxHeight property can not be Auto.");
                     }
-                    if (!drawer.IsLoaded || drawer.AnimationDuration.TotalMilliseconds == 0)
+                    if (!IsLoaded || AnimationDuration.TotalMilliseconds == 0)
                     {
-                        if ((bool)e.NewValue)
+                        if (IsOpen)
                         {
-                            drawer.Height = drawer.MaxHeight;
+                            Height = MaxHeight;
                         }
                         else
                         {
-                            drawer.Height = 0;
+                            Height = 0;
                         }
                     }
                     else
                     {
-                        if ((bool)e.NewValue)
+                        if (IsOpen)
                         {
-                            if (double.IsNaN(drawer.Height))
+                            if (double.IsNaN(Height))
                             {
-                                drawer.Height = drawer.ActualHeight;
+                                Height = ActualHeight;
                             }
-                            AnimationUtils.BeginAnimation(drawer, HeightProperty, drawer.MaxHeight, drawer.AnimationDuration, drawer.AnimationEase);
+                            UIElementUtils.BeginAnimation(this, HeightProperty, MaxHeight, AnimationDuration, AnimationEase);
                         }
                         else
                         {
-                            if (double.IsNaN(drawer.Height))
+                            if (double.IsNaN(Height))
                             {
-                                drawer.Height = drawer.ActualHeight;
+                                Height = ActualHeight;
                             }
-                            AnimationUtils.BeginAnimation(drawer, HeightProperty, 0, drawer.AnimationDuration, drawer.AnimationEase);
+                            UIElementUtils.BeginAnimation(this, HeightProperty, 0, AnimationDuration, AnimationEase);
                         }
                     }
                     break;
             }
 
-
         }
-        #endregion
-
-        #region Function
         #endregion
     }
 }

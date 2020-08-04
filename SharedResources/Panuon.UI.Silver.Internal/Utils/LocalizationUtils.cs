@@ -1,71 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Panuon.UI.Silver.Internal.Utils
 {
     internal static class LocalizationUtils
     {
         #region Fields
-        private static IDictionary<string, IDictionary<string, string>> _localizedStringDictionary;
+        private static IDictionary<string, string> _localizedStringDictionary;
         #endregion
 
         #region Ctor
         static LocalizationUtils()
         {
-            _localizedStringDictionary = new Dictionary<string, IDictionary<string, string>>();
-            _localizedStringDictionary.Add(nameof(Yes), new Dictionary<string, string>()
-            {
-                { "zh-CN", "是" },
-                { "ja-JP", "はい" },
-                { "en-US", "Yes" },
+            _localizedStringDictionary = new Dictionary<string, string>();
 
-            });
-            _localizedStringDictionary.Add(nameof(No), new Dictionary<string, string>()
+            var ietf = System.Threading.Thread.CurrentThread.CurrentUICulture.IetfLanguageTag;
+            switch (ietf)
             {
-                { "zh-CN", "否" },
-                { "ja-JP", "いいえ" },
-                { "en-US", "No" },
-            });
-            _localizedStringDictionary.Add(nameof(Cancel), new Dictionary<string, string>()
-            {
-                { "zh-CN", "取 消" },
-                { "ja-JP", "キャンセル" },
-                { "en-US", "Cancel" },
-            });
-            _localizedStringDictionary.Add(nameof(OK), new Dictionary<string, string>()
-            {
-                { "zh-CN", "确 定" },
-                { "ja-JP", "了 解" },
-                { "en-US", "OK" },
-            });
+                case "zh-CN":
+                    _localizedStringDictionary.Add(nameof(Yes), "是");
+                    _localizedStringDictionary.Add(nameof(No), "否");
+                    _localizedStringDictionary.Add(nameof(Cancel), "取 消");
+                    _localizedStringDictionary.Add(nameof(OK), "确 定");
+                    break;
+                case "ja-JP":
+                    _localizedStringDictionary.Add(nameof(Yes), "はい");
+                    _localizedStringDictionary.Add(nameof(No), "いいえ");
+                    _localizedStringDictionary.Add(nameof(Cancel), "キャンセル");
+                    _localizedStringDictionary.Add(nameof(OK), "了 解");
+                    break;
+                default:
+                    _localizedStringDictionary.Add(nameof(Yes), "Yes");
+                    _localizedStringDictionary.Add(nameof(No), "No");
+                    _localizedStringDictionary.Add(nameof(Cancel), "Cancel");
+                    _localizedStringDictionary.Add(nameof(OK), "OK");
+                    break;
+            }
         }
         #endregion
 
         #region Properties
-        public static string Yes => GetLocalizedString(nameof(Yes));
+        public static string Yes => _localizedStringDictionary[nameof(Yes)];
 
-        public static string No => GetLocalizedString(nameof(No));
+        public static string No => _localizedStringDictionary[nameof(No)];
 
-        public static string Cancel => GetLocalizedString(nameof(Cancel));
+        public static string Cancel => _localizedStringDictionary[nameof(Cancel)];
 
-        public static string OK => GetLocalizedString(nameof(OK));
-        #endregion
-
-        #region Function
-        private static string GetLocalizedString(string propertyName)
-        {
-            if (_localizedStringDictionary.ContainsKey(propertyName))
-            {
-                var ietf = System.Threading.Thread.CurrentThread.CurrentUICulture.IetfLanguageTag;
-                var stringDictionary = _localizedStringDictionary[propertyName];
-                if (stringDictionary.ContainsKey(ietf))
-                    return stringDictionary[ietf];
-                else if (stringDictionary.ContainsKey("en-US"))
-                    return stringDictionary["en-US"];
-            }
-            return null;
-        }
+        public static string OK => _localizedStringDictionary[nameof(OK)];
         #endregion
     }
+
 }

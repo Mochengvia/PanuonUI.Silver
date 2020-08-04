@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Caliburn.Micro;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
@@ -7,11 +8,7 @@ using System.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Threading;
-using Caliburn.Micro;
-using Panuon.UI;
-using Panuon.UI.Silver;
 using UIBrowser.Core;
-using UIBrowser.Palette.ViewModels;
 
 namespace UIBrowser.Components
 {
@@ -41,9 +38,9 @@ namespace UIBrowser.Components
         protected override void OnUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
             base.OnUnhandledException(sender, e);
-            MessageBoxX.Show("异常：" + e.Exception.Message);
-            e.Handled = true;
+            MessageBox.Show("异常：" + e.Exception.Message);
         }
+
         protected override object GetInstance(Type serviceType, string key)
         {
             string contract = string.IsNullOrEmpty(key) ? AttributedModelServices.GetContractName(serviceType) : key;
@@ -62,7 +59,7 @@ namespace UIBrowser.Components
 
         protected override IEnumerable<Assembly> SelectAssemblies()
         {
-            return new[] { Assembly.GetExecutingAssembly(), typeof(PaletteViewModel).Assembly };
+            return new[] { Assembly.GetExecutingAssembly() };
         }
 
         protected override void BuildUp(object instance)
@@ -72,12 +69,11 @@ namespace UIBrowser.Components
 
         protected override void OnStartup(object sender, StartupEventArgs e)
         {
-            DisplayRootViewFor<IShell>();
+            DisplayRootViewFor<IPartialView>();
         }
 
         protected override void OnExit(object sender, EventArgs e)
         {
-            NoticeX.Dispose();
             base.OnExit(sender, e);
         }
     }

@@ -3,70 +3,79 @@
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
     <HasSharedItems>true</HasSharedItems>
-    <SharedGUID>818bd6a9-4ae2-4749-9219-9329be7626bd</SharedGUID>
+    <SharedGUID>43e414ff-0b56-4395-a701-13c97a5e064b</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
     <Import_RootNamespace>Panuon.UI.Silver.Internal</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Components\DisposableTimer.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Constracts\Enums\FormItemCategory.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Constracts\Implements\PendingHanlderImpl.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\IconControl.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\NoticeWindow.xaml.cs">
-      <DependentUpon>NoticeWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\PendingWindow.xaml.cs">
-      <DependentUpon>PendingWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\StringConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\CheckBoxConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\ColorConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\CombineConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\DropDownConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\BoolConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\MiscellaneousConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\ProgressBarConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\ThicknessConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\GridLengthConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\IconConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\LoadingConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\MathConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\NullConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\PathConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\TreeViewConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\CornerRadiusConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\VisibilityConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\GlobalHelper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\ClockModelItem.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\CalendarModelItem.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\NeonNext.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\RadioButtonGroupItem.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Resources\ResourceKeys.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)TemplateSelectors\IconControlDataTemplateSelector.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Utils\AnimationUtils.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Utils\BrushUtils.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Utils\DateTimeUtils.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Utils\GridLengthUtils.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Utils\ImageUtils.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Utils\LocalizationUtils.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Utils\StoryboardUtils.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Utils\TextUtils.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Utils\VisualUtils.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Utils\WindowUtils.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Win32\User32.cs" />
+    <Folder Include="$(MSBuildThisFileDirectory)Helpers\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Selectors\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Themes\Controls\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="$(MSBuildThisFileDirectory)Controls\PendingWindow.xaml">
+    <Compile Include="$(MSBuildThisFileDirectory)Contracts\Enums\FormGroupCategory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\IconControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ArcConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleToBottomThicknessConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\CheckBoxSwitch3ToggleMarginConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\CheckBoxSwitch3ToggleTrackMarginConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\CheckBoxSwitch2DecorationMarginConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\CheckBoxSwitchToggleMarginConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\GridLengthToDoubleConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\LoadingClassicRenderTransformOriginConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\CombineToArrayConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleEqualsConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleMinConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleToRightMarginConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\NullToCollapseConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\RoundCornerConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ThicknessWithoutLeftConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\TreeViewChainHorizontalMarginConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\TreeViewChainWidthConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\TreeViewChainVerticalMarginConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ThicknessLeftSpacingConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\TreeViewPaddingConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\TrueToCollapseConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\NullToVisibleConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\TrueToVisibleConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\StringNullOrEmptyToVisibleConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\NullableColorToColorConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\IsLessThanConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\IsGreaterThanConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleMultiplyByConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleMinusConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\DropShadowEffectCoverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\BadgePlacementMarginConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\IconToImageSourceConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\DoublePlusConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleDivideByConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\IsNotNullConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\IsNullConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EventArgs\CalendarXSelectedEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Resources\GlobalHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Implements\PendingHanlderImpl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Selectors\IconControlContentTemplateSelector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\LoadingConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\CalendarXItemModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Resources\Converters.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Resources\ResourceKeys.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\BrushUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\DateTimeUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\DependencyPropertyUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\GridLengthUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\LocalizationUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\StringUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\UIElementUtil.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\User32Utils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\WindowUtils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Resources\Converters.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Controls\NoticeWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Resources\InternalResources.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Generic.Internals.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

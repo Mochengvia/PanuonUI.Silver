@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:icv="clr-namespace:Panuon.UI.Silver.Internal.Converters"
+                    xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <!--<ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Controls/CalendarXDayControl.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Controls/CalendarXMonthControl.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Controls/CalendarXYearControl.xaml" />-->
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

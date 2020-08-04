@@ -3,33 +3,27 @@
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
     <HasSharedItems>true</HasSharedItems>
-    <SharedGUID>66a3cb31-ac17-4fb7-885c-95fc1ae2cddd</SharedGUID>
+    <SharedGUID>1de353d2-029f-4738-86ba-2212db9c71a6</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
     <Import_RootNamespace>Panuon.UI.Silver.Core</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Animations\BrushAnimation.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Attributes\DataGridColumnAttribute.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Commands\RelayCommand.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Components\DelayTrigger.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)EventHandler\CancelableRoutedEventHandler.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)EventHandler\CurrentIndexChangedRoutedEventHandler.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)EventHandler\DateTimeChangedRoutedEventHandler.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)EventHandler\PendingBoxCancellingEventHandler.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)EventHandler\RemovedRoutedEventHandler.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)EventHandler\RemovingRoutedEventHandler.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)EventHandler\CancelableEventHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Attributes\ColumnBindingAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Attributes\ColumnSortAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Attributes\ColumnTemplateAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Attributes\ColumnIgnoreAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Attributes\ColumnWidthAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EventArgs\CancelRoutedEventHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EventArgs\RemovedRoutedEventHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EventArgs\RemovingRoutedEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\ArrayExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\BrushExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\ColorExtension.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extensions\DateTimeExtension.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extensions\GenericsExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\IEnumerableExtension.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extensions\IListExtension.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extensions\ImageExtension.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extensions\LongExtension.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extensions\StringExtension.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extensions\TimespanExtension.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\ComboBoxNumberRange.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\BrushAnimation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\NumberRange.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\RelayCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\SharedResourceDictionary.cs" />
   </ItemGroup>
 </Project>

@@ -1,5 +1,6 @@
 ﻿using Panuon.UI.Silver.Internal.Utils;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -8,15 +9,6 @@ namespace Panuon.UI.Silver
 {
     public static class ButtonHelper
     {
-        #region Ctor
-        static ButtonHelper()
-        {
-            EventManager.RegisterClassHandler(typeof(Button), Button.MouseEnterEvent, new RoutedEventHandler(OnButtonMouseEnter));
-            EventManager.RegisterClassHandler(typeof(Button), Button.MouseLeaveEvent, new RoutedEventHandler(OnButtonMouseLeave));
-        }
-
-        #endregion
-
         #region Properties
 
         #region Icon
@@ -34,34 +26,19 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("Icon", typeof(object), typeof(ButtonHelper));
         #endregion
 
-        #region IconPosition
-        public static IconPosition GetIconPosition(Button button)
+        #region IconPlacement
+        public static IconPlacement GetIconPlacement(Button button)
         {
-            return (IconPosition)button.GetValue(IconPositionProperty);
+            return (IconPlacement)button.GetValue(IconPlacementProperty);
         }
 
-        public static void SetIconPosition(Button button, IconPosition value)
+        public static void SetIconPlacement(Button button, IconPlacement value)
         {
-            button.SetValue(IconPositionProperty, value);
+            button.SetValue(IconPlacementProperty, value);
         }
 
-        public static readonly DependencyProperty IconPositionProperty =
-            DependencyProperty.RegisterAttached("IconPosition", typeof(IconPosition), typeof(ButtonHelper));
-        #endregion
-
-        #region ButtonStyle
-        public static ButtonStyle GetButtonStyle(Button button)
-        {
-            return (ButtonStyle)button.GetValue(ButtonStyleProperty);
-        }
-
-        public static void SetButtonStyle(Button button, ButtonStyle value)
-        {
-            button.SetValue(ButtonStyleProperty, value);
-        }
-
-        public static readonly DependencyProperty ButtonStyleProperty =
-            DependencyProperty.RegisterAttached("ButtonStyle", typeof(ButtonStyle), typeof(ButtonHelper));
+        public static readonly DependencyProperty IconPlacementProperty =
+            DependencyProperty.RegisterAttached("IconPlacement", typeof(IconPlacement), typeof(ButtonHelper));
         #endregion
 
         #region ClickStyle
@@ -79,19 +56,49 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("ClickStyle", typeof(ClickStyle), typeof(ButtonHelper));
         #endregion
 
-        #region HoverBrush
-        public static Brush GetHoverBrush(Button button)
+        #region HoverBackground
+        public static Brush GetHoverBackground(Button button)
         {
-            return (Brush)button.GetValue(HoverBrushProperty);
+            return (Brush)button.GetValue(HoverBackgroundProperty);
         }
 
-        public static void SetHoverBrush(Button button, Brush value)
+        public static void SetHoverBackground(Button button, Brush value)
         {
-            button.SetValue(HoverBrushProperty, value);
+            button.SetValue(HoverBackgroundProperty, value);
         }
 
-        public static readonly DependencyProperty HoverBrushProperty =
-            DependencyProperty.RegisterAttached("HoverBrush", typeof(Brush), typeof(ButtonHelper));
+        public static readonly DependencyProperty HoverBackgroundProperty =
+            DependencyProperty.RegisterAttached("HoverBackground", typeof(Brush), typeof(ButtonHelper));
+        #endregion
+
+        #region HoverForeground
+        public static Brush GetHoverForeground(Button button)
+        {
+            return (Brush)button.GetValue(HoverForegroundProperty);
+        }
+
+        public static void SetHoverForeground(Button button, Brush value)
+        {
+            button.SetValue(HoverForegroundProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverForegroundProperty =
+            DependencyProperty.RegisterAttached("HoverForeground", typeof(Brush), typeof(ButtonHelper));
+        #endregion
+
+        #region HoverBorderBrush
+        public static Brush GetHoverBorderBrush(Button button)
+        {
+            return (Brush)button.GetValue(HoverBorderBrushProperty);
+        }
+
+        public static void SetHoverBorderBrush(Button button, Brush value)
+        {
+            button.SetValue(HoverBorderBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverBorderBrushProperty =
+            DependencyProperty.RegisterAttached("HoverBorderBrush", typeof(Brush), typeof(ButtonHelper));
         #endregion
 
         #region CornerRadius
@@ -124,91 +131,100 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("IsWaiting", typeof(bool), typeof(ButtonHelper));
         #endregion
 
-        #region WaitingContent
-        public static object GetWaitingContent(Button button)
+        #endregion
+
+        #region Internal Properties
+
+        #region Hook
+        internal static bool GetHook(Button button)
         {
-            return (object)button.GetValue(WaitingContentProperty);
+            return (bool)button.GetValue(HookProperty);
         }
 
-        public static void SetWaitingContent(Button button, object value)
+        internal static void SetHook(Button button, bool value)
         {
-            button.SetValue(WaitingContentProperty, value);
+            button.SetValue(HookProperty, value);
         }
 
-        public static readonly DependencyProperty WaitingContentProperty =
-            DependencyProperty.RegisterAttached("WaitingContent", typeof(object), typeof(ButtonHelper));
+         internal static readonly DependencyProperty HookProperty =
+            DependencyProperty.RegisterAttached("Hook", typeof(bool), typeof(ButtonHelper), new PropertyMetadata(OnHookChanged));
         #endregion
 
         #endregion
 
-        #region Event Handler
+        #region Event Handlers
+        private static void OnHookChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var button = d as Button;
+            if (button == null)
+            {
+                return;
+            }
+
+            button.MouseEnter -= OnButtonMouseEnter;
+            button.MouseLeave -= OnButtonMouseLeave;
+
+            if ((bool)e.NewValue)
+            {
+                button.MouseEnter += OnButtonMouseEnter;
+                button.MouseLeave += OnButtonMouseLeave;
+            }
+        }
+
         private static void OnButtonMouseEnter(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
-            var buttonStyle = GetButtonStyle(button);
-            var hoverBrush = GetHoverBrush(button);
-
-            if (hoverBrush == null)
-                return;
+            var hoverBackground = GetHoverBackground(button);
+            var hoverForeground = GetHoverForeground(button);
+            var hoverBorderBrush = GetHoverBorderBrush(button);
 
             var dic = new Dictionary<DependencyProperty, Brush>();
-            switch (buttonStyle)
+            if(hoverBackground != null)
             {
-                case ButtonStyle.Standard:
-                    dic.Add(Button.BackgroundProperty, hoverBrush);
-                    break;
-                case ButtonStyle.Hollow:
-                    dic.Add(Button.BackgroundProperty, hoverBrush);
-                    dic.Add(Button.ForegroundProperty, Brushes.White);
-                    dic.Add(IconHelper.ForegroundProperty, Brushes.White);
-
-                    break;
-                case ButtonStyle.Outline:
-                    dic.Add(Button.BorderBrushProperty, hoverBrush);
-                    dic.Add(Button.ForegroundProperty, hoverBrush);
-                    dic.Add(IconHelper.ForegroundProperty, hoverBrush);
-                    break;
-                case ButtonStyle.Link:
-                    dic.Add(Button.ForegroundProperty, hoverBrush);
-                    dic.Add(IconHelper.ForegroundProperty, hoverBrush);
-                    break;
+                dic.Add(Button.BackgroundProperty, hoverBackground);
             }
-            StoryboardUtils.BeginBrushStoryboard(button, dic);
+            if (hoverForeground != null)
+            {
+                dic.Add(Button.ForegroundProperty, hoverForeground);
+            }
+            if (hoverBorderBrush != null)
+            {
+                dic.Add(Button.BorderBrushProperty, hoverBorderBrush);
+            }
+            if (dic.Any())
+            {
+                UIElementUtils.BeginStoryboard(button, dic);
+            }
         }
 
         private static void OnButtonMouseLeave(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
-            var buttonStyle = GetButtonStyle(button);
-            var hoverBrush = GetHoverBrush(button);
-
-            if (hoverBrush == null)
-                return;
+            var hoverBackground = GetHoverBackground(button);
+            var hoverForeground = GetHoverForeground(button);
+            var hoverBorderBrush = GetHoverBorderBrush(button);
 
             var list = new List<DependencyProperty>();
-            switch (buttonStyle)
+            if (hoverBackground != null)
             {
-                case ButtonStyle.Standard:
-                    list.Add(Button.BackgroundProperty);
-                    break;
-                case ButtonStyle.Hollow:
-                    list.Add(Button.BackgroundProperty);
-                    list.Add(Button.ForegroundProperty);
-                    list.Add(IconHelper.ForegroundProperty);
-                    break;
-                case ButtonStyle.Outline:
-                    list.Add(Button.BorderBrushProperty);
-                    list.Add(Button.ForegroundProperty);
-                    list.Add(IconHelper.ForegroundProperty);
-                    break;
-                case ButtonStyle.Link:
-                    list.Add(Button.ForegroundProperty);
-                    list.Add(IconHelper.ForegroundProperty);
-                    break;
+                list.Add(Button.BackgroundProperty);
             }
-            StoryboardUtils.BeginBrushStoryboard(button, list);
+            if (hoverForeground != null)
+            {
+                list.Add(Button.ForegroundProperty);
+            }
+            if (hoverBorderBrush != null)
+            {
+                list.Add(Button.BorderBrushProperty);
+            }
+            if (list.Any())
+            {
+                UIElementUtils.BeginStoryboard(button, list);
+            }
         }
+        #endregion
 
+        #region Functions
         #endregion
     }
 }

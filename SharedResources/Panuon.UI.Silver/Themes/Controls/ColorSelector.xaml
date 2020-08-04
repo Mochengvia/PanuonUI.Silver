@@ -1,0 +1,124 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver">
+    <Style TargetType="local:ColorSelector">
+        <Setter Property="MainColorBackground"
+                Value="Red" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ColorSelector">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Rectangle Fill="{TemplateBinding MainColorBackground}" />
+                            <Rectangle>
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush StartPoint="1,0"
+                                                         EndPoint="0,0">
+                                        <GradientStop Color="White"
+                                                      Offset="1" />
+                                        <GradientStop Color="#80ffffff"
+                                                      Offset=".5" />
+                                        <GradientStop Color="#00ffffff" />
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <Rectangle>
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush StartPoint="0,0"
+                                                         EndPoint="0,1">
+                                        <GradientStop Color="Black"
+                                                      Offset="1" />
+                                        <GradientStop Color="#80000000"
+                                                      Offset=".5" />
+                                        <GradientStop Color="#00000000" />
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <local:Fench x:Name="PART_Fench"
+                                         Strategy="Crossed"
+                                         Background="Transparent">
+                                <Thumb x:Name="PART_Thumb">
+                                    <Thumb.Template>
+                                        <ControlTemplate TargetType="Thumb">
+                                            <Ellipse Width="20"
+                                                     Height="20"
+                                                     Fill="Transparent"
+                                                     Stroke="White"
+                                                     StrokeThickness="2">
+                                                <Ellipse.Effect>
+                                                    <DropShadowEffect ShadowDepth="0"
+                                                                      BlurRadius="5"
+                                                                      Color="DimGray" />
+                                                </Ellipse.Effect>
+                                            </Ellipse>
+                                        </ControlTemplate>
+                                    </Thumb.Template>
+                                </Thumb>
+                            </local:Fench>
+                            <Grid Grid.Column="1"
+                                  Margin="10,0,0,0"
+                                  Width="50">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Rectangle RadiusX="5"
+                                           RadiusY="5">
+                                    <Rectangle.Fill>
+                                        <DrawingBrush Viewport="0,0,12,12"
+                                                      ViewportUnits="Absolute"
+                                                      Stretch="None"
+                                                      TileMode="Tile">
+                                            <DrawingBrush.Drawing>
+                                                <DrawingGroup>
+                                                    <GeometryDrawing Brush="#D0CEC7">
+                                                        <GeometryDrawing.Geometry>
+                                                            <GeometryGroup>
+                                                                <RectangleGeometry Rect="0,0,6,6" />
+                                                                <RectangleGeometry Rect="6,6,6,6" />
+                                                            </GeometryGroup>
+                                                        </GeometryDrawing.Geometry>
+                                                    </GeometryDrawing>
+                                                    <GeometryDrawing Brush="#E7E7E2">
+                                                        <GeometryDrawing.Geometry>
+                                                            <RectangleGeometry Rect="0,6,12,0" />
+                                                        </GeometryDrawing.Geometry>
+                                                    </GeometryDrawing>
+                                                </DrawingGroup>
+                                            </DrawingBrush.Drawing>
+                                        </DrawingBrush>
+                                    </Rectangle.Fill>
+                                </Rectangle>
+                                <Rectangle RadiusX="5"
+                                           RadiusY="5"
+                                           Fill="{TemplateBinding SelectedBrush}"
+                                           Height="{Binding ActualWidth, RelativeSource={RelativeSource Self}, Mode=OneWay}"/>
+                                <Grid Grid.Row="1"
+                                      Margin="0,5,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <Slider HorizontalAlignment="Center"
+                                          Orientation="Vertical"  />
+                                    <Slider HorizontalAlignment="Center"
+                                            Grid.Column="1"
+                                            Orientation="Vertical" />
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

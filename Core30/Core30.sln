@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30309.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Panuon.UI.Silver", "Panuon.UI.Silver\Panuon.UI.Silver.csproj", "{D7E923EA-3D76-4F77-8B62-78B222BB2E09}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SharedResources", "SharedResources", "{E2347E2E-6D3E-4049-816A-57A19B9CFC26}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Panuon.UI.Silver", "..\SharedResources\Panuon.UI.Silver\Panuon.UI.Silver.shproj", "{87AE0709-A9B6-4F8C-8B9E-1D1DF50F93E2}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Panuon.UI.Silver.Core", "..\SharedResources\Panuon.UI.Silver.Core\Panuon.UI.Silver.Core.shproj", "{1DE353D2-029F-4738-86BA-2212DB9C71A6}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Panuon.UI.Silver.Internal", "..\SharedResources\Panuon.UI.Silver.Internal\Panuon.UI.Silver.Internal.shproj", "{43E414FF-0B56-4395-A701-13C97A5E064B}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		..\SharedResources\Panuon.UI.Silver.Core\Panuon.UI.Silver.Core.projitems*{1de353d2-029f-4738-86ba-2212db9c71a6}*SharedItemsImports = 13
+		..\SharedResources\Panuon.UI.Silver.Internal\Panuon.UI.Silver.Internal.projitems*{43e414ff-0b56-4395-a701-13c97a5e064b}*SharedItemsImports = 13
+		..\SharedResources\Panuon.UI.Silver\Panuon.UI.Silver.projitems*{87ae0709-a9b6-4f8c-8b9e-1d1df50f93e2}*SharedItemsImports = 13
+		..\SharedResources\Panuon.UI.Silver.Core\Panuon.UI.Silver.Core.projitems*{d7e923ea-3d76-4f77-8b62-78b222bb2e09}*SharedItemsImports = 5
+		..\SharedResources\Panuon.UI.Silver.Internal\Panuon.UI.Silver.Internal.projitems*{d7e923ea-3d76-4f77-8b62-78b222bb2e09}*SharedItemsImports = 5
+		..\SharedResources\Panuon.UI.Silver\Panuon.UI.Silver.projitems*{d7e923ea-3d76-4f77-8b62-78b222bb2e09}*SharedItemsImports = 5
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D7E923EA-3D76-4F77-8B62-78B222BB2E09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7E923EA-3D76-4F77-8B62-78B222BB2E09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7E923EA-3D76-4F77-8B62-78B222BB2E09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7E923EA-3D76-4F77-8B62-78B222BB2E09}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{87AE0709-A9B6-4F8C-8B9E-1D1DF50F93E2} = {E2347E2E-6D3E-4049-816A-57A19B9CFC26}
+		{1DE353D2-029F-4738-86BA-2212DB9C71A6} = {E2347E2E-6D3E-4049-816A-57A19B9CFC26}
+		{43E414FF-0B56-4395-A701-13C97A5E064B} = {E2347E2E-6D3E-4049-816A-57A19B9CFC26}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {549CAD7E-12FB-4878-A007-B9C48D93CBF3}
+	EndGlobalSection
+EndGlobal
