@@ -10,12 +10,16 @@ namespace Panuon.UI.Silver.Internal.Controls
     class IconControl : ContentControl
     {
         #region Ctor
-
         public IconControl()
         {
-            ContentTemplateSelector = new IconControlContentTemplateSelector();
-            HorizontalAlignment = HorizontalAlignment.Center;
             VerticalAlignment = VerticalAlignment.Center;
+            HorizontalAlignment = HorizontalAlignment.Center;
+            ContentTemplateSelector = new IconControlContentTemplateSelector();
+        }
+
+        static IconControl()
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(IconControl), new FrameworkPropertyMetadata(typeof(IconControl)));
         }
         #endregion
 
@@ -51,7 +55,7 @@ namespace Panuon.UI.Silver.Internal.Controls
         #region Function
         private void UpdateBinding()
         {
-            if(Source != null)
+            if (Source != null)
             {
                 UIElementUtils.BindingProperty(this, HeightProperty, IconHelper.HeightProperty, Source);
                 UIElementUtils.BindingProperty(this, WidthProperty, IconHelper.WidthProperty, Source);
@@ -60,6 +64,7 @@ namespace Panuon.UI.Silver.Internal.Controls
                 UIElementUtils.BindingProperty(this, MaxWidthProperty, IconHelper.MaxWidthProperty, Source);
                 UIElementUtils.BindingProperty(this, MaxHeightProperty, IconHelper.MaxHeightProperty, Source);
                 UIElementUtils.BindingProperty(this, MarginProperty, IconHelper.MarginProperty, Source);
+                UIElementUtils.BindingProperty(this, PaddingProperty, IconHelper.PaddingProperty, Source);
                 UIElementUtils.BindingProperty(this, FontFamilyProperty, IconHelper.FontFamilyProperty, Source);
                 UIElementUtils.BindingProperty(this, ForegroundProperty, IconHelper.ForegroundProperty, Source);
                 UIElementUtils.BindingProperty(this, FontSizeProperty, IconHelper.FontSizeProperty, Source);

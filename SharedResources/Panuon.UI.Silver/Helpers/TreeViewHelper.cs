@@ -193,34 +193,34 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("ItemToggleHoverBrush", typeof(Brush), typeof(TreeViewHelper));
         #endregion
 
-        #region ItemToggleSelectedBrush
+        #region ItemSelectedToggleBrush
 
 
-        public static Brush GetItemsToggleSelectedBrush(TreeView treeView)
+        public static Brush GetItemsSelectedToggleBrush(TreeView treeView)
         {
-            return (Brush)treeView.GetValue(ItemsToggleSelectedBrushProperty);
+            return (Brush)treeView.GetValue(ItemsSelectedToggleBrushProperty);
         }
 
-        public static void SetItemsToggleSelectedBrush(TreeView treeView, Brush value)
+        public static void SetItemsSelectedToggleBrush(TreeView treeView, Brush value)
         {
-            treeView.SetValue(ItemsToggleSelectedBrushProperty, value);
+            treeView.SetValue(ItemsSelectedToggleBrushProperty, value);
         }
 
-        public static readonly DependencyProperty ItemsToggleSelectedBrushProperty =
-            DependencyProperty.RegisterAttached("ItemsToggleSelectedBrush", typeof(Brush), typeof(TreeViewHelper));
+        public static readonly DependencyProperty ItemsSelectedToggleBrushProperty =
+            DependencyProperty.RegisterAttached("ItemsSelectedToggleBrush", typeof(Brush), typeof(TreeViewHelper));
 
-        public static Brush GetItemToggleSelectedBrush(TreeViewItem treeViewItem)
+        public static Brush GetItemSelectedToggleBrush(TreeViewItem treeViewItem)
         {
-            return (Brush)treeViewItem.GetValue(ItemToggleSelectedBrushProperty);
+            return (Brush)treeViewItem.GetValue(ItemSelectedToggleBrushProperty);
         }
 
-        public static void SetItemToggleSelectedBrush(TreeViewItem treeViewItem, Brush value)
+        public static void SetItemSelectedToggleBrush(TreeViewItem treeViewItem, Brush value)
         {
-            treeViewItem.SetValue(ItemToggleSelectedBrushProperty, value);
+            treeViewItem.SetValue(ItemSelectedToggleBrushProperty, value);
         }
 
-        public static readonly DependencyProperty ItemToggleSelectedBrushProperty =
-            DependencyProperty.RegisterAttached("ItemToggleSelectedBrush", typeof(Brush), typeof(TreeViewHelper));
+        public static readonly DependencyProperty ItemSelectedToggleBrushProperty =
+            DependencyProperty.RegisterAttached("ItemSelectedToggleBrush", typeof(Brush), typeof(TreeViewHelper));
         #endregion
 
         #region ItemExpandedToggleBrush
@@ -397,7 +397,7 @@ namespace Panuon.UI.Silver
         {
             var treeView = d as TreeView;
             treeView.RemoveHandler(TreeViewItem.PreviewMouseRightButtonDownEvent, new RoutedEventHandler(OnTreeViewItemPreviewMouseRightButtonDown));
-            if((bool)e.NewValue)
+            if ((bool)e.NewValue)
             {
                 treeView.AddHandler(TreeViewItem.PreviewMouseRightButtonDownEvent, new RoutedEventHandler(OnTreeViewItemPreviewMouseRightButtonDown));
             }
@@ -406,7 +406,7 @@ namespace Panuon.UI.Silver
         private static void OnTreeViewItemPreviewMouseRightButtonDown(object sender, RoutedEventArgs e)
         {
             var treeViewItem = e.Source as TreeViewItem;
-            if(treeViewItem != null)
+            if (treeViewItem != null)
             {
                 treeViewItem.IsSelected = true;
             }

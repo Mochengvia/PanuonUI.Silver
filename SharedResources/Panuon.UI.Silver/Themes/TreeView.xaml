@@ -61,7 +61,7 @@
                         Value="#EEEEEE" />
                 <Setter Property="local:TreeViewHelper.ItemsToggleHoverBrush"
                         Value="#CCCCCC" />
-                <Setter Property="local:TreeViewHelper.ItemsToggleSelectedBrush"
+                <Setter Property="local:TreeViewHelper.ItemsSelectedToggleBrush"
                         Value="#3E3E3E" />
                 <Setter Property="local:TreeViewHelper.ItemsHoverBackground"
                         Value="#FAFAFA" />
@@ -260,7 +260,7 @@
                     <ic:IconControl x:Name="icIcon"
                                     Content="{Binding Path=(local:TreeViewHelper.ItemIcon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                     Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                    <ContentPresenter ContentSource="Header"/>
+                    <ContentPresenter ContentSource="Header" />
                 </StackPanel>
             </Grid>
             <ItemsPresenter x:Name="ItemsHost"
@@ -282,7 +282,7 @@
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
-    
+
     <ControlTemplate x:Key="{x:Static irs:ResourceKeys.TreeViewItemChainTemplate}"
                      TargetType="{x:Type TreeViewItem}">
         <Grid>
@@ -413,7 +413,7 @@
                         Property="Visibility"
                         Value="Hidden" />
             </Trigger>
-            
+
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
@@ -445,8 +445,8 @@
                 Value="{Binding Path=(local:TreeViewHelper.ItemsSelectedBackground),RelativeSource={RelativeSource AncestorType=TreeView}}" />
         <Setter Property="local:TreeViewHelper.ItemSelectedForeground"
                 Value="{Binding Path=(local:TreeViewHelper.ItemsSelectedForeground),RelativeSource={RelativeSource AncestorType=TreeView}}" />
-        <Setter Property="local:TreeViewHelper.ItemToggleSelectedBrush"
-                Value="{Binding Path=(local:TreeViewHelper.ItemsToggleSelectedBrush),RelativeSource={RelativeSource AncestorType=TreeView}}" />
+        <Setter Property="local:TreeViewHelper.ItemSelectedToggleBrush"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsSelectedToggleBrush),RelativeSource={RelativeSource AncestorType=TreeView}}" />
 
         <!--Properties-->
         <Setter Property="Background"
@@ -540,11 +540,11 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsSelected,RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:TreeViewHelper.ItemToggleSelectedBrush),Converter={StaticResource {x:Static rs:Converters.IsNotNullConverter}},RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:TreeViewHelper.ItemSelectedToggleBrush),Converter={StaticResource {x:Static rs:Converters.IsNotNullConverter}},RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter Property="local:TreeViewHelper.ItemToggleBrush"
-                        Value="{Binding Path=(local:TreeViewHelper.ItemToggleSelectedBrush), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+                        Value="{Binding Path=(local:TreeViewHelper.ItemSelectedToggleBrush), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
             </MultiDataTrigger>
             <Trigger Property="IsEnabled"
                      Value="False">

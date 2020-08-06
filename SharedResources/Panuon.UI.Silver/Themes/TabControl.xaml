@@ -43,24 +43,37 @@
                 <Style TargetType="Button">
                     <Setter Property="local:ButtonHelper.Hook"
                             Value="True" />
+                    <Setter Property="BorderThickness"
+                            Value="0" />
                     <Setter Property="Margin"
                             Value="2,0,0,0" />
                     <Setter Property="Background"
                             Value="Transparent" />
-                    <Setter Property="Foreground"
-                            Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=TabItem}, Mode=OneTime}" />
                     <Setter Property="local:ButtonHelper.HoverBackground"
                             Value="#FF4C4C" />
                     <Setter Property="local:ButtonHelper.HoverForeground"
                             Value="#FFFFFF" />
                     <Setter Property="FontFamily"
-                            Value="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon" />
+                            Value="pack://application:,,,/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon" />
                     <Setter Property="Content"
                             Value="&#xe92d;" />
                     <Setter Property="HorizontalAlignment"
                             Value="Center" />
                     <Setter Property="VerticalAlignment"
                             Value="Center" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter Margin="{TemplateBinding Padding}"
+                                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
                 </Style>
             </Setter.Value>
         </Setter>
@@ -94,13 +107,15 @@
                                 <ColumnDefinition x:Name="Cd5"
                                                   Width="Auto" />
                             </Grid.ColumnDefinitions>
-
+                            
+                            <Border x:Name="BdrPanel" Grid.ColumnSpan="5"
+                                    Background="{Binding Path=(local:TabControlHelper.HeaderPanelBackground),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                            
                             <ContentControl x:Name="CcFront"
                                             Content="{Binding Path=(local:TabControlHelper.FrontControl),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                            <Border x:Name="BdrPanel"
-                                    Background="{Binding Path=(local:TabControlHelper.HeaderPanelBackground),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-                                <TabPanel IsItemsHost="True" />
-                            </Border>
+
+                            <TabPanel x:Name="TpPanel" IsItemsHost="True" />
+
                             <ContentControl x:Name="CcEnd"
                                             Content="{Binding Path=(local:TabControlHelper.EndControl),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                             <Border x:Name="BdrFront"
@@ -170,10 +185,10 @@
                                 <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
                                            Value="Stretch" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="BdrPanel"
+                            <Setter TargetName="TpPanel"
                                     Property="Grid.Column"
                                     Value="1" />
-                            <Setter TargetName="BdrPanel"
+                            <Setter TargetName="TpPanel"
                                     Property="Grid.Row"
                                     Value="0" />
                             <Setter TargetName="Cd2"
@@ -211,10 +226,10 @@
                                 <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
                                            Value="Center" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="BdrPanel"
+                            <Setter TargetName="TpPanel"
                                     Property="Grid.Column"
                                     Value="2" />
-                            <Setter TargetName="BdrPanel"
+                            <Setter TargetName="TpPanel"
                                     Property="Grid.Row"
                                     Value="0" />
                             <Setter TargetName="BdrFront"
@@ -261,10 +276,10 @@
                                 <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
                                            Value="Front" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="BdrPanel"
+                            <Setter TargetName="TpPanel"
                                     Property="Grid.Column"
                                     Value="1" />
-                            <Setter TargetName="BdrPanel"
+                            <Setter TargetName="TpPanel"
                                     Property="Grid.Row"
                                     Value="0" />
                             <Setter TargetName="Cd2"
@@ -290,13 +305,13 @@
                                 <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
                                            Value="End" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="BdrPanel"
+                            <Setter TargetName="TpPanel"
                                     Property="Grid.Column"
                                     Value="3" />
                             <Setter TargetName="Cd4"
                                     Property="Width"
                                     Value="Auto" />
-                            <Setter TargetName="BdrPanel"
+                            <Setter TargetName="TpPanel"
                                     Property="Grid.Row"
                                     Value="0" />
                             <Setter TargetName="BdrFront"
@@ -331,10 +346,10 @@
                                 <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
                                            Value="Stretch" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="BdrPanel"
+                            <Setter TargetName="TpPanel"
                                     Property="Grid.Column"
                                     Value="1" />
-                            <Setter TargetName="BdrPanel"
+                            <Setter TargetName="TpPanel"
                                     Property="Grid.Row"
                                     Value="4" />
                             <Setter TargetName="Cd2"
@@ -376,10 +391,10 @@
                                 <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
                                            Value="Center" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="BdrPanel"
+                            <Setter TargetName="TpPanel"
                                     Property="Grid.Column"
                                     Value="2" />
-                            <Setter TargetName="BdrPanel"
+                            <Setter TargetName="TpPanel"
                                     Property="Grid.Row"
                                     Value="4" />
                             <Setter TargetName="BdrFront"
@@ -432,10 +447,10 @@
                                 <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
                                            Value="Front" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="BdrPanel"
+                            <Setter TargetName="TpPanel"
                                     Property="Grid.Column"
                                     Value="1" />
-                            <Setter TargetName="BdrPanel"
+                            <Setter TargetName="TpPanel"
                                     Property="Grid.Row"
                                     Value="4" />
                             <Setter TargetName="Cd2"
@@ -461,10 +476,10 @@
                                 <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
                                            Value="End" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="BdrPanel"
+                            <Setter TargetName="TpPanel"
                                     Property="Grid.Column"
                                     Value="3" />
-                            <Setter TargetName="BdrPanel"
+                            <Setter TargetName="TpPanel"
                                     Property="Grid.Row"
                                     Value="4" />
                             <Setter TargetName="Cd4"
@@ -505,10 +520,10 @@
                                 <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
                                            Value="Stretch" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="BdrPanel"
+                            <Setter TargetName="TpPanel"
                                     Property="Grid.Row"
                                     Value="1" />
-                            <Setter TargetName="BdrPanel"
+                            <Setter TargetName="TpPanel"
                                     Property="Grid.Column"
                                     Value="0" />
                             <Setter TargetName="Rd2"
@@ -546,10 +561,10 @@
                                 <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
                                            Value="Center" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="BdrPanel"
+                            <Setter TargetName="TpPanel"
                                     Property="Grid.Row"
                                     Value="2" />
-                            <Setter TargetName="BdrPanel"
+                            <Setter TargetName="TpPanel"
                                     Property="Grid.Column"
                                     Value="0" />
                             <Setter TargetName="BdrFront"
@@ -596,10 +611,10 @@
                                 <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
                                            Value="Front" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="BdrPanel"
+                            <Setter TargetName="TpPanel"
                                     Property="Grid.Row"
                                     Value="1" />
-                            <Setter TargetName="BdrPanel"
+                            <Setter TargetName="TpPanel"
                                     Property="Grid.Column"
                                     Value="0" />
                             <Setter TargetName="Rd2"
@@ -625,10 +640,10 @@
                                 <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
                                            Value="End" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="BdrPanel"
+                            <Setter TargetName="TpPanel"
                                     Property="Grid.Row"
                                     Value="3" />
-                            <Setter TargetName="BdrPanel"
+                            <Setter TargetName="TpPanel"
                                     Property="Grid.Column"
                                     Value="0" />
                             <Setter TargetName="Rd4"
@@ -666,10 +681,10 @@
                                 <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
                                            Value="Stretch" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="BdrPanel"
+                            <Setter TargetName="TpPanel"
                                     Property="Grid.Row"
                                     Value="1" />
-                            <Setter TargetName="BdrPanel"
+                            <Setter TargetName="TpPanel"
                                     Property="Grid.Column"
                                     Value="4" />
                             <Setter TargetName="Rd2"
@@ -710,10 +725,10 @@
                                 <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
                                            Value="Center" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="BdrPanel"
+                            <Setter TargetName="TpPanel"
                                     Property="Grid.Row"
                                     Value="2" />
-                            <Setter TargetName="BdrPanel"
+                            <Setter TargetName="TpPanel"
                                     Property="Grid.Column"
                                     Value="4" />
                             <Setter TargetName="BdrFront"
@@ -766,10 +781,10 @@
                                 <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
                                            Value="Front" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="BdrPanel"
+                            <Setter TargetName="TpPanel"
                                     Property="Grid.Row"
                                     Value="1" />
-                            <Setter TargetName="BdrPanel"
+                            <Setter TargetName="TpPanel"
                                     Property="Grid.Column"
                                     Value="4" />
                             <Setter TargetName="Rd2"
@@ -795,13 +810,13 @@
                                 <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
                                            Value="End" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="BdrPanel"
+                            <Setter TargetName="TpPanel"
                                     Property="Grid.Row"
                                     Value="3" />
-                            <Setter TargetName="BdrPanel"
+                            <Setter TargetName="TpPanel"
                                     Property="Grid.Column"
                                     Value="4" />
-                            <Setter TargetName="BdrPanel"
+                            <Setter TargetName="TpPanel"
                                     Property="Grid.RowSpan"
                                     Value="1" />
                             <Setter TargetName="Rd4"
@@ -847,7 +862,7 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    
+
     <Style TargetType="TabItem">
         <!--TabControlHelper-->
         <Setter Property="local:TabControlHelper.ItemSelectedForeground"
@@ -943,9 +958,9 @@
                             <Setter TargetName="RectRibbon"
                                     Property="Visibility"
                                     Value="Visible" />
-                            <Setter TargetName="RectRibbon" 
+                            <Setter TargetName="RectRibbon"
                                     Property="HorizontalAlignment"
-                                    Value="Left"/>
+                                    Value="Left" />
                             <Setter TargetName="RectRibbon"
                                     Property="Width"
                                     Value="{Binding Path=(local:TabControlHelper.ItemRibbonThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
@@ -1046,7 +1061,7 @@
                 <Setter Property="local:TabControlHelper.ItemRibbonBrush"
                         Value="{Binding Path=(local:TabControlHelper.ItemSelectedRibbonBrush),RelativeSource={RelativeSource Self}, Mode=OneWay}" />
             </MultiDataTrigger>
-            
+
         </Style.Triggers>
     </Style>
 </ResourceDictionary>

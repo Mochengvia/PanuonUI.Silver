@@ -157,6 +157,21 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("Foreground", typeof(Brush), typeof(IconHelper), new PropertyMetadata(Brushes.Black));
         #endregion
 
+        #region Padding
+        public static Thickness GetPadding(DependencyObject obj)
+        {
+            return (Thickness)obj.GetValue(PaddingProperty);
+        }
+
+        public static void SetPadding(DependencyObject obj, Thickness value)
+        {
+            obj.SetValue(PaddingProperty, value);
+        }
+
+        public static readonly DependencyProperty PaddingProperty =
+            DependencyProperty.RegisterAttached("Padding", typeof(Thickness), typeof(IconHelper), new FrameworkPropertyMetadata(new Thickness(), FrameworkPropertyMetadataOptions.Inherits));
+        #endregion
+
         #endregion
     }
 }
