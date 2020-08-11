@@ -1,6 +1,6 @@
 ﻿using Panuon.UI.Silver.Internal.Utils;
 
-namespace Panuon.UI.Silver
+namespace Panuon.UI.Silver.Core
 {
     public class MessageBoxXSettings
     {

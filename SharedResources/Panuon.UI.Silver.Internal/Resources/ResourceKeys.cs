@@ -32,12 +32,6 @@
         #endregion
 
         #region WindowX
-        public const string WindowXMinimizeButtonStyle = nameof(WindowXMinimizeButtonStyle);
-
-        public const string WindowXMaximizeButtonStyle = nameof(WindowXMaximizeButtonStyle);
-
-        public const string WindowXCloseButtonStyle = nameof(WindowXCloseButtonStyle);
-
         public const string WindowXDefaultHeader = nameof(WindowXDefaultHeader);
 
         public const string WindowXStyle = nameof(WindowXStyle);
@@ -129,5 +123,10 @@
 
         public const string DataGridScrollViewerTemplate = nameof(DataGridScrollViewerTemplate);
         #endregion
+
+        #region TabControl
+        public const string TabControlScrollViewerStyle = nameof(TabControlScrollViewerStyle);
+        #endregion
+
     }
 }

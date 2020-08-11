@@ -1,4 +1,5 @@
-﻿using Panuon.UI.Silver.Utils;
+﻿using Panuon.UI.Silver.Core;
+using Panuon.UI.Silver.Utils;
 using System;
 using System.Collections.Generic;
 using System.Text;

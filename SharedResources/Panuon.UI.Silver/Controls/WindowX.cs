@@ -3,6 +3,7 @@ using Panuon.UI.Silver.Utils;
 using System;
 using System.ComponentModel;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -10,14 +11,14 @@ namespace Panuon.UI.Silver
 {
     public class WindowX : Window
     {
-        #region Identifer
+        #region Fields
         private WindowState _lastWindowState;
         #endregion
 
         #region Ctor
         static WindowX()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(WindowX), new FrameworkPropertyMetadata(typeof(WindowX)));
+                DefaultStyleKeyProperty.OverrideMetadata(typeof(WindowX), new FrameworkPropertyMetadata(typeof(WindowX)));
         }
         #endregion
 
@@ -200,7 +201,6 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("CloseCommand", typeof(ICommand), typeof(WindowX), new PropertyMetadata(new RelayCommand(OnCloseCommandExecute)));
         #endregion
 
-
         #region Event Handlers
         private static void OnIsDragMoveAreaChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -239,5 +239,6 @@ namespace Panuon.UI.Silver
         }
 
         #endregion
+
     }
 }

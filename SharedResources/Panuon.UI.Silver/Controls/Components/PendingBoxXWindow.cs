@@ -1,4 +1,5 @@
-﻿using Panuon.UI.Silver.Internal.Utils;
+﻿using Panuon.UI.Silver.Core;
+using Panuon.UI.Silver.Internal.Utils;
 using System;
 using System.ComponentModel;
 using System.Windows;
@@ -60,6 +61,7 @@ namespace Panuon.UI.Silver.Components
             : this(message, caption, canCancel, settings)
         {
             _ownerRect = ownerRect;
+            SetOwner();
         }
         #endregion
 
@@ -110,8 +112,24 @@ namespace Panuon.UI.Silver.Components
             }
             else if (_ownerRect.Width != 0 && _ownerRect.Height != 0)
             {
-                Left = _ownerRect.X + (_ownerRect.Width - ActualWidth) / 2;
-                Top = _ownerRect.Y + (_ownerRect.Height - ActualHeight) / 2;
+                var action = new Action(() =>
+                {
+                    Left = _ownerRect.X + (_ownerRect.Width - ActualWidth) / 2;
+                    Top = _ownerRect.Y + (_ownerRect.Height - ActualHeight) / 2;
+                });
+
+                if (IsInitialized)
+                {
+                    action.Invoke();
+                }
+                else
+                {
+                    Initialized += delegate
+                    {
+                        action.Invoke();
+                    };
+                }
+
                 Topmost = true;
             }
         }

@@ -106,6 +106,15 @@ namespace UIBrowser.Core.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Form 的本地化字符串。
+        /// </summary>
+        public static string Form {
+            get {
+                return ResourceManager.GetString("Form", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Native Controls 的本地化字符串。
         /// </summary>
         public static string NativeControls {

@@ -47,6 +47,13 @@
         public const string GridLengthToDoubleConverter = nameof(GridLengthToDoubleConverter);
 
         public const string DoubleToBottomThicknessConverter = nameof(DoubleToBottomThicknessConverter);
+
+        public const string IsGridLengthAbsoluteConverter = nameof(IsGridLengthAbsoluteConverter);
+
+        public const string TabPanelMaxWidthConverter = nameof(TabPanelMaxWidthConverter);
+
+        public const string TabControlSideButtonVisibilityConverter = nameof(TabControlSideButtonVisibilityConverter);
+        
     }
 
 

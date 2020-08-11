@@ -143,31 +143,7 @@ namespace Panuon.UI.Silver.Internal.Utils
         }
         #endregion
 
-        #region Binding
-        public static void BindingProperty(FrameworkElement element,DependencyProperty targetProperty , DependencyProperty sourceProperty, object source)
-        {
-            var binding = new Binding()
-            {
-                Path = new PropertyPath(sourceProperty),
-                Source = source,
-                Mode = BindingMode.OneWay,
-            };
-            element.SetBinding(targetProperty, binding);
-        }
-
-        public static void BindingProperty(FrameworkElement element, DependencyProperty targetProperty, DependencyProperty sourceProperty, object source, IValueConverter converter)
-        {
-            var binding = new Binding()
-            {
-                Path = new PropertyPath(sourceProperty),
-                Source = source,
-                Mode = BindingMode.OneWay,
-                Converter = converter,
-            };
-            element.SetBinding(targetProperty, binding);
-        }
-        #endregion
-
+     
         #region CreateAnimation
         public static ThicknessAnimation CreateAnimation(Thickness? from, Thickness? to, TimeSpan beginTime, TimeSpan duration, AnimationEase animationEase)
         {
@@ -192,6 +168,9 @@ namespace Panuon.UI.Silver.Internal.Utils
                 EasingFunction = CreateEasingFunction(animationEase),
             };
         }
+        #endregion
+
+        #region IsDefaultPropertyValue
         #endregion
 
         #endregion

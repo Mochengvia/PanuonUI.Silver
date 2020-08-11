@@ -9,13 +9,60 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
+    <Style x:Key="{ComponentResourceKey ResourceId=ScrollButtonStyle, TypeInTargetAssembly={x:Type local:TabControlHelper}}"
+           TargetType="RepeatButton">
+        <Setter Property="local:RepeatButtonHelper.Hook"
+                Value="True" />
+        <Setter Property="Content"
+                Value="&#xe900;" />
+        <Setter Property="FontFamily"
+                Value="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon" />
+        <Setter Property="FontSize"
+                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+        <Setter Property="Margin"
+                Value="5,0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RepeatButton">
+                    <Border Background="Transparent">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="Tag"
+                     Value="Up">
+                <Setter Property="Content"
+                        Value="&#xe901;" />
+            </Trigger>
+            <Trigger Property="Tag"
+                     Value="Right">
+                <Setter Property="Content"
+                        Value="&#xe902;" />
+            </Trigger>
+            <Trigger Property="Tag"
+                     Value="Down">
+                <Setter Property="Content"
+                        Value="&#xe903;" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
     <Style TargetType="TabControl">
+        <Setter Property="local:TabControlHelper.CanHeaderScroll"
+                Value="True" />
         <Setter Property="local:TabControlHelper.ItemsForeground"
                 Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:TabControlHelper.ItemsHeight"
                 Value="30" />
         <Setter Property="local:TabControlHelper.ItemsWidth"
                 Value="NaN" />
+        <Setter Property="local:TabControlHelper.ItemsVerticalHeaderAlignment"
+                Value="Stretch" />
+        <Setter Property="local:TabControlHelper.ItemsHorizontalHeaderAlignment"
+                Value="Stretch" />
         <Setter Property="local:TabControlHelper.ItemsPadding"
                 Value="10,0" />
         <Setter Property="local:TabControlHelper.ItemsBackground"
@@ -26,10 +73,6 @@
                 Value="Visible" />
         <Setter Property="local:TabControlHelper.HeaderPanelRibbonLineBrush"
                 Value="{Binding BorderBrush, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-        <Setter Property="local:TabControlHelper.ItemsRibbonThickness"
-                Value="1" />
-        <Setter Property="local:TabControlHelper.ItemsRibbonPlacement"
-                Value="Bottom" />
         <Setter Property="local:TabControlHelper.ItemsBorderBrush"
                 Value="{Binding BorderBrush, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:TabControlHelper.ItemsBorderThickness"
@@ -82,48 +125,71 @@
             <Setter.Value>
                 <ControlTemplate TargetType="TabControl">
                     <Grid>
-                        <Border Background="{TemplateBinding Background}"
+                        <Border 
+                                Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}" />
-                        <Grid x:Name="GrdMain"
-                              KeyboardNavigation.TabNavigation="Local">
-                            <Grid.RowDefinitions>
-                                <RowDefinition x:Name="Rd1"
-                                               Height="Auto" />
-                                <RowDefinition x:Name="Rd2" />
-                                <RowDefinition x:Name="Rd3"
-                                               Height="Auto" />
-                                <RowDefinition x:Name="Rd4" />
-                                <RowDefinition x:Name="Rd5"
-                                               Height="Auto" />
-                            </Grid.RowDefinitions>
+                        <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition x:Name="Cd1"
-                                                  Width="Auto" />
-                                <ColumnDefinition x:Name="Cd2" />
-                                <ColumnDefinition x:Name="Cd3"
-                                                  Width="Auto" />
-                                <ColumnDefinition x:Name="Cd4" />
-                                <ColumnDefinition x:Name="Cd5"
-                                                  Width="Auto" />
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            
-                            <Border x:Name="BdrPanel" Grid.ColumnSpan="5"
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition />
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Border x:Name="BdrPanel"
                                     Background="{Binding Path=(local:TabControlHelper.HeaderPanelBackground),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                            
-                            <ContentControl x:Name="CcFront"
-                                            Content="{Binding Path=(local:TabControlHelper.FrontControl),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                            <RepeatButton x:Name="BtnUp"
+                                          Visibility="Collapsed"
+                                    Style="{StaticResource {ComponentResourceKey ResourceId=ScrollButtonStyle, TypeInTargetAssembly={x:Type local:TabControlHelper}}}"
+                                    CommandTarget="{Binding ElementName=SvPanel}"/>
+                            <Grid x:Name="GrdMain"
+                                  KeyboardNavigation.TabNavigation="Local">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition x:Name="Rd1"
+                                                   Height="Auto" />
+                                    <RowDefinition x:Name="Rd2" />
+                                    <RowDefinition x:Name="Rd3"
+                                                   Height="Auto" />
+                                    <RowDefinition x:Name="Rd4" />
+                                    <RowDefinition x:Name="Rd5"
+                                                   Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition x:Name="Cd1"
+                                                      Width="Auto" />
+                                    <ColumnDefinition x:Name="Cd2" />
+                                    <ColumnDefinition x:Name="Cd3"
+                                                      Width="Auto" />
+                                    <ColumnDefinition x:Name="Cd4" />
+                                    <ColumnDefinition x:Name="Cd5"
+                                                      Width="Auto" />
+                                </Grid.ColumnDefinitions>
 
-                            <TabPanel x:Name="TpPanel" IsItemsHost="True" />
+                                <ContentControl x:Name="CcFront"
+                                                Content="{Binding Path=(local:TabControlHelper.FrontControl),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
 
-                            <ContentControl x:Name="CcEnd"
-                                            Content="{Binding Path=(local:TabControlHelper.EndControl),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                            <Border x:Name="BdrFront"
-                                    BorderBrush="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineBrush),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                    Visibility="Collapsed" />
-                            <Border x:Name="BdrEnd"
-                                    BorderBrush="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineBrush),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                    Visibility="Collapsed" />
+                                <ScrollViewer x:Name="SvPanel">
+                                    <TabPanel x:Name="TpPanel"
+                                              IsItemsHost="True" />
+                                </ScrollViewer>
+
+                                <ContentControl x:Name="CcEnd"
+                                                Content="{Binding Path=(local:TabControlHelper.EndControl),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                                <Border x:Name="BdrFront"
+                                        BorderBrush="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineBrush),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                        Visibility="Collapsed" />
+                                <Border x:Name="BdrEnd"
+                                        BorderBrush="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineBrush),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                        Visibility="Collapsed" />
+                            </Grid>
+                            <RepeatButton x:Name="BtnDown"
+                                          Visibility="Collapsed"
+                                          Style="{StaticResource {ComponentResourceKey ResourceId=ScrollButtonStyle, TypeInTargetAssembly={x:Type local:TabControlHelper}}}"
+                                    CommandTarget="{Binding ElementName=SvPanel}" />
                             <ContentPresenter x:Name="PART_SelectedContentHost"
                                               Margin="{TemplateBinding Padding}"
                                               ContentSource="SelectedContent" />
@@ -132,52 +198,437 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="TabStripPlacement"
                                  Value="Top">
+                            <Setter TargetName="SvPanel"
+                                    Property="VerticalScrollBarVisibility"
+                                    Value="Disabled" />
+                            <Setter TargetName="SvPanel"
+                                    Property="HorizontalScrollBarVisibility"
+                                    Value="Hidden" />
+                            <Setter TargetName="SvPanel"
+                                    Property="MaxWidth">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{StaticResource {x:Static irs:Converters.TabPanelMaxWidthConverter}}">
+                                        <Binding Path="ActualWidth"
+                                                 RelativeSource="{RelativeSource AncestorType=TabControl}"
+                                                 Mode="OneWay"/>
+                                        <Binding ElementName="CcFront"
+                                                 Path="ActualWidth"
+                                                 Mode="OneWay" />
+                                        <Binding ElementName="CcEnd"
+                                                 Path="ActualWidth"
+                                                 Mode="OneWay" />
+                                        <Binding ElementName="BtnUp"
+                                                 Path="ActualWidth"
+                                                 Mode="OneWay" />
+                                        <Binding ElementName="BtnUp"
+                                                 Path="Visibility"
+                                                 Mode="OneWay" />
+                                        <Binding ElementName="BtnDown"
+                                                 Path="ActualWidth"
+                                                 Mode="OneWay" />
+                                        <Binding ElementName="BtnDown"
+                                                 Path="Visibility"
+                                                 Mode="OneWay" />
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="BtnUp"
+                                    Property="Command"
+                                    Value="{x:Static ScrollBar.LineLeftCommand}" />
+                            <Setter TargetName="BtnDown"
+                                    Property="Command"
+                                    Value="{x:Static ScrollBar.LineRightCommand}" />
+                            <Setter TargetName="BtnUp"
+                                    Property="Tag"
+                                    Value="Left" />
+                            <Setter TargetName="BtnDown"
+                                    Property="Tag"
+                                    Value="Right" />
+                            <Setter TargetName="BtnDown"
+                                    Property="Grid.Column"
+                                    Value="2" />
+                            <Setter TargetName="GrdMain"
+                                    Property="Grid.Column"
+                                    Value="1" />
+                            <Setter TargetName="BdrPanel"
+                                    Property="Grid.Column"
+                                    Value="1" />
                             <Setter TargetName="PART_SelectedContentHost"
                                     Property="Grid.Row"
                                     Value="1" />
                             <Setter TargetName="PART_SelectedContentHost"
                                     Property="Grid.RowSpan"
-                                    Value="4" />
+                                    Value="2" />
                             <Setter TargetName="PART_SelectedContentHost"
                                     Property="Grid.ColumnSpan"
-                                    Value="5" />
+                                    Value="3" />
                         </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="TabStripPlacement"
+                                           Value="Top"/>
+                                <Condition Property="local:TabControlHelper.CanHeaderScroll"
+                                           Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="BtnUp"
+                                    Property="Visibility">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{StaticResource {x:Static irs:Converters.TabControlSideButtonVisibilityConverter}}">
+                                        <Binding Path="ActualWidth"
+                                                 RelativeSource="{RelativeSource AncestorType=TabControl}"
+                                                 Mode="OneWay" />
+                                        <Binding Path="ActualWidth"
+                                                 ElementName="TpPanel"
+                                                 Mode="OneWay" />
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="BtnDown"
+                                    Property="Visibility">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{StaticResource {x:Static irs:Converters.TabControlSideButtonVisibilityConverter}}">
+                                        <Binding Path="ActualWidth"
+                                                 RelativeSource="{RelativeSource AncestorType=TabControl}"
+                                                 Mode="OneWay" />
+                                        <Binding Path="ActualWidth"
+                                                 ElementName="TpPanel"
+                                                 Mode="OneWay" />
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+
+                        </MultiTrigger>
                         <Trigger Property="TabStripPlacement"
                                  Value="Bottom">
+                            <Setter TargetName="SvPanel"
+                                    Property="VerticalScrollBarVisibility"
+                                    Value="Disabled" />
+                            <Setter TargetName="SvPanel"
+                                    Property="HorizontalScrollBarVisibility"
+                                    Value="Hidden" />
+                            <Setter TargetName="SvPanel"
+                                    Property="MaxWidth">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{StaticResource {x:Static irs:Converters.TabPanelMaxWidthConverter}}">
+                                        <Binding Path="ActualWidth"
+                                                 RelativeSource="{RelativeSource AncestorType=TabControl}"
+                                                 Mode="OneWay" />
+                                        <Binding ElementName="CcFront"
+                                                 Path="ActualWidth"
+                                                 Mode="OneWay" />
+                                        <Binding ElementName="CcEnd"
+                                                 Path="ActualWidth"
+                                                 Mode="OneWay" />
+                                        <Binding ElementName="BtnUp"
+                                                 Path="ActualWidth"
+                                                 Mode="OneWay" />
+                                        <Binding ElementName="BtnUp"
+                                                 Path="Visibility"
+                                                 Mode="OneWay" />
+                                        <Binding ElementName="BtnDown"
+                                                 Path="ActualWidth"
+                                                 Mode="OneWay" />
+                                        <Binding ElementName="BtnDown"
+                                                 Path="Visibility"
+                                                 Mode="OneWay" />
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="BtnUp"
+                                    Property="Command"
+                                    Value="{x:Static ScrollBar.LineLeftCommand}" />
+                            <Setter TargetName="BtnDown"
+                                    Property="Command"
+                                    Value="{x:Static ScrollBar.LineRightCommand}" />
+                            <Setter TargetName="BtnUp"
+                                    Property="Tag"
+                                    Value="Left" />
+                            <Setter TargetName="BtnDown"
+                                    Property="Tag"
+                                    Value="Right" />
+                            <Setter TargetName="BtnDown"
+                                    Property="Grid.Column"
+                                    Value="2" />
+                            <Setter TargetName="BtnDown"
+                                    Property="Grid.Row"
+                                    Value="1" />
+                            <Setter TargetName="GrdMain"
+                                    Property="Grid.Column"
+                                    Value="1" />
+                            <Setter TargetName="GrdMain"
+                                    Property="Grid.Row"
+                                    Value="2" />
+                            <Setter TargetName="BdrPanel"
+                                    Property="Grid.Column"
+                                    Value="1" />
+                            <Setter TargetName="BdrPanel"
+                                    Property="Grid.Row"
+                                    Value="2" />
                             <Setter TargetName="PART_SelectedContentHost"
                                     Property="Grid.Row"
                                     Value="0" />
                             <Setter TargetName="PART_SelectedContentHost"
                                     Property="Grid.RowSpan"
-                                    Value="4" />
+                                    Value="2" />
                             <Setter TargetName="PART_SelectedContentHost"
                                     Property="Grid.ColumnSpan"
-                                    Value="5" />
+                                    Value="3" />
                         </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="TabStripPlacement"
+                                           Value="Bottom" />
+                                <Condition Property="local:TabControlHelper.CanHeaderScroll"
+                                           Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="BtnUp"
+                                    Property="Visibility">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{StaticResource {x:Static irs:Converters.TabControlSideButtonVisibilityConverter}}">
+                                        <Binding Path="ActualWidth"
+                                                 RelativeSource="{RelativeSource AncestorType=TabControl}"
+                                                 Mode="OneWay" />
+                                        <Binding Path="ActualWidth"
+                                                 ElementName="TpPanel"
+                                                 Mode="OneWay" />
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="BtnDown"
+                                    Property="Visibility">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{StaticResource {x:Static irs:Converters.TabControlSideButtonVisibilityConverter}}">
+                                        <Binding Path="ActualWidth"
+                                                 RelativeSource="{RelativeSource AncestorType=TabControl}"
+                                                 Mode="OneWay" />
+                                        <Binding Path="ActualWidth"
+                                                 ElementName="TpPanel"
+                                                 Mode="OneWay" />
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+
+                        </MultiTrigger>
                         <Trigger Property="TabStripPlacement"
                                  Value="Left">
+                            <Setter TargetName="SvPanel"
+                                    Property="VerticalScrollBarVisibility"
+                                    Value="Hidden" />
+                            <Setter TargetName="SvPanel"
+                                    Property="HorizontalScrollBarVisibility"
+                                    Value="Disabled" />
+                            <Setter TargetName="SvPanel"
+                                    Property="MaxHeight">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{StaticResource {x:Static irs:Converters.TabPanelMaxWidthConverter}}">
+                                        <Binding Path="ActualHeight"
+                                                 RelativeSource="{RelativeSource AncestorType=TabControl}"
+                                                 Mode="OneWay" />
+                                        <Binding ElementName="CcFront"
+                                                 Path="ActualHeight"
+                                                 Mode="OneWay" />
+                                        <Binding ElementName="CcEnd"
+                                                 Path="ActualHeight"
+                                                 Mode="OneWay" />
+                                        <Binding ElementName="BtnUp"
+                                                 Path="ActualHeight"
+                                                 Mode="OneWay" />
+                                        <Binding ElementName="BtnUp"
+                                                 Path="Visibility"
+                                                 Mode="OneWay" />
+                                        <Binding ElementName="BtnDown"
+                                                 Path="ActualHeight"
+                                                 Mode="OneWay" />
+                                        <Binding ElementName="BtnDown"
+                                                 Path="Visibility"
+                                                 Mode="OneWay" />
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="BtnUp"
+                                    Property="Tag"
+                                    Value="Up" />
+                            <Setter TargetName="BtnUp"
+                                    Property="Grid.Column"
+                                    Value="0" />
+                            <Setter TargetName="BtnUp"
+                                    Property="Command"
+                                    Value="{x:Static ScrollBar.LineUpCommand}" />
+                            <Setter TargetName="BtnDown"
+                                    Property="Command"
+                                    Value="{x:Static ScrollBar.LineDownCommand}" />
+                            <Setter TargetName="BtnDown"
+                                    Property="Tag"
+                                    Value="Down" />
+                            <Setter TargetName="BtnDown"
+                                    Property="Grid.Column"
+                                    Value="0" />
+                            <Setter TargetName="BtnDown"
+                                    Property="Grid.Row"
+                                    Value="2" />
+                            <Setter TargetName="GrdMain"
+                                    Property="Grid.Row"
+                                    Value="1" />
+                            <Setter TargetName="BdrPanel"
+                                    Property="Grid.Row"
+                                    Value="1" /> 
                             <Setter TargetName="PART_SelectedContentHost"
                                     Property="Grid.Column"
                                     Value="1" />
                             <Setter TargetName="PART_SelectedContentHost"
                                     Property="Grid.ColumnSpan"
-                                    Value="4" />
+                                    Value="2" />
                             <Setter TargetName="PART_SelectedContentHost"
                                     Property="Grid.RowSpan"
-                                    Value="5" />
+                                    Value="3" />
                         </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="TabStripPlacement"
+                                           Value="Left" />
+                                <Condition Property="local:TabControlHelper.CanHeaderScroll"
+                                           Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="BtnUp"
+                                    Property="Visibility">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{StaticResource {x:Static irs:Converters.TabControlSideButtonVisibilityConverter}}">
+                                        <Binding Path="ActualHeight"
+                                                 RelativeSource="{RelativeSource AncestorType=TabControl}"
+                                                 Mode="OneWay" />
+                                        <Binding Path="ActualHeight"
+                                                 ElementName="TpPanel"
+                                                 Mode="OneWay" />
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="BtnDown"
+                                    Property="Visibility">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{StaticResource {x:Static irs:Converters.TabControlSideButtonVisibilityConverter}}">
+                                        <Binding Path="ActualHeight"
+                                                 RelativeSource="{RelativeSource AncestorType=TabControl}"
+                                                 Mode="OneWay" />
+                                        <Binding Path="ActualHeight"
+                                                 ElementName="TpPanel"
+                                                 Mode="OneWay" />
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+                        </MultiTrigger>
                         <Trigger Property="TabStripPlacement"
                                  Value="Right">
+                            <Setter TargetName="SvPanel"
+                                    Property="VerticalScrollBarVisibility"
+                                    Value="Hidden" />
+                            <Setter TargetName="SvPanel"
+                                    Property="HorizontalScrollBarVisibility"
+                                    Value="Disabled" />
+                            <Setter TargetName="SvPanel"
+                                    Property="MaxHeight">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{StaticResource {x:Static irs:Converters.TabPanelMaxWidthConverter}}">
+                                        <Binding Path="ActualHeight"
+                                                 RelativeSource="{RelativeSource AncestorType=TabControl}"
+                                                 Mode="OneWay" />
+                                        <Binding ElementName="CcFront"
+                                                 Path="ActualHeight"
+                                                 Mode="OneWay" />
+                                        <Binding ElementName="CcEnd"
+                                                 Path="ActualHeight"
+                                                 Mode="OneWay" />
+                                        <Binding ElementName="BtnUp"
+                                                 Path="ActualHeight"
+                                                 Mode="OneWay" />
+                                        <Binding ElementName="BtnUp"
+                                                 Path="Visibility"
+                                                 Mode="OneWay" />
+                                        <Binding ElementName="BtnDown"
+                                                 Path="ActualHeight"
+                                                 Mode="OneWay" />
+                                        <Binding ElementName="BtnDown"
+                                                 Path="Visibility"
+                                                 Mode="OneWay" />
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="BtnUp"
+                                    Property="Command"
+                                    Value="{x:Static ScrollBar.LineUpCommand}" />
+                            <Setter TargetName="BtnDown"
+                                    Property="Command"
+                                    Value="{x:Static ScrollBar.LineDownCommand}" />
+                            <Setter TargetName="BtnUp"
+                                    Property="Tag"
+                                    Value="Up" />
+                            <Setter TargetName="BtnUp"
+                                    Property="Grid.Column"
+                                    Value="1" />
+                            <Setter TargetName="BtnDown"
+                                    Property="Tag"
+                                    Value="Down" />
+                            <Setter TargetName="BtnDown"
+                                    Property="Grid.Column"
+                                    Value="1" />
+                            <Setter TargetName="BtnDown"
+                                    Property="Grid.Row"
+                                    Value="2" />
+                            <Setter TargetName="GrdMain"
+                                    Property="Grid.Row"
+                                    Value="1" />
+                            <Setter TargetName="GrdMain"
+                                    Property="Grid.Column"
+                                    Value="2" />
+                            <Setter TargetName="BdrPanel"
+                                    Property="Grid.Row"
+                                    Value="1" />
+                            <Setter TargetName="BdrPanel"
+                                    Property="Grid.Column"
+                                    Value="2" />
                             <Setter TargetName="PART_SelectedContentHost"
                                     Property="Grid.Column"
                                     Value="0" />
                             <Setter TargetName="PART_SelectedContentHost"
                                     Property="Grid.ColumnSpan"
-                                    Value="4" />
+                                    Value="2" />
                             <Setter TargetName="PART_SelectedContentHost"
                                     Property="Grid.RowSpan"
-                                    Value="5" />
+                                    Value="3" />
                         </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="TabStripPlacement"
+                                           Value="Right" />
+                                <Condition Property="local:TabControlHelper.CanHeaderScroll"
+                                           Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="BtnUp"
+                                    Property="Visibility">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{StaticResource {x:Static irs:Converters.TabControlSideButtonVisibilityConverter}}">
+                                        <Binding Path="ActualHeight"
+                                                 RelativeSource="{RelativeSource AncestorType=TabControl}"
+                                                 Mode="OneWay" />
+                                        <Binding Path="ActualHeight"
+                                                 ElementName="TpPanel"
+                                                 Mode="OneWay" />
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="BtnDown"
+                                    Property="Visibility">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{StaticResource {x:Static irs:Converters.TabControlSideButtonVisibilityConverter}}">
+                                        <Binding Path="ActualHeight"
+                                                 RelativeSource="{RelativeSource AncestorType=TabControl}"
+                                                 Mode="OneWay" />
+                                        <Binding Path="ActualHeight"
+                                                 ElementName="TpPanel"
+                                                 Mode="OneWay" />
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+                        </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="TabStripPlacement"
@@ -185,10 +636,10 @@
                                 <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
                                            Value="Stretch" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="TpPanel"
+                            <Setter TargetName="SvPanel"
                                     Property="Grid.Column"
                                     Value="1" />
-                            <Setter TargetName="TpPanel"
+                            <Setter TargetName="SvPanel"
                                     Property="Grid.Row"
                                     Value="0" />
                             <Setter TargetName="Cd2"
@@ -226,10 +677,10 @@
                                 <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
                                            Value="Center" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="TpPanel"
+                            <Setter TargetName="SvPanel"
                                     Property="Grid.Column"
                                     Value="2" />
-                            <Setter TargetName="TpPanel"
+                            <Setter TargetName="SvPanel"
                                     Property="Grid.Row"
                                     Value="0" />
                             <Setter TargetName="BdrFront"
@@ -276,10 +727,10 @@
                                 <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
                                            Value="Front" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="TpPanel"
+                            <Setter TargetName="SvPanel"
                                     Property="Grid.Column"
                                     Value="1" />
-                            <Setter TargetName="TpPanel"
+                            <Setter TargetName="SvPanel"
                                     Property="Grid.Row"
                                     Value="0" />
                             <Setter TargetName="Cd2"
@@ -305,13 +756,13 @@
                                 <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
                                            Value="End" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="TpPanel"
+                            <Setter TargetName="SvPanel"
                                     Property="Grid.Column"
                                     Value="3" />
                             <Setter TargetName="Cd4"
                                     Property="Width"
                                     Value="Auto" />
-                            <Setter TargetName="TpPanel"
+                            <Setter TargetName="SvPanel"
                                     Property="Grid.Row"
                                     Value="0" />
                             <Setter TargetName="BdrFront"
@@ -346,10 +797,10 @@
                                 <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
                                            Value="Stretch" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="TpPanel"
+                            <Setter TargetName="SvPanel"
                                     Property="Grid.Column"
                                     Value="1" />
-                            <Setter TargetName="TpPanel"
+                            <Setter TargetName="SvPanel"
                                     Property="Grid.Row"
                                     Value="4" />
                             <Setter TargetName="Cd2"
@@ -391,10 +842,10 @@
                                 <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
                                            Value="Center" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="TpPanel"
+                            <Setter TargetName="SvPanel"
                                     Property="Grid.Column"
                                     Value="2" />
-                            <Setter TargetName="TpPanel"
+                            <Setter TargetName="SvPanel"
                                     Property="Grid.Row"
                                     Value="4" />
                             <Setter TargetName="BdrFront"
@@ -447,10 +898,10 @@
                                 <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
                                            Value="Front" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="TpPanel"
+                            <Setter TargetName="SvPanel"
                                     Property="Grid.Column"
                                     Value="1" />
-                            <Setter TargetName="TpPanel"
+                            <Setter TargetName="SvPanel"
                                     Property="Grid.Row"
                                     Value="4" />
                             <Setter TargetName="Cd2"
@@ -476,10 +927,10 @@
                                 <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
                                            Value="End" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="TpPanel"
+                            <Setter TargetName="SvPanel"
                                     Property="Grid.Column"
                                     Value="3" />
-                            <Setter TargetName="TpPanel"
+                            <Setter TargetName="SvPanel"
                                     Property="Grid.Row"
                                     Value="4" />
                             <Setter TargetName="Cd4"
@@ -520,10 +971,10 @@
                                 <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
                                            Value="Stretch" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="TpPanel"
+                            <Setter TargetName="SvPanel"
                                     Property="Grid.Row"
                                     Value="1" />
-                            <Setter TargetName="TpPanel"
+                            <Setter TargetName="SvPanel"
                                     Property="Grid.Column"
                                     Value="0" />
                             <Setter TargetName="Rd2"
@@ -561,10 +1012,10 @@
                                 <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
                                            Value="Center" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="TpPanel"
+                            <Setter TargetName="SvPanel"
                                     Property="Grid.Row"
                                     Value="2" />
-                            <Setter TargetName="TpPanel"
+                            <Setter TargetName="SvPanel"
                                     Property="Grid.Column"
                                     Value="0" />
                             <Setter TargetName="BdrFront"
@@ -611,10 +1062,10 @@
                                 <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
                                            Value="Front" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="TpPanel"
+                            <Setter TargetName="SvPanel"
                                     Property="Grid.Row"
                                     Value="1" />
-                            <Setter TargetName="TpPanel"
+                            <Setter TargetName="SvPanel"
                                     Property="Grid.Column"
                                     Value="0" />
                             <Setter TargetName="Rd2"
@@ -640,10 +1091,10 @@
                                 <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
                                            Value="End" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="TpPanel"
+                            <Setter TargetName="SvPanel"
                                     Property="Grid.Row"
                                     Value="3" />
-                            <Setter TargetName="TpPanel"
+                            <Setter TargetName="SvPanel"
                                     Property="Grid.Column"
                                     Value="0" />
                             <Setter TargetName="Rd4"
@@ -681,10 +1132,10 @@
                                 <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
                                            Value="Stretch" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="TpPanel"
+                            <Setter TargetName="SvPanel"
                                     Property="Grid.Row"
                                     Value="1" />
-                            <Setter TargetName="TpPanel"
+                            <Setter TargetName="SvPanel"
                                     Property="Grid.Column"
                                     Value="4" />
                             <Setter TargetName="Rd2"
@@ -725,10 +1176,10 @@
                                 <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
                                            Value="Center" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="TpPanel"
+                            <Setter TargetName="SvPanel"
                                     Property="Grid.Row"
                                     Value="2" />
-                            <Setter TargetName="TpPanel"
+                            <Setter TargetName="SvPanel"
                                     Property="Grid.Column"
                                     Value="4" />
                             <Setter TargetName="BdrFront"
@@ -781,10 +1232,10 @@
                                 <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
                                            Value="Front" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="TpPanel"
+                            <Setter TargetName="SvPanel"
                                     Property="Grid.Row"
                                     Value="1" />
-                            <Setter TargetName="TpPanel"
+                            <Setter TargetName="SvPanel"
                                     Property="Grid.Column"
                                     Value="4" />
                             <Setter TargetName="Rd2"
@@ -810,13 +1261,13 @@
                                 <Condition Property="local:TabControlHelper.HeaderPanelAlignment"
                                            Value="End" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="TpPanel"
+                            <Setter TargetName="SvPanel"
                                     Property="Grid.Row"
                                     Value="3" />
-                            <Setter TargetName="TpPanel"
+                            <Setter TargetName="SvPanel"
                                     Property="Grid.Column"
                                     Value="4" />
-                            <Setter TargetName="TpPanel"
+                            <Setter TargetName="SvPanel"
                                     Property="Grid.RowSpan"
                                     Value="1" />
                             <Setter TargetName="Rd4"
@@ -875,18 +1326,10 @@
                 Value="{Binding Path=(local:TabControlHelper.ItemsSelectedBorderThickness), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <Setter Property="local:TabControlHelper.ItemCornerRadius"
                 Value="{Binding Path=(local:TabControlHelper.ItemsCornerRadius), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
-        <Setter Property="local:TabControlHelper.ItemSelectedRibbonBrush"
-                Value="{Binding Path=(local:TabControlHelper.ItemsSelectedRibbonBrush), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <Setter Property="local:TabControlHelper.ItemRemovable"
                 Value="{Binding Path=(local:TabControlHelper.ItemsRemovable), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <Setter Property="local:TabControlHelper.ItemIcon"
                 Value="{Binding Path=(local:TabControlHelper.ItemsIcon), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
-        <Setter Property="local:TabControlHelper.ItemRibbonPlacement"
-                Value="{Binding Path=(local:TabControlHelper.ItemsRibbonPlacement), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
-        <Setter Property="local:TabControlHelper.ItemRibbonBrush"
-                Value="{Binding Path=(local:TabControlHelper.ItemsRibbonBrush), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
-        <Setter Property="local:TabControlHelper.ItemRibbonThickness"
-                Value="{Binding Path=(local:TabControlHelper.ItemsRibbonThickness), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <!--IconHelper-->
         <Setter Property="local:IconHelper.Foreground"
                 Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
@@ -922,8 +1365,8 @@
                             <StackPanel x:Name="StkContent"
                                         Orientation="Horizontal"
                                         Margin="{TemplateBinding Padding}"
-                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+                                        VerticalAlignment="{Binding Path=(local:TabControlHelper.ItemsVerticalHeaderAlignment), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}"
+                                        HorizontalAlignment="{Binding Path=(local:TabControlHelper.ItemsHorizontalHeaderAlignment), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}">
                                 <ic:IconControl x:Name="icIcon"
                                                 Content="{Binding Path=(local:TabControlHelper.ItemIcon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                                 Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
@@ -948,60 +1391,7 @@
                                 </Button.CommandParameter>
                             </Button>
                         </Grid>
-                        <Rectangle x:Name="RectRibbon"
-                                   Fill="{Binding Path=(local:TabControlHelper.ItemRibbonBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                   Visibility="Collapsed" />
                     </Grid>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="local:TabControlHelper.ItemRibbonPlacement"
-                                 Value="Left">
-                            <Setter TargetName="RectRibbon"
-                                    Property="Visibility"
-                                    Value="Visible" />
-                            <Setter TargetName="RectRibbon"
-                                    Property="HorizontalAlignment"
-                                    Value="Left" />
-                            <Setter TargetName="RectRibbon"
-                                    Property="Width"
-                                    Value="{Binding Path=(local:TabControlHelper.ItemRibbonThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                        </Trigger>
-                        <Trigger Property="local:TabControlHelper.ItemRibbonPlacement"
-                                 Value="Top">
-                            <Setter TargetName="RectRibbon"
-                                    Property="Visibility"
-                                    Value="Visible" />
-                            <Setter TargetName="RectRibbon"
-                                    Property="VerticalAlignment"
-                                    Value="Top" />
-                            <Setter TargetName="RectRibbon"
-                                    Property="Height"
-                                    Value="{Binding Path=(local:TabControlHelper.ItemRibbonThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                        </Trigger>
-                        <Trigger Property="local:TabControlHelper.ItemRibbonPlacement"
-                                 Value="Right">
-                            <Setter TargetName="RectRibbon"
-                                    Property="Visibility"
-                                    Value="Visible" />
-                            <Setter TargetName="RectRibbon"
-                                    Property="HorizontalAlignment"
-                                    Value="Right" />
-                            <Setter TargetName="RectRibbon"
-                                    Property="Width"
-                                    Value="{Binding Path=(local:TabControlHelper.ItemRibbonThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                        </Trigger>
-                        <Trigger Property="local:TabControlHelper.ItemRibbonPlacement"
-                                 Value="Bottom">
-                            <Setter TargetName="RectRibbon"
-                                    Property="Visibility"
-                                    Value="Visible" />
-                            <Setter TargetName="RectRibbon"
-                                    Property="VerticalAlignment"
-                                    Value="Bottom" />
-                            <Setter TargetName="RectRibbon"
-                                    Property="Height"
-                                    Value="{Binding Path=(local:TabControlHelper.ItemRibbonThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                        </Trigger>
-                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -1051,17 +1441,6 @@
                 <Setter Property="BorderThickness"
                         Value="{Binding Path=(local:TabControlHelper.ItemSelectedBorderThickness),RelativeSource={RelativeSource Self}, Mode=OneWay}" />
             </MultiDataTrigger>
-            <MultiDataTrigger>
-                <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsSelected,RelativeSource={RelativeSource Self}}"
-                               Value="True" />
-                    <Condition Binding="{Binding Path=(local:TabControlHelper.ItemSelectedRibbonBrush),Converter={StaticResource {x:Static rs:Converters.IsNotNullConverter}},RelativeSource={RelativeSource Self}, Mode=OneWay}"
-                               Value="True" />
-                </MultiDataTrigger.Conditions>
-                <Setter Property="local:TabControlHelper.ItemRibbonBrush"
-                        Value="{Binding Path=(local:TabControlHelper.ItemSelectedRibbonBrush),RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-            </MultiDataTrigger>
-
         </Style.Triggers>
     </Style>
 </ResourceDictionary>

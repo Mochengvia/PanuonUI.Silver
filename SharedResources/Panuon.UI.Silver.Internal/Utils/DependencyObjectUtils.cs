@@ -1,14 +1,15 @@
-﻿using System.Windows;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Windows;
 
 namespace Panuon.UI.Silver.Internal.Utils
 {
-    static class DependencyPropertyUtils
+   static class DependencyObjectUtils
     {
-        #region Methods
         internal static bool IsDefaultValue(DependencyObject d, DependencyProperty dp)
         {
             return DependencyPropertyHelper.GetValueSource(d, dp).BaseValueSource == BaseValueSource.Default;
         }
-        #endregion
     }
 }

@@ -36,4 +36,7 @@
     <icv:ThicknessWithoutLeftConverter x:Key="{x:Static irs:Converters.ThicknessWithoutLeftConverter}" />
     <icv:GridLengthToDoubleConverter x:Key="{x:Static irs:Converters.GridLengthToDoubleConverter}" />
     <icv:DoubleToBottomThicknessConverter x:Key="{x:Static irs:Converters.DoubleToBottomThicknessConverter}" />
-</ResourceDictionary>
+    <icv:IsGridLengthAbsoluteConverter x:Key="{x:Static irs:Converters.IsGridLengthAbsoluteConverter}" />
+    <icv:TabPanelMaxWidthConverter x:Key="{x:Static irs:Converters.TabPanelMaxWidthConverter}" />
+    <icv:TabControlSideButtonVisibilityConverter x:Key="{x:Static irs:Converters.TabControlSideButtonVisibilityConverter}" />
+</ResourceDictionary> 

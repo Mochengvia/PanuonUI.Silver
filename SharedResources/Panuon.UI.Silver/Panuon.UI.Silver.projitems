@@ -40,6 +40,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Contracts\Enums\ToggleArrow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Contracts\Enums\TreeViewStyle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Contracts\Interfaces\IPendingHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Abstracts\FormBoundGroup.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Badge.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Breadcrumb.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BreadcrumbItem.cs" />
@@ -50,6 +51,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Components\PendingBoxXWindow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Drawer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Fench.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Abstracts\FormGroup.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Form.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\FormTextGroup.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\HorizontalSeparator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Pagination.cs" />
@@ -82,9 +86,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\TreeViewHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\WindowXCaption.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\GlobalSettings.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\MessageBoxXSettings.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\PendingBoxXSettings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\Converters.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Resources\ResourceKey.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)Control.xaml">
@@ -104,6 +107,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\Controls\Drawer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Controls\Form.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

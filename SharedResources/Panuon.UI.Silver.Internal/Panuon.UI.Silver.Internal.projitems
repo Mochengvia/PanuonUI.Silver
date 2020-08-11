@@ -14,6 +14,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Contracts\Enums\FormGroupCategory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\FormGroupControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\FromGroupPresenter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\IconControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ArcConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleToBottomThicknessConverter.cs" />
@@ -21,6 +23,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CheckBoxSwitch3ToggleTrackMarginConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CheckBoxSwitch2DecorationMarginConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CheckBoxSwitchToggleMarginConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\IsGridLengthAbsoluteConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\GridLengthToDoubleConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\LoadingClassicRenderTransformOriginConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CombineToArrayConverter.cs" />
@@ -29,6 +32,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleToRightMarginConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\NullToCollapseConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\RoundCornerConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\TabControlSideButtonVisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\TabPanelMaxWidthConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ThicknessWithoutLeftConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\TreeViewChainHorizontalMarginConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\TreeViewChainWidthConverter.cs" />
@@ -59,9 +64,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\CalendarXItemModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\Converters.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\ResourceKeys.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\BindingUtils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\BrushUtils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\DateTimeUtils.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Utils\DependencyPropertyUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\DependencyObjectUtils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\GridLengthUtils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\LocalizationUtils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\StringUtils.cs" />
@@ -71,6 +77,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)Resources\Converters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Controls\FormGroupControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -16,8 +16,6 @@
                 Value="0" />
         <Setter Property="Background"
                 Value="#F1F1F1" />
-        <Setter Property="local:ToggleButtonHelper.CheckedBackground"
-                Value="#EAEAEA" />
         <Setter Property="local:IconHelper.Foreground"
                 Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:IconHelper.Margin"

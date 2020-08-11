@@ -18,7 +18,7 @@
         <Setter Property="local:GroupBoxHelper.HeaderForeground"
                 Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:GroupBoxHelper.HeaderRibbonLineVisibility"
-                Value="Collapsed" />
+                Value="Visible" />
         <Setter Property="local:GroupBoxHelper.HeaderRibbonLineThickness"
                 Value="1" />
         <Setter Property="local:GroupBoxHelper.HeaderRibbonLineBrush"

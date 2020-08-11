@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:UIBrowser.Views.Partials"
              xmlns:pu="clr-namespace:Panuon.UI.Silver;assembly=Panuon.UI.Silver"
+             xmlns:purs="clr-namespace:Panuon.UI.Silver.Resources;assembly=Panuon.UI.Silver"
              xmlns:corep="clr-namespace:UIBrowser.Core.Properties;assembly=UIBrowser.Core"
              xmlns:plt="clr-namespace:UIBrowser.Palette;assembly=UIBrowser.Palette"
              mc:Ignorable="d"
@@ -13,7 +14,8 @@
     <ScrollViewer HorizontalScrollBarVisibility="Auto">
         <StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Button plt:PaletteHelper.RegistControl="True"
+                <Button x:Name="Test"
+                        plt:PaletteHelper.RegistControl="True"
                         Height="30"
                         Width="100"
                         pu:ButtonHelper.HoverBackground="{StaticResource LightBlue}"

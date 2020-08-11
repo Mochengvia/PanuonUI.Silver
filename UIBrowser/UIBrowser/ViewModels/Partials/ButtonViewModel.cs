@@ -40,5 +40,11 @@ namespace UIBrowser.ViewModels.Partials
             ButtonHelper.IsWaitingProperty,
         };
         #endregion
+        public void Test()
+        {
+            PendingBoxX.Settings.CreateOnNewThread = true;
+
+            PendingBoxX.Show(Application.Current.MainWindow, "123", false);
+        }
     }
 }

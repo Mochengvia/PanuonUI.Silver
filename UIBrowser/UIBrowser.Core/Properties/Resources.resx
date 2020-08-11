@@ -132,6 +132,9 @@
   <data name="Foreground" xml:space="preserve">
     <value>Foreground</value>
   </data>
+  <data name="Form" xml:space="preserve">
+    <value>Form</value>
+  </data>
   <data name="NativeControls" xml:space="preserve">
     <value>Native Controls</value>
   </data>

@@ -75,6 +75,7 @@
     <Compile Include="Components\Enums\Sex.cs" />
     <Compile Include="Models\DataItem.cs" />
     <Compile Include="Models\PartialViewltem.cs" />
+    <Compile Include="ViewModels\Partials\FormViewModel.cs" />
     <Compile Include="ViewModels\Partials\TabControlViewModel.cs" />
     <Compile Include="ViewModels\Partials\SliderViewModel.cs" />
     <Compile Include="ViewModels\Partials\DataGridViewModel.cs" />
@@ -124,6 +125,10 @@
     <Page Include="Resources\Control.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Partials\FormView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Partials\TabControlView.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -6,12 +6,12 @@ using System.Windows.Data;
 
 namespace Panuon.UI.Silver.Internal.Converters
 {
-    internal class GridLengthToDoubleConverter : IValueConverter
+    internal class IsGridLengthAbsoluteConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var gridLength = (GridLength)value;
-            return gridLength.IsAuto ? double.NaN : gridLength.Value;
+            return gridLength.IsAbsolute;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

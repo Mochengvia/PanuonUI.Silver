@@ -1,0 +1,46 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver"
+                    xmlns:core="clr-namespace:Panuon.UI.Silver.Core"
+                    xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources"
+                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
+                    xmlns:ic="clr-namespace:Panuon.UI.Silver.Internal.Controls">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="ic:FormGroupControl">
+        <Setter Property="Margin"
+                Value="{Binding RowSpacing, Converter={StaticResource {x:Static irs:Converters.DoubleToBottomThicknessConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ic:FormGroupControl">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="{TemplateBinding HeaderWidth}" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border x:Name="PART_HeaderBorder"
+                                Height="{Binding HeaderHeight, Converter={StaticResource {x:Static irs:Converters.GridLengthToDoubleConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                            <ContentPresenter x:Name="PART_ContentSite"
+                                              ContentSource="Header"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Left"
+                                              Margin="{TemplateBinding HeaderPadding}" />
+                        </Border>
+                        <ContentPresenter Grid.Column="1" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding HeaderHeight, Converter={StaticResource {x:Static irs:Converters.IsGridLengthAbsoluteConverter}}, RelativeSource={RelativeSource Self},Mode=OneWay}"
+                                     Value="True">
+                            <Setter TargetName="PART_HeaderBorder"
+                                    Property="VerticalAlignment"
+                                    Value="Top" />
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

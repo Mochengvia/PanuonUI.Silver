@@ -132,6 +132,9 @@
   <data name="Foreground" xml:space="preserve">
     <value>前景色</value>
   </data>
+  <data name="Form" xml:space="preserve">
+    <value>Form 表单</value>
+  </data>
   <data name="NativeControls" xml:space="preserve">
     <value>原生控件</value>
   </data>

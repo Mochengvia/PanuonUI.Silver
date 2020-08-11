@@ -8,7 +8,7 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{x:Static irs:ResourceKeys.WindowXMinimizeButtonStyle}"
+    <Style x:Key="{ComponentResourceKey ResourceId=WindowXMinimizeButtonStyle, TypeInTargetAssembly={x:Type local:WindowX}}"
            TargetType="Button">
         <Setter Property="local:ButtonHelper.Hook"
                 Value="True" />
@@ -22,6 +22,12 @@
                 Value="Right" />
         <Setter Property="VerticalAlignment"
                 Value="Top" />
+        <Setter Property="Content"
+                Value="&#xe92a;" />
+        <Setter Property="FontFamily"
+                Value="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon" />
+        <Setter Property="FontSize"
+                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
         <Setter Property="Height"
                 Value="{Binding Path=(local:WindowXCaption.Height),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
         <Setter Property="Width"
@@ -49,7 +55,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="{x:Static irs:ResourceKeys.WindowXMaximizeButtonStyle}"
+    <Style x:Key="{ComponentResourceKey ResourceId=WindowXMaximizeButtonStyle, TypeInTargetAssembly={x:Type local:WindowX}}"
            TargetType="Button">
         <Setter Property="local:ButtonHelper.Hook"
                 Value="True" />
@@ -63,6 +69,12 @@
                 Value="Right" />
         <Setter Property="VerticalAlignment"
                 Value="Top" />
+        <Setter Property="Content"
+                Value="&#xe92b;" />
+        <Setter Property="FontFamily"
+                Value="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon" />
+        <Setter Property="FontSize"
+                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
         <Setter Property="Height"
                 Value="{Binding Path=(local:WindowXCaption.Height),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
         <Setter Property="Width"
@@ -87,10 +99,15 @@
                 <Setter Property="Opacity"
                         Value="0.4" />
             </Trigger>
+            <DataTrigger Binding="{Binding WindowState, RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}"
+                         Value="Maximized">
+                <Setter Property="Content"
+                        Value="&#xe92c;" />
+            </DataTrigger>
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="{x:Static irs:ResourceKeys.WindowXCloseButtonStyle}"
+    <Style x:Key="{ComponentResourceKey ResourceId=WindowXCloseButtonStyle, TypeInTargetAssembly={x:Type local:WindowX}}"
            TargetType="Button">
         <Setter Property="local:ButtonHelper.Hook"
                 Value="True" />
@@ -104,6 +121,12 @@
                 Value="Right" />
         <Setter Property="VerticalAlignment"
                 Value="Top" />
+        <Setter Property="Content"
+                Value="&#xe92d;" />
+        <Setter Property="FontFamily"
+                Value="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon" />
+        <Setter Property="FontSize"
+                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
         <Setter Property="Height"
                 Value="{Binding Path=(local:WindowXCaption.Height),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
         <Setter Property="Width"
@@ -131,7 +154,7 @@
         </Style.Triggers>
     </Style>
 
-    <StackPanel x:Key="{x:Static irs:ResourceKeys.WindowXDefaultHeader}"
+    <StackPanel x:Key="{ComponentResourceKey ResourceId=WindowXHeader, TypeInTargetAssembly={x:Type local:WindowX}}"
                 Orientation="Horizontal"
                 Margin="5,0,0,0"
                 x:Shared="False">
@@ -155,17 +178,17 @@
         <Setter Property="local:WindowXCaption.Foreground"
                 Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:WindowXCaption.Header"
-                Value="{StaticResource {x:Static irs:ResourceKeys.WindowXDefaultHeader}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=WindowXHeader, TypeInTargetAssembly={x:Type local:WindowX}}}" />
         <Setter Property="Background"
                 Value="White" />
         <Setter Property="MaskBrush"
                 Value="#B3FFFFFF" />
         <Setter Property="local:WindowXCaption.MinimizeButtonStyle"
-                Value="{StaticResource {x:Static irs:ResourceKeys.WindowXMinimizeButtonStyle}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=WindowXMinimizeButtonStyle, TypeInTargetAssembly={x:Type local:WindowX}}}" />
         <Setter Property="local:WindowXCaption.MaximizeButtonStyle"
-                Value="{StaticResource {x:Static irs:ResourceKeys.WindowXMaximizeButtonStyle}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=WindowXMaximizeButtonStyle, TypeInTargetAssembly={x:Type local:WindowX}}}" />
         <Setter Property="local:WindowXCaption.CloseButtonStyle"
-                Value="{StaticResource {x:Static irs:ResourceKeys.WindowXCloseButtonStyle}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=WindowXCloseButtonStyle, TypeInTargetAssembly={x:Type local:WindowX}}}" />
         <Setter Property="local:WindowXCaption.BackstageMinimizeButtonStyle"
                 Value="{Binding Path=(local:WindowXCaption.MinimizeButtonStyle), RelativeSource={RelativeSource Self}}" />
         <Setter Property="local:WindowXCaption.BackstageMaximizeButtonStyle"
@@ -175,73 +198,65 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:WindowX">
-                    <Grid>
-                        <Border Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}" />
-                        <Grid x:Name="GrdMain">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
-                            <AdornerDecorator Grid.Row="1">
-                                <ContentPresenter />
-                            </AdornerDecorator>
-                            <ContentControl x:Name="CcBackstage"
-                                            Visibility="Collapsed"
-                                            Grid.RowSpan="2"
-                                            Content="{TemplateBinding Backstage}" />
-                            <Grid Height="{Binding Path=(local:WindowXCaption.Height),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                  Background="{Binding Path=(local:WindowXCaption.Background),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <ContentControl x:Name="CcHeader"
-                                                Foreground="{Binding Path=(local:WindowXCaption.Foreground),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                                Content="{Binding Path=(local:WindowXCaption.Header),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
-                                <ContentControl x:Name="CcExtendControl"
-                                                local:WindowX.IsDragMoveArea="False"
-                                                Grid.Column="1"
-                                                Content="{Binding Path=(local:WindowXCaption.ExtendControl),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
-                                <Button x:Name="BtnMinimize"
-                                        Grid.Column="2"
-                                        Style="{Binding Path=(local:WindowXCaption.MinimizeButtonStyle),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}"
-                                        Command="{TemplateBinding MinimizeCommand}"
-                                        CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                        Content="&#xe92a;"
-                                        FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon"
-                                        FontSize="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                        local:WindowX.IsDragMoveArea="False" />
-                                <Button x:Name="BtnMaximize"
-                                        Grid.Column="3"
-                                        Style="{Binding Path=(local:WindowXCaption.MaximizeButtonStyle),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}"
-                                        Command="{TemplateBinding MaximizeCommand}"
-                                        CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                        Content="&#xe92b;"
-                                        FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon"
-                                        FontSize="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                        local:WindowX.IsDragMoveArea="False" />
-                                <Button x:Name="BtnClose"
-                                        Grid.Column="4"
-                                        Style="{Binding Path=(local:WindowXCaption.CloseButtonStyle),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}"
-                                        Command="{TemplateBinding CloseCommand}"
-                                        CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                        Content="&#xe92d;"
-                                        FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon"
-                                        FontSize="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                        IsEnabled="{TemplateBinding CanClose}"
-                                        local:WindowX.IsDragMoveArea="False" />
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid>
+                            <Grid x:Name="GrdMain">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <AdornerDecorator Grid.Row="1">
+                                    <ContentPresenter />
+                                </AdornerDecorator>
+                                <ContentControl x:Name="CcBackstage"
+                                                Visibility="Collapsed"
+                                                Grid.RowSpan="2"
+                                                Content="{TemplateBinding Backstage}" />
+                                <Grid Height="{Binding Path=(local:WindowXCaption.Height),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                      Background="{Binding Path=(local:WindowXCaption.Background),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <ContentControl x:Name="CcHeader"
+                                                    Foreground="{Binding Path=(local:WindowXCaption.Foreground),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                    Content="{Binding Path=(local:WindowXCaption.Header),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
+                                    <ContentControl x:Name="CcExtendControl"
+                                                    local:WindowX.IsDragMoveArea="False"
+                                                    Grid.Column="1"
+                                                    Content="{Binding Path=(local:WindowXCaption.ExtendControl),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
+                                    <Button x:Name="BtnMinimize"
+                                            Grid.Column="2"
+                                            Style="{Binding Path=(local:WindowXCaption.MinimizeButtonStyle),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}"
+                                            Command="{TemplateBinding MinimizeCommand}"
+                                            CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                            local:WindowX.IsDragMoveArea="False" />
+                                    <Button x:Name="BtnMaximize"
+                                            Grid.Column="3"
+                                            Style="{Binding Path=(local:WindowXCaption.MaximizeButtonStyle),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}"
+                                            Command="{TemplateBinding MaximizeCommand}"
+                                            CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                            local:WindowX.IsDragMoveArea="False" />
+                                    <Button x:Name="BtnClose"
+                                            Grid.Column="4"
+                                            Style="{Binding Path=(local:WindowXCaption.CloseButtonStyle),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}"
+                                            Command="{TemplateBinding CloseCommand}"
+                                            CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                            IsEnabled="{TemplateBinding CanClose}"
+                                            local:WindowX.IsDragMoveArea="False" />
+                                </Grid>
                             </Grid>
+                            <Rectangle x:Name="RectMask"
+                                       Fill="{TemplateBinding MaskBrush}"
+                                       Opacity="0"
+                                       Visibility="Collapsed" />
                         </Grid>
-                        <Rectangle x:Name="RectMask"
-                                   Fill="{TemplateBinding MaskBrush}"
-                                   Opacity="0"
-                                   Visibility="Collapsed" />
-                    </Grid>
+                    </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="ResizeMode"
                                  Value="CanMinimize">
@@ -260,9 +275,6 @@
                         </Trigger>
                         <Trigger Property="WindowState"
                                  Value="Maximized">
-                            <Setter TargetName="BtnMaximize"
-                                    Property="Content"
-                                    Value="&#xe92c;" />
                             <Setter TargetName="GrdMain"
                                     Property="Margin"
                                     Value="5" />

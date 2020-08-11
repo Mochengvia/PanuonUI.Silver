@@ -98,6 +98,21 @@ namespace Panuon.UI.Silver
 
         #endregion
 
+        #region HorizontalHeaderAlignment
+        public static HorizontalAlignment GetHorizontalHeaderAlignment(DependencyObject obj)
+        {
+            return (HorizontalAlignment)obj.GetValue(HorizontalHeaderAlignmentProperty);
+        }
+
+        public static void SetHorizontalHeaderAlignment(DependencyObject obj, HorizontalAlignment value)
+        {
+            obj.SetValue(HorizontalHeaderAlignmentProperty, value);
+        }
+
+        public static readonly DependencyProperty HorizontalHeaderAlignmentProperty =
+            DependencyProperty.RegisterAttached("HorizontalHeaderAlignment", typeof(HorizontalAlignment), typeof(DataGridHelper));
+        #endregion
+
         #region UnitPadding
         public static Thickness GetUnitPadding(DataGrid dataGrid)
         {
@@ -294,7 +309,6 @@ namespace Panuon.UI.Silver
 
         #endregion
 
-
         #region Internal Properties
 
         #region (Internal) DataGridHook
@@ -353,9 +367,9 @@ namespace Panuon.UI.Silver
 
                 var cellTemplate = templateAttribute.ElementType == null
                     ? CreateDefaultElementTemplated(dataGrid, e.PropertyName, bindingMode, updateSourceTrigger)
-                    : CreateTemplate(templateAttribute.ElementType, templateAttribute.BindingProperty, e.PropertyName, bindingMode, updateSourceTrigger);
+                    : CreateTemplate(dataGrid, templateAttribute.ElementType, templateAttribute.BindingProperty, templateAttribute.ElementStyleKey, e.PropertyName, bindingMode, updateSourceTrigger);
 
-                var cellEditingTemplate = CreateTemplate(templateAttribute.EditingElementType, templateAttribute.EditingElementBindingProperty, e.PropertyName, bindingMode, updateSourceTrigger);
+                var cellEditingTemplate = CreateTemplate(dataGrid, templateAttribute.EditingElementType, templateAttribute.EditingElementBindingProperty, templateAttribute.EditingElementStyleKey, e.PropertyName, bindingMode, updateSourceTrigger);
 
                 e.Column = new DataGridTemplateColumn()
                 {
@@ -404,10 +418,12 @@ namespace Panuon.UI.Silver
                 {
                     BasedOn = (Style)dataGrid.FindResource(Internal.Resources.ResourceKeys.DataGridComboBoxStyle)
                 };
-                if (dataGrid.HorizontalContentAlignment != HorizontalAlignment.Stretch)
+                elementStyle.Setters.Add(new Setter(ComboBox.HorizontalContentAlignmentProperty, new Binding()
                 {
-                    elementStyle.Setters.Add(new Setter(ComboBox.HorizontalContentAlignmentProperty, dataGrid.HorizontalContentAlignment));
-                }
+                    Path = new PropertyPath(DataGrid.HorizontalContentAlignmentProperty),
+                    Source = dataGrid,
+                }));
+               
                 comboBoxColumn.ElementStyle = elementStyle;
 
                 var editingElementStyle = new Style(typeof(ComboBox))
@@ -415,6 +431,12 @@ namespace Panuon.UI.Silver
                     BasedOn = (Style)dataGrid.FindResource(typeof(ComboBox))
                 };
                 editingElementStyle.Setters.Add(new Setter(ComboBox.VerticalContentAlignmentProperty, VerticalAlignment.Center));
+                editingElementStyle.Setters.Add(new Setter(ComboBox.HorizontalContentAlignmentProperty, new Binding()
+                {
+                    Path = new PropertyPath(DataGrid.HorizontalContentAlignmentProperty),
+                    Source = dataGrid,
+                }));
+
                 comboBoxColumn.EditingElementStyle = editingElementStyle;
             }
             else if (e.Column is DataGridCheckBoxColumn)
@@ -434,12 +456,22 @@ namespace Panuon.UI.Silver
                     BasedOn = (Style)dataGrid.FindResource(typeof(CheckBox))
                 };
                 elementStyle.Setters.Add(new Setter(CheckBox.VerticalAlignmentProperty, VerticalAlignment.Center));
+                elementStyle.Setters.Add(new Setter(CheckBox.HorizontalContentAlignmentProperty, new Binding()
+                {
+                    Path = new PropertyPath(DataGrid.HorizontalContentAlignmentProperty),
+                    Source = dataGrid,
+                }));
                 checkBoxColumn.ElementStyle = elementStyle;
                 var editingElementStyle = new Style(typeof(CheckBox))
                 {
                     BasedOn = (Style)dataGrid.FindResource(typeof(CheckBox))
                 };
                 editingElementStyle.Setters.Add(new Setter(CheckBox.VerticalAlignmentProperty, VerticalAlignment.Center));
+                editingElementStyle.Setters.Add(new Setter(CheckBox.HorizontalContentAlignmentProperty, new Binding()
+                {
+                    Path = new PropertyPath(DataGrid.HorizontalContentAlignmentProperty),
+                    Source = dataGrid,
+                }));
                 checkBoxColumn.EditingElementStyle = editingElementStyle;
 
             }
@@ -483,14 +515,20 @@ namespace Panuon.UI.Silver
             };
             style.Setters.Add(new Setter(TextBlock.PaddingProperty, new Thickness(7, 0, 7, 0)));
             style.Setters.Add(new Setter(TextBlock.VerticalAlignmentProperty, VerticalAlignment.Center));
+            style.Setters.Add(new Setter(TextBlock.HorizontalAlignmentProperty, new Binding()
+            {
+                Path = new PropertyPath(DataGrid.HorizontalContentAlignmentProperty),
+                Source = dataGrid,
+            }));
 
             style.Setters.Add(new Setter(TextBlock.MaxHeightProperty, 100.0));
             return style;
         }
 
-
-        private static DataTemplate CreateTemplate(Type elementType, 
+        private static DataTemplate CreateTemplate(DataGrid dataGrid,
+            Type elementType, 
             DependencyProperty property,
+            object elementStyleKey,
             string propertyName,
             BindingMode bindingMode,
             UpdateSourceTrigger updateSourceTrigger)
@@ -501,6 +539,27 @@ namespace Panuon.UI.Silver
                 Mode = bindingMode,
                 UpdateSourceTrigger = updateSourceTrigger,
             });
+            if(elementStyleKey != null)
+            {
+                factory.SetValue(FrameworkElement.StyleProperty, dataGrid.FindResource(elementStyleKey) as Style);
+            }
+            if (typeof(Control).IsAssignableFrom(elementType))
+            {
+                factory.SetBinding(Control.HorizontalContentAlignmentProperty, new Binding()
+                {
+                    Path = new PropertyPath(DataGrid.HorizontalContentAlignmentProperty),
+                    Source = dataGrid,
+                });
+            }
+            else
+            {
+                factory.SetBinding(FrameworkElement.HorizontalAlignmentProperty, new Binding()
+                {
+                    Path = new PropertyPath(DataGrid.HorizontalContentAlignmentProperty),
+                    Source = dataGrid,
+                });
+            }
+
             return new DataTemplate()
             {
                 VisualTree = factory,
@@ -518,6 +577,11 @@ namespace Panuon.UI.Silver
             {
                 Mode = bindingMode,
                 UpdateSourceTrigger = updateSourceTrigger,
+            });
+            factory.SetBinding(TextBlock.HorizontalAlignmentProperty, new Binding()
+            {
+                Path = new PropertyPath(DataGrid.HorizontalContentAlignmentProperty),
+                Source = dataGrid,
             });
             return new DataTemplate()
             {

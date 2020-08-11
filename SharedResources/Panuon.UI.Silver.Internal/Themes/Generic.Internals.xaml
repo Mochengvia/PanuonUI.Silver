@@ -6,6 +6,7 @@
         <!--<ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Controls/CalendarXDayControl.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Controls/CalendarXMonthControl.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Controls/CalendarXYearControl.xaml" />-->
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Controls/FormGroupControl.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Controls/IconControl.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

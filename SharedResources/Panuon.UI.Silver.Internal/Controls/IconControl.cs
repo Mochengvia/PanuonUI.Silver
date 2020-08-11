@@ -57,18 +57,18 @@ namespace Panuon.UI.Silver.Internal.Controls
         {
             if (Source != null)
             {
-                UIElementUtils.BindingProperty(this, HeightProperty, IconHelper.HeightProperty, Source);
-                UIElementUtils.BindingProperty(this, WidthProperty, IconHelper.WidthProperty, Source);
-                UIElementUtils.BindingProperty(this, MinWidthProperty, IconHelper.MinWidthProperty, Source);
-                UIElementUtils.BindingProperty(this, MinHeightProperty, IconHelper.MinHeightProperty, Source);
-                UIElementUtils.BindingProperty(this, MaxWidthProperty, IconHelper.MaxWidthProperty, Source);
-                UIElementUtils.BindingProperty(this, MaxHeightProperty, IconHelper.MaxHeightProperty, Source);
-                UIElementUtils.BindingProperty(this, MarginProperty, IconHelper.MarginProperty, Source);
-                UIElementUtils.BindingProperty(this, PaddingProperty, IconHelper.PaddingProperty, Source);
-                UIElementUtils.BindingProperty(this, FontFamilyProperty, IconHelper.FontFamilyProperty, Source);
-                UIElementUtils.BindingProperty(this, ForegroundProperty, IconHelper.ForegroundProperty, Source);
-                UIElementUtils.BindingProperty(this, FontSizeProperty, IconHelper.FontSizeProperty, Source);
-                UIElementUtils.BindingProperty(this, VisibilityProperty, ContentProperty, this, new NullToCollapseConverter());
+                BindingUtils.BindingProperty(this, HeightProperty, Source, IconHelper.HeightProperty);
+                BindingUtils.BindingProperty(this, WidthProperty, Source, IconHelper.WidthProperty);
+                BindingUtils.BindingProperty(this, MinWidthProperty, Source, IconHelper.MinWidthProperty);
+                BindingUtils.BindingProperty(this, MinHeightProperty, Source, IconHelper.MinHeightProperty);
+                BindingUtils.BindingProperty(this, MaxWidthProperty, Source, IconHelper.MaxWidthProperty);
+                BindingUtils.BindingProperty(this, MaxHeightProperty, Source, IconHelper.MaxHeightProperty);
+                BindingUtils.BindingProperty(this, MarginProperty, Source, IconHelper.MarginProperty);
+                BindingUtils.BindingProperty(this, PaddingProperty, Source, IconHelper.PaddingProperty);
+                BindingUtils.BindingProperty(this, FontFamilyProperty, Source, IconHelper.FontFamilyProperty);
+                BindingUtils.BindingProperty(this, ForegroundProperty, Source, IconHelper.ForegroundProperty);
+                BindingUtils.BindingProperty(this, FontSizeProperty, Source, IconHelper.FontSizeProperty);
+                BindingUtils.BindingProperty(this, VisibilityProperty, this, ContentProperty, new NullToCollapseConverter());
             }
         }
         #endregion

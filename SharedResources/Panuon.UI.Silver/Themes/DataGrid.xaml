@@ -53,6 +53,8 @@
     </Style>
     
     <Style TargetType="DataGridRow">
+        <Setter Property="Background"
+                Value="Transparent" />
         <Setter Property="MinHeight"
                 Value="{Binding MinRowHeight,RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
         <Setter Property="Template">
@@ -135,8 +137,8 @@
                                    StrokeThickness="1"
                                    Visibility="Collapsed" />
                         <ContentPresenter x:Name="CpContent"
-                                          HorizontalAlignment="{Binding HorizontalContentAlignment,RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
-                                          VerticalAlignment="{Binding VerticalContentAlignment,RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                                          HorizontalAlignment="Stretch"
+                                          VerticalAlignment="Stretch"
                                           Margin="{Binding Path=(local:DataGridHelper.UnitPadding),RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
                     </Grid>
                     <ControlTemplate.Triggers>
@@ -219,7 +221,7 @@
         <Setter Property="VerticalContentAlignment"
                 Value="Center" />
         <Setter Property="HorizontalContentAlignment"
-                Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+                Value="{Binding Path=(local:DataGridHelper.HorizontalHeaderAlignment), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="DataGridColumnHeader">
@@ -530,12 +532,10 @@
                 Value="30" />
         <Setter Property="MinRowHeight"
                 Value="30" />
+        <Setter Property="local:DataGridHelper.HorizontalHeaderAlignment"
+                Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:DataGridHelper.HeaderHoverBackground"
                 Value="#FAFAFA" />
-        <Setter Property="local:DataGridHelper.UnitHoverBackground"
-                Value="#FAFAFA" />
-        <Setter Property="local:DataGridHelper.UnitSelectedBackground"
-                Value="#F1F1F1" />
         <Setter Property="local:DataGridHelper.UnitSelectedForeground"
                 Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:DataGridHelper.RowHeaderBackground"

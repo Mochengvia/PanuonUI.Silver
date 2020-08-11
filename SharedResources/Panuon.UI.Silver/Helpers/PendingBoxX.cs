@@ -1,4 +1,5 @@
 ﻿using Panuon.UI.Silver.Components;
+using Panuon.UI.Silver.Core;
 using Panuon.UI.Silver.Internal.Implements;
 using Panuon.UI.Silver.Internal.Utils;
 using System;

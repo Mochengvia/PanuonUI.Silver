@@ -22,7 +22,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\ColorExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\IEnumerableExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\BrushAnimation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\MessageBoxXSettings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\NumberRange.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\PendingBoxXSettings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\RelayCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\SharedResourceDictionary.cs" />
   </ItemGroup>

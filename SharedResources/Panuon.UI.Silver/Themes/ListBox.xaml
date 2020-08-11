@@ -9,10 +9,6 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type ListBox}">
-        <Setter Property="local:ScrollViewerHelper.ScrollBarThickness"
-                Value="6" />
-        <Setter Property="local:ScrollViewerHelper.ScrollBarCornerRadius"
-                Value="3" />
         <Setter Property="Background"
                 Value="Transparent" />
         <Setter Property="BorderBrush"

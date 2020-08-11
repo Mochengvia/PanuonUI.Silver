@@ -213,6 +213,8 @@
                 Value="Center" />
         <Setter Property="IsEnabled"
                 Value="False" />
+        <Setter Property="MaxDropDownHeight"
+                Value="300" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ComboBox">
@@ -241,7 +243,7 @@
             <Trigger Property="HorizontalContentAlignment"
                      Value="Center">
                 <Setter Property="Padding"
-                        Value="11,0,11,0" />
+                        Value="17.5,0,17.5,0" />
             </Trigger>
             <Trigger Property="HorizontalContentAlignment"
                      Value="Right">
@@ -251,7 +253,7 @@
             <Trigger Property="HorizontalContentAlignment"
                      Value="Stretch">
                 <Setter Property="Padding"
-                        Value="5,0,5,0" />
+                        Value="5,0,30,0" />
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -267,6 +269,8 @@
                 Value="LightGray" />
         <Setter Property="BorderThickness"
                 Value="1" />
+        <Setter Property="MaxDropDownHeight"
+                Value="300" />
         <Setter Property="Padding"
                 Value="5,0,0,0" />
         <Setter Property="VerticalContentAlignment"

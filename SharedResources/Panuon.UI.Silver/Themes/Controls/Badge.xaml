@@ -3,7 +3,7 @@
                     xmlns:local="clr-namespace:Panuon.UI.Silver"
                     xmlns:core="clr-namespace:Panuon.UI.Silver.Core"
                     xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
-                    xmlns:ic="clr-namespace:Panuon.UI.Silver.Internal.Converters"
+                    xmlns:ic="clr-namespace:Panuon.UI.Silver.Internal.Controls"
                     xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources">
     <ResourceDictionary.MergedDictionaries>
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
