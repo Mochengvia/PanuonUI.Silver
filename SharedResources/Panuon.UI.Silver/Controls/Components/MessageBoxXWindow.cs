@@ -91,7 +91,7 @@ namespace Panuon.UI.Silver.Components
                     _control.OnTemplatedChanged -= Control_OnTemplatedChanged;
                     _control.OnTemplatedChanged += Control_OnTemplatedChanged;
                 }
-            }), DispatcherPriority.DataBind);
+            }), DispatcherPriority.Loaded);
         }
 
         protected override void OnClosing(CancelEventArgs e)

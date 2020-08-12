@@ -138,14 +138,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Overrides
-        protected override void OnInitialized(EventArgs e)
+        public override void OnApplyTemplate()
         {
-            base.OnInitialized(e);
-            Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() =>
+            base.OnApplyTemplate();
+            Dispatcher.BeginInvoke(new Action(() =>
             {
                 _textBlock = Template?.FindName("PART_TextBlock", this) as TextBlock;
                 AutoCheck();
-            }));
+            }), DispatcherPriority.Loaded);
         }
 
         protected override Size ArrangeOverride(Size arrangeBounds)

@@ -106,7 +106,6 @@
         #region 
         public const string MessageBoxXWindowStyle = nameof(MessageBoxXWindowStyle);
 
-        public const string PendingBoxXWindowStyle = nameof(PendingBoxXWindowStyle);
         #endregion
 
         #region TreeView

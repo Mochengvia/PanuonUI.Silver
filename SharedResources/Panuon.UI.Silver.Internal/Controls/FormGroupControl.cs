@@ -21,14 +21,14 @@ namespace Panuon.UI.Silver.Internal.Controls
             DefaultStyleKeyProperty.OverrideMetadata(typeof(FormGroupControl), new FrameworkPropertyMetadata(typeof(FormGroupControl)));
         }
 
-        protected override void OnTemplateChanged(ControlTemplate oldTemplate, ControlTemplate newTemplate)
+        public override void OnApplyTemplate()
         {
-            Dispatcher.BeginInvoke(DispatcherPriority.DataBind, new Action(() =>
+            base.OnApplyTemplate();
+            Dispatcher.BeginInvoke(new Action(() =>
             {
                 _border = Template?.FindName("PART_HeaderBorder", this) as Border;
                 ActualHeaderWidthChanged(this, new EventArgs());
-            }));
-            base.OnTemplateChanged(oldTemplate, newTemplate);
+            }), DispatcherPriority.Loaded);
         }
         #endregion
 

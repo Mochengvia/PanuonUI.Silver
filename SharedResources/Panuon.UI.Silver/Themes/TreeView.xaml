@@ -92,9 +92,11 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition />
             </Grid.RowDefinitions>
+            <Rectangle Fill="{TemplateBinding Background}" />
             <Grid x:Name="GrdHeader"
+                  Background="Transparent"
                   Height="{Binding Path=(local:TreeViewHelper.ItemHeight),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                  Background="{TemplateBinding Background}">
+                  Margin="{TemplateBinding Padding}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition />
@@ -110,7 +112,7 @@
                             <Setter Property="FontFamily"
                                     Value="pack://application:,,,/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon" />
                             <Setter Property="FontSize"
-                                    Value="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}" />
+                                    Value="{Binding FontSize, RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}" />
                             <Setter Property="Foreground"
                                     Value="{Binding Path=(local:TreeViewHelper.ItemToggleBrush),RelativeSource={RelativeSource AncestorType=TreeViewItem},Mode=OneWay}" />
                             <Setter Property="Margin"
@@ -159,7 +161,6 @@
                 </ToggleButton>
                 <StackPanel Grid.Column="1"
                             Orientation="Horizontal"
-                            Margin="{TemplateBinding Padding}"
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
                     <ic:IconControl x:Name="icIcon"
@@ -290,9 +291,10 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition />
             </Grid.RowDefinitions>
+            <Rectangle Fill="{TemplateBinding Background}" />
             <Grid x:Name="GrdHeader"
                   Margin="{TemplateBinding Padding}"
-                  Background="{TemplateBinding Background}"
+                  Background="Transparent"
                   Height="{Binding Path=(local:TreeViewHelper.ItemHeight),RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
@@ -417,7 +419,6 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-
     <Style TargetType="TreeViewItem">
         <!--IconHelper-->
         <Setter Property="local:IconHelper.Foreground"
@@ -447,7 +448,6 @@
                 Value="{Binding Path=(local:TreeViewHelper.ItemsSelectedForeground),RelativeSource={RelativeSource AncestorType=TreeView}}" />
         <Setter Property="local:TreeViewHelper.ItemSelectedToggleBrush"
                 Value="{Binding Path=(local:TreeViewHelper.ItemsSelectedToggleBrush),RelativeSource={RelativeSource AncestorType=TreeView}}" />
-
         <!--Properties-->
         <Setter Property="Background"
                 Value="Transparent" />

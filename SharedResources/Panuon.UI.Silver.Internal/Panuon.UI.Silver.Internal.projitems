@@ -17,6 +17,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\FormGroupControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\FromGroupPresenter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\IconControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\PendingBoxXWindow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ArcConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleToBottomThicknessConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CheckBoxSwitch3ToggleMarginConverter.cs" />

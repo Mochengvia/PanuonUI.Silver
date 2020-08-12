@@ -1,4 +1,4 @@
-﻿using Panuon.UI.Silver.Components;
+﻿using Panuon.UI.Silver.Internal.Controls;
 using System;
 using System.ComponentModel;
 using System.Threading;

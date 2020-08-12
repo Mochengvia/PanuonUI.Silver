@@ -21,10 +21,21 @@ namespace Panuon.UI.Silver.Components
         #endregion
 
         #region Events
-        internal event EventHandler OnTemplatedChanged;
+        internal event EventHandler TemplateApplied;
         #endregion
 
         #region Properties
+
+        #region Caption
+        public string Caption
+        {
+            get { return (string)GetValue(CaptionProperty); }
+            set { SetValue(CaptionProperty, value); }
+        }
+
+        public static readonly DependencyProperty CaptionProperty =
+            DependencyProperty.Register("Caption", typeof(string), typeof(PendingBoxXControl));
+        #endregion
 
         #region Message
         public object Message
@@ -70,17 +81,51 @@ namespace Panuon.UI.Silver.Components
             DependencyProperty.Register("CancelButtonStyle", typeof(Style), typeof(PendingBoxXControl));
         #endregion
 
+        #region ShadowColor
+        public Color? ShadowColor
+        {
+            get { return (Color?)GetValue(ShadowColorProperty); }
+            set { SetValue(ShadowColorProperty, value); }
+        }
+
+        public static readonly DependencyProperty ShadowColorProperty =
+            DependencyProperty.Register("ShadowColor", typeof(Color?), typeof(PendingBoxXControl));
         #endregion
 
-        #region Override
-        protected override void OnTemplateChanged(ControlTemplate oldTemplate, ControlTemplate newTemplate)
+        #region CanCancel
+        public bool CanCancel
         {
-            base.OnTemplateChanged(oldTemplate, newTemplate);
+            get { return (bool)GetValue(CanCancelProperty); }
+            set { SetValue(CanCancelProperty, value); }
+        }
+
+        public static readonly DependencyProperty CanCancelProperty =
+            DependencyProperty.Register("CanCancel", typeof(bool), typeof(PendingBoxXControl));
+        #endregion
+
+        #region IsEscEnabled
+        public bool IsEscEnabled
+        {
+            get { return (bool)GetValue(IsEscEnabledProperty); }
+            set { SetValue(IsEscEnabledProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsEscEnabledProperty =
+            DependencyProperty.Register("IsEscEnabled", typeof(bool), typeof(PendingBoxXControl));
+        #endregion
+
+
+#endregion
+
+        #region Override
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
             Dispatcher.BeginInvoke(new Action(() =>
             {
-                _cancelButton = newTemplate?.FindName("PART_CancelButton", this) as Button;
-                OnTemplatedChanged?.Invoke(this, new EventArgs());
-            }), DispatcherPriority.DataBind);
+                _cancelButton = Template?.FindName("PART_CancelButton", this) as Button;
+                TemplateApplied?.Invoke(this, new EventArgs());
+            }), DispatcherPriority.Loaded);
         }
         #endregion
 

@@ -12,7 +12,19 @@
 
     <Style TargetType="com:PendingBoxXControl">
         <Setter Property="BorderBrush"
-                Value="Gray" />
+                Value="LightGray" />
+        <Setter Property="MinWidth"
+                Value="300" />
+        <Setter Property="MinHeight"
+                Value="200" />
+        <Setter Property="Padding"
+                Value="15" />
+        <Setter Property="ShadowColor"
+                Value="LightGray" />
+        <Setter Property="BorderThickness"
+                Value="1" />
+        <Setter Property="Background"
+                Value="White" />
         <Setter Property="FontSize"
                 Value="14" />
         <Setter Property="LoadingStyle">
@@ -32,19 +44,25 @@
                             Value="True" />
                     <Setter Property="Height"
                             Value="30" />
+                    <Setter Property="IsCancel"
+                            Value="{Binding IsEscEnabled, RelativeSource={RelativeSource AncestorType=com:PendingBoxXControl}, Mode=OneWay}" />
                     <Setter Property="Width"
                             Value="70" />
                     <Setter Property="Background"
                             Value="#E1E1E1" />
                     <Setter Property="local:ButtonHelper.HoverBackground"
                             Value="#EAEAEA" />
+                    <Setter Property="Visibility"
+                            Value="{Binding CanCancel, Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}}, RelativeSource={RelativeSource AncestorType=com:PendingBoxXControl}, Mode=OneWay}" />
+                    <Setter Property="IsEnabled"
+                            Value="{Binding CanCancel, RelativeSource={RelativeSource AncestorType=com:PendingBoxXControl}, Mode=OneWay}" />
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="Button">
                                 <Border CornerRadius="2"
                                         Background="{TemplateBinding Background}">
                                     <ContentPresenter VerticalAlignment="Center"
-                                                      HorizontalAlignment="Center"/>
+                                                      HorizontalAlignment="Center" />
                                 </Border>
                             </ControlTemplate>
                         </Setter.Value>
@@ -55,16 +73,20 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="com:PendingBoxXControl">
-                    <Grid>
+                    <Grid Margin="7">
                         <Border Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}" />
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Effect="{Binding ShadowColor, Converter={StaticResource {x:Static irs:Converters.DropShadowEffectCoverter}}, RelativeSource={RelativeSource AncestorType=com:PendingBoxXControl},Mode=OneWay}" />
                         <Grid Margin="{TemplateBinding Padding}">
                             <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
                                 <RowDefinition />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            <StackPanel Orientation="Horizontal"
+                            <TextBlock Text="{TemplateBinding Caption}" />
+                            <StackPanel Grid.Row="1"
+                                        Orientation="Horizontal"
                                         VerticalAlignment="Center"
                                         HorizontalAlignment="Center">
                                 <local:Loading Style="{TemplateBinding LoadingStyle}"
@@ -74,7 +96,7 @@
                                            Text="{TemplateBinding Message}" />
                             </StackPanel>
                             <Button x:Name="PART_CancelButton"
-                                    Grid.Row="1"
+                                    Grid.Row="2"
                                     Style="{TemplateBinding CancelButtonStyle}" />
                         </Grid>
                     </Grid>
@@ -82,5 +104,5 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
 </ResourceDictionary>

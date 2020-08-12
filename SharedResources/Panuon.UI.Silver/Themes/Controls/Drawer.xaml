@@ -35,8 +35,7 @@
                                 CornerRadius="{TemplateBinding CornerRadius}"
                                 Effect="{Binding ShadowColor, Converter={StaticResource {x:Static irs:Converters.DropShadowEffectCoverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                         <ContentPresenter x:Name="CpContent" />
-                        <Thumb x:Name="PART_Thumb"
-                               >
+                        <Thumb x:Name="PART_Thumb">
                             <Thumb.Style>
                                 <Style TargetType="Thumb">
                                     <Setter Property="Template">
@@ -51,42 +50,63 @@
                         </Thumb>
                     </Grid>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="ContentPlacement"
-                                 Value="Left">
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsDragging"
+                                           Value="False"/>
+                                <Condition Property="ContentPlacement"
+                                           Value="Left" />
+                            </MultiTrigger.Conditions>
                             <Setter TargetName="CpContent"
                                     Property="HorizontalAlignment"
                                     Value="Right" />
                             <Setter TargetName="CpContent"
                                     Property="Width"
                                     Value="{Binding MaxWidth, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                        </Trigger>
-                        <Trigger Property="ContentPlacement"
-                                 Value="Right">
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsDragging"
+                                           Value="False" />
+                                <Condition Property="ContentPlacement"
+                                           Value="Right" />
+                            </MultiTrigger.Conditions>
                             <Setter TargetName="CpContent"
                                     Property="HorizontalAlignment"
                                     Value="Left" />
                             <Setter TargetName="CpContent"
                                     Property="Width"
                                     Value="{Binding MaxWidth, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                        </Trigger>
-                        <Trigger Property="ContentPlacement"
-                                 Value="Top">
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsDragging"
+                                           Value="False" />
+                                <Condition Property="ContentPlacement"
+                                           Value="Top" />
+                            </MultiTrigger.Conditions>
                             <Setter TargetName="CpContent"
                                     Property="VerticalAlignment"
                                     Value="Bottom" />
                             <Setter TargetName="CpContent"
                                     Property="Height"
                                     Value="{Binding MaxHeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                        </Trigger>
-                        <Trigger Property="ContentPlacement"
-                                 Value="Bottom">
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsDragging"
+                                           Value="False" />
+                                <Condition Property="ContentPlacement"
+                                           Value="Bottom" />
+                            </MultiTrigger.Conditions>
                             <Setter TargetName="CpContent"
                                     Property="VerticalAlignment"
                                     Value="Top" />
                             <Setter TargetName="CpContent"
                                     Property="Height"
                                     Value="{Binding MaxHeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                        </Trigger>
+                        </MultiTrigger>
+                      
                         <Trigger Property="Placement"
                                  Value="Left">
                             <Setter TargetName="PART_Thumb"

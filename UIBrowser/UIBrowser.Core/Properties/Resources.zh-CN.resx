@@ -135,6 +135,15 @@
   <data name="Form" xml:space="preserve">
     <value>Form 表单</value>
   </data>
+  <data name="IconFont" xml:space="preserve">
+    <value>IconFont 图标字体</value>
+  </data>
+  <data name="ListView" xml:space="preserve">
+    <value>ListView 列表视图</value>
+  </data>
+  <data name="Miscellaneous" xml:space="preserve">
+    <value>杂项</value>
+  </data>
   <data name="NativeControls" xml:space="preserve">
     <value>原生控件</value>
   </data>

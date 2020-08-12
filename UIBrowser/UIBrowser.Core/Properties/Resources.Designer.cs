@@ -115,6 +115,33 @@ namespace UIBrowser.Core.Properties {
         }
         
         /// <summary>
+        ///   查找类似 IconFont 的本地化字符串。
+        /// </summary>
+        public static string IconFont {
+            get {
+                return ResourceManager.GetString("IconFont", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 ListView 的本地化字符串。
+        /// </summary>
+        public static string ListView {
+            get {
+                return ResourceManager.GetString("ListView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Miscellaneous 的本地化字符串。
+        /// </summary>
+        public static string Miscellaneous {
+            get {
+                return ResourceManager.GetString("Miscellaneous", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Native Controls 的本地化字符串。
         /// </summary>
         public static string NativeControls {

@@ -29,15 +29,5 @@
             </Setter.Value>
         </Setter>
     </Style>
-
-    <Style TargetType="com:PendingBoxXWindow"
-           BasedOn="{StaticResource {x:Static irs:ResourceKeys.PendingBoxXWindowStyle}}">
-        <Setter Property="shell:WindowChrome.WindowChrome">
-            <Setter.Value>
-                <shell:WindowChrome  ResizeBorderThickness="3"
-                               GlassFrameThickness="3"
-                               CornerRadius="0" />
-            </Setter.Value>
-        </Setter>
-    </Style>
+    
 </ResourceDictionary>

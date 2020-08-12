@@ -48,7 +48,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Components\MessageBoxXIconControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Components\MessageBoxXWindow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Components\PendingBoxXControl.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Components\PendingBoxXWindow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Drawer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Fench.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Abstracts\FormGroup.cs" />
@@ -68,6 +67,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\DataGridHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\GroupBoxHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ListBoxHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ListViewHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\MessageBoxX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\PendingBoxX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\RadioButtonHelper.cs" />
@@ -122,10 +122,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\Controls\PendingBoxXWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\Controls\MessageBoxXWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -135,6 +131,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\Controls\PendingBoxXControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\ListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

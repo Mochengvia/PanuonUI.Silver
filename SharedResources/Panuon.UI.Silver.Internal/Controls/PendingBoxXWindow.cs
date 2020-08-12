@@ -1,15 +1,17 @@
-﻿using Panuon.UI.Silver.Core;
+﻿using Panuon.UI.Silver.Components;
+using Panuon.UI.Silver.Core;
 using Panuon.UI.Silver.Internal.Utils;
 using System;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
+using System.Windows.Media;
 using System.Windows.Threading;
 
-namespace Panuon.UI.Silver.Components
+namespace Panuon.UI.Silver.Internal.Controls
 {
-    public sealed class PendingBoxXWindow : WindowX
+    internal sealed class PendingBoxXWindow : Window
     {
         #region Fields
         private Window _owner;
@@ -24,7 +26,11 @@ namespace Panuon.UI.Silver.Components
 
         private bool _isEscEnabled;
 
+        private string _caption;
+
         private PendingBoxXControl _control;
+
+        private bool _canClose = false;
         #endregion
 
         #region Events
@@ -32,18 +38,30 @@ namespace Panuon.UI.Silver.Components
         #endregion
 
         #region Ctor
-        static PendingBoxXWindow()
+        internal PendingBoxXWindow()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(PendingBoxXWindow), new FrameworkPropertyMetadata(typeof(PendingBoxXWindow)));
+            ShowInTaskbar = false;
+            SizeToContent = SizeToContent.WidthAndHeight;
+            WindowStyle = WindowStyle.None;
+            AllowsTransparency = true;
+            Background = Brushes.Transparent;
+            var factory = new FrameworkElementFactory(typeof(PendingBoxXControl));
+            factory.SetValue(PendingBoxXControl.NameProperty, "PART_Control");
+            Template = new ControlTemplate()
+            {
+                VisualTree = factory
+            };
         }
 
         internal PendingBoxXWindow(string message, string caption, bool canCancel, PendingBoxXSettings settings)
+            : this()
         {
             _message = message;
             if (!string.IsNullOrEmpty(caption))
             {
                 Title = caption;
             }
+            _caption = caption;
 
             _canCancel = canCancel;
             _cancelButtonContent = settings.CancelButtonContent;
@@ -66,20 +84,24 @@ namespace Panuon.UI.Silver.Components
         #endregion
 
         #region Override
-        protected override void OnContentTemplateChanged(DataTemplate oldContentTemplate, DataTemplate newContentTemplate)
+        public override void OnApplyTemplate()
         {
-            base.OnContentTemplateChanged(oldContentTemplate, newContentTemplate);
+            base.OnApplyTemplate();
             Dispatcher.BeginInvoke(new Action(() =>
             {
-                var adorner = UIElementUtils.GetVisualChild<AdornerDecorator>(this);
-                var presenter = UIElementUtils.GetVisualChild<ContentPresenter>(adorner);
-                _control = newContentTemplate?.FindName("PART_Control", presenter) as PendingBoxXControl;
-                if (_control != null)
-                {
-                    _control.OnTemplatedChanged -= Control_OnTemplatedChanged;
-                    _control.OnTemplatedChanged += Control_OnTemplatedChanged;
-                }
-            }), DispatcherPriority.DataBind);
+                _control = VisualTreeHelper.GetChild(this, 0) as PendingBoxXControl;
+                _control.TemplateApplied += Control_TemplateApplied;
+            }), DispatcherPriority.Loaded);
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            if (!_canClose)
+            {
+                e.Cancel = true;
+            }
+
+            base.OnClosing(e);
         }
         #endregion
 
@@ -87,6 +109,12 @@ namespace Panuon.UI.Silver.Components
         #endregion
 
         #region Methods
+        public new void Close()
+        {
+            _canClose = true;
+            base.Close();
+        }
+
         public void UpdateMessage(string message)
         {
             if (_control != null)
@@ -124,7 +152,7 @@ namespace Panuon.UI.Silver.Components
                 }
                 else
                 {
-                    Initialized += delegate
+                    SizeChanged += delegate
                     {
                         action.Invoke();
                     };
@@ -137,16 +165,15 @@ namespace Panuon.UI.Silver.Components
 
         #region Event Handlers
 
-        private void Control_OnTemplatedChanged(object sender, EventArgs e)
+        private void Control_TemplateApplied(object sender, EventArgs e)
         {
             _control.Message = _message;
+            _control.CanCancel = _canCancel;
+            _control.Caption = _caption;
+            _control.IsEscEnabled = _isEscEnabled;
 
             if (_control._cancelButton != null)
             {
-                _control._cancelButton.Visibility = _canCancel ? Visibility.Visible : Visibility.Hidden;
-                _control._cancelButton.IsEnabled = _canCancel;
-                _control._cancelButton.IsCancel = _isEscEnabled;
-
                 _control._cancelButton.Content = _cancelButtonContent;
                 _control._cancelButton.Click -= CancelButton_Click;
                 _control._cancelButton.Click += CancelButton_Click;

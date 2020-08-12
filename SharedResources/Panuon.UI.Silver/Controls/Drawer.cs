@@ -1,5 +1,6 @@
 ﻿using Panuon.UI.Silver.Internal.Utils;
 using System;
+using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -112,6 +113,21 @@ namespace Panuon.UI.Silver
 
         #endregion
 
+        #region Internal Properties
+
+        #region IsDragging
+        internal bool IsDragging
+        {
+            get { return (bool)GetValue(IsDraggingProperty); }
+            set { SetValue(IsDraggingProperty, value); }
+        }
+
+        internal static readonly DependencyProperty IsDraggingProperty =
+            DependencyProperty.Register("IsDragging", typeof(bool), typeof(Drawer));
+        #endregion
+
+        #endregion
+
         #region Overrides
         protected override void OnInitialized(EventArgs e)
         {
@@ -119,26 +135,24 @@ namespace Panuon.UI.Silver
             UpdateState();
         }
 
-        protected override void OnTemplateChanged(ControlTemplate oldTemplate, ControlTemplate newTemplate)
+        public override void OnApplyTemplate()
         {
-            base.OnTemplateChanged(oldTemplate, newTemplate);
+            base.OnApplyTemplate();
             Dispatcher.BeginInvoke(new Action(() =>
             {
-                var thumb = newTemplate?.FindName("PART_Thumb", this) as Thumb;
-                if (thumb != null)
-                {
-                    thumb.DragStarted -= Thumb_DragStarted;
-                    thumb.DragStarted += Thumb_DragStarted;
-                    thumb.DragDelta -= Thumb_DragDelta;
-                    thumb.DragDelta += Thumb_DragDelta;
-                    thumb.DragCompleted -= Thumb_DragCompleted;
-                    thumb.DragCompleted += Thumb_DragCompleted;
-                }
-            }), DispatcherPriority.DataBind);
+                var thumb = Template?.FindName("PART_Thumb", this) as Thumb;
+                thumb.DragStarted -= Thumb_DragStarted;
+                thumb.DragStarted += Thumb_DragStarted;
+                thumb.DragDelta -= Thumb_DragDelta;
+                thumb.DragDelta += Thumb_DragDelta;
+                thumb.DragCompleted -= Thumb_DragCompleted;
+                thumb.DragCompleted += Thumb_DragCompleted;
+            }), DispatcherPriority.Loaded);
         }
-
+      
         private void Thumb_DragCompleted(object sender, DragCompletedEventArgs e)
         {
+            IsDragging = false;
             switch (Placement)
             {
                 case DrawerPlacement.Top:
@@ -153,6 +167,7 @@ namespace Panuon.UI.Silver
 
         private void Thumb_DragStarted(object sender, DragStartedEventArgs e)
         {
+            IsDragging = true;
             switch (Placement)
             {
                 case DrawerPlacement.Top:
@@ -165,7 +180,10 @@ namespace Panuon.UI.Silver
                 default:
                     var width = ActualWidth;
                     BeginAnimation(WidthProperty, null);
-                    Width = width;
+                    if (!double.IsInfinity(width))
+                    {
+                        Width = width;
+                    }
                     MaxWidth = double.PositiveInfinity;
                     break;
             }
@@ -187,12 +205,18 @@ namespace Panuon.UI.Silver
             if (isVertical)
             {
                 value = value < MinHeight ? MinHeight : value;
-                Height = value;
+                if (!double.IsInfinity(value))
+                {
+                    Height = value;
+                }
             }
             else
             {
                 value = value < MinWidth ? MinWidth : value;
-                Width = value;
+                if (!double.IsInfinity(value))
+                {
+                    Width = value;
+                }
             }
 
         }
@@ -226,7 +250,10 @@ namespace Panuon.UI.Silver
                     {
                         if (IsOpen)
                         {
-                            Width = MaxWidth;
+                            if (!double.IsInfinity(MaxWidth))
+                            {
+                                Width = MaxWidth;
+                            }
                         }
                         else
                         {
@@ -248,6 +275,7 @@ namespace Panuon.UI.Silver
                             if (double.IsNaN(Width))
                             {
                                 Width = ActualWidth;
+
                             }
                             UIElementUtils.BeginAnimation(this, WidthProperty, 0, AnimationDuration, AnimationEase);
                         }
@@ -263,7 +291,10 @@ namespace Panuon.UI.Silver
                     {
                         if (IsOpen)
                         {
-                            Height = MaxHeight;
+                            if (!double.IsInfinity(MaxHeight))
+                            {
+                                Height = MaxHeight;
+                            }
                         }
                         else
                         {

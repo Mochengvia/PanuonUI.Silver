@@ -135,6 +135,15 @@
   <data name="Form" xml:space="preserve">
     <value>Form</value>
   </data>
+  <data name="IconFont" xml:space="preserve">
+    <value>IconFont</value>
+  </data>
+  <data name="ListView" xml:space="preserve">
+    <value>ListView</value>
+  </data>
+  <data name="Miscellaneous" xml:space="preserve">
+    <value>Miscellaneous</value>
+  </data>
   <data name="NativeControls" xml:space="preserve">
     <value>Native Controls</value>
   </data>

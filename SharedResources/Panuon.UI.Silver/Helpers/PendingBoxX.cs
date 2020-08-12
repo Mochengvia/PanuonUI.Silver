@@ -1,5 +1,5 @@
-﻿using Panuon.UI.Silver.Components;
-using Panuon.UI.Silver.Core;
+﻿using Panuon.UI.Silver.Core;
+using Panuon.UI.Silver.Internal.Controls;
 using Panuon.UI.Silver.Internal.Implements;
 using Panuon.UI.Silver.Internal.Utils;
 using System;
@@ -96,7 +96,7 @@ namespace Panuon.UI.Silver
                 };
                 var thread = new Thread(threadStart);
                 thread.SetApartmentState(ApartmentState.STA);
-                thread.IsBackground = true;
+                thread.IsBackground = true; 
                 thread.Start();
                 autoReset.WaitOne();
             }

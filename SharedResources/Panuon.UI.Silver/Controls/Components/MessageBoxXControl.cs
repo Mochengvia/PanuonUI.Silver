@@ -30,17 +30,17 @@ namespace Panuon.UI.Silver.Components
         #endregion
 
         #region Override
-        protected override void OnTemplateChanged(ControlTemplate oldTemplate, ControlTemplate newTemplate)
+        public override void OnApplyTemplate()
         {
-            base.OnTemplateChanged(oldTemplate, newTemplate);
+            base.OnApplyTemplate();
             Dispatcher.BeginInvoke(new Action(() =>
             {
-                _yesButton = newTemplate?.FindName("PART_YesButton", this) as Button;
-                _noButton = newTemplate?.FindName("PART_NoButton", this) as Button;
-                _okButton = newTemplate?.FindName("PART_OKButton", this) as Button;
-                _cancelButton = newTemplate?.FindName("PART_CancelButton", this) as Button;
+                _yesButton = Template?.FindName("PART_YesButton", this) as Button;
+                _noButton = Template?.FindName("PART_NoButton", this) as Button;
+                _okButton = Template?.FindName("PART_OKButton", this) as Button;
+                _cancelButton = Template?.FindName("PART_CancelButton", this) as Button;
                 OnTemplatedChanged?.Invoke(this, new EventArgs());
-            }), DispatcherPriority.DataBind);
+            }), DispatcherPriority.Loaded);
         }
         #endregion
 

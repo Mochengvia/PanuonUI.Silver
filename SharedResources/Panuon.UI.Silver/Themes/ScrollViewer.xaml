@@ -13,15 +13,40 @@
                      TargetType="Thumb">
         <Border Background="{Binding Path=(local:ScrollViewerHelper.ThumbBrush),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                 CornerRadius="{Binding Path=(local:ScrollViewerHelper.ScrollBarCornerRadius),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver"
+                     Value="True">
+                <Trigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                              To="1"
+                                              Duration="0:0:0.15" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                              Duration="0:0:0.15" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.ExitActions>
+            </Trigger>
+        </ControlTemplate.Triggers>
     </ControlTemplate>
 
     <Style x:Key="{x:Static irs:ResourceKeys.ScrollViewerScrollButtonStyle}"
-           TargetType="RepeatButton"
-           BasedOn="{StaticResource {x:Type RepeatButton}}">
+           TargetType="RepeatButton">
         <Setter Property="local:RepeatButtonHelper.Hook"
                 Value="True" />
         <Setter Property="local:RepeatButtonHelper.HoverForeground"
                 Value="Gray" />
+        <Setter Property="FontSize"
+                Value="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+        <Setter Property="FontFamily"
+                Value="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="RepeatButton">
@@ -32,6 +57,64 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <Trigger Property="Command"
+                     Value="ScrollBar.ScrollToLeftEndCommand">
+                <Setter Property="Content"
+                        Value="&#xe920;" />
+                <Setter Property="Width"
+                        Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            </Trigger>
+            <Trigger Property="Command"
+                     Value="ScrollBar.LineLeftCommand">
+                <Setter Property="Content"
+                        Value="&#xe900;" />
+                <Setter Property="Width"
+                        Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            </Trigger>
+            <Trigger Property="Command"
+                     Value="ScrollBar.ScrollToRightEndCommand">
+                <Setter Property="Content"
+                        Value="&#xe922;" />
+                <Setter Property="Width"
+                        Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            </Trigger>
+            <Trigger Property="Command"
+                     Value="ScrollBar.LineRightCommand">
+                <Setter Property="Content"
+                        Value="&#xe902;" />
+                <Setter Property="Width"
+                        Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            </Trigger>
+            <Trigger Property="Command"
+                     Value="ScrollBar.ScrollToTopCommand">
+                <Setter Property="Content"
+                        Value="&#xe921;" />
+                <Setter Property="Height"
+                        Value="{Binding ActualWidth, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            </Trigger>
+            <Trigger Property="Command"
+                     Value="ScrollBar.LineUpCommand">
+                <Setter Property="Content"
+                        Value="&#xe901;" />
+                <Setter Property="Height"
+                        Value="{Binding ActualWidth, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            </Trigger>
+            <Trigger Property="Command"
+                     Value="ScrollBar.ScrollToBottomCommand">
+                <Setter Property="Content"
+                        Value="&#xe923;" />
+                <Setter Property="Height"
+                        Value="{Binding ActualWidth, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            </Trigger>
+            <Trigger Property="Command"
+                     Value="ScrollBar.LineDownCommand">
+                <Setter Property="Content"
+                        Value="&#xe903;" />
+                <Setter Property="Height"
+                        Value="{Binding ActualWidth, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
     <ControlTemplate x:Key="{x:Static irs:ResourceKeys.ScrollViewerHorizontalScrollBarTemplate}"
@@ -47,17 +130,11 @@
             <RepeatButton x:Name="RpbLeftEnd"
                           Visibility="Collapsed"
                           Style="{Binding Path=(local:ScrollViewerHelper.ScrollButtonStyle),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                          Content="&#xe920;"
-                          FontSize="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                          FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
                           Command="ScrollBar.ScrollToLeftEndCommand" />
             <RepeatButton x:Name="RpbLeft"
                           Grid.Column="1"
                           Visibility="Collapsed"
                           Style="{Binding Path=(local:ScrollViewerHelper.ScrollButtonStyle),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                          Content="&#xe900;"
-                          FontSize="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                          FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
                           Command="ScrollBar.LineLeftCommand" />
             <Border Background="{Binding Path=(local:ScrollViewerHelper.TrackBrush),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     CornerRadius="{Binding Path=(local:ScrollViewerHelper.ScrollBarCornerRadius),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -75,17 +152,11 @@
                           Grid.Column="3"
                           Visibility="Collapsed"
                           Style="{Binding Path=(local:ScrollViewerHelper.ScrollButtonStyle),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                          Content="&#xe902;"
-                          FontSize="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                          FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
                           Command="ScrollBar.LineRightCommand" />
             <RepeatButton x:Name="RpbRightEnd"
                           Grid.Column="4"
                           Visibility="Collapsed"
                           Style="{Binding Path=(local:ScrollViewerHelper.ScrollButtonStyle),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                          Content="&#xe922;"
-                          FontSize="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                          FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
                           Command="ScrollBar.ScrollToRightEndCommand" />
         </Grid>
         <ControlTemplate.Triggers>
@@ -122,28 +193,6 @@
                         Property="Visibility"
                         Value="Visible" />
             </Trigger>
-            <Trigger Property="IsMouseOver"
-                     Value="True">
-                <Trigger.EnterActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimation  Storyboard.TargetName="Thumb"
-                                              Storyboard.TargetProperty="Opacity"
-                                              To="1"
-                                              Duration="0:0:0.15" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </Trigger.EnterActions>
-                <Trigger.ExitActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimation  Storyboard.TargetName="Thumb"
-                                              Storyboard.TargetProperty="Opacity"
-                                              Duration="0:0:0.15" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </Trigger.ExitActions>
-            </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
@@ -160,17 +209,11 @@
             <RepeatButton x:Name="RpbTop"
                           Visibility="Collapsed"
                           Style="{Binding Path=(local:ScrollViewerHelper.ScrollButtonStyle),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                          Content="&#xe921;"
-                          FontSize="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                          FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
                           Command="ScrollBar.ScrollToTopCommand" />
             <RepeatButton x:Name="RpbUp"
                           Grid.Row="1"
                           Visibility="Collapsed"
                           Style="{Binding Path=(local:ScrollViewerHelper.ScrollButtonStyle),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                          Content="&#xe901;"
-                          FontSize="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                          FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
                           Command="ScrollBar.LineUpCommand" />
             <Border Background="{Binding Path=(local:ScrollViewerHelper.TrackBrush),RelativeSource={RelativeSource Self}, Mode=OneWay}"
                     CornerRadius="{Binding Path=(local:ScrollViewerHelper.ScrollBarCornerRadius),RelativeSource={RelativeSource Self}, Mode=OneWay}"
@@ -189,17 +232,11 @@
                           Grid.Row="3"
                           Visibility="Collapsed"
                           Style="{Binding Path=(local:ScrollViewerHelper.ScrollButtonStyle),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                          Content="&#xe903;"
-                          FontSize="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                          FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
                           Command="ScrollBar.LineDownCommand" />
             <RepeatButton x:Name="RpbBottom"
                           Grid.Row="4"
                           Visibility="Collapsed"
                           Style="{Binding Path=(local:ScrollViewerHelper.ScrollButtonStyle),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                          Content="&#xe923;"
-                          FontSize="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                          FontFamily="pack://application:,,,/Panuon.UI.Silver;component/Resources/#PanuonIcon"
                           Command="ScrollBar.ScrollToBottomCommand" />
         </Grid>
         <ControlTemplate.Triggers>
@@ -295,6 +332,8 @@
                 Value="Auto" />
         <Setter Property="HorizontalScrollBarVisibility"
                 Value="Disabled" />
+        <Setter Property="local:ScrollViewerHelper.ScrollButtonStyle"
+                Value="{StaticResource {x:Static irs:ResourceKeys.ScrollViewerScrollButtonStyle}}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ScrollViewer}">
