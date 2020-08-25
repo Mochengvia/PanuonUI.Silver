@@ -10,6 +10,45 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
+    <Style x:Key="{ComponentResourceKey ResourceId=LoadingStyle, TypeInTargetAssembly={x:Type com:PendingBoxXControl}}"
+           TargetType="local:Loading">
+        <Setter Property="Height"
+                Value="30" />
+        <Setter Property="Width"
+                Value="30" />
+    </Style>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=CancelButtonStyle, TypeInTargetAssembly={x:Type com:PendingBoxXControl}}"
+           TargetType="Button">
+        <Setter Property="local:ButtonHelper.Hook"
+                Value="True" />
+        <Setter Property="Height"
+                Value="30" />
+        <Setter Property="IsCancel"
+                Value="{Binding IsEscEnabled, RelativeSource={RelativeSource AncestorType=com:PendingBoxXControl}, Mode=OneWay}" />
+        <Setter Property="Width"
+                Value="70" />
+        <Setter Property="Background"
+                Value="#E1E1E1" />
+        <Setter Property="local:ButtonHelper.HoverBackground"
+                Value="#EAEAEA" />
+        <Setter Property="Visibility"
+                Value="{Binding CanCancel, Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}}, RelativeSource={RelativeSource AncestorType=com:PendingBoxXControl}, Mode=OneWay}" />
+        <Setter Property="IsEnabled"
+                Value="{Binding CanCancel, RelativeSource={RelativeSource AncestorType=com:PendingBoxXControl}, Mode=OneWay}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="2"
+                            Background="{TemplateBinding Background}">
+                        <ContentPresenter VerticalAlignment="Center"
+                                          HorizontalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
     <Style TargetType="com:PendingBoxXControl">
         <Setter Property="BorderBrush"
                 Value="LightGray" />
@@ -27,49 +66,10 @@
                 Value="White" />
         <Setter Property="FontSize"
                 Value="14" />
-        <Setter Property="LoadingStyle">
-            <Setter.Value>
-                <Style TargetType="local:Loading">
-                    <Setter Property="Height"
-                            Value="30" />
-                    <Setter Property="Width"
-                            Value="30" />
-                </Style>
-            </Setter.Value>
-        </Setter>
-        <Setter Property="CancelButtonStyle">
-            <Setter.Value>
-                <Style TargetType="Button">
-                    <Setter Property="local:ButtonHelper.Hook"
-                            Value="True" />
-                    <Setter Property="Height"
-                            Value="30" />
-                    <Setter Property="IsCancel"
-                            Value="{Binding IsEscEnabled, RelativeSource={RelativeSource AncestorType=com:PendingBoxXControl}, Mode=OneWay}" />
-                    <Setter Property="Width"
-                            Value="70" />
-                    <Setter Property="Background"
-                            Value="#E1E1E1" />
-                    <Setter Property="local:ButtonHelper.HoverBackground"
-                            Value="#EAEAEA" />
-                    <Setter Property="Visibility"
-                            Value="{Binding CanCancel, Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}}, RelativeSource={RelativeSource AncestorType=com:PendingBoxXControl}, Mode=OneWay}" />
-                    <Setter Property="IsEnabled"
-                            Value="{Binding CanCancel, RelativeSource={RelativeSource AncestorType=com:PendingBoxXControl}, Mode=OneWay}" />
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="Button">
-                                <Border CornerRadius="2"
-                                        Background="{TemplateBinding Background}">
-                                    <ContentPresenter VerticalAlignment="Center"
-                                                      HorizontalAlignment="Center" />
-                                </Border>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </Setter.Value>
-        </Setter>
+        <Setter Property="LoadingStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=LoadingStyle, TypeInTargetAssembly={x:Type com:PendingBoxXControl}}}"/>
+        <Setter Property="CancelButtonStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=CancelButtonStyle, TypeInTargetAssembly={x:Type com:PendingBoxXControl}}}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="com:PendingBoxXControl">

@@ -10,6 +10,40 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Controls/WindowX.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
+    <Style x:Key="{ComponentResourceKey ResourceId=ButtonStyle, TypeInTargetAssembly={x:Type com:MessageBoxXControl}}"
+           TargetType="Button">
+        <Setter Property="local:ButtonHelper.Hook"
+                Value="True" />
+        <Setter Property="Margin"
+                Value="5,0,0,0" />
+        <Setter Property="Background"
+                Value="#F1F1F1" />
+        <Setter Property="local:ButtonHelper.HoverBackground"
+                Value="#FAFAFA" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Height="30"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="2">
+                        <ContentPresenter Margin="15,0"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsDefault"
+                     Value="True">
+                <Setter Property="Background"
+                        Value="#DCDCDC" />
+                <Setter Property="local:ButtonHelper.HoverBackground"
+                        Value="#E1E1E1" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
     <Style x:Key="{x:Static irs:ResourceKeys.MessageBoxXWindowStyle}"
            TargetType="com:MessageBoxXWindow"
            BasedOn="{StaticResource {x:Static irs:ResourceKeys.WindowXStyle}}">

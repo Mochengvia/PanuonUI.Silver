@@ -123,11 +123,20 @@
   <data name="Button" xml:space="preserve">
     <value>Button</value>
   </data>
+  <data name="CalendarX" xml:space="preserve">
+    <value>CalendarX</value>
+  </data>
   <data name="CornerRadius" xml:space="preserve">
     <value>CornerRadius</value>
   </data>
+  <data name="CustomControls" xml:space="preserve">
+    <value>CustomControls</value>
+  </data>
   <data name="DataGrid" xml:space="preserve">
     <value>DataGrid</value>
+  </data>
+  <data name="Dropdown" xml:space="preserve">
+    <value>Dropdown</value>
   </data>
   <data name="Foreground" xml:space="preserve">
     <value>Foreground</value>
@@ -155,6 +164,9 @@
   </data>
   <data name="TabControl" xml:space="preserve">
     <value>TabControl</value>
+  </data>
+  <data name="TreeView" xml:space="preserve">
+    <value>TreeView</value>
   </data>
   <data name="Width" xml:space="preserve">
     <value>Width</value>

@@ -10,6 +10,43 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
+    <Style x:Key="{ComponentResourceKey ResourceId=ButtonStyle, TypeInTargetAssembly={x:Type com:MessageBoxXControl}}"
+           TargetType="Button">
+        <Setter Property="local:ButtonHelper.Hook"
+                Value="True" />
+        <Setter Property="Margin"
+                Value="5,0,0,0" />
+        <Setter Property="Background"
+                Value="#F1F1F1" />
+        <Setter Property="local:ButtonHelper.HoverBackground"
+                Value="#FAFAFA" />
+        <Setter Property="Height"
+                Value="30" />
+        <Setter Property="local:ButtonHelper.CornerRadius"
+                Value="2" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                            CornerRadius="{Binding Path=(local:ButtonHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                        <ContentPresenter Margin="15,0"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsDefault"
+                     Value="True">
+                <Setter Property="Background"
+                        Value="#DCDCDC" />
+                <Setter Property="local:ButtonHelper.HoverBackground"
+                        Value="#E1E1E1" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
     <Style TargetType="com:MessageBoxXControl">
         <Setter Property="MaxContentHeight"
                 Value="100" />
@@ -17,42 +54,8 @@
                 Value="400" />
         <Setter Property="Padding"
                 Value="15" />
-        <Setter Property="ButtonStyle">
-            <Setter.Value>
-                <Style TargetType="Button">
-                    <Setter Property="local:ButtonHelper.Hook"
-                            Value="True" />
-                    <Setter Property="Margin"
-                            Value="5,0,0,0" />
-                    <Setter Property="Background"
-                            Value="#F1F1F1" />
-                    <Setter Property="local:ButtonHelper.HoverBackground"
-                            Value="#FAFAFA" />
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="Button">
-                                <Border Height="30"
-                                        Background="{TemplateBinding Background}"
-                                        CornerRadius="2">
-                                    <ContentPresenter Margin="15,0"
-                                                      VerticalAlignment="Center"
-                                                      HorizontalAlignment="Center" />
-                                </Border>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                    <Style.Triggers>
-                        <Trigger Property="IsDefault"
-                                 Value="True">
-                            <Setter Property="Background"
-                                    Value="#DCDCDC" />
-                            <Setter Property="local:ButtonHelper.HoverBackground"
-                                    Value="#E1E1E1" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </Setter.Value>
-        </Setter>
+        <Setter Property="ButtonStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=ButtonStyle, TypeInTargetAssembly={x:Type com:MessageBoxXControl}}}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="com:MessageBoxXControl">

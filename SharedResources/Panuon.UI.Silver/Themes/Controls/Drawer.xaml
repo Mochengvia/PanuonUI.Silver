@@ -14,8 +14,6 @@
                 Value="LightGray" />
         <Setter Property="BorderThickness"
                 Value="1" />
-        <Setter Property="Background"
-                Value="White" />
         <Setter Property="Placement"
                 Value="Left" />
         <Setter Property="ContentPlacement"
@@ -34,7 +32,9 @@
                                 Background="{TemplateBinding Background}"
                                 CornerRadius="{TemplateBinding CornerRadius}"
                                 Effect="{Binding ShadowColor, Converter={StaticResource {x:Static irs:Converters.DropShadowEffectCoverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                        <ContentPresenter x:Name="CpContent" />
+                        <Border ClipToBounds="True">
+                            <ContentPresenter x:Name="CpContent" />
+                        </Border>
                         <Thumb x:Name="PART_Thumb">
                             <Thumb.Style>
                                 <Style TargetType="Thumb">

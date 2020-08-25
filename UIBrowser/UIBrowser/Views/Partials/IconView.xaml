@@ -56,10 +56,14 @@
                             Value="{StaticResource PanuonIconFont}" />
                     <Setter Property="ToolTip">
                         <Setter.Value>
-                            <TextBlock Text="{Binding Icon}"
-                                       Foreground="Black"
-                                       FontFamily="{StaticResource PanuonIconFont}"
-                                       FontSize="50" />
+                            <StackPanel>
+                                <TextBlock Text="{Binding Icon}"
+                                           Foreground="Black"
+                                           FontFamily="{StaticResource PanuonIconFont}"
+                                           FontSize="50" />
+                                <TextBlock HorizontalAlignment="Center" 
+                                           Text="{Binding Code}" />
+                            </StackPanel>
                         </Setter.Value>
                     </Setter>
                 </Style>

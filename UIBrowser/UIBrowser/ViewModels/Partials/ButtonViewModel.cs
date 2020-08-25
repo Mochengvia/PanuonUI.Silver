@@ -43,9 +43,7 @@ namespace UIBrowser.ViewModels.Partials
 
         public void Test()
         {
-            PendingBoxX.Settings.CreateOnNewThread = true;
-
-            PendingBoxX.Show(Application.Current.MainWindow, "123", true);
+            NoticeX.Show("未预料的错误。", "Error", MessageBoxIcon.Error, 2000);
         }
     }
 }

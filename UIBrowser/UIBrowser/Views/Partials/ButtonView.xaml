@@ -204,8 +204,7 @@
                         FontFamily="{StaticResource PanuonIconFont}"
                         Content="&#xe943;" />
             </StackPanel>
-            <TextBlock Grid.Row="1"
-                       Margin="0,10,0,0"
+            <TextBlock Margin="0,10,0,0"
                        Foreground="Gray"
                        TextWrapping="Wrap"
                        Text="{x:Static corep:Resources.PaletteTips}" />

@@ -39,10 +39,24 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border Background="{TemplateBinding Background}">
+                    <Border x:Name="BdrMain"
+                            Background="{TemplateBinding Background}">
                         <ContentPresenter HorizontalAlignment="Center"
                                           VerticalAlignment="Center" />
                     </Border>
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsPressed"
+                                           Value="True" />
+                                <Condition Property="local:ButtonHelper.ClickStyle"
+                                           Value="Sink" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="BdrMain"
+                                    Property="Margin"
+                                    Value="0,1,0,-1" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

@@ -365,11 +365,13 @@ namespace Panuon.UI.Silver
                     ? UpdateSourceTrigger.Default
                     : bindingAttribute.UpdateSourceTrigger;
 
-                var cellTemplate = templateAttribute.ElementType == null
-                    ? CreateDefaultElementTemplated(dataGrid, e.PropertyName, bindingMode, updateSourceTrigger)
-                    : CreateTemplate(dataGrid, templateAttribute.ElementType, templateAttribute.BindingProperty, templateAttribute.ElementStyleKey, e.PropertyName, bindingMode, updateSourceTrigger);
+                var stringFormat = bindingAttribute?.StringFormat;
 
-                var cellEditingTemplate = CreateTemplate(dataGrid, templateAttribute.EditingElementType, templateAttribute.EditingElementBindingProperty, templateAttribute.EditingElementStyleKey, e.PropertyName, bindingMode, updateSourceTrigger);
+                var cellTemplate = templateAttribute.ElementType == null
+                    ? CreateDefaultElementTemplated(dataGrid, e.PropertyName, bindingMode, updateSourceTrigger, stringFormat)
+                    : CreateTemplate(dataGrid, templateAttribute.ElementType, templateAttribute.BindingProperty, templateAttribute.ElementStyleKey, e.PropertyName, bindingMode, updateSourceTrigger, stringFormat);
+
+                var cellEditingTemplate = CreateTemplate(dataGrid, templateAttribute.EditingElementType, templateAttribute.EditingElementBindingProperty, templateAttribute.EditingElementStyleKey, e.PropertyName, bindingMode, updateSourceTrigger, stringFormat);
 
                 e.Column = new DataGridTemplateColumn()
                 {
@@ -410,7 +412,8 @@ namespace Panuon.UI.Silver
                     comboBoxColumn.SelectedItemBinding = new Binding(e.PropertyName)
                     {
                         Mode = bindingAttribute.BindingMode,
-                        UpdateSourceTrigger = bindingAttribute.UpdateSourceTrigger
+                        UpdateSourceTrigger = bindingAttribute.UpdateSourceTrigger,
+                        StringFormat = bindingAttribute.StringFormat,
                     };
                 }
 
@@ -447,7 +450,8 @@ namespace Panuon.UI.Silver
                     checkBoxColumn.Binding = new Binding(e.PropertyName)
                     {
                         Mode = bindingAttribute.BindingMode,
-                        UpdateSourceTrigger = bindingAttribute.UpdateSourceTrigger
+                        UpdateSourceTrigger = bindingAttribute.UpdateSourceTrigger,
+                        StringFormat = bindingAttribute.StringFormat,
                     };
                 }
 
@@ -483,7 +487,8 @@ namespace Panuon.UI.Silver
                     textColumn.Binding = new Binding(e.PropertyName)
                     {
                         Mode = bindingAttribute.BindingMode,
-                        UpdateSourceTrigger = bindingAttribute.UpdateSourceTrigger
+                        UpdateSourceTrigger = bindingAttribute.UpdateSourceTrigger,
+                        StringFormat = bindingAttribute.StringFormat,
                     };
                 }
 
@@ -531,15 +536,27 @@ namespace Panuon.UI.Silver
             object elementStyleKey,
             string propertyName,
             BindingMode bindingMode,
-            UpdateSourceTrigger updateSourceTrigger)
+            UpdateSourceTrigger updateSourceTrigger,
+            string stringFormat)
         {
             var factory = new FrameworkElementFactory(elementType);
             factory.SetBinding(property, new Binding(propertyName)
             {
                 Mode = bindingMode,
                 UpdateSourceTrigger = updateSourceTrigger,
+                StringFormat = stringFormat,
             });
-            if(elementStyleKey != null)
+            if (typeof(FrameworkElement).IsAssignableFrom(elementType))
+            {
+                factory.SetBinding(FrameworkElement.DataContextProperty, new Binding()
+                {
+                    Path = new PropertyPath(DataGridRow.DataContextProperty),
+                    RelativeSource = new RelativeSource(RelativeSourceMode.FindAncestor, typeof(DataGridRow), 1),
+                    Mode = bindingMode,
+                    UpdateSourceTrigger = updateSourceTrigger,
+                });
+            }
+            if (elementStyleKey != null)
             {
                 factory.SetValue(FrameworkElement.StyleProperty, dataGrid.FindResource(elementStyleKey) as Style);
             }
@@ -569,7 +586,8 @@ namespace Panuon.UI.Silver
         private static DataTemplate CreateDefaultElementTemplated(DataGrid dataGrid,
             string propertyName,
             BindingMode bindingMode,
-            UpdateSourceTrigger updateSourceTrigger)
+            UpdateSourceTrigger updateSourceTrigger,
+            string stringFormat)
         {
             var factory = new FrameworkElementFactory(typeof(TextBlock));
             factory.SetValue(TextBlock.StyleProperty, CreateDefaultElementStyle(dataGrid));
@@ -577,6 +595,7 @@ namespace Panuon.UI.Silver
             {
                 Mode = bindingMode,
                 UpdateSourceTrigger = updateSourceTrigger,
+                StringFormat = stringFormat
             });
             factory.SetBinding(TextBlock.HorizontalAlignmentProperty, new Binding()
             {

@@ -70,6 +70,17 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("ActualPlacement", typeof(PopupXPlacement), typeof(PopupX));
         #endregion
 
+        #region RelativePosition
+        public Point RelativePosition
+        {
+            get { return (Point)GetValue(RelativePositionProperty); }
+            set { SetValue(RelativePositionProperty, value); }
+        }
+
+        public static readonly DependencyProperty RelativePositionProperty =
+            DependencyProperty.Register("RelativePosition", typeof(Point), typeof(PopupX));
+        #endregion
+
         #endregion
 
         #region Overrides
@@ -120,15 +131,15 @@ namespace Panuon.UI.Silver
             var right = margin.Right;
             var bottom = margin.Bottom;
 
-            var leftPoint = new Point(targetSize.Width - popupSize.Width - right - targetSize.Width, -popupSize.Height / 2 + targetSize.Height / 2 - bottom);
+            var leftPoint = new Point(targetSize.Width - popupSize.Width - left - targetSize.Width, -popupSize.Height / 2 + targetSize.Height / 2 - bottom);
             var bottomRightPoint = new Point(-left, targetSize.Height - top);
             var bottomPoint = new Point((targetSize.Width - popupSize.Width) / 2 - left, targetSize.Height - top);
             var bottomLeftPoint = new Point(targetSize.Width - popupSize.Width - right, targetSize.Height - top);
 
             var rightPoint = new Point(-left + targetSize.Width, -popupSize.Height / 2 + targetSize.Height / 2 - bottom);
-            var topRightPoint = new Point(-left, -popupSize.Height - bottom);
-            var topPoint = new Point((targetSize.Width - popupSize.Width) / 2 - left, -popupSize.Height - bottom);
-            var topLeftPoint = new Point(targetSize.Width - popupSize.Width - right, -popupSize.Height - bottom);
+            var topRightPoint = new Point(-left, -popupSize.Height - bottom - top);
+            var topPoint = new Point((targetSize.Width - popupSize.Width) / 2 - left, -popupSize.Height - bottom - top);
+            var topLeftPoint = new Point(targetSize.Width - popupSize.Width - right, -popupSize.Height - bottom - top);
 
             switch (Placement)
             {
@@ -178,10 +189,18 @@ namespace Panuon.UI.Silver
             }
 
             var location = Child.TranslatePoint(new Point(0, 0), target);
+            if(RelativePosition.X != location.X || RelativePosition.Y != location.Y)
+            {
+                RelativePosition = location;
+            }
 
             if (location.X >= 0)
             {
-                if (location.Y > 0)
+                if(location.X == target.RenderSize.Width)
+                {
+                    ActualPlacement = PopupXPlacement.Right;
+                }
+                else if (location.Y > 0)
                 {
                     ActualPlacement = PopupXPlacement.BottomRight;
                 }
@@ -190,7 +209,7 @@ namespace Panuon.UI.Silver
                     ActualPlacement = PopupXPlacement.TopRight;
                 }
             }
-            else if (target is FrameworkElement && Child is FrameworkElement && location.X == ((target as FrameworkElement).ActualWidth - (Child as FrameworkElement).ActualWidth) / 2)
+            else if (location.X == ((target as FrameworkElement).ActualWidth - Child.RenderSize.Width / 2))
             {
                 if (location.Y > 0)
                 {
@@ -201,18 +220,13 @@ namespace Panuon.UI.Silver
                     ActualPlacement = PopupXPlacement.Top;
                 }
             }
-            else if (target is FrameworkElement && Child is FrameworkElement && location.X == -(Child as FrameworkElement).ActualWidth)
-            {
-                ActualPlacement = PopupXPlacement.Left;
-            }
-            else if (target is FrameworkElement && Child is FrameworkElement && location.X == (Child as FrameworkElement).ActualWidth)
-            {
-                ActualPlacement = PopupXPlacement.Right;
-
-            }
             else
             {
-                if (location.Y > 0)
+                if(location.X == -Child.RenderSize.Width)
+                {
+                    ActualPlacement = PopupXPlacement.Left;
+                }
+                else if (location.Y > 0)
                 {
                     ActualPlacement = PopupXPlacement.BottomLeft;
                 }
@@ -221,7 +235,6 @@ namespace Panuon.UI.Silver
                     ActualPlacement = PopupXPlacement.TopLeft;
                 }
             }
-
         }
 
         #endregion

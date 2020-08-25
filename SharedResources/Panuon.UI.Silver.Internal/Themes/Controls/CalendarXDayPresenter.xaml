@@ -1,0 +1,34 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver"
+                    xmlns:ic="clr-namespace:Panuon.UI.Silver.Internal.Controls">
+
+    <Style TargetType="ic:CalendarXDayPresenter">
+        <Setter Property="ItemsSource"
+                Value="{Binding CalendarXItemModels, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="ItemContainerStyle">
+            <Setter.Value>
+                <Style TargetType="local:CalendarXItem">
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <UniformGrid Rows="6"
+                                 Columns="7"/>
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ic:CalendarXDayPresenter">
+                    <Border>
+                        <ItemsPresenter />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

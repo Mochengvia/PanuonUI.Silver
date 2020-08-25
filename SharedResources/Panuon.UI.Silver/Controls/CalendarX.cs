@@ -1,31 +1,42 @@
-﻿using Panuon.UI.Silver.Internal.Controls;
+﻿using Panuon.UI.Silver.Core;
+using Panuon.UI.Silver.Internal.Controls;
+using Panuon.UI.Silver.Internal.Converters;
 using Panuon.UI.Silver.Internal.Utils;
 using System;
 using System.Collections.ObjectModel;
-using System.Globalization;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Media;
-using System.Windows.Threading;
 
 namespace Panuon.UI.Silver
 {
     public class CalendarX : Control
     {
         #region Fields
-        private const string PART_Backward = nameof(PART_Backward);
-        private const string PART_Previous = nameof(PART_Previous);
-        private const string PART_Next = nameof(PART_Next);
-        private const string PART_Forward = nameof(PART_Forward);
-        private const string PART_Month = nameof(PART_Month);
-        private const string PART_Year = nameof(PART_Year);
+        private CalendarXDayPresenter _dayPresenter;
 
-        private CalendarXDayControl _calendarXDayControl;
+        private CalendarXMonthPresenter _monthPresenter;
 
-        private CalendarXMonthControl _calendarXMonthControl;
+        private CalendarXYearPresenter _yearPresenter;
 
-        private CalendarXYearControl _calendarXYearControl;
+        private CalendarXWeekPresenter _weekPresenter;
+
+        private RepeatButton _backwardButton;
+
+        private RepeatButton _previousButton;
+
+        private RepeatButton _nextButton;
+
+        private RepeatButton _forwardButton;
+
+        private Button _yearButton;
+
+        private Button _monthButton;
+
+        private bool _isInternalSet;
         #endregion
 
         #region Ctor
@@ -35,57 +46,203 @@ namespace Panuon.UI.Silver
         }
         #endregion
 
+        #region Events
+
+        public event SelectionChangedRoutedEventHandler SelectedDatesChanged
+        {
+            add { AddHandler(SelectedDatesChangedEvent, value); }
+            remove { RemoveHandler(SelectedDatesChangedEvent, value); }
+        }
+
+        public static readonly RoutedEvent SelectedDatesChangedEvent =
+            EventManager.RegisterRoutedEvent("SelectedDatesChanged", RoutingStrategy.Bubble, typeof(SelectionChangedRoutedEventHandler), typeof(CalendarX));
+
+
+        public event SelectedDateChangedRoutedEventHandler SelectedDateChanged
+        {
+            add { AddHandler(SelectedDateChangedEvent, value); }
+            remove { RemoveHandler(SelectedDateChangedEvent, value); }
+        }
+
+        public static readonly RoutedEvent SelectedDateChangedEvent =
+            EventManager.RegisterRoutedEvent("SelectedDateChanged", RoutingStrategy.Bubble, typeof(SelectedDateChangedRoutedEventHandler), typeof(CalendarX));
+        #endregion
+
+        #region Overrides
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+            _backwardButton = Template?.FindName("PART_BackwardButton", this) as RepeatButton;
+            _backwardButton.Click += BackwardButton_Click;
+            _previousButton = Template?.FindName("PART_PreviousButton", this) as RepeatButton;
+            _previousButton.Click += PreviousButton_Click;
+            _nextButton = Template?.FindName("PART_NextButton", this) as RepeatButton;
+            _nextButton.Click += NextButton_Click;
+            _forwardButton = Template?.FindName("PART_ForwardButton", this) as RepeatButton;
+            _forwardButton.Click += ForwardButton_Click;
+            _yearButton = Template?.FindName("PART_YearButton", this) as Button;
+            BindingUtils.BindingProperty(_yearButton, Button.ContentProperty, this, CurrentYearProperty, "D4");
+            _yearButton.Click += YearButton_Click;
+            _monthButton = Template?.FindName("PART_MonthButton", this) as Button;
+            BindingUtils.BindingProperty(_monthButton, Button.ContentProperty, this, CurrentMonthProperty, new LocalizedMonthStringConverter());
+            _monthButton.Click += MonthButton_Click;
+
+            _weekPresenter = Template?.FindName("PART_WeekPresenter", this) as CalendarXWeekPresenter;
+            BindingUtils.BindingProperty(_weekPresenter, CalendarXWeekPresenter.FirstDayOfWeekProperty, this, FirstDayOfWeekProperty);
+            _dayPresenter = Template?.FindName("PART_DayPresenter", this) as CalendarXDayPresenter;
+            BindingUtils.BindingProperty(_dayPresenter, CalendarXDayPresenter.ModeProperty, this, ModeProperty);
+            BindingUtils.BindingProperty(_dayPresenter, CalendarXDayPresenter.FirstDayOfWeekProperty, this, FirstDayOfWeekProperty);
+            BindingUtils.BindingProperty(_dayPresenter, CalendarXDayPresenter.MinDateProperty, this, MinDateProperty);
+            BindingUtils.BindingProperty(_dayPresenter, CalendarXDayPresenter.MaxDateProperty, this, MaxDateProperty);
+            BindingUtils.BindingProperty(_dayPresenter, CalendarXDayPresenter.IsTodayHighlightedProperty, this, IsTodayHighlightedProperty);
+            _monthPresenter = Template?.FindName("PART_MonthPresenter", this) as CalendarXMonthPresenter;
+            BindingUtils.BindingProperty(_monthPresenter, CalendarXMonthPresenter.FirstDayOfWeekProperty, this, FirstDayOfWeekProperty);
+            BindingUtils.BindingProperty(_monthPresenter, CalendarXMonthPresenter.MinDateProperty, this, MinDateProperty);
+            BindingUtils.BindingProperty(_monthPresenter, CalendarXMonthPresenter.MaxDateProperty, this, MaxDateProperty);
+            _yearPresenter = Template?.FindName("PART_YearPresenter", this) as CalendarXYearPresenter;
+            BindingUtils.BindingProperty(_yearPresenter, CalendarXYearPresenter.FirstDayOfWeekProperty, this, FirstDayOfWeekProperty);
+            BindingUtils.BindingProperty(_yearPresenter, CalendarXYearPresenter.MinDateProperty, this, MinDateProperty);
+            BindingUtils.BindingProperty(_yearPresenter, CalendarXYearPresenter.MaxDateProperty, this, MaxDateProperty);
+
+            _dayPresenter.Selected += DayPresenter_Selected;
+            _dayPresenter.Unselected += DayPresenter_Unselected;
+            _monthPresenter.Selected += MonthPresenter_Selected;
+            _monthPresenter.Unselected += MonthPresenter_Unselected;
+            _yearPresenter.Selected += YearPresenter_Selected;
+            _yearPresenter.Unselected += YearPresenter_Unselected;
+            _weekPresenter.UpdateWeeks();
+
+            var dayDate = SelectedDate ?? DateTime.Now.Date;
+
+            UpdateDays(dayDate.Year, dayDate.Month);
+            UpdateMonths(dayDate.Year, dayDate.Month);
+            UpdateYears(dayDate.Year, dayDate.Month);
+        }
+
+        #endregion
+
         #region Properties
 
-        #region ShadowColor
-        public Color? ShadowColor
+        #region HeaderHeight
+        public double HeaderHeight
         {
-            get { return (Color?)GetValue(ShadowColorProperty); }
-            set { SetValue(ShadowColorProperty, value); }
+            get { return (double)GetValue(HeaderHeightProperty); }
+            set { SetValue(HeaderHeightProperty, value); }
         }
 
-        public static readonly DependencyProperty ShadowColorProperty =
-            DependencyProperty.Register("ShadowColor", typeof(Color?), typeof(CalendarX));
+        public static readonly DependencyProperty HeaderHeightProperty =
+            DependencyProperty.Register("HeaderHeight", typeof(double), typeof(CalendarX));
         #endregion
 
-        #region CaptionHeight
-        public double CaptionHeight
+        #region HeaderBackground
+        public Brush HeaderBackground
         {
-            get { return (double)GetValue(CaptionHeightProperty); }
-            set { SetValue(CaptionHeightProperty, value); }
+            get { return (Brush)GetValue(HeaderBackgroundProperty); }
+            set { SetValue(HeaderBackgroundProperty, value); }
         }
 
-        public static readonly DependencyProperty CaptionHeightProperty =
-            DependencyProperty.Register("CaptionHeight", typeof(double), typeof(CalendarX));
+        public static readonly DependencyProperty HeaderBackgroundProperty =
+            DependencyProperty.Register("HeaderBackground", typeof(Brush), typeof(CalendarX));
         #endregion
 
-        #region SelectedDate
-        public DateTime? SelectedDate
+        #region ForwardButtonStyle
+        public Style ForwardButtonStyle
         {
-            get { return (DateTime?)GetValue(SelectedDateProperty); }
-            set { SetValue(SelectedDateProperty, value); }
+            get { return (Style)GetValue(ForwardButtonStyleProperty); }
+            set { SetValue(ForwardButtonStyleProperty, value); }
         }
 
-        public static readonly DependencyProperty SelectedDateProperty =
-            DependencyProperty.Register("SelectedDate", typeof(DateTime?), typeof(CalendarX), new PropertyMetadata(null, OnSelectedDateChanged, CoerceSelectedDate));
+        public static readonly DependencyProperty ForwardButtonStyleProperty =
+            DependencyProperty.Register("ForwardButtonStyle", typeof(Style), typeof(CalendarX));
         #endregion
 
-        #region SelectedDates
-        public ObservableCollection<DateTime> SelectedDates
+        #region PreviousButtonStyle
+        public Style PreviousButtonStyle
         {
-            get
-            {
-                if (_selectedDates == null)
-                {
-                    _selectedDates = new ObservableCollection<DateTime>();
-                    _selectedDates.CollectionChanged += SelectedDates_CollectionChanged;
-                }
-                return _selectedDates;
-            }
+            get { return (Style)GetValue(PreviousButtonStyleProperty); }
+            set { SetValue(PreviousButtonStyleProperty, value); }
         }
 
+        public static readonly DependencyProperty PreviousButtonStyleProperty =
+            DependencyProperty.Register("PreviousButtonStyle", typeof(Style), typeof(CalendarX));
+        #endregion
 
-        private ObservableCollection<DateTime> _selectedDates;
+        #region NextButtonStyle
+        public Style NextButtonStyle
+        {
+            get { return (Style)GetValue(NextButtonStyleProperty); }
+            set { SetValue(NextButtonStyleProperty, value); }
+        }
+
+        public static readonly DependencyProperty NextButtonStyleProperty =
+            DependencyProperty.Register("NextButtonStyle", typeof(Style), typeof(CalendarX));
+        #endregion
+
+        #region YearButtonStyle
+        public Style YearButtonStyle
+        {
+            get { return (Style)GetValue(YearButtonStyleProperty); }
+            set { SetValue(YearButtonStyleProperty, value); }
+        }
+
+        public static readonly DependencyProperty YearButtonStyleProperty =
+            DependencyProperty.Register("YearButtonStyle", typeof(Style), typeof(CalendarX));
+        #endregion
+
+        #region MonthButtonStyle
+        public Style MonthButtonStyle
+        {
+            get { return (Style)GetValue(MonthButtonStyleProperty); }
+            set { SetValue(MonthButtonStyleProperty, value); }
+        }
+
+        public static readonly DependencyProperty MonthButtonStyleProperty =
+            DependencyProperty.Register("MonthButtonStyle", typeof(Style), typeof(CalendarX));
+        #endregion
+
+        #region BackwardButtonStyle
+        public Style BackwardButtonStyle
+        {
+            get { return (Style)GetValue(BackwardButtonStyleProperty); }
+            set { SetValue(BackwardButtonStyleProperty, value); }
+        }
+
+        public static readonly DependencyProperty BackwardButtonStyleProperty =
+            DependencyProperty.Register("BackwardButtonStyle", typeof(Style), typeof(CalendarX));
+        #endregion
+
+        #region IsTodayHighlighted
+        public bool IsTodayHighlighted
+        {
+            get { return (bool)GetValue(IsTodayHighlightedProperty); }
+            set { SetValue(IsTodayHighlightedProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsTodayHighlightedProperty =
+            DependencyProperty.Register("IsTodayHighlighted", typeof(bool), typeof(CalendarX));
+        #endregion
+
+        #region Mode
+        public CalendarXMode Mode
+        {
+            get { return (CalendarXMode)GetValue(ModeProperty); }
+            set { SetValue(ModeProperty, value); }
+        }
+
+        public static readonly DependencyProperty ModeProperty =
+            DependencyProperty.Register("Mode", typeof(CalendarXMode), typeof(CalendarX));
+
+        #endregion
+
+        #region FirstDayOfWeek
+        public DayOfWeek FirstDayOfWeek
+        {
+            get { return (DayOfWeek)GetValue(FirstDayOfWeekProperty); }
+            set { SetValue(FirstDayOfWeekProperty, value); }
+        }
+
+        public static readonly DependencyProperty FirstDayOfWeekProperty =
+            DependencyProperty.Register("FirstDayOfWeek", typeof(DayOfWeek), typeof(CalendarX));
         #endregion
 
         #region MaxDate
@@ -110,76 +267,56 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("MinDate", typeof(DateTime?), typeof(CalendarX), new PropertyMetadata(OnMinDateChanged));
         #endregion
 
-        #region Mode
-        public CalendarXMode Mode
+        #region SelectedDate
+        public DateTime? SelectedDate
         {
-            get { return (CalendarXMode)GetValue(ModeProperty); }
-            set { SetValue(ModeProperty, value); }
+            get { return (DateTime?)GetValue(SelectedDateProperty); }
+            set { SetValue(SelectedDateProperty, value); }
         }
 
-        public static readonly DependencyProperty ModeProperty =
-            DependencyProperty.Register("Mode", typeof(CalendarXMode), typeof(CalendarX), new PropertyMetadata(OnModeChanged));
-        #endregion
-
-        #region FirstDayOfWeek
-        public DayOfWeek FirstDayOfWeek
-        {
-            get { return (DayOfWeek)GetValue(FirstDayOfWeekProperty); }
-            set { SetValue(FirstDayOfWeekProperty, value); }
-        }
-
-        public static readonly DependencyProperty FirstDayOfWeekProperty =
-            DependencyProperty.Register("FirstDayOfWeek", typeof(DayOfWeek), typeof(CalendarX), new PropertyMetadata(OnFirstDayOfWeekChanged));
+        public static readonly DependencyProperty SelectedDateProperty =
+            DependencyProperty.Register("SelectedDate", typeof(DateTime?), typeof(CalendarX), new PropertyMetadata(DateTime.Now.Date, OnSelectedDateChanged));
 
         #endregion
 
-        #region AnimationDuration
-        public TimeSpan AnimationDuration
+        #region SelectedDates
+        public ObservableCollection<DateTime> SelectedDates
         {
-            get { return (TimeSpan)GetValue(AnimationDurationProperty); }
-            set { SetValue(AnimationDurationProperty, value); }
+            get { return (ObservableCollection<DateTime>)GetValue(SelectedDatesProperty); }
+            set { SetValue(SelectedDatesProperty, value); }
         }
 
-        public static readonly DependencyProperty AnimationDurationProperty =
-            DependencyProperty.Register("AnimationDuration", typeof(TimeSpan), typeof(CalendarX));
-        #endregion
+        public static readonly DependencyProperty SelectedDatesProperty =
+            DependencyProperty.Register("SelectedDates", typeof(ObservableCollection<DateTime>), typeof(CalendarX), new PropertyMetadata(OnSelectedDatesChanged));
 
-        #region AnimationEase
-        public AnimationEase AnimationEase
-        {
-            get { return (AnimationEase)GetValue(AnimationEaseProperty); }
-            set { SetValue(AnimationEaseProperty, value); }
-        }
 
-        public static readonly DependencyProperty AnimationEaseProperty =
-            DependencyProperty.Register("AnimationEase", typeof(AnimationEase), typeof(CalendarX));
-        #endregion
-
-        #region ButtonStyle
-        public Style ButtonStyle
-        {
-            get { return (Style)GetValue(ButtonStyleProperty); }
-            set { SetValue(ButtonStyleProperty, value); }
-        }
-
-        public static readonly DependencyProperty ButtonStyleProperty =
-            DependencyProperty.Register("ButtonStyle", typeof(Style), typeof(CalendarX));
-        #endregion
-
-        #region CalendarXItemStyle
-        public Style CalendarXItemStyle
-        {
-            get { return (Style)GetValue(CalendarXItemStyleProperty); }
-            set { SetValue(CalendarXItemStyleProperty, value); }
-        }
-
-        public static readonly DependencyProperty CalendarXItemStyleProperty =
-            DependencyProperty.Register("CalendarXItemStyle", typeof(Style), typeof(CalendarX));
         #endregion
 
         #endregion
 
         #region Internal Properties
+
+        #region CurrentYear
+        internal int CurrentYear
+        {
+            get { return (int)GetValue(CurrentYearProperty); }
+            set { SetValue(CurrentYearProperty, value); }
+        }
+
+        internal static readonly DependencyProperty CurrentYearProperty =
+            DependencyProperty.Register("CurrentYear", typeof(int), typeof(CalendarX));
+        #endregion
+
+        #region CurrentMonth
+        internal int CurrentMonth
+        {
+            get { return (int)GetValue(CurrentMonthProperty); }
+            set { SetValue(CurrentMonthProperty, value); }
+        }
+
+        internal static readonly DependencyProperty CurrentMonthProperty =
+            DependencyProperty.Register("CurrentMonth", typeof(int), typeof(CalendarX), new PropertyMetadata(1));
+        #endregion
 
         #region CurrentPanel
         internal int CurrentPanel
@@ -189,90 +326,8 @@ namespace Panuon.UI.Silver
         }
 
         internal static readonly DependencyProperty CurrentPanelProperty =
-            DependencyProperty.Register("CurrentPanel", typeof(int), typeof(CalendarX), new PropertyMetadata(0, null, CoerceCurrentPanel));
-
+            DependencyProperty.Register("CurrentPanel", typeof(int), typeof(CalendarX));
         #endregion
-
-        #region MonthButton
-        internal object MonthButton
-        {
-            get { return (object)GetValue(MonthButtonProperty); }
-            set { SetValue(MonthButtonProperty, value); }
-        }
-
-        internal static readonly DependencyProperty MonthButtonProperty =
-            DependencyProperty.Register("MonthButton", typeof(object), typeof(CalendarX));
-        #endregion
-
-        #region YearButton
-        internal object YearButton
-        {
-            get { return (object)GetValue(YearButtonProperty); }
-            set { SetValue(YearButtonProperty, value); }
-        }
-
-        internal static readonly DependencyProperty YearButtonProperty =
-            DependencyProperty.Register("YearButton", typeof(object), typeof(CalendarX));
-        #endregion
-
-        #region CurrentDate
-        internal DateTime CurrentDate
-        {
-            get { return (DateTime)GetValue(CurrentDateProperty); }
-            set { SetValue(CurrentDateProperty, value); }
-        }
-
-        internal static readonly DependencyProperty CurrentDateProperty =
-            DependencyProperty.Register("CurrentDate", typeof(DateTime), typeof(CalendarX), new PropertyMetadata(OnCurrentDateChanged));
-        #endregion
-
-        #endregion
-
-        #region Overrides
-        protected override void OnInitialized(EventArgs e)
-        {
-            base.OnInitialized(e);
-            Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() =>
-            {
-                _calendarXDayControl = Template?.FindName("PART_DayControl", this) as CalendarXDayControl;
-                _calendarXMonthControl = Template?.FindName("PART_MonthControl", this) as CalendarXMonthControl;
-                _calendarXYearControl = Template?.FindName("PART_YearControl", this) as CalendarXYearControl;
-
-                _calendarXMonthControl.Selected += CalendarXMonthControl_Selected;
-                _calendarXYearControl.Selected += CalendarXYearControl_Selected;
-              var  backwardButton = Template?.FindName(PART_Backward, this) as Button;
-                var previousButton = Template?.FindName(PART_Previous, this) as Button;
-                var nextButton = Template?.FindName(PART_Next, this) as Button;
-                var forwardButton = Template?.FindName(PART_Forward, this) as Button;
-                var monthButton = Template?.FindName(PART_Month, this) as Button;
-                var yearButton = Template?.FindName(PART_Year, this) as Button;
-
-                backwardButton.Click -= ControlButton_Click;
-                backwardButton.Click += ControlButton_Click;
-                previousButton.Click -= ControlButton_Click;
-                previousButton.Click += ControlButton_Click;
-                nextButton.Click -= ControlButton_Click;
-                nextButton.Click += ControlButton_Click;
-                forwardButton.Click -= ControlButton_Click;
-                forwardButton.Click += ControlButton_Click;
-                monthButton.Click -= MonthButton_Click;
-                monthButton.Click += MonthButton_Click;
-                yearButton.Click -= YearButton_Click;
-                yearButton.Click += YearButton_Click;
-
-                if (SelectedDate != null)
-                {
-                    CurrentDate = (DateTime)SelectedDate;
-                }
-                else
-                {
-                    CurrentDate = DateTime.Now.Date;
-                }
-            }));
-        }
-
-
-
 
         #endregion
 
@@ -280,220 +335,455 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Event Handlers
-        private void CalendarXMonthControl_Selected(Internal.CalendarXSelectedEventArgs args)
-        {
-            if (args.Date.Year != CurrentDate.Year || args.Date.Month != CurrentDate.Month)
-            {
-                CurrentDate = DateTimeUtils.VerifyDateTime(args.Date.Year, args.Date.Month, CurrentDate.Day);
-            }
-            switch (Mode)
-            {
-                case CalendarXMode.Year:
-                case CalendarXMode.YearMonth:
-                    return;
-                default:
-                    CurrentPanel--;
-                    break;
-            }
-        }
-
-        private void CalendarXYearControl_Selected(Internal.CalendarXSelectedEventArgs args)
-        {
-            if(args.Date.Year != CurrentDate.Year)
-            {
-                CurrentDate = DateTimeUtils.VerifyDateTime(args.Date.Year, CurrentDate.Month, CurrentDate.Day);
-            }
-            switch (Mode)
-            {
-                case CalendarXMode.Year:
-                    return;
-                default:
-                    CurrentPanel--;
-                    break;
-            }
-        }
-
-        private void SelectedDates_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        {
-        }
-
-        private static void OnCurrentDateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var calendar = d as CalendarX;
-            calendar.UpdateButtonContent();
-            calendar.UpdateDayControl();
-            calendar.UpdateMonthControl();
-            calendar.UpdateYearControl();
-        }
-
-        private static object CoerceCurrentPanel(DependencyObject d, object baseValue)
-        {
-            var calendar = d as CalendarX;
-            if (calendar.Mode != CalendarXMode.Year && calendar.Mode != CalendarXMode.YearMonth)
-            {
-                return baseValue;
-            }
-            var index = baseValue as int? ?? 0;
-            switch (calendar.Mode)
-            {
-                case CalendarXMode.Year:
-                    return index < 2 ? index : 1;
-                case CalendarXMode.YearMonth:
-                    return index > 0 ? index : 1;
-            }
-            throw new NotImplementedException($"CalendarX error : unsupported mode {calendar.Mode}");
-        }
-
-        private static void OnSelectedDateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var calendar = d as CalendarX;
-            if (e.OldValue != null)
-            {
-                var dateTime = (DateTime)e.OldValue;
-                if (calendar.SelectedDates.Any(x => x.Equals(dateTime)))
-                {
-                    calendar.SelectedDates.Remove(calendar.SelectedDates.First(x => x.Equals(dateTime)));
-                }
-            }
-            if (e.NewValue != null)
-            {
-                var dateTime = (DateTime)e.NewValue;
-                if (!calendar.SelectedDates.Any(x => x.Equals(dateTime)))
-                {
-                    calendar.SelectedDates.Add(dateTime);
-                }
-                calendar.CurrentDate = dateTime;
-            }
-        }
-
-        private static object CoerceSelectedDate(DependencyObject d, object baseValue)
-        {
-            var dateTime = baseValue as DateTime?;
-            if (dateTime == null)
-            {
-                return null;
-            }
-            else
-            {
-                //TODO : Validate datetime
-                return ((DateTime)dateTime).Date;
-            }
-        }
-
         private static void OnMaxDateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            var calendar = d as CalendarX;
+            calendar.OnDateLimitChanged();
         }
 
         private static void OnMinDateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            var calendar = d as CalendarX;
+            calendar.OnDateLimitChanged();
         }
 
-        private static void OnModeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private void MonthButton_Click(object sender, RoutedEventArgs e)
         {
-        }
-
-        private static void OnFirstDayOfWeekChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-        }
-
-        private void ControlButton_Click(object sender, RoutedEventArgs e)
-        {
-            var button = sender as Button;
-            if (button == null)
+            switch (Mode)
             {
-                return;
-            }
-
-            switch (button.Name)
-            {
-                case PART_Backward:
-                    switch (CurrentPanel)
-                    {
-                        case 0:
-                            CurrentDate = CurrentDate.AddYears(-1);
-                            break;
-                        case 1:
-                            CurrentDate = CurrentDate.AddYears(-1);
-                            break;
-                        case 2:
-                            CurrentDate = CurrentDate.AddYears(-7);
-                            break;
-                    }
-                    break;
-                case PART_Previous:
-                    switch (CurrentPanel)
-                    {
-                        case 0:
-                        case 1:
-                            CurrentDate = CurrentDate.AddMonths(-1);
-                            break;
-                        case 2:
-                            CurrentDate = CurrentDate.AddYears(-1);
-                            break;
-                    }
-                    break;
-                case PART_Next:
-                    switch (CurrentPanel)
-                    {
-                        case 0:
-                        case 1:
-                            CurrentDate = CurrentDate.AddMonths(1);
-                            break;
-                        case 2:
-                            CurrentDate = CurrentDate.AddYears(1);
-                            break;
-                    }
-                    break;
-                case PART_Forward:
-                    switch (CurrentPanel)
-                    {
-                        case 0:
-                            CurrentDate = CurrentDate.AddYears(1);
-                            break;
-                        case 1:
-                            CurrentDate = CurrentDate.AddYears(1);
-                            break;
-                        case 2:
-                            CurrentDate = CurrentDate.AddYears(7);
-                            break;
-                    }
+                case CalendarXMode.Date:
+                case CalendarXMode.DateRange:
+                case CalendarXMode.MultipleDate:
+                case CalendarXMode.YearMonth:
+                    CurrentPanel = 1;
                     break;
             }
         }
 
         private void YearButton_Click(object sender, RoutedEventArgs e)
         {
-            CurrentPanel = 2;
+            switch (Mode)
+            {
+                default:
+                    CurrentPanel = 2;
+                    break;
+            }
         }
 
-        private void MonthButton_Click(object sender, RoutedEventArgs e)
+        private void NextButton_Click(object sender, RoutedEventArgs e)
         {
-            CurrentPanel = 1;
+            try
+            {
+                var date = new DateTime(CurrentYear, CurrentMonth, 1);
+
+                switch (CurrentPanel)
+                {
+                    case 0:
+                        date = date.AddMonths(1);
+                        break;
+                    case 1:
+                        date = date.AddYears(1);
+                        break;
+                    case 2:
+                        date = date.AddYears(7);
+                        break;
+                    default:
+                        return;
+                }
+                UpdateDays(date.Year, date.Month);
+                UpdateMonths(date.Year, date.Month);
+                UpdateYears(date.Year, date.Month);
+            }
+            catch
+            {
+            }
         }
+
+        private void BackwardButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var date = new DateTime(CurrentYear, CurrentMonth, 1);
+                switch (CurrentPanel)
+                {
+                    case 0:
+                        date = date.AddYears(-1);
+                        break;
+                    default:
+                        return;
+                }
+                UpdateDays(date.Year, date.Month);
+                UpdateMonths(date.Year, date.Month);
+                UpdateYears(date.Year, date.Month);
+            }
+            catch
+            {
+            }
+        }
+
+        private void PreviousButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var date = new DateTime(CurrentYear, CurrentMonth, 1);
+
+                switch (CurrentPanel)
+                {
+                    case 0:
+                        date = date.AddMonths(-1);
+                        break;
+                    case 1:
+                        date = date.AddYears(-1);
+                        break;
+                    case 2:
+                        date = date.AddYears(-7);
+                        break;
+                    default:
+                        return;
+                }
+                UpdateDays(date.Year, date.Month);
+                UpdateMonths(date.Year, date.Month);
+                UpdateYears(date.Year, date.Month);
+            }
+            catch
+            {
+            }
+        }
+
+        private void ForwardButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var date = new DateTime(CurrentYear, CurrentMonth, 1);
+
+                switch (CurrentPanel)
+                {
+                    case 0:
+                        date = date.AddYears(1);
+                        break;
+                    default:
+                        return;
+                }
+
+                UpdateDays(date.Year, date.Month);
+                UpdateMonths(date.Year, date.Month);
+                UpdateYears(date.Year, date.Month);
+            }
+            catch
+            {
+            }
+        }
+
+        private static void OnSelectedDateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var calendar = d as CalendarX;
+            if (calendar == null)
+            {
+                return;
+            }
+            calendar.OnSelectedDateChanged();
+        }
+
+        private static void OnSelectedDatesChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var calendar = d as CalendarX;
+            if (calendar == null)
+            {
+                return;
+            }
+            if (e.OldValue != null)
+            {
+                (e.OldValue as ObservableCollection<DateTime>).CollectionChanged -= calendar.CalendarX_CollectionChanged;
+            }
+            if (e.NewValue != null)
+            {
+                (e.NewValue as ObservableCollection<DateTime>).CollectionChanged -= calendar.CalendarX_CollectionChanged;
+                (e.NewValue as ObservableCollection<DateTime>).CollectionChanged += calendar.CalendarX_CollectionChanged;
+                calendar.OnSelectedDatesChanged();
+            }
+            calendar.RaiseSelectedDatesChanged();
+        }
+
+        private void CalendarX_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            OnSelectedDatesChanged();
+        }
+
+        private void DayPresenter_Unselected(object sender, SelectedDateChangedEventArgs e)
+        {
+            var dateTime = (DateTime)e.SelectedDate;
+            _isInternalSet = true;
+            if (SelectedDates == null)
+            {
+                SelectedDates = new ObservableCollection<DateTime>();
+            }
+            switch (Mode)
+            {
+                case CalendarXMode.Date:
+                    break;
+                case CalendarXMode.DateRange:
+                    SelectedDate = null;
+                    break;
+                case CalendarXMode.MultipleDate:
+                    if (SelectedDates.Contains(dateTime))
+                    {
+                        SelectedDates.Remove(dateTime);
+                    }
+                    SelectedDate = null;
+                    break;
+            }
+            UpdateDays(CurrentYear, CurrentMonth);
+            UpdateYears(CurrentYear, CurrentMonth);
+            UpdateMonths(CurrentYear, CurrentMonth);
+            _isInternalSet = false;
+        }
+
+        private void DayPresenter_Selected(object sender, SelectedDateChangedEventArgs e)
+        {
+            var dateTime = (DateTime)e.SelectedDate;
+            _isInternalSet = true;
+            if (SelectedDates == null)
+            {
+                SelectedDates = new ObservableCollection<DateTime>();
+            }
+            switch (Mode)
+            {
+                case CalendarXMode.MultipleDate:
+                    if (!SelectedDates.Any(x => x.Date.Equals(dateTime)))
+                    {
+                        SelectedDates.Add(dateTime);
+                    }
+                    break;
+                case CalendarXMode.Date:
+                    SelectedDates.Clear();
+                    SelectedDates.Add(dateTime);
+                    break;
+                case CalendarXMode.DateRange:
+                    for (int i = 0; i < SelectedDates.Count - 1; i++)
+                    {
+                        SelectedDates.RemoveAt(0);
+                    }
+                    SelectedDates.Add(dateTime);
+                    break;
+            }
+
+            SelectedDate = dateTime;
+            UpdateDays(dateTime.Year, dateTime.Month);
+            _isInternalSet = false;
+        }
+
+        private void MonthPresenter_Unselected(object sender, SelectedDateChangedEventArgs e)
+        {
+            var dateTime = (DateTime)e.SelectedDate;
+            switch (Mode)
+            {
+                case CalendarXMode.Date:
+                case CalendarXMode.DateRange:
+                case CalendarXMode.MultipleDate:
+                    CurrentPanel = 0;
+                    break;
+            }
+            UpdateMonths(CurrentYear, CurrentMonth);
+            UpdateDays(CurrentYear, CurrentMonth);
+        }
+
+        private void MonthPresenter_Selected(object sender, SelectedDateChangedEventArgs e)
+        {
+            var dateTime = (DateTime)e.SelectedDate;
+            _isInternalSet = true;
+            if (SelectedDates == null)
+            {
+                SelectedDates = new ObservableCollection<DateTime>();
+            }
+            switch (Mode)
+            {
+                case CalendarXMode.Date:
+                case CalendarXMode.DateRange:
+                case CalendarXMode.MultipleDate:
+                    CurrentPanel = 0;
+                    break;
+                case CalendarXMode.YearMonth:
+                    SelectedDate = dateTime;
+                    SelectedDates.Clear();
+                    SelectedDates.Add(dateTime);
+                    break;
+            }
+            UpdateYears(dateTime.Year, dateTime.Month);
+            UpdateMonths(dateTime.Year, dateTime.Month);
+            UpdateDays(dateTime.Year, dateTime.Month);
+            _isInternalSet = false;
+        }
+
+        private void YearPresenter_Unselected(object sender, SelectedDateChangedEventArgs e)
+        {
+            var dateTime = (DateTime)e.SelectedDate;
+            switch (Mode)
+            {
+                case CalendarXMode.Date:
+                case CalendarXMode.DateRange:
+                case CalendarXMode.MultipleDate:
+                case CalendarXMode.YearMonth:
+                    CurrentPanel = 1;
+                    break;
+            }
+            UpdateYears(CurrentYear, CurrentMonth);
+            UpdateMonths(CurrentYear, CurrentMonth);
+            UpdateDays(CurrentYear, CurrentMonth);
+        }
+
+        private void YearPresenter_Selected(object sender, SelectedDateChangedEventArgs e)
+        {
+            var dateTime = (DateTime)e.SelectedDate;
+            _isInternalSet = true;
+            if (SelectedDates == null)
+            {
+                SelectedDates = new ObservableCollection<DateTime>();
+            }
+            switch (Mode)
+            {
+                case CalendarXMode.Date:
+                case CalendarXMode.DateRange:
+                case CalendarXMode.MultipleDate:
+                case CalendarXMode.YearMonth:
+                    CurrentPanel = 1;
+                    break;
+                case CalendarXMode.Year:
+                    SelectedDate = dateTime;
+                    SelectedDates.Clear();
+                    SelectedDates.Add(dateTime);
+                    break;
+            }
+            UpdateYears(dateTime.Year, dateTime.Month);
+            UpdateMonths(dateTime.Year, dateTime.Month);
+            UpdateDays(dateTime.Year, dateTime.Month);
+            _isInternalSet = false;
+        }
+
         #endregion
 
         #region Functions
-        private void UpdateButtonContent()
+        private void OnSelectedDatesChanged()
         {
-            MonthButton = CultureInfo.CurrentUICulture.DateTimeFormat.GetMonthName(CurrentDate.Month);
-            YearButton = CurrentDate.Year;
+            if (_dayPresenter == null)
+            {
+                return;
+            }
+
+            if (!_isInternalSet)
+            {
+                UpdateDays(CurrentYear, CurrentMonth);
+                UpdateMonths(CurrentYear, CurrentMonth);
+                UpdateYears(CurrentYear, CurrentMonth);
+            }
+            RaiseSelectedDatesChanged();
         }
 
-        private void UpdateDayControl()
+        private void OnSelectedDateChanged()
         {
-            _calendarXDayControl.Update(CurrentDate, SelectedDates);
+            if (_dayPresenter == null)
+            {
+                return;
+            }
+
+            if (!_isInternalSet)
+            {
+                var date = SelectedDate ?? new DateTime(CurrentYear, CurrentMonth, 1);
+                UpdateDays(date.Year, date.Month);
+                UpdateMonths(date.Year, date.Month);
+                UpdateYears(date.Year, date.Month);
+            }
+            RaiseSelectedDateChanged();
         }
 
-        private void UpdateMonthControl()
+        private void UpdateDays(int year, int month)
         {
-            _calendarXMonthControl.Update(CurrentDate);
+            if (_dayPresenter == null)
+            {
+                return;
+            }
+            CurrentYear = year;
+            CurrentMonth = month;
+            try
+            {
+                var date = new DateTime(CurrentYear, CurrentMonth, 1);
+                _dayPresenter.Update(date.Year, date.Month, SelectedDates);
+            }
+            catch
+            {
+
+            }
         }
 
-        private void UpdateYearControl()
+        private void UpdateMonths(int year, int month)
         {
-            _calendarXYearControl.Update(CurrentDate);
+            if (_monthPresenter == null)
+            {
+                return;
+            }
+            CurrentYear = year;
+            CurrentMonth = month;
+            try
+            {
+                var date = new DateTime(CurrentYear, CurrentMonth, 1);
+                _monthPresenter.Update(date.Year, date.Month);
+            }
+            catch
+            {
+
+            }
         }
 
+        private void UpdateYears(int year, int month)
+        {
+            if (_monthPresenter == null)
+            {
+                return;
+            }
+            CurrentYear = year;
+            CurrentMonth = month;
+            try
+            {
+                var date = new DateTime(CurrentYear, CurrentMonth, 1);
+                _yearPresenter.Update(date.Year, date.Month);
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void OnDateLimitChanged()
+        {
+            _isInternalSet = true;
+            if (SelectedDate < MinDate || SelectedDate > MaxDate)
+            {
+                SelectedDate = null;
+            }
+            if (SelectedDates != null)
+            {
+                for (int i = SelectedDates.Count - 1; i >= 0; i--)
+                {
+                    var date = SelectedDates[i];
+                    if (date < MinDate || date > MaxDate)
+                    {
+                        SelectedDates.RemoveAt(i);
+                    }
+                }
+            }
+            UpdateDays(CurrentYear, CurrentMonth);
+            UpdateMonths(CurrentYear, CurrentMonth);
+            UpdateYears(CurrentYear, CurrentMonth);
+        }
+
+        private void RaiseSelectedDatesChanged()
+        {
+            RaiseEvent(new SelectionChangedRoutedEventArgs(SelectedDates, SelectedDatesChangedEvent));
+        }
+
+        private void RaiseSelectedDateChanged()
+        {
+            RaiseEvent(new SelectedDateChangedRoutedEventArgs(SelectedDate, SelectedDateChangedEvent));
+        }
         #endregion
     }
 }

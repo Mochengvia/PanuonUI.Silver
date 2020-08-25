@@ -79,6 +79,15 @@ namespace UIBrowser.Core.Properties {
         }
         
         /// <summary>
+        ///   查找类似 CalendarX 的本地化字符串。
+        /// </summary>
+        public static string CalendarX {
+            get {
+                return ResourceManager.GetString("CalendarX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 CornerRadius 的本地化字符串。
         /// </summary>
         public static string CornerRadius {
@@ -88,11 +97,29 @@ namespace UIBrowser.Core.Properties {
         }
         
         /// <summary>
+        ///   查找类似 CustomControls 的本地化字符串。
+        /// </summary>
+        public static string CustomControls {
+            get {
+                return ResourceManager.GetString("CustomControls", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 DataGrid 的本地化字符串。
         /// </summary>
         public static string DataGrid {
             get {
                 return ResourceManager.GetString("DataGrid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Dropdown 的本地化字符串。
+        /// </summary>
+        public static string Dropdown {
+            get {
+                return ResourceManager.GetString("Dropdown", resourceCulture);
             }
         }
         
@@ -174,6 +201,15 @@ namespace UIBrowser.Core.Properties {
         public static string TabControl {
             get {
                 return ResourceManager.GetString("TabControl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 TreeView 的本地化字符串。
+        /// </summary>
+        public static string TreeView {
+            get {
+                return ResourceManager.GetString("TreeView", resourceCulture);
             }
         }
         

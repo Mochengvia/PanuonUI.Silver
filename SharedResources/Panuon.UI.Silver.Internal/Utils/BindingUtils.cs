@@ -12,13 +12,14 @@ namespace Panuon.UI.Silver.Internal.Utils
         public static void BindingProperty(FrameworkElement element,
             DependencyProperty targetProperty,
             object source,
-            DependencyProperty sourceProperty)
+            DependencyProperty sourceProperty,
+            BindingMode mode = BindingMode.OneWay)
         {
             var binding = new Binding()
             {
                 Path = new PropertyPath(sourceProperty),
                 Source = source,
-                Mode = BindingMode.OneWay,
+                Mode = mode,
             };
             element.SetBinding(targetProperty, binding);
         }
@@ -26,7 +27,8 @@ namespace Panuon.UI.Silver.Internal.Utils
         public static void BindingPropertyIfNonDefault(FrameworkElement element,
          DependencyProperty targetProperty,
          DependencyObject source,
-         DependencyProperty sourceProperty)
+         DependencyProperty sourceProperty,
+            BindingMode mode = BindingMode.OneWay)
         {
             if(DependencyObjectUtils.IsDefaultValue(source, sourceProperty))
             {
@@ -34,7 +36,7 @@ namespace Panuon.UI.Silver.Internal.Utils
                 {
                     Path = new PropertyPath(sourceProperty),
                     Source = source,
-                    Mode = BindingMode.OneWay,
+                    Mode = mode,
                 };
                 element.SetBinding(targetProperty, binding);
             }
@@ -45,28 +47,48 @@ namespace Panuon.UI.Silver.Internal.Utils
             DependencyProperty targetProperty,
             object source, 
             DependencyProperty sourceProperty,
-            IValueConverter converter)
+            IValueConverter converter,
+            BindingMode mode = BindingMode.OneWay)
         {
             var binding = new Binding()
             {
                 Path = new PropertyPath(sourceProperty),
                 Source = source,
-                Mode = BindingMode.OneWay,
+                Mode = mode,
                 Converter = converter,
             };
             element.SetBinding(targetProperty, binding);
         }
 
-        public static void BindingProperty(FrameworkElementFactory factory, 
-            DependencyProperty targetProperty,
-            object source,
-            DependencyProperty sourceProperty)
+        public static void BindingProperty(FrameworkElement element,
+           DependencyProperty targetProperty,
+           object source,
+           DependencyProperty sourceProperty,
+           string stringFormat,
+           BindingMode mode = BindingMode.OneWay)
         {
             var binding = new Binding()
             {
                 Path = new PropertyPath(sourceProperty),
                 Source = source,
-                Mode = BindingMode.OneWay,
+                Mode = mode,
+                StringFormat = stringFormat,
+            };
+            element.SetBinding(targetProperty, binding);
+        }
+
+
+        public static void BindingProperty(FrameworkElementFactory factory, 
+            DependencyProperty targetProperty,
+            object source,
+            DependencyProperty sourceProperty,
+            BindingMode mode = BindingMode.OneWay)
+        {
+            var binding = new Binding()
+            {
+                Path = new PropertyPath(sourceProperty),
+                Source = source,
+                Mode = mode,
             };
             factory.SetBinding(targetProperty, binding);
         }
@@ -74,7 +96,8 @@ namespace Panuon.UI.Silver.Internal.Utils
         public static void BindingPropertyIfNonDefault(FrameworkElementFactory factory,
         DependencyProperty targetProperty,
         DependencyObject source,
-        DependencyProperty sourceProperty)
+        DependencyProperty sourceProperty,
+            BindingMode mode = BindingMode.OneWay)
         {
             if (!DependencyObjectUtils.IsDefaultValue(source, sourceProperty))
             {
@@ -82,16 +105,17 @@ namespace Panuon.UI.Silver.Internal.Utils
                 {
                     Path = new PropertyPath(sourceProperty),
                     Source = source,
-                    Mode = BindingMode.OneWay,
+                    Mode = mode,
                 };
                 factory.SetBinding(targetProperty, binding);
             }
         }
         public static void BindingPropertyIfNonDefault(FrameworkElement element,
-    DependencyProperty targetProperty,
-    DependencyObject source,
-    DependencyProperty sourceProperty,
-    IValueConverter converter)
+            DependencyProperty targetProperty,
+            DependencyObject source,
+            DependencyProperty sourceProperty,
+            IValueConverter converter,
+            BindingMode mode = BindingMode.OneWay)
         {
             if (DependencyObjectUtils.IsDefaultValue(source, sourceProperty))
             {
@@ -99,7 +123,7 @@ namespace Panuon.UI.Silver.Internal.Utils
                 {
                     Path = new PropertyPath(sourceProperty),
                     Source = source,
-                    Mode = BindingMode.OneWay,
+                    Mode = mode,
                     Converter = converter,
                 };
                 element.SetBinding(targetProperty, binding);
@@ -110,13 +134,14 @@ namespace Panuon.UI.Silver.Internal.Utils
             DependencyProperty targetProperty, 
             object source,
             DependencyProperty sourceProperty,
-            IValueConverter converter)
+            IValueConverter converter,
+            BindingMode mode = BindingMode.OneWay)
         {
             var binding = new Binding()
             {
                 Path = new PropertyPath(sourceProperty),
                 Source = source,
-                Mode = BindingMode.OneWay,
+                Mode = mode,
                 Converter = converter,
             };
             factory.SetBinding(targetProperty, binding);
@@ -126,7 +151,8 @@ namespace Panuon.UI.Silver.Internal.Utils
             DependencyProperty targetProperty,
             DependencyObject source,
             DependencyProperty sourceProperty,
-            IValueConverter converter)
+            IValueConverter converter,
+            BindingMode mode = BindingMode.OneWay)
         {
             if (!DependencyObjectUtils.IsDefaultValue(source, sourceProperty))
             {
@@ -134,7 +160,7 @@ namespace Panuon.UI.Silver.Internal.Utils
                 {
                     Path = new PropertyPath(sourceProperty),
                     Source = source,
-                    Mode = BindingMode.OneWay,
+                    Mode = mode,
                     Converter = converter,
                 };
                 factory.SetBinding(targetProperty, binding);

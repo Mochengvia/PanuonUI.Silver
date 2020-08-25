@@ -1,0 +1,193 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver"
+                    xmlns:core="clr-namespace:Panuon.UI.Silver.Core"
+                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
+                    xmlns:ic="clr-namespace:Panuon.UI.Silver.Internal.Controls"
+                    xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=ContentContainerStyle, TypeInTargetAssembly={x:Type local:Dropdown}}"
+           TargetType="ToggleButton">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Grid Background="Transparent">
+                        <ContentPresenter />
+                        <Border Background="Transparent" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style TargetType="local:Dropdown">
+        <Setter Property="BorderBrush"
+                Value="LightGray" />
+        <Setter Property="DropdownStroke"
+                Value="{Binding BorderBrush, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="BorderThickness"
+                Value="1" />
+        <Setter Property="DropdownStrokeThickness"
+                Value="1" />
+        <Setter Property="Background"
+                Value="White" />
+        <Setter Property="DropdownCornerRadius"
+                Value="2" />
+        <Setter Property="DropdownShadowColor"
+                Value="#EEEEEE" />
+        <Setter Property="DropdownPlacement"
+                Value="Bottom" />
+        <Setter Property="ContentContainerStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=ContentContainerStyle, TypeInTargetAssembly={x:Type local:Dropdown}}}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:Dropdown">
+                    <Grid>
+                        <ToggleButton x:Name="TgbContent"
+                                      Style="{TemplateBinding ContentContainerStyle}"
+                                      IsChecked="{Binding IsOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                      Content="{TemplateBinding Content}"
+                                      ContentTemplate="{TemplateBinding ContentTemplate}"
+                                      ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}" />
+                        <local:PopupX x:Name="PopDropdown"
+                                      StaysOpen="{TemplateBinding StaysOpen}"
+                                      IsOpen="{Binding IsOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                      Placement="{TemplateBinding DropdownPlacement}"
+                                      PlacementTarget="{Binding ElementName=TgbContent}"
+                                      AllowsTransparency="True"
+                                      Focusable="False"
+                                      PopupAnimation="Slide">
+                            <Grid x:Name="GrdPopup">
+                                <Path x:Name="PathDropdown"
+                                      Fill="{TemplateBinding Background}"
+                                      Stroke="{TemplateBinding DropdownStroke}"
+                                      StrokeThickness="{TemplateBinding DropdownStrokeThickness}"
+                                      Effect="{Binding DropdownShadowColor, Converter={StaticResource {x:Static irs:Converters.DropShadowEffectCoverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                      Margin="1">
+                                    <Path.Data>
+                                        <MultiBinding Converter="{StaticResource {x:Static irs:Converters.DropdownPathDataConverter}}">
+                                            <Binding Path="ActualWidth"
+                                                     ElementName="PathDropdown"
+                                                     Mode="OneWay" />
+                                            <Binding Path="ActualHeight"
+                                                     ElementName="PathDropdown"
+                                                     Mode="OneWay" />
+                                            <Binding Path="ActualWidth"
+                                                     ElementName="TgbContent"
+                                                     Mode="OneWay" />
+                                            <Binding Path="ActualHeight"
+                                                     ElementName="TgbContent"
+                                                     Mode="OneWay" />
+                                            <Binding Path="DropdownCornerRadius"
+                                                     RelativeSource="{RelativeSource AncestorType=local:Dropdown}"
+                                                     Mode="OneWay" />
+                                            <Binding Path="ActualPlacement"
+                                                     ElementName="PopDropdown"
+                                                     Mode="OneWay" />
+                                            <Binding Path="DropdownStyle"
+                                                     RelativeSource="{RelativeSource AncestorType=local:Dropdown}"
+                                                     Mode="OneWay" />
+                                            <Binding Path="Margin"
+                                                     ElementName="PathDropdown"
+                                                     Mode="OneWay" />
+                                            <Binding Path="RelativePosition"
+                                                     ElementName="PopDropdown"
+                                                     Mode="OneWay" />
+                                        </MultiBinding>
+                                    </Path.Data>
+                                </Path>
+                                <ContentPresenter x:Name="CpChild"
+                                                  ContentSource="Child" />
+                            </Grid>
+                        </local:PopupX>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="DropdownPlacement"
+                                 Value="Bottom">
+                            <Setter TargetName="GrdPopup"
+                                    Property="Margin"
+                                    Value="5,0,5,5" />
+                            <Setter TargetName="CpChild"
+                                    Property="Margin"
+                                    Value="2,6,2,2" />
+                        </Trigger>
+                        <Trigger Property="DropdownPlacement"
+                                 Value="BottomLeft">
+                            <Setter TargetName="GrdPopup"
+                                    Property="Margin"
+                                    Value="5,0,5,5" />
+                            <Setter TargetName="CpChild"
+                                    Property="Margin"
+                                    Value="2,6,2,2" />
+                        </Trigger>
+                        <Trigger Property="DropdownPlacement"
+                                 Value="BottomRight">
+                            <Setter TargetName="GrdPopup"
+                                    Property="Margin"
+                                    Value="5,0,5,5" />
+                            <Setter TargetName="CpChild"
+                                    Property="Margin"
+                                    Value="2,6,2,2" />
+                        </Trigger>
+                        <Trigger Property="DropdownPlacement"
+                                 Value="Top">
+                            <Setter TargetName="GrdPopup"
+                                    Property="Margin"
+                                    Value="5,5,5,0" />
+                            <Setter TargetName="CpChild"
+                                    Property="Margin"
+                                    Value="2,2,2,6" />
+                        </Trigger>
+                        <Trigger Property="DropdownPlacement"
+                                 Value="TopLeft">
+                            <Setter TargetName="GrdPopup"
+                                    Property="Margin"
+                                    Value="5,5,5,0" />
+                            <Setter TargetName="CpChild"
+                                    Property="Margin"
+                                    Value="2,2,2,6" />
+                        </Trigger>
+                        <Trigger Property="DropdownPlacement"
+                                 Value="TopRight">
+                            <Setter TargetName="GrdPopup"
+                                    Property="Margin"
+                                    Value="5,5,5,0" />
+                            <Setter TargetName="CpChild"
+                                    Property="Margin"
+                                    Value="2,2,2,6" />
+                        </Trigger>
+                        <Trigger Property="DropdownPlacement"
+                                 Value="Left">
+                            <Setter TargetName="GrdPopup"
+                                    Property="Margin"
+                                    Value="0,5,5,5" />
+                            <Setter TargetName="CpChild"
+                                    Property="Margin"
+                                    Value="2,2,6,2" />
+                        </Trigger>
+                        <Trigger Property="DropdownPlacement"
+                                 Value="Right">
+                            <Setter TargetName="GrdPopup"
+                                    Property="Margin"
+                                    Value="5,5,0,5" />
+                            <Setter TargetName="CpChild"
+                                    Property="Margin"
+                                    Value="6,2,2,2" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled"
+                     Value="False">
+                <Setter Property="Opacity"
+                        Value="0.4" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

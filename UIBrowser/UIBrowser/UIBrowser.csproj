@@ -76,9 +76,12 @@
     <Compile Include="Models\DataItem.cs" />
     <Compile Include="Models\FontItem.cs" />
     <Compile Include="Models\PartialViewltem.cs" />
+    <Compile Include="ViewModels\Partials\CalendarXViewModel.cs" />
+    <Compile Include="ViewModels\Partials\TreeViewViewModel.cs" />
     <Compile Include="ViewModels\Partials\ListViewViewModel.cs" />
     <Compile Include="ViewModels\Partials\IconViewModel.cs" />
     <Compile Include="ViewModels\Partials\FormViewModel.cs" />
+    <Compile Include="ViewModels\Partials\DropdownViewModel.cs" />
     <Compile Include="ViewModels\Partials\TabControlViewModel.cs" />
     <Compile Include="ViewModels\Partials\SliderViewModel.cs" />
     <Compile Include="ViewModels\Partials\DataGridViewModel.cs" />
@@ -129,6 +132,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Partials\TreeViewView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Partials\DropdownView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Partials\CalendarXView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Partials\ListViewView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -161,6 +176,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\HeadImg.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

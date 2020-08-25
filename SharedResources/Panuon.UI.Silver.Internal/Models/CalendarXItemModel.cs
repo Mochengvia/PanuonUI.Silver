@@ -1,53 +1,82 @@
 ﻿using Panuon.UI.Silver.Core;
 using System;
+using System.Windows;
 
 namespace Panuon.UI.Silver.Internal.Models
 {
-    internal class CalendarXItemModel : PropertyChangedBase
+    internal class CalendarXItemModel : DependencyObject
     {
-        #region Ctor
-        #endregion
-
         #region Properties
 
-        #region IsSelected
-        public bool IsChecked 
-        { 
-            get => _isChecked;
-            set
-            {
-                if(_isChecked != value)
-                {
-                    Set(ref _isChecked, value);
-                }
-            }
+        #region IsChecked
+        public bool IsChecked
+        {
+            get { return (bool)GetValue(IsCheckedProperty); }
+            set { SetValue(IsCheckedProperty, value); }
         }
-        private bool _isChecked;
+
+        public static readonly DependencyProperty IsCheckedProperty =
+            DependencyProperty.Register("IsChecked", typeof(bool), typeof(CalendarXItemModel));
         #endregion
 
         #region Content
-        public object Content { get => _content; set => Set(ref _content, value); }
-        private object _content;
+        public object Content
+        {
+            get { return (object)GetValue(ContentProperty); }
+            set { SetValue(ContentProperty, value); }
+        }
+
+        public static readonly DependencyProperty ContentProperty =
+            DependencyProperty.Register("Content", typeof(object), typeof(CalendarXItemModel));
         #endregion
 
-        #region Value
-        public DateTime Value { get; set; }
+        #region DateTime
+        public DateTime Date { get; set; }
         #endregion
 
         #region IsToday
-        public bool IsToday { get => _isToday; set => Set(ref _isToday, value); }
-        private bool _isToday;
+        public bool IsToday
+        {
+            get { return (bool)GetValue(IsTodayProperty); }
+            set { SetValue(IsTodayProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsTodayProperty =
+            DependencyProperty.Register("IsToday", typeof(bool), typeof(CalendarXItemModel));
         #endregion
 
         #region IsEnabled
-        public bool IsEnabled { get => _isEnabled; set => Set(ref _isEnabled, value); }
-        private bool _isEnabled;
+        public bool IsEnabled
+        {
+            get { return (bool)GetValue(IsEnabledProperty); }
+            set { SetValue(IsEnabledProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsEnabledProperty =
+            DependencyProperty.Register("IsEnabled", typeof(bool), typeof(CalendarXItemModel));
         #endregion
 
-        #region IsWeakenDisplay
-        public bool IsWeakenDisplay { get => _isWeakenDisplay; set => Set(ref _isWeakenDisplay, value); }
-        private bool _isWeakenDisplay;
-        #endregion 
+        #region IsDownplay
+        public bool IsDownplay
+        {
+            get { return (bool)GetValue(IsDownplayProperty); }
+            set { SetValue(IsDownplayProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsDownplayProperty =
+            DependencyProperty.Register("IsDownplay", typeof(bool), typeof(CalendarXItemModel));
+        #endregion
+
+        #region IsInRange
+        public bool IsInRange
+        {
+            get { return (bool)GetValue(IsInRangeProperty); }
+            set { SetValue(IsInRangeProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsInRangeProperty =
+            DependencyProperty.Register("IsInRange", typeof(bool), typeof(CalendarXItemModel));
+        #endregion
 
         #endregion
 

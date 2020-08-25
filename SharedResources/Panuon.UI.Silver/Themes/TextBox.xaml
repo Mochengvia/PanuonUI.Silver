@@ -11,6 +11,8 @@
 
     <Style x:Key="{x:Static irs:ResourceKeys.TextBoxClearButtonStyle}"
            TargetType="Button">
+        <Setter Property="local:ButtonHelper.Hook"
+                Value="True" />
         <Setter Property="Visibility"
                 Value="{Binding Path=(local:TextBoxHelper.CanClear), Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
         <Setter Property="Content"
@@ -95,7 +97,9 @@
                                       HorizontalScrollBarVisibility="{TemplateBinding HorizontalScrollBarVisibility}" />
                         <Button Grid.Column="2"
                                 Style="{StaticResource {x:Static irs:ResourceKeys.TextBoxClearButtonStyle}}"
-                                Foreground="{TemplateBinding Foreground}" />
+                                Foreground="{TemplateBinding Foreground}"
+                                Command="{Binding Path=(local:TextBoxHelper.ClearTextBoxCommand),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}" />
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="local:TextBoxHelper.FocusedShadowColor"

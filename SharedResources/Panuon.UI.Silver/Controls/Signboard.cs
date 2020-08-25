@@ -141,11 +141,8 @@ namespace Panuon.UI.Silver
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            Dispatcher.BeginInvoke(new Action(() =>
-            {
-                _textBlock = Template?.FindName("PART_TextBlock", this) as TextBlock;
-                AutoCheck();
-            }), DispatcherPriority.Loaded);
+            _textBlock = Template?.FindName("PART_TextBlock", this) as TextBlock;
+            AutoCheck();
         }
 
         protected override Size ArrangeOverride(Size arrangeBounds)
@@ -187,7 +184,7 @@ namespace Panuon.UI.Silver
             {
                 _queue = new Queue<string>();
             }
-            if(QueueStrategy == QueueStrategy.Priority)
+            if (QueueStrategy == QueueStrategy.Priority)
             {
                 _queue.Clear();
             }
@@ -247,14 +244,14 @@ namespace Panuon.UI.Silver
 
         private Storyboard CreateStoryboard()
         {
-            switch(Animation)
+            switch (Animation)
             {
                 case SignboardAnimation.Barrage:
                     return CreateBarrageStoryboard();
                 case SignboardAnimation.Marble:
                     return CreateMarbleStoryboard();
                 case SignboardAnimation.Fade:
-                      return CreateFadeStoryboard();
+                    return CreateFadeStoryboard();
                 case SignboardAnimation.Notice:
                     return CreateNoticeStoryboard();
                 default:
@@ -352,7 +349,7 @@ namespace Panuon.UI.Silver
         private Storyboard CreateNoticeStoryboard()
         {
             var delta = _boundingWidth - _textWidth;
-            if(delta > 0)
+            if (delta > 0)
             {
                 delta = 0;
             }
@@ -364,7 +361,7 @@ namespace Panuon.UI.Silver
                   AnimationBeginTime,
                   AnimationDuration,
                   AnimationEase);
-         
+
             Storyboard.SetTarget(anima, _textBlock);
             Storyboard.SetTargetProperty(anima, new PropertyPath(TextBlock.MarginProperty));
             storyboard.Children.Add(anima);

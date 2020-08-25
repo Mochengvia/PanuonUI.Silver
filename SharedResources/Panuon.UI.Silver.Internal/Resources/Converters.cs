@@ -53,9 +53,10 @@
         public const string TabPanelMaxWidthConverter = nameof(TabPanelMaxWidthConverter);
 
         public const string TabControlSideButtonVisibilityConverter = nameof(TabControlSideButtonVisibilityConverter);
-        
-    }
 
+        public const string DropdownPathDataConverter = nameof(DropdownPathDataConverter);
+    }
+    
 
 
 }

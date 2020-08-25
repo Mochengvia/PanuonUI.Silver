@@ -9,12 +9,118 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{x:Static irs:ResourceKeys.CalendarXButtonStyle}"
+    <Style x:Key="{ComponentResourceKey ResourceId=PreviousButtonStyle, TypeInTargetAssembly={x:Type local:CalendarX}}"
+               TargetType="RepeatButton">
+            <Setter Property="local:RepeatButtonHelper.Hook"
+                    Value="True" />
+        <Setter Property="local:RepeatButtonHelper.HoverForeground"
+                Value="Gray" />
+        <Setter Property="Content"
+                    Value="&#xe900;" />
+            <Setter Property="Width"
+                    Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            <Setter Property="FontSize"
+                    Value="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            <Setter Property="FontFamily"
+                    Value="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RepeatButton">
+                        <Border Background="Transparent">
+                            <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+    </Style>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=BackwardButtonStyle, TypeInTargetAssembly={x:Type local:CalendarX}}"
+           TargetType="RepeatButton">
+        <Setter Property="local:RepeatButtonHelper.Hook"
+                Value="True" />
+        <Setter Property="local:RepeatButtonHelper.HoverForeground"
+                Value="Gray" />
+        <Setter Property="Content"
+                Value="&#xe924;" />
+        <Setter Property="Width"
+                Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="FontSize"
+                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+        <Setter Property="FontFamily"
+                Value="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RepeatButton">
+                    <Border Background="Transparent">
+                        <ContentPresenter VerticalAlignment="Center"
+                                          HorizontalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=NextButtonStyle, TypeInTargetAssembly={x:Type local:CalendarX}}"
+           TargetType="RepeatButton">
+        <Setter Property="local:RepeatButtonHelper.Hook"
+                Value="True" />
+        <Setter Property="local:RepeatButtonHelper.HoverForeground"
+                Value="Gray" />
+        <Setter Property="Content"
+                Value="&#xe902;" />
+        <Setter Property="Width"
+                Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="FontSize"
+                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+        <Setter Property="FontFamily"
+                Value="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RepeatButton">
+                    <Border Background="Transparent">
+                        <ContentPresenter VerticalAlignment="Center"
+                                          HorizontalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=ForwardButtonStyle, TypeInTargetAssembly={x:Type local:CalendarX}}"
+           TargetType="RepeatButton">
+        <Setter Property="local:RepeatButtonHelper.Hook"
+                Value="True" />
+        <Setter Property="local:RepeatButtonHelper.HoverForeground"
+                Value="Gray" />
+        <Setter Property="Content"
+                Value="&#xe926;" />
+        <Setter Property="Width"
+                Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="FontSize"
+                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+        <Setter Property="FontFamily"
+                Value="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RepeatButton">
+                    <Border Background="Transparent">
+                        <ContentPresenter VerticalAlignment="Center"
+                                          HorizontalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style x:Key="{ComponentResourceKey ResourceId=YearButtonStyle, TypeInTargetAssembly={x:Type local:CalendarX}}"
            TargetType="Button">
         <Setter Property="local:ButtonHelper.Hook"
                 Value="True" />
         <Setter Property="local:ButtonHelper.HoverForeground"
                 Value="Gray" />
+        <Setter Property="FontSize"
+                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=3, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -27,125 +133,221 @@
         </Setter>
     </Style>
 
-    <ControlTemplate x:Key="{x:Static irs:ResourceKeys.CalendarXTemplate}"
-                     TargetType="local:CalendarX">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition />
-            </Grid.RowDefinitions>
-            <Border Grid.RowSpan="2"
-                    BorderBrush="{TemplateBinding BorderBrush}"
-                    BorderThickness="{TemplateBinding BorderThickness}"
-                    Background="{TemplateBinding Background}"
-                    Effect="{Binding ShadowColor, Converter={StaticResource {x:Static irs:Converters.DropShadowEffectCoverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-            <Grid Height="{TemplateBinding CaptionHeight}">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <Button x:Name="PART_Backward"
-                        Style="{TemplateBinding ButtonStyle}"
-                        Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
-                        Content="&#xe924;"
-                        FontSize="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                        FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon"/>
-                <Button x:Name="PART_Previous"
-                        Grid.Column="1"
-                        Style="{TemplateBinding ButtonStyle}"
-                        Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
-                        Content="&#xe900;"
-                        FontSize="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                        FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon" />
-                <StackPanel Grid.Column="2"
-                            Orientation="Horizontal"
-                            HorizontalAlignment="Center">
-                    <Button x:Name="PART_Month"
-                            Content="{TemplateBinding MonthButton}"
-                            Style="{TemplateBinding ButtonStyle}"
-                            FontSize="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                            Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-                    <Button x:Name="PART_Year"
-                            Content="{TemplateBinding YearButton}"
-                            Style="{TemplateBinding ButtonStyle}"
-                            FontSize="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                            Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-                </StackPanel>
-                <Button x:Name="PART_Next"
-                        Grid.Column="3"
-                        Style="{TemplateBinding ButtonStyle}"
-                        Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
-                        Content="&#xe902;"
-                        FontSize="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                        FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon" />
-                <Button x:Name="PART_Forward"
-                        Grid.Column="4"
-                        Style="{TemplateBinding ButtonStyle}"
-                        Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
-                        Content="&#xe926;"
-                        FontSize="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                        FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon" />
-            </Grid>
-            <local:StickyPanel Grid.Row="1"
-                               CurrentIndex="{TemplateBinding CurrentPanel}"
-                               Animation="Scale"
-                               AnimationDuration="{TemplateBinding AnimationDuration}"
-                               AnimationEase="{TemplateBinding AnimationEase}">
-                <ic:CalendarXDayControl x:Name="PART_DayControl" />
-                <ic:CalendarXMonthControl x:Name="PART_MonthControl" />
-                <ic:CalendarXYearControl x:Name="PART_YearControl" />
-            </local:StickyPanel>
-        </Grid>
-    </ControlTemplate>
+    <Style x:Key="{ComponentResourceKey ResourceId=MonthButtonStyle, TypeInTargetAssembly={x:Type local:CalendarX}}"
+           TargetType="Button">
+        <Setter Property="local:ButtonHelper.Hook"
+                Value="True" />
+        <Setter Property="local:ButtonHelper.HoverForeground"
+                Value="Gray" />
+        <Setter Property="FontSize"
+                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=3, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="Transparent">
+                        <ContentPresenter VerticalAlignment="Center"
+                                          HorizontalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
-
+    <Style TargetType="local:CalendarX">
+        <Setter Property="BorderBrush"
+                Value="LightGray" />
+        <Setter Property="BorderThickness"
+                Value="1" />
+        <Setter Property="HeaderHeight"
+                Value="40" />
+        <Setter Property="YearButtonStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=YearButtonStyle, TypeInTargetAssembly={x:Type local:CalendarX}}}" />
+        <Setter Property="MonthButtonStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=MonthButtonStyle, TypeInTargetAssembly={x:Type local:CalendarX}}}" />
+        <Setter Property="BackwardButtonStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=BackwardButtonStyle, TypeInTargetAssembly={x:Type local:CalendarX}}}" />
+        <Setter Property="ForwardButtonStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=ForwardButtonStyle, TypeInTargetAssembly={x:Type local:CalendarX}}}" />
+        <Setter Property="NextButtonStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=NextButtonStyle, TypeInTargetAssembly={x:Type local:CalendarX}}}" />
+        <Setter Property="PreviousButtonStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=PreviousButtonStyle, TypeInTargetAssembly={x:Type local:CalendarX}}}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:CalendarX">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Border Grid.RowSpan="2"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                Background="{TemplateBinding Background}"/>
+                        <Grid Height="{TemplateBinding HeaderHeight}"
+                              Background="{TemplateBinding HeaderBackground}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <RepeatButton x:Name="PART_BackwardButton"
+                                    Style="{TemplateBinding BackwardButtonStyle}"/>
+                            <RepeatButton x:Name="PART_PreviousButton"
+                                    Grid.Column="1"
+                                    Style="{TemplateBinding PreviousButtonStyle}"/>
+                            <StackPanel Grid.Column="2"
+                                        Orientation="Horizontal"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center">
+                                <Button x:Name="PART_MonthButton"
+                                        Style="{TemplateBinding MonthButtonStyle}" />
+                                <Button x:Name="PART_YearButton"
+                                        Margin="10,0,0,0"
+                                        Style="{TemplateBinding YearButtonStyle}" />
+                            </StackPanel>
+                            <RepeatButton x:Name="PART_NextButton"
+                                    Grid.Column="3"
+                                    Style="{TemplateBinding NextButtonStyle}" />
+                            <RepeatButton x:Name="PART_ForwardButton"
+                                    Grid.Column="4"
+                                    Style="{TemplateBinding ForwardButtonStyle}" />
+                        </Grid>
+                        <local:StickyPanel CurrentIndex="{TemplateBinding CurrentPanel}"
+                                           Grid.Row="1">
+                            <Grid x:Name="GrdDay">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="6*" />
+                                </Grid.RowDefinitions>
+                                <ic:CalendarXWeekPresenter x:Name="PART_WeekPresenter" />
+                                <ic:CalendarXDayPresenter x:Name="PART_DayPresenter"
+                                                          Grid.Row="1" />
+                            </Grid>
+                            <Grid x:Name="GrdMonth">
+                                <ic:CalendarXMonthPresenter x:Name="PART_MonthPresenter" />
+                            </Grid>
+                            <Grid x:Name="GrdYear">
+                                <ic:CalendarXYearPresenter x:Name="PART_YearPresenter" />
+                            </Grid>
+                        </local:StickyPanel>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Mode"
+                                 Value="YearMonth">
+                            <Setter TargetName="PART_BackwardButton"
+                                    Property="Visibility"
+                                    Value="Collapsed"/>
+                            <Setter TargetName="PART_ForwardButton"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
+                            <Setter TargetName="GrdDay"
+                                    Property="Visibility"
+                                    Value="Hidden" />
+                        </Trigger>
+                        <Trigger Property="Mode"
+                                 Value="Year">
+                            <Setter TargetName="PART_BackwardButton"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
+                            <Setter TargetName="PART_ForwardButton"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
+                            <Setter TargetName="GrdDay"
+                                    Property="Visibility"
+                                    Value="Hidden" />
+                            <Setter TargetName="GrdMonth"
+                                    Property="Visibility"
+                                    Value="Hidden" />
+                            <Setter TargetName="PART_MonthButton" 
+                                    Property="Visibility"
+                                    Value="Collapsed"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="Mode"
+                     Value="YearMonth">
+                <Setter Property="CurrentPanel"
+                        Value="1" />
+            </Trigger>
+            <Trigger Property="Mode"
+                     Value="Year">
+                <Setter Property="CurrentPanel"
+                        Value="2" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
     <Style TargetType="local:CalendarXItem">
-        <Setter Property="FocusVisualStyle"
-                Value="{x:Null}" />
+        <Setter Property="local:ToggleButtonHelper.Hook"
+                Value="True" />
         <Setter Property="Background"
                 Value="Transparent" />
         <Setter Property="VerticalContentAlignment"
                 Value="Center" />
         <Setter Property="HorizontalContentAlignment"
                 Value="Center" />
-        <Setter Property="CheckedBackground"
-                Value="#3E3E3E" />
-        <Setter Property="CheckedForeground"
-                Value="#FFFFFF" />
+        <Setter Property="local:ToggleButtonHelper.HoverBackground"
+                Value="#F1F1F1" />
+        <Setter Property="local:ToggleButtonHelper.CheckedBackground"
+                Value="#E1E1E1" />
+        <Setter Property="Padding"
+                Value="5" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:CalendarXItem">
                     <Grid>
-                        <Border BorderBrush="{TemplateBinding BorderBrush}"
+                        <Border x:Name="BdrMain"
+                                BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 Background="{TemplateBinding Background}"
-                                CornerRadius="{TemplateBinding CornerRadius}" />
-                        <Border x:Name="BdrBack"
-                                Opacity="0"
-                                Background="{TemplateBinding CheckedBackground}"
-                                CornerRadius="{TemplateBinding CornerRadius}" />
-                        <ContentPresenter Margin="{TemplateBinding Margin}"
-                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                                CornerRadius="{Binding Path=(local:ToggleButtonHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        <Grid x:Name="GrdContent"
+                              Margin="{TemplateBinding Padding}">
+                            <Ellipse x:Name="EllToday"
+                                     VerticalAlignment="Top"
+                                     HorizontalAlignment="Right"
+                                     Width="6"
+                                     Height="6"
+                                     Visibility="Collapsed"
+                                     Fill="{TemplateBinding Foreground}" />
+                            <ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                        </Grid>
                     </Grid>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsChecked"
+                        <Trigger Property="IsToday"
                                  Value="True">
-                            <Setter TargetName="BdrBack"
+                            <Setter TargetName="EllToday"
+                                    Property="Visibility"
+                                    Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsInRange"
+                                 Value="True">
+                            <Setter TargetName="BdrMain" 
+                                    Property="Background"
+                                    Value="{Binding Path=(local:ToggleButtonHelper.HoverBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        </Trigger>
+                     
+                        <Trigger Property="IsDownplay"
+                                 Value="True">
+                            <Setter TargetName="GrdContent"
                                     Property="Opacity"
-                                    Value="1" />
+                                    Value="0.4" />
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
-                                <Condition Property="IsMouseOver"
-                                           Value="True" />
-                                <Condition Property="IsChecked"
+                                <Condition Property="IsInRange"
                                            Value="False" />
+                                <Condition Property="IsDownplay"
+                                           Value="True" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="BdrBack"
+                            <Setter TargetName="BdrMain"
                                     Property="Opacity"
                                     Value="0.4" />
                         </MultiTrigger>
@@ -154,48 +356,43 @@
             </Setter.Value>
         </Setter>
         <Style.Triggers>
-            <Trigger Property="IsChecked"
-                     Value="True">
-                <Setter Property="Foreground"
-                        Value="{Binding CheckedForeground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-            </Trigger>
             <Trigger Property="IsEnabled"
                      Value="False">
                 <Setter Property="Opacity"
-                        Value="0.2" />
+                        Value="0.1" />
             </Trigger>
-            <Trigger Property="IsWeakenDisplay"
-                     Value="True">
-                <Setter Property="Opacity"
-                        Value="0.4" />
-            </Trigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=(local:ToggleButtonHelper.CheckedBackground), Converter={StaticResource {x:Static rs:Converters.IsNotNullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Background"
+                        Value="{Binding Path=(local:ToggleButtonHelper.CheckedBackground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=(local:ToggleButtonHelper.CheckedForeground), Converter={StaticResource {x:Static rs:Converters.IsNotNullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Foreground"
+                        Value="{Binding Path=(local:ToggleButtonHelper.CheckedForeground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=(local:ToggleButtonHelper.CheckedBorderBrush), Converter={StaticResource {x:Static rs:Converters.IsNotNullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="BorderBrush"
+                        Value="{Binding Path=(local:ToggleButtonHelper.CheckedBorderBrush), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            </MultiDataTrigger>
         </Style.Triggers>
     </Style>
 
-    <Style TargetType="local:CalendarX">
-        <Setter Property="BorderThickness"
-                Value="1" />
-        <Setter Property="BorderBrush"
-                Value="Gray" />
-        <Setter Property="AnimationEase"
-                Value="CubicOut" />
-        <Setter Property="AnimationDuration"
-                Value="0:0:0.5" />
-        <Setter Property="CaptionHeight"
-                Value="40" />
-        <Setter Property="CalendarXItemStyle"
-                Value="{StaticResource {x:Type local:CalendarXItem}}" />
-        <Setter Property="ButtonStyle"
-                Value="{StaticResource {x:Static irs:ResourceKeys.CalendarXButtonStyle}}" />
-        <Setter Property="Template"
-                Value="{StaticResource {x:Static irs:ResourceKeys.CalendarXTemplate}}" />
-        <Style.Triggers>
-            <Trigger Property="IsEnabled"
-                     Value="False">
-                <Setter Property="Opacity"
-                        Value="0.4" />
-            </Trigger>
-        </Style.Triggers>
-    </Style>
 
 </ResourceDictionary>

@@ -28,10 +28,10 @@
                 <TabItem Header="Item10" />
             </TabControl>
             <TabControl Margin="0,10,0,0"
+                        pu:TabControlHelper.HeaderPanelAlignment="Center"
                         BorderThickness="0"
                         pu:TabControlHelper.ItemsBorderThickness="0"
                         pu:TabControlHelper.ItemsSelectedBorderThickness="0"
-                        pu:TabControlHelper.HeaderPanelAlignment="Front"
                         pu:TabControlHelper.HeaderPanelRibbonLineVisibility="Collapsed"
                         pu:TabControlHelper.ItemsCornerRadius="4"
                         pu:TabControlHelper.HeaderPanelBackground="{DynamicResource TranslucentGreen}"

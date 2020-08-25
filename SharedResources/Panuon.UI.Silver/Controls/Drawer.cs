@@ -138,18 +138,15 @@ namespace Panuon.UI.Silver
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            Dispatcher.BeginInvoke(new Action(() =>
-            {
-                var thumb = Template?.FindName("PART_Thumb", this) as Thumb;
-                thumb.DragStarted -= Thumb_DragStarted;
-                thumb.DragStarted += Thumb_DragStarted;
-                thumb.DragDelta -= Thumb_DragDelta;
-                thumb.DragDelta += Thumb_DragDelta;
-                thumb.DragCompleted -= Thumb_DragCompleted;
-                thumb.DragCompleted += Thumb_DragCompleted;
-            }), DispatcherPriority.Loaded);
+            var thumb = Template?.FindName("PART_Thumb", this) as Thumb;
+            thumb.DragStarted -= Thumb_DragStarted;
+            thumb.DragStarted += Thumb_DragStarted;
+            thumb.DragDelta -= Thumb_DragDelta;
+            thumb.DragDelta += Thumb_DragDelta;
+            thumb.DragCompleted -= Thumb_DragCompleted;
+            thumb.DragCompleted += Thumb_DragCompleted;
         }
-      
+
         private void Thumb_DragCompleted(object sender, DragCompletedEventArgs e)
         {
             IsDragging = false;
