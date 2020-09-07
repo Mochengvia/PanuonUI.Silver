@@ -9,7 +9,8 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="local:Pagination">
+    <Style x:Key="{x:Static irs:StyleKeys.PaginationStyle}"
+           TargetType="local:Pagination">
         <Setter Property="Spacing"
                 Value="5" />
         <Setter Property="HorizontalAlignment"

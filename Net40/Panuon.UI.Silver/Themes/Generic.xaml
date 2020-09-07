@@ -1,33 +1,34 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Panuon.UI.Silver"
-                    xmlns:shell="http://schemas.microsoft.com/winfx/2006/xaml/presentation/shell"
                     xmlns:com="clr-namespace:Panuon.UI.Silver.Components"
-                    xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources">
+                    xmlns:shell="http://schemas.microsoft.com/winfx/2006/xaml/presentation/shell"
+                    xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources"
+                    xmlns:core="clr-namespace:Panuon.UI.Silver.Core">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Generic.Core.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="local:WindowX"
-           BasedOn="{StaticResource {x:Static irs:ResourceKeys.WindowXStyle}}">
+           BasedOn="{StaticResource {x:Static irs:StyleKeys.WindowXStyle}}">
         <Setter Property="shell:WindowChrome.WindowChrome">
             <Setter.Value>
                 <shell:WindowChrome  ResizeBorderThickness="3"
-                               GlassFrameThickness="3"
-                               CornerRadius="0" />
+                                     GlassFrameThickness="3"
+                                     CornerRadius="0" />
             </Setter.Value>
         </Setter>
     </Style>
 
     <Style TargetType="com:MessageBoxXWindow"
-           BasedOn="{StaticResource {x:Static irs:ResourceKeys.MessageBoxXWindowStyle}}">
+           BasedOn="{StaticResource {x:Static irs:StyleKeys.MessageBoxXWindowStyle}}">
         <Setter Property="shell:WindowChrome.WindowChrome">
             <Setter.Value>
                 <shell:WindowChrome  ResizeBorderThickness="3"
-                               GlassFrameThickness="3"
-                               CornerRadius="0" />
+                                     GlassFrameThickness="3"
+                                     CornerRadius="0" />
             </Setter.Value>
         </Setter>
     </Style>
-    
+
 </ResourceDictionary>

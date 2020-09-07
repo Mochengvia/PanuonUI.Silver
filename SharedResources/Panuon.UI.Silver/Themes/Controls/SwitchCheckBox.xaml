@@ -1,0 +1,204 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver"
+                    xmlns:core="clr-namespace:Panuon.UI.Silver.Core"
+                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
+                    xmlns:ic="clr-namespace:Panuon.UI.Silver.Internal.Controls"
+                    xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="{x:Static irs:StyleKeys.SwitchCheckBoxStyle}"
+           TargetType="local:SwitchCheckBox">
+        <Setter Property="Padding"
+                Value="5,0,0,0" />
+        <Setter Property="BorderBrush"
+                Value="LightGray" />
+        <Setter Property="BorderThickness"
+                Value="1" />
+        <Setter Property="BoxHeight"
+                Value="26" />
+        <Setter Property="BoxWidth"
+                Value="40" />
+        <Setter Property="Background"
+                Value="White" />
+        <Setter Property="ToggleBrush"
+                Value="White" />
+        <Setter Property="CheckedBackground"
+                Value="#CFCFCF" />
+        <Setter Property="ToggleSize"
+                Value="{Binding BoxHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="ToggleShadowColor"
+                Value="LightGray" />
+        <Setter Property="CornerRadius"
+                Value="{Binding BoxHeight, Converter={StaticResource {x:Static irs:Converters.RoundCornerConverter}}, RelativeSource={RelativeSource Self}}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:SwitchCheckBox">
+                    <Border Background="Transparent">
+                        <StackPanel Orientation="Horizontal"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+                            <Grid Height="{TemplateBinding BoxHeight}"
+                                  Width="{TemplateBinding BoxWidth}">
+                                <Border x:Name="BdrBorder"
+                                        CornerRadius="{TemplateBinding CornerRadius}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        Background="{TemplateBinding CheckedBackground}" />
+                                <Border BorderThickness="{TemplateBinding BorderThickness}"
+                                        BorderBrush="{x:Null}"
+                                        CornerRadius="{TemplateBinding CornerRadius}"
+                                        RenderTransformOrigin="0.5,0.5"
+                                        Background="{TemplateBinding Background}">
+                                    <Border.RenderTransform>
+                                        <ScaleTransform x:Name="ScaleBoxBack"
+                                                        ScaleX="1"
+                                                        ScaleY="1" />
+                                    </Border.RenderTransform>
+                                </Border>
+                                <Border x:Name="BdrContainer"
+                                        Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                                        HorizontalAlignment="Right">
+                                    <Border.Margin>
+                                        <MultiBinding Converter="{StaticResource {x:Static irs:Converters.SwitchCheckBoxToggleMarginConverter}}">
+                                            <Binding Path="BoxWidth"
+                                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                                     Mode="OneWay" />
+                                            <Binding Path="ActualWidth"
+                                                     RelativeSource="{RelativeSource Self}"
+                                                     Mode="OneWay" />
+                                        </MultiBinding>
+                                    </Border.Margin>
+                                    <Border x:Name="BdrToggle"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Center"
+                                            Height="{TemplateBinding ToggleSize}"
+                                            Width="{TemplateBinding ToggleSize}"
+                                            CornerRadius="{TemplateBinding CornerRadius}"
+                                            Background="{TemplateBinding ToggleBrush}"
+                                            Effect="{Binding ToggleShadowColor, Converter={StaticResource {x:Static irs:Converters.SwitchCheckBoxToggleShadowEffectConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                                    </Border>
+                                </Border>
+                            </Grid>
+                            <ContentPresenter x:Name="CpContent"
+                                              RecognizesAccessKey="True"
+                                              Margin="{TemplateBinding Padding}"
+                                              VerticalAlignment="Center" />
+                        </StackPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked"
+                                 Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetName="BdrContainer"
+                                                            Storyboard.TargetProperty="Margin"
+                                                            To="0"
+                                                            Duration="0:0:0.3">
+                                            <ThicknessAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </ThicknessAnimation.EasingFunction>
+                                        </ThicknessAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="ScaleBoxBack"
+                                                         Storyboard.TargetProperty="ScaleX"
+                                                         To="0"
+                                                         Duration="0:0:0.2">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="ScaleBoxBack"
+                                                         Storyboard.TargetProperty="ScaleY"
+                                                         To="0"
+                                                         Duration="0:0:0.3">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetName="BdrContainer"
+                                                            Storyboard.TargetProperty="Margin"
+                                                            Duration="0:0:0.3">
+                                            <ThicknessAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </ThicknessAnimation.EasingFunction>
+                                        </ThicknessAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="ScaleBoxBack"
+                                                         Storyboard.TargetProperty="ScaleX"
+                                                         Duration="0:0:0.3">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="ScaleBoxBack"
+                                                         Storyboard.TargetProperty="ScaleY"
+                                                         Duration="0:0:0.3">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self},Mode=OneWay}"
+                                           Value="True" />
+                                <Condition Binding="{Binding CheckedToggleBrush, Converter={StaticResource {x:Static rs:Converters.IsNotNullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                                           Value="True" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter  TargetName="BdrToggle"
+                                     Property="Background"
+                                     Value="{Binding CheckedToggleBrush, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
+                                           Value="True" />
+                                <Condition Binding="{Binding CheckedForeground, Converter={StaticResource {x:Static rs:Converters.IsNotNullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                                           Value="True" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="CpContent"
+                                    Property="TextElement.Foreground"
+                                    Value="{Binding CheckedForeground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                            <Setter TargetName="CpContent"
+                                    Property="TextBlock.Foreground"
+                                    Value="{Binding CheckedForeground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                                           Value="True" />
+                                <Condition Binding="{Binding CheckedContent, Converter={StaticResource {x:Static rs:Converters.IsNotNullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                                           Value="True" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="CpContent"
+                                    Property="Content"
+                                    Value="{Binding CheckedContent,RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
+                                           Value="True" />
+                                <Condition Binding="{Binding CheckedBorderBrush, Converter={StaticResource {x:Static rs:Converters.IsNotNullConverter}}, RelativeSource={RelativeSource Self},Mode=OneWay}"
+                                           Value="True" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="BdrBorder"
+                                    Property="BorderBrush"
+                                    Value="{Binding CheckedBorderBrush, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        </MultiDataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

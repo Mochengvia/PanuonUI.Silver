@@ -9,7 +9,8 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="local:Drawer">
+    <Style x:Key="{x:Static irs:StyleKeys.DrawerStyle}"
+           TargetType="local:Drawer">
         <Setter Property="BorderBrush"
                 Value="LightGray" />
         <Setter Property="BorderThickness"

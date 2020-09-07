@@ -8,21 +8,6 @@ namespace Panuon.UI.Silver
     {
         #region Properties
 
-        #region RadioButtonStyle
-        public static RadioButtonStyle GetRadioButtonStyle(RadioButton radioButton)
-        {
-            return (RadioButtonStyle)radioButton.GetValue(RadioButtonStyleProperty);
-        }
-
-        public static void SetRadioButtonStyle(RadioButton radioButton, RadioButtonStyle value)
-        {
-            radioButton.SetValue(RadioButtonStyleProperty, value);
-        }
-
-        public static readonly DependencyProperty RadioButtonStyleProperty =
-            DependencyProperty.RegisterAttached("RadioButtonStyle", typeof(RadioButtonStyle), typeof(RadioButtonHelper));
-        #endregion
-
         #region GlyphBrush
         public static Brush GetGlyphBrush(RadioButton radioButton)
         {

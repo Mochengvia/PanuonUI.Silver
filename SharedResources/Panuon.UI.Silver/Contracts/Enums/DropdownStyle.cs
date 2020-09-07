@@ -1,6 +1,6 @@
 ﻿namespace Panuon.UI.Silver
 {
-    public enum DropdownStyle
+    public enum DropDownStyle
     {
         Standard,
         Smooth,

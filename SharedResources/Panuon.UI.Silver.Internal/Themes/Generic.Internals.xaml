@@ -7,6 +7,9 @@
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Controls/CalendarXDayPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Controls/CalendarXMonthPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Controls/CalendarXYearPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Controls/TimeSelectorHourPresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Controls/TimeSelectorMinutePresenter.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Controls/TimeSelectorSecondPresenter.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Controls/FormGroupControl.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Controls/IconControl.xaml" />
     </ResourceDictionary.MergedDictionaries>

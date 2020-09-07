@@ -8,21 +8,6 @@ namespace Panuon.UI.Silver
     {
         #region Properties
 
-        #region CheckBoxStyle
-        public static CheckBoxStyle GetCheckBoxStyle(CheckBox checkBox)
-        {
-            return (CheckBoxStyle)checkBox.GetValue(CheckBoxStyleProperty);
-        }
-
-        public static void SetCheckBoxStyle(CheckBox checkBox, CheckBoxStyle value)
-        {
-            checkBox.SetValue(CheckBoxStyleProperty, value);
-        }
-
-        public static readonly DependencyProperty CheckBoxStyleProperty =
-            DependencyProperty.RegisterAttached("CheckBoxStyle", typeof(CheckBoxStyle), typeof(CheckBoxHelper));
-        #endregion
-
         #region GlyphBrush
         public static Brush GetGlyphBrush(CheckBox checkBox)
         {

@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="UIBrowser.Views.Partials.DropdownView"
+﻿<UserControl x:Class="UIBrowser.Views.Partials.DropDownView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -13,74 +13,216 @@
              d:DesignWidth="800">
     <ScrollViewer HorizontalScrollBarVisibility="Auto">
         <StackPanel>
-            <pu:Dropdown Width="30"
-                         Height="30"
-                         DropdownPlacement="Bottom">
-                <Border BorderBrush="LightGray"
-                        BorderThickness="1"
-                        CornerRadius="15">
-                    <Border.Background>
-                        <ImageBrush ImageSource="/UIBrowser;component/Resources/Images/HeadImg.jpg" />
-                    </Border.Background>
-                </Border>
-                <pu:Dropdown.Child>
-                    <Border Width="200"
-                            Height="100">
-                    </Border>
-                </pu:Dropdown.Child>
-            </pu:Dropdown>
-            <pu:Dropdown Margin="0,5,0,0"
-                         Width="30"
-                         Height="30"
-                         DropdownPlacement="Top">
-                <Border BorderBrush="LightGray"
-                        BorderThickness="1"
-                        CornerRadius="15">
-                    <Border.Background>
-                        <ImageBrush ImageSource="/UIBrowser;component/Resources/Images/HeadImg.jpg" />
-                    </Border.Background>
-                </Border>
-                <pu:Dropdown.Child>
-                    <Border Width="200"
-                            Height="100">
-                    </Border>
-                </pu:Dropdown.Child>
-            </pu:Dropdown>
-            <pu:Dropdown Margin="0,5,0,0"
-                         Width="30"
-                         Height="30"
-                         DropdownPlacement="Left">
-                <Border BorderBrush="LightGray"
-                        BorderThickness="1"
-                        CornerRadius="15">
-                    <Border.Background>
-                        <ImageBrush ImageSource="/UIBrowser;component/Resources/Images/HeadImg.jpg" />
-                    </Border.Background>
-                </Border>
-                <pu:Dropdown.Child>
-                    <Border Width="200"
-                            Height="100">
-                    </Border>
-                </pu:Dropdown.Child>
-            </pu:Dropdown>
-            <pu:Dropdown Margin="0,5,0,0"
-                         Width="30"
-                         Height="30"
-                         DropdownPlacement="Right">
-                <Border BorderBrush="LightGray"
-                        BorderThickness="1"
-                        CornerRadius="15">
-                    <Border.Background>
-                        <ImageBrush ImageSource="/UIBrowser;component/Resources/Images/HeadImg.jpg" />
-                    </Border.Background>
-                </Border>
-                <pu:Dropdown.Child>
-                    <Border Width="200"
-                            Height="100">
-                    </Border>
-                </pu:Dropdown.Child>
-            </pu:Dropdown>
-
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                <pu:DropDown Margin="10,0,0,0"
+                             HorizontalAlignment="Center"
+                             Height="25"
+                             DropDownPlacement="TopLeft">
+                    <StackPanel Orientation="Horizontal">
+                        <Border Width="25"
+                                BorderBrush="LightGray"
+                                BorderThickness="1"
+                                CornerRadius="15">
+                            <Border.Background>
+                                <ImageBrush ImageSource="/UIBrowser;component/Resources/Images/HeadImg.jpg" />
+                            </Border.Background>
+                        </Border>
+                        <TextBlock Margin="5,0,0,0"
+                                   VerticalAlignment="Center">Admin</TextBlock>
+                        <TextBlock Margin="5,0,0,0"
+                                   VerticalAlignment="Center"
+                                   FontFamily="{StaticResource PanuonIconFont}">&#xe91d;</TextBlock>
+                    </StackPanel>
+                    <pu:DropDown.Child>
+                        <Border Width="200"
+                                Height="100">
+                        </Border>
+                    </pu:DropDown.Child>
+                </pu:DropDown>
+                <pu:DropDown Margin="10,0,0,0"
+                             HorizontalAlignment="Center"
+                             Height="25"
+                             DropDownPlacement="Left">
+                    <StackPanel Orientation="Horizontal">
+                        <Border Width="25"
+                                BorderBrush="LightGray"
+                                BorderThickness="1"
+                                CornerRadius="15">
+                            <Border.Background>
+                                <ImageBrush ImageSource="/UIBrowser;component/Resources/Images/HeadImg.jpg" />
+                            </Border.Background>
+                        </Border>
+                        <TextBlock Margin="5,0,0,0"
+                                   VerticalAlignment="Center">Admin</TextBlock>
+                        <TextBlock Margin="5,0,0,0"
+                                   VerticalAlignment="Center"
+                                   FontFamily="{StaticResource PanuonIconFont}">&#xe91c;</TextBlock>
+                    </StackPanel>
+                    <pu:DropDown.Child>
+                        <Border Width="200"
+                                Height="100">
+                        </Border>
+                    </pu:DropDown.Child>
+                </pu:DropDown>
+                <pu:DropDown Margin="10,0,0,0"
+                             HorizontalAlignment="Center"
+                             Height="25"
+                             DropDownPlacement="BottomLeft">
+                    <StackPanel Orientation="Horizontal">
+                        <Border Width="25"
+                                BorderBrush="LightGray"
+                                BorderThickness="1"
+                                CornerRadius="15">
+                            <Border.Background>
+                                <ImageBrush ImageSource="/UIBrowser;component/Resources/Images/HeadImg.jpg" />
+                            </Border.Background>
+                        </Border>
+                        <TextBlock Margin="5,0,0,0"
+                                   VerticalAlignment="Center">Admin</TextBlock>
+                        <TextBlock Margin="5,0,0,0"
+                                   VerticalAlignment="Center"
+                                   FontFamily="{StaticResource PanuonIconFont}">&#xe91f;</TextBlock>
+                    </StackPanel>
+                    <pu:DropDown.Child>
+                        <Border Width="200"
+                                Height="100">
+                        </Border>
+                    </pu:DropDown.Child>
+                </pu:DropDown>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                <pu:DropDown Margin="10,0,0,0"
+                             HorizontalAlignment="Center"
+                             Height="25"
+                             DropDownPlacement="TopRight">
+                    <StackPanel Orientation="Horizontal">
+                        <Border Width="25"
+                                BorderBrush="LightGray"
+                                BorderThickness="1"
+                                CornerRadius="15">
+                            <Border.Background>
+                                <ImageBrush ImageSource="/UIBrowser;component/Resources/Images/HeadImg.jpg" />
+                            </Border.Background>
+                        </Border>
+                        <TextBlock Margin="5,0,0,0"
+                                   VerticalAlignment="Center">Admin</TextBlock>
+                        <TextBlock Margin="5,0,0,0"
+                                   VerticalAlignment="Center"
+                                   FontFamily="{StaticResource PanuonIconFont}">&#xe91d;</TextBlock>
+                    </StackPanel>
+                    <pu:DropDown.Child>
+                        <Border Width="200"
+                                Height="100">
+                        </Border>
+                    </pu:DropDown.Child>
+                </pu:DropDown>
+                <pu:DropDown Margin="10,0,0,0"
+                             HorizontalAlignment="Center"
+                             Height="25"
+                             DropDownPlacement="Right">
+                    <StackPanel Orientation="Horizontal">
+                        <Border Width="25"
+                                BorderBrush="LightGray"
+                                BorderThickness="1"
+                                CornerRadius="15">
+                            <Border.Background>
+                                <ImageBrush ImageSource="/UIBrowser;component/Resources/Images/HeadImg.jpg" />
+                            </Border.Background>
+                        </Border>
+                        <TextBlock Margin="5,0,0,0"
+                                   VerticalAlignment="Center">Admin</TextBlock>
+                        <TextBlock Margin="5,0,0,0"
+                                   VerticalAlignment="Center"
+                                   FontFamily="{StaticResource PanuonIconFont}">&#xe91e;</TextBlock>
+                    </StackPanel>
+                    <pu:DropDown.Child>
+                        <Border Width="200"
+                                Height="100">
+                        </Border>
+                    </pu:DropDown.Child>
+                </pu:DropDown>
+                <pu:DropDown Margin="10,0,0,0"
+                             HorizontalAlignment="Center"
+                             Height="25"
+                             DropDownPlacement="BottomRight">
+                    <StackPanel Orientation="Horizontal">
+                        <Border Width="25"
+                                BorderBrush="LightGray"
+                                BorderThickness="1"
+                                CornerRadius="15">
+                            <Border.Background>
+                                <ImageBrush ImageSource="/UIBrowser;component/Resources/Images/HeadImg.jpg" />
+                            </Border.Background>
+                        </Border>
+                        <TextBlock Margin="5,0,0,0"
+                                   VerticalAlignment="Center">Admin</TextBlock>
+                        <TextBlock Margin="5,0,0,0"
+                                   VerticalAlignment="Center"
+                                   FontFamily="{StaticResource PanuonIconFont}">&#xe91f;</TextBlock>
+                    </StackPanel>
+                    <pu:DropDown.Child>
+                        <Border Width="200"
+                                Height="100">
+                        </Border>
+                    </pu:DropDown.Child>
+                </pu:DropDown>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                <pu:DropDown Margin="10,0,0,0"
+                             HorizontalAlignment="Center"
+                             Height="25"
+                             DropDownPlacement="Top">
+                    <StackPanel Orientation="Horizontal">
+                        <Border Width="25"
+                                BorderBrush="LightGray"
+                                BorderThickness="1"
+                                CornerRadius="15">
+                            <Border.Background>
+                                <ImageBrush ImageSource="/UIBrowser;component/Resources/Images/HeadImg.jpg" />
+                            </Border.Background>
+                        </Border>
+                        <TextBlock Margin="5,0,0,0"
+                                   VerticalAlignment="Center">Admin</TextBlock>
+                        <TextBlock Margin="5,0,0,0"
+                                   VerticalAlignment="Center"
+                                   FontFamily="{StaticResource PanuonIconFont}">&#xe91d;</TextBlock>
+                    </StackPanel>
+                    <pu:DropDown.Child>
+                        <Border Width="200"
+                                Height="100">
+                        </Border>
+                    </pu:DropDown.Child>
+                </pu:DropDown>
+                <pu:DropDown Margin="10,0,0,0"
+                             HorizontalAlignment="Center"
+                             Height="25"
+                             DropDownPlacement="Bottom">
+                    <StackPanel Orientation="Horizontal">
+                        <Border Width="25"
+                                BorderBrush="LightGray"
+                                BorderThickness="1"
+                                CornerRadius="15">
+                            <Border.Background>
+                                <ImageBrush ImageSource="/UIBrowser;component/Resources/Images/HeadImg.jpg" />
+                            </Border.Background>
+                        </Border>
+                        <TextBlock Margin="5,0,0,0"
+                                   VerticalAlignment="Center">Admin</TextBlock>
+                        <TextBlock Margin="5,0,0,0"
+                                   VerticalAlignment="Center"
+                                   FontFamily="{StaticResource PanuonIconFont}">&#xe91f;</TextBlock>
+                    </StackPanel>
+                    <pu:DropDown.Child>
+                        <Border Width="200"
+                                Height="100">
+                        </Border>
+                    </pu:DropDown.Child>
+                </pu:DropDown>
+            </StackPanel>
         </StackPanel>
+        
     </ScrollViewer>
 </UserControl>

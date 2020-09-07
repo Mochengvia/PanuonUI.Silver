@@ -1,4 +1,5 @@
-﻿using Panuon.UI.Silver;
+﻿using Caliburn.Micro;
+using Panuon.UI.Silver;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -39,8 +40,22 @@ namespace UIBrowser.ViewModels.Partials
             ButtonHelper.IconPlacementProperty ,
             ButtonHelper.IsWaitingProperty,
         };
+
+        #region Items
+        public BindableCollection<string> Items { get => _items; set => Set(ref _items, value); }
+        private BindableCollection<string> _items;
+        #endregion 
+
         #endregion
 
+        public ButtonViewModel()
+        {
+            Items = new BindableCollection<string>();
+            for(int i =0;i < 60; i++)
+            {
+                Items.Add(i.ToString());
+            }
+        }
         public void Test()
         {
             NoticeX.Show("未预料的错误。", "Error", MessageBoxIcon.Error, 2000);

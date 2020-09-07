@@ -59,7 +59,8 @@
         </Style.Triggers>
     </Style>
 
-    <Style TargetType="com:NoticeXCard">
+    <Style x:Key="{x:Static irs:StyleKeys.NoticeXCardStyle}"
+           TargetType="com:NoticeXCard">
         <Setter Property="ShadowColor"
                 Value="LightGray" />
         <Setter Property="Margin"

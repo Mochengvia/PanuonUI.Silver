@@ -48,14 +48,14 @@ namespace Panuon.UI.Silver
 
         #region Events
 
-        public event SelectionChangedRoutedEventHandler SelectedDatesChanged
+        public event SelectedDatesChangedRoutedEventHandler SelectedDatesChanged
         {
             add { AddHandler(SelectedDatesChangedEvent, value); }
             remove { RemoveHandler(SelectedDatesChangedEvent, value); }
         }
 
         public static readonly RoutedEvent SelectedDatesChangedEvent =
-            EventManager.RegisterRoutedEvent("SelectedDatesChanged", RoutingStrategy.Bubble, typeof(SelectionChangedRoutedEventHandler), typeof(CalendarX));
+            EventManager.RegisterRoutedEvent("SelectedDatesChanged", RoutingStrategy.Bubble, typeof(SelectedDatesChangedRoutedEventHandler), typeof(CalendarX));
 
 
         public event SelectedDateChangedRoutedEventHandler SelectedDateChanged
@@ -90,19 +90,12 @@ namespace Panuon.UI.Silver
             _weekPresenter = Template?.FindName("PART_WeekPresenter", this) as CalendarXWeekPresenter;
             BindingUtils.BindingProperty(_weekPresenter, CalendarXWeekPresenter.FirstDayOfWeekProperty, this, FirstDayOfWeekProperty);
             _dayPresenter = Template?.FindName("PART_DayPresenter", this) as CalendarXDayPresenter;
-            BindingUtils.BindingProperty(_dayPresenter, CalendarXDayPresenter.ModeProperty, this, ModeProperty);
-            BindingUtils.BindingProperty(_dayPresenter, CalendarXDayPresenter.FirstDayOfWeekProperty, this, FirstDayOfWeekProperty);
-            BindingUtils.BindingProperty(_dayPresenter, CalendarXDayPresenter.MinDateProperty, this, MinDateProperty);
-            BindingUtils.BindingProperty(_dayPresenter, CalendarXDayPresenter.MaxDateProperty, this, MaxDateProperty);
-            BindingUtils.BindingProperty(_dayPresenter, CalendarXDayPresenter.IsTodayHighlightedProperty, this, IsTodayHighlightedProperty);
+            BindingUtils.BindingProperty(_dayPresenter, CalendarXDayPresenter.ItemContainerStyleProperty, this, CalendarXItemStyleProperty);
             _monthPresenter = Template?.FindName("PART_MonthPresenter", this) as CalendarXMonthPresenter;
-            BindingUtils.BindingProperty(_monthPresenter, CalendarXMonthPresenter.FirstDayOfWeekProperty, this, FirstDayOfWeekProperty);
-            BindingUtils.BindingProperty(_monthPresenter, CalendarXMonthPresenter.MinDateProperty, this, MinDateProperty);
-            BindingUtils.BindingProperty(_monthPresenter, CalendarXMonthPresenter.MaxDateProperty, this, MaxDateProperty);
+            BindingUtils.BindingProperty(_monthPresenter, CalendarXMonthPresenter.ItemContainerStyleProperty, this, CalendarXItemStyleProperty);
             _yearPresenter = Template?.FindName("PART_YearPresenter", this) as CalendarXYearPresenter;
-            BindingUtils.BindingProperty(_yearPresenter, CalendarXYearPresenter.FirstDayOfWeekProperty, this, FirstDayOfWeekProperty);
-            BindingUtils.BindingProperty(_yearPresenter, CalendarXYearPresenter.MinDateProperty, this, MinDateProperty);
-            BindingUtils.BindingProperty(_yearPresenter, CalendarXYearPresenter.MaxDateProperty, this, MaxDateProperty);
+
+            BindingUtils.BindingProperty(_yearPresenter, CalendarXYearPresenter.ItemContainerStyleProperty, this, CalendarXItemStyleProperty);
 
             _dayPresenter.Selected += DayPresenter_Selected;
             _dayPresenter.Unselected += DayPresenter_Unselected;
@@ -200,6 +193,17 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("MonthButtonStyle", typeof(Style), typeof(CalendarX));
         #endregion
 
+        #region CalendarXItemStyle
+        public Style CalendarXItemStyle
+        {
+            get { return (Style)GetValue(CalendarXItemStyleProperty); }
+            set { SetValue(CalendarXItemStyleProperty, value); }
+        }
+
+        public static readonly DependencyProperty CalendarXItemStyleProperty =
+            DependencyProperty.Register("CalendarXItemStyle", typeof(Style), typeof(CalendarX));
+        #endregion
+
         #region BackwardButtonStyle
         public Style BackwardButtonStyle
         {
@@ -275,8 +279,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty SelectedDateProperty =
-            DependencyProperty.Register("SelectedDate", typeof(DateTime?), typeof(CalendarX), new PropertyMetadata(DateTime.Now.Date, OnSelectedDateChanged));
-
+            DependencyProperty.Register("SelectedDate", typeof(DateTime?), typeof(CalendarX), new PropertyMetadata(null, OnSelectedDateChanged));
         #endregion
 
         #region SelectedDates
@@ -703,6 +706,20 @@ namespace Panuon.UI.Silver
             }
             CurrentYear = year;
             CurrentMonth = month;
+
+            BindingUtils.BindingProperty(_dayPresenter, CalendarXDayPresenter.ModeProperty, this, ModeProperty);
+            BindingUtils.BindingProperty(_dayPresenter, CalendarXDayPresenter.FirstDayOfWeekProperty, this, FirstDayOfWeekProperty);
+            BindingUtils.BindingProperty(_dayPresenter, CalendarXDayPresenter.MinDateProperty, this, MinDateProperty);
+            BindingUtils.BindingProperty(_dayPresenter, CalendarXDayPresenter.MaxDateProperty, this, MaxDateProperty);
+            BindingUtils.BindingProperty(_dayPresenter, CalendarXDayPresenter.IsTodayHighlightedProperty, this, IsTodayHighlightedProperty);
+
+
+            _dayPresenter.Mode = Mode;
+            _dayPresenter.FirstDayOfWeek = FirstDayOfWeek;
+            _dayPresenter.MinDate = MinDate;
+            _dayPresenter.MaxDate = MaxDate;
+            _dayPresenter.IsTodayHighlighted = IsTodayHighlighted;
+
             try
             {
                 var date = new DateTime(CurrentYear, CurrentMonth, 1);
@@ -722,6 +739,11 @@ namespace Panuon.UI.Silver
             }
             CurrentYear = year;
             CurrentMonth = month;
+
+            _monthPresenter.FirstDayOfWeek = FirstDayOfWeek;
+            _monthPresenter.MinDate = MinDate;
+            _monthPresenter.MaxDate = MaxDate;
+
             try
             {
                 var date = new DateTime(CurrentYear, CurrentMonth, 1);
@@ -741,6 +763,9 @@ namespace Panuon.UI.Silver
             }
             CurrentYear = year;
             CurrentMonth = month;
+            _yearPresenter.FirstDayOfWeek = FirstDayOfWeek;
+            _yearPresenter.MinDate = MinDate;
+            _yearPresenter.MaxDate = MaxDate;
             try
             {
                 var date = new DateTime(CurrentYear, CurrentMonth, 1);
@@ -755,9 +780,29 @@ namespace Panuon.UI.Silver
         private void OnDateLimitChanged()
         {
             _isInternalSet = true;
-            if (SelectedDate < MinDate || SelectedDate > MaxDate)
+            if (SelectedDates == null)
             {
-                SelectedDate = null;
+                SelectedDates = new ObservableCollection<DateTime>();
+            }
+            if (SelectedDate != null && MinDate != null && SelectedDate < MinDate)
+            {
+                var date = (DateTime)SelectedDate;
+                if (SelectedDates.Contains(date))
+                {
+                    SelectedDates.Remove(date);
+                }
+                SelectedDate = MinDate;
+                SelectedDates.Add((DateTime)SelectedDate);
+            }
+            else if(SelectedDate != null && MaxDate != null && SelectedDate > MaxDate)
+            {
+                var date = (DateTime)SelectedDate;
+                if (SelectedDates.Contains(date))
+                {
+                    SelectedDates.Remove(date);
+                }
+                SelectedDate = MaxDate;
+                SelectedDates.Add((DateTime)SelectedDate);
             }
             if (SelectedDates != null)
             {
@@ -777,12 +822,12 @@ namespace Panuon.UI.Silver
 
         private void RaiseSelectedDatesChanged()
         {
-            RaiseEvent(new SelectionChangedRoutedEventArgs(SelectedDates, SelectedDatesChangedEvent));
+            RaiseEvent(new SelectedDatesChangedRoutedEventArgs(SelectedDatesChangedEvent, SelectedDates));
         }
 
         private void RaiseSelectedDateChanged()
         {
-            RaiseEvent(new SelectedDateChangedRoutedEventArgs(SelectedDate, SelectedDateChangedEvent));
+            RaiseEvent(new SelectedDateChangedRoutedEventArgs(SelectedDateChangedEvent, SelectedDate));
         }
         #endregion
     }

@@ -193,46 +193,47 @@ namespace Panuon.UI.Silver
             {
                 RelativePosition = location;
             }
+            var centerX = location.X + (Child.RenderSize.Width - target.RenderSize.Width) / 2;
 
-            if (location.X >= 0)
+            if(centerX > -2 && centerX < 2)
             {
-                if(location.X == target.RenderSize.Width)
-                {
-                    ActualPlacement = PopupXPlacement.Right;
-                }
-                else if (location.Y > 0)
-                {
-                    ActualPlacement = PopupXPlacement.BottomRight;
-                }
-                else
-                {
-                    ActualPlacement = PopupXPlacement.TopRight;
-                }
-            }
-            else if (location.X == ((target as FrameworkElement).ActualWidth - Child.RenderSize.Width / 2))
-            {
-                if (location.Y > 0)
-                {
-                    ActualPlacement = PopupXPlacement.Bottom;
-                }
-                else
+                if(location.Y < 0)
                 {
                     ActualPlacement = PopupXPlacement.Top;
                 }
-            }
-            else
-            {
-                if(location.X == -Child.RenderSize.Width)
+                else
                 {
-                    ActualPlacement = PopupXPlacement.Left;
+                    ActualPlacement = PopupXPlacement.Bottom;
                 }
-                else if (location.Y > 0)
+            }
+            else if(centerX > 2)
+            {
+                if (location.Y > 0)
                 {
-                    ActualPlacement = PopupXPlacement.BottomLeft;
+                    ActualPlacement = PopupXPlacement.BottomRight;
+                }
+                else if (-location.Y >= Child.RenderSize.Height)
+                {
+                    ActualPlacement = PopupXPlacement.TopRight;
                 }
                 else
                 {
+                    ActualPlacement = PopupXPlacement.Right;
+                }
+            }
+            else if (centerX < -2)
+            {
+                if (location.Y > 0)
+                {
+                    ActualPlacement = PopupXPlacement.BottomLeft;
+                }
+                else if (-location.Y >= Child.RenderSize.Height)
+                {
                     ActualPlacement = PopupXPlacement.TopLeft;
+                }
+                else
+                {
+                    ActualPlacement = PopupXPlacement.Left;
                 }
             }
         }

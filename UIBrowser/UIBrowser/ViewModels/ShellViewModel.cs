@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
 using System.Reflection;
+using System.Windows;
 using System.Windows.Input;
 using UIBrowser.Core;
 using UIBrowser.Models;

@@ -85,6 +85,39 @@ namespace Panuon.UI.Silver.Internal.Utils
         }
         #endregion
 
+        #region BeginAnimation
+        public static void BeginAnimation(IAnimatable animatable, DependencyProperty dependencyProperty, Thickness to, TimeSpan animationDuration, AnimationEase animationEase = AnimationEase.None, bool repeatForever = false, Action callback = null)
+        {
+            var animation = new ThicknessAnimation()
+            {
+                To = to,
+                Duration = animationDuration,
+                EasingFunction = CreateEasingFunction(animationEase),
+            };
+            animation.Completed += delegate
+            {
+                callback?.Invoke();
+            };
+            BeginAnimation(animatable, dependencyProperty, animation, repeatForever);
+        }
+
+        public static void BeginAnimation(IAnimatable animatable, DependencyProperty dependencyProperty, Thickness from, Thickness to, TimeSpan animationDuration, AnimationEase animationEase = AnimationEase.None, bool repeatForever = false, Action callback = null)
+        {
+            var animation = new ThicknessAnimation()
+            {
+                From = from,
+                To = to,
+                Duration = animationDuration,
+                EasingFunction = CreateEasingFunction(animationEase),
+            };
+            animation.Completed += delegate
+            {
+                callback?.Invoke();
+            };
+            BeginAnimation(animatable, dependencyProperty, animation, repeatForever);
+        }
+        #endregion
+
         #region BeginStoryboard
         public static void BeginStoryboard(DependencyObject dependencyObj, IDictionary<DependencyProperty, Brush> toDictionary)
         {

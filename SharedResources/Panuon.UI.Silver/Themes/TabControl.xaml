@@ -49,8 +49,9 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    
-    <Style TargetType="TabControl">
+
+    <Style x:Key="{x:Static irs:StyleKeys.TabControlStyle}"
+            TargetType="TabControl">
         <Setter Property="local:TabControlHelper.CanHeaderScroll"
                 Value="True" />
         <Setter Property="local:TabControlHelper.ItemsForeground"

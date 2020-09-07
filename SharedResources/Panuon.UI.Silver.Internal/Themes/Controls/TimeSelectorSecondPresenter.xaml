@@ -1,0 +1,44 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver"
+                    xmlns:ic="clr-namespace:Panuon.UI.Silver.Internal.Controls">
+
+    <Style TargetType="ic:TimeSelectorSecondPresenter">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ic:TimeSelectorSecondPresenter">
+                    <Border BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}">
+                        <local:Roller SelectedItem="{Binding SelectedTimeSelectorItem ,RelativeSource={RelativeSource TemplatedParent}, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                      ItemsSource="{Binding TimeSelectorItemModels, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                            <local:Roller.ItemContainerStyle>
+                                <Style TargetType="local:RollerItem">
+                                    <Setter Property="IsEnabled"
+                                            Value="{Binding IsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="local:RollerItem">
+                                                <Border Background="Transparent">
+                                                    <ContentPresenter />
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </local:Roller.ItemContainerStyle>
+                            <local:Roller.ItemTemplate>
+                                <DataTemplate>
+                                    <local:TimeSelectorItem Content="{Binding Content}"
+                                                            IsHitTestVisible="False"
+                                                            Style="{Binding TimeSelectorItemStyle, RelativeSource={RelativeSource AncestorType=ic:TimeSelectorSecondPresenter}, Mode=OneWay}"
+                                                            IsChecked="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=local:RollerItem}, Mode=OneWay}"  />
+                                </DataTemplate>
+                            </local:Roller.ItemTemplate>
+                        </local:Roller>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

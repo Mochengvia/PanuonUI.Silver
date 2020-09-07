@@ -27,7 +27,7 @@
         <Setter Property="FontFamily"
                 Value="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon" />
         <Setter Property="FontSize"
-                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=4, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
         <Setter Property="Height"
                 Value="{Binding Path=(local:WindowXCaption.Height),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
         <Setter Property="Width"
@@ -88,7 +88,7 @@
         <Setter Property="FontFamily"
                 Value="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon" />
         <Setter Property="FontSize"
-                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=4, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
         <Setter Property="Height"
                 Value="{Binding Path=(local:WindowXCaption.Height),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
         <Setter Property="Width"
@@ -140,11 +140,11 @@
         <Setter Property="FontFamily"
                 Value="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon" />
         <Setter Property="FontSize"
-                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=4, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
         <Setter Property="Height"
-                Value="{Binding Path=(local:WindowXCaption.Height),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
+                Value="{Binding Path=(local:WindowXCaption.Height), RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}" />
         <Setter Property="Width"
-                Value="{Binding Path=(local:WindowXCaption.Height),Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=5,RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
+                Value="{Binding Path=(local:WindowXCaption.Height), Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=5,RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}" />
         <Setter Property="local:ButtonHelper.HoverBackground"
                 Value="#D64343" />
         <Setter Property="local:ButtonHelper.HoverForeground"
@@ -177,11 +177,12 @@
                Margin="5,0,0,0"
                VerticalAlignment="Center" />
         <TextBlock Margin="5,0,0,0"
+                   Foreground="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}"
                    Text="{Binding Title, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}"
                    VerticalAlignment="Center" />
     </StackPanel>
 
-    <Style x:Key="{x:Static irs:ResourceKeys.WindowXStyle}"
+    <Style x:Key="{x:Static irs:StyleKeys.WindowXStyle}"
            TargetType="local:WindowX">
         <Setter Property="FontFamily"
                 Value="{Binding Source={x:Static irs:GlobalHelper.FontFamily}}" />

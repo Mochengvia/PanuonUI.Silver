@@ -5,7 +5,7 @@ using System.Windows.Data;
 
 namespace Panuon.UI.Silver.Internal.Converters
 {
-    class CheckBoxSwitchToggleMarginConverter : IMultiValueConverter
+    class SwitchCheckBoxToggleMarginConverter : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {

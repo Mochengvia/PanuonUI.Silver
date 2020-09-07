@@ -14,12 +14,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)Attributes\ColumnTemplateAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Attributes\ColumnIgnoreAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Attributes\ColumnWidthAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EventArgs\SelectedDatesChangedRoutedEventHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EventArgs\SelectionChangingRoutedEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EventArgs\CancelRoutedEventHandler.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)EventArgs\SelectedDateChangedEventHandler.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)EventArgs\SelectedDateChangedRoutedEventHandler.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)EventArgs\SelectionChangedRoutedEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EventArgs\RemovedRoutedEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EventArgs\RemovingRoutedEventHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EventArgs\SelectedDateChangedEventHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EventArgs\SelectedDateChangedRoutedEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\ArrayExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\BrushExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\ColorExtension.cs" />

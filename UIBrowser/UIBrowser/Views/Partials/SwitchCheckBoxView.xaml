@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="UIBrowser.Views.Partials.SwitchCheckBoxView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:UIBrowser.Views.Partials"
+             xmlns:pu="clr-namespace:Panuon.UI.Silver;assembly=Panuon.UI.Silver"
+             xmlns:purs="clr-namespace:Panuon.UI.Silver.Resources;assembly=Panuon.UI.Silver"
+             xmlns:corep="clr-namespace:UIBrowser.Core.Properties;assembly=UIBrowser.Core"
+             xmlns:plt="clr-namespace:UIBrowser.Palette;assembly=UIBrowser.Palette"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <ScrollViewer HorizontalScrollBarVisibility="Auto">
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <pu:SwitchCheckBox plt:PaletteHelper.RegistControl="True"
+                                   CheckedBackground="{StaticResource Blue}"
+                                   Content="Unchecked"
+                                   CheckedContent="Checked   !" />
+                <pu:SwitchCheckBox Margin="10,0,0,0"
+                                   plt:PaletteHelper.RegistControl="True"
+                                   CornerRadius="2"
+                                   BoxWidth="50"
+                                   CheckedBackground="{StaticResource Green}"
+                                   Content="Unchecked"
+                                   CheckedContent="Checked   !" />
+                <pu:SwitchCheckBox Margin="10,0,0,0"
+                                   plt:PaletteHelper.RegistControl="True"
+                                   HorizontalAlignment="Center"
+                                   ToggleShadowColor="{x:Null}"
+                                   BoxHeight="20"
+                                   BoxWidth="40"
+                                   ToggleSize="13"
+                                   ToggleBrush="{StaticResource LightPink}"
+                                   CheckedToggleBrush="White"
+                                   CheckedBackground="{StaticResource Pink}"
+                                   Content="Unchecked"
+                                   CheckedContent="Checked   !" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Margin="0,20">
+
+            </StackPanel>
+            <TextBlock Margin="0,10,0,0"
+                       Foreground="Gray"
+                       TextWrapping="Wrap"
+                       Text="{x:Static corep:Resources.PaletteTips}" />
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

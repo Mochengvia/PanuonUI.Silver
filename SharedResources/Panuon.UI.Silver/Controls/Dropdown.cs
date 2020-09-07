@@ -4,12 +4,12 @@ using System.Windows.Media;
 
 namespace Panuon.UI.Silver
 {
-    public class Dropdown : ContentControl
+    public class DropDown : ContentControl
     {
         #region Ctor
-        static Dropdown()
+        static DropDown()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(Dropdown), new FrameworkPropertyMetadata(typeof(Dropdown)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(DropDown), new FrameworkPropertyMetadata(typeof(DropDown)));
         }
         #endregion
 
@@ -21,7 +21,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly RoutedEvent OpenedEvent =
-            EventManager.RegisterRoutedEvent("Opened", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Dropdown));
+            EventManager.RegisterRoutedEvent("Opened", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(DropDown));
 
 
         public event RoutedEventHandler Closed
@@ -31,7 +31,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly RoutedEvent ClosedEvent =
-            EventManager.RegisterRoutedEvent("Closed", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Dropdown));
+            EventManager.RegisterRoutedEvent("Closed", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(DropDown));
         #endregion
 
         #region Properties
@@ -44,19 +44,19 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty ContentContainerStyleProperty =
-            DependencyProperty.Register("ContentContainerStyle", typeof(Style), typeof(Dropdown));
+            DependencyProperty.Register("ContentContainerStyle", typeof(Style), typeof(DropDown));
 
         #endregion
 
-        #region DropdownStyle
-        public DropdownStyle DropdownStyle
+        #region DropDownStyle
+        public DropDownStyle DropDownStyle
         {
-            get { return (DropdownStyle)GetValue(DropdownStyleProperty); }
-            set { SetValue(DropdownStyleProperty, value); }
+            get { return (DropDownStyle)GetValue(DropDownStyleProperty); }
+            set { SetValue(DropDownStyleProperty, value); }
         }
 
-        public static readonly DependencyProperty DropdownStyleProperty =
-            DependencyProperty.Register("DropdownStyle", typeof(DropdownStyle), typeof(Dropdown));
+        public static readonly DependencyProperty DropDownStyleProperty =
+            DependencyProperty.Register("DropDownStyle", typeof(DropDownStyle), typeof(DropDown));
         #endregion
 
         #region IsOpen
@@ -67,7 +67,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty IsOpenProperty =
-            DependencyProperty.Register("IsOpen", typeof(bool), typeof(Dropdown));
+            DependencyProperty.Register("IsOpen", typeof(bool), typeof(DropDown));
         #endregion
 
         #region StaysOpen
@@ -78,7 +78,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty StaysOpenProperty =
-            DependencyProperty.Register("StaysOpen", typeof(bool), typeof(Dropdown));
+            DependencyProperty.Register("StaysOpen", typeof(bool), typeof(DropDown));
         #endregion
 
         #region Child
@@ -89,7 +89,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty ChildProperty =
-            DependencyProperty.Register("Child", typeof(UIElement), typeof(Dropdown));
+            DependencyProperty.Register("Child", typeof(UIElement), typeof(DropDown));
         #endregion
 
         #region ChildTemplate
@@ -100,7 +100,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty ChildTemplateProperty =
-            DependencyProperty.Register("ChildTemplate", typeof(DataTemplate), typeof(Dropdown));
+            DependencyProperty.Register("ChildTemplate", typeof(DataTemplate), typeof(DropDown));
         #endregion
 
         #region ChildTemplateSelector
@@ -111,62 +111,62 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty ChildTemplateSelectorProperty =
-            DependencyProperty.Register("ChildTemplateSelector", typeof(DataTemplateSelector), typeof(Dropdown));
+            DependencyProperty.Register("ChildTemplateSelector", typeof(DataTemplateSelector), typeof(DropDown));
         #endregion
 
-        #region DropdownShadowColor
-        public Color? DropdownShadowColor
+        #region DropDownShadowColor
+        public Color? DropDownShadowColor
         {
-            get { return (Color?)GetValue(DropdownShadowColorProperty); }
-            set { SetValue(DropdownShadowColorProperty, value); }
+            get { return (Color?)GetValue(DropDownShadowColorProperty); }
+            set { SetValue(DropDownShadowColorProperty, value); }
         }
 
-        public static readonly DependencyProperty DropdownShadowColorProperty =
-            DependencyProperty.Register("DropdownShadowColor", typeof(Color?), typeof(Dropdown));
+        public static readonly DependencyProperty DropDownShadowColorProperty =
+            DependencyProperty.Register("DropDownShadowColor", typeof(Color?), typeof(DropDown));
         #endregion
 
-        #region DropdownCornerRadius
-        public CornerRadius DropdownCornerRadius
+        #region DropDownCornerRadius
+        public CornerRadius DropDownCornerRadius
         {
-            get { return (CornerRadius)GetValue(DropdownCornerRadiusProperty); }
-            set { SetValue(DropdownCornerRadiusProperty, value); }
+            get { return (CornerRadius)GetValue(DropDownCornerRadiusProperty); }
+            set { SetValue(DropDownCornerRadiusProperty, value); }
         }
 
-        public static readonly DependencyProperty DropdownCornerRadiusProperty =
-            DependencyProperty.Register("DropdownCornerRadius", typeof(CornerRadius), typeof(Dropdown));
+        public static readonly DependencyProperty DropDownCornerRadiusProperty =
+            DependencyProperty.Register("DropDownCornerRadius", typeof(CornerRadius), typeof(DropDown));
         #endregion
 
-        #region DropdownPlacement
-        public PopupXPlacement DropdownPlacement
+        #region DropDownPlacement
+        public PopupXPlacement DropDownPlacement
         {
-            get { return (PopupXPlacement)GetValue(DropdownPlacementProperty); }
-            set { SetValue(DropdownPlacementProperty, value); }
+            get { return (PopupXPlacement)GetValue(DropDownPlacementProperty); }
+            set { SetValue(DropDownPlacementProperty, value); }
         }
 
-        public static readonly DependencyProperty DropdownPlacementProperty =
-            DependencyProperty.Register("DropdownPlacement", typeof(PopupXPlacement), typeof(Dropdown));
+        public static readonly DependencyProperty DropDownPlacementProperty =
+            DependencyProperty.Register("DropDownPlacement", typeof(PopupXPlacement), typeof(DropDown));
         #endregion
 
-        #region DropdownStroke
-        public Brush DropdownStroke
+        #region DropDownStroke
+        public Brush DropDownStroke
         {
-            get { return (Brush)GetValue(DropdownStrokeProperty); }
-            set { SetValue(DropdownStrokeProperty, value); }
+            get { return (Brush)GetValue(DropDownStrokeProperty); }
+            set { SetValue(DropDownStrokeProperty, value); }
         }
 
-        public static readonly DependencyProperty DropdownStrokeProperty =
-            DependencyProperty.Register("DropdownStroke", typeof(Brush), typeof(Dropdown));
+        public static readonly DependencyProperty DropDownStrokeProperty =
+            DependencyProperty.Register("DropDownStroke", typeof(Brush), typeof(DropDown));
         #endregion
 
-        #region DropdownStrokeThickness
-        public double DropdownStrokeThickness
+        #region DropDownStrokeThickness
+        public double DropDownStrokeThickness
         {
-            get { return (double)GetValue(DropdownStrokeThicknessProperty); }
-            set { SetValue(DropdownStrokeThicknessProperty, value); }
+            get { return (double)GetValue(DropDownStrokeThicknessProperty); }
+            set { SetValue(DropDownStrokeThicknessProperty, value); }
         }
 
-        public static readonly DependencyProperty DropdownStrokeThicknessProperty =
-            DependencyProperty.Register("DropdownStrokeThickness", typeof(double), typeof(Dropdown));
+        public static readonly DependencyProperty DropDownStrokeThicknessProperty =
+            DependencyProperty.Register("DropDownStrokeThickness", typeof(double), typeof(DropDown));
         #endregion
 
         #endregion

@@ -1,6 +1,6 @@
 ﻿namespace Panuon.UI.Silver.Internal.Resources
 {
-    public static class Converters
+    static class Converters
     {
         public const string ArcConverter = nameof(ArcConverter);
 
@@ -18,19 +18,19 @@
 
         public const string BadgePlacementMarginConverter = nameof(BadgePlacementMarginConverter);
 
-        public const string CheckBoxSwitchToggleMarginConverter = nameof(CheckBoxSwitchToggleMarginConverter);
+        public const string SwitchCheckBoxToggleMarginConverter = nameof(SwitchCheckBoxToggleMarginConverter);
 
-        public const string CheckBoxSwitch2DecorationMarginConverter = nameof(CheckBoxSwitch2DecorationMarginConverter);
-
-        public const string CheckBoxSwitch3ToggleTrackMarginConverter = nameof(CheckBoxSwitch3ToggleTrackMarginConverter);
-
-        public const string CheckBoxSwitch3ToggleMarginConverter = nameof(CheckBoxSwitch3ToggleMarginConverter);
+        public const string SwitchCheckBoxToggleShadowEffectConverter = nameof(SwitchCheckBoxToggleShadowEffectConverter);
 
         public const string LoadingClassicRenderTransformOriginConverter = nameof(LoadingClassicRenderTransformOriginConverter);
 
         public const string DoubleToRightMarginConverter = nameof(DoubleToRightMarginConverter);
 
+        public const string DateTimePickerTextStringFormatConverterConverter = nameof(DateTimePickerTextStringFormatConverterConverter);
+
         public const string DoubleEqualsConverter = nameof(DoubleEqualsConverter);
+
+        public const string DropDownPathDataConverter = nameof(DropDownPathDataConverter);
 
         public const string TreeViewChainHorizontalMarginConverter = nameof(TreeViewChainHorizontalMarginConverter);
 
@@ -54,7 +54,7 @@
 
         public const string TabControlSideButtonVisibilityConverter = nameof(TabControlSideButtonVisibilityConverter);
 
-        public const string DropdownPathDataConverter = nameof(DropdownPathDataConverter);
+
     }
     
 

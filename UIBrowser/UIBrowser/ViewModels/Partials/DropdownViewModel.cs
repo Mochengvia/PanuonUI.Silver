@@ -3,10 +3,10 @@ using UIBrowser.Core.Properties;
 
 namespace UIBrowser.ViewModels.Partials
 {
-    public class DropdownViewModel : ViewModelBase, IPartialView
+    public class DropDownViewModel : ViewModelBase, IPartialView
     {
         #region Properties
-        public string Caption => Resources.Dropdown;
+        public string Caption => Resources.DropDown;
 
         public string[] LabelLevels => new string[] { Resources.CustomControls };
 

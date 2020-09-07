@@ -10,8 +10,8 @@
             xmlns:pu="clr-namespace:Panuon.UI.Silver;assembly=Panuon.UI.Silver"
             xmlns:purs="clr-namespace:Panuon.UI.Silver.Resources;assembly=Panuon.UI.Silver"
             Title="ShellView"
-            Height="450"
-            Width="800"
+            Height="550"
+            Width="900"
             WindowStartupLocation="CenterScreen"
             cm:Message.Attach="[Event PreviewKeyDown]=[Action OnKeyboradKeyDown($eventArgs)];[Event PreviewKeyUp]=[Action OnKeyboradKeyUp($eventArgs)]">
     <pu:WindowXCaption.Header>

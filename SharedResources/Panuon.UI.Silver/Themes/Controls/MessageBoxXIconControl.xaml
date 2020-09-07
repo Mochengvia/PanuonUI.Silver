@@ -10,7 +10,8 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="com:MessageBoxXIconControl">
+    <Style x:Key="{x:Static irs:StyleKeys.MessageBoxXIconControlStyle}"
+           TargetType="com:MessageBoxXIconControl">
         <Setter Property="FontFamily"
                 Value="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon" />
         <Setter Property="VerticalAlignment"

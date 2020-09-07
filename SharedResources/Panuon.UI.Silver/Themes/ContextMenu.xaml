@@ -9,7 +9,8 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="ContextMenu">
+    <Style TargetType="ContextMenu"
+           x:Key="{x:Static irs:StyleKeys.ContextMenuStyle}">
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility"
                 Value="Auto" />
         <Setter Property="local:ContextMenuHelper.ItemsHeight"

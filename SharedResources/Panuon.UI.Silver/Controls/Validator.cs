@@ -49,15 +49,15 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("ValidationErrorTips", typeof(string), typeof(Validator));
         #endregion
 
-        #region ValidationErrorForeground
-        public Brush ValidationErrorForeground
+        #region ValidationErrorBrush
+        public Brush ValidationErrorBrush
         {
-            get { return (Brush)GetValue(ValidationErrorForegroundProperty); }
-            set { SetValue(ValidationErrorForegroundProperty, value); }
+            get { return (Brush)GetValue(ValidationErrorBrushProperty); }
+            set { SetValue(ValidationErrorBrushProperty, value); }
         }
 
-        public static readonly DependencyProperty ValidationErrorForegroundProperty =
-            DependencyProperty.Register("ValidationErrorForeground", typeof(Brush), typeof(Validator));
+        public static readonly DependencyProperty ValidationErrorBrushProperty =
+            DependencyProperty.Register("ValidationErrorBrush", typeof(Brush), typeof(Validator));
 
         #endregion
 

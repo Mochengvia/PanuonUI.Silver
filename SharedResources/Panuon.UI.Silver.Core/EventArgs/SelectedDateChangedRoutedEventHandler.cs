@@ -5,7 +5,7 @@ namespace Panuon.UI.Silver.Core
 {
     public class SelectedDateChangedRoutedEventArgs : RoutedEventArgs
     {
-        public SelectedDateChangedRoutedEventArgs(DateTime? selectedDate, RoutedEvent routedEvent) : base(routedEvent)
+        public SelectedDateChangedRoutedEventArgs(RoutedEvent routedEvent, DateTime? selectedDate) : base(routedEvent)
         {
             SelectedDate = selectedDate;
         }

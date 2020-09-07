@@ -33,23 +33,6 @@
 
         #region WindowX
         public const string WindowXDefaultHeader = nameof(WindowXDefaultHeader);
-
-        public const string WindowXStyle = nameof(WindowXStyle);
-        #endregion
-
-        #region CheckBox
-        public const string CheckBoxStandardTemplate = nameof(CheckBoxStandardTemplate);
-
-        public const string CheckBoxSwitchTemplate = nameof(CheckBoxSwitchTemplate);
-
-        public const string CheckBoxSwitch2Template = nameof(CheckBoxSwitch2Template);
-
-        public const string CheckBoxSwitch3Template = nameof(CheckBoxSwitch3Template);
-
-        public const string CheckBoxButtonTemplate = nameof(CheckBoxButtonTemplate);
-
-        public const string CheckBoxSelectorTemplate = nameof(CheckBoxSelectorTemplate);
-
         #endregion
 
         #region RadioButton
@@ -69,12 +52,6 @@
 
         #region ComboBox
         public const string ComboBoxEditableTextBoxStyle = nameof(ComboBoxEditableTextBoxStyle);
-
-        public const string ComboBoxStandardToggleButtonStyle = nameof(ComboBoxStandardToggleButtonStyle);
-
-        public const string ComboBoxModernToggleButtonStyle = nameof(ComboBoxModernToggleButtonStyle);
-
-        public const string ComboBoxNoneArrowToggleButtonStyle = nameof(ComboBoxNoneArrowToggleButtonStyle);
 
         public const string ComboBoxItemRemoveButtonStyle = nameof(ComboBoxItemRemoveButtonStyle);
 
@@ -101,11 +78,6 @@
         public const string LoadingBackground = nameof(LoadingBackground);
 
         public const string LoadingClassicEllipseStyle = nameof(LoadingClassicEllipseStyle);
-        #endregion
-
-        #region 
-        public const string MessageBoxXWindowStyle = nameof(MessageBoxXWindowStyle);
-
         #endregion
 
         #region TreeView

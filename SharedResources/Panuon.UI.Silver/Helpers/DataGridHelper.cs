@@ -397,6 +397,14 @@ namespace Panuon.UI.Silver
             if (columnWidthAttribute != null)
             {
                 e.Column.Width = columnWidthAttribute.Width;
+                if(columnWidthAttribute.MaxWidth != null)
+                {
+                    e.Column.MaxWidth = (double)columnWidthAttribute.MaxWidth;
+                }
+                if (columnWidthAttribute.MinWidth != null)
+                {
+                    e.Column.MinWidth = (double)columnWidthAttribute.MinWidth;
+                }
             }
             if (canSortAttribute != null)
             {
@@ -459,6 +467,7 @@ namespace Panuon.UI.Silver
                 {
                     BasedOn = (Style)dataGrid.FindResource(typeof(CheckBox))
                 };
+                elementStyle.Setters.Add(new Setter(CheckBox.IsEnabledProperty, false));
                 elementStyle.Setters.Add(new Setter(CheckBox.VerticalAlignmentProperty, VerticalAlignment.Center));
                 elementStyle.Setters.Add(new Setter(CheckBox.HorizontalContentAlignmentProperty, new Binding()
                 {

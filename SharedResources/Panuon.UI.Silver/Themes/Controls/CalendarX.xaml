@@ -153,13 +153,20 @@
         </Setter>
     </Style>
 
-    <Style TargetType="local:CalendarX">
+    <Style x:Key="{ComponentResourceKey ResourceId=CalendarXItemStyle, TypeInTargetAssembly={x:Type local:CalendarX}}"
+           TargetType="local:CalendarXItem">
+    </Style>
+
+    <Style x:Key="{x:Static irs:StyleKeys.CalendarXStyle}"
+           TargetType="local:CalendarX">
         <Setter Property="BorderBrush"
                 Value="LightGray" />
         <Setter Property="BorderThickness"
                 Value="1" />
         <Setter Property="HeaderHeight"
                 Value="40" />
+        <Setter Property="CalendarXItemStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=CalendarXItemStyle, TypeInTargetAssembly={x:Type local:CalendarX}}}" />
         <Setter Property="YearButtonStyle"
                 Value="{StaticResource {ComponentResourceKey ResourceId=YearButtonStyle, TypeInTargetAssembly={x:Type local:CalendarX}}}" />
         <Setter Property="MonthButtonStyle"
@@ -296,8 +303,6 @@
                 Value="#F1F1F1" />
         <Setter Property="local:ToggleButtonHelper.CheckedBackground"
                 Value="#E1E1E1" />
-        <Setter Property="Padding"
-                Value="5" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:CalendarXItem">

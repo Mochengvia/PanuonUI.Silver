@@ -1,5 +1,4 @@
-﻿using Panuon.UI.Silver.Core;
-using Panuon.UI.Silver.Internal.Utils;
+﻿using Panuon.UI.Silver.Internal.Utils;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -56,13 +55,13 @@ namespace Panuon.UI.Silver.Internal.Controls
         #endregion
 
         #region Internal Properties
-        public ObservableCollection<string> Weeks
+        internal ObservableCollection<string> Weeks
         {
             get { return (ObservableCollection<string>)GetValue(WeeksProperty); }
             set { SetValue(WeeksProperty, value); }
         }
 
-        public static readonly DependencyProperty WeeksProperty =
+        internal static readonly DependencyProperty WeeksProperty =
             DependencyProperty.Register("Weeks", typeof(ObservableCollection<string>), typeof(CalendarXWeekPresenter));
         #endregion
 

@@ -4,7 +4,8 @@
                     xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources"
                     xmlns:ic="clr-namespace:Panuon.UI.Silver.Internal.Controls">
 
-    <Style TargetType="local:HorizontalSeparator">
+    <Style x:Key="{x:Static irs:StyleKeys.HorizontalSeparatorStyle}"
+           TargetType="local:HorizontalSeparator">
         <Setter Property="Thickness"
                 Value="1" />
         <Setter Property="MinTipWidth"

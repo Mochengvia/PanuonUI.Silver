@@ -79,6 +79,10 @@
     <Resource Include="Resources\Fonts\PanuonIcon.ttf" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

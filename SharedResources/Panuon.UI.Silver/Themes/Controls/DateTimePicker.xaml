@@ -1,0 +1,325 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver"
+                    xmlns:core="clr-namespace:Panuon.UI.Silver.Core"
+                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
+                    xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources"
+                    xmlns:ic="clr-namespace:Panuon.UI.Silver.Internal.Controls">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=ClearButtonStyle, TypeInTargetAssembly={x:Type local:DateTimePicker}}"
+           TargetType="Button">
+        <Setter Property="local:ButtonHelper.Hook"
+                Value="True" />
+        <Setter Property="Visibility"
+                Value="{Binding CanClear, Converter={StaticResource {x:Static rs:Converters.TrueToVisibleConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+        <Setter Property="Content"
+                Value="&#xe92d;" />
+        <Setter Property="Margin"
+                Value="0,0,8,0" />
+        <Setter Property="FontSize"
+                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+        <Setter Property="FontFamily"
+                Value="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="Transparent">
+                        <ContentPresenter VerticalAlignment="Center"
+                                          HorizontalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=StandardToggleButtonStyle, TypeInTargetAssembly={x:Type local:DateTimePicker}}"
+           TargetType="ToggleButton">
+        <Setter Property="Focusable"
+                Value="False" />
+        <Setter Property="ClickMode"
+                Value="Press" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Stretch" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Grid Background="Transparent">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          Margin="{TemplateBinding Padding}" />
+                        <Grid Grid.Column="1"
+                              Width="{Binding ActualHeight, Converter={StaticResource {x:Static rs:Converters.DoubleMinusConverter}}, ConverterParameter=3,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}">
+                            <TextBlock x:Name="TxtArrowDown"
+                                       Text="&#xe91f;"
+                                       FontSize="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoubleMinusConverter}}, ConverterParameter=1, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                       FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center" />
+                            <TextBlock x:Name="TxtArrowUp"
+                                       Opacity="0"
+                                       Text="&#xe91d;"
+                                       FontSize="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoubleMinusConverter}}, ConverterParameter=1, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                       FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center" />
+                        </Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked"
+                                 Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="TxtArrowDown"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0"
+                                                         Duration="0:0:0.2"></DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="TxtArrowUp"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1"
+                                                         Duration="0:0:0.2"></DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="TxtArrowDown"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         Duration="0:0:0.2"></DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="TxtArrowUp"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         Duration="0:0:0.2"></DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=EditableTextBoxStyle, TypeInTargetAssembly={x:Type local:DateTimePicker}}"
+           TargetType="TextBox">
+        <Setter Property="HorizontalAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalAlignment"
+                Value="Stretch" />
+        <Setter Property="local:IconHelper.Foreground"
+                Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <ScrollViewer x:Name="PART_ContentHost"
+                                  VerticalAlignment="Stretch"
+                                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                  VerticalScrollBarVisibility="{TemplateBinding VerticalScrollBarVisibility}"
+                                  HorizontalScrollBarVisibility="{TemplateBinding HorizontalScrollBarVisibility}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=CalendarXStyle, TypeInTargetAssembly={x:Type local:DateTimePicker}}"
+           TargetType="local:CalendarX">
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="Width"
+                Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+    </Style>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=TimeSelectorStyle, TypeInTargetAssembly={x:Type local:DateTimePicker}}"
+           TargetType="local:TimeSelector">
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="Width"
+                Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+    </Style>
+
+    <Style x:Key="{x:Static irs:StyleKeys.DateTimePickerStyle}"
+           TargetType="local:DateTimePicker">
+        <Setter Property="Background"
+                Value="White" />
+        <Setter Property="BorderBrush"
+                Value="LightGray" />
+        <Setter Property="BorderThickness"
+                Value="1" />
+        <Setter Property="MaxDropDownHeight"
+                Value="300" />
+        <Setter Property="Padding"
+                Value="5,0,0,0" />
+        <Setter Property="SeparatorBrush"
+                Value="LightGray" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Stretch" />
+        <Setter Property="CalendarXStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=CalendarXStyle, TypeInTargetAssembly={x:Type local:DateTimePicker}}}" />
+        <Setter Property="TimeSelectorStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=TimeSelectorStyle, TypeInTargetAssembly={x:Type local:DateTimePicker}}}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:DateTimePicker">
+                    <Grid>
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{TemplateBinding CornerRadius}">
+                            <ToggleButton x:Name="TgbContent"
+                                          Foreground="{TemplateBinding Foreground}"
+                                          IsChecked="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                          Style="{StaticResource {ComponentResourceKey ResourceId=StandardToggleButtonStyle, TypeInTargetAssembly={x:Type local:DateTimePicker}}}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <ic:IconControl x:Name="icIcon"
+                                                    Content="{Binding Icon, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                                    Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                                    <Grid Margin="{TemplateBinding Padding}"
+                                          Grid.Column="1"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+                                        <ContentPresenter x:Name="ContentSite"
+                                                          Content="{TemplateBinding SelectedDateTime}"
+                                                          VerticalAlignment="Center">
+                                            <ContentPresenter.ContentStringFormat>
+                                                <MultiBinding Converter="{StaticResource {x:Static irs:Converters.DateTimePickerTextStringFormatConverterConverter}}">
+                                                    <Binding Path="TextStringFormat"
+                                                             RelativeSource="{RelativeSource TemplatedParent}"
+                                                             Mode="OneWay" />
+                                                    <Binding Path="Mode"
+                                                             RelativeSource="{RelativeSource TemplatedParent}"
+                                                             Mode="OneWay" />
+                                                </MultiBinding>
+                                            </ContentPresenter.ContentStringFormat>
+                                        </ContentPresenter>
+                                        <TextBlock x:Name="TxtWatermark"
+                                                   Visibility="{Binding SelectedDateTime, Converter={StaticResource {x:Static rs:Converters.NullToVisibleConverter}}, RelativeSource={RelativeSource AncestorType=local:DateTimePicker},Mode=OneWay}"
+                                                   Text="{Binding Watermark, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
+                                                   VerticalAlignment="Center"
+                                                   Padding="2,0"
+                                                   Opacity="0.6" />
+                                    </Grid>
+                                    <Button x:Name="PART_ClearButton"
+                                            Grid.Column="2"
+                                            Visibility="Collapsed"
+                                            Style="{StaticResource {ComponentResourceKey ResourceId=ClearButtonStyle, TypeInTargetAssembly={x:Type local:DateTimePicker}}}"
+                                            Foreground="{TemplateBinding Foreground}" />
+                                </Grid>
+                            </ToggleButton>
+                        </Border>
+                        <local:PopupX x:Name="PopDropDown"
+                                      IsOpen="{Binding IsDropDownOpen,RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                      PlacementTarget="{Binding ElementName=TgbContent}"
+                                      PopupAnimation="Slide"
+                                      Placement="BottomRight"
+                                      HorizontalOffset="-5"
+                                      AllowsTransparency="True"
+                                      Focusable="False"
+                                      MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                                      MinWidth="{Binding ActualWidth, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=10, ElementName=TgbContent, Mode=OneWay}">
+                            <Border>
+                                <Grid x:Name="GrdDropDown"
+                                      Margin="5,0,5,5">
+                                    <Border Background="{TemplateBinding Background}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                            CornerRadius="{Binding DropDownCornerRadius,RelativeSource={RelativeSource AncestorType=local:DateTimePicker},Mode=OneWay}"
+                                            Effect="{Binding DropDownShadowColor, Converter={StaticResource {x:Static irs:Converters.DropShadowEffectCoverter}}, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <local:CalendarX x:Name="PART_CalendarX"
+                                                         Style="{TemplateBinding CalendarXStyle}"/>
+                                        <Rectangle x:Name="RectSeparator"
+                                                   Grid.Column="1"
+                                                   Visibility="Collapsed"
+                                                   Width="1"
+                                                   Fill="{TemplateBinding SeparatorBrush}"
+                                                   Margin="5,0"/>
+                                        <local:TimeSelector x:Name="PART_TimeSelector"
+                                                            Grid.Column="2"
+                                                            Visibility="Collapsed"
+                                                            Style="{TemplateBinding TimeSelectorStyle}"/>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </local:PopupX>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver"
+                                           Value="True" />
+                                <Condition Property="CanClear"
+                                           Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="PART_ClearButton"
+                                    Property="Visibility"
+                                    Value="Visible" />
+                        </MultiTrigger>
+                        <Trigger Property="Mode"
+                                 Value="DateTime">
+                            <Setter TargetName="RectSeparator"
+                                    Property="Visibility"
+                                    Value="Visible" />
+                            <Setter TargetName="PART_TimeSelector"
+                                    Property="Visibility"
+                                    Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="Mode"
+                                 Value="Time">
+                            <Setter TargetName="PART_CalendarX"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
+                            <Setter TargetName="RectSeparator"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
+                            <Setter TargetName="PART_TimeSelector"
+                                    Property="Visibility"
+                                    Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="Mode"
+                                 Value="Date">
+                            <Setter TargetName="PART_CalendarX"
+                                    Property="Mode"
+                                    Value="Date" />
+                        </Trigger>
+                        <Trigger Property="Mode"
+                                 Value="Year">
+                            <Setter TargetName="PART_CalendarX"
+                                    Property="Mode"
+                                    Value="Year" />
+                        </Trigger>
+                        <Trigger Property="Mode"
+                                 Value="YearMonth">
+                            <Setter TargetName="PART_CalendarX"
+                                    Property="Mode"
+                                    Value="YearMonth" />
+                        </Trigger>
+                      
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

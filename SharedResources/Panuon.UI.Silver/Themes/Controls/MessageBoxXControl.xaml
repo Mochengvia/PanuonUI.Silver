@@ -47,7 +47,8 @@
         </Style.Triggers>
     </Style>
 
-    <Style TargetType="com:MessageBoxXControl">
+    <Style x:Key="{x:Static irs:StyleKeys.MessageBoxXControlStyle}"
+           TargetType="com:MessageBoxXControl">
         <Setter Property="MaxContentHeight"
                 Value="100" />
         <Setter Property="MaxContentWidth"

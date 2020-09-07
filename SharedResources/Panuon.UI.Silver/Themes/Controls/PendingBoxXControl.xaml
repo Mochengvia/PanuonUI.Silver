@@ -48,8 +48,9 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
-    <Style TargetType="com:PendingBoxXControl">
+
+    <Style x:Key="{x:Static irs:StyleKeys.PendingBoxXControlStyle}"
+           TargetType="com:PendingBoxXControl">
         <Setter Property="BorderBrush"
                 Value="LightGray" />
         <Setter Property="MinWidth"

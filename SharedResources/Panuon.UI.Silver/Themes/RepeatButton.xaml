@@ -2,13 +2,15 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Panuon.UI.Silver"
                     xmlns:core="clr-namespace:Panuon.UI.Silver.Core"
+                    xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources"
                     xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
                     xmlns:ic="clr-namespace:Panuon.UI.Silver.Internal.Controls">
     <ResourceDictionary.MergedDictionaries>
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="RepeatButton">
+    <Style  x:Key="{x:Static irs:StyleKeys.RepeatButtonStyle}"
+            TargetType="RepeatButton">
         <Setter Property="local:RepeatButtonHelper.Hook"
                 Value="True" />
         <Setter Property="BorderThickness"
@@ -80,7 +82,7 @@
                             <StackPanel Orientation="Horizontal">
                                 <local:Loading Width="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=5, RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
                                                Height="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=5, RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
-                                               Foreground="{Binding Foreground, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=5, RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
+                                               Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
                                                IsLoading="True"
                                                VerticalAlignment="Center"
                                                HorizontalAlignment="Center" />

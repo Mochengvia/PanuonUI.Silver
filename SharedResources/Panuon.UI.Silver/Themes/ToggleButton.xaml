@@ -9,7 +9,8 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="ToggleButton">
+    <Style  x:Key="{x:Static irs:StyleKeys.ToggleButtonStyle}"
+            TargetType="ToggleButton">
         <Setter Property="local:ToggleButtonHelper.Hook"
                 Value="True" />
         <Setter Property="BorderThickness"
@@ -92,7 +93,7 @@
                             <StackPanel Orientation="Horizontal">
                                 <local:Loading Width="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=5, RelativeSource={RelativeSource AncestorType=ToggleButton}, Mode=OneWay}"
                                                Height="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=5, RelativeSource={RelativeSource AncestorType=ToggleButton}, Mode=OneWay}"
-                                               Foreground="{Binding Foreground, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=5, RelativeSource={RelativeSource AncestorType=ToggleButton}, Mode=OneWay}"
+                                               Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}, Mode=OneWay}"
                                                IsLoading="True"
                                                VerticalAlignment="Center"
                                                HorizontalAlignment="Center" />

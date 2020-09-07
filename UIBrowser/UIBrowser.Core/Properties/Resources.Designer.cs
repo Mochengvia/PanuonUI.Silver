@@ -115,11 +115,20 @@ namespace UIBrowser.Core.Properties {
         }
         
         /// <summary>
-        ///   查找类似 Dropdown 的本地化字符串。
+        ///   查找类似 DateTimePicker 的本地化字符串。
         /// </summary>
-        public static string Dropdown {
+        public static string DateTimePicker {
             get {
-                return ResourceManager.GetString("Dropdown", resourceCulture);
+                return ResourceManager.GetString("DateTimePicker", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 DropDown 的本地化字符串。
+        /// </summary>
+        public static string DropDown {
+            get {
+                return ResourceManager.GetString("DropDown", resourceCulture);
             }
         }
         
@@ -196,11 +205,29 @@ namespace UIBrowser.Core.Properties {
         }
         
         /// <summary>
+        ///   查找类似 SwitchCheckBox 的本地化字符串。
+        /// </summary>
+        public static string SwitchCheckBox {
+            get {
+                return ResourceManager.GetString("SwitchCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 TabControl 的本地化字符串。
         /// </summary>
         public static string TabControl {
             get {
                 return ResourceManager.GetString("TabControl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 TimeSelector 的本地化字符串。
+        /// </summary>
+        public static string TimeSelector {
+            get {
+                return ResourceManager.GetString("TimeSelector", resourceCulture);
             }
         }
         

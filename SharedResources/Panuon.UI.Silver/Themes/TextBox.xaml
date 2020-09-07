@@ -9,7 +9,7 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{x:Static irs:ResourceKeys.TextBoxClearButtonStyle}"
+    <Style x:Key="{ComponentResourceKey ResourceId=ClearButtonStyle, TypeInTargetAssembly={x:Type local:TextBoxHelper}}"
            TargetType="Button">
         <Setter Property="local:ButtonHelper.Hook"
                 Value="True" />
@@ -23,6 +23,7 @@
                 Value="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
         <Setter Property="FontFamily"
                 Value="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon" />
+        
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -35,7 +36,8 @@
         </Setter>
     </Style>
 
-    <Style TargetType="TextBox">
+    <Style x:Key="{x:Static irs:StyleKeys.TextBoxStyle}"
+           TargetType="TextBox">
         <Setter Property="local:TextBoxHelper.Hook"
                 Value="True" />
         <Setter Property="Background"
@@ -52,6 +54,10 @@
                 Value="Disabled" />
         <Setter Property="local:IconHelper.Foreground"
                 Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.Margin"
+                Value="10,0,0,0" />
+        <Setter Property="local:IconHelper.FontSize"
+                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:Converters.DoublePlusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TextBox">
@@ -96,7 +102,7 @@
                                       VerticalScrollBarVisibility="{TemplateBinding VerticalScrollBarVisibility}"
                                       HorizontalScrollBarVisibility="{TemplateBinding HorizontalScrollBarVisibility}" />
                         <Button Grid.Column="2"
-                                Style="{StaticResource {x:Static irs:ResourceKeys.TextBoxClearButtonStyle}}"
+                                Style="{StaticResource {ComponentResourceKey ResourceId=ClearButtonStyle, TypeInTargetAssembly={x:Type local:TextBoxHelper}}}"
                                 Foreground="{TemplateBinding Foreground}"
                                 Command="{Binding Path=(local:TextBoxHelper.ClearTextBoxCommand),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
                                 CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}" />

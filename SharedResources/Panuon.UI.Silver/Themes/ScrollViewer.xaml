@@ -327,7 +327,8 @@
         </Style.Triggers>
     </Style>
 
-    <Style TargetType="ScrollViewer">
+    <Style  x:Key="{x:Static irs:StyleKeys.ScrollViewerStyle}"
+            TargetType="ScrollViewer">
         <Setter Property="VerticalScrollBarVisibility"
                 Value="Auto" />
         <Setter Property="HorizontalScrollBarVisibility"

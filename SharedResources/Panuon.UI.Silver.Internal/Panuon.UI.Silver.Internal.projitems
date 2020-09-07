@@ -18,18 +18,20 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CalendarXMonthPresenter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CalendarXWeekPresenter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CalendarXDayPresenter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\TimeSelectorHourPresenter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\TimeSelectorMinutePresenter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\TimeSelectorSecondPresenter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\FormGroupControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\FromGroupPresenter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\IconControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NoticeXWindow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PendingBoxXWindow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ArcConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\DateTimePickerTextStringFormatConverterConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\SwitchCheckBoxToggleShadowEffectConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\LocalizedMonthStringConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleToBottomThicknessConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\CheckBoxSwitch3ToggleMarginConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\CheckBoxSwitch3ToggleTrackMarginConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\CheckBoxSwitch2DecorationMarginConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\CheckBoxSwitchToggleMarginConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\SwitchCheckBoxToggleMarginConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DropdownPathDataConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IsGridLengthAbsoluteConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\GridLengthToDoubleConverter.cs" />
@@ -65,8 +67,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IsNotNullConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IsNullConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EventArgs\CalendarXSelectedEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ClockItemModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\GlobalHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implements\PendingHanlderImpl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Resources\StyleKeys.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Selectors\IconControlContentTemplateSelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\LoadingConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\CalendarXItemModel.cs" />
@@ -85,6 +89,18 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)Resources\Converters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Controls\TimeSelectorHourPresenter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Controls\TimeSelectorMinutePresenter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Controls\TimeSelectorSecondPresenter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -4,6 +4,8 @@
                     xmlns:icv="clr-namespace:Panuon.UI.Silver.Internal.Converters"
                     xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources">
 
+
+    <icv:DateTimePickerTextStringFormatConverterConverter x:Key="{x:Static irs:Converters.DateTimePickerTextStringFormatConverterConverter}" />
     <icv:DropShadowEffectCoverter x:Key="{x:Static irs:Converters.DropShadowEffectCoverter}" />
     <icv:DoubleMinusConverter x:Key="{x:Static rs:Converters.DoubleMinusConverter}" />
     <icv:DoublePlusConverter x:Key="{x:Static rs:Converters.DoublePlusConverter}" />
@@ -18,10 +20,8 @@
     <icv:BadgePlacementMarginConverter x:Key="{x:Static irs:Converters.BadgePlacementMarginConverter}" />
     <icv:NullToCollapseConverter x:Key="{x:Static rs:Converters.NullToCollapseConverter}" />
     <icv:NullToVisibleConverter x:Key="{x:Static rs:Converters.NullToVisibleConverter}" />
-    <icv:CheckBoxSwitchToggleMarginConverter x:Key="{x:Static irs:Converters.CheckBoxSwitchToggleMarginConverter}" />
-    <icv:CheckBoxSwitch2DecorationMarginConverter x:Key="{x:Static irs:Converters.CheckBoxSwitch2DecorationMarginConverter}" />
-    <icv:CheckBoxSwitch3ToggleMarginConverter x:Key="{x:Static irs:Converters.CheckBoxSwitch3ToggleMarginConverter}" />
-    <icv:CheckBoxSwitch3ToggleTrackMarginConverter x:Key="{x:Static irs:Converters.CheckBoxSwitch3ToggleTrackMarginConverter}" />
+    <icv:SwitchCheckBoxToggleMarginConverter x:Key="{x:Static irs:Converters.SwitchCheckBoxToggleMarginConverter}" />
+    <icv:SwitchCheckBoxToggleShadowEffectConverter x:Key="{x:Static irs:Converters.SwitchCheckBoxToggleShadowEffectConverter}" />
     <icv:CombineToArrayConverter x:Key="{x:Static irs:Converters.CombineToArrayConverter}" />
     <icv:RoundCornerConverter x:Key="{x:Static irs:Converters.RoundCornerConverter}" />
     <icv:ArcConverter x:Key="{x:Static irs:Converters.ArcConverter}" />
@@ -40,6 +40,6 @@
     <icv:TabPanelMaxWidthConverter x:Key="{x:Static irs:Converters.TabPanelMaxWidthConverter}" />
     <icv:TabControlSideButtonVisibilityConverter x:Key="{x:Static irs:Converters.TabControlSideButtonVisibilityConverter}" />
 
-    <icv:DropdownPathDataConverter x:Key="{x:Static irs:Converters.DropdownPathDataConverter}" />
+    <icv:DropDownPathDataConverter x:Key="{x:Static irs:Converters.DropDownPathDataConverter}" />
     
 </ResourceDictionary> 

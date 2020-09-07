@@ -1,8 +1,10 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:Panuon.UI.Silver">
+                    xmlns:local="clr-namespace:Panuon.UI.Silver"
+                    xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources">
 
-    <Style TargetType="local:Signboard">
+    <Style x:Key="{x:Static irs:StyleKeys.SignboardStyle}"
+           TargetType="local:Signboard">
         <Setter Property="AutoRepeat"
                 Value="True" />
         <Setter Property="AnimationDuration"

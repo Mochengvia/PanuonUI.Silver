@@ -126,6 +126,9 @@
   <data name="CalendarX" xml:space="preserve">
     <value>CalendarX 日历</value>
   </data>
+  <data name="TimeSelector" xml:space="preserve">
+    <value>TimeSelector 时间选择器</value>
+  </data>
   <data name="CornerRadius" xml:space="preserve">
     <value>圆角</value>
   </data>
@@ -135,8 +138,8 @@
   <data name="DataGrid" xml:space="preserve">
     <value>DataGrid 数据网格</value>
   </data>
-  <data name="Dropdown" xml:space="preserve">
-    <value>Dropdown 下拉</value>
+  <data name="DropDown" xml:space="preserve">
+    <value>DropDown 下拉</value>
   </data>
   <data name="Foreground" xml:space="preserve">
     <value>前景色</value>
@@ -170,5 +173,11 @@
   </data>
   <data name="Width" xml:space="preserve">
     <value>长度</value>
+  </data>
+  <data name="DateTimePicker" xml:space="preserve">
+    <value>DateTimePicker 日期时间拾取器</value>
+  </data>
+  <data name="SwitchCheckBox" xml:space="preserve">
+    <value>SwitchCheckBox 开关复选框</value>
   </data>
 </root>

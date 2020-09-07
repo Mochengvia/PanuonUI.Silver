@@ -126,6 +126,9 @@
   <data name="CalendarX" xml:space="preserve">
     <value>CalendarX</value>
   </data>
+  <data name="TimeSelector" xml:space="preserve">
+    <value>TimeSelector</value>
+  </data>
   <data name="CornerRadius" xml:space="preserve">
     <value>CornerRadius</value>
   </data>
@@ -135,8 +138,8 @@
   <data name="DataGrid" xml:space="preserve">
     <value>DataGrid</value>
   </data>
-  <data name="Dropdown" xml:space="preserve">
-    <value>Dropdown</value>
+  <data name="DropDown" xml:space="preserve">
+    <value>DropDown</value>
   </data>
   <data name="Foreground" xml:space="preserve">
     <value>Foreground</value>
@@ -170,5 +173,11 @@
   </data>
   <data name="Width" xml:space="preserve">
     <value>Width</value>
+  </data>
+  <data name="DateTimePicker" xml:space="preserve">
+    <value>DateTimePicker</value>
+  </data>
+  <data name="SwitchCheckBox" xml:space="preserve">
+    <value>SwitchCheckBox</value>
   </data>
 </root>

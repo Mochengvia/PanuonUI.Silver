@@ -2091,7 +2091,8 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <Style TargetType="{x:Type local:Loading}">
+    <Style x:Key="{x:Static irs:StyleKeys.LoadingStyle}"
+           TargetType="{x:Type local:Loading}">
         <Setter Property="Thickness"
                 Value="{Binding ActualWidth,Converter={StaticResource {x:Static rs:Converters.DoubleDivideByConverter}}, ConverterParameter=15,RelativeSource={RelativeSource Self},Mode=OneWay}" />
         <Setter Property="CornerRadius"

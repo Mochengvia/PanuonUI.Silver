@@ -51,9 +51,9 @@ namespace UIBrowser.ViewModels.Partials
         #endregion
 
         #region Event Handlers
-        public void OnSelectedDatesChanged(Panuon.UI.Silver.Core.SelectionChangedRoutedEventArgs e)
+        public void OnSelectedDatesChanged(Panuon.UI.Silver.Core.SelectedDatesChangedRoutedEventArgs e)
         {
-            var dates = e.SelectedItems;
+            var dates = e.SelectedDates;
         }
         #endregion
 

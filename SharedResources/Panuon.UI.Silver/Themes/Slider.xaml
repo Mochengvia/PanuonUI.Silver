@@ -8,7 +8,8 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="Slider">
+    <Style  x:Key="{x:Static irs:StyleKeys.SliderStyle}" 
+            TargetType="Slider">
         <Setter Property="local:SliderHelper.ThumbBackground"
                 Value="White" />
         <Setter Property="local:SliderHelper.ThumbSize"

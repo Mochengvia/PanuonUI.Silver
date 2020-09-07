@@ -175,7 +175,8 @@
         </Setter>
     </Style>
 
-    <Style TargetType="{x:Type ListView}">
+    <Style  x:Key="{x:Static irs:StyleKeys.ListViewStyle}" 
+            TargetType="{x:Type ListView}">
         <Setter Property="local:ScrollViewerHelper.ScrollBarThickness"
                 Value="6" />
         <Setter Property="local:ScrollViewerHelper.ScrollBarCornerRadius"

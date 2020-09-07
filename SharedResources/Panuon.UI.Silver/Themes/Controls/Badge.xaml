@@ -9,7 +9,8 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="local:Badge">
+    <Style x:Key="{x:Static irs:StyleKeys.BadgeStyle}"
+           TargetType="local:Badge">
         <Setter Property="Foreground"
                 Value="White" />
         <Setter Property="Background"
@@ -250,4 +251,5 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    
 </ResourceDictionary>

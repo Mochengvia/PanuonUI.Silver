@@ -1,0 +1,49 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver"
+                    xmlns:core="clr-namespace:Panuon.UI.Silver.Core"
+                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
+                    xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources"
+                    xmlns:ic="clr-namespace:Panuon.UI.Silver.Internal.Controls">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style  x:Key="{x:Static irs:StyleKeys.ToolTipStyle}"
+            TargetType="ToolTip">
+        <Setter Property="FontFamily"
+                Value="{Binding Source={x:Static irs:GlobalHelper.FontFamily}}" />
+        <Setter Property="FontSize"
+                Value="{Binding Source={x:Static irs:GlobalHelper.FontSize}}" />
+        <Setter Property="local:ToolTipHelper.Foreground"
+                Value="#3E3E3E" />
+        <Setter Property="local:ToolTipHelper.Background"
+                Value="White" />
+        <Setter Property="local:ToolTipHelper.BorderThickness"
+                Value="0" />
+        <Setter Property="local:ToolTipHelper.ShadowColor"
+                Value="LightGray" />
+        <Setter Property="local:ToolTipHelper.Padding"
+                Value="5" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToolTip">
+                    <Border x:Name="BdrMain"
+                            Margin="5"
+                            BorderBrush="{Binding Path=(local:ToolTipHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                            BorderThickness="{Binding Path=(local:ToolTipHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                            Background="{Binding Path=(local:ToolTipHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                            CornerRadius="{Binding Path=(local:ToolTipHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                            Effect="{Binding Path=(local:ToolTipHelper.ShadowColor), Converter={StaticResource {x:Static irs:Converters.DropShadowEffectCoverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                        <ContentPresenter Margin="{Binding Path=(local:ToolTipHelper.Padding), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Top" />
+                    </Border>
+
+                </ControlTemplate>
+
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

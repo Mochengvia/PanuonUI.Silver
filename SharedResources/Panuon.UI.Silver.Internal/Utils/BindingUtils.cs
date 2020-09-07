@@ -24,6 +24,23 @@ namespace Panuon.UI.Silver.Internal.Utils
             element.SetBinding(targetProperty, binding);
         }
 
+        public static void BindingProperty(FrameworkElement element,
+            DependencyProperty targetProperty,
+            object source,
+            DependencyProperty sourceProperty,
+            BindingMode mode,
+            UpdateSourceTrigger trigger = UpdateSourceTrigger.Default)
+        {
+            var binding = new Binding()
+            {
+                Path = new PropertyPath(sourceProperty),
+                Source = source,
+                Mode = mode,
+                UpdateSourceTrigger = trigger
+            };
+            element.SetBinding(targetProperty, binding);
+        }
+
         public static void BindingPropertyIfNonDefault(FrameworkElement element,
          DependencyProperty targetProperty,
          DependencyObject source,

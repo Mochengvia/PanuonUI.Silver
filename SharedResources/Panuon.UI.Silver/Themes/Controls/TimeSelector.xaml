@@ -1,0 +1,169 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver"
+                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
+                    xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources"
+                    xmlns:ic="clr-namespace:Panuon.UI.Silver.Internal.Controls"
+                    xmlns:core="clr-namespace:Panuon.UI.Silver.Core">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=TimeSelectorItemStyle, TypeInTargetAssembly={x:Type local:TimeSelector}}"
+           TargetType="local:TimeSelectorItem">
+    </Style>
+
+    
+    <Style TargetType="local:TimeSelector">
+        <Setter Property="BorderBrush"
+                Value="LightGray" />
+        <Setter Property="BorderThickness"
+                Value="1" />
+        <Setter Property="SeparatorVisibility"
+                Value="Visible" />
+        <Setter Property="SeparatorBrush"
+                Value="LightGray" />
+        <Setter Property="HeaderHeight"
+                Value="40" />
+        <Setter Property="TimeSelectorItemStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=TimeSelectorItemStyle, TypeInTargetAssembly={x:Type local:TimeSelector}}}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:TimeSelector">
+                    <Border BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Rectangle Grid.ColumnSpan="5"
+                                       Fill="{TemplateBinding HeaderBackground}"
+                                       Height="{TemplateBinding HeaderHeight}"/>
+                            <TextBlock Text="{TemplateBinding HourString}"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"/>
+                            <TextBlock Grid.Column="2"
+                                       Text="{TemplateBinding MinuteString}"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center" />
+                            <TextBlock Grid.Column="4"
+                                       Text="{TemplateBinding SecondString}"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center" />
+                            <ic:TimeSelectorHourPresenter x:Name="PART_HourPresenter"
+                                                          TimeSelectorItemStyle="{TemplateBinding TimeSelectorItemStyle}"
+                                                            Grid.Row="1" />
+                            <Rectangle  Grid.ColumnSpan="5"
+                                       VerticalAlignment="Bottom"
+                                       Visibility="{TemplateBinding SeparatorVisibility}"
+                                       Fill="{TemplateBinding SeparatorBrush}"
+                                       Height="1" />
+                            <Rectangle Grid.Column="1"
+                                       Grid.Row="1"
+                                       HorizontalAlignment="Left"
+                                       Visibility="{TemplateBinding SeparatorVisibility}"
+                                       Fill="{TemplateBinding SeparatorBrush}"
+                                       Width="1" />
+                            <ic:TimeSelectorMinutePresenter x:Name="PART_MinutePresenter"
+                                                            Grid.Row="1"
+                                                            Grid.Column="2" />
+                            <Rectangle Grid.Row="1"
+                                       Grid.Column="3"
+                                       HorizontalAlignment="Left"
+                                       Visibility="{TemplateBinding SeparatorVisibility}"
+                                       Fill="{TemplateBinding SeparatorBrush}"
+                                       Width="1" />
+                            <ic:TimeSelectorSecondPresenter x:Name="PART_SecondPresenter"
+                                                          Grid.Row="1"
+                                                          Grid.Column="4" />
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:TimeSelectorItem">
+        <Setter Property="Background"
+                Value="Transparent" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Center" />
+        <Setter Property="local:ToggleButtonHelper.CheckedBackground"
+                Value="#E1E1E1" />
+        <Setter Property="Height"
+                Value="40" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:TimeSelectorItem">
+                    <Grid>
+                        <Border x:Name="BdrMain"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="{Binding Path=(local:ToggleButtonHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        <Grid x:Name="GrdContent"
+                              Margin="{TemplateBinding Padding}">
+                            <Ellipse x:Name="EllToday"
+                                     VerticalAlignment="Top"
+                                     HorizontalAlignment="Right"
+                                     Width="6"
+                                     Height="6"
+                                     Visibility="Collapsed"
+                                     Fill="{TemplateBinding Foreground}" />
+                            <ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled"
+                     Value="False">
+                <Setter Property="Opacity"
+                        Value="0.3" />
+            </Trigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=(local:ToggleButtonHelper.CheckedBackground), Converter={StaticResource {x:Static rs:Converters.IsNotNullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Background"
+                        Value="{Binding Path=(local:ToggleButtonHelper.CheckedBackground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=(local:ToggleButtonHelper.CheckedForeground), Converter={StaticResource {x:Static rs:Converters.IsNotNullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Foreground"
+                        Value="{Binding Path=(local:ToggleButtonHelper.CheckedForeground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=(local:ToggleButtonHelper.CheckedBorderBrush), Converter={StaticResource {x:Static rs:Converters.IsNotNullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="BorderBrush"
+                        Value="{Binding Path=(local:ToggleButtonHelper.CheckedBorderBrush), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            </MultiDataTrigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

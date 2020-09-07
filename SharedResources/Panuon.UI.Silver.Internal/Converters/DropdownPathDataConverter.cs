@@ -8,7 +8,7 @@ using System.Windows.Media;
 
 namespace Panuon.UI.Silver.Internal.Converters
 {
-    internal class DropdownPathDataConverter : IMultiValueConverter
+    internal class DropDownPathDataConverter : IMultiValueConverter
     {
         private const double _angleHeight = 6;
 
@@ -26,7 +26,7 @@ namespace Panuon.UI.Silver.Internal.Converters
             var targetHeight = (double)values[3];
             var cornerRadius = (CornerRadius)values[4];
             var placement = (PopupXPlacement)values[5];
-            var dropDownStyle = (DropdownStyle)values[6];
+            var dropDownStyle = (DropDownStyle)values[6];
             var margin = (Thickness)values[7];
             var relativePosition = (Point)values[8];
             var cTopLeft = cornerRadius.TopLeft;
@@ -42,7 +42,7 @@ namespace Panuon.UI.Silver.Internal.Converters
             var path = new StringBuilder();
             switch (dropDownStyle)
             {
-                case DropdownStyle.Standard:
+                case DropDownStyle.Standard:
                     switch (placement)
                     {
                         case PopupXPlacement.Bottom:
@@ -95,7 +95,7 @@ namespace Panuon.UI.Silver.Internal.Converters
                             break;
                     }
                     break;
-                case DropdownStyle.Smooth:
+                case DropDownStyle.Smooth:
                     path.Append($"M{mLeft},{mTop + cTopLeft}");
                     path.Append(DrawLine(Dock.Left, popupHeight - cTopLeft - mTop));
                     path.Append(DrawCorner(cBottomLeft, cBottomLeft + mLeft, popupHeight - mBottom));

@@ -6,12 +6,6 @@
     <Style TargetType="ic:CalendarXYearPresenter">
         <Setter Property="ItemsSource"
                 Value="{Binding CalendarXItemModels, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-        <Setter Property="ItemContainerStyle">
-            <Setter.Value>
-                <Style TargetType="local:CalendarXItem">
-                </Style>
-            </Setter.Value>
-        </Setter>
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>

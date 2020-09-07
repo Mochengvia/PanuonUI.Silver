@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIBrowser.Core", "UIBrowser
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIBrowser.Palette", "UIBrowser.Palette\UIBrowser.Palette.csproj", "{441175A2-AB53-4520-9D6C-5CB10C37FDB9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Net45", "Net45", "{E9B16B18-C78E-4490-B6F3-7643C52152AC}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panuon.UI.Silver", "..\Net45\Panuon.UI.Silver\Panuon.UI.Silver.csproj", "{CAD12043-ED7A-4C3F-B4E6-7E0FD6B17D80}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIBrowser.Examples", "UIBrowser.Examples\UIBrowser.Examples.csproj", "{F75DEC4A-B23D-4958-AC5C-4DA3B15172AA}"
@@ -22,6 +20,8 @@ EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Panuon.UI.Silver.Core", "..\SharedResources\Panuon.UI.Silver.Core\Panuon.UI.Silver.Core.shproj", "{1DE353D2-029F-4738-86BA-2212DB9C71A6}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Panuon.UI.Silver.Internal", "..\SharedResources\Panuon.UI.Silver.Internal\Panuon.UI.Silver.Internal.shproj", "{43E414FF-0B56-4395-A701-13C97A5E064B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Net45", "Net45", "{9A7B49E8-883A-4F40-9031-B0380501A0FC}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -62,7 +62,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{CAD12043-ED7A-4C3F-B4E6-7E0FD6B17D80} = {E9B16B18-C78E-4490-B6F3-7643C52152AC}
+		{CAD12043-ED7A-4C3F-B4E6-7E0FD6B17D80} = {9A7B49E8-883A-4F40-9031-B0380501A0FC}
 		{87AE0709-A9B6-4F8C-8B9E-1D1DF50F93E2} = {43C10094-824D-4EB3-B855-6023E240C02B}
 		{1DE353D2-029F-4738-86BA-2212DB9C71A6} = {43C10094-824D-4EB3-B855-6023E240C02B}
 		{43E414FF-0B56-4395-A701-13C97A5E064B} = {43C10094-824D-4EB3-B855-6023E240C02B}
