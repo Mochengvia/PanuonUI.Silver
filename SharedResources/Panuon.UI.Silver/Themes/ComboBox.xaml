@@ -189,6 +189,8 @@
                 Value="Red" />
         <Setter Property="VerticalAlignment"
                 Value="Stretch" />
+        <Setter Property="CaretBrush"
+                Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:IconHelper.Foreground"
                 Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="Template">

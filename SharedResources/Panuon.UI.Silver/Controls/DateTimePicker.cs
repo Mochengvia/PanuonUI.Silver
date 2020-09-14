@@ -337,16 +337,25 @@ namespace Panuon.UI.Silver
         private void TimeSelector_SelectedTimeChanged(object sender, Core.SelectedDateChangedRoutedEventArgs e)
         {
             _isInternalSet = true;
-            if (_calendarX.SelectedDate == null)
+            var time = _timeSelector.SelectedTime;
+            switch (Mode)
             {
-                SelectedDateTime = null;
+                case DateTimePickerMode.Time:
+                    SelectedDateTime = new DateTime(1, 1, 1, time.Hour, time.Minute, time.Second);
+                    break;
+                case DateTimePickerMode.DateTime:
+                    if (_calendarX.SelectedDate == null)
+                    {
+                        SelectedDateTime = null;
+                    }
+                    else
+                    {
+                        var date = (DateTime)_calendarX.SelectedDate;
+                        SelectedDateTime = new DateTime(date.Year, date.Month, date.Day, time.Hour, time.Minute, time.Second);
+                    }
+                    break;
             }
-            else
-            {
-                var date = (DateTime)_calendarX.SelectedDate;
-                var time = _timeSelector.SelectedTime;
-                SelectedDateTime = new DateTime(date.Year, date.Month, date.Day, time.Hour, time.Minute, time.Second);
-            }
+           
             _isInternalSet = false;
         }
 
