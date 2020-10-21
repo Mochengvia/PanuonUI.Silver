@@ -158,7 +158,7 @@ namespace Panuon.UI.Silver
             {
                 BeginArrangeAnimation();
             }
-            return availableSize;
+            return base.MeasureOverride(availableSize);
         }
 
         protected override Size ArrangeOverride(Size finalSize)

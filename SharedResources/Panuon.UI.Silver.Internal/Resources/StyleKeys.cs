@@ -79,6 +79,8 @@
         public const string ValidatorStyle = nameof(ValidatorStyle);
 
         public const string DateTimePickerStyle = nameof(DateTimePickerStyle);
-        
+
+        public const string MenuStyle = nameof(MenuStyle);
+
     }
 }

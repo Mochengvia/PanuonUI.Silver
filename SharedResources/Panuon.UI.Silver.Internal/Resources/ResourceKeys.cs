@@ -99,5 +99,10 @@
         public const string TabControlScrollViewerStyle = nameof(TabControlScrollViewerStyle);
         #endregion
 
+        #region Menu
+        public const string TopLevelMenuItemTemplate = nameof(TopLevelMenuItemTemplate);
+
+        public const string SubmenuMenuItemTemplate = nameof(SubmenuMenuItemTemplate);
+        #endregion
     }
 }

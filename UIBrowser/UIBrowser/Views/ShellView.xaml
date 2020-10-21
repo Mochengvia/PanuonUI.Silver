@@ -17,9 +17,9 @@
     <pu:WindowXCaption.Header>
         <StackPanel Orientation="Horizontal"
                     Margin="10,0,0,0">
-            <Image Source="/UIBrowser;component/Resources/Images/Logo.png" 
+            <Image Source="/UIBrowser;component/Resources/Images/Logo.png"
                    RenderOptions.BitmapScalingMode="HighQuality"
-                   Height="20"/>
+                   Height="20" />
         </StackPanel>
     </pu:WindowXCaption.Header>
     <Grid>
@@ -62,10 +62,10 @@
                   Background="Transparent">
                 <Grid.ContextMenu>
                     <ContextMenu>
-                        <MenuItem Header="Item1"/>
+                        <MenuItem Header="Item1" />
                     </ContextMenu>
                 </Grid.ContextMenu>
-                    <TextBlock Text="{Binding ActiveItem.Caption}"
+                <TextBlock Text="{Binding ActiveItem.Caption}"
                            FontSize="20" />
             </Grid>
             <ContentControl x:Name="ActiveItem"

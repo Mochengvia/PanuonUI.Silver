@@ -36,8 +36,11 @@
                             <RowDefinition />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <Border Grid.RowSpan="3" 
-                                Background="{TemplateBinding Background}"/>
+                        <Border Grid.RowSpan="3"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="{Binding Path=(local:GroupBoxHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                         <Border x:Name="BdrHeader"
                                 Height="{Binding Path=(local:GroupBoxHelper.HeaderHeight),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
                                 Background="{Binding Path=(local:GroupBoxHelper.HeaderBackground),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}">

@@ -28,6 +28,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PendingBoxXWindow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ArcConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DateTimePickerTextStringFormatConverterConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\DropShadowEffectWithDepthConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\SwitchCheckBoxToggleShadowEffectConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\LocalizedMonthStringConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleToBottomThicknessConverter.cs" />

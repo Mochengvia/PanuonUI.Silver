@@ -14,6 +14,7 @@
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/GroupBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/ListBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/ListView.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/Menu.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/PasswordBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/RadioButton.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Themes/RepeatButton.xaml" />
@@ -79,5 +80,8 @@
 
     <Style TargetType="TreeView"
            BasedOn="{StaticResource {x:Static irs:StyleKeys.TreeViewStyle}}" />
-    
+
+    <Style TargetType="Menu"
+           BasedOn="{StaticResource {x:Static irs:StyleKeys.MenuStyle}}" />
+
 </ResourceDictionary>

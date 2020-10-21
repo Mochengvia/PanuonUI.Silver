@@ -54,6 +54,8 @@
 
         public const string TabControlSideButtonVisibilityConverter = nameof(TabControlSideButtonVisibilityConverter);
 
+        public const string DropShadowEffectWithDepthConverter = nameof(DropShadowEffectWithDepthConverter);
+        
 
     }
     

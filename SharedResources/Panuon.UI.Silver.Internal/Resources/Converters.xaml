@@ -41,5 +41,6 @@
     <icv:TabControlSideButtonVisibilityConverter x:Key="{x:Static irs:Converters.TabControlSideButtonVisibilityConverter}" />
 
     <icv:DropDownPathDataConverter x:Key="{x:Static irs:Converters.DropDownPathDataConverter}" />
+    <icv:DropShadowEffectWithDepthConverter x:Key="{x:Static irs:Converters.DropShadowEffectWithDepthConverter}" />
     
 </ResourceDictionary> 

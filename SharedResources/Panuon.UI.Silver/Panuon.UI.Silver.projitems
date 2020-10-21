@@ -80,6 +80,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\GroupBoxHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ListBoxHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ListViewHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\MenuHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\MessageBoxX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\NoticeX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\PendingBoxX.cs" />
@@ -180,6 +181,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\ListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Menu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

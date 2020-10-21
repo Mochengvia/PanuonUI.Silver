@@ -690,6 +690,16 @@ namespace Panuon.UI.Silver
 
             if (!_isInternalSet)
             {
+                if (SelectedDates == null)
+                {
+                    SelectedDates = new ObservableCollection<DateTime>();
+                }
+                if (SelectedDate != null && !SelectedDates.Contains((DateTime)SelectedDate))
+                {
+                    _isInternalSet = true;
+                    SelectedDates.Add((DateTime)SelectedDate);
+                    _isInternalSet = false;
+                }
                 var date = SelectedDate ?? new DateTime(CurrentYear, CurrentMonth, 1);
                 UpdateDays(date.Year, date.Month);
                 UpdateMonths(date.Year, date.Month);

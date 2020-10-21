@@ -84,5 +84,8 @@
     
     <Style TargetType="local:Validator"
            BasedOn="{StaticResource {x:Static irs:StyleKeys.ValidatorStyle}}" />
-    
+
+    <Style TargetType="local:Signboard"
+           BasedOn="{StaticResource {x:Static irs:StyleKeys.SignboardStyle}}" />
+
 </ResourceDictionary>

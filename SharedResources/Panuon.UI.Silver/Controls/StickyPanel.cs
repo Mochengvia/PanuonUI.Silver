@@ -83,7 +83,7 @@ namespace Panuon.UI.Silver
             {
                 child.Measure(availableSize);
             }
-            return availableSize;
+            return base.MeasureOverride(availableSize);
         }
 
         protected override Size ArrangeOverride(Size finalSize)

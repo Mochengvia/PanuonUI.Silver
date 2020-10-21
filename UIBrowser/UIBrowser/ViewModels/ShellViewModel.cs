@@ -40,6 +40,11 @@ namespace UIBrowser.ViewModels
 
         #region Properties
 
+        #region SelectedDate
+        public DateTime SelectedDate { get => _selectedDate; set => Set(ref _selectedDate, value); }
+        private DateTime _selectedDate = DateTime.Now.Date;
+        #endregion
+
         #region IsPaletteEnabled
         public bool IsPaletteEnabled { get => _isPaletteEnabled; set => Set(ref _isPaletteEnabled, value); }
         private bool _isPaletteEnabled;
