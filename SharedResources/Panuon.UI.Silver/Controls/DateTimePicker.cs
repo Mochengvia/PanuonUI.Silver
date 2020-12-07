@@ -470,12 +470,18 @@ namespace Panuon.UI.Silver
                 _calendarX.MaxDate = maxDateTime.Date;
             }
         }
+
         private void OnSelectedDateTimeChanged()
         {
+            if (_calendarX == null || _timeSelector == null)
+            {
+                return;
+            }
+
             if (SelectedDateTime == null)
             {
                 _calendarX.SelectedDate = null;
-                _timeSelector.SelectedTime = new DateTime(0, 0, 0);
+                _timeSelector.SelectedTime = new DateTime(1, 1, 1);
             }
             else
             {
