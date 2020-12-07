@@ -177,7 +177,7 @@
                Margin="5,0,0,0"
                VerticalAlignment="Center" />
         <TextBlock Margin="5,0,0,0"
-                   Foreground="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}"
+                   Foreground="{Binding Path=(local:WindowXCaption.Foreground), RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}"
                    Text="{Binding Title, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}"
                    VerticalAlignment="Center" />
     </StackPanel>
