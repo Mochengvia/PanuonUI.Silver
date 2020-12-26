@@ -172,7 +172,13 @@
                 Orientation="Horizontal"
                 Margin="5,0,0,0"
                 x:Shared="False">
-        <Image Source="{Binding Icon,RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}"
+        <Image Width="{Binding Path=(local:IconHelper.Width), RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}"
+               Height="{Binding Path=(local:IconHelper.Height), RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}"
+               MinWidth="{Binding Path=(local:IconHelper.Width), RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}"
+               MinHeight="{Binding Path=(local:IconHelper.Height), RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}"
+               MaxWidth="{Binding Path=(local:IconHelper.Width), RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}"
+               MaxHeight="{Binding Path=(local:IconHelper.Height), RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}"
+               Source="{Binding Icon,RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}"
                Visibility="{Binding Icon,Converter={StaticResource {x:Static rs:Converters.NullToCollapseConverter}}, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}"
                Margin="5,0,0,0"
                VerticalAlignment="Center" />
@@ -275,7 +281,7 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="ResizeMode"
                                  Value="CanMinimize">
-                            <Setter TargetName="BtnMinimize"
+                            <Setter TargetName="BtnMaximize"
                                     Property="IsEnabled"
                                     Value="False" />
                         </Trigger>
@@ -317,13 +323,13 @@
                         </Trigger>
                         <Trigger Property="local:WindowXCaption.Buttons"
                                  Value="MaximizeClose">
-                            <Setter TargetName="BtnMaximize"
+                            <Setter TargetName="BtnMinimize"
                                     Property="Visibility"
                                     Value="Collapsed" />
                         </Trigger>
                         <Trigger Property="local:WindowXCaption.Buttons"
                                  Value="MinimizeClose">
-                            <Setter TargetName="BtnMinimize"
+                            <Setter TargetName="BtnMaximize"
                                     Property="Visibility"
                                     Value="Collapsed" />
                         </Trigger>
