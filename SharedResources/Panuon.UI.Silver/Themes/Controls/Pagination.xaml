@@ -54,7 +54,7 @@
             <Setter.Value>
                 <Style TargetType="RepeatButton">
                     <Setter Property="Width"
-                            Value="{Binding ActualHeight,RelativeSource={StaticResource TemplatedParent}}" />
+                            Value="{Binding ActualHeight,RelativeSource={RelativeSource TemplatedParent}}" />
                     <Setter Property="local:RepeatButtonHelper.Hook"
                             Value="True" />
                     <Setter Property="Background"
