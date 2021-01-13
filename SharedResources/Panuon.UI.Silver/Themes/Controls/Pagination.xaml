@@ -9,52 +9,52 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
+    <Style x:Key="{ComponentResourceKey ResourceId=PaginationItemRadioButtonStyle,TypeInTargetAssembly={x:Type local:Pagination}}"         
+           TargetType="RadioButton"
+           BasedOn="{StaticResource {x:Type RadioButton}}">
+        <Setter Property="Background"
+                Value="Transparent" />
+        <Setter Property="MinWidth"
+                Value="{Binding ActualHeight,RelativeSource={RelativeSource Self}}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+                    <Border Background="{TemplateBinding Background}"
+                            CornerRadius="2">
+                        <ContentPresenter Margin="5,0"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsChecked"
+                     Value="True">
+                <Setter Property="Background"
+                        Value="#E1E1E1" />
+            </Trigger>
+            <Trigger Property="IsMouseOver"
+                     Value="True">
+                <Setter Property="Background"
+                        Value="#E1E1E1" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
     <Style x:Key="{x:Static irs:StyleKeys.PaginationStyle}"
            TargetType="local:Pagination">
         <Setter Property="Spacing"
                 Value="5" />
         <Setter Property="HorizontalAlignment"
                 Value="Left" />
-        <Setter Property="ItemContainerStyle">
-            <Setter.Value>
-                <Style TargetType="RadioButton"
-                       BasedOn="{StaticResource {x:Type RadioButton}}">
-                    <Setter Property="Background"
-                            Value="Transparent" />
-                    <Setter Property="MinWidth"
-                            Value="{Binding ActualHeight,RelativeSource={RelativeSource Self}}" />
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="RadioButton">
-                                <Border Background="{TemplateBinding Background}"
-                                        CornerRadius="2">
-                                    <ContentPresenter Margin="5,0"
-                                                      VerticalAlignment="Center"
-                                                      HorizontalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                    <Style.Triggers>
-                        <Trigger Property="IsChecked"
-                                 Value="True">
-                            <Setter Property="Background"
-                                    Value="#E1E1E1" />
-                        </Trigger>
-                        <Trigger Property="IsMouseOver"
-                                 Value="True">
-                            <Setter Property="Background"
-                                    Value="#E1E1E1" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </Setter.Value>
-        </Setter>
+        <Setter Property="ItemContainerStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=PaginationItemRadioButtonStyle,TypeInTargetAssembly={x:Type local:Pagination}}}"/>
         <Setter Property="SideRepeatButtonStyle">
             <Setter.Value>
                 <Style TargetType="RepeatButton">
                     <Setter Property="Width"
-                            Value="{Binding ActualHeight,RelativeSource={RelativeSource TemplatedParent}}" />
+                            Value="{Binding ActualHeight,RelativeSource={StaticResource TemplatedParent}}" />
                     <Setter Property="local:RepeatButtonHelper.Hook"
                             Value="True" />
                     <Setter Property="Background"
