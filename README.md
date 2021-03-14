@@ -16,8 +16,10 @@ GitHub地址：https://github.com/Panuon/PanuonUI.Silver
 # News 动态  
 
 ## 2.2版本即将到来
-更丰富的细节，更好的表现，更少的BUG。没有绑定错误。   
-2.0版本库仍在开发中，控件库已迁移至新项目：https://github.com/Panuon/PanuonUI.Silver-v2.2  
+PanuonUI.Silver的最终版本（仍在开发中）。  
+2.2提供更丰富的细节定制化，以及更快的表现和更少的BUG。没有绑定错误。   
+此版本库仍在开发中，请勿从旧版本升级，或是在紧急项目上使用。控件库已迁移至新项目：  
+https://github.com/Panuon/PanuonUI.Silver-v2.2   
 Panuon Iconfont已在阿里图标字体库开放。你可以在1.x版本中使用这些图标。  
 https://www.iconfont.cn/user/detail?spm=a313x.7781069.1998910419.d9bd4f23f&uid=4788435
 
