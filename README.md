@@ -15,14 +15,9 @@ GitHub地址：https://github.com/Panuon/PanuonUI.Silver
 
 # News 动态  
 
-## 2.0版本即将到来
-更多样式，更好的表现，更少的BUG。  
-2.0版本提供对Net Core 3.0的完全支持。几乎每种控件都增加了至少一种样式，或是进行了现有样式调整。  
-全新的UIBrowser，帮助你快速设计控件，并生成样式或控件代码（尚在准备和优化中，可能会迟到）。  
-2.0版本对现有控件库的代码进行了完全的重构，从根源上解决了一些BUG，并大幅减少了可能出现的Exception。从1.0版本升级到2.0版本需要修改约30%控件库相关代码，但这值得一试。  
-请注意，2.0版本中不再集成FontAwesome，改为内置Panuon独家设计的IconFont字体库。目前已有200多个图标，你可以在UIBrowser中看到它们。Panuon IconFont会保持更新。  
-提供完备的开发文档、代码示例与1.0升级指南（文档将转移到阿里的语雀平台）。https://www.yuque.com/mochengvia/silver2.0   
-下载方式：你可以在上方的Branch中切换2.0.0分支并下载开发版代码，但控件尚不齐全。开发版Nuget已经发行。  
+## 2.2版本即将到来
+更丰富的细节，更好的表现，更少的BUG。没有绑定错误。 
+2.0版本库仍在开发中，控件库已迁移至新项目：https://github.com/Panuon/PanuonUI.Silver-v2.2
 Panuon Iconfont已在阿里图标字体库开放。你可以在1.x版本中使用这些图标。  
 https://www.iconfont.cn/user/detail?spm=a313x.7781069.1998910419.d9bd4f23f&uid=4788435
 
