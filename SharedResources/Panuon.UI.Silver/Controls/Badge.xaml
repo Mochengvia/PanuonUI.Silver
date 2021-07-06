@@ -4,7 +4,6 @@
                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                 xmlns:local="clr-namespace:Panuon.UI.Silver"
-                xmlns:pu="clr-namespace:Panuon.UI.Silver;assembly=Panuon.UI.Silver"
                 mc:Ignorable="d"
                 d:DesignHeight="450"
                 d:DesignWidth="800"
@@ -12,80 +11,86 @@
                 x:Name="badge"
                 RenderTransformOrigin="0.5,0.5">
     <ContentControl.Resources>
-        <Storyboard x:Key="Storyboard_ScaleBigger">
-            <DoubleAnimation Storyboard.TargetName="Scale"
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converter.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Resource.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <Storyboard x:Key="Storyboard_ScaleBigger">
+                <DoubleAnimation Storyboard.TargetName="Scale"
                              Storyboard.TargetProperty="ScaleX"
                              To="1"
                              Duration="0:0:0.5">
-                <DoubleAnimation.EasingFunction>
-                    <BackEase EasingMode="EaseOut" />
-                </DoubleAnimation.EasingFunction>
-            </DoubleAnimation>
-            <DoubleAnimation Storyboard.TargetName="Scale"
+                    <DoubleAnimation.EasingFunction>
+                        <BackEase EasingMode="EaseOut" />
+                    </DoubleAnimation.EasingFunction>
+                </DoubleAnimation>
+                <DoubleAnimation Storyboard.TargetName="Scale"
                              Storyboard.TargetProperty="ScaleY"
                              To="1"
                              Duration="0:0:0.5">
-                <DoubleAnimation.EasingFunction>
-                    <BackEase EasingMode="EaseOut" />
-                </DoubleAnimation.EasingFunction>
-            </DoubleAnimation>
-        </Storyboard>
-        <Storyboard x:Key="Storyboard_ScaleSmaller">
-            <DoubleAnimation Storyboard.TargetName="Scale"
+                    <DoubleAnimation.EasingFunction>
+                        <BackEase EasingMode="EaseOut" />
+                    </DoubleAnimation.EasingFunction>
+                </DoubleAnimation>
+            </Storyboard>
+            <Storyboard x:Key="Storyboard_ScaleSmaller">
+                <DoubleAnimation Storyboard.TargetName="Scale"
                              Storyboard.TargetProperty="ScaleX"
                              To="0.5"
                              Duration="0:0:0.5">
-                <DoubleAnimation.EasingFunction>
-                    <BackEase EasingMode="EaseOut" />
-                </DoubleAnimation.EasingFunction>
-            </DoubleAnimation>
-            <DoubleAnimation Storyboard.TargetName="Scale"
+                    <DoubleAnimation.EasingFunction>
+                        <BackEase EasingMode="EaseOut" />
+                    </DoubleAnimation.EasingFunction>
+                </DoubleAnimation>
+                <DoubleAnimation Storyboard.TargetName="Scale"
                              Storyboard.TargetProperty="ScaleY"
                              To="0.5"
                              Duration="0:0:0.5">
-                <DoubleAnimation.EasingFunction>
-                    <BackEase EasingMode="EaseOut" />
-                </DoubleAnimation.EasingFunction>
-            </DoubleAnimation>
-        </Storyboard>
-        <Storyboard x:Key="Storyboard_Wave"
+                    <DoubleAnimation.EasingFunction>
+                        <BackEase EasingMode="EaseOut" />
+                    </DoubleAnimation.EasingFunction>
+                </DoubleAnimation>
+            </Storyboard>
+            <Storyboard x:Key="Storyboard_Wave"
                     RepeatBehavior="Forever">
-            <DoubleAnimation Storyboard.TargetName="ScaleWave"
+                <DoubleAnimation Storyboard.TargetName="ScaleWave"
                              Storyboard.TargetProperty="ScaleX"
                              To="2"
                              Duration="0:0:1.5">
-            </DoubleAnimation>
-            <DoubleAnimation Storyboard.TargetName="ScaleWave"
+                </DoubleAnimation>
+                <DoubleAnimation Storyboard.TargetName="ScaleWave"
                              Storyboard.TargetProperty="ScaleY"
                              To="2"
                              Duration="0:0:1.5">
-            </DoubleAnimation>
-            <DoubleAnimation Storyboard.TargetName="RectWave"
+                </DoubleAnimation>
+                <DoubleAnimation Storyboard.TargetName="RectWave"
                              Storyboard.TargetProperty="Opacity"
                              To="0"
                              Duration="0:0:1.5">
-            </DoubleAnimation>
-        </Storyboard>
-        <Storyboard x:Key="Storyboard_Wave_Bigger"
+                </DoubleAnimation>
+            </Storyboard>
+            <Storyboard x:Key="Storyboard_Wave_Bigger"
                     RepeatBehavior="Forever">
-            <DoubleAnimation Storyboard.TargetName="ScaleWave"
+                <DoubleAnimation Storyboard.TargetName="ScaleWave"
                              Storyboard.TargetProperty="ScaleX"
                              From="1"
                              To="2"
                              Duration="0:0:1.5">
-            </DoubleAnimation>
-            <DoubleAnimation Storyboard.TargetName="ScaleWave"
+                </DoubleAnimation>
+                <DoubleAnimation Storyboard.TargetName="ScaleWave"
                              Storyboard.TargetProperty="ScaleY"
                              From="1"
                              To="2"
                              Duration="0:0:1.5">
-            </DoubleAnimation>
-            <DoubleAnimation Storyboard.TargetName="RectWave"
+                </DoubleAnimation>
+                <DoubleAnimation Storyboard.TargetName="RectWave"
                              Storyboard.TargetProperty="Opacity"
                              To="0"
                              Duration="0:0:1.5">
-            </DoubleAnimation>
-        </Storyboard>
+                </DoubleAnimation>
+            </Storyboard>
+        </ResourceDictionary>
     </ContentControl.Resources>
     <Grid>
         <Rectangle x:Name="RectWave"
