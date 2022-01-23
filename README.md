@@ -12,6 +12,12 @@ QQ Group : 718778191
 GitHub地址：https://github.com/Panuon/PanuonUI.Silver  
 码云地址： https://gitee.com/panuon/PanuonUI.Silver  
 
+
+# 还在为UI设计头痛吗？
+预热中。欢迎前来关注正在开发的Panuon Workshop，一款低代码化的前端设计平台（商业软件）。
+https://github.com/PanuonInc/PanuonWorkshop
+
+
 # News 动态  
 
 ## Version 2.2
