@@ -7,7 +7,7 @@ Panuon.UI的优化版本。一个漂亮的、使用样式与附加属性的WPF U
 
 
 Email : mochengvia@panuon.com  
-QQ Group : 718778191  
+QQ Group : 868673274  
 
 GitHub地址：https://github.com/Panuon/PanuonUI.Silver  
 码云地址： https://gitee.com/panuon/PanuonUI.Silver  
