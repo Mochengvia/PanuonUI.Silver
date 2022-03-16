@@ -13,21 +13,13 @@ GitHub地址：https://github.com/Panuon/PanuonUI.Silver
 码云地址： https://gitee.com/panuon/PanuonUI.Silver  
 
 
-# 还在为UI设计头痛吗？
-预热中。欢迎前来关注正在开发的Panuon Workshop，一款低代码化的前端设计平台（商业软件）。
-https://github.com/PanuonInc/PanuonWorkshop
-
-
 # News 动态  
 
-## Version 2.2
+## Version 2.2 现已发布正式版
 
-2.2版本已经迁移至新的仓库中，它比以往的任何一个版本都要强大。新版本仍在开发过程中，它仅提供了绝大多数的核心控件。如果您正在开发一个新项目，建议您使用新的2.2版本，该版本将做长期维护。  
-新项目地址：
+2.2版本已经迁移至新的仓库中，它比以往的任何一个版本都要强大。请注意，使用2.2版本可能需要你有较为扎实的WPF核心知识。  
 https://github.com/Panuon/Panuon.UI.Silver   
-Version 2.2 has been moved to the new repository, and it is more powerful than any previous version. The new version is still in the development process, and it only provides most of the core controls. If you are developing a new project, it is recommended to use v2.2 project, which will do long-term maintenance.   
-Project Repo:  
-https://github.com/Panuon/Panuon.UI.Silver   
+
 
 Panuon Iconfont已在阿里图标字体库开放。你可以在1.x版本中使用这些图标。  
 https://www.iconfont.cn/user/detail?spm=a313x.7781069.1998910419.d9bd4f23f&uid=4788435
