@@ -1,25 +1,23 @@
 <a href="https://996.icu" target='_blank'><img src="https://img.shields.io/badge/link-996.icu-red.svg"></a>
 <a href="https://996.icu" target='_blank'><img src="https://camo.githubusercontent.com/8948ee9e753309fa3e978b3a0bdeda5a0c3f98ec/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2e6e65742d253345253344342e302d626c75652e737667"></a>
 
+# 出于历史包袱原因，此控件库已不再维护。如果发现了bug，请将merge request提交至仓库。
+
+## 全新的 Panuon.WPF.UI 现已发布。
+https://github.com/PanuonGroup/Panuon.UI.Silver  
+
+自Panuon.UI.Silver 2.2开始，控件库已更名为 `Panuon.WPF.UI`。 新控件库提供了非常详细的细节自定义功能，如果你刚刚接触WPF，可能会遇到一点困难。如果你是WPF专家，它则会让你感到惊喜（比如丰富的自定义属性以及残缺的文档  
+如果想查看视频教程，欢迎关注我的bilibili账号：https://space.bilibili.com/319290241  
+
 # Panuon.UI.Silver
 Panuon.UI optimized version. A beautiful wpf ui library using templates &amp; attached properties.  
 Panuon.UI的优化版本。一个漂亮的、使用样式与附加属性的WPF UI控件库。
-
 
 Email : mochengvia@panuon.com  
 QQ Group : 868673274  
 
 GitHub地址：https://github.com/Panuon/PanuonUI.Silver  
 码云地址： https://gitee.com/panuon/PanuonUI.Silver  
-
-
-# News 动态  
-
-## Version 2.2 现已发布正式版
-
-2.2版本已经迁移至新的仓库中，它比以往的任何一个版本都要强大。请注意，使用2.2版本可能需要你有较为扎实的WPF核心知识。  
-https://github.com/Panuon/Panuon.UI.Silver   
-
 
 Panuon Iconfont已在阿里图标字体库开放。你可以在1.x版本中使用这些图标。  
 https://www.iconfont.cn/user/detail?spm=a313x.7781069.1998910419.d9bd4f23f&uid=4788435
